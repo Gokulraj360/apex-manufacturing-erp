@@ -384,7 +384,7 @@ export default function CustomerReturnsPage() {
               <Filter className="w-4 h-4 text-neutral-400" />
               <select
                 value={dispositionFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
+                onChange={(e) => setDispositionFilter(e.target.value)}
                 className="bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-neutral-200 focus:outline-none focus:border-rose-500"
               >
                 <option value="ALL">All Dispositions</option>
