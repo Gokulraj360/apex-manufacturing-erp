@@ -240,15 +240,15 @@ export default function SupplyChainOverviewPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-              <Link2 className="h-6 w-6 text-cyan-400" />
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+              <Link2 className="h-6 w-6 text-cyan-600 dark:text-cyan-400" />
               Supply Chain Management &amp; Material Flow Command
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-950/80 text-cyan-300 border border-cyan-500/30">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-500/10 dark:bg-cyan-950/80 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30">
               Flow Index: {metrics.uninterruptedFlowIndex}%
             </span>
           </div>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
             End-to-end Material Requirements Planning (MRP), autonomous procurement, supplier tier scorecards, and multi-modal inbound transit.
           </p>
         </div>
@@ -263,16 +263,16 @@ export default function SupplyChainOverviewPage() {
           </Link>
           <Link
             href="/supply-chain/procurement"
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-xs transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-medium text-xs transition-colors"
           >
-            <ShoppingCart className="h-4 w-4 text-cyan-400" />
+            <ShoppingCart className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
             Procurement &amp; POs
           </Link>
           <Link
             href="/supply-chain/inbound"
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-xs transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-medium text-xs transition-colors"
           >
-            <Ship className="h-4 w-4 text-cyan-400" />
+            <Ship className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
             Inbound Fleet
           </Link>
         </div>
@@ -280,64 +280,64 @@ export default function SupplyChainOverviewPage() {
 
       {/* KPI Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-cyan-500/30 rounded-xl p-4 shadow-sm relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-cyan-500/30 rounded-xl p-4 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-cyan-400 uppercase tracking-wider">Uninterrupted Material Flow</span>
+            <span className="text-xs font-medium text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">Uninterrupted Material Flow</span>
             <div className="h-8 w-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
-              <CheckCircle2 className="h-4 w-4 text-cyan-400" />
+              <CheckCircle2 className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{metrics.uninterruptedFlowIndex}%</span>
-            <span className="text-xs text-slate-400">zero stockouts</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{metrics.uninterruptedFlowIndex}%</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">zero stockouts</span>
           </div>
-          <div className="mt-2 text-[11px] text-cyan-300">
+          <div className="mt-2 text-[11px] text-cyan-600 dark:text-cyan-300">
             Across 24 active production lines
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Open PO Pipeline</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Open PO Pipeline</span>
             <div className="h-8 w-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
-              <ShoppingCart className="h-4 w-4 text-blue-400" />
+              <ShoppingCart className="h-4 w-4 text-blue-600 dark:text-blue-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{metrics.openPOsCount} POs</span>
-            <span className="text-xs text-slate-400">issued</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{metrics.openPOsCount} POs</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">issued</span>
           </div>
-          <div className="mt-2 text-[11px] text-slate-400">Total pipeline: $428,000 committed</div>
+          <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">Total pipeline: $428,000 committed</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Inbound Transit Fleet</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Inbound Transit Fleet</span>
             <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-              <Ship className="h-4 w-4 text-amber-400" />
+              <Ship className="h-4 w-4 text-amber-600 dark:text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{metrics.inTransitShipmentsCount} Shipments</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{metrics.inTransitShipmentsCount} Shipments</span>
           </div>
-          <div className="mt-2 text-[11px] text-amber-400/90 flex items-center gap-1">
+          <div className="mt-2 text-[11px] text-amber-600 dark:text-amber-400/90 flex items-center gap-1">
             <Clock className="h-3 w-3" />
             <span>Avg delivery lead time: {metrics.averageLeadTimeDays} days</span>
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Inventory Turnover Ratio</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Inventory Turnover Ratio</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-              <TrendingUp className="h-4 w-4 text-emerald-400" />
+              <TrendingUp className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{metrics.inventoryTurnoverRatio}x</span>
-            <span className="text-xs text-emerald-400 font-semibold">Turns/yr</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{metrics.inventoryTurnoverRatio}x</span>
+            <span className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">Turns/yr</span>
           </div>
-          <div className="mt-2 text-[11px] text-emerald-400">
+          <div className="mt-2 text-[11px] text-emerald-600 dark:text-emerald-400">
             YTD Cost Savings: ${metrics.costSavingsAchieved.toLocaleString()}
           </div>
         </div>
@@ -345,58 +345,58 @@ export default function SupplyChainOverviewPage() {
 
       {/* Cross-Department Synchronization Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 space-y-2 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+            <span className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
               <Network className="h-3.5 w-3.5" />
               Production &amp; MRP Alignment
             </span>
-            <span className="text-[10px] font-mono text-emerald-400 font-bold">SYNCHRONIZED</span>
+            <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 font-bold">SYNCHRONIZED</span>
           </div>
-          <p className="text-xs text-slate-300">
+          <p className="text-xs text-slate-600 dark:text-slate-300">
             Current 12-week MRP plan accounts for 32 active work orders. Safety stock buffers automated for critical alloy bar stocks.
           </p>
-          <div className="pt-2 text-[11px] text-slate-400 flex items-center justify-between border-t border-slate-800/80">
+          <div className="pt-2 text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between border-t border-slate-200 dark:border-slate-800/80">
             <span>Forecasted SKU Requirements: 84 items</span>
-            <Link href="/supply-chain/mrp" className="text-cyan-400 hover:underline flex items-center gap-0.5">
+            <Link href="/supply-chain/mrp" className="text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-0.5">
               Review Plan <ArrowUpRight className="h-3 w-3" />
             </Link>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 space-y-2 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+            <span className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
               <Building2 className="h-3.5 w-3.5" />
               Tier 1 Strategic Suppliers
             </span>
-            <span className="text-[10px] font-mono text-cyan-400 font-bold">48 ENROLLED</span>
+            <span className="text-[10px] font-mono text-cyan-600 dark:text-cyan-400 font-bold">48 ENROLLED</span>
           </div>
-          <p className="text-xs text-slate-300">
+          <p className="text-xs text-slate-600 dark:text-slate-300">
             Average supplier on-time delivery rate is <strong>96.8%</strong> with zero critical material defects on inbound dock inspections.
           </p>
-          <div className="pt-2 text-[11px] text-slate-400 flex items-center justify-between border-t border-slate-800/80">
+          <div className="pt-2 text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between border-t border-slate-200 dark:border-slate-800/80">
             <span>Overall Score: 94.6/100</span>
-            <Link href="/supply-chain/vendors" className="text-cyan-400 hover:underline flex items-center gap-0.5">
+            <Link href="/supply-chain/vendors" className="text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-0.5">
               Vendor Scorecards <ArrowUpRight className="h-3 w-3" />
             </Link>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800 space-y-2 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-rose-400 uppercase tracking-wider flex items-center gap-1.5">
+            <span className="text-xs font-semibold text-rose-600 dark:text-rose-400 uppercase tracking-wider flex items-center gap-1.5">
               <ShieldAlert className="h-3.5 w-3.5" />
               Supply Risk Watchlist
             </span>
-            <span className="text-[10px] font-mono text-rose-400 font-bold">2 HIGH PRIORITY</span>
+            <span className="text-[10px] font-mono text-rose-600 dark:text-rose-400 font-bold">2 HIGH PRIORITY</span>
           </div>
-          <p className="text-xs text-slate-300">
+          <p className="text-xs text-slate-600 dark:text-slate-300">
             Active monitoring on steel index volatility and raw fluorosilicone dependency. Active mitigations in progress.
           </p>
-          <div className="pt-2 text-[11px] text-slate-400 flex items-center justify-between border-t border-slate-800/80">
+          <div className="pt-2 text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between border-t border-slate-200 dark:border-slate-800/80">
             <span>Exposure: $60,500</span>
-            <Link href="/supply-chain/analytics" className="text-rose-400 hover:underline flex items-center gap-0.5">
+            <Link href="/supply-chain/analytics" className="text-rose-600 dark:text-rose-400 hover:underline flex items-center gap-0.5">
               Mitigation Radar <ArrowUpRight className="h-3 w-3" />
             </Link>
           </div>
@@ -406,24 +406,24 @@ export default function SupplyChainOverviewPage() {
       {/* Main Section: Active Purchase Orders & Live Transit Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Active Purchase Orders Pipeline (2 Cols) */}
-        <div className="lg:col-span-2 bg-[#0f172a]/80 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
-          <div className="p-4 border-b border-slate-800 flex items-center justify-between">
+        <div className="lg:col-span-2 bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+          <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <ShoppingCart className="h-4 w-4 text-cyan-400" />
-              <h2 className="text-sm font-semibold text-white">Active Purchase Orders Pipeline</h2>
-              <span className="text-xs text-slate-400">({activePOs.length} high-value orders)</span>
+              <ShoppingCart className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
+              <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Active Purchase Orders Pipeline</h2>
+              <span className="text-xs text-slate-500 dark:text-slate-400">({activePOs.length} high-value orders)</span>
             </div>
             <Link
               href="/supply-chain/procurement"
-              className="text-xs text-cyan-400 hover:text-cyan-300 font-medium flex items-center gap-1"
+              className="text-xs text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 dark:hover:text-cyan-300 font-medium flex items-center gap-1"
             >
               View All Orders <ChevronRight className="h-3.5 w-3.5" />
             </Link>
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-300">
-              <thead className="bg-slate-900/80 text-slate-400 uppercase font-medium border-b border-slate-800">
+            <table className="w-full text-left text-xs text-slate-600 dark:text-slate-300">
+              <thead className="bg-slate-50 dark:bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-medium border-b border-slate-200 dark:border-slate-800">
                 <tr>
                   <th className="py-3 px-4">PO Number &amp; Date</th>
                   <th className="py-3 px-4">Supplier</th>
@@ -433,52 +433,52 @@ export default function SupplyChainOverviewPage() {
                   <th className="py-3 px-4">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60">
                 {activePOs.map((po) => (
-                  <tr key={po.id} className="hover:bg-slate-800/40 transition-colors">
+                  <tr key={po.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors">
                     <td className="py-3.5 px-4">
-                      <div className="font-semibold text-white font-mono">{po.poNumber}</div>
-                      <div className="text-[11px] text-slate-400 mt-0.5">{po.orderDate}</div>
+                      <div className="font-semibold text-slate-900 dark:text-white font-mono">{po.poNumber}</div>
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{po.orderDate}</div>
                     </td>
 
                     <td className="py-3.5 px-4">
-                      <div className="font-medium text-slate-200">{po.vendor?.companyName}</div>
-                      <div className="text-[10px] font-mono text-cyan-400 mt-0.5">
+                      <div className="font-medium text-slate-900 dark:text-slate-200">{po.vendor?.companyName}</div>
+                      <div className="text-[10px] font-mono text-cyan-700 dark:text-cyan-400 mt-0.5">
                         {po.vendor?.vendorCode} • {po.vendor?.tierRating?.replace('_', ' ')}
                       </div>
                     </td>
 
                     <td className="py-3.5 px-4">
-                      <div className="font-mono text-slate-200 font-medium">{po.items[0]?.itemSku}</div>
-                      <div className="text-[11px] text-slate-400 truncate max-w-[170px]">
+                      <div className="font-mono text-slate-900 dark:text-slate-200 font-medium">{po.items[0]?.itemSku}</div>
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate max-w-[170px]">
                         {po.items[0]?.itemName} ({po.items[0]?.orderedQty} units)
                       </div>
                     </td>
 
-                    <td className="py-3.5 px-4 font-mono font-semibold text-emerald-400">
+                    <td className="py-3.5 px-4 font-mono font-semibold text-emerald-600 dark:text-emerald-400">
                       ${po.totalAmount.toLocaleString()}
                     </td>
 
                     <td className="py-3.5 px-4">
-                      <div className="flex items-center gap-1 text-slate-300">
-                        <Clock className="h-3 w-3 text-cyan-400" />
+                      <div className="flex items-center gap-1 text-slate-600 dark:text-slate-300">
+                        <Clock className="h-3 w-3 text-cyan-600 dark:text-cyan-400" />
                         <span>{po.expectedDeliveryDate}</span>
                       </div>
                     </td>
 
                     <td className="py-3.5 px-4">
                       {po.status === 'IN_TRANSIT' && (
-                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">
                           IN TRANSIT
                         </span>
                       )}
                       {po.status === 'ACKNOWLEDGED' && (
-                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
                           ACKNOWLEDGED
                         </span>
                       )}
                       {po.status === 'PARTIALLY_DELIVERED' && (
-                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
                           PARTIAL
                         </span>
                       )}
@@ -491,14 +491,14 @@ export default function SupplyChainOverviewPage() {
         </div>
 
         {/* Right Column: Supply Risk Feed (1 Col) */}
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl overflow-hidden shadow-sm flex flex-col justify-between">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm flex flex-col justify-between">
           <div>
-            <div className="p-4 border-b border-slate-800 flex items-center justify-between">
+            <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Flame className="h-4 w-4 text-rose-400" />
-                <h2 className="text-sm font-semibold text-white">Active Supply Risk Feed</h2>
+                <Flame className="h-4 w-4 text-rose-500 dark:text-rose-400" />
+                <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Active Supply Risk Feed</h2>
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-950/80 text-rose-300 border border-rose-500/30 font-semibold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/10 dark:bg-rose-950/80 text-rose-700 dark:text-rose-300 border border-rose-500/30 font-semibold">
                 RISK RADAR
               </span>
             </div>
@@ -507,30 +507,30 @@ export default function SupplyChainOverviewPage() {
               {criticalRisks.map((risk) => (
                 <div
                   key={risk.id}
-                  className="p-3 rounded-lg bg-slate-900/80 border border-slate-800 space-y-2 hover:border-slate-700 transition-colors"
+                  className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-2 hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold text-white">{risk.riskRefNumber}</span>
+                    <span className="text-xs font-mono font-bold text-slate-900 dark:text-white">{risk.riskRefNumber}</span>
                     <span
                       className={`px-2 py-0.5 rounded text-[10px] font-semibold ${
                         risk.severityLevel === 'HIGH'
-                          ? 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
-                          : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                          ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20'
+                          : 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20'
                       }`}
                     >
                       {risk.severityLevel}
                     </span>
                   </div>
 
-                  <p className="text-xs text-slate-300 line-clamp-2">{risk.impactDescription}</p>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2">{risk.impactDescription}</p>
 
-                  <div className="p-2 rounded bg-slate-950/60 border border-slate-800/80 text-[11px] text-cyan-300">
-                    <span className="font-semibold block text-slate-400 mb-0.5">Mitigation Action:</span>
+                  <div className="p-2 rounded bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800/80 text-[11px] text-cyan-700 dark:text-cyan-300">
+                    <span className="font-semibold block text-slate-500 dark:text-slate-400 mb-0.5">Mitigation Action:</span>
                     {risk.mitigationPlan}
                   </div>
 
-                  <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1">
-                    <span>Exposure: <strong className="text-emerald-400 font-mono">${risk.estimatedFinancialExposure.toLocaleString()}</strong></span>
+                  <div className="flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400 pt-1">
+                    <span>Exposure: <strong className="text-emerald-600 dark:text-emerald-400 font-mono">${risk.estimatedFinancialExposure.toLocaleString()}</strong></span>
                     <span>Owner: {risk.owner}</span>
                   </div>
                 </div>
@@ -538,10 +538,10 @@ export default function SupplyChainOverviewPage() {
             </div>
           </div>
 
-          <div className="p-4 border-t border-slate-800 bg-slate-900/40">
+          <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40">
             <Link
               href="/supply-chain/analytics"
-              className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 transition-colors"
+              className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-medium text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors"
             >
               Open Full Risk Matrix &amp; Turnover Analytics
             </Link>

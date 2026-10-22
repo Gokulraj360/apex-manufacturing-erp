@@ -92,7 +92,7 @@ export function LineChart({
   // Generate SVG path strings
   const paths = useMemo(() => {
     return series.map((s) => {
-      if (data.length === 0) return { line: '', area: '', color: s.color, key: s.key };
+      if (data.length === 0) return { line: '', area: '', color: s.color, key: s.key, points: [] };
 
       const points = data.map((d, i) => ({
         x: getX(i),
@@ -301,7 +301,7 @@ export function LineChart({
                 strokeDasharray="2 2"
               />
               {paths.map((p) => {
-                const pt = p.points[hoverIndex];
+                const pt = p.points?.[hoverIndex];
                 if (!pt) return null;
                 return (
                   <g key={`dot-${p.key}`}>

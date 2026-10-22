@@ -295,17 +295,17 @@ export default function FieldServiceHubPage() {
   return (
     <div className="space-y-6">
       {/* Top Banner & Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-400 border border-orange-500/20">
+            <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-500 dark:text-orange-400 border border-orange-500/20">
               <Wrench className="h-5 w-5" />
             </span>
-            <h1 className="text-2xl font-bold text-white tracking-tight">
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
               Field Service Operations & Dispatch Center
             </h1>
           </div>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Real-time technician fleet dispatching, rapid breakdown ticket resolution, AMC lifecycle management, and mobile van stock tracking.
           </p>
         </div>
@@ -319,13 +319,13 @@ export default function FieldServiceHubPage() {
           </Link>
           <Link
             href="/field-service/engineers"
-            className="flex items-center gap-2 px-3.5 py-2 bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 rounded-lg text-xs font-semibold transition-all"
+            className="flex items-center gap-2 px-3.5 py-2 bg-white dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-semibold shadow-sm transition-all"
           >
-            <Users className="h-4 w-4 text-orange-400" /> Dispatch Board
+            <Users className="h-4 w-4 text-orange-500 dark:text-orange-400" /> Dispatch Board
           </Link>
           <button
             onClick={() => window.location.reload()}
-            className="p-2 bg-slate-800/80 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-700 rounded-lg transition-all"
+            className="p-2 bg-white dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm transition-all"
             title="Refresh Field Telemetry"
           >
             <RefreshCw className="h-4 w-4" />
@@ -335,110 +335,110 @@ export default function FieldServiceHubPage() {
 
       {/* KPI Cards Row */}
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3.5">
-        <div className="p-4 rounded-xl bg-[#0d1322] border border-slate-800 relative overflow-hidden group hover:border-orange-500/40 transition-all">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-orange-500/40 transition-all">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Active Tickets</span>
-            <div className="p-1.5 rounded-lg bg-orange-500/10 text-orange-400">
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Active Tickets</span>
+            <div className="p-1.5 rounded-lg bg-orange-500/10 text-orange-500 dark:text-orange-400">
               <ClipboardCheck className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-white tracking-tight">{metrics.openTicketsCount}</div>
-          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-400">
-            <span className="text-orange-400 font-semibold">{metrics.criticalDownCount} Critical</span>
+          <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">{metrics.openTicketsCount}</div>
+          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+            <span className="text-orange-600 dark:text-orange-400 font-semibold">{metrics.criticalDownCount} Critical</span>
             <span>/ {metrics.totalTicketsCount} Total</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#0d1322] border border-slate-800 relative overflow-hidden group hover:border-emerald-500/40 transition-all">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-emerald-500/40 transition-all">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">FTFR (First-Time Fix)</span>
-            <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">FTFR (First-Time Fix)</span>
+            <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-500 dark:text-emerald-400">
               <Zap className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-emerald-400 tracking-tight">{metrics.firstTimeFixRate}%</div>
-          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-400">
-            <span className="text-emerald-400 font-medium">Target: &gt;90%</span>
+          <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 tracking-tight">{metrics.firstTimeFixRate}%</div>
+          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+            <span className="text-emerald-600 dark:text-emerald-400 font-medium">Target: &gt;90%</span>
             <span>World-Class</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#0d1322] border border-slate-800 relative overflow-hidden group hover:border-blue-500/40 transition-all">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-blue-500/40 transition-all">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Avg Resolution Time</span>
-            <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Avg Resolution Time</span>
+            <div className="p-1.5 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
               <Clock className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-white tracking-tight">{metrics.averageResolutionHours} hrs</div>
-          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-400">
-            <span className="text-emerald-400 font-medium">-24 mins</span>
+          <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">{metrics.averageResolutionHours} hrs</div>
+          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+            <span className="text-emerald-600 dark:text-emerald-400 font-medium">-24 mins</span>
             <span>vs Last Month</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#0d1322] border border-slate-800 relative overflow-hidden group hover:border-amber-500/40 transition-all">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-amber-500/40 transition-all">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Customer CSAT</span>
-            <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-400">
-              <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Customer CSAT</span>
+            <div className="p-1.5 rounded-lg bg-amber-500/10 text-amber-500 dark:text-amber-400">
+              <Star className="h-4 w-4 fill-amber-400 text-amber-500 dark:text-amber-400" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-amber-400 tracking-tight">{metrics.customerSatisfactionRating} / 5.0</div>
-          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-400">
-            <span className="text-amber-400 font-medium">96% Positive</span>
+          <div className="text-2xl font-bold text-amber-500 dark:text-amber-400 tracking-tight">{metrics.customerSatisfactionRating} / 5.0</div>
+          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+            <span className="text-amber-600 dark:text-amber-400 font-medium">96% Positive</span>
             <span>Feedback</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#0d1322] border border-slate-800 relative overflow-hidden group hover:border-purple-500/40 transition-all">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-purple-500/40 transition-all">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Active AMC / Warranties</span>
-            <div className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400">
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Active AMC / Warranties</span>
+            <div className="p-1.5 rounded-lg bg-purple-500/10 text-purple-500 dark:text-purple-400">
               <Award className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-white tracking-tight">{metrics.activeAMCContractsCount}</div>
-          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-400">
-            <span className="text-purple-400 font-semibold">{metrics.activeWarrantiesCount}</span>
+          <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">{metrics.activeAMCContractsCount}</div>
+          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+            <span className="text-purple-600 dark:text-purple-400 font-semibold">{metrics.activeWarrantiesCount}</span>
             <span>OEM Warranties</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#0d1322] border border-slate-800 relative overflow-hidden group hover:border-teal-500/40 transition-all">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-teal-500/40 transition-all">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Van Stock Health</span>
-            <div className="p-1.5 rounded-lg bg-teal-500/10 text-teal-400">
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Van Stock Health</span>
+            <div className="p-1.5 rounded-lg bg-teal-500/10 text-teal-500 dark:text-teal-400">
               <Truck className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-bold text-teal-400 tracking-tight">{metrics.vanStockReplenishmentHealth}%</div>
-          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-400">
-            <span className="text-amber-400 font-semibold">{metrics.pendingPartsRequisitionCount}</span>
+          <div className="text-2xl font-bold text-teal-600 dark:text-teal-400 tracking-tight">{metrics.vanStockReplenishmentHealth}%</div>
+          <div className="flex items-center gap-1.5 mt-2 text-[11px] text-slate-500 dark:text-slate-400">
+            <span className="text-amber-600 dark:text-amber-400 font-semibold">{metrics.pendingPartsRequisitionCount}</span>
             <span>Spares Requisitions</span>
           </div>
         </div>
       </div>
 
       {/* Critical Machine Breakdowns Live Board */}
-      <div className="rounded-xl bg-[#0d1322] border border-rose-900/40 shadow-sm overflow-hidden">
-        <div className="p-4 bg-rose-950/20 border-b border-rose-900/40 flex items-center justify-between">
+      <div className="rounded-xl bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900/40 shadow-sm overflow-hidden">
+        <div className="p-4 bg-rose-50/60 dark:bg-rose-950/20 border-b border-rose-200 dark:border-rose-900/40 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <span className="p-1.5 rounded-lg bg-rose-500/20 text-rose-400 border border-rose-500/30">
+            <span className="p-1.5 rounded-lg bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/30">
               <ShieldAlert className="h-4 w-4" />
             </span>
             <div>
-              <h2 className="text-sm font-semibold text-rose-200">
+              <h2 className="text-sm font-semibold text-rose-900 dark:text-rose-200">
                 Critical Line-Down Emergencies Requiring Urgent Attention
               </h2>
-              <p className="text-[11px] text-rose-300/70">
+              <p className="text-[11px] text-rose-700/80 dark:text-rose-300/70">
                 Prioritized field complaints with high manufacturing impact. Target SLA response: &lt; 2 Hours.
               </p>
             </div>
           </div>
           <Link
             href="/field-service/requests"
-            className="flex items-center gap-1 text-xs text-rose-300 hover:text-white font-medium transition-colors"
+            className="flex items-center gap-1 text-xs text-rose-700 hover:text-rose-900 dark:text-rose-300 dark:hover:text-white font-medium transition-colors"
           >
             <span>View All Tickets ({metrics.openTicketsCount})</span>
             <ChevronRight className="h-3.5 w-3.5" />
@@ -447,7 +447,7 @@ export default function FieldServiceHubPage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+            <thead className="bg-slate-100 dark:bg-slate-950 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
               <tr>
                 <th className="py-3 px-4">Ticket & Priority</th>
                 <th className="py-3 px-4">Client & Facility</th>
@@ -457,34 +457,34 @@ export default function FieldServiceHubPage() {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300 font-normal">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300 font-normal">
               {criticalTickets.map((t) => (
-                <tr key={t.id} className="hover:bg-slate-800/40 transition-colors">
+                <tr key={t.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
                   <td className="py-3 px-4">
-                    <div className="font-semibold text-white">{t.ticketNumber}</div>
-                    <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30 animate-pulse">
+                    <div className="font-semibold text-slate-900 dark:text-white">{t.ticketNumber}</div>
+                    <span className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-600 dark:text-rose-300 border border-rose-500/30 animate-pulse">
                       LINE STOPPING
                     </span>
                   </td>
                   <td className="py-3 px-4">
-                    <div className="font-medium text-slate-200">{t.customerName}</div>
-                    <div className="flex items-center gap-1 text-[11px] text-slate-400 mt-0.5">
-                      <MapPin className="h-3 w-3 text-orange-400" />
+                    <div className="font-medium text-slate-800 dark:text-slate-200">{t.customerName}</div>
+                    <div className="flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                      <MapPin className="h-3 w-3 text-orange-500 dark:text-orange-400" />
                       <span>{t.city} - {t.serviceLocation}</span>
                     </div>
                   </td>
                   <td className="py-3 px-4 max-w-xs">
-                    <div className="font-medium text-slate-200 truncate">{t.machineModel}</div>
-                    <div className="text-[11px] text-slate-400 line-clamp-2 mt-0.5">{t.reportedFault}</div>
+                    <div className="font-medium text-slate-800 dark:text-slate-200 truncate">{t.machineModel}</div>
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2 mt-0.5">{t.reportedFault}</div>
                   </td>
                   <td className="py-3 px-4">
                     {t.assignedEngineer ? (
                       <div>
-                        <div className="font-semibold text-slate-200">{t.assignedEngineer.fullName}</div>
-                        <div className="text-[11px] text-slate-400">{t.assignedEngineer.employeeCode} ({t.assignedEngineer.operatingTerritoryCity})</div>
+                        <div className="font-semibold text-slate-800 dark:text-slate-200">{t.assignedEngineer.fullName}</div>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400">{t.assignedEngineer.employeeCode} ({t.assignedEngineer.operatingTerritoryCity})</div>
                       </div>
                     ) : (
-                      <span className="text-amber-400 font-medium italic">Unassigned</span>
+                      <span className="text-amber-500 font-medium italic">Unassigned</span>
                     )}
                   </td>
                   <td className="py-3 px-4">
@@ -500,7 +500,7 @@ export default function FieldServiceHubPage() {
                   <td className="py-3 px-4 text-right">
                     <Link
                       href={`/field-service/requests?ticket=${t.ticketNumber}`}
-                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-orange-600/20 hover:bg-orange-600/30 text-orange-300 border border-orange-500/30 text-[11px] font-medium transition-all"
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-orange-600/10 hover:bg-orange-600/20 text-orange-600 dark:text-orange-300 border border-orange-500/30 text-[11px] font-medium transition-all"
                     >
                       Manage
                       <ChevronRight className="h-3 w-3" />
@@ -516,20 +516,20 @@ export default function FieldServiceHubPage() {
       {/* Grid: Field Engineers Roster & AMC Watchlist */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: Field Engineers Live Roster */}
-        <div className="lg:col-span-2 rounded-xl bg-[#0d1322] border border-slate-800 p-5 space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="lg:col-span-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm p-5 space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
             <div className="flex items-center gap-2">
-              <span className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+              <span className="p-1.5 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400 border border-blue-500/20">
                 <Users className="h-4 w-4" />
               </span>
               <div>
-                <h3 className="text-sm font-semibold text-white">Technician Fleet Readiness & GPS Dispatch</h3>
-                <p className="text-[11px] text-slate-400">Live operational status across manufacturing corridors</p>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Technician Fleet Readiness & GPS Dispatch</h3>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">Live operational status across manufacturing corridors</p>
               </div>
             </div>
             <Link
               href="/field-service/engineers"
-              className="text-xs text-orange-400 hover:text-orange-300 font-medium flex items-center gap-1"
+              className="text-xs text-orange-600 dark:text-orange-400 hover:text-orange-500 dark:hover:text-orange-300 font-medium flex items-center gap-1"
             >
               Dispatch Console <ChevronRight className="h-3.5 w-3.5" />
             </Link>
@@ -539,7 +539,7 @@ export default function FieldServiceHubPage() {
             {engineers.map((eng) => (
               <div
                 key={eng.id}
-                className="p-3.5 rounded-lg bg-slate-900/60 border border-slate-800/80 hover:border-slate-700 transition-all flex flex-col justify-between"
+                className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-1.5">
@@ -548,8 +548,8 @@ export default function FieldServiceHubPage() {
                         {eng.fullName.split(' ').map((n) => n[0]).join('')}
                       </div>
                       <div>
-                        <div className="font-semibold text-xs text-white leading-none">{eng.fullName}</div>
-                        <div className="text-[10px] text-slate-400 mt-0.5">{eng.employeeCode} • {eng.operatingTerritoryCity}</div>
+                        <div className="font-semibold text-xs text-slate-900 dark:text-white leading-none">{eng.fullName}</div>
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">{eng.employeeCode} • {eng.operatingTerritoryCity}</div>
                       </div>
                     </div>
                     <span
@@ -565,7 +565,7 @@ export default function FieldServiceHubPage() {
                     {eng.technicalSpecializations.map((spec, i) => (
                       <span
                         key={i}
-                        className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[9px] font-medium"
+                        className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-[9px] font-medium"
                       >
                         {spec}
                       </span>
@@ -573,13 +573,13 @@ export default function FieldServiceHubPage() {
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-slate-800/70 flex items-center justify-between text-[11px] text-slate-400">
-                  <div className="flex items-center gap-1 text-amber-400">
-                    <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                <div className="pt-2 border-t border-slate-200 dark:border-slate-800/70 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center gap-1 text-amber-500">
+                    <Star className="h-3 w-3 fill-amber-400 text-amber-500" />
                     <span className="font-semibold">{eng.customerRatingAvg}</span>
-                    <span className="text-slate-500">({eng.totalCompletedJobs} jobs)</span>
+                    <span className="text-slate-400 dark:text-slate-500">({eng.totalCompletedJobs} jobs)</span>
                   </div>
-                  <div className="text-emerald-400 font-semibold">{eng.ftfrRate}% FTFR</div>
+                  <div className="text-emerald-600 dark:text-emerald-400 font-semibold">{eng.ftfrRate}% FTFR</div>
                 </div>
               </div>
             ))}
@@ -589,15 +589,15 @@ export default function FieldServiceHubPage() {
         {/* Right Column: AMC Expiration & Quick Operations */}
         <div className="space-y-4">
           {/* AMC Contracts Approaching Quota or Expiration */}
-          <div className="rounded-xl bg-[#0d1322] border border-slate-800 p-5 space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+          <div className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm p-5 space-y-3">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-500 dark:text-purple-400 border border-purple-500/20">
                   <Award className="h-4 w-4" />
                 </span>
-                <h3 className="text-xs font-semibold text-white">AMC Visit Quota Watchlist</h3>
+                <h3 className="text-xs font-semibold text-slate-900 dark:text-white">AMC Visit Quota Watchlist</h3>
               </div>
-              <Link href="/field-service/amc" className="text-[11px] text-purple-400 hover:text-purple-300">
+              <Link href="/field-service/amc" className="text-[11px] text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300">
                 All AMCs
               </Link>
             </div>
@@ -606,22 +606,22 @@ export default function FieldServiceHubPage() {
               {expiringAMC.map((amc) => (
                 <div
                   key={amc.id}
-                  className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs space-y-1.5"
+                  className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs space-y-1.5"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-white">{amc.contractNumber}</span>
-                    <span className="px-1.5 py-0.2 bg-purple-900/40 text-purple-300 rounded text-[10px] font-bold">
+                    <span className="font-semibold text-slate-900 dark:text-white">{amc.contractNumber}</span>
+                    <span className="px-1.5 py-0.2 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 rounded text-[10px] font-bold">
                       {amc.contractType}
                     </span>
                   </div>
-                  <div className="text-slate-300 font-medium">{amc.customerName}</div>
-                  <div className="text-[11px] text-slate-400">{amc.machineModel}</div>
+                  <div className="text-slate-800 dark:text-slate-300 font-medium">{amc.customerName}</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400">{amc.machineModel}</div>
 
-                  <div className="pt-1.5 border-t border-slate-800 flex items-center justify-between text-[11px]">
-                    <span className="text-slate-400">
-                      Visits: <strong className="text-orange-400">{amc.visitsConsumed}</strong> / {amc.visitsAllowedTotal}
+                  <div className="pt-1.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[11px]">
+                    <span className="text-slate-500 dark:text-slate-400">
+                      Visits: <strong className="text-orange-600 dark:text-orange-400">{amc.visitsConsumed}</strong> / {amc.visitsAllowedTotal}
                     </span>
-                    <span className="text-rose-400 font-medium">1 Visit Remaining</span>
+                    <span className="text-rose-600 dark:text-rose-400 font-medium">1 Visit Remaining</span>
                   </div>
                 </div>
               ))}
@@ -629,37 +629,37 @@ export default function FieldServiceHubPage() {
           </div>
 
           {/* Rapid Field Ops Hub Shortcuts */}
-          <div className="rounded-xl bg-gradient-to-br from-orange-950/30 to-[#0d1322] border border-orange-500/20 p-5 space-y-3">
-            <h3 className="text-xs font-semibold text-orange-200 uppercase tracking-wider">
+          <div className="rounded-xl bg-gradient-to-br from-orange-50/50 to-white dark:from-orange-950/30 dark:to-slate-900 border border-orange-200 dark:border-orange-500/20 shadow-sm p-5 space-y-3">
+            <h3 className="text-xs font-semibold text-orange-900 dark:text-orange-200 uppercase tracking-wider">
               Field Operations Quick Links
             </h3>
             <div className="grid grid-cols-2 gap-2 text-xs">
               <Link
                 href="/field-service/requests"
-                className="p-2.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white flex items-center gap-2 transition-all"
+                className="p-2.5 rounded-lg bg-white dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-sm flex items-center gap-2 transition-all"
               >
-                <ClipboardCheck className="h-4 w-4 text-orange-400" />
+                <ClipboardCheck className="h-4 w-4 text-orange-500 dark:text-orange-400" />
                 <span>Ticket Desk</span>
               </Link>
               <Link
                 href="/field-service/van-stock"
-                className="p-2.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white flex items-center gap-2 transition-all"
+                className="p-2.5 rounded-lg bg-white dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-sm flex items-center gap-2 transition-all"
               >
-                <Boxes className="h-4 w-4 text-amber-400" />
+                <Boxes className="h-4 w-4 text-amber-500 dark:text-amber-400" />
                 <span>Van Spares</span>
               </Link>
               <Link
                 href="/field-service/amc"
-                className="p-2.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white flex items-center gap-2 transition-all"
+                className="p-2.5 rounded-lg bg-white dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-sm flex items-center gap-2 transition-all"
               >
-                <Award className="h-4 w-4 text-purple-400" />
+                <Award className="h-4 w-4 text-purple-500 dark:text-purple-400" />
                 <span>Warranty Desk</span>
               </Link>
               <Link
                 href="/field-service/analytics"
-                className="p-2.5 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white flex items-center gap-2 transition-all"
+                className="p-2.5 rounded-lg bg-white dark:bg-slate-900/80 hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white shadow-sm flex items-center gap-2 transition-all"
               >
-                <Activity className="h-4 w-4 text-teal-400" />
+                <Activity className="h-4 w-4 text-teal-500 dark:text-teal-400" />
                 <span>CSAT & MTTR</span>
               </Link>
             </div>

@@ -272,22 +272,22 @@ export default function DesignEngineeringOverviewPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 p-6 space-y-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 p-6 space-y-6">
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
         <div>
           <div className="flex items-center gap-2.5">
-            <div className="h-10 w-10 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-violet-400 shadow-lg shadow-violet-500/10">
+            <div className="h-10 w-10 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-violet-600 dark:text-violet-400 shadow-lg shadow-violet-500/10">
               <Compass className="h-5 w-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
                 Design Engineering Command Center
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/30">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/30">
                   R&D & Lifecycle
                 </span>
               </h1>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 3D CAD assemblies, multi-level BOM version control, ECN sign-offs, prototype FEA testing & shop floor blueprints
               </p>
             </div>
@@ -298,9 +298,9 @@ export default function DesignEngineeringOverviewPage() {
           <button
             onClick={fetchData}
             disabled={isRefreshing}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition shadow-sm"
           >
-            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-violet-400' : ''}`} />
+            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-violet-500 dark:text-violet-400' : ''}`} />
             Sync Vault
           </button>
           <Link
@@ -312,9 +312,9 @@ export default function DesignEngineeringOverviewPage() {
           </Link>
           <Link
             href="/design/ecn"
-            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold transition"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white text-xs font-semibold transition"
           >
-            <GitCompare className="h-3.5 w-3.5 text-violet-400" />
+            <GitCompare className="h-3.5 w-3.5 text-violet-600 dark:text-violet-400" />
             Submit ECN
           </Link>
         </div>
@@ -323,97 +323,97 @@ export default function DesignEngineeringOverviewPage() {
       {/* Top 4 Performance Metric Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         {/* Card 1: 3D CAD Repository & Vault */}
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-violet-500/40 transition">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-violet-500/40 shadow-sm transition">
           <div className="absolute top-0 right-0 h-24 w-24 bg-violet-500/5 rounded-full blur-2xl group-hover:bg-violet-500/10 transition" />
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-violet-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-violet-600 dark:text-violet-400">
               3D CAD Models in Vault
             </span>
-            <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
+            <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-600 dark:text-violet-400">
               <Boxes className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-white">
+          <div className="text-2xl font-black text-slate-900 dark:text-white">
             {metrics.totalCadModels}
           </div>
           <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-slate-400">
-              <strong className="text-emerald-400 font-semibold">{metrics.approvedDrawings}</strong> Approved Blueprints
+            <span className="text-slate-500 dark:text-slate-400">
+              <strong className="text-emerald-600 dark:text-emerald-400 font-semibold">{metrics.approvedDrawings}</strong> Approved Blueprints
             </span>
-            <span className="text-emerald-400 flex items-center gap-0.5 text-[11px] font-medium">
+            <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-0.5 text-[11px] font-medium">
               <ArrowUpRight className="h-3 w-3" /> {metrics.blueprintAccuracyPct}% Accuracy
             </span>
           </div>
         </div>
 
         {/* Card 2: Multi-Level BOM Publishing */}
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-violet-500/40 transition">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-violet-500/40 shadow-sm transition">
           <div className="absolute top-0 right-0 h-24 w-24 bg-violet-500/5 rounded-full blur-2xl group-hover:bg-violet-500/10 transition" />
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-violet-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-violet-600 dark:text-violet-400">
               Multi-Level BOM Structures
             </span>
-            <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
+            <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-600 dark:text-violet-400">
               <Layers className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-white">
+          <div className="text-2xl font-black text-slate-900 dark:text-white">
             {metrics.totalBOMs} Master Assemblies
           </div>
           <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-slate-400">
-              Released to ERP: <strong className="text-emerald-400">{metrics.releasedBOMs}</strong>
+            <span className="text-slate-500 dark:text-slate-400">
+              Released to ERP: <strong className="text-emerald-600 dark:text-emerald-400">{metrics.releasedBOMs}</strong>
             </span>
-            <span className="text-violet-300 text-[11px]">
+            <span className="text-violet-600 dark:text-violet-300 text-[11px]">
               {Math.round((metrics.releasedBOMs / metrics.totalBOMs) * 100)}% Production Live
             </span>
           </div>
         </div>
 
         {/* Card 3: Engineering Change Control (ECN) */}
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-violet-500/40 transition">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-violet-500/40 shadow-sm transition">
           <div className="absolute top-0 right-0 h-24 w-24 bg-violet-500/5 rounded-full blur-2xl group-hover:bg-violet-500/10 transition" />
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-violet-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-violet-600 dark:text-violet-400">
               Active Change Notices (ECN)
             </span>
-            <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
+            <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-600 dark:text-violet-400">
               <GitCompare className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-white">
+          <div className="text-2xl font-black text-slate-900 dark:text-white">
             {metrics.totalECNs} Total
           </div>
           <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-slate-400">
-              Pending Sign-Off: <strong className="text-amber-400">{metrics.pendingECNs}</strong>
+            <span className="text-slate-500 dark:text-slate-400">
+              Pending Sign-Off: <strong className="text-amber-600 dark:text-amber-400">{metrics.pendingECNs}</strong>
             </span>
-            <span className="text-amber-400 flex items-center gap-0.5 text-[11px] font-medium">
+            <span className="text-amber-600 dark:text-amber-400 flex items-center gap-0.5 text-[11px] font-medium">
               <Clock className="h-3 w-3" /> Under Review
             </span>
           </div>
         </div>
 
         {/* Card 4: Prototype Stress & FEA Verification */}
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-violet-500/40 transition">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-violet-500/40 shadow-sm transition">
           <div className="absolute top-0 right-0 h-24 w-24 bg-violet-500/5 rounded-full blur-2xl group-hover:bg-violet-500/10 transition" />
           <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-violet-400">
+            <span className="text-xs font-semibold uppercase tracking-wider text-violet-600 dark:text-violet-400">
               Prototype & FEA Validation
             </span>
-            <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
+            <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-600 dark:text-violet-400">
               <Activity className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-emerald-400 flex items-center gap-2">
+          <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
             <span>{metrics.prototypePassRatePct}%</span>
-            <span className="text-xs font-normal text-slate-400">Pass Rate</span>
+            <span className="text-xs font-normal text-slate-500 dark:text-slate-400">Pass Rate</span>
           </div>
           <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-slate-400">
-              Physical Runs: <strong className="text-white">{metrics.totalTests}</strong>
+            <span className="text-slate-500 dark:text-slate-400">
+              Physical Runs: <strong className="text-slate-900 dark:text-white">{metrics.totalTests}</strong>
             </span>
-            <span className="text-emerald-400 flex items-center gap-0.5 text-[11px]">
+            <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-0.5 text-[11px]">
               <Check className="h-3 w-3" /> Safety Factor &gt; 2.0
             </span>
           </div>
@@ -464,22 +464,22 @@ export default function DesignEngineeringOverviewPage() {
             <Link
               key={i}
               href={module.href}
-              className="bg-[#0d1322] border border-slate-800 hover:border-violet-500/50 rounded-xl p-3.5 transition group flex flex-col justify-between"
+              className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 hover:border-violet-500/50 rounded-xl p-3.5 transition group flex flex-col justify-between shadow-sm"
             >
               <div className="flex items-center justify-between mb-2">
-                <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 group-hover:scale-105 transition">
+                <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-600 dark:text-violet-400 group-hover:scale-105 transition">
                   <Icon className="h-4 w-4" />
                 </div>
-                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-violet-300">
+                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-violet-700 dark:text-violet-300">
                   {module.badge}
                 </span>
               </div>
               <div>
-                <h4 className="text-xs font-bold text-white group-hover:text-violet-300 transition flex items-center justify-between">
+                <h4 className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-300 transition flex items-center justify-between">
                   {module.title}
-                  <ChevronRight className="h-3 w-3 text-slate-500 group-hover:text-violet-400 group-hover:translate-x-0.5 transition" />
+                  <ChevronRight className="h-3 w-3 text-slate-400 group-hover:text-violet-500 group-hover:translate-x-0.5 transition" />
                 </h4>
-                <p className="text-[11px] text-slate-400 line-clamp-1">{module.desc}</p>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">{module.desc}</p>
               </div>
             </Link>
           );
@@ -491,20 +491,20 @@ export default function DesignEngineeringOverviewPage() {
         {/* Left Column (2 Cols): Active CAD Models & ECN Pipeline */}
         <div className="lg:col-span-2 space-y-6">
           {/* Active 3D CAD Models Spotlight */}
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-4">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <Boxes className="h-4 w-4 text-violet-400" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <Boxes className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                   Primary 3D Assemblies & Parametric CAD Models
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   High-fidelity 3D models with material definitions, mass properties, and release status
                 </p>
               </div>
               <Link
                 href="/design/cad-viewer"
-                className="text-xs font-semibold text-violet-400 hover:text-violet-300 flex items-center gap-1"
+                className="text-xs font-semibold text-violet-600 dark:text-violet-400 hover:text-violet-500 dark:hover:text-violet-300 flex items-center gap-1"
               >
                 Open Vault <ChevronRight className="h-3.5 w-3.5" />
               </Link>
@@ -514,49 +514,49 @@ export default function DesignEngineeringOverviewPage() {
               {cadModels.map((cad) => (
                 <div
                   key={cad.id}
-                  className="p-4 rounded-xl bg-slate-900/70 border border-slate-800/90 hover:border-slate-700 transition space-y-3"
+                  className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/90 hover:border-slate-300 dark:hover:border-slate-700 transition space-y-3"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-violet-400 bg-violet-950/40 border border-violet-500/20 px-2 py-0.5 rounded">
+                      <span className="text-xs font-mono font-bold text-violet-700 dark:text-violet-400 bg-violet-50 dark:bg-violet-950/40 border border-violet-200 dark:border-violet-500/20 px-2 py-0.5 rounded">
                         {cad.modelCode}
                       </span>
-                      <h4 className="text-xs font-bold text-white">{cad.name}</h4>
-                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">
+                      <h4 className="text-xs font-bold text-slate-900 dark:text-white">{cad.name}</h4>
+                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                         {cad.version}
                       </span>
                     </div>
                     <span
                       className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full self-start ${
                         cad.status === 'APPROVED'
-                          ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-500/30'
-                          : 'bg-amber-950/60 text-amber-400 border border-amber-500/30'
+                          ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-500/30'
+                          : 'bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-500/30'
                       }`}
                     >
                       {cad.status}
                     </span>
                   </div>
 
-                  <p className="text-[11px] text-slate-400">{cad.description}</p>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">{cad.description}</p>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 px-3 rounded-lg bg-[#090d16] border border-slate-800/60 text-xs">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 px-3 rounded-lg bg-white dark:bg-[#090d16] border border-slate-200 dark:border-slate-800/60 text-xs">
                     <div>
-                      <span className="text-[10px] text-slate-500 block uppercase font-medium">Format</span>
-                      <span className="text-violet-300 font-bold font-mono">{cad.fileFormat}</span>
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase font-medium">Format</span>
+                      <span className="text-violet-700 dark:text-violet-300 font-bold font-mono">{cad.fileFormat}</span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-slate-500 block uppercase font-medium">Material Spec</span>
-                      <span className="text-slate-200 font-medium truncate block">{cad.materialSpec}</span>
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase font-medium">Material Spec</span>
+                      <span className="text-slate-800 dark:text-slate-200 font-medium truncate block">{cad.materialSpec}</span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-slate-500 block uppercase font-medium">Mass / Volume</span>
-                      <span className="text-slate-200 font-mono font-semibold">
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase font-medium">Mass / Volume</span>
+                      <span className="text-slate-800 dark:text-slate-200 font-mono font-semibold">
                         {cad.massKg} kg ({((cad.volumeMm3 || 0) / 1000).toFixed(0)} cm³)
                       </span>
                     </div>
                     <div>
-                      <span className="text-[10px] text-slate-500 block uppercase font-medium">Author</span>
-                      <span className="text-slate-300 truncate block">{cad.author}</span>
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase font-medium">Author</span>
+                      <span className="text-slate-700 dark:text-slate-300 truncate block">{cad.author}</span>
                     </div>
                   </div>
                 </div>
@@ -565,20 +565,20 @@ export default function DesignEngineeringOverviewPage() {
           </div>
 
           {/* Engineering Change Notice (ECN) Workflow Board */}
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-4">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <GitCompare className="h-4 w-4 text-amber-400" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <GitCompare className="h-4 w-4 text-amber-600 dark:text-amber-400" />
                   Engineering Change Notices (ECN) Queue
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   Critical design revisions, tolerance improvements & stock disposition tracking
                 </p>
               </div>
               <Link
                 href="/design/ecn"
-                className="text-xs font-semibold text-violet-400 hover:text-violet-300 flex items-center gap-1"
+                className="text-xs font-semibold text-violet-600 dark:text-violet-400 hover:text-violet-500 dark:hover:text-violet-300 flex items-center gap-1"
               >
                 ECN Desk <ChevronRight className="h-3.5 w-3.5" />
               </Link>
@@ -588,22 +588,22 @@ export default function DesignEngineeringOverviewPage() {
               {ecns.map((ecn) => (
                 <div
                   key={ecn.id}
-                  className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2"
+                  className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2"
                 >
                   <div className="flex items-center justify-between text-xs">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono font-bold text-amber-400 bg-amber-950/40 border border-amber-500/20 px-2 py-0.5 rounded text-[11px]">
+                      <span className="font-mono font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-500/20 px-2 py-0.5 rounded text-[11px]">
                         {ecn.ecnNumber}
                       </span>
-                      <span className="font-bold text-white">{ecn.title}</span>
+                      <span className="font-bold text-slate-900 dark:text-white">{ecn.title}</span>
                     </div>
 
                     <div className="flex items-center gap-2">
                       <span
                         className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase ${
                           ecn.priority === 'CRITICAL'
-                            ? 'bg-rose-950 text-rose-300 border border-rose-500/30'
-                            : 'bg-amber-950 text-amber-300 border border-amber-500/30'
+                            ? 'bg-rose-50 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-500/30'
+                            : 'bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-500/30'
                         }`}
                       >
                         {ecn.priority}
@@ -611,8 +611,8 @@ export default function DesignEngineeringOverviewPage() {
                       <span
                         className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase ${
                           ecn.status === 'APPROVED'
-                            ? 'bg-emerald-950 text-emerald-300 border border-emerald-500/30'
-                            : 'bg-blue-950 text-blue-300 border border-blue-500/30'
+                            ? 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/30'
+                            : 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-500/30'
                         }`}
                       >
                         {ecn.status.replace(/_/g, ' ')}
@@ -620,14 +620,14 @@ export default function DesignEngineeringOverviewPage() {
                     </div>
                   </div>
 
-                  <p className="text-[11px] text-slate-300">{ecn.description}</p>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-300">{ecn.description}</p>
 
-                  <div className="flex flex-wrap items-center justify-between text-[11px] text-slate-400 pt-1 border-t border-slate-800/80">
+                  <div className="flex flex-wrap items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1 border-t border-slate-200 dark:border-slate-800/80">
                     <span>
-                      Scope: <strong className="text-slate-300">{ecn.changeScope}</strong>
+                      Scope: <strong className="text-slate-700 dark:text-slate-300">{ecn.changeScope}</strong>
                     </span>
                     <span>
-                      Stock Disposition: <strong className="text-violet-300">{ecn.inventoryDisposition}</strong>
+                      Stock Disposition: <strong className="text-violet-700 dark:text-violet-300">{ecn.inventoryDisposition}</strong>
                     </span>
                   </div>
                 </div>
@@ -639,18 +639,18 @@ export default function DesignEngineeringOverviewPage() {
         {/* Right Column (1 Col): Prototype Stress & Shop Blueprints */}
         <div className="space-y-6">
           {/* Prototype FEA Stress Testing */}
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-4">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <Activity className="h-4 w-4 text-emerald-400" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <Activity className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                   Prototype Testing & FEA
                 </h3>
-                <p className="text-xs text-slate-400">Physical load & von Mises validation</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Physical load & von Mises validation</p>
               </div>
               <Link
                 href="/design/prototyping"
-                className="text-xs font-semibold text-violet-400 hover:text-violet-300"
+                className="text-xs font-semibold text-violet-600 dark:text-violet-400 hover:text-violet-500 dark:hover:text-violet-300"
               >
                 Log Test
               </Link>
@@ -660,21 +660,21 @@ export default function DesignEngineeringOverviewPage() {
               {tests.map((t) => (
                 <div
                   key={t.id}
-                  className="p-3 rounded-lg bg-slate-900/70 border border-slate-800 space-y-2"
+                  className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-2"
                 >
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-mono text-emerald-400 font-bold">{t.testLogNumber}</span>
-                    <span className="px-1.5 py-0.2 rounded bg-emerald-950 text-emerald-300 border border-emerald-500/30 text-[9px] font-bold">
+                    <span className="font-mono text-emerald-600 dark:text-emerald-400 font-bold">{t.testLogNumber}</span>
+                    <span className="px-1.5 py-0.2 rounded bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/30 text-[9px] font-bold">
                       {t.result}
                     </span>
                   </div>
 
-                  <div className="text-xs text-white font-medium">{t.observedOutcome}</div>
+                  <div className="text-xs text-slate-900 dark:text-white font-medium">{t.observedOutcome}</div>
 
-                  <div className="flex items-center justify-between text-[11px] text-slate-400 font-mono bg-[#090d16] p-2 rounded border border-slate-800">
+                  <div className="flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-400 font-mono bg-white dark:bg-[#090d16] p-2 rounded border border-slate-200 dark:border-slate-800">
                     <span>Load: {t.testParameters.appliedLoadKn} kN</span>
                     <span>Max: {t.testParameters.maxStressMpa} MPa</span>
-                    <span className="text-emerald-400 font-bold">SF: {t.yieldSafetyFactor}</span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold">SF: {t.yieldSafetyFactor}</span>
                   </div>
                 </div>
               ))}
@@ -682,18 +682,18 @@ export default function DesignEngineeringOverviewPage() {
           </div>
 
           {/* Production Released Blueprints & GD&T Tolerances */}
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-4">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <Scroll className="h-4 w-4 text-violet-400" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <Scroll className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                   Released Blueprints
                 </h3>
-                <p className="text-xs text-slate-400">Live on CNC machines & CMM QC stations</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Live on CNC machines & CMM QC stations</p>
               </div>
               <Link
                 href="/design/blueprints"
-                className="text-xs font-semibold text-violet-400 hover:text-violet-300"
+                className="text-xs font-semibold text-violet-600 dark:text-violet-400 hover:text-violet-500 dark:hover:text-violet-300"
               >
                 All Blueprints
               </Link>
@@ -703,20 +703,20 @@ export default function DesignEngineeringOverviewPage() {
               {blueprints.map((bp) => (
                 <div
                   key={bp.id}
-                  className="p-3 rounded-lg bg-slate-900/70 border border-slate-800 space-y-1.5"
+                  className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-1.5"
                 >
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-mono text-violet-400 font-bold">{bp.drawingNumber}</span>
-                    <span className="text-[10px] font-mono bg-slate-800 text-slate-300 px-1.5 py-0.5 rounded">
+                    <span className="font-mono text-violet-700 dark:text-violet-400 font-bold">{bp.drawingNumber}</span>
+                    <span className="text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-1.5 py-0.5 rounded">
                       {bp.revision}
                     </span>
                   </div>
 
-                  <h5 className="text-xs font-bold text-white truncate">{bp.title}</h5>
+                  <h5 className="text-xs font-bold text-slate-900 dark:text-white truncate">{bp.title}</h5>
 
-                  <div className="text-[10px] text-slate-400">
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">
                     <span>{bp.geometricTolerances}</span>
-                    <span className="block mt-0.5 text-violet-300">
+                    <span className="block mt-0.5 text-violet-600 dark:text-violet-300">
                       Surface Finish: Ra {bp.surfaceFinishRa} µm
                     </span>
                   </div>
@@ -726,12 +726,12 @@ export default function DesignEngineeringOverviewPage() {
           </div>
 
           {/* R&D Compliance & Standards Badges */}
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2 mb-2">
-              <ShieldCheck className="h-4 w-4 text-violet-400" />
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2">
+              <ShieldCheck className="h-4 w-4 text-violet-600 dark:text-violet-400" />
               R&D Standards Compliance
             </h3>
-            <p className="text-xs text-slate-400 mb-3">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">
               All engineering design outputs comply with aerospace & machine tool ISO/ASME specs:
             </p>
             <div className="flex flex-wrap gap-1.5">
@@ -744,7 +744,7 @@ export default function DesignEngineeringOverviewPage() {
               ].map((std, idx) => (
                 <span
                   key={idx}
-                  className="text-[10px] px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700/80 text-violet-300 font-medium"
+                  className="text-[10px] px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-violet-700 dark:text-violet-300 font-medium"
                 >
                   ✓ {std}
                 </span>

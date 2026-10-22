@@ -410,17 +410,17 @@ export default function ServiceRequestsDeskPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-400 border border-orange-500/20">
+            <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-500 dark:text-orange-400 border border-orange-500/20">
               <ClipboardCheck className="h-5 w-5" />
             </span>
-            <h1 className="text-xl font-bold text-white tracking-tight">
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
               Service Request Desk & Complaint Resolution
             </h1>
           </div>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Log breakdowns, assign dispatch technicians, monitor on-site diagnosis progress, and capture customer satisfaction sign-offs.
           </p>
         </div>
@@ -434,7 +434,7 @@ export default function ServiceRequestsDeskPage() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="p-4 rounded-xl bg-[#0d1322] border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+      <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
         <div className="relative w-full md:w-80">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
           <input
@@ -442,7 +442,7 @@ export default function ServiceRequestsDeskPage() {
             placeholder="Search ticket #, client, machine model, city..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-orange-500"
+            className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg pl-9 pr-3 py-2 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-orange-500"
           />
         </div>
 
@@ -451,7 +451,7 @@ export default function ServiceRequestsDeskPage() {
           <select
             value={priorityFilter}
             onChange={(e) => setPriorityFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-800 text-slate-300 rounded-lg px-2.5 py-2 focus:outline-none focus:border-orange-500"
+            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:border-orange-500"
           >
             <option value="ALL">All Priorities</option>
             <option value="CRITICAL_DOWN">Critical Down</option>
@@ -464,7 +464,7 @@ export default function ServiceRequestsDeskPage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-800 text-slate-300 rounded-lg px-2.5 py-2 focus:outline-none focus:border-orange-500"
+            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:border-orange-500"
           >
             <option value="ALL">All Statuses</option>
             <option value="LOGGED">Logged</option>
@@ -480,7 +480,7 @@ export default function ServiceRequestsDeskPage() {
           <select
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-800 text-slate-300 rounded-lg px-2.5 py-2 focus:outline-none focus:border-orange-500"
+            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:border-orange-500"
           >
             <option value="ALL">All Request Types</option>
             <option value="BREAKDOWN_REPAIR">Breakdown Repair</option>
@@ -493,10 +493,10 @@ export default function ServiceRequestsDeskPage() {
       </div>
 
       {/* Tickets Table */}
-      <div className="rounded-xl bg-[#0d1322] border border-slate-800 overflow-hidden shadow-sm">
+      <div className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+            <thead className="bg-slate-100 dark:bg-slate-950 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
               <tr>
                 <th className="py-3 px-4">Ticket & Priority</th>
                 <th className="py-3 px-4">Customer & Facility</th>
@@ -507,7 +507,7 @@ export default function ServiceRequestsDeskPage() {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300 font-normal">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300 font-normal">
               {filteredRequests.length === 0 ? (
                 <tr>
                   <td colSpan={7} className="py-8 text-center text-slate-500">
@@ -516,9 +516,9 @@ export default function ServiceRequestsDeskPage() {
                 </tr>
               ) : (
                 filteredRequests.map((req) => (
-                  <tr key={req.id} className="hover:bg-slate-800/40 transition-colors">
+                  <tr key={req.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
                     <td className="py-3 px-4">
-                      <div className="font-semibold text-white">{req.ticketNumber}</div>
+                      <div className="font-semibold text-slate-900 dark:text-white">{req.ticketNumber}</div>
                       <div className="flex items-center gap-1.5 mt-1">
                         <span
                           className={`px-1.5 py-0.5 rounded text-[10px] font-bold border ${getPriorityBadge(
@@ -527,29 +527,29 @@ export default function ServiceRequestsDeskPage() {
                         >
                           {req.priority.replace(/_/g, ' ')}
                         </span>
-                        <span className="text-[10px] text-slate-400">
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400">
                           {req.requestType.replace(/_/g, ' ')}
                         </span>
                       </div>
                     </td>
                     <td className="py-3 px-4">
-                      <div className="font-medium text-slate-200">{req.customerName}</div>
-                      <div className="flex items-center gap-1 text-[11px] text-slate-400 mt-0.5">
-                        <MapPin className="h-3 w-3 text-orange-400" />
+                      <div className="font-medium text-slate-800 dark:text-slate-200">{req.customerName}</div>
+                      <div className="flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                        <MapPin className="h-3 w-3 text-orange-500 dark:text-orange-400" />
                         <span>{req.city}</span>
                       </div>
-                      <div className="text-[10px] text-slate-500 mt-0.5">{req.customerPhone}</div>
+                      <div className="text-[10px] text-slate-400 dark:text-slate-500 mt-0.5">{req.customerPhone}</div>
                     </td>
                     <td className="py-3 px-4">
-                      <div className="font-medium text-slate-200">{req.machineModel}</div>
-                      <div className="text-[10px] font-mono text-slate-400 mt-0.5">
+                      <div className="font-medium text-slate-800 dark:text-slate-200">{req.machineModel}</div>
+                      <div className="text-[10px] font-mono text-slate-500 dark:text-slate-400 mt-0.5">
                         SN: {req.machineSerialNumber || 'N/A'}
                       </div>
                     </td>
                     <td className="py-3 px-4 max-w-xs">
-                      <p className="text-slate-300 line-clamp-2">{req.reportedFault}</p>
+                      <p className="text-slate-700 dark:text-slate-300 line-clamp-2">{req.reportedFault}</p>
                       {req.resolutionSummary && (
-                        <p className="text-[11px] text-teal-400 mt-1 line-clamp-1">
+                        <p className="text-[11px] text-teal-600 dark:text-teal-400 mt-1 line-clamp-1">
                           Fix: {req.resolutionSummary}
                         </p>
                       )}
@@ -557,8 +557,8 @@ export default function ServiceRequestsDeskPage() {
                     <td className="py-3 px-4">
                       {req.assignedEngineer ? (
                         <div>
-                          <div className="font-semibold text-white">{req.assignedEngineer.fullName}</div>
-                          <div className="text-[11px] text-slate-400">{req.assignedEngineer.employeeCode}</div>
+                          <div className="font-semibold text-slate-900 dark:text-white">{req.assignedEngineer.fullName}</div>
+                          <div className="text-[11px] text-slate-500 dark:text-slate-400">{req.assignedEngineer.employeeCode}</div>
                         </div>
                       ) : (
                         <button
@@ -566,7 +566,7 @@ export default function ServiceRequestsDeskPage() {
                             setSelectedTicket(req);
                             setIsAssignModalOpen(true);
                           }}
-                          className="px-2 py-1 rounded bg-orange-600/20 hover:bg-orange-600/30 text-orange-400 border border-orange-500/30 text-[11px] font-medium"
+                          className="px-2 py-1 rounded bg-orange-600/10 hover:bg-orange-600/20 text-orange-600 dark:text-orange-400 border border-orange-500/30 text-[11px] font-medium"
                         >
                           Assign Tech
                         </button>
@@ -580,7 +580,7 @@ export default function ServiceRequestsDeskPage() {
                       >
                         {req.status.replace(/_/g, ' ')}
                       </span>
-                      <div className="text-[10px] text-slate-400 mt-1 flex items-center gap-1">
+                      <div className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1">
                         <Calendar className="h-3 w-3" />
                         <span>{req.scheduledDate}</span>
                       </div>
@@ -594,7 +594,7 @@ export default function ServiceRequestsDeskPage() {
                                 setSelectedTicket(req);
                                 setIsAssignModalOpen(true);
                               }}
-                              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all"
+                              className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all"
                               title="Reassign Tech"
                             >
                               <Users className="h-3.5 w-3.5" />
@@ -604,13 +604,13 @@ export default function ServiceRequestsDeskPage() {
                                 setSelectedTicket(req);
                                 setIsResolveModalOpen(true);
                               }}
-                              className="px-2 py-1 rounded-lg bg-teal-600/20 hover:bg-teal-600/30 text-teal-300 border border-teal-500/30 text-[11px] font-semibold transition-all"
+                              className="px-2 py-1 rounded-lg bg-teal-600/10 hover:bg-teal-600/20 text-teal-600 dark:text-teal-300 border border-teal-500/30 text-[11px] font-semibold transition-all"
                             >
                               Resolve
                             </button>
                           </>
                         ) : (
-                          <span className="flex items-center gap-1 text-[11px] text-teal-400 font-medium">
+                          <span className="flex items-center gap-1 text-[11px] text-teal-600 dark:text-teal-400 font-medium">
                             <CheckCircle2 className="h-3.5 w-3.5" /> Closed
                           </span>
                         )}
@@ -627,17 +627,17 @@ export default function ServiceRequestsDeskPage() {
       {/* Modal: Create Service Request */}
       {isCreateModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-xl w-full p-6 space-y-4 shadow-2xl overflow-y-auto max-h-[90vh]">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl max-w-xl w-full p-6 space-y-4 shadow-2xl overflow-y-auto max-h-[90vh]">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-400">
+                <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-500 dark:text-orange-400">
                   <ClipboardCheck className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Log New Field Service Complaint</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Log New Field Service Complaint</h3>
               </div>
               <button
                 onClick={() => setIsCreateModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -646,74 +646,74 @@ export default function ServiceRequestsDeskPage() {
             <form onSubmit={handleCreateRequest} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Customer / Plant Name *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Customer / Plant Name *</label>
                   <input
                     type="text"
                     required
                     value={newRequest.customerName}
                     onChange={(e) => setNewRequest({ ...newRequest, customerName: e.target.value })}
                     placeholder="e.g. Bharat Forge Ltd"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Operating City *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Operating City *</label>
                   <input
                     type="text"
                     required
                     value={newRequest.city}
                     onChange={(e) => setNewRequest({ ...newRequest, city: e.target.value })}
                     placeholder="e.g. Pune, Delhi NCR, Chennai"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Contact Phone *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Contact Phone *</label>
                   <input
                     type="text"
                     required
                     value={newRequest.customerPhone}
                     onChange={(e) => setNewRequest({ ...newRequest, customerPhone: e.target.value })}
                     placeholder="+91 98230 00000"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Contact Email</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Contact Email</label>
                   <input
                     type="email"
                     value={newRequest.customerEmail}
                     onChange={(e) => setNewRequest({ ...newRequest, customerEmail: e.target.value })}
                     placeholder="ops@client.com"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Plant / Site Detailed Address *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1">Plant / Site Detailed Address *</label>
                 <input
                   type="text"
                   required
                   value={newRequest.serviceLocation}
                   onChange={(e) => setNewRequest({ ...newRequest, serviceLocation: e.target.value })}
                   placeholder="Plot 21, Phase II Industrial Zone..."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Service Type *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Service Type *</label>
                   <select
                     value={newRequest.requestType}
                     onChange={(e) =>
                       setNewRequest({ ...newRequest, requestType: e.target.value as ServiceRequestType })
                     }
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   >
                     <option value="BREAKDOWN_REPAIR">Breakdown Repair</option>
                     <option value="PREVENTIVE_MAINTENANCE">Preventive Maintenance</option>
@@ -723,13 +723,13 @@ export default function ServiceRequestsDeskPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Priority Severity *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Priority Severity *</label>
                   <select
                     value={newRequest.priority}
                     onChange={(e) =>
                       setNewRequest({ ...newRequest, priority: e.target.value as ServicePriority })
                     }
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   >
                     <option value="CRITICAL_DOWN">Critical Down (Line Stopped)</option>
                     <option value="HIGH">High (Degraded Performance)</option>
@@ -741,56 +741,56 @@ export default function ServiceRequestsDeskPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Machine Model *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Machine Model *</label>
                   <input
                     type="text"
                     required
                     value={newRequest.machineModel}
                     onChange={(e) => setNewRequest({ ...newRequest, machineModel: e.target.value })}
                     placeholder="e.g. CNC VMC-850, Press HP-500"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Serial Number</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Serial Number</label>
                   <input
                     type="text"
                     value={newRequest.machineSerialNumber}
                     onChange={(e) => setNewRequest({ ...newRequest, machineSerialNumber: e.target.value })}
                     placeholder="SN-2024-XXXX"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Reported Fault / Failure Symptoms *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1">Reported Fault / Failure Symptoms *</label>
                 <textarea
                   required
                   rows={3}
                   value={newRequest.reportedFault}
                   onChange={(e) => setNewRequest({ ...newRequest, reportedFault: e.target.value })}
                   placeholder="Detail exact error codes, unusual noise, hydraulic leak, servo alarms..."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Scheduled Date *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1">Scheduled Date *</label>
                 <input
                   type="date"
                   required
                   value={newRequest.scheduledDate}
                   onChange={(e) => setNewRequest({ ...newRequest, scheduledDate: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsCreateModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                 >
                   Cancel
                 </button>
@@ -809,36 +809,36 @@ export default function ServiceRequestsDeskPage() {
       {/* Modal: Assign Field Engineer */}
       {isAssignModalOpen && selectedTicket && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-md w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
+                <span className="p-1.5 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
                   <Users className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Assign Field Engineer</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Assign Field Engineer</h3>
               </div>
               <button
                 onClick={() => setIsAssignModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs space-y-1">
-              <div className="font-semibold text-white">{selectedTicket.ticketNumber} - {selectedTicket.customerName}</div>
-              <div className="text-slate-400">{selectedTicket.machineModel} ({selectedTicket.city})</div>
-              <div className="text-rose-400 font-medium">{selectedTicket.reportedFault}</div>
+            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs space-y-1">
+              <div className="font-semibold text-slate-900 dark:text-white">{selectedTicket.ticketNumber} - {selectedTicket.customerName}</div>
+              <div className="text-slate-500 dark:text-slate-400">{selectedTicket.machineModel} ({selectedTicket.city})</div>
+              <div className="text-rose-500 dark:text-rose-400 font-medium">{selectedTicket.reportedFault}</div>
             </div>
 
             <form onSubmit={handleAssignEngineer} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-400 mb-1">Select Qualified Field Engineer *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1">Select Qualified Field Engineer *</label>
                 <select
                   required
                   value={assignEngineerId}
                   onChange={(e) => setAssignEngineerId(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                 >
                   <option value="">-- Choose Field Engineer --</option>
                   {AVAILABLE_ENGINEERS.map((eng) => (
@@ -850,21 +850,21 @@ export default function ServiceRequestsDeskPage() {
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Target Dispatch Date *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1">Target Dispatch Date *</label>
                 <input
                   type="date"
                   required
                   value={assignScheduledDate}
                   onChange={(e) => setAssignScheduledDate(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsAssignModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                 >
                   Cancel
                 </button>
@@ -883,62 +883,62 @@ export default function ServiceRequestsDeskPage() {
       {/* Modal: Resolve & Customer Sign-Off */}
       {isResolveModalOpen && selectedTicket && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-teal-500/10 text-teal-400">
+                <span className="p-1.5 rounded-lg bg-teal-500/10 text-teal-500 dark:text-teal-400">
                   <CheckCircle2 className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Resolve Ticket & Customer Sign-off</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Resolve Ticket & Customer Sign-off</h3>
               </div>
               <button
                 onClick={() => setIsResolveModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs space-y-1">
-              <div className="font-semibold text-white">{selectedTicket.ticketNumber} - {selectedTicket.customerName}</div>
-              <div className="text-slate-400">{selectedTicket.machineModel}</div>
+            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs space-y-1">
+              <div className="font-semibold text-slate-900 dark:text-white">{selectedTicket.ticketNumber} - {selectedTicket.customerName}</div>
+              <div className="text-slate-500 dark:text-slate-400">{selectedTicket.machineModel}</div>
             </div>
 
             <form onSubmit={handleResolveTicket} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-400 mb-1">Corrective Action Taken & Technical Fix *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1">Corrective Action Taken & Technical Fix *</label>
                 <textarea
                   required
                   rows={3}
                   value={resolveForm.resolutionSummary}
                   onChange={(e) => setResolveForm({ ...resolveForm, resolutionSummary: e.target.value })}
                   placeholder="Detail parts replaced, calibration steps, and test cycle results..."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-teal-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
-              <div className="flex items-center gap-2 p-3 bg-slate-900/80 border border-slate-800 rounded-lg">
+              <div className="flex items-center gap-2 p-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg">
                 <input
                   type="checkbox"
                   id="ftfrCheck"
                   checked={resolveForm.firstTimeFix}
                   onChange={(e) => setResolveForm({ ...resolveForm, firstTimeFix: e.target.checked })}
-                  className="rounded bg-slate-950 border-slate-700 text-teal-600 focus:ring-0"
+                  className="rounded bg-white dark:bg-slate-950 border-slate-300 dark:border-slate-700 text-teal-600 focus:ring-0"
                 />
-                <label htmlFor="ftfrCheck" className="text-slate-300 font-medium cursor-pointer">
+                <label htmlFor="ftfrCheck" className="text-slate-700 dark:text-slate-300 font-medium cursor-pointer">
                   First-Time Fix (FTFR) Achieved (Resolved in initial visit with no rework)
                 </label>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Customer CSAT Score (1 - 5)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Customer CSAT Score (1 - 5)</label>
                   <select
                     value={resolveForm.customerSatisfactionScore}
                     onChange={(e) =>
                       setResolveForm({ ...resolveForm, customerSatisfactionScore: Number(e.target.value) })
                     }
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-teal-500"
                   >
                     <option value={5}>5 Stars - Excellent / Highly Satisfied</option>
                     <option value={4}>4 Stars - Good / Meets Expectation</option>
@@ -948,34 +948,34 @@ export default function ServiceRequestsDeskPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Service & Parts Cost ($)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Service & Parts Cost ($)</label>
                   <input
                     type="number"
                     value={resolveForm.totalServiceCost}
                     onChange={(e) =>
                       setResolveForm({ ...resolveForm, totalServiceCost: Number(e.target.value) })
                     }
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-teal-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Customer Sign-off Remarks</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1">Customer Sign-off Remarks</label>
                 <input
                   type="text"
                   value={resolveForm.customerFeedback}
                   onChange={(e) => setResolveForm({ ...resolveForm, customerFeedback: e.target.value })}
                   placeholder="e.g. Line recommissioned successfully. Approved by Plant Incharge."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-teal-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsResolveModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                 >
                   Cancel
                 </button>

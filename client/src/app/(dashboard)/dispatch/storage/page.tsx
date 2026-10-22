@@ -184,15 +184,15 @@ export default function FinishedGoodsStoragePage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-              <Grid className="w-7 h-7 text-orange-400" />
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+              <Grid className="w-7 h-7 text-orange-500 dark:text-orange-400" />
               Finished Goods Bays & Storage Management
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-500/10 text-orange-400 border border-orange-500/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-500/20">
               Ready-to-Sell Inventory
             </span>
           </div>
-          <p className="text-sm text-neutral-400 mt-1">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
             Optimize storage racking, allocate ready-for-dispatch finished goods, and prevent storage bottlenecks.
           </p>
         </div>
@@ -200,9 +200,9 @@ export default function FinishedGoodsStoragePage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsPutawayModalOpen(true)}
-            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-neutral-800 text-neutral-200 hover:text-white hover:bg-neutral-700 text-sm font-medium border border-neutral-700 transition"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 text-sm font-medium border border-slate-200 dark:border-slate-700 transition shadow-sm"
           >
-            <Package className="w-4 h-4 text-emerald-400" />
+            <Package className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
             Putaway Stock
           </button>
           <button
@@ -217,65 +217,65 @@ export default function FinishedGoodsStoragePage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Total Bay Utilization</span>
-            <div className="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400 border border-orange-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Bay Utilization</span>
+            <div className="w-8 h-8 rounded-lg bg-orange-50 dark:bg-orange-500/10 flex items-center justify-center text-orange-500 dark:text-orange-400 border border-orange-200 dark:border-orange-500/20">
               <TrendingUp className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white">{occupancyRate.toFixed(1)}%</span>
-            <span className="text-xs text-orange-400 font-medium">{totalOccupied} / {totalCapacity} units</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">{occupancyRate.toFixed(1)}%</span>
+            <span className="text-xs text-orange-600 dark:text-orange-400 font-medium">{totalOccupied} / {totalCapacity} units</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">High-velocity storage buffer</p>
+          <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">High-velocity storage buffer</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Staged Valuation</span>
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Staged Valuation</span>
+            <div className="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
               <DollarSign className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white">${totalValuation.toLocaleString()}</span>
-            <span className="text-xs text-emerald-400 font-medium">certified ready</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">${totalValuation.toLocaleString()}</span>
+            <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">certified ready</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Quality inspection cleared</p>
+          <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Quality inspection cleared</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Available Space</span>
-            <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Available Space</span>
+            <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20">
               <Package className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white">{totalCapacity - totalOccupied}</span>
-            <span className="text-xs text-blue-400 font-medium">units buffer</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">{totalCapacity - totalOccupied}</span>
+            <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">units buffer</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Room for incoming batches</p>
+          <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Room for incoming batches</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Active Bay Count</span>
-            <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 border border-purple-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Active Bay Count</span>
+            <div className="w-8 h-8 rounded-lg bg-purple-50 dark:bg-purple-500/10 flex items-center justify-center text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-500/20">
               <Layers className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white">{bays.length} Bays</span>
-            <span className="text-xs text-purple-400 font-medium">4 active zones</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">{bays.length} Bays</span>
+            <span className="text-xs text-purple-600 dark:text-purple-400 font-medium">4 active zones</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Aisle 01 through Aisle 04</p>
+          <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">Aisle 01 through Aisle 04</p>
         </div>
       </div>
 
       {/* Zone Filters */}
-      <div className="flex flex-wrap gap-2 border-b border-neutral-800 pb-3">
+      <div className="flex flex-wrap gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
         {[
           { id: 'ALL', label: 'All Zones' },
           { id: 'Zone A - Precision Assemblies', label: 'Zone A - Precision Assemblies' },
@@ -288,8 +288,8 @@ export default function FinishedGoodsStoragePage() {
             onClick={() => setSelectedZone(z.id)}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               selectedZone === z.id
-                ? 'bg-orange-600/20 text-orange-300 border border-orange-500/30 shadow-sm'
-                : 'bg-neutral-900 text-neutral-400 hover:text-neutral-200 border border-neutral-800'
+                ? 'bg-orange-50 dark:bg-orange-600/20 text-orange-600 dark:text-orange-300 border border-orange-200 dark:border-orange-500/30 shadow-sm'
+                : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 border border-slate-200 dark:border-slate-800'
             }`}
           >
             {z.label}
@@ -299,20 +299,20 @@ export default function FinishedGoodsStoragePage() {
 
       {/* Search Bar */}
       <div className="relative w-full sm:w-80">
-        <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" />
+        <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
         <input
           type="text"
           placeholder="Search bay code, SKU, product..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full bg-neutral-900 border border-neutral-800 rounded-lg pl-9 pr-4 py-2 text-sm text-neutral-200 placeholder-neutral-500 focus:outline-none focus:border-orange-500"
+          className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg pl-9 pr-4 py-2 text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:border-orange-500 shadow-sm transition-colors"
         />
       </div>
 
       {/* Bays Table */}
-      <div className="overflow-x-auto rounded-xl border border-neutral-800 bg-neutral-900">
+      <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
         <table className="w-full text-left text-xs">
-          <thead className="bg-neutral-800/60 text-neutral-400 uppercase tracking-wider font-semibold border-b border-neutral-800">
+          <thead className="bg-slate-50 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
             <tr>
               <th className="px-4 py-3">Bay Coordinates</th>
               <th className="px-4 py-3">Stored SKU / Product</th>
@@ -322,44 +322,44 @@ export default function FinishedGoodsStoragePage() {
               <th className="px-4 py-3 text-center">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-neutral-800 text-neutral-300">
+          <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
             {filteredBays.map((bay) => {
               const occPercent = (bay.occupiedUnits / bay.capacityUnits) * 100;
 
               return (
-                <tr key={bay.id} className="hover:bg-neutral-800/40">
+                <tr key={bay.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/40 transition-colors">
                   <td className="px-4 py-3.5">
-                    <div className="font-mono font-bold text-white">{bay.bayCode}</div>
-                    <span className="text-[11px] text-neutral-400">
+                    <div className="font-mono font-bold text-slate-900 dark:text-white">{bay.bayCode}</div>
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400">
                       {bay.zone} • {bay.aisle} • {bay.shelf}
                     </span>
                   </td>
                   <td className="px-4 py-3.5">
                     {bay.itemCode ? (
                       <div>
-                        <div className="font-semibold text-neutral-200">{bay.itemName}</div>
-                        <span className="font-mono text-emerald-400 text-[11px]">{bay.itemCode}</span>
+                        <div className="font-semibold text-slate-800 dark:text-neutral-200">{bay.itemName}</div>
+                        <span className="font-mono text-emerald-600 dark:text-emerald-400 text-[11px]">{bay.itemCode}</span>
                       </div>
                     ) : (
-                      <span className="text-neutral-500 italic">Empty Bay (Available)</span>
+                      <span className="text-slate-400 dark:text-neutral-500 italic">Empty Bay (Available)</span>
                     )}
                   </td>
-                  <td className="px-4 py-3.5 font-mono text-neutral-300">
+                  <td className="px-4 py-3.5 font-mono text-slate-600 dark:text-neutral-300">
                     {bay.lotBatchNumber || '—'}
                   </td>
-                  <td className="px-4 py-3.5 text-right font-mono font-bold text-white">
+                  <td className="px-4 py-3.5 text-right font-mono font-bold text-slate-900 dark:text-white">
                     ${bay.unitValuation.toFixed(2)}
                   </td>
                   <td className="px-4 py-3.5 w-60">
                     <div className="flex justify-between text-[11px] mb-1">
-                      <span className="font-mono text-neutral-300">
+                      <span className="font-mono text-slate-600 dark:text-neutral-300">
                         {bay.occupiedUnits} / {bay.capacityUnits} units
                       </span>
-                      <span className="font-mono font-semibold text-orange-400">
+                      <span className="font-mono font-semibold text-orange-600 dark:text-orange-400">
                         {occPercent.toFixed(0)}%
                       </span>
                     </div>
-                    <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                    <div className="w-full bg-slate-100 dark:bg-neutral-800 h-2 rounded-full overflow-hidden">
                       <div
                         className={`h-full rounded-full ${
                           occPercent > 90
@@ -374,15 +374,15 @@ export default function FinishedGoodsStoragePage() {
                   </td>
                   <td className="px-4 py-3.5 text-center">
                     {bay.isReserved ? (
-                      <span className="px-2 py-0.5 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20 text-[11px] font-semibold">
+                      <span className="px-2 py-0.5 rounded bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-300 border border-purple-200 dark:border-purple-500/20 text-[11px] font-semibold">
                         Reserved
                       </span>
                     ) : bay.occupiedUnits === 0 ? (
-                      <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[11px] font-semibold">
+                      <span className="px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20 text-[11px] font-semibold">
                         Available
                       </span>
                     ) : (
-                      <span className="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[11px] font-semibold">
+                      <span className="px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20 text-[11px] font-semibold">
                         Active
                       </span>
                     )}
@@ -397,15 +397,15 @@ export default function FinishedGoodsStoragePage() {
       {/* MODAL: CREATE STORAGE BAY */}
       {isNewBayModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl w-full max-w-md p-6 space-y-4 shadow-xl">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-md p-6 space-y-4 shadow-xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <Grid className="w-5 h-5 text-orange-400" />
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Grid className="w-5 h-5 text-orange-500" />
                 Register New Storage Bay
               </h3>
               <button
                 onClick={() => setIsNewBayModalOpen(false)}
-                className="text-neutral-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -413,22 +413,22 @@ export default function FinishedGoodsStoragePage() {
 
             <form onSubmit={handleCreateBay} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Bay Code</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Bay Code</label>
                 <input
                   type="text"
                   value={newBayForm.bayCode}
                   onChange={(e) => setNewBayForm({ ...newBayForm, bayCode: e.target.value })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-orange-500 font-mono"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500 font-mono"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Zone Designation</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Zone Designation</label>
                 <select
                   value={newBayForm.zone}
                   onChange={(e) => setNewBayForm({ ...newBayForm, zone: e.target.value })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                 >
                   <option value="Zone A - Precision Assemblies">Zone A - Precision Assemblies</option>
                   <option value="Zone B - Electronics & Subsystems">Zone B - Electronics & Subsystems</option>
@@ -439,44 +439,44 @@ export default function FinishedGoodsStoragePage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Aisle</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Aisle</label>
                   <input
                     type="text"
                     value={newBayForm.aisle}
                     onChange={(e) => setNewBayForm({ ...newBayForm, aisle: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2 text-xs text-neutral-200 focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Rack</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Rack</label>
                   <input
                     type="text"
                     value={newBayForm.rack}
                     onChange={(e) => setNewBayForm({ ...newBayForm, rack: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2 text-xs text-neutral-200 focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Shelf</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Shelf</label>
                   <input
                     type="text"
                     value={newBayForm.shelf}
                     onChange={(e) => setNewBayForm({ ...newBayForm, shelf: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2 text-xs text-neutral-200 focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Capacity (Max Units)</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Capacity (Max Units)</label>
                 <input
                   type="number"
                   value={newBayForm.capacityUnits}
                   onChange={(e) => setNewBayForm({ ...newBayForm, capacityUnits: Number(e.target.value) })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   required
                 />
               </div>
@@ -485,7 +485,7 @@ export default function FinishedGoodsStoragePage() {
                 <button
                   type="button"
                   onClick={() => setIsNewBayModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-sm font-medium transition"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium transition"
                 >
                   Cancel
                 </button>
@@ -504,15 +504,15 @@ export default function FinishedGoodsStoragePage() {
       {/* MODAL: PUTAWAY FINISHED GOODS */}
       {isPutawayModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl w-full max-w-md p-6 space-y-4 shadow-xl">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-md p-6 space-y-4 shadow-xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <Package className="w-5 h-5 text-emerald-400" />
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Package className="w-5 h-5 text-emerald-500" />
                 Putaway Finished Goods Stock
               </h3>
               <button
                 onClick={() => setIsPutawayModalOpen(false)}
-                className="text-neutral-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -520,11 +520,11 @@ export default function FinishedGoodsStoragePage() {
 
             <form onSubmit={handlePutaway} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Target Bay</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Target Bay</label>
                 <select
                   value={putawayForm.bayCode}
                   onChange={(e) => setPutawayForm({ ...putawayForm, bayCode: e.target.value })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500 font-mono"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500 font-mono"
                 >
                   {bays.map((b) => (
                     <option key={b.id} value={b.bayCode}>
@@ -536,57 +536,57 @@ export default function FinishedGoodsStoragePage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Item Code</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Item Code</label>
                   <input
                     type="text"
                     value={putawayForm.itemCode}
                     onChange={(e) => setPutawayForm({ ...putawayForm, itemCode: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500 font-mono"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Batch Number</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Batch Number</label>
                   <input
                     type="text"
                     value={putawayForm.lotBatchNumber}
                     onChange={(e) => setPutawayForm({ ...putawayForm, lotBatchNumber: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500 font-mono"
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Item Description</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Item Description</label>
                 <input
                   type="text"
                   value={putawayForm.itemName}
                   onChange={(e) => setPutawayForm({ ...putawayForm, itemName: e.target.value })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500"
                   required
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Quantity Units</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Quantity Units</label>
                   <input
                     type="number"
                     value={putawayForm.quantityUnits}
                     onChange={(e) => setPutawayForm({ ...putawayForm, quantityUnits: Number(e.target.value) })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Unit Valuation ($)</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Unit Valuation ($)</label>
                   <input
                     type="number"
                     step="0.01"
                     value={putawayForm.unitValuation}
                     onChange={(e) => setPutawayForm({ ...putawayForm, unitValuation: Number(e.target.value) })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500"
                     required
                   />
                 </div>
@@ -596,7 +596,7 @@ export default function FinishedGoodsStoragePage() {
                 <button
                   type="button"
                   onClick={() => setIsPutawayModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-sm font-medium transition"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium transition"
                 >
                   Cancel
                 </button>

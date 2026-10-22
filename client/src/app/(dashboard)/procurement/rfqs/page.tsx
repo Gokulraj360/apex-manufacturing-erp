@@ -304,17 +304,17 @@ export default function RFQWorkspacePage() {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20">
+            <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
               <Scale className="h-5 w-5" />
             </span>
-            <h1 className="text-xl font-bold text-white tracking-tight">
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
               RFQ Workspace & Supplier Bid Comparison Matrix
             </h1>
           </div>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Publish competitive sourcing tenders, benchmark multi-supplier quotations, evaluate delivery lead times, and award purchase agreements.
           </p>
         </div>
@@ -330,10 +330,10 @@ export default function RFQWorkspacePage() {
       {/* Main Grid: RFQ Selector & Bid Comparison Matrix */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Column: RFQs Directory */}
-        <div className="rounded-xl bg-[#0d1322] border border-slate-800 p-4 space-y-3">
-          <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-            <h3 className="text-xs font-semibold text-white uppercase tracking-wider">Active Sourcing RFQs</h3>
-            <span className="text-[11px] text-purple-400">{rfqs.length} Tenders</span>
+        <div className="rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 p-4 space-y-3 shadow-sm">
+          <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
+            <h3 className="text-xs font-semibold text-slate-900 dark:text-white uppercase tracking-wider">Active Sourcing RFQs</h3>
+            <span className="text-[11px] text-purple-600 dark:text-purple-400">{rfqs.length} Tenders</span>
           </div>
 
           <div className="space-y-2">
@@ -345,20 +345,20 @@ export default function RFQWorkspacePage() {
                   onClick={() => setSelectedRFQ(rfq)}
                   className={`p-3 rounded-lg border text-xs cursor-pointer transition-all ${
                     isSelected
-                      ? 'bg-purple-950/30 border-purple-500/50 shadow-md'
-                      : 'bg-slate-900/60 border-slate-800 hover:border-slate-700'
+                      ? 'bg-purple-50 dark:bg-purple-950/30 border-purple-400 dark:border-purple-500/50 shadow-sm'
+                      : 'bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-mono font-bold text-white">{rfq.rfqNumber}</span>
-                    <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                    <span className="font-mono font-bold text-slate-900 dark:text-white">{rfq.rfqNumber}</span>
+                    <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-700 dark:text-purple-300 border border-purple-500/20">
                       {rfq.status}
                     </span>
                   </div>
-                  <div className="font-medium text-slate-200 line-clamp-1">{rfq.title}</div>
-                  <div className="flex items-center justify-between text-[11px] text-slate-400 mt-2 pt-2 border-t border-slate-800/80">
+                  <div className="font-medium text-slate-800 dark:text-slate-200 line-clamp-1">{rfq.title}</div>
+                  <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 mt-2 pt-2 border-t border-slate-200 dark:border-slate-800/80">
                     <span>{rfq.bids?.length || 0} Quotes Received</span>
-                    <span className="text-rose-400 font-medium">Due: {rfq.deadlineDate}</span>
+                    <span className="text-rose-600 dark:text-rose-400 font-medium">Due: {rfq.deadlineDate}</span>
                   </div>
                 </div>
               );
@@ -367,25 +367,25 @@ export default function RFQWorkspacePage() {
         </div>
 
         {/* Right Column: Bid Comparison Matrix for Selected RFQ */}
-        <div className="lg:col-span-2 rounded-xl bg-[#0d1322] border border-slate-800 p-5 space-y-5">
+        <div className="lg:col-span-2 rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 p-5 space-y-5 shadow-sm">
           {/* RFQ Header Summary */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 gap-3">
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-mono font-bold text-base text-white">{selectedRFQ.rfqNumber}</span>
-                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                <span className="font-mono font-bold text-base text-slate-900 dark:text-white">{selectedRFQ.rfqNumber}</span>
+                <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-500/10 text-purple-700 dark:text-purple-300 border border-purple-500/20">
                   {selectedRFQ.status}
                 </span>
               </div>
-              <h2 className="text-sm font-semibold text-slate-200 mt-1">{selectedRFQ.title}</h2>
-              <div className="text-[11px] text-slate-400 mt-0.5">
+              <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-200 mt-1">{selectedRFQ.title}</h2>
+              <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                 Target: {selectedRFQ.items[0]?.requiredQty} {selectedRFQ.items[0]?.uom} @ target ${selectedRFQ.items[0]?.targetPrice} | Terms: {selectedRFQ.paymentTerms}
               </div>
             </div>
 
             <button
               onClick={() => setIsSubmitBidModalOpen(true)}
-              className="px-3 py-1.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 text-xs font-semibold transition-all flex items-center gap-1.5 self-start sm:self-auto"
+              className="px-3 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-600/20 dark:hover:bg-indigo-600/30 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 text-xs font-semibold transition-all flex items-center gap-1.5 self-start sm:self-auto"
             >
               <Plus className="h-4 w-4" /> Log Supplier Quote
             </button>
@@ -393,18 +393,18 @@ export default function RFQWorkspacePage() {
 
           {/* Supplier Quotes Comparison Table */}
           <div className="space-y-3">
-            <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+            <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
               Supplier Pricing & Terms Evaluation Matrix ({selectedRFQ.bids?.length || 0} Bids)
             </h3>
 
             {(!selectedRFQ.bids || selectedRFQ.bids.length === 0) ? (
-              <div className="p-8 text-center text-slate-500 text-xs border border-dashed border-slate-800 rounded-lg">
+              <div className="p-8 text-center text-slate-500 dark:text-slate-400 text-xs border border-dashed border-slate-200 dark:border-slate-800 rounded-lg">
                 No supplier bids logged yet for this RFQ. Click "Log Supplier Quote" to register a quote.
               </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-900/80 text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+                  <thead className="bg-slate-50 dark:bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
                     <tr>
                       <th className="py-2.5 px-3">Supplier Name</th>
                       <th className="py-2.5 px-3">Quoted Unit Price</th>
@@ -415,36 +415,36 @@ export default function RFQWorkspacePage() {
                       <th className="py-2.5 px-3 text-right">Decision</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/60 text-slate-300 font-normal">
+                  <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-600 dark:text-slate-300 font-normal">
                     {selectedRFQ.bids.map((bid) => {
                       const isWinning = bid.status === 'ACCEPTED';
                       return (
                         <tr
                           key={bid.id}
-                          className={`hover:bg-slate-800/40 transition-colors ${
-                            isWinning ? 'bg-emerald-950/20' : ''
+                          className={`hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors ${
+                            isWinning ? 'bg-emerald-50/60 dark:bg-emerald-950/20' : ''
                           }`}
                         >
                           <td className="py-3 px-3">
-                            <div className="font-semibold text-white">{bid.vendorName}</div>
-                            <div className="text-[10px] text-slate-400">{bid.vendorEmail}</div>
+                            <div className="font-semibold text-slate-900 dark:text-white">{bid.vendorName}</div>
+                            <div className="text-[10px] text-slate-500 dark:text-slate-400">{bid.vendorEmail}</div>
                           </td>
-                          <td className="py-3 px-3 font-mono text-slate-200">
+                          <td className="py-3 px-3 font-mono text-slate-800 dark:text-slate-200">
                             ${bid.quotedItems[0]?.unitPrice}
                           </td>
-                          <td className="py-3 px-3 font-bold text-white">
+                          <td className="py-3 px-3 font-bold text-slate-900 dark:text-white">
                             ${bid.bidAmountTotal.toLocaleString()}
                           </td>
                           <td className="py-3 px-3">
-                            <span className="font-medium text-amber-400">
+                            <span className="font-medium text-amber-600 dark:text-amber-400">
                               {bid.quotedItems[0]?.leadTimeDays} days
                             </span>
                           </td>
-                          <td className="py-3 px-3 text-slate-300">
+                          <td className="py-3 px-3 text-slate-700 dark:text-slate-300">
                             {bid.paymentTermsOffered}
                           </td>
                           <td className="py-3 px-3">
-                            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
                               {bid.evaluationScore}%
                             </span>
                           </td>
@@ -452,16 +452,16 @@ export default function RFQWorkspacePage() {
                             {selectedRFQ.status !== 'AWARDED' ? (
                               <button
                                 onClick={() => handleAwardBid(bid)}
-                                className="px-2.5 py-1 rounded bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 font-semibold text-[11px] transition-all"
+                                className="px-2.5 py-1 rounded bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-600/20 dark:hover:bg-emerald-600/30 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/30 font-semibold text-[11px] transition-all"
                               >
                                 Award Contract
                               </button>
                             ) : isWinning ? (
-                              <span className="text-emerald-400 font-bold flex items-center justify-end gap-1">
+                              <span className="text-emerald-600 dark:text-emerald-400 font-bold flex items-center justify-end gap-1">
                                 <Award className="h-4 w-4" /> Awarded
                               </span>
                             ) : (
-                              <span className="text-slate-500 italic">Not Selected</span>
+                              <span className="text-slate-400 dark:text-slate-500 italic">Not Selected</span>
                             )}
                           </td>
                         </tr>
@@ -477,18 +477,18 @@ export default function RFQWorkspacePage() {
 
       {/* Modal: Create RFQ */}
       {isCreateRFQModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-400">
+                <span className="p-1.5 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400">
                   <Scale className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Create Request for Quotation (RFQ)</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Create Request for Quotation (RFQ)</h3>
               </div>
               <button
                 onClick={() => setIsCreateRFQModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -496,112 +496,112 @@ export default function RFQWorkspacePage() {
 
             <form onSubmit={handleCreateRFQ} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-400 mb-1">RFQ Tender Title *</label>
+                <label className="block text-slate-700 dark:text-slate-400 mb-1">RFQ Tender Title *</label>
                 <input
                   type="text"
                   required
                   value={newRFQ.title}
                   onChange={(e) => setNewRFQ({ ...newRFQ, title: e.target.value })}
                   placeholder="e.g. Sourcing High-Tensile Grade 8.8 Hex Bolts"
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-purple-500"
+                  className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-purple-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Bid Closing Deadline *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Bid Closing Deadline *</label>
                   <input
                     type="date"
                     required
                     value={newRFQ.deadlineDate}
                     onChange={(e) => setNewRFQ({ ...newRFQ, deadlineDate: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-purple-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Target Delivery Date *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Target Delivery Date *</label>
                   <input
                     type="date"
                     required
                     value={newRFQ.targetDeliveryDate}
                     onChange={(e) => setNewRFQ({ ...newRFQ, targetDeliveryDate: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-purple-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Material SKU *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Material SKU *</label>
                   <input
                     type="text"
                     required
                     value={newRFQ.itemSku}
                     onChange={(e) => setNewRFQ({ ...newRFQ, itemSku: e.target.value })}
                     placeholder="FAST-HEX-M16-88"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-purple-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-purple-500 font-mono"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Material Description *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Material Description *</label>
                   <input
                     type="text"
                     required
                     value={newRFQ.itemName}
                     onChange={(e) => setNewRFQ({ ...newRFQ, itemName: e.target.value })}
                     placeholder="Hex Bolt M16x60mm Gr 8.8"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-purple-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-purple-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Required Qty *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Required Qty *</label>
                   <input
                     type="number"
                     required
                     value={newRFQ.requiredQty}
                     onChange={(e) => setNewRFQ({ ...newRFQ, requiredQty: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-purple-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">UOM</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">UOM</label>
                   <input
                     type="text"
                     value={newRFQ.uom}
                     onChange={(e) => setNewRFQ({ ...newRFQ, uom: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-purple-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Target Price ($)</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Target Price ($)</label>
                   <input
                     type="number"
                     value={newRFQ.targetPrice}
                     onChange={(e) => setNewRFQ({ ...newRFQ, targetPrice: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-purple-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-purple-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Technical Specs & Testing Requirements</label>
+                <label className="block text-slate-700 dark:text-slate-400 mb-1">Technical Specs & Testing Requirements</label>
                 <textarea
                   rows={2}
                   value={newRFQ.technicalSpecs}
                   onChange={(e) => setNewRFQ({ ...newRFQ, technicalSpecs: e.target.value })}
                   placeholder="e.g. DIN 933, 720hr salt spray resistance, mill test certificate..."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-purple-500"
+                  className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-purple-500"
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsCreateRFQModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 >
                   Cancel
                 </button>
@@ -619,18 +619,18 @@ export default function RFQWorkspacePage() {
 
       {/* Modal: Log Supplier Quote */}
       {isSubmitBidModalOpen && selectedRFQ && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400">
+                <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
                   <DollarSign className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Log Supplier Bid Quote ({selectedRFQ.rfqNumber})</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Log Supplier Bid Quote ({selectedRFQ.rfqNumber})</h3>
               </div>
               <button
                 onClick={() => setIsSubmitBidModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -639,101 +639,101 @@ export default function RFQWorkspacePage() {
             <form onSubmit={handleSubmitBid} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Supplier Company Name *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Supplier Company Name *</label>
                   <input
                     type="text"
                     required
                     value={newBid.vendorName}
                     onChange={(e) => setNewBid({ ...newBid, vendorName: e.target.value })}
                     placeholder="e.g. Precision Bolts Ltd"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Supplier Contact Email *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Supplier Contact Email *</label>
                   <input
                     type="email"
                     required
                     value={newBid.vendorEmail}
                     onChange={(e) => setNewBid({ ...newBid, vendorEmail: e.target.value })}
                     placeholder="sales@vendor.com"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Offered Unit Price ($) *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Offered Unit Price ($) *</label>
                   <input
                     type="number"
                     step="0.001"
                     required
                     value={newBid.unitPrice}
                     onChange={(e) => setNewBid({ ...newBid, unitPrice: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Offered Qty *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Offered Qty *</label>
                   <input
                     type="number"
                     required
                     value={newBid.offeredQty}
                     onChange={(e) => setNewBid({ ...newBid, offeredQty: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Lead Time (Days) *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Lead Time (Days) *</label>
                   <input
                     type="number"
                     required
                     value={newBid.leadTimeDays}
                     onChange={(e) => setNewBid({ ...newBid, leadTimeDays: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Payment Terms Offered</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Payment Terms Offered</label>
                   <input
                     type="text"
                     value={newBid.paymentTermsOffered}
                     onChange={(e) => setNewBid({ ...newBid, paymentTermsOffered: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Quote Valid Until *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Quote Valid Until *</label>
                   <input
                     type="date"
                     required
                     value={newBid.validUntilDate}
                     onChange={(e) => setNewBid({ ...newBid, validUntilDate: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Specification Compliance Notes</label>
+                <label className="block text-slate-700 dark:text-slate-400 mb-1">Specification Compliance Notes</label>
                 <textarea
                   rows={2}
                   value={newBid.complianceNotes}
                   onChange={(e) => setNewBid({ ...newBid, complianceNotes: e.target.value })}
                   placeholder="Detail test certificates, packaging specs..."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsSubmitBidModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 >
                   Cancel
                 </button>

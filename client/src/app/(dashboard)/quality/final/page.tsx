@@ -259,15 +259,15 @@ export default function FinalInspectionPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-              <CheckSquare className="w-7 h-7 text-emerald-400" />
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+              <CheckSquare className="w-7 h-7 text-emerald-500" />
               Final Product Testing & Dispatch Approvals
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
               Ready for Customer Handover
             </span>
           </div>
-          <p className="text-sm text-neutral-400 mt-1">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
             Execute final compliance testing protocols, sign off dispatch certificates, and prevent defective stock release.
           </p>
         </div>
@@ -283,82 +283,82 @@ export default function FinalInspectionPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Awaiting Dispatch OK</span>
-            <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 border border-amber-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Awaiting Dispatch OK</span>
+            <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500 dark:text-amber-400 border border-amber-500/20">
               <Clock className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-amber-400">{pendingDispatchSignOff}</span>
-            <span className="text-xs text-neutral-400 font-medium">batches passed test</span>
+            <span className="text-2xl font-bold text-amber-500 dark:text-amber-400">{pendingDispatchSignOff}</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">batches passed test</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Pending executive sign-off</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Pending executive sign-off</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Approved For Dispatch</span>
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Approved For Dispatch</span>
+            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 dark:text-emerald-400 border border-emerald-500/20">
               <ShieldCheck className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white">{totalApprovedForDispatch}</span>
-            <span className="text-xs text-emerald-400 font-medium">unlocked in warehouse</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">{totalApprovedForDispatch}</span>
+            <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">unlocked in warehouse</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Ready for Delivery Challan</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Ready for Delivery Challan</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Failed / Quarantined</span>
-            <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 border border-rose-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Failed / Quarantined</span>
+            <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-500 dark:text-rose-400 border border-rose-500/20">
               <AlertOctagon className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-rose-400">{failedBatches}</span>
-            <span className="text-xs text-rose-400 font-medium">batches quarantined</span>
+            <span className="text-2xl font-bold text-rose-500 dark:text-rose-400">{failedBatches}</span>
+            <span className="text-xs text-rose-500 dark:text-rose-400 font-medium">batches quarantined</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Halted before shipping</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Halted before shipping</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Total Units Validated</span>
-            <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Units Validated</span>
+            <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 dark:text-blue-400 border border-blue-500/20">
               <Package className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white">{totalInspected}</span>
-            <span className="text-xs text-blue-400 font-medium">finished products</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">{totalInspected}</span>
+            <span className="text-xs text-blue-500 dark:text-blue-400 font-medium">finished products</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Zero customer escapes</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Zero customer escapes</p>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
       <div className="flex flex-col sm:flex-row gap-3 items-center justify-between">
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" />
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             placeholder="Search inspection #, WO #, product..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-neutral-900 border border-neutral-800 rounded-lg pl-9 pr-4 py-2 text-sm text-neutral-200 placeholder-neutral-500 focus:outline-none focus:border-emerald-500"
+            className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg pl-9 pr-4 py-2 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-emerald-500"
           />
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <Filter className="w-4 h-4 text-neutral-400" />
+          <Filter className="w-4 h-4 text-slate-500 dark:text-slate-400" />
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500"
+            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500"
           >
             <option value="ALL">All Statuses</option>
             <option value="PASSED">Passed</option>
@@ -376,24 +376,24 @@ export default function FinalInspectionPage() {
           return (
             <div
               key={item.id}
-              className="rounded-xl bg-neutral-900 border border-neutral-800 overflow-hidden transition"
+              className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm overflow-hidden transition"
             >
               <div
                 onClick={() => setExpandedId(isExpanded ? null : item.id)}
-                className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-neutral-800/50 transition"
+                className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition"
               >
                 <div className="flex items-center gap-3">
                   <div
                     className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xs border ${
                       item.isApprovedForDispatch
-                        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+                        ? 'bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border-emerald-500/30'
                         : isPassed
-                        ? 'bg-blue-500/10 text-blue-400 border-blue-500/20'
-                        : 'bg-rose-500/10 text-rose-400 border-rose-500/20'
+                        ? 'bg-blue-500/10 text-blue-500 dark:text-blue-400 border-blue-500/20'
+                        : 'bg-rose-500/10 text-rose-500 dark:text-rose-400 border-rose-500/20'
                     }`}
                   >
                     {item.isApprovedForDispatch ? (
-                      <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                      <ShieldCheck className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
                     ) : isPassed ? (
                       <CheckCircle2 className="w-5 h-5" />
                     ) : (
@@ -403,33 +403,33 @@ export default function FinalInspectionPage() {
 
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-semibold text-white">{item.inspectionNumber}</span>
-                      <span className="text-xs text-neutral-400 font-mono">[{item.workOrderNumber}]</span>
-                      <span className="text-xs text-neutral-500 font-mono">Batch: {item.batchNumber}</span>
+                      <span className="font-semibold text-slate-900 dark:text-white">{item.inspectionNumber}</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">[{item.workOrderNumber}]</span>
+                      <span className="text-xs text-slate-400 dark:text-slate-500 font-mono">Batch: {item.batchNumber}</span>
                       {item.isApprovedForDispatch ? (
-                        <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                        <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
                           <CheckCircle2 className="w-3 h-3" /> DISPATCH APPROVED
                         </span>
                       ) : isPassed ? (
-                        <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                        <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
                           AWAITING DISPATCH SIGN-OFF
                         </span>
                       ) : (
-                        <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                        <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
                           REJECTED / QUARANTINED
                         </span>
                       )}
                       {item.dispatchApprovalRef && (
-                        <span className="text-[10px] font-mono text-emerald-400/80 bg-neutral-950 px-2 py-0.5 rounded border border-neutral-800">
+                        <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400/80 bg-slate-50 dark:bg-slate-950 px-2 py-0.5 rounded border border-slate-200 dark:border-slate-800">
                           Ref: {item.dispatchApprovalRef}
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-neutral-200 mt-1 font-medium">
-                      {item.productName} <span className="font-mono text-purple-400">({item.productCode})</span>
+                    <p className="text-xs text-slate-800 dark:text-neutral-200 mt-1 font-medium">
+                      {item.productName} <span className="font-mono text-purple-600 dark:text-purple-400">({item.productCode})</span>
                     </p>
-                    <p className="text-xs text-neutral-400 mt-0.5">
-                      Units: <strong className="text-emerald-400 font-mono">{item.quantityPassed} Passed</strong> / {item.quantityChecked} Inspected • Lead Inspector: {item.inspectorName}
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                      Units: <strong className="text-emerald-600 dark:text-emerald-400 font-mono">{item.quantityPassed} Passed</strong> / {item.quantityChecked} Inspected • Lead Inspector: {item.inspectorName}
                     </p>
                   </div>
                 </div>
@@ -449,18 +449,18 @@ export default function FinalInspectionPage() {
                     </button>
                   )}
                   {isExpanded ? (
-                    <ChevronUp className="w-5 h-5 text-neutral-400" />
+                    <ChevronUp className="w-5 h-5 text-slate-400" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-neutral-400" />
+                    <ChevronDown className="w-5 h-5 text-slate-400" />
                   )}
                 </div>
               </div>
 
               {/* Expanded Protocols Table */}
               {isExpanded && (
-                <div className="border-t border-neutral-800 p-4 bg-neutral-950/40 space-y-3">
+                <div className="border-t border-slate-200 dark:border-slate-800 p-4 bg-slate-50/50 dark:bg-slate-950/40 space-y-3">
                   {item.signedOffBy && (
-                    <div className="flex items-center justify-between text-xs text-emerald-400/90 bg-emerald-500/5 p-2.5 rounded-lg border border-emerald-500/20 font-mono">
+                    <div className="flex items-center justify-between text-xs text-emerald-600 dark:text-emerald-400/90 bg-emerald-500/5 p-2.5 rounded-lg border border-emerald-500/20 font-mono">
                       <span>Executive Sign-Off: {item.signedOffBy}</span>
                       <span>Authorized At: {item.signedOffAt}</span>
                     </div>
@@ -468,25 +468,25 @@ export default function FinalInspectionPage() {
 
                   <div className="overflow-x-auto">
                     <table className="w-full text-left text-xs">
-                      <thead className="bg-neutral-900 text-neutral-400 uppercase tracking-wider font-semibold border-b border-neutral-800">
+                      <thead className="bg-slate-100 dark:bg-slate-950 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
                         <tr>
                           <th className="px-3 py-2">Test Protocol</th>
                           <th className="px-3 py-2">Laboratory Observed Measurement</th>
                           <th className="px-3 py-2 text-center">Protocol Clearance</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-neutral-800 text-neutral-300">
+                      <tbody className="divide-y divide-slate-200 dark:divide-neutral-800 text-slate-700 dark:text-neutral-300">
                         {item.testingProtocols.map((proto, idx) => (
-                          <tr key={idx} className="hover:bg-neutral-800/40">
-                            <td className="px-3 py-2.5 font-medium text-neutral-200">{proto.testName}</td>
-                            <td className="px-3 py-2.5 font-mono font-semibold text-white">{proto.actualValue}</td>
+                          <tr key={idx} className="hover:bg-slate-100/60 dark:hover:bg-neutral-800/40">
+                            <td className="px-3 py-2.5 font-medium text-slate-800 dark:text-neutral-200">{proto.testName}</td>
+                            <td className="px-3 py-2.5 font-mono font-semibold text-slate-900 dark:text-white">{proto.actualValue}</td>
                             <td className="px-3 py-2.5 text-center">
                               {proto.passed ? (
-                                <span className="inline-flex items-center gap-1 text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-medium">
+                                <span className="inline-flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-medium">
                                   <CheckCircle2 className="w-3 h-3" /> VERIFIED
                                 </span>
                               ) : (
-                                <span className="inline-flex items-center gap-1 text-[11px] text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20 font-medium">
+                                <span className="inline-flex items-center gap-1 text-[11px] text-rose-600 dark:text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20 font-medium">
                                   <XCircle className="w-3 h-3" /> FAILED PROTOCOL
                                 </span>
                               )}
@@ -506,40 +506,40 @@ export default function FinalInspectionPage() {
       {/* MODAL: SIGN-OFF DISPATCH CLEARANCE */}
       {isSignOffModalOpen && selectedInspectionForSignOff && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl w-full max-w-md p-6 space-y-4 shadow-xl">
-            <div className="flex items-center gap-3 text-emerald-400">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-md p-6 space-y-4 shadow-xl">
+            <div className="flex items-center gap-3 text-emerald-500 dark:text-emerald-400">
               <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
                 <FileCheck2 className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white">Authorize Outbound Dispatch</h3>
-                <p className="text-xs text-neutral-400">{selectedInspectionForSignOff.inspectionNumber}</p>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Authorize Outbound Dispatch</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">{selectedInspectionForSignOff.inspectionNumber}</p>
               </div>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-neutral-950 border border-neutral-800 text-xs space-y-2">
+            <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs space-y-2">
               <div className="flex justify-between">
-                <span className="text-neutral-400">Product:</span>
-                <span className="text-white font-medium">{selectedInspectionForSignOff.productName}</span>
+                <span className="text-slate-500 dark:text-slate-400">Product:</span>
+                <span className="text-slate-900 dark:text-white font-medium">{selectedInspectionForSignOff.productName}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-neutral-400">Work Order:</span>
-                <span className="text-neutral-300 font-mono">{selectedInspectionForSignOff.workOrderNumber}</span>
+                <span className="text-slate-500 dark:text-slate-400">Work Order:</span>
+                <span className="text-slate-700 dark:text-slate-300 font-mono">{selectedInspectionForSignOff.workOrderNumber}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-neutral-400">Approved Units:</span>
-                <span className="text-emerald-400 font-bold font-mono">{selectedInspectionForSignOff.quantityPassed} units</span>
+                <span className="text-slate-500 dark:text-slate-400">Approved Units:</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold font-mono">{selectedInspectionForSignOff.quantityPassed} units</span>
               </div>
             </div>
 
-            <p className="text-xs text-neutral-400">
-              By authorizing this release, you confirm all safety, pressure, and operational tests meet ISO 9001 quality specifications. The inventory status in Central Warehouse Hub #01 will transition to <strong className="text-emerald-400">Ready for Dispatch</strong>.
+            <p className="text-xs text-slate-600 dark:text-slate-400">
+              By authorizing this release, you confirm all safety, pressure, and operational tests meet ISO 9001 quality specifications. The inventory status in Central Warehouse Hub #01 will transition to <strong className="text-emerald-600 dark:text-emerald-400">Ready for Dispatch</strong>.
             </p>
 
             <div className="flex items-center justify-end gap-3 pt-2">
               <button
                 onClick={() => setIsSignOffModalOpen(false)}
-                className="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-sm font-medium transition"
+                className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium transition"
               >
                 Cancel
               </button>
@@ -558,15 +558,15 @@ export default function FinalInspectionPage() {
       {/* MODAL: LOG FINAL INSPECTION */}
       {isNewTestModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl w-full max-w-lg p-6 space-y-4 shadow-xl">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-lg p-6 space-y-4 shadow-xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <CheckSquare className="w-5 h-5 text-emerald-400" />
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <CheckSquare className="w-5 h-5 text-emerald-500" />
                 Record Final Finished Product Test
               </h3>
               <button
                 onClick={() => setIsNewTestModalOpen(false)}
-                className="text-neutral-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -575,22 +575,22 @@ export default function FinalInspectionPage() {
             <form onSubmit={handleCreateTest} className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Work Order #</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Work Order #</label>
                   <input
                     type="text"
                     value={newTestForm.workOrderNumber}
                     onChange={(e) => setNewTestForm({ ...newTestForm, workOrderNumber: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500 font-mono"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Batch Number</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Batch Number</label>
                   <input
                     type="text"
                     value={newTestForm.batchNumber}
                     onChange={(e) => setNewTestForm({ ...newTestForm, batchNumber: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500 font-mono"
                     required
                   />
                 </div>
@@ -598,22 +598,22 @@ export default function FinalInspectionPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Product Code</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Product Code</label>
                   <input
                     type="text"
                     value={newTestForm.productCode}
                     onChange={(e) => setNewTestForm({ ...newTestForm, productCode: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500 font-mono"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Product Description</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Product Description</label>
                   <input
                     type="text"
                     value={newTestForm.productName}
                     onChange={(e) => setNewTestForm({ ...newTestForm, productName: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500"
                     required
                   />
                 </div>
@@ -621,44 +621,44 @@ export default function FinalInspectionPage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Units Checked</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Units Checked</label>
                   <input
                     type="number"
                     value={newTestForm.quantityChecked}
                     onChange={(e) => setNewTestForm({ ...newTestForm, quantityChecked: Number(e.target.value) })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Units Passed</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Units Passed</label>
                   <input
                     type="number"
                     value={newTestForm.quantityPassed}
                     onChange={(e) => setNewTestForm({ ...newTestForm, quantityPassed: Number(e.target.value) })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Units Failed</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Units Failed</label>
                   <input
                     type="number"
                     value={newTestForm.quantityFailed}
                     onChange={(e) => setNewTestForm({ ...newTestForm, quantityFailed: Number(e.target.value) })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500"
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Inspector Name</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Inspector Name</label>
                 <input
                   type="text"
                   value={newTestForm.inspectorName}
                   onChange={(e) => setNewTestForm({ ...newTestForm, inspectorName: e.target.value })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-emerald-500"
                   required
                 />
               </div>
@@ -667,7 +667,7 @@ export default function FinalInspectionPage() {
                 <button
                   type="button"
                   onClick={() => setIsNewTestModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-sm font-medium transition"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium transition"
                 >
                   Cancel
                 </button>

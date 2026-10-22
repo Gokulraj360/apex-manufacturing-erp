@@ -241,29 +241,29 @@ export default function CadViewerPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 p-6 space-y-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 p-6 space-y-6">
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
         <div>
-          <div className="flex items-center gap-2 text-xs text-slate-400 mb-1">
-            <Link href="/design" className="hover:text-violet-400">
+          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <Link href="/design" className="hover:text-violet-600 dark:hover:text-violet-400">
               Design Engineering
             </Link>
             <ChevronRight className="h-3 w-3" />
-            <span className="text-slate-200">3D CAD Model Repository</span>
+            <span className="text-slate-700 dark:text-slate-200">3D CAD Model Repository</span>
           </div>
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-violet-400 shadow-lg shadow-violet-500/10">
+            <div className="h-10 w-10 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-violet-600 dark:text-violet-400 shadow-lg shadow-violet-500/10">
               <Boxes className="h-5 w-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
                 3D CAD Model Repository & Drawing Viewer
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-violet-950 text-violet-400 border border-violet-500/30">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-950 text-violet-700 dark:text-violet-400 border border-violet-300 dark:border-violet-500/30">
                   STEP / IGES / SLDPRT
                 </span>
               </h1>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Parametric CAD geometry, mass properties, technical blueprints & component revision control
               </p>
             </div>
@@ -274,9 +274,9 @@ export default function CadViewerPage() {
           <button
             onClick={fetchCadModels}
             disabled={isRefreshing}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition shadow-sm"
           >
-            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-violet-400' : ''}`} />
+            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-violet-500 dark:text-violet-400' : ''}`} />
             Refresh
           </button>
           <button
@@ -291,38 +291,38 @@ export default function CadViewerPage() {
 
       {/* Success Notification Alert */}
       {notification && (
-        <div className="p-3.5 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 text-xs flex items-center justify-between animate-in fade-in">
+        <div className="p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-200 text-xs flex items-center justify-between animate-in fade-in">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+            <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
             <span>{notification}</span>
           </div>
-          <button onClick={() => setNotification(null)} className="text-emerald-400 hover:text-white">
+          <button onClick={() => setNotification(null)} className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-white">
             <X className="h-3.5 w-3.5" />
           </button>
         </div>
       )}
 
       {/* Filter Toolbar */}
-      <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="relative w-full md:w-80">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-500" />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400 dark:text-slate-500" />
           <input
             type="text"
             placeholder="Search CAD models, alloy specs, author..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-[#090d16] border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-violet-500/50"
+            className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-violet-500/50"
           />
         </div>
 
         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400">
-            <Filter className="h-3.5 w-3.5 text-slate-500" />
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+            <Filter className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500" />
             <span>Category:</span>
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="bg-[#090d16] border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-violet-500/50"
+              className="bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:border-violet-500/50"
             >
               <option value="ALL">All Categories</option>
               <option value="MAIN_ASSEMBLY">Main Assemblies</option>
@@ -332,12 +332,12 @@ export default function CadViewerPage() {
             </select>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs text-slate-400">
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
             <span>Format:</span>
             <select
               value={formatFilter}
               onChange={(e) => setFormatFilter(e.target.value)}
-              className="bg-[#090d16] border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-violet-500/50"
+              className="bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:border-violet-500/50"
             >
               <option value="ALL">All Formats</option>
               <option value="STEP">STEP (.step/.stp)</option>
@@ -354,52 +354,52 @@ export default function CadViewerPage() {
         {filteredModels.map((cad) => (
           <div
             key={cad.id}
-            className="bg-[#0d1322] border border-slate-800 rounded-xl p-5 hover:border-violet-500/30 transition flex flex-col justify-between"
+            className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-5 hover:border-violet-400 dark:hover:border-violet-500/30 shadow-sm transition flex flex-col justify-between"
           >
             <div>
               {/* Header */}
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs font-mono font-bold text-violet-400 bg-violet-950/40 border border-violet-500/20 px-2 py-0.5 rounded">
+                    <span className="text-xs font-mono font-bold text-violet-700 dark:text-violet-400 bg-violet-50 dark:bg-violet-950/40 border border-violet-200 dark:border-violet-500/20 px-2 py-0.5 rounded">
                       {cad.modelCode}
                     </span>
-                    <span className="text-[10px] font-mono bg-slate-800 text-slate-300 px-1.5 py-0.5 rounded font-bold">
+                    <span className="text-[10px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-1.5 py-0.5 rounded font-bold">
                       {cad.version}
                     </span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-violet-300 font-mono">
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-violet-700 dark:text-violet-300 font-mono">
                       {cad.fileFormat}
                     </span>
                   </div>
-                  <h3 className="text-sm font-bold text-white">{cad.name}</h3>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">{cad.name}</h3>
                 </div>
 
                 <span
                   className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full shrink-0 ${
                     cad.status === 'APPROVED'
-                      ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-500/30'
-                      : 'bg-amber-950/60 text-amber-400 border border-amber-500/30'
+                      ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-500/30'
+                      : 'bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-500/30'
                   }`}
                 >
                   {cad.status}
                 </span>
               </div>
 
-              <p className="text-xs text-slate-400 mb-3">{cad.description}</p>
+              <p className="text-xs text-slate-600 dark:text-slate-400 mb-3">{cad.description}</p>
 
               {/* Physical Telemetry */}
-              <div className="grid grid-cols-3 gap-2 p-2.5 rounded-lg bg-[#090d16] border border-slate-800/80 text-xs mb-3">
+              <div className="grid grid-cols-3 gap-2 p-2.5 rounded-lg bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800/80 text-xs mb-3">
                 <div>
-                  <span className="text-[10px] text-slate-500 block uppercase font-medium">Material Alloy</span>
-                  <span className="text-slate-200 font-semibold truncate block">{cad.materialSpec}</span>
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase font-medium">Material Alloy</span>
+                  <span className="text-slate-800 dark:text-slate-200 font-semibold truncate block">{cad.materialSpec}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-500 block uppercase font-medium">Mass (Weight)</span>
-                  <span className="text-slate-200 font-mono font-bold">{cad.massKg} kg</span>
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase font-medium">Mass (Weight)</span>
+                  <span className="text-slate-800 dark:text-slate-200 font-mono font-bold">{cad.massKg} kg</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-500 block uppercase font-medium">Volume</span>
-                  <span className="text-slate-200 font-mono font-semibold">
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500 block uppercase font-medium">Volume</span>
+                  <span className="text-slate-800 dark:text-slate-200 font-mono font-semibold">
                     {((cad.volumeMm3 || 0) / 1000).toFixed(0)} cm³
                   </span>
                 </div>
@@ -415,12 +415,12 @@ export default function CadViewerPage() {
                     {cad.drawings.map((dwg) => (
                       <span
                         key={dwg.id}
-                        className="text-[10px] px-2 py-1 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono flex items-center gap-1.5"
+                        className="text-[10px] px-2 py-1 rounded bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-mono flex items-center gap-1.5"
                       >
-                        <Scroll className="h-3 w-3 text-violet-400" />
+                        <Scroll className="h-3 w-3 text-violet-600 dark:text-violet-400" />
                         {dwg.drawingNumber} ({dwg.revision})
                         {dwg.isApprovedForProduction && (
-                          <span className="text-[8px] bg-emerald-950 text-emerald-400 px-1 rounded border border-emerald-500/20">
+                          <span className="text-[8px] bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 px-1 rounded border border-emerald-300 dark:border-emerald-500/20">
                             PROD READY
                           </span>
                         )}
@@ -432,15 +432,15 @@ export default function CadViewerPage() {
             </div>
 
             {/* Bottom Controls */}
-            <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+            <div className="pt-3 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between">
               <span className="text-[11px] text-slate-500">
-                Author: <strong className="text-slate-400">{cad.author}</strong>
+                Author: <strong className="text-slate-700 dark:text-slate-400">{cad.author}</strong>
               </span>
 
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setInspectingModel(cad)}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-violet-500/10 hover:bg-violet-500/20 text-violet-400 border border-violet-500/30 text-xs font-semibold transition"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-violet-50 hover:bg-violet-100 dark:bg-violet-500/10 dark:hover:bg-violet-500/20 text-violet-700 dark:text-violet-400 border border-violet-200 dark:border-violet-500/30 text-xs font-semibold transition"
                 >
                   <Eye className="h-3.5 w-3.5" />
                   3D View Inspector
@@ -450,7 +450,7 @@ export default function CadViewerPage() {
                     setNotification(`Downloading CAD Model [${cad.modelCode}] ${cad.name}`);
                     setTimeout(() => setNotification(null), 3000);
                   }}
-                  className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                  className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition"
                   title="Download CAD file"
                 >
                   <Download className="h-3.5 w-3.5" />
@@ -463,21 +463,21 @@ export default function CadViewerPage() {
 
       {/* Modal: Interactive 3D CAD Inspector */}
       {inspectingModel && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-2xl max-w-4xl w-full p-6 space-y-4 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 dark:bg-black/80 p-4 backdrop-blur-md">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-2xl max-w-4xl w-full p-6 space-y-4 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2.5">
-                <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
+                <div className="h-8 w-8 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-600 dark:text-violet-400">
                   <Box className="h-4 w-4" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     {inspectingModel.name}
-                    <span className="text-xs font-mono text-violet-400 bg-violet-950/40 px-1.5 py-0.5 rounded border border-violet-500/20">
+                    <span className="text-xs font-mono text-violet-700 dark:text-violet-400 bg-violet-50 dark:bg-violet-950/40 px-1.5 py-0.5 rounded border border-violet-200 dark:border-violet-500/20">
                       {inspectingModel.modelCode}
                     </span>
                   </h3>
-                  <p className="text-[11px] text-slate-400">
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
                     File: {inspectingModel.fileFormat} • Version: {inspectingModel.version} • Material: {inspectingModel.materialSpec}
                   </p>
                 </div>
@@ -485,14 +485,14 @@ export default function CadViewerPage() {
 
               <button
                 onClick={() => setInspectingModel(null)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
 
             {/* Simulated 3D Viewport Area */}
-            <div className="relative h-80 rounded-xl bg-[#070a12] border border-slate-800 flex items-center justify-center overflow-hidden group">
+            <div className="relative h-80 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center overflow-hidden group">
               {/* Grid backdrop */}
               <div
                 className="absolute inset-0 opacity-20 pointer-events-none"
@@ -516,14 +516,14 @@ export default function CadViewerPage() {
                   <span className="text-xs font-mono font-bold text-slate-200">
                     Active Viewport Orientation: {viewportAngle}
                   </span>
-                  <p className="text-[10px] text-slate-500 mt-0.5">
+                  <p className="text-[10px] text-slate-400 mt-0.5">
                     Render Mode: <strong className="text-violet-400">{renderMode}</strong> • Coordinate System: WCS (World)
                   </p>
                 </div>
               </div>
 
               {/* Viewport Control Overlay */}
-              <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-[#0d1322]/90 border border-slate-800 p-1.5 rounded-lg backdrop-blur-sm text-xs">
+              <div className="absolute top-3 left-3 flex items-center gap-1.5 bg-slate-900/90 dark:bg-[#0d1322]/90 border border-slate-800 p-1.5 rounded-lg backdrop-blur-sm text-xs">
                 {(['ISO', 'FRONT', 'TOP', 'RIGHT'] as const).map((angle) => (
                   <button
                     key={angle}
@@ -539,7 +539,7 @@ export default function CadViewerPage() {
                 ))}
               </div>
 
-              <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-[#0d1322]/90 border border-slate-800 p-1.5 rounded-lg backdrop-blur-sm text-xs">
+              <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-slate-900/90 dark:bg-[#0d1322]/90 border border-slate-800 p-1.5 rounded-lg backdrop-blur-sm text-xs">
                 {(['SHADED', 'WIREFRAME', 'SECTION'] as const).map((mode) => (
                   <button
                     key={mode}
@@ -557,32 +557,32 @@ export default function CadViewerPage() {
             </div>
 
             {/* Metadata Matrix */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs bg-[#090d16] p-3 rounded-xl border border-slate-800">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs bg-slate-50 dark:bg-[#090d16] p-3 rounded-xl border border-slate-200 dark:border-slate-800">
               <div>
                 <span className="text-[10px] text-slate-500 uppercase font-medium">Alloy Material</span>
-                <span className="text-slate-200 font-semibold block">{inspectingModel.materialSpec}</span>
+                <span className="text-slate-800 dark:text-slate-200 font-semibold block">{inspectingModel.materialSpec}</span>
               </div>
               <div>
                 <span className="text-[10px] text-slate-500 uppercase font-medium">Mass (Weight)</span>
-                <span className="text-violet-400 font-mono font-bold block">{inspectingModel.massKg} kg</span>
+                <span className="text-violet-700 dark:text-violet-400 font-mono font-bold block">{inspectingModel.massKg} kg</span>
               </div>
               <div>
                 <span className="text-[10px] text-slate-500 uppercase font-medium">Volume</span>
-                <span className="text-slate-200 font-mono font-semibold block">
+                <span className="text-slate-800 dark:text-slate-200 font-mono font-semibold block">
                   {((inspectingModel.volumeMm3 || 0) / 1000).toFixed(0)} cm³
                 </span>
               </div>
               <div>
                 <span className="text-[10px] text-slate-500 uppercase font-medium">Status</span>
-                <span className="text-emerald-400 font-bold block">{inspectingModel.status}</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold block">{inspectingModel.status}</span>
               </div>
             </div>
 
-            <div className="flex justify-end gap-3 pt-2 border-t border-slate-800">
+            <div className="flex justify-end gap-3 pt-2 border-t border-slate-200 dark:border-slate-800">
               <button
                 type="button"
                 onClick={() => setInspectingModel(null)}
-                className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white text-xs"
+                className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs"
               >
                 Close Inspector
               </button>
@@ -604,45 +604,45 @@ export default function CadViewerPage() {
 
       {/* Modal: Register New CAD Model */}
       {showCreateModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <Boxes className="h-4 w-4 text-violet-400" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 dark:bg-black/75 p-4 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Boxes className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                 Register 3D CAD Assembly or Component
               </h3>
-              <button onClick={() => setShowCreateModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowCreateModal(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
 
             <form onSubmit={handleCreateCadModel} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">Model / Assembly Name *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Model / Assembly Name *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. 5-Axis Spindle Head Assembly"
                   value={createForm.name}
                   onChange={(e) => setCreateForm({ ...createForm, name: e.target.value })}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-violet-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-violet-500"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">Description</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Description</label>
                 <textarea
                   rows={2}
                   placeholder="Functional purpose, interface mating surfaces, tolerances..."
                   value={createForm.description}
                   onChange={(e) => setCreateForm({ ...createForm, description: e.target.value })}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-violet-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-violet-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Geometry Format *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Geometry Format *</label>
                   <select
                     value={createForm.fileFormat}
                     onChange={(e) =>
@@ -651,7 +651,7 @@ export default function CadViewerPage() {
                         fileFormat: e.target.value as CadFileFormat,
                       })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   >
                     <option value="STEP">STEP (.step/.stp)</option>
                     <option value="SLDPRT">SolidWorks (.sldprt)</option>
@@ -662,11 +662,11 @@ export default function CadViewerPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Category *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Category *</label>
                   <select
                     value={createForm.category}
                     onChange={(e) => setCreateForm({ ...createForm, category: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   >
                     <option value="PART">Fabricated Part</option>
                     <option value="SUB_ASSEMBLY">Sub-Assembly</option>
@@ -678,70 +678,70 @@ export default function CadViewerPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Material Alloy Spec *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Material Alloy Spec *</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Aluminum 7075-T6, SS316L"
                     value={createForm.materialSpec}
                     onChange={(e) => setCreateForm({ ...createForm, materialSpec: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Estimated Mass (kg)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Estimated Mass (kg)</label>
                   <input
                     type="number"
                     step="0.01"
                     min="0"
                     value={createForm.massKg}
                     onChange={(e) => setCreateForm({ ...createForm, massKg: Number(e.target.value) })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">CAD File Storage URL / Path *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">CAD File Storage URL / Path *</label>
                 <input
                   type="text"
                   required
                   placeholder="/cad/models/part-v1.step"
                   value={createForm.fileUrl}
                   onChange={(e) => setCreateForm({ ...createForm, fileUrl: e.target.value })}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-violet-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-violet-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Initial Revision</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Initial Revision</label>
                   <input
                     type="text"
                     value={createForm.version}
                     onChange={(e) => setCreateForm({ ...createForm, version: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Author / Designer</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Author / Designer</label>
                   <input
                     type="text"
                     required
                     value={createForm.author}
                     onChange={(e) => setCreateForm({ ...createForm, author: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 >
                   Cancel
                 </button>

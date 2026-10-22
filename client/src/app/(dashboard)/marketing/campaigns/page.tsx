@@ -274,29 +274,29 @@ export default function CampaignsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 p-6 space-y-6">
+    <div className="min-h-screen bg-slate-50/50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 p-6 space-y-6">
       {/* Header & Breadcrumb */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
         <div>
-          <div className="flex items-center gap-2 text-xs text-slate-400 mb-1">
-            <Link href="/marketing" className="hover:text-amber-400">
+          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <Link href="/marketing" className="hover:text-amber-600 dark:hover:text-amber-400">
               Marketing
             </Link>
             <ChevronRight className="h-3 w-3" />
-            <span className="text-slate-200">Campaigns & Lead Gen</span>
+            <span className="text-slate-800 dark:text-slate-200">Campaigns & Lead Gen</span>
           </div>
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shadow-lg shadow-amber-500/10">
+            <div className="h-10 w-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shadow-lg shadow-amber-500/10">
               <Target className="h-5 w-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
                 Demand Generation Campaigns
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-500/30">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
                   CRM Connected
                 </span>
               </h1>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Track ad reach, event stalls, engineering webinars, and feed qualified leads directly into CRM
               </p>
             </div>
@@ -307,9 +307,9 @@ export default function CampaignsPage() {
           <button
             onClick={fetchCampaigns}
             disabled={isRefreshing}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition shadow-sm"
           >
-            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-amber-400' : ''}`} />
+            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-amber-500' : ''}`} />
             Refresh
           </button>
           <button
@@ -324,38 +324,38 @@ export default function CampaignsPage() {
 
       {/* Success Notification Alert */}
       {notification && (
-        <div className="p-3.5 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 text-xs flex items-center justify-between animate-in fade-in">
+        <div className="p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-200 text-xs flex items-center justify-between animate-in fade-in shadow-sm">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+            <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
             <span>{notification}</span>
           </div>
-          <button onClick={() => setNotification(null)} className="text-emerald-400 hover:text-white">
+          <button onClick={() => setNotification(null)} className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-white">
             <X className="h-3.5 w-3.5" />
           </button>
         </div>
       )}
 
       {/* Filter & Search Bar */}
-      <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="relative w-full md:w-80">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-500" />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400 dark:text-slate-500" />
           <input
             type="text"
             placeholder="Search campaigns, code, channel..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-[#090d16] border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500/50"
+            className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500 transition"
           />
         </div>
 
         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400">
-            <Filter className="h-3.5 w-3.5 text-slate-500" />
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+            <Filter className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500" />
             <span>Channel Type:</span>
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="bg-[#090d16] border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500/50"
+              className="bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-amber-500"
             >
               <option value="ALL">All Types</option>
               <option value="DIGITAL_ADS">Digital Ads</option>
@@ -367,12 +367,12 @@ export default function CampaignsPage() {
             </select>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs text-slate-400">
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
             <span>Status:</span>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-[#090d16] border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-500/50"
+              className="bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-amber-500"
             >
               <option value="ALL">All Statuses</option>
               <option value="ACTIVE">Active</option>
@@ -389,84 +389,84 @@ export default function CampaignsPage() {
         {filteredCampaigns.map((camp) => (
           <div
             key={camp.id}
-            className="bg-[#0d1322] border border-slate-800 rounded-xl p-5 hover:border-amber-500/30 transition flex flex-col justify-between"
+            className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl p-5 hover:border-amber-500/40 dark:hover:border-amber-500/30 transition flex flex-col justify-between shadow-sm"
           >
             <div>
               {/* Header line */}
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xs font-mono font-bold text-amber-400 bg-amber-950/40 border border-amber-500/20 px-2 py-0.5 rounded">
+                    <span className="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-500/20 px-2 py-0.5 rounded">
                       {camp.campaignCode}
                     </span>
-                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                    <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                       {camp.type.replace(/_/g, ' ')}
                     </span>
                   </div>
-                  <h3 className="text-sm font-bold text-white">{camp.name}</h3>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">{camp.name}</h3>
                 </div>
 
                 <span
                   className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full shrink-0 ${
                     camp.status === 'ACTIVE'
-                      ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-500/30'
+                      ? 'bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30'
                       : camp.status === 'COMPLETED'
-                      ? 'bg-blue-950/60 text-blue-400 border border-blue-500/30'
-                      : 'bg-amber-950/60 text-amber-400 border border-amber-500/30'
+                      ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/30'
+                      : 'bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30'
                   }`}
                 >
                   {camp.status}
                 </span>
               </div>
 
-              <p className="text-xs text-slate-400 mb-3">{camp.description}</p>
+              <p className="text-xs text-slate-600 dark:text-slate-400 mb-3">{camp.description}</p>
 
               {/* Target & Channel */}
-              <div className="grid grid-cols-2 gap-2 text-xs mb-4 p-2.5 rounded-lg bg-[#090d16] border border-slate-800/80">
+              <div className="grid grid-cols-2 gap-2 text-xs mb-4 p-2.5 rounded-lg bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800/80">
                 <div>
-                  <span className="text-[10px] text-slate-500 block uppercase font-medium">Channel / Venue</span>
-                  <span className="text-slate-300 font-medium truncate block">{camp.channel}</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 block uppercase font-medium">Channel / Venue</span>
+                  <span className="text-slate-800 dark:text-slate-300 font-medium truncate block">{camp.channel}</span>
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-500 block uppercase font-medium">Target Audience</span>
-                  <span className="text-slate-300 font-medium truncate block">{camp.targetAudience}</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 block uppercase font-medium">Target Audience</span>
+                  <span className="text-slate-800 dark:text-slate-300 font-medium truncate block">{camp.targetAudience}</span>
                 </div>
               </div>
 
               {/* Metrics Matrix */}
               <div className="grid grid-cols-4 gap-2 mb-4 text-center">
-                <div className="p-2 rounded-lg bg-slate-900/80 border border-slate-800">
-                  <span className="text-[10px] text-slate-400 flex items-center justify-center gap-1">
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1">
                     <Eye className="h-3 w-3 text-slate-400" /> Impressions
                   </span>
-                  <span className="text-xs font-mono font-bold text-white block mt-0.5">
+                  <span className="text-xs font-mono font-bold text-slate-900 dark:text-white block mt-0.5">
                     {camp.impressions.toLocaleString()}
                   </span>
                 </div>
 
-                <div className="p-2 rounded-lg bg-slate-900/80 border border-slate-800">
-                  <span className="text-[10px] text-slate-400 flex items-center justify-center gap-1">
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center justify-center gap-1">
                     <MousePointerClick className="h-3 w-3 text-slate-400" /> Clicks
                   </span>
-                  <span className="text-xs font-mono font-bold text-white block mt-0.5">
+                  <span className="text-xs font-mono font-bold text-slate-900 dark:text-white block mt-0.5">
                     {camp.clicks.toLocaleString()}
                   </span>
                 </div>
 
-                <div className="p-2 rounded-lg bg-slate-900/80 border border-slate-800">
-                  <span className="text-[10px] text-amber-400 flex items-center justify-center gap-1 font-semibold">
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                  <span className="text-[10px] text-amber-700 dark:text-amber-400 flex items-center justify-center gap-1 font-semibold">
                     <Users className="h-3 w-3" /> CRM Leads
                   </span>
-                  <span className="text-xs font-mono font-bold text-amber-400 block mt-0.5">
+                  <span className="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 block mt-0.5">
                     {camp.leadsGenerated}
                   </span>
                 </div>
 
-                <div className="p-2 rounded-lg bg-slate-900/80 border border-slate-800">
-                  <span className="text-[10px] text-emerald-400 flex items-center justify-center gap-1 font-semibold">
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                  <span className="text-[10px] text-emerald-700 dark:text-emerald-400 flex items-center justify-center gap-1 font-semibold">
                     <DollarSign className="h-3 w-3" /> Pipeline Val
                   </span>
-                  <span className="text-xs font-mono font-bold text-emerald-400 block mt-0.5">
+                  <span className="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400 block mt-0.5">
                     ${(camp.pipelineValueGenerated / 1000).toFixed(0)}k
                   </span>
                 </div>
@@ -474,16 +474,16 @@ export default function CampaignsPage() {
 
               {/* Budget Progress Bar */}
               <div className="space-y-1 mb-4">
-                <div className="flex items-center justify-between text-xs text-slate-400">
+                <div className="flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
                   <span>
-                    Spent: <strong className="text-white">${camp.actualSpent.toLocaleString()}</strong> of $
+                    Spent: <strong className="text-slate-900 dark:text-white">${camp.actualSpent.toLocaleString()}</strong> of $
                     {camp.allocatedBudget.toLocaleString()}
                   </span>
-                  <span className="font-semibold text-amber-400">
+                  <span className="font-semibold text-amber-600 dark:text-amber-400">
                     {Math.round((camp.actualSpent / camp.allocatedBudget) * 100)}%
                   </span>
                 </div>
-                <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                <div className="h-1.5 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-gradient-to-r from-amber-500 to-amber-400 rounded-full"
                     style={{
@@ -495,9 +495,9 @@ export default function CampaignsPage() {
             </div>
 
             {/* Bottom Actions */}
-            <div className="flex items-center justify-between pt-3 border-t border-slate-800/80">
-              <span className="text-[11px] text-slate-400">
-                Lead Manager: <strong className="text-slate-300">{camp.leadManager}</strong>
+            <div className="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800/80">
+              <span className="text-[11px] text-slate-500 dark:text-slate-400">
+                Lead Manager: <strong className="text-slate-700 dark:text-slate-300">{camp.leadManager}</strong>
               </span>
 
               <div className="flex items-center gap-2">
@@ -506,14 +506,14 @@ export default function CampaignsPage() {
                     setSelectedCampaignForLead(camp);
                     setShowFeedModal(true);
                   }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-semibold transition"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 dark:bg-amber-500/10 hover:bg-amber-100 dark:hover:bg-amber-500/20 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30 text-xs font-semibold transition"
                 >
                   <UserPlus className="h-3.5 w-3.5" />
                   Feed Lead to CRM
                 </button>
                 <Link
                   href="/crm/leads"
-                  className="text-xs text-slate-400 hover:text-white px-2 py-1.5 rounded transition flex items-center gap-1"
+                  className="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white px-2 py-1.5 rounded transition flex items-center gap-1"
                 >
                   CRM Pipeline <ArrowRight className="h-3 w-3" />
                 </Link>
@@ -525,16 +525,16 @@ export default function CampaignsPage() {
 
       {/* Modal: Launch New Campaign */}
       {showCreateModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <Target className="h-4 w-4 text-amber-400" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 dark:bg-black/75 p-4 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Target className="h-4 w-4 text-amber-600 dark:text-amber-400" />
                 Launch New Demand Generation Campaign
               </h3>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -542,37 +542,37 @@ export default function CampaignsPage() {
 
             <form onSubmit={handleCreateCampaign} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">Campaign Title *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Campaign Title *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. IMTEX 2026 Machine Tool Expo, LinkedIn Aerospace Campaign"
                   value={createForm.name}
                   onChange={(e) => setCreateForm({ ...createForm, name: e.target.value })}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-amber-500"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">Objective & Description</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Objective & Description</label>
                 <textarea
                   rows={2}
                   placeholder="Key value proposition and targeted OEMs..."
                   value={createForm.description}
                   onChange={(e) => setCreateForm({ ...createForm, description: e.target.value })}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-amber-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Campaign Type *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Campaign Type *</label>
                   <select
                     value={createForm.type}
                     onChange={(e) =>
                       setCreateForm({ ...createForm, type: e.target.value as CampaignType })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   >
                     <option value="DIGITAL_ADS">Digital Ads (LinkedIn/Google)</option>
                     <option value="TRADE_SHOW">Trade Show / Expo Stall</option>
@@ -584,7 +584,7 @@ export default function CampaignsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Allocated Budget ($) *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Allocated Budget ($) *</label>
                   <input
                     type="number"
                     min={0}
@@ -593,82 +593,82 @@ export default function CampaignsPage() {
                     onChange={(e) =>
                       setCreateForm({ ...createForm, allocatedBudget: Number(e.target.value) })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">Channel / Venue Specifics *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Channel / Venue Specifics *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Bangalore BIEC Stall #42, LinkedIn InMail Western India"
                   value={createForm.channel}
                   onChange={(e) => setCreateForm({ ...createForm, channel: e.target.value })}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Target Audience *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Target Audience *</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Tier-1 Automotive Sourcing Heads"
                     value={createForm.targetAudience}
                     onChange={(e) => setCreateForm({ ...createForm, targetAudience: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Campaign Manager</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Campaign Manager</label>
                   <input
                     type="text"
                     required
                     value={createForm.leadManager}
                     onChange={(e) => setCreateForm({ ...createForm, leadManager: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Start Date *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Start Date *</label>
                   <input
                     type="date"
                     required
                     value={createForm.startDate}
                     onChange={(e) => setCreateForm({ ...createForm, startDate: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">End Date (Optional)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">End Date (Optional)</label>
                   <input
                     type="date"
                     value={createForm.endDate}
                     onChange={(e) => setCreateForm({ ...createForm, endDate: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-semibold"
+                  className="px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold shadow-md shadow-amber-600/20 transition"
                 >
                   Confirm & Launch
                 </button>
@@ -680,51 +680,51 @@ export default function CampaignsPage() {
 
       {/* Modal: Feed Lead directly to CRM Pipeline */}
       {showFeedModal && selectedCampaignForLead && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 dark:bg-black/75 p-4 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <UserPlus className="h-4 w-4 text-amber-400" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <UserPlus className="h-4 w-4 text-amber-600 dark:text-amber-400" />
                   Feed Qualified Lead to CRM Pipeline
                 </h3>
-                <p className="text-[11px] text-amber-400 font-mono mt-0.5">
+                <p className="text-[11px] text-amber-700 dark:text-amber-400 font-mono mt-0.5">
                   Attributed to: {selectedCampaignForLead.name} ({selectedCampaignForLead.campaignCode})
                 </p>
               </div>
-              <button onClick={() => setShowFeedModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowFeedModal(false)} className="text-slate-400 hover:text-slate-700 dark:hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
 
             <form onSubmit={handleFeedLeadToCrm} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">Requirement / Deal Title *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Requirement / Deal Title *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. 500 Sets Precision Machined Titanium Shafts"
                   value={feedForm.title}
                   onChange={(e) => setFeedForm({ ...feedForm, title: e.target.value })}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-amber-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Company Name *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Company Name *</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Bharat Heavy Aerospace Corp"
                     value={feedForm.companyName}
                     onChange={(e) => setFeedForm({ ...feedForm, companyName: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Estimated Deal Value ($) *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Estimated Deal Value ($) *</label>
                   <input
                     type="number"
                     required
@@ -733,55 +733,55 @@ export default function CampaignsPage() {
                     onChange={(e) =>
                       setFeedForm({ ...feedForm, estimatedValue: Number(e.target.value) })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Contact Person *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Contact Person *</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Rahul Sharma (Sourcing Mgr)"
                     value={feedForm.contactPerson}
                     onChange={(e) => setFeedForm({ ...feedForm, contactPerson: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Contact Email *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Contact Email *</label>
                   <input
                     type="email"
                     required
                     placeholder="e.g. r.sharma@bhacorp.in"
                     value={feedForm.email}
                     onChange={(e) => setFeedForm({ ...feedForm, email: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Contact Phone</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Contact Phone</label>
                   <input
                     type="text"
                     placeholder="+91 98765 43210"
                     value={feedForm.phone}
                     onChange={(e) => setFeedForm({ ...feedForm, phone: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Initial Priority</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Initial Priority</label>
                   <select
                     value={feedForm.priority}
                     onChange={(e) => setFeedForm({ ...feedForm, priority: e.target.value })}
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                   >
                     <option value="URGENT">Urgent (Hot Deal)</option>
                     <option value="HIGH">High Priority</option>
@@ -792,27 +792,27 @@ export default function CampaignsPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">Discussion Notes / Inquiry Context</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Discussion Notes / Inquiry Context</label>
                 <textarea
                   rows={2}
                   placeholder="Met at expo booth / interacted during Q&A session..."
                   value={feedForm.notes}
                   onChange={(e) => setFeedForm({ ...feedForm, notes: e.target.value })}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-amber-500"
                 />
               </div>
 
-              <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setShowFeedModal(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-semibold flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold flex items-center gap-1.5 shadow-md shadow-amber-600/20 transition"
                 >
                   <Sparkles className="h-3.5 w-3.5" />
                   Route into CRM Pipeline

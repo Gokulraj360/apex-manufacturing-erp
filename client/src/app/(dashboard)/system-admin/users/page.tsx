@@ -247,19 +247,19 @@ export default function UserAccountsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 text-xs text-slate-400 mb-1">
-            <Link href="/system-admin" className="hover:text-rose-400 flex items-center gap-1">
+          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <Link href="/system-admin" className="hover:text-rose-600 dark:hover:text-rose-400 flex items-center gap-1">
               <ArrowLeft className="h-3 w-3" />
               Infrastructure Command
             </Link>
             <span>/</span>
-            <span className="text-slate-200">User Access & Security</span>
+            <span className="text-slate-800 dark:text-slate-200">User Access & Security</span>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-            <Lock className="h-6 w-6 text-rose-400" />
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+            <Lock className="h-6 w-6 text-rose-600 dark:text-rose-400" />
             User Account Management & Granular RBAC Console
           </h1>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
             Manage system logins, enforce Multi-Factor Authentication (MFA), configure permission matrix, and revoke access instantly.
           </p>
         </div>
@@ -274,13 +274,13 @@ export default function UserAccountsPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-800 pb-2">
+      <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
         <button
           onClick={() => setActiveTab('USERS')}
           className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
             activeTab === 'USERS'
               ? 'bg-rose-600 text-white shadow-sm'
-              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/60'
           }`}
         >
           Active User Directory ({users.length})
@@ -291,7 +291,7 @@ export default function UserAccountsPage() {
           className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
             activeTab === 'MATRIX'
               ? 'bg-rose-600 text-white shadow-sm'
-              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/60'
           }`}
         >
           Granular Permission Matrix ({permissions.length})
@@ -301,29 +301,29 @@ export default function UserAccountsPage() {
       {/* Tab 1: Users Table */}
       {activeTab === 'USERS' && (
         <div className="space-y-4">
-          <div className="flex items-center justify-between gap-3 bg-[#0d1322] border border-slate-800 p-3 rounded-xl">
+          <div className="flex items-center justify-between gap-3 bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 p-3 rounded-xl shadow-sm">
             <div className="relative flex-1 sm:w-80">
-              <Search className="h-3.5 w-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+              <Search className="h-3.5 w-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500" />
               <input
                 type="text"
                 placeholder="Search user email, name, role..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-8 pr-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500 w-full"
+                className="pl-8 pr-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-rose-500 w-full transition"
               />
             </div>
 
-            <div className="text-xs text-slate-400 flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+            <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
               <span>Identity Provider: Local OAuth & JWT Synced</span>
             </div>
           </div>
 
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-slate-900/80 text-slate-400 border-b border-slate-800">
+                  <tr className="bg-slate-50 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">
                     <th className="py-3 px-3 font-semibold">User & Identity</th>
                     <th className="py-3 px-3 font-semibold">Assigned System Role</th>
                     <th className="py-3 px-3 font-semibold">MFA Security</th>
@@ -333,40 +333,40 @@ export default function UserAccountsPage() {
                     <th className="py-3 px-3 font-semibold text-right">Access Controls</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60 text-slate-300">
+                <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
                   {filteredUsers.map((u) => (
-                    <tr key={u.id} className="hover:bg-slate-800/20 transition-colors">
+                    <tr key={u.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/20 transition-colors">
                       <td className="py-3 px-3">
-                        <div className="font-bold text-white tracking-wide">
+                        <div className="font-bold text-slate-900 dark:text-white tracking-wide">
                           {u.firstName} {u.lastName}
                         </div>
-                        <div className="text-[10px] text-slate-400 font-mono">{u.email}</div>
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">{u.email}</div>
                       </td>
                       <td className="py-3 px-3 font-mono">
-                        <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-rose-300 font-bold text-[10px]">
+                        <span className="px-2 py-0.5 rounded bg-rose-50 dark:bg-slate-900 border border-rose-200 dark:border-slate-700 text-rose-700 dark:text-rose-300 font-bold text-[10px]">
                           {u.role?.name}
                         </span>
                       </td>
                       <td className="py-3 px-3">
                         {u.userAccount?.mfaEnabled ? (
-                          <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-medium">
+                          <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30 font-medium">
                             <ShieldCheck className="h-3 w-3" />
                             MFA Active
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                          <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-amber-50 dark:bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30">
                             MFA Disabled
                           </span>
                         )}
                       </td>
                       <td className="py-3 px-3">
                         {u.isActive && !u.userAccount?.isLocked ? (
-                          <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-medium">
-                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                          <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30 font-medium">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                             Active
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-red-500/15 text-red-300 border border-red-500/30 font-bold">
+                          <span className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-red-50 dark:bg-red-500/15 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-500/30 font-bold">
                             <ShieldAlert className="h-3 w-3" />
                             Revoked / Locked
                           </span>
@@ -374,28 +374,28 @@ export default function UserAccountsPage() {
                       </td>
                       <td className="py-3 px-3 font-mono text-[11px]">
                         <div>{u.userAccount?.lastLoginAt || 'Never'}</div>
-                        <div className="text-[10px] text-slate-500">IP: {u.userAccount?.lastLoginIp || '---'}</div>
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400">IP: {u.userAccount?.lastLoginIp || '---'}</div>
                       </td>
-                      <td className="py-3 px-3 font-mono text-slate-400">
+                      <td className="py-3 px-3 font-mono text-slate-600 dark:text-slate-400">
                         {u.userAccount?.sessionTimeoutMinutes} mins
                       </td>
                       <td className="py-3 px-3 text-right">
                         <div className="flex items-center justify-end gap-1.5">
                           <button
                             onClick={() => openResetModal(u)}
-                            className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-[11px] font-medium inline-flex items-center gap-1"
+                            className="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 text-[11px] font-medium inline-flex items-center gap-1 transition"
                             title="Reset Password"
                           >
-                            <Key className="h-3 w-3 text-slate-400" />
+                            <Key className="h-3 w-3 text-slate-500 dark:text-slate-400" />
                             Reset Key
                           </button>
 
                           <button
                             onClick={() => handleToggleLock(u.id)}
-                            className={`px-2.5 py-1 rounded text-[11px] font-medium border ${
+                            className={`px-2.5 py-1 rounded text-[11px] font-medium border transition ${
                               u.isActive && !u.userAccount?.isLocked
-                                ? 'bg-red-600/20 hover:bg-red-600/30 text-red-300 border-red-500/30'
-                                : 'bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border-emerald-500/30'
+                                ? 'bg-red-50 dark:bg-red-600/20 hover:bg-red-100 dark:hover:bg-red-600/30 text-red-700 dark:text-red-300 border-red-200 dark:border-red-500/30'
+                                : 'bg-emerald-50 dark:bg-emerald-600/20 hover:bg-emerald-100 dark:hover:bg-emerald-600/30 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-500/30'
                             }`}
                           >
                             {u.isActive && !u.userAccount?.isLocked ? 'Revoke Access' : 'Reactivate'}
@@ -413,16 +413,16 @@ export default function UserAccountsPage() {
 
       {/* Tab 2: Granular RBAC Matrix */}
       {activeTab === 'MATRIX' && (
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl overflow-hidden shadow-sm">
-          <div className="p-3 border-b border-slate-800 flex items-center justify-between text-xs">
-            <span className="font-semibold text-white">Granular System Capability & Resource Access Matrix</span>
-            <span className="text-slate-400">Enforced by RBACGuard Middleware</span>
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+          <div className="p-3 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
+            <span className="font-semibold text-slate-900 dark:text-white">Granular System Capability & Resource Access Matrix</span>
+            <span className="text-slate-500 dark:text-slate-400">Enforced by RBACGuard Middleware</span>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="bg-slate-900/80 text-slate-400 border-b border-slate-800">
+                <tr className="bg-slate-50 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">
                   <th className="py-3 px-3 font-semibold">System Role</th>
                   <th className="py-3 px-3 font-semibold">Target Domain Resource</th>
                   <th className="py-3 px-3 font-semibold">Action Capability</th>
@@ -431,19 +431,19 @@ export default function UserAccountsPage() {
                   <th className="py-3 px-3 font-semibold text-right">Toggle Policy</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
                 {permissions.map((perm) => (
-                  <tr key={perm.id} className="hover:bg-slate-800/20 transition-colors">
-                    <td className="py-3 px-3 font-mono font-bold text-white">{perm.roleName}</td>
-                    <td className="py-3 px-3 font-mono text-cyan-300">{perm.resource}</td>
-                    <td className="py-3 px-3 font-mono text-amber-300">{perm.action}</td>
-                    <td className="py-3 px-3 text-slate-400">{perm.scope}</td>
+                  <tr key={perm.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/20 transition-colors">
+                    <td className="py-3 px-3 font-mono font-bold text-slate-900 dark:text-white">{perm.roleName}</td>
+                    <td className="py-3 px-3 font-mono text-cyan-700 dark:text-cyan-300">{perm.resource}</td>
+                    <td className="py-3 px-3 font-mono text-amber-700 dark:text-amber-300">{perm.action}</td>
+                    <td className="py-3 px-3 text-slate-600 dark:text-slate-400">{perm.scope}</td>
                     <td className="py-3 px-3">
                       <span
                         className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold ${
                           perm.isAllowed
-                            ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
-                            : 'bg-red-500/15 text-red-300 border border-red-500/30'
+                            ? 'bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30'
+                            : 'bg-red-50 dark:bg-red-500/15 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-500/30'
                         }`}
                       >
                         {perm.isAllowed ? 'ALLOWED' : 'DENIED'}
@@ -452,7 +452,7 @@ export default function UserAccountsPage() {
                     <td className="py-3 px-3 text-right">
                       <button
                         onClick={() => handleTogglePermission(perm.id)}
-                        className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-[11px] font-medium"
+                        className="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 text-[11px] font-medium transition"
                       >
                         {perm.isAllowed ? 'Revoke Rule' : 'Grant Rule'}
                       </button>
@@ -467,16 +467,16 @@ export default function UserAccountsPage() {
 
       {/* Provision User Account Modal */}
       {isCreateModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
-          <div className="bg-[#0f172a] border border-slate-700 rounded-xl w-full max-w-lg p-5 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 dark:bg-black/70 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-700 rounded-xl w-full max-w-lg p-5 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
               <div className="flex items-center gap-2">
-                <Lock className="h-5 w-5 text-rose-400" />
-                <h3 className="text-base font-semibold text-white">Provision User Account & RBAC Role</h3>
+                <Lock className="h-5 w-5 text-rose-600 dark:text-rose-400" />
+                <h3 className="text-base font-semibold text-slate-900 dark:text-white">Provision User Account & RBAC Role</h3>
               </div>
               <button
                 onClick={() => setIsCreateModalOpen(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white p-1 rounded-lg"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -485,48 +485,48 @@ export default function UserAccountsPage() {
             <form onSubmit={handleCreateUser} className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">First Name *</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">First Name *</label>
                   <input
                     type="text"
                     required
                     placeholder="First name"
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-rose-500"
+                    className="w-full px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-rose-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">Last Name *</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Last Name *</label>
                   <input
                     type="text"
                     required
                     placeholder="Last name"
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-rose-500"
+                    className="w-full px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-rose-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">Corporate Email Address *</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Corporate Email Address *</label>
                 <input
                   type="email"
                   required
                   placeholder="user@apex-mfg.local"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-rose-500"
+                  className="w-full px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-rose-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">Assigned Role</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Assigned Role</label>
                   <select
                     value={formData.roleName}
                     onChange={(e) => setFormData({ ...formData, roleName: e.target.value })}
-                    className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-rose-500"
+                    className="w-full px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-rose-500"
                   >
                     <option value="SUPER_ADMIN">SUPER_ADMIN (Full Root)</option>
                     <option value="PRODUCTION_MANAGER">PRODUCTION_MANAGER</option>
@@ -539,44 +539,44 @@ export default function UserAccountsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">Temporary Password *</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Temporary Password *</label>
                   <input
                     type="password"
                     required
                     placeholder="Initial password"
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white focus:outline-none focus:border-rose-500"
+                    className="w-full px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-rose-500"
                   />
                 </div>
               </div>
 
-              <div className="flex items-center justify-between p-3 rounded-lg bg-slate-900 border border-slate-800">
+              <div className="flex items-center justify-between p-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                 <div className="flex items-center gap-2">
                   <input
                     type="checkbox"
                     id="chkMfa"
                     checked={formData.mfaEnabled}
                     onChange={(e) => setFormData({ ...formData, mfaEnabled: e.target.checked })}
-                    className="rounded border-slate-700 text-rose-600 focus:ring-0"
+                    className="rounded border-slate-300 dark:border-slate-700 text-rose-600 focus:ring-0"
                   />
-                  <label htmlFor="chkMfa" className="text-xs text-slate-200 cursor-pointer">
+                  <label htmlFor="chkMfa" className="text-xs text-slate-700 dark:text-slate-200 cursor-pointer">
                     Enforce Multi-Factor Authentication (MFA / Authenticator App)
                   </label>
                 </div>
               </div>
 
-              <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-800">
+              <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setIsCreateModalOpen(false)}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium"
+                  className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-medium shadow-md shadow-rose-600/30"
+                  className="px-4 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-medium shadow-md shadow-rose-600/30 transition"
                 >
                   Create & Issue Credentials
                 </button>
@@ -588,16 +588,16 @@ export default function UserAccountsPage() {
 
       {/* Reset Password Modal */}
       {isResetModalOpen && selectedUser && (
-        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
-          <div className="bg-[#0f172a] border border-slate-700 rounded-xl w-full max-w-md p-5 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 dark:bg-black/70 flex items-center justify-center p-4 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-700 rounded-xl w-full max-w-md p-5 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
               <div className="flex items-center gap-2">
-                <Key className="h-5 w-5 text-rose-400" />
-                <h3 className="text-base font-semibold text-white">Reset Password for {selectedUser.email}</h3>
+                <Key className="h-5 w-5 text-rose-600 dark:text-rose-400" />
+                <h3 className="text-base font-semibold text-slate-900 dark:text-white">Reset Password for {selectedUser.email}</h3>
               </div>
               <button
                 onClick={() => setIsResetModalOpen(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white p-1 rounded-lg"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -605,13 +605,13 @@ export default function UserAccountsPage() {
 
             <form onSubmit={handleResetPassword} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">New Temporary Password *</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">New Temporary Password *</label>
                 <input
                   type="text"
                   required
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  className="w-full px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white font-mono focus:outline-none focus:border-rose-500"
+                  className="w-full px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-xs text-slate-900 dark:text-white font-mono focus:outline-none focus:border-rose-500"
                 />
               </div>
 
@@ -621,24 +621,24 @@ export default function UserAccountsPage() {
                   id="chkForce"
                   checked={forceChange}
                   onChange={(e) => setForceChange(e.target.checked)}
-                  className="rounded border-slate-700 text-rose-600 focus:ring-0"
+                  className="rounded border-slate-300 dark:border-slate-700 text-rose-600 focus:ring-0"
                 />
-                <label htmlFor="chkForce" className="text-xs text-slate-300 cursor-pointer">
+                <label htmlFor="chkForce" className="text-xs text-slate-700 dark:text-slate-300 cursor-pointer">
                   Force password reset on first user login
                 </label>
               </div>
 
-              <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-800">
+              <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setIsResetModalOpen(false)}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium"
+                  className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-medium shadow-md shadow-rose-600/30"
+                  className="px-4 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white text-xs font-medium shadow-md shadow-rose-600/30 transition"
                 >
                   Apply Password Reset
                 </button>

@@ -393,15 +393,15 @@ export default function CRMQuotationsPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-pink-500/10 text-pink-400 border border-pink-500/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-pink-50 dark:bg-pink-500/10 text-pink-700 dark:text-pink-400 border border-pink-200 dark:border-pink-500/20">
               Commercial Estimations
             </span>
             <span className="text-xs text-slate-500">Shop Floor Cost-Basis Engine</span>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white mt-1">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
             Manufacturing Quotations & Cost Sheets
           </h1>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             Formulate price quotations derived from direct raw materials, machine hour rates, labor, factory overhead, and revision audits.
           </p>
         </div>
@@ -417,63 +417,63 @@ export default function CRMQuotationsPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-[#0d1322] border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between shadow-sm">
           <div>
-            <div className="text-xs text-slate-400">Total Quoted Portfolio</div>
-            <div className="text-2xl font-bold text-white mt-1">${totalValue.toLocaleString()}</div>
-            <div className="text-xs text-slate-400 mt-1">{quotations.length} total proposals</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400">Total Quoted Portfolio</div>
+            <div className="text-2xl font-bold text-slate-900 dark:text-white mt-1">${totalValue.toLocaleString()}</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">{quotations.length} total proposals</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
+          <div className="w-10 h-10 rounded-xl bg-pink-50 dark:bg-pink-500/10 border border-pink-200 dark:border-pink-500/20 flex items-center justify-center text-pink-600 dark:text-pink-400">
             <DollarSign className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between shadow-sm">
           <div>
-            <div className="text-xs text-slate-400">Client Accepted Revenue</div>
-            <div className="text-2xl font-bold text-emerald-400 mt-1">
+            <div className="text-xs text-slate-500 dark:text-slate-400">Client Accepted Revenue</div>
+            <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">
               ${acceptedValue.toLocaleString()}
             </div>
-            <div className="text-xs text-emerald-400/90 mt-1">Converted to production orders</div>
+            <div className="text-xs text-emerald-600 dark:text-emerald-400/90 mt-1">Converted to production orders</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+          <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
             <CheckCircle2 className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between shadow-sm">
           <div>
-            <div className="text-xs text-slate-400">Under Client Review</div>
-            <div className="text-2xl font-bold text-amber-400 mt-1">{transmittedCount}</div>
-            <div className="text-xs text-slate-400 mt-1">Transmitted to decision makers</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400">Under Client Review</div>
+            <div className="text-2xl font-bold text-amber-600 dark:text-amber-400 mt-1">{transmittedCount}</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">Transmitted to decision makers</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+          <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
             <Send className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between shadow-sm">
           <div>
-            <div className="text-xs text-slate-400">Average Profit Margin</div>
-            <div className="text-2xl font-bold text-cyan-400 mt-1">27.2%</div>
-            <div className="text-xs text-cyan-400/80 mt-1">Machine & overhead cushioned</div>
+            <div className="text-xs text-slate-500 dark:text-slate-400">Average Profit Margin</div>
+            <div className="text-2xl font-bold text-cyan-600 dark:text-cyan-400 mt-1">27.2%</div>
+            <div className="text-xs text-cyan-600 dark:text-cyan-400/80 mt-1">Machine & overhead cushioned</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+          <div className="w-10 h-10 rounded-xl bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-200 dark:border-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400">
             <Percent className="w-5 h-5" />
           </div>
         </div>
       </div>
 
       {/* Filter and Status Toolbar */}
-      <div className="bg-[#0d1322] border border-slate-800 p-4 rounded-xl flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 p-4 rounded-xl flex flex-col md:flex-row gap-4 items-center justify-between shadow-sm">
         <div className="relative w-full md:w-96">
-          <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-500" />
+          <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
           <input
             type="text"
             placeholder="Search quotation #, client, or component..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#090d16] border border-slate-800 rounded-xl pl-9 pr-4 py-2 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-pink-500/50"
+            className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-xl pl-9 pr-4 py-2 text-sm text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-pink-500/50"
           />
         </div>
 
@@ -492,7 +492,7 @@ export default function CRMQuotationsPage() {
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 statusFilter === tab.id
                   ? 'bg-pink-600 text-white shadow-sm'
-                  : 'bg-slate-800/60 text-slate-400 hover:text-slate-200 hover:bg-slate-800'
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800/60 dark:text-slate-400 dark:hover:text-slate-200 dark:hover:bg-slate-800'
               }`}
             >
               {tab.label}
@@ -502,11 +502,11 @@ export default function CRMQuotationsPage() {
       </div>
 
       {/* Quotations Table */}
-      <div className="bg-[#0d1322] border border-slate-800 rounded-xl overflow-hidden shadow-lg">
+      <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-slate-800 bg-[#090d16] text-[11px] text-slate-400 uppercase tracking-wider font-semibold">
+              <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#090d16] text-[11px] text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold">
                 <th className="p-3.5">Quotation # & Rev</th>
                 <th className="p-3.5">Client & Email</th>
                 <th className="p-3.5">Key Components</th>
@@ -516,39 +516,39 @@ export default function CRMQuotationsPage() {
                 <th className="p-3.5 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-xs">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-xs">
               {filteredQuotations.map((q) => {
                 const badgeColor =
                   q.status === 'ACCEPTED'
-                    ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+                    ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/30'
                     : q.status === 'TRANSMITTED_TO_CLIENT'
-                    ? 'bg-amber-500/10 text-amber-400 border-amber-500/30'
+                    ? 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/30'
                     : q.status === 'REVISED'
-                    ? 'bg-purple-500/10 text-purple-400 border-purple-500/30'
+                    ? 'bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-500/30'
                     : q.status === 'PENDING_INTERNAL_REVIEW'
-                    ? 'bg-blue-500/10 text-blue-400 border-blue-500/30'
-                    : 'bg-slate-700/30 text-slate-300 border-slate-700';
+                    ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-500/30'
+                    : 'bg-slate-100 dark:bg-slate-700/30 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700';
 
                 return (
-                  <tr key={q.id} className="hover:bg-slate-800/30 transition-colors">
+                  <tr key={q.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
                     <td className="p-3.5">
-                      <div className="font-mono font-bold text-white text-sm">{q.quotationNumber}</div>
+                      <div className="font-mono font-bold text-slate-900 dark:text-white text-sm">{q.quotationNumber}</div>
                       <div className="flex items-center gap-1.5 mt-0.5">
-                        <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded bg-pink-500/20 text-pink-300">
+                        <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded bg-pink-50 dark:bg-pink-500/20 text-pink-700 dark:text-pink-300">
                           Rev {q.revisionNumber}
                         </span>
-                        <span className="text-[10px] text-slate-400 font-mono">
+                        <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
                           Valid: {q.validUntilDate}
                         </span>
                       </div>
                     </td>
                     <td className="p-3.5">
-                      <div className="font-semibold text-white">{q.clientName}</div>
-                      <div className="text-slate-400 text-[11px] font-mono mt-0.5">{q.clientEmail}</div>
+                      <div className="font-semibold text-slate-900 dark:text-white">{q.clientName}</div>
+                      <div className="text-slate-500 dark:text-slate-400 text-[11px] font-mono mt-0.5">{q.clientEmail}</div>
                     </td>
                     <td className="p-3.5 max-w-xs">
                       {q.lineItems.map((li, idx) => (
-                        <div key={idx} className="line-clamp-1 text-slate-300 font-medium">
+                        <div key={idx} className="line-clamp-1 text-slate-700 dark:text-slate-300 font-medium">
                           {li.quantity} {li.uom} - {li.itemName}
                         </div>
                       ))}
@@ -557,7 +557,7 @@ export default function CRMQuotationsPage() {
                       </div>
                     </td>
                     <td className="p-3.5">
-                      <div className="font-mono font-bold text-base text-white">
+                      <div className="font-mono font-bold text-base text-slate-900 dark:text-white">
                         ${q.totalAmount.toLocaleString()}
                       </div>
                       <div className="text-[10px] text-slate-500 font-mono">
@@ -565,8 +565,8 @@ export default function CRMQuotationsPage() {
                       </div>
                     </td>
                     <td className="p-3.5">
-                      <div className="text-cyan-400 font-medium">{q.paymentTerms}</div>
-                      <div className="text-slate-400 text-[11px]">{q.incoterms}</div>
+                      <div className="text-cyan-700 dark:text-cyan-400 font-medium">{q.paymentTerms}</div>
+                      <div className="text-slate-500 dark:text-slate-400 text-[11px]">{q.incoterms}</div>
                     </td>
                     <td className="p-3.5">
                       <span className={`px-2.5 py-1 rounded-full text-[10px] font-semibold border ${badgeColor}`}>
@@ -576,7 +576,7 @@ export default function CRMQuotationsPage() {
                     <td className="p-3.5 text-right space-x-1.5">
                       <button
                         onClick={() => setSelectedQuotationForDetails(q)}
-                        className="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-medium transition-colors"
+                        className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300 rounded-lg text-xs font-medium transition-colors"
                         title="View Detailed Cost Sheet & Versions"
                       >
                         Cost Sheet
@@ -596,7 +596,7 @@ export default function CRMQuotationsPage() {
                         <>
                           <button
                             onClick={() => setSelectedQuotationForRevision(q)}
-                            className="px-2.5 py-1 bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 rounded-lg text-xs font-medium border border-purple-500/30 transition-colors"
+                            className="px-2.5 py-1 bg-purple-50 dark:bg-purple-500/20 hover:bg-purple-100 dark:hover:bg-purple-500/30 text-purple-700 dark:text-purple-300 rounded-lg text-xs font-medium border border-purple-200 dark:border-purple-500/30 transition-colors"
                             title="Create Revision"
                           >
                             Revise
@@ -614,7 +614,7 @@ export default function CRMQuotationsPage() {
                       {q.status === 'ACCEPTED' ? (
                         <Link
                           href="/crm/orders"
-                          className="inline-flex items-center gap-1 px-2.5 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 rounded-lg text-xs font-medium border border-emerald-500/30 transition-colors"
+                          className="inline-flex items-center gap-1 px-2.5 py-1 bg-emerald-50 dark:bg-emerald-500/20 hover:bg-emerald-100 dark:hover:bg-emerald-500/30 text-emerald-700 dark:text-emerald-300 rounded-lg text-xs font-medium border border-emerald-200 dark:border-emerald-500/30 transition-colors"
                         >
                           Convert to SO
                           <ArrowRight className="w-3 h-3" />
@@ -628,24 +628,23 @@ export default function CRMQuotationsPage() {
           </table>
         </div>
       </div>
-
       {/* MODAL 1: DRAFT NEW QUOTATION (WITH COST BASIS CALCULATOR) */}
       {showDraftModal && (
-        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-2xl max-w-3xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 bg-black/60 dark:bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-2xl max-w-3xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
               <div>
-                <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                  <Calculator className="w-5 h-5 text-pink-400" />
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <Calculator className="w-5 h-5 text-pink-500 dark:text-pink-400" />
                   Draft Manufacturing Quotation & Cost Sheet
                 </h3>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                   Calculate price quotes based on real machine rates, raw material, and target margins.
                 </p>
               </div>
               <button
                 onClick={() => setShowDraftModal(false)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-lg"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -653,47 +652,47 @@ export default function CRMQuotationsPage() {
 
             <form onSubmit={handleCreateQuotation} className="space-y-4 text-xs">
               {/* Client & Commercial Terms */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 bg-[#090d16] p-3.5 rounded-xl border border-slate-800/80">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 bg-slate-50 dark:bg-[#090d16] p-3.5 rounded-xl border border-slate-200 dark:border-slate-800/80">
                 <div className="space-y-1">
-                  <label className="text-slate-300 font-medium">Client / Company Name *</label>
+                  <label className="text-slate-700 dark:text-slate-300 font-medium">Client / Company Name *</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Bharat Forge Light Commercial"
                     value={draftForm.clientName}
                     onChange={(e) => setDraftForm({ ...draftForm, clientName: e.target.value })}
-                    className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-pink-500"
+                    className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-pink-500"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-slate-300 font-medium">Client Contact Email *</label>
+                  <label className="text-slate-700 dark:text-slate-300 font-medium">Client Contact Email *</label>
                   <input
                     type="email"
                     required
                     placeholder="sourcing@bharatforge.com"
                     value={draftForm.clientEmail}
                     onChange={(e) => setDraftForm({ ...draftForm, clientEmail: e.target.value })}
-                    className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-pink-500"
+                    className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-pink-500"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-slate-300 font-medium">Valid Until Date</label>
+                  <label className="text-slate-700 dark:text-slate-300 font-medium">Valid Until Date</label>
                   <input
                     type="date"
                     value={draftForm.validUntilDate}
                     onChange={(e) => setDraftForm({ ...draftForm, validUntilDate: e.target.value })}
-                    className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-pink-500"
+                    className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-pink-500"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-slate-300 font-medium">Payment Terms</label>
+                  <label className="text-slate-700 dark:text-slate-300 font-medium">Payment Terms</label>
                   <select
                     value={draftForm.paymentTerms}
                     onChange={(e) => setDraftForm({ ...draftForm, paymentTerms: e.target.value })}
-                    className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-pink-500"
+                    className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-pink-500"
                   >
                     <option value="NET_30">Net 30 Days</option>
                     <option value="NET_45">Net 45 Days</option>
@@ -703,70 +702,70 @@ export default function CRMQuotationsPage() {
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-slate-300 font-medium">Incoterms</label>
+                  <label className="text-slate-700 dark:text-slate-300 font-medium">Incoterms</label>
                   <input
                     type="text"
                     placeholder="e.g. FOB Mumbai Port / Ex-Works"
                     value={draftForm.incoterms}
                     onChange={(e) => setDraftForm({ ...draftForm, incoterms: e.target.value })}
-                    className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-pink-500"
+                    className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-pink-500"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-slate-300 font-medium">Engineering Drawing Ref</label>
+                  <label className="text-slate-700 dark:text-slate-300 font-medium">Engineering Drawing Ref</label>
                   <input
                     type="text"
                     placeholder="e.g. DWG-REV-2026-X"
                     value={draftForm.drawingRef}
                     onChange={(e) => setDraftForm({ ...draftForm, drawingRef: e.target.value })}
-                    className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-pink-500"
+                    className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-pink-500"
                   />
                 </div>
               </div>
 
               {/* Manufacturing Cost Basis Breakdown */}
-              <div className="bg-[#090d16] p-4 rounded-xl border border-pink-500/20 space-y-3">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-                  <span className="font-semibold text-pink-400 flex items-center gap-1.5 text-sm">
+              <div className="bg-slate-50 dark:bg-[#090d16] p-4 rounded-xl border border-pink-200 dark:border-pink-500/20 space-y-3">
+                <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
+                  <span className="font-semibold text-pink-600 dark:text-pink-400 flex items-center gap-1.5 text-sm">
                     <Layers className="w-4 h-4" />
                     Manufacturing Unit Cost Breakdown Engine
                   </span>
-                  <span className="text-[11px] text-slate-400">Currency: USD ($)</span>
+                  <span className="text-[11px] text-slate-500 dark:text-slate-400">Currency: USD ($)</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="text-slate-300">Item SKU & Code</label>
+                    <label className="text-slate-700 dark:text-slate-300">Item SKU & Code</label>
                     <input
                       type="text"
                       placeholder="e.g. FORGE-SHAFT-EN24"
                       value={draftForm.itemSku}
                       onChange={(e) => setDraftForm({ ...draftForm, itemSku: e.target.value })}
-                      className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-pink-500"
+                      className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-pink-500"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-slate-300">Component Specification / Description</label>
+                    <label className="text-slate-700 dark:text-slate-300">Component Specification / Description</label>
                     <input
                       type="text"
                       placeholder="e.g. High Tensile Forged Transmission Shaft"
                       value={draftForm.itemName}
                       onChange={(e) => setDraftForm({ ...draftForm, itemName: e.target.value })}
-                      className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 focus:outline-none focus:border-pink-500"
+                      className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-pink-500"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   <div className="space-y-1">
-                    <label className="text-slate-300">Order Quantity</label>
+                    <label className="text-slate-700 dark:text-slate-300">Order Quantity</label>
                     <input
                       type="number"
                       value={draftForm.qty}
                       onChange={(e) => setDraftForm({ ...draftForm, qty: Number(e.target.value) })}
-                      className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 font-mono"
+                      className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 font-mono"
                     />
                   </div>
 
@@ -783,93 +782,93 @@ export default function CRMQuotationsPage() {
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-slate-300">Machine Hours / Pc</label>
+                    <label className="text-slate-700 dark:text-slate-300">Machine Hours / Pc</label>
                     <input
                       type="number"
                       step="0.1"
                       value={draftForm.machineHours}
                       onChange={(e) => setDraftForm({ ...draftForm, machineHours: Number(e.target.value) })}
-                      className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 font-mono"
+                      className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 font-mono"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-slate-300">Machine Rate ($/hr)</label>
+                    <label className="text-slate-700 dark:text-slate-300">Machine Rate ($/hr)</label>
                     <input
                       type="number"
                       value={draftForm.machineHourRate}
                       onChange={(e) => setDraftForm({ ...draftForm, machineHourRate: Number(e.target.value) })}
-                      className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 font-mono"
+                      className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 font-mono"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-slate-300">Direct Labor ($/pc)</label>
+                    <label className="text-slate-700 dark:text-slate-300">Direct Labor ($/pc)</label>
                     <input
                       type="number"
                       value={draftForm.laborCost}
                       onChange={(e) => setDraftForm({ ...draftForm, laborCost: Number(e.target.value) })}
-                      className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 font-mono"
+                      className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 font-mono"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-slate-300">Plant Overhead ($/pc)</label>
+                    <label className="text-slate-700 dark:text-slate-300">Plant Overhead ($/pc)</label>
                     <input
                       type="number"
                       value={draftForm.overheadCost}
                       onChange={(e) => setDraftForm({ ...draftForm, overheadCost: Number(e.target.value) })}
-                      className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 font-mono"
+                      className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 font-mono"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-slate-300 font-semibold text-pink-400">Target Margin (%)</label>
+                    <label className="text-pink-600 dark:text-pink-400 font-semibold">Target Margin (%)</label>
                     <input
                       type="number"
                       value={draftForm.marginPct}
                       onChange={(e) => setDraftForm({ ...draftForm, marginPct: Number(e.target.value) })}
-                      className="w-full bg-[#0d1322] border border-pink-500/50 rounded-lg px-2.5 py-1.5 text-pink-300 font-bold font-mono"
+                      className="w-full bg-white dark:bg-[#0d1322] border border-pink-400 dark:border-pink-500/50 rounded-lg px-2.5 py-1.5 text-pink-600 dark:text-pink-300 font-bold font-mono"
                     />
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-slate-300">Discount ($)</label>
+                    <label className="text-slate-700 dark:text-slate-300">Discount ($)</label>
                     <input
                       type="number"
                       value={draftForm.discountAmount}
                       onChange={(e) => setDraftForm({ ...draftForm, discountAmount: Number(e.target.value) })}
-                      className="w-full bg-[#0d1322] border border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-200 font-mono"
+                      className="w-full bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-900 dark:text-slate-200 font-mono"
                     />
                   </div>
                 </div>
 
                 {/* Calculation Summary Preview */}
-                <div className="bg-[#0d1322] p-3 rounded-lg border border-slate-800 flex flex-wrap items-center justify-between text-xs font-mono">
+                <div className="bg-white dark:bg-[#0d1322] p-3 rounded-lg border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between text-xs font-mono shadow-2xs">
                   <div>
-                    <span className="text-slate-400">Mfg Cost/Unit: </span>
-                    <span className="text-slate-200 font-bold">${calculatedMfgCostPerUnit.toFixed(2)}</span>
+                    <span className="text-slate-500 dark:text-slate-400">Mfg Cost/Unit: </span>
+                    <span className="text-slate-900 dark:text-slate-200 font-bold">${calculatedMfgCostPerUnit.toFixed(2)}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400">Final Unit Price: </span>
-                    <span className="text-pink-400 font-bold">${calculatedUnitPrice.toFixed(2)}</span>
+                    <span className="text-slate-500 dark:text-slate-400">Final Unit Price: </span>
+                    <span className="text-pink-600 dark:text-pink-400 font-bold">${calculatedUnitPrice.toFixed(2)}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400">Subtotal: </span>
-                    <span className="text-white font-bold">${calculatedSubtotal.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
+                    <span className="text-slate-500 dark:text-slate-400">Subtotal: </span>
+                    <span className="text-slate-900 dark:text-white font-bold">${calculatedSubtotal.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
                   </div>
                   <div>
-                    <span className="text-slate-400">Total (Inc 18% Tax): </span>
-                    <span className="text-emerald-400 font-bold text-sm">${calculatedTotal.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
+                    <span className="text-slate-500 dark:text-slate-400">Total (Inc 18% Tax): </span>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">${calculatedTotal.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800">
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setShowDraftModal(false)}
-                  className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-medium"
+                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300 rounded-xl font-medium"
                 >
                   Cancel
                 </button>
@@ -887,25 +886,25 @@ export default function CRMQuotationsPage() {
 
       {/* MODAL 2: VIEW DETAILED COST SHEET & REVISIONS */}
       {selectedQuotationForDetails && (
-        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-2xl max-w-3xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 bg-black/60 dark:bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-2xl max-w-3xl w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-mono font-bold text-pink-400">
+                  <span className="text-sm font-mono font-bold text-pink-600 dark:text-pink-400">
                     {selectedQuotationForDetails.quotationNumber}
                   </span>
-                  <span className="text-xs px-2 py-0.5 rounded bg-pink-500/20 text-pink-300 font-semibold">
+                  <span className="text-xs px-2 py-0.5 rounded bg-pink-50 dark:bg-pink-500/20 text-pink-700 dark:text-pink-300 font-semibold border border-pink-200 dark:border-pink-500/30">
                     Rev {selectedQuotationForDetails.revisionNumber}
                   </span>
                 </div>
-                <h3 className="text-base font-bold text-white mt-0.5">
+                <h3 className="text-base font-bold text-slate-900 dark:text-white mt-0.5">
                   {selectedQuotationForDetails.clientName}
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedQuotationForDetails(null)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-lg"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -913,42 +912,42 @@ export default function CRMQuotationsPage() {
 
             {/* Cost Basis Items */}
             <div className="space-y-3">
-              <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                <Calculator className="w-3.5 h-3.5 text-pink-400" />
+              <h4 className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <Calculator className="w-3.5 h-3.5 text-pink-500 dark:text-pink-400" />
                 Manufacturing Cost Sheet Analysis
               </h4>
 
               {selectedQuotationForDetails.manufacturingCostBasis.map((cb, idx) => (
-                <div key={idx} className="bg-[#090d16] p-4 rounded-xl border border-slate-800 space-y-2 text-xs">
-                  <div className="flex items-center justify-between font-semibold text-white">
+                <div key={idx} className="bg-slate-50 dark:bg-[#090d16] p-4 rounded-xl border border-slate-200 dark:border-slate-800 space-y-2 text-xs">
+                  <div className="flex items-center justify-between font-semibold text-slate-900 dark:text-white">
                     <span>{cb.itemName}</span>
-                    <span className="font-mono text-pink-400">SKU: {cb.itemSku}</span>
+                    <span className="font-mono text-pink-600 dark:text-pink-400">SKU: {cb.itemSku}</span>
                   </div>
 
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-2 border-t border-slate-800/80 text-[11px]">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-2 pt-2 border-t border-slate-200 dark:border-slate-800/80 text-[11px]">
                     <div>
-                      <span className="text-slate-400">Raw Material:</span> ${cb.rawMaterialCost}
+                      <span className="text-slate-500 dark:text-slate-400">Raw Material:</span> ${cb.rawMaterialCost}
                     </div>
                     <div>
-                      <span className="text-slate-400">Machining ({cb.machineHours}h):</span> ${(cb.machineHours * 40).toFixed(0)}
+                      <span className="text-slate-500 dark:text-slate-400">Machining ({cb.machineHours}h):</span> ${(cb.machineHours * 40).toFixed(0)}
                     </div>
                     <div>
-                      <span className="text-slate-400">Direct Labor:</span> ${cb.laborCost}
+                      <span className="text-slate-500 dark:text-slate-400">Direct Labor:</span> ${cb.laborCost}
                     </div>
                     <div>
-                      <span className="text-slate-400">Overhead:</span> ${cb.overheadCost}
+                      <span className="text-slate-500 dark:text-slate-400">Overhead:</span> ${cb.overheadCost}
                     </div>
                     <div>
-                      <span className="text-slate-400">Target Margin:</span> {cb.marginPct}%
+                      <span className="text-slate-500 dark:text-slate-400">Target Margin:</span> {cb.marginPct}%
                     </div>
                     <div>
-                      <span className="text-slate-400">Unit Price:</span> ${cb.unitPrice}
+                      <span className="text-slate-500 dark:text-slate-400">Unit Price:</span> ${cb.unitPrice}
                     </div>
                     <div>
-                      <span className="text-slate-400">Qty:</span> {cb.qty} PCS
+                      <span className="text-slate-500 dark:text-slate-400">Qty:</span> {cb.qty} PCS
                     </div>
-                    <div className="font-bold text-emerald-400">
-                      <span className="text-slate-400">Line Total:</span> ${cb.lineTotal.toLocaleString()}
+                    <div className="font-bold text-emerald-600 dark:text-emerald-400">
+                      <span className="text-slate-500 dark:text-slate-400">Line Total:</span> ${cb.lineTotal.toLocaleString()}
                     </div>
                   </div>
                 </div>
@@ -956,21 +955,21 @@ export default function CRMQuotationsPage() {
             </div>
 
             {/* Revision History */}
-            <div className="space-y-2 pt-3 border-t border-slate-800">
-              <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
-                <History className="w-3.5 h-3.5 text-purple-400" />
+            <div className="space-y-2 pt-3 border-t border-slate-200 dark:border-slate-800">
+              <h4 className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+                <History className="w-3.5 h-3.5 text-purple-500 dark:text-purple-400" />
                 Audit Trail & Version Snapshots
               </h4>
 
               {selectedQuotationForDetails.revisionsHistory && selectedQuotationForDetails.revisionsHistory.length > 0 ? (
                 <div className="space-y-2">
                   {selectedQuotationForDetails.revisionsHistory.map((rev, idx) => (
-                    <div key={idx} className="bg-[#090d16] p-3 rounded-lg border border-slate-800/80 text-xs space-y-1">
-                      <div className="flex items-center justify-between text-[11px] text-slate-400 font-mono">
-                        <span className="font-bold text-purple-400">Snapshot Rev {rev.revisionNumber}</span>
+                    <div key={idx} className="bg-slate-50 dark:bg-[#090d16] p-3 rounded-lg border border-slate-200 dark:border-slate-800/80 text-xs space-y-1">
+                      <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 font-mono">
+                        <span className="font-bold text-purple-600 dark:text-purple-400">Snapshot Rev {rev.revisionNumber}</span>
                         <span>{rev.revisedAt} by {rev.revisedBy}</span>
                       </div>
-                      <p className="text-slate-300">{rev.reason}</p>
+                      <p className="text-slate-700 dark:text-slate-300">{rev.reason}</p>
                       <div className="text-[10px] text-slate-500 font-mono">
                         Prior Subtotal: ${rev.previousSubtotal.toLocaleString()} | Prior Total: ${rev.previousTotal.toLocaleString()}
                       </div>
@@ -984,10 +983,10 @@ export default function CRMQuotationsPage() {
               )}
             </div>
 
-            <div className="flex justify-end pt-3 border-t border-slate-800">
+            <div className="flex justify-end pt-3 border-t border-slate-200 dark:border-slate-800">
               <button
                 onClick={() => setSelectedQuotationForDetails(null)}
-                className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-xl text-xs font-medium"
+                className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-white rounded-xl text-xs font-medium"
               >
                 Close
               </button>
@@ -998,21 +997,21 @@ export default function CRMQuotationsPage() {
 
       {/* MODAL 3: REVISE QUOTATION */}
       {selectedQuotationForRevision && (
-        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 bg-black/60 dark:bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
               <div>
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <History className="w-4 h-4 text-purple-400" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <History className="w-4 h-4 text-purple-500 dark:text-purple-400" />
                   Initiate Revision for {selectedQuotationForRevision.quotationNumber}
                 </h3>
-                <p className="text-xs text-slate-400 mt-0.5">
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                   Creates Rev {selectedQuotationForRevision.revisionNumber + 1} and archives previous terms.
                 </p>
               </div>
               <button
                 onClick={() => setSelectedQuotationForRevision(null)}
-                className="text-slate-400 hover:text-white p-1 rounded-lg"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-lg"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -1020,22 +1019,22 @@ export default function CRMQuotationsPage() {
 
             <form onSubmit={handleExecuteRevision} className="space-y-4 text-xs">
               <div className="space-y-1">
-                <label className="text-slate-300 font-medium">Revision Justification / Client Feedback *</label>
+                <label className="text-slate-700 dark:text-slate-300 font-medium">Revision Justification / Client Feedback *</label>
                 <textarea
                   rows={4}
                   required
                   placeholder="e.g. Client requested 6% price concession against commitment to increase order batch from 500 to 1,000 units..."
                   value={revisionReason}
                   onChange={(e) => setRevisionReason(e.target.value)}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-xl p-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-pink-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 rounded-xl p-3 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-pink-500"
                 />
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-800">
+              <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setSelectedQuotationForRevision(null)}
-                  className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-medium"
+                  className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 dark:bg-slate-800 dark:hover:bg-slate-700 dark:text-slate-300 rounded-xl font-medium"
                 >
                   Cancel
                 </button>

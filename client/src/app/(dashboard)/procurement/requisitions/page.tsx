@@ -267,45 +267,45 @@ export default function RequisitionsQueuePage() {
   const getPriorityBadge = (p: RequisitionPriority) => {
     switch (p) {
       case 'CRITICAL':
-        return 'bg-rose-500/20 text-rose-300 border-rose-500/30';
+        return 'bg-rose-500/20 text-rose-700 dark:text-rose-300 border-rose-500/30';
       case 'HIGH':
-        return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
+        return 'bg-amber-500/20 text-amber-700 dark:text-amber-300 border-amber-500/30';
       case 'MEDIUM':
-        return 'bg-blue-500/20 text-blue-300 border-blue-500/30';
+        return 'bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30';
       case 'LOW':
-        return 'bg-slate-700/30 text-slate-400 border-slate-700/40';
+        return 'bg-slate-100 dark:bg-slate-700/30 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700/40';
     }
   };
 
   const getStatusBadge = (s: RequisitionStatus) => {
     switch (s) {
       case 'PENDING_APPROVAL':
-        return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+        return 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20';
       case 'APPROVED':
-        return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+        return 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20';
       case 'ORDERED':
-        return 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20';
+        return 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-indigo-500/20';
       case 'REJECTED':
-        return 'bg-rose-500/10 text-rose-400 border-rose-500/20';
+        return 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20';
       default:
-        return 'bg-slate-800 text-slate-400 border-slate-700';
+        return 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700';
     }
   };
 
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+            <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
               <FileSpreadsheet className="h-5 w-5" />
             </span>
-            <h1 className="text-xl font-bold text-white tracking-tight">
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
               Material Requisition Review Queue (PR to PO)
             </h1>
           </div>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Incoming internal purchase requisitions from shop floor machining, assembly lines, and warehouse safety stock buffers.
           </p>
         </div>
@@ -319,7 +319,7 @@ export default function RequisitionsQueuePage() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="p-4 rounded-xl bg-[#0d1322] border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+      <div className="p-4 rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-xs shadow-sm">
         <div className="relative w-full md:w-80">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
           <input
@@ -327,7 +327,7 @@ export default function RequisitionsQueuePage() {
             placeholder="Search PR #, requester, department, material..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+            className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg pl-9 pr-3 py-2 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-indigo-500"
           />
         </div>
 
@@ -335,7 +335,7 @@ export default function RequisitionsQueuePage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-800 text-slate-300 rounded-lg px-2.5 py-2 focus:outline-none focus:border-indigo-500 text-xs"
+            className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 rounded-lg px-2.5 py-2 focus:outline-none focus:border-indigo-500 text-xs"
           >
             <option value="ALL">All Statuses</option>
             <option value="PENDING_APPROVAL">Pending Review</option>
@@ -347,7 +347,7 @@ export default function RequisitionsQueuePage() {
           <select
             value={priorityFilter}
             onChange={(e) => setPriorityFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-800 text-slate-300 rounded-lg px-2.5 py-2 focus:outline-none focus:border-indigo-500 text-xs"
+            className="bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 rounded-lg px-2.5 py-2 focus:outline-none focus:border-indigo-500 text-xs"
           >
             <option value="ALL">All Priorities</option>
             <option value="CRITICAL">Critical (Line-Stopping)</option>
@@ -359,10 +359,10 @@ export default function RequisitionsQueuePage() {
       </div>
 
       {/* Requisitions Table */}
-      <div className="rounded-xl bg-[#0d1322] border border-slate-800 overflow-hidden shadow-sm">
+      <div className="rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+            <thead className="bg-slate-50 dark:bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
               <tr>
                 <th className="py-3 px-4">PR # & Priority</th>
                 <th className="py-3 px-4">Department & Requester</th>
@@ -373,11 +373,11 @@ export default function RequisitionsQueuePage() {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300 font-normal">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-600 dark:text-slate-300 font-normal">
               {filteredRequisitions.map((pr) => (
-                <tr key={pr.id} className="hover:bg-slate-800/40 transition-colors">
+                <tr key={pr.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
                   <td className="py-3.5 px-4">
-                    <div className="font-semibold text-white font-mono">{pr.requisitionNumber}</div>
+                    <div className="font-semibold text-slate-900 dark:text-white font-mono">{pr.requisitionNumber}</div>
                     <span
                       className={`inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] font-bold border ${getPriorityBadge(
                         pr.priority,
@@ -387,23 +387,23 @@ export default function RequisitionsQueuePage() {
                     </span>
                   </td>
                   <td className="py-3.5 px-4">
-                    <div className="font-medium text-white">{pr.department}</div>
-                    <div className="text-[11px] text-slate-400 mt-0.5">{pr.requestedBy}</div>
+                    <div className="font-medium text-slate-900 dark:text-white">{pr.department}</div>
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{pr.requestedBy}</div>
                   </td>
                   <td className="py-3.5 px-4 max-w-xs">
-                    <div className="font-medium text-slate-200 truncate">
+                    <div className="font-medium text-slate-800 dark:text-slate-200 truncate">
                       {pr.items[0]?.itemName}
                     </div>
-                    <div className="text-[11px] text-slate-400 mt-0.5">
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                       {pr.items[0]?.quantity} {pr.items[0]?.uom} @ ${pr.items[0]?.estimatedUnitPrice}
                       {pr.items.length > 1 && ` (+${pr.items.length - 1} more items)`}
                     </div>
                   </td>
                   <td className="py-3.5 px-4">
-                    <div className="font-medium text-white">{pr.requiredByDate}</div>
-                    <div className="text-[10px] text-slate-500">Raised: {pr.createdAt?.split('T')[0]}</div>
+                    <div className="font-medium text-slate-900 dark:text-white">{pr.requiredByDate}</div>
+                    <div className="text-[10px] text-slate-400 dark:text-slate-500">Raised: {pr.createdAt?.split('T')[0]}</div>
                   </td>
-                  <td className="py-3.5 px-4 font-bold text-white">
+                  <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white">
                     ${pr.totalEstimatedCost.toLocaleString()}
                   </td>
                   <td className="py-3.5 px-4">
@@ -423,7 +423,7 @@ export default function RequisitionsQueuePage() {
                             setSelectedPR(pr);
                             setIsReviewModalOpen(true);
                           }}
-                          className="px-2.5 py-1.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 text-[11px] font-semibold transition-all"
+                          className="px-2.5 py-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-600/20 dark:hover:bg-indigo-600/30 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-500/30 text-[11px] font-semibold transition-all"
                         >
                           Review PR
                         </button>
@@ -434,13 +434,13 @@ export default function RequisitionsQueuePage() {
                             setSelectedPR(pr);
                             setIsConvertModalOpen(true);
                           }}
-                          className="px-2.5 py-1.5 rounded-lg bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 text-[11px] font-semibold transition-all flex items-center gap-1"
+                          className="px-2.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-600/20 dark:hover:bg-emerald-600/30 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/30 text-[11px] font-semibold transition-all flex items-center gap-1"
                         >
                           <PackageCheck className="h-3.5 w-3.5" /> Convert to PO
                         </button>
                       )}
                       {pr.status === 'ORDERED' && (
-                        <span className="text-[11px] text-indigo-400 font-medium flex items-center gap-1">
+                        <span className="text-[11px] text-indigo-600 dark:text-indigo-400 font-medium flex items-center gap-1">
                           <CheckCircle2 className="h-3.5 w-3.5" /> PO Generated
                         </span>
                       )}
@@ -455,18 +455,18 @@ export default function RequisitionsQueuePage() {
 
       {/* Modal: Create Purchase Requisition */}
       {isCreateModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400">
+                <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
                   <FileSpreadsheet className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Raise Internal Purchase Requisition</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Raise Internal Purchase Requisition</h3>
               </div>
               <button
                 onClick={() => setIsCreateModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -475,22 +475,22 @@ export default function RequisitionsQueuePage() {
             <form onSubmit={handleCreatePR} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Requested By (Name & ID) *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Requested By (Name & ID) *</label>
                   <input
                     type="text"
                     required
                     value={newPR.requestedBy}
                     onChange={(e) => setNewPR({ ...newPR, requestedBy: e.target.value })}
                     placeholder="e.g. Amit Joshi (Shop Floor)"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Department / Division *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Department / Division *</label>
                   <select
                     value={newPR.department}
                     onChange={(e) => setNewPR({ ...newPR, department: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   >
                     <option value="CNC Machining Division">CNC Machining Division</option>
                     <option value="Tool & Die Maintenance">Tool & Die Maintenance</option>
@@ -503,23 +503,23 @@ export default function RequisitionsQueuePage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Required Need Date *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Required Need Date *</label>
                   <input
                     type="date"
                     required
                     value={newPR.requiredByDate}
                     onChange={(e) => setNewPR({ ...newPR, requiredByDate: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Priority Urgency *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Priority Urgency *</label>
                   <select
                     value={newPR.priority}
                     onChange={(e) =>
                       setNewPR({ ...newPR, priority: e.target.value as RequisitionPriority })
                     }
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   >
                     <option value="CRITICAL">Critical (Line-Stopping Risk)</option>
                     <option value="HIGH">High Priority</option>
@@ -531,78 +531,78 @@ export default function RequisitionsQueuePage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Material SKU *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Material SKU *</label>
                   <input
                     type="text"
                     required
                     value={newPR.itemSku}
                     onChange={(e) => setNewPR({ ...newPR, itemSku: e.target.value })}
                     placeholder="RAW-STL-316-BILLET"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500 font-mono"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Material Name *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Material Name *</label>
                   <input
                     type="text"
                     required
                     value={newPR.itemName}
                     onChange={(e) => setNewPR({ ...newPR, itemName: e.target.value })}
                     placeholder="SS 316 Square Billets 100mm"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Quantity *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Quantity *</label>
                   <input
                     type="number"
                     required
                     min={1}
                     value={newPR.quantity}
                     onChange={(e) => setNewPR({ ...newPR, quantity: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">UOM</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">UOM</label>
                   <input
                     type="text"
                     value={newPR.uom}
                     onChange={(e) => setNewPR({ ...newPR, uom: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Est. Unit Price ($)</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Est. Unit Price ($)</label>
                   <input
                     type="number"
                     value={newPR.estimatedUnitPrice}
                     onChange={(e) => setNewPR({ ...newPR, estimatedUnitPrice: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Business Justification *</label>
+                <label className="block text-slate-700 dark:text-slate-400 mb-1">Business Justification *</label>
                 <textarea
                   required
                   rows={2}
                   value={newPR.justification}
                   onChange={(e) => setNewPR({ ...newPR, justification: e.target.value })}
                   placeholder="Detail work order reference, production timeline, or safety buffer..."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsCreateModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 >
                   Cancel
                 </button>
@@ -620,39 +620,39 @@ export default function RequisitionsQueuePage() {
 
       {/* Modal: Review Requisition */}
       {isReviewModalOpen && selectedPR && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-md w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-400">
+                <span className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
                   <FileCheck className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Review Purchase Requisition</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Review Purchase Requisition</h3>
               </div>
               <button
                 onClick={() => setIsReviewModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs space-y-1">
-              <div className="font-semibold text-white font-mono">{selectedPR.requisitionNumber}</div>
-              <div className="text-slate-300">{selectedPR.department} - {selectedPR.requestedBy}</div>
-              <div className="text-slate-400">Est. Total: <strong className="text-emerald-400">${selectedPR.totalEstimatedCost.toLocaleString()}</strong></div>
-              <div className="text-slate-300 italic mt-1">"{selectedPR.justification}"</div>
+            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs space-y-1">
+              <div className="font-semibold text-slate-900 dark:text-white font-mono">{selectedPR.requisitionNumber}</div>
+              <div className="text-slate-700 dark:text-slate-300">{selectedPR.department} - {selectedPR.requestedBy}</div>
+              <div className="text-slate-500 dark:text-slate-400">Est. Total: <strong className="text-emerald-600 dark:text-emerald-400">${selectedPR.totalEstimatedCost.toLocaleString()}</strong></div>
+              <div className="text-slate-600 dark:text-slate-300 italic mt-1">"{selectedPR.justification}"</div>
             </div>
 
             <form onSubmit={handleReviewPR} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-400 mb-1">Approval Decision *</label>
+                <label className="block text-slate-700 dark:text-slate-400 mb-1">Approval Decision *</label>
                 <select
                   value={reviewForm.action}
                   onChange={(e) =>
                     setReviewForm({ ...reviewForm, action: e.target.value as 'APPROVED' | 'REJECTED' })
                   }
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 >
                   <option value="APPROVED">Approve Requisition (Authorize Sourcing)</option>
                   <option value="REJECTED">Reject Requisition</option>
@@ -660,35 +660,35 @@ export default function RequisitionsQueuePage() {
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Reviewing Authority *</label>
+                <label className="block text-slate-700 dark:text-slate-400 mb-1">Reviewing Authority *</label>
                 <input
                   type="text"
                   required
                   value={reviewForm.reviewedBy}
                   onChange={(e) => setReviewForm({ ...reviewForm, reviewedBy: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
               {reviewForm.action === 'REJECTED' && (
                 <div>
-                  <label className="block text-rose-400 mb-1">Rejection Reason *</label>
+                  <label className="block text-rose-600 dark:text-rose-400 mb-1">Rejection Reason *</label>
                   <textarea
                     required
                     rows={2}
                     value={reviewForm.rejectionReason}
                     onChange={(e) => setReviewForm({ ...reviewForm, rejectionReason: e.target.value })}
                     placeholder="Explain why requisition cannot be approved at this time..."
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-rose-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-rose-500"
                   />
                 </div>
               )}
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsReviewModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 >
                   Cancel
                 </button>
@@ -708,29 +708,29 @@ export default function RequisitionsQueuePage() {
 
       {/* Modal: Convert Approved PR to PO */}
       {isConvertModalOpen && selectedPR && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+                <span className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                   <PackageCheck className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Convert PR to Purchase Order</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Convert PR to Purchase Order</h3>
               </div>
               <button
                 onClick={() => setIsConvertModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs space-y-1">
-              <div className="font-semibold text-white font-mono">{selectedPR.requisitionNumber}</div>
-              <div className="text-slate-300">
+            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs space-y-1">
+              <div className="font-semibold text-slate-900 dark:text-white font-mono">{selectedPR.requisitionNumber}</div>
+              <div className="text-slate-700 dark:text-slate-300">
                 Item: {selectedPR.items[0]?.itemName} ({selectedPR.items[0]?.quantity} {selectedPR.items[0]?.uom})
               </div>
-              <div className="text-emerald-400 font-bold">
+              <div className="text-emerald-600 dark:text-emerald-400 font-bold">
                 PO Subtotal: ${selectedPR.totalEstimatedCost.toLocaleString()}
               </div>
             </div>
@@ -738,30 +738,30 @@ export default function RequisitionsQueuePage() {
             <form onSubmit={handleConvertPRToPO} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Approved Vendor *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Approved Vendor *</label>
                   <input
                     type="text"
                     required
                     value={convertForm.vendorName}
                     onChange={(e) => setConvertForm({ ...convertForm, vendorName: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Vendor Contact Email *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Vendor Contact Email *</label>
                   <input
                     type="email"
                     required
                     value={convertForm.vendorEmail}
                     onChange={(e) => setConvertForm({ ...convertForm, vendorEmail: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Promised Delivery Date *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Promised Delivery Date *</label>
                   <input
                     type="date"
                     required
@@ -769,35 +769,35 @@ export default function RequisitionsQueuePage() {
                     onChange={(e) =>
                       setConvertForm({ ...convertForm, promisedDeliveryDate: e.target.value })
                     }
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Payment Terms</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Payment Terms</label>
                   <input
                     type="text"
                     value={convertForm.paymentTerms}
                     onChange={(e) => setConvertForm({ ...convertForm, paymentTerms: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Factory Receiving Address</label>
+                <label className="block text-slate-700 dark:text-slate-400 mb-1">Factory Receiving Address</label>
                 <input
                   type="text"
                   value={convertForm.deliveryAddress}
                   onChange={(e) => setConvertForm({ ...convertForm, deliveryAddress: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsConvertModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 >
                   Cancel
                 </button>

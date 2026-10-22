@@ -243,29 +243,29 @@ export default function PrototypingPage() {
       : '2.65';
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 p-6 space-y-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 p-6 space-y-6">
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
         <div>
-          <div className="flex items-center gap-2 text-xs text-slate-400 mb-1">
-            <Link href="/design" className="hover:text-violet-400">
+          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <Link href="/design" className="hover:text-violet-600 dark:hover:text-violet-400">
               Design Engineering
             </Link>
             <ChevronRight className="h-3 w-3" />
-            <span className="text-slate-200">Prototype Testing Console</span>
+            <span className="text-slate-700 dark:text-slate-200 font-medium">Prototype Testing Console</span>
           </div>
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-violet-400 shadow-lg shadow-violet-500/10">
+            <div className="h-10 w-10 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-violet-600 dark:text-violet-400 shadow-lg shadow-violet-500/10">
               <Activity className="h-5 w-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
                 Prototype Stress Testing & FEA Validation
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-500/30">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30">
                   {passRate}% Pass Rate
                 </span>
               </h1>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Log mechanical load trials, thermal chamber runs, von Mises stress levels & yield safety factors
               </p>
             </div>
@@ -276,9 +276,9 @@ export default function PrototypingPage() {
           <button
             onClick={fetchTests}
             disabled={isRefreshing}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 shadow-sm transition"
           >
-            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-violet-400' : ''}`} />
+            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-violet-600 dark:text-violet-400' : ''}`} />
             Refresh
           </button>
           <button
@@ -293,12 +293,12 @@ export default function PrototypingPage() {
 
       {/* Success Notification Alert */}
       {notification && (
-        <div className="p-3.5 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 text-xs flex items-center justify-between animate-in fade-in">
+        <div className="p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-200 text-xs flex items-center justify-between animate-in fade-in">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+            <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
             <span>{notification}</span>
           </div>
-          <button onClick={() => setNotification(null)} className="text-emerald-400 hover:text-white">
+          <button onClick={() => setNotification(null)} className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-900 dark:hover:text-white">
             <X className="h-3.5 w-3.5" />
           </button>
         </div>
@@ -306,54 +306,54 @@ export default function PrototypingPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4">
-          <span className="text-xs text-slate-400 block font-medium">Total Test Trials</span>
-          <span className="text-xl font-black text-white mt-1 block">{tests.length} Runs</span>
-          <span className="text-[11px] text-slate-500">Physical & FEA simulation logs</span>
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 shadow-sm rounded-xl p-4">
+          <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">Total Test Trials</span>
+          <span className="text-xl font-black text-slate-900 dark:text-white mt-1 block">{tests.length} Runs</span>
+          <span className="text-[11px] text-slate-500 dark:text-slate-400">Physical & FEA simulation logs</span>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4">
-          <span className="text-xs text-emerald-400 block font-medium">Passed Validation</span>
-          <span className="text-xl font-black text-emerald-400 mt-1 block">{passedCount} Specimens</span>
-          <span className="text-[11px] text-slate-500">Met all yield deflection limits</span>
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 shadow-sm rounded-xl p-4">
+          <span className="text-xs text-emerald-600 dark:text-emerald-400 block font-medium">Passed Validation</span>
+          <span className="text-xl font-black text-emerald-600 dark:text-emerald-400 mt-1 block">{passedCount} Specimens</span>
+          <span className="text-[11px] text-slate-500 dark:text-slate-400">Met all yield deflection limits</span>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4">
-          <span className="text-xs text-violet-400 block font-medium">Avg Yield Safety Factor</span>
-          <span className="text-xl font-black text-violet-300 mt-1 block">{avgSafetyFactor} SF</span>
-          <span className="text-[11px] text-slate-500">Robust design margin &gt; 2.0</span>
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 shadow-sm rounded-xl p-4">
+          <span className="text-xs text-violet-600 dark:text-violet-400 block font-medium">Avg Yield Safety Factor</span>
+          <span className="text-xl font-black text-violet-700 dark:text-violet-300 mt-1 block">{avgSafetyFactor} SF</span>
+          <span className="text-[11px] text-slate-500 dark:text-slate-400">Robust design margin &gt; 2.0</span>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4">
-          <span className="text-xs text-amber-400 block font-medium">Iterations Required</span>
-          <span className="text-xl font-black text-amber-300 mt-1 block">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 shadow-sm rounded-xl p-4">
+          <span className="text-xs text-amber-600 dark:text-amber-400 block font-medium">Iterations Required</span>
+          <span className="text-xl font-black text-amber-700 dark:text-amber-300 mt-1 block">
             {tests.filter((t) => t.nextIterationRequired).length} Active
           </span>
-          <span className="text-[11px] text-slate-500">Scheduled for revision loop</span>
+          <span className="text-[11px] text-slate-500 dark:text-slate-400">Scheduled for revision loop</span>
         </div>
       </div>
 
       {/* Filter Toolbar */}
-      <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 shadow-sm rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="relative w-full md:w-80">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-500" />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400 dark:text-slate-500" />
           <input
             type="text"
             placeholder="Search test log, specimen serial, engineer..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-[#090d16] border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-violet-500/50"
+            className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-violet-500"
           />
         </div>
 
         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400">
-            <Filter className="h-3.5 w-3.5 text-slate-500" />
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+            <Filter className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500" />
             <span>Test Type:</span>
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="bg-[#090d16] border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-violet-500/50"
+              className="bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-violet-500"
             >
               <option value="ALL">All Types</option>
               <option value="STRESS_TEST">Mechanical Stress Test</option>
@@ -364,12 +364,12 @@ export default function PrototypingPage() {
             </select>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs text-slate-400">
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
             <span>Result:</span>
             <select
               value={resultFilter}
               onChange={(e) => setResultFilter(e.target.value)}
-              className="bg-[#090d16] border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-violet-500/50"
+              className="bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-violet-500"
             >
               <option value="ALL">All Outcomes</option>
               <option value="PASSED">Passed</option>
@@ -385,21 +385,21 @@ export default function PrototypingPage() {
         {filteredTests.map((test) => (
           <div
             key={test.id}
-            className="bg-[#0d1322] border border-slate-800 rounded-xl p-5 hover:border-violet-500/30 transition space-y-3"
+            className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 shadow-sm rounded-xl p-5 hover:border-violet-400 dark:hover:border-violet-500/30 transition space-y-3"
           >
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div className="flex items-center gap-2.5">
-                <span className="text-xs font-mono font-bold text-violet-400 bg-violet-950/40 border border-violet-500/20 px-2 py-0.5 rounded">
+                <span className="text-xs font-mono font-bold text-violet-700 dark:text-violet-400 bg-violet-50 dark:bg-violet-950/40 border border-violet-200 dark:border-violet-500/20 px-2 py-0.5 rounded">
                   {test.testLogNumber}
                 </span>
-                <span className="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-bold">
+                <span className="text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-2 py-0.5 rounded font-bold">
                   {test.prototypeSerial}
                 </span>
-                <span className="text-xs font-bold text-white">
+                <span className="text-xs font-bold text-slate-900 dark:text-white">
                   {test.cadModel?.name || 'Specimen Part'}
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300 font-medium">
+                <span className="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-medium">
                   {test.testType.replace(/_/g, ' ')}
                 </span>
               </div>
@@ -408,10 +408,10 @@ export default function PrototypingPage() {
                 <span
                   className={`text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full flex items-center gap-1 ${
                     test.result === 'PASSED'
-                      ? 'bg-emerald-950 text-emerald-300 border border-emerald-500/40'
+                      ? 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/40'
                       : test.result === 'CONDITIONAL_PASS'
-                      ? 'bg-amber-950 text-amber-300 border border-amber-500/40'
-                      : 'bg-rose-950 text-rose-300 border border-rose-500/40'
+                      ? 'bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-500/40'
+                      : 'bg-rose-50 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/40'
                   }`}
                 >
                   <Check className="h-3 w-3" /> {test.result}
@@ -419,47 +419,47 @@ export default function PrototypingPage() {
               </div>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed">{test.observedOutcome}</p>
+            <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">{test.observedOutcome}</p>
 
             {/* Parameters Matrix */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-3 rounded-lg bg-[#090d16] border border-slate-800/80 text-xs font-mono">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-3 rounded-lg bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800/80 text-xs font-mono">
               <div>
-                <span className="text-[10px] text-slate-500 uppercase font-sans font-medium block">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-sans font-medium block">
                   Applied Load
                 </span>
-                <span className="text-white font-bold">{test.testParameters.appliedLoadKn || '—'} kN</span>
+                <span className="text-slate-900 dark:text-white font-bold">{test.testParameters.appliedLoadKn || '—'} kN</span>
               </div>
 
               <div>
-                <span className="text-[10px] text-slate-500 uppercase font-sans font-medium block">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-sans font-medium block">
                   Peak von Mises Stress
                 </span>
-                <span className="text-violet-300 font-bold">{test.testParameters.maxStressMpa || '—'} MPa</span>
+                <span className="text-violet-700 dark:text-violet-300 font-bold">{test.testParameters.maxStressMpa || '—'} MPa</span>
               </div>
 
               <div>
-                <span className="text-[10px] text-slate-500 uppercase font-sans font-medium block">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-sans font-medium block">
                   Max Elastic Deflection
                 </span>
-                <span className="text-white font-bold">{test.maxDeformationMm || 0} mm</span>
+                <span className="text-slate-900 dark:text-white font-bold">{test.maxDeformationMm || 0} mm</span>
               </div>
 
               <div>
-                <span className="text-[10px] text-slate-500 uppercase font-sans font-medium block">
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-sans font-medium block">
                   Yield Safety Factor
                 </span>
-                <span className="text-emerald-400 font-bold text-sm">
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold text-sm">
                   {test.yieldSafetyFactor} SF
                 </span>
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-2 border-t border-slate-800/60 text-[11px] text-slate-500">
+            <div className="flex items-center justify-between pt-2 border-t border-slate-200 dark:border-slate-800/60 text-[11px] text-slate-500 dark:text-slate-400">
               <span>
-                Test Engineer: <strong className="text-slate-400">{test.engineerInCharge}</strong>
+                Test Engineer: <strong className="text-slate-700 dark:text-slate-300 font-semibold">{test.engineerInCharge}</strong>
               </span>
               <span>
-                Conducted: <strong className="text-slate-400">{new Date(test.testedAt).toLocaleDateString()}</strong>
+                Conducted: <strong className="text-slate-700 dark:text-slate-300 font-semibold">{new Date(test.testedAt).toLocaleDateString()}</strong>
               </span>
             </div>
           </div>
@@ -468,14 +468,14 @@ export default function PrototypingPage() {
 
       {/* Modal: Log New Prototype Test */}
       {showLogModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <Activity className="h-4 w-4 text-violet-400" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 dark:bg-black/75 p-4 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Activity className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                 Log Physical Test Outcome or FEA Simulation
               </h3>
-              <button onClick={() => setShowLogModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowLogModal(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -483,7 +483,7 @@ export default function PrototypingPage() {
             <form onSubmit={handleCreateTest} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Prototype Serial / Batch *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Prototype Serial / Batch *</label>
                   <input
                     type="text"
                     required
@@ -492,12 +492,12 @@ export default function PrototypingPage() {
                     onChange={(e) =>
                       setTestForm({ ...testForm, prototypeSerial: e.target.value })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white font-mono placeholder-slate-600 focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white font-mono placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-violet-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Test Type *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Test Type *</label>
                   <select
                     value={testForm.testType}
                     onChange={(e) =>
@@ -506,7 +506,7 @@ export default function PrototypingPage() {
                         testType: e.target.value as PrototypeTestType,
                       })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   >
                     <option value="STRESS_TEST">Mechanical Stress Load</option>
                     <option value="TORQUE_LOAD_TEST">Torque Load Trial</option>
@@ -519,7 +519,7 @@ export default function PrototypingPage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Applied Load (kN)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Applied Load (kN)</label>
                   <input
                     type="number"
                     step="0.1"
@@ -527,12 +527,12 @@ export default function PrototypingPage() {
                     onChange={(e) =>
                       setTestForm({ ...testForm, appliedLoadKn: Number(e.target.value) })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Max Stress (MPa)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Max Stress (MPa)</label>
                   <input
                     type="number"
                     step="0.1"
@@ -540,12 +540,12 @@ export default function PrototypingPage() {
                     onChange={(e) =>
                       setTestForm({ ...testForm, maxStressMpa: Number(e.target.value) })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Yield Safety Factor</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Yield Safety Factor</label>
                   <input
                     type="number"
                     step="0.05"
@@ -556,13 +556,13 @@ export default function PrototypingPage() {
                         yieldSafetyFactor: Number(e.target.value),
                       })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">Max Elastic Deflection (mm)</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Max Elastic Deflection (mm)</label>
                 <input
                   type="number"
                   step="0.001"
@@ -573,12 +573,12 @@ export default function PrototypingPage() {
                       maxDeformationMm: Number(e.target.value),
                     })
                   }
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">Test Outcome & Observations *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Test Outcome & Observations *</label>
                 <textarea
                   rows={2}
                   required
@@ -587,13 +587,13 @@ export default function PrototypingPage() {
                   onChange={(e) =>
                     setTestForm({ ...testForm, observedOutcome: e.target.value })
                   }
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-violet-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-violet-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Result Classification *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Result Classification *</label>
                   <select
                     value={testForm.result}
                     onChange={(e) =>
@@ -602,7 +602,7 @@ export default function PrototypingPage() {
                         result: e.target.value as PrototypeTestResult,
                       })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   >
                     <option value="PASSED">Passed (Approved)</option>
                     <option value="CONDITIONAL_PASS">Conditional Pass</option>
@@ -611,7 +611,7 @@ export default function PrototypingPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Engineer in Charge</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Engineer in Charge</label>
                   <input
                     type="text"
                     required
@@ -619,22 +619,22 @@ export default function PrototypingPage() {
                     onChange={(e) =>
                       setTestForm({ ...testForm, engineerInCharge: e.target.value })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setShowLogModal(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-semibold"
+                  className="px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-semibold transition"
                 >
                   Save Test Log
                 </button>

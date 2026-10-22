@@ -208,17 +208,17 @@ export default function BackupManagementPage() {
           <div className="flex items-center gap-2">
             <Link
               href="/system-admin"
-              className="text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1 transition-colors"
+              className="text-xs text-rose-600 dark:text-rose-400 hover:text-rose-700 dark:hover:text-rose-300 flex items-center gap-1 transition-colors"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               Infrastructure Hub
             </Link>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5 mt-1">
-            <Database className="h-6 w-6 text-rose-400" />
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5 mt-1">
+            <Database className="h-6 w-6 text-rose-600 dark:text-rose-400" />
             Automated Backup Vault & Disaster Recovery
           </h1>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
             Zero-data-loss PostgreSQL replication snapshots, SHA-256 integrity verification, multi-cloud cold vaults, and sandbox recovery testing.
           </p>
         </div>
@@ -236,86 +236,86 @@ export default function BackupManagementPage() {
 
       {/* KPI & Storage Metrics */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Vault Storage Usage</span>
-            <div className="h-8 w-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
-              <HardDrive className="h-4 w-4 text-rose-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Vault Storage Usage</span>
+            <div className="h-8 w-8 rounded-lg bg-rose-50 dark:bg-rose-500/10 flex items-center justify-center">
+              <HardDrive className="h-4 w-4 text-rose-600 dark:text-rose-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white font-mono">84.6 GB</span>
-            <span className="text-xs text-slate-400">/ 500 GB Quota</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white font-mono">84.6 GB</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">/ 500 GB Quota</span>
           </div>
-          <div className="w-full bg-slate-800 h-1.5 rounded-full mt-3 overflow-hidden">
+          <div className="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full mt-3 overflow-hidden">
             <div className="bg-rose-500 h-full rounded-full" style={{ width: '16.9%' }}></div>
           </div>
-          <div className="mt-2 flex items-center justify-between text-[11px] text-slate-400">
+          <div className="mt-2 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
             <span>16.9% Allocated</span>
-            <span className="text-emerald-400">Healthy Headroom</span>
+            <span className="text-emerald-600 dark:text-emerald-400 font-medium">Healthy Headroom</span>
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Last Full Backup</span>
-            <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-              <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Last Full Backup</span>
+            <div className="h-8 w-8 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center">
+              <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
             </div>
           </div>
           <div className="mt-3">
-            <span className="text-xl font-bold text-white">Today 03:00 UTC</span>
+            <span className="text-xl font-bold text-slate-900 dark:text-white">Today 03:00 UTC</span>
           </div>
-          <div className="mt-2 flex items-center gap-1.5 text-xs text-emerald-400 font-mono">
+          <div className="mt-2 flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-mono">
             <ShieldCheck className="h-3.5 w-3.5" />
             SHA-256 Verified (14.08 GB)
           </div>
-          <div className="text-[11px] text-slate-400 mt-1">Duration: 2m 22s</div>
+          <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Duration: 2m 22s</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">RPO & RTO SLA</span>
-            <div className="h-8 w-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-              <Clock className="h-4 w-4 text-indigo-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">RPO & RTO SLA</span>
+            <div className="h-8 w-8 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center">
+              <Clock className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-xl font-bold text-white font-mono">&lt; 15 min RPO</span>
+            <span className="text-xl font-bold text-slate-900 dark:text-white font-mono">&lt; 15 min RPO</span>
           </div>
-          <div className="mt-2 flex items-center gap-1.5 text-xs text-indigo-300">
+          <div className="mt-2 flex items-center gap-1.5 text-xs text-indigo-600 dark:text-indigo-300">
             <span>Target RTO: 8 Minutes</span>
           </div>
-          <div className="text-[11px] text-slate-400 mt-1">Continuous WAL archiving active</div>
+          <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Continuous WAL archiving active</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Retention Policy</span>
-            <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-              <Archive className="h-4 w-4 text-amber-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Retention Policy</span>
+            <div className="h-8 w-8 rounded-lg bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center">
+              <Archive className="h-4 w-4 text-amber-600 dark:text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-xl font-bold text-white">30 Days Hot S3</span>
+            <span className="text-xl font-bold text-slate-900 dark:text-white">30 Days Hot S3</span>
           </div>
-          <div className="mt-2 flex items-center gap-1 text-xs text-amber-300">
+          <div className="mt-2 flex items-center gap-1 text-xs text-amber-600 dark:text-amber-300">
             <span>365 Days Glacier Cold Vault</span>
           </div>
-          <div className="text-[11px] text-slate-400 mt-1">Zero-touch auto pruning enabled</div>
+          <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">Zero-touch auto pruning enabled</div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 dark:text-slate-500" />
           <input
             type="text"
             placeholder="Search by Backup ID, S3 bucket path, or initiator..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 bg-[#0b0f19] border border-slate-700 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500 transition-colors"
+            className="w-full pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-700 rounded-lg text-xs text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-rose-500 transition-colors"
           />
         </div>
 
@@ -324,7 +324,7 @@ export default function BackupManagementPage() {
           <select
             value={typeFilter}
             onChange={(e) => setTypeFilter(e.target.value)}
-            className="bg-[#0b0f19] border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-rose-500"
+            className="bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-rose-500"
           >
             <option value="ALL">All Snapshot Types</option>
             <option value="FULL_DATABASE">Full Database</option>
@@ -336,7 +336,7 @@ export default function BackupManagementPage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-[#0b0f19] border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-rose-500"
+            className="bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-rose-500"
           >
             <option value="ALL">All Statuses</option>
             <option value="VERIFIED">Verified Checksum</option>
@@ -348,22 +348,22 @@ export default function BackupManagementPage() {
       </div>
 
       {/* Snapshot Log Table */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-slate-800 flex items-center justify-between">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
+        <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Archive className="h-4 w-4 text-rose-400" />
-            <h2 className="text-sm font-semibold text-white">Immutable Backup Logs & Archives</h2>
+            <Archive className="h-4 w-4 text-rose-600 dark:text-rose-400" />
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Immutable Backup Logs & Archives</h2>
             <span className="text-xs text-slate-500 font-mono">({filteredBackups.length} snapshots)</span>
           </div>
-          <div className="text-xs text-slate-400 flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <div className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
             Automated Replication Daemon: Idle
           </div>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+            <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
               <tr>
                 <th className="py-3 px-4">Backup ID & Type</th>
                 <th className="py-3 px-4">Storage Destination</th>
@@ -374,21 +374,21 @@ export default function BackupManagementPage() {
                 <th className="py-3 px-4 text-right">Disaster Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
               {filteredBackups.map((bk) => (
-                <tr key={bk.id} className="hover:bg-slate-800/30 transition-colors">
+                <tr key={bk.id} className="hover:bg-slate-50/80 dark:hover:bg-slate-800/30 transition-colors">
                   <td className="py-3 px-4 font-mono">
-                    <div className="font-semibold text-white flex items-center gap-1.5">
-                      <Database className="h-3.5 w-3.5 text-rose-400" />
+                    <div className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+                      <Database className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
                       {bk.backupId}
                     </div>
                     <span
                       className={`inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-semibold ${
                         bk.backupType === 'FULL_DATABASE'
-                          ? 'bg-purple-950/70 text-purple-300 border border-purple-500/30'
+                          ? 'bg-purple-50 dark:bg-purple-950/70 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/30'
                           : bk.backupType === 'DISASTER_RECOVERY_SNAPSHOT'
-                          ? 'bg-rose-950/70 text-rose-300 border border-rose-500/30'
-                          : 'bg-blue-950/70 text-blue-300 border border-blue-500/30'
+                          ? 'bg-rose-50 dark:bg-rose-950/70 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/30'
+                          : 'bg-blue-50 dark:bg-blue-950/70 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30'
                       }`}
                     >
                       {bk.backupType.replace('_', ' ')}
@@ -396,19 +396,19 @@ export default function BackupManagementPage() {
                   </td>
 
                   <td className="py-3 px-4 max-w-xs">
-                    <span className="font-mono text-slate-300 truncate block text-[11px]" title={bk.storageDestination}>
+                    <span className="font-mono text-slate-700 dark:text-slate-300 truncate block text-[11px]" title={bk.storageDestination}>
                       {bk.storageDestination}
                     </span>
                   </td>
 
                   <td className="py-3 px-4">
-                    <div className="font-mono font-medium text-white">{bk.fileSizeMb} MB</div>
-                    <div className="text-[11px] text-slate-400">{bk.durationSeconds}s elapsed</div>
+                    <div className="font-mono font-medium text-slate-900 dark:text-white">{bk.fileSizeMb} MB</div>
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400">{bk.durationSeconds}s elapsed</div>
                   </td>
 
                   <td className="py-3 px-4">
                     <div
-                      className="font-mono text-[11px] text-slate-400 truncate max-w-[140px] bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800"
+                      className="font-mono text-[11px] text-slate-600 dark:text-slate-400 truncate max-w-[140px] bg-slate-100 dark:bg-slate-900 px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-800"
                       title={bk.checksumSha256}
                     >
                       {bk.checksumSha256?.substring(0, 16)}...
@@ -418,22 +418,22 @@ export default function BackupManagementPage() {
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-1.5">
                       {bk.status === 'VERIFIED' && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 flex items-center gap-1">
                           <CheckCircle2 className="h-3 w-3" /> VERIFIED
                         </span>
                       )}
                       {bk.status === 'SUCCESSFUL' && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-950/80 text-blue-400 border border-blue-500/30 flex items-center gap-1">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/30 flex items-center gap-1">
                           <CheckCircle2 className="h-3 w-3" /> SUCCESS
                         </span>
                       )}
                       {bk.status === 'IN_PROGRESS' && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-950/80 text-amber-400 border border-amber-500/30 flex items-center gap-1">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30 flex items-center gap-1">
                           <RefreshCw className="h-3 w-3 animate-spin" /> IN PROGRESS
                         </span>
                       )}
                       {bk.status === 'FAILED' && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-950/80 text-rose-400 border border-rose-500/30 flex items-center gap-1">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-rose-50 dark:bg-rose-950/80 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-500/30 flex items-center gap-1">
                           <AlertTriangle className="h-3 w-3" /> FAILED
                         </span>
                       )}
@@ -444,7 +444,7 @@ export default function BackupManagementPage() {
                   </td>
 
                   <td className="py-3 px-4">
-                    <div className="text-slate-300 font-medium truncate max-w-[150px]">{bk.initiatedBy}</div>
+                    <div className="text-slate-800 dark:text-slate-300 font-medium truncate max-w-[150px]">{bk.initiatedBy}</div>
                     <div className="text-[11px] text-slate-500 font-mono mt-0.5">{bk.createdAt}</div>
                   </td>
 
@@ -455,7 +455,7 @@ export default function BackupManagementPage() {
                           setSelectedBackupForRestore(bk);
                           setIsRestoreModalOpen(true);
                         }}
-                        className="p-1.5 rounded bg-rose-950/40 hover:bg-rose-900/60 text-rose-400 border border-rose-700/30 transition-colors flex items-center gap-1 text-[11px] px-2"
+                        className="p-1.5 rounded bg-rose-50 dark:bg-rose-950/40 hover:bg-rose-100 dark:hover:bg-rose-900/60 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-700/30 transition-colors flex items-center gap-1 text-[11px] px-2"
                         title="Simulate disaster restore to sandbox"
                       >
                         <RotateCcw className="h-3 w-3" />
@@ -472,32 +472,32 @@ export default function BackupManagementPage() {
 
       {/* Trigger Backup Modal */}
       {isTriggerModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs">
-          <div className="bg-[#0f172a] border border-slate-700 rounded-xl max-w-lg w-full p-5 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/70 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-700 rounded-xl max-w-lg w-full p-5 shadow-2xl relative">
             <button
               onClick={() => setIsTriggerModalOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors"
             >
               <X className="h-4 w-4" />
             </button>
 
-            <div className="flex items-center gap-2 mb-4 border-b border-slate-800 pb-3">
-              <div className="h-8 w-8 rounded-lg bg-rose-500/20 flex items-center justify-center">
-                <Database className="h-4 w-4 text-rose-400" />
+            <div className="flex items-center gap-2 mb-4 border-b border-slate-200 dark:border-slate-800 pb-3">
+              <div className="h-8 w-8 rounded-lg bg-rose-50 dark:bg-rose-500/20 flex items-center justify-center">
+                <Database className="h-4 w-4 text-rose-600 dark:text-rose-400" />
               </div>
               <div>
-                <h3 className="text-base font-semibold text-white">Trigger Database Backup</h3>
-                <p className="text-xs text-slate-400">Initiate an immediate immutable database snapshot archive</p>
+                <h3 className="text-base font-semibold text-slate-900 dark:text-white">Trigger Database Backup</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Initiate an immediate immutable database snapshot archive</p>
               </div>
             </div>
 
             <form onSubmit={handleTriggerBackup} className="space-y-4 text-xs">
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Backup Snapshot Mode</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Backup Snapshot Mode</label>
                 <select
                   value={newBackupType}
                   onChange={(e) => setNewBackupType(e.target.value as BackupType)}
-                  className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-rose-500"
+                  className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-rose-500"
                 >
                   <option value="FULL_DATABASE">FULL_DATABASE - Complete PostgreSQL Cluster Dump + WAL</option>
                   <option value="INCREMENTAL">INCREMENTAL - Delta Transaction Changes Since Last Full Dump</option>
@@ -507,11 +507,11 @@ export default function BackupManagementPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Target Storage Destination</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Target Storage Destination</label>
                 <select
                   value={newDestination}
                   onChange={(e) => setNewDestination(e.target.value)}
-                  className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-rose-500 font-mono text-[11px]"
+                  className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-rose-500 font-mono text-[11px]"
                 >
                   <option value="AWS S3 (s3://mfg-erp-vault-prod/daily-full/)">AWS S3 (s3://mfg-erp-vault-prod/daily-full/) - Us-East-1</option>
                   <option value="Local Industrial NAS (/mnt/san01/backups/hourly/)">Local Industrial NAS (/mnt/san01/backups/hourly/) - 192.168.10.200</option>
@@ -522,11 +522,11 @@ export default function BackupManagementPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Compression Engine</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Compression Engine</label>
                   <select
                     value={compressionType}
                     onChange={(e) => setCompressionType(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-rose-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-rose-500"
                   >
                     <option value="zstd">Zstandard (zstd - Level 9, Recommended)</option>
                     <option value="pigz">Gzip (pigz parallel - Level 6)</option>
@@ -535,40 +535,40 @@ export default function BackupManagementPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Encryption Mode</label>
-                  <div className="bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-400 font-mono text-[11px] flex items-center gap-1.5">
-                    <Lock className="h-3 w-3 text-emerald-400" /> AES-256-GCM (Hardware HSM)
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Encryption Mode</label>
+                  <div className="bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-600 dark:text-slate-400 font-mono text-[11px] flex items-center gap-1.5">
+                    <Lock className="h-3 w-3 text-emerald-500" /> AES-256-GCM (Hardware HSM)
                   </div>
                 </div>
               </div>
 
-              <div className="p-3 bg-slate-900/80 border border-slate-800 rounded-lg">
+              <div className="p-3 bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-lg">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={includeAuditLogs}
                     onChange={(e) => setIncludeAuditLogs(e.target.checked)}
-                    className="rounded bg-slate-800 border-slate-700 text-rose-500 focus:ring-0"
+                    className="rounded border-slate-300 dark:border-slate-700 text-rose-600 focus:ring-0"
                   />
-                  <span className="text-slate-200 font-medium">Include Historical Audit Trail &amp; Document Blobs</span>
+                  <span className="text-slate-800 dark:text-slate-200 font-medium">Include Historical Audit Trail &amp; Document Blobs</span>
                 </label>
-                <p className="text-[11px] text-slate-400 mt-1 pl-6">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 pl-6">
                   Includes full user action audit logs and attachments table. Recommended for statutory compliance.
                 </p>
               </div>
 
-              <div className="flex justify-end gap-2 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-2 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setIsTriggerModalOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmittingBackup}
-                  className="px-4 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-medium transition-colors flex items-center gap-1.5 disabled:opacity-50"
+                  className="px-4 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-medium transition-colors flex items-center gap-1.5 disabled:opacity-50 shadow-md shadow-rose-600/20"
                 >
                   {isSubmittingBackup ? (
                     <>
@@ -588,8 +588,8 @@ export default function BackupManagementPage() {
 
       {/* Disaster Recovery Restoration Modal */}
       {isRestoreModalOpen && selectedBackupForRestore && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs">
-          <div className="bg-[#0f172a] border border-rose-500/40 rounded-xl max-w-lg w-full p-5 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/75 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0f172a] border border-rose-300 dark:border-rose-500/40 rounded-xl max-w-lg w-full p-5 shadow-2xl relative">
             <button
               onClick={() => {
                 setIsRestoreModalOpen(false);
@@ -597,27 +597,27 @@ export default function BackupManagementPage() {
                 setRestoreSuccessMsg('');
                 setRestoreVerificationCode('');
               }}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-white transition-colors"
             >
               <X className="h-4 w-4" />
             </button>
 
-            <div className="flex items-center gap-2 mb-4 border-b border-slate-800 pb-3">
-              <div className="h-8 w-8 rounded-lg bg-rose-500/20 flex items-center justify-center">
-                <RotateCcw className="h-4 w-4 text-rose-400" />
+            <div className="flex items-center gap-2 mb-4 border-b border-slate-200 dark:border-slate-800 pb-3">
+              <div className="h-8 w-8 rounded-lg bg-rose-50 dark:bg-rose-500/20 flex items-center justify-center">
+                <RotateCcw className="h-4 w-4 text-rose-600 dark:text-rose-400" />
               </div>
               <div>
-                <h3 className="text-base font-semibold text-white">Disaster Recovery Restoration</h3>
-                <p className="text-xs text-rose-400">Sandbox Verification &amp; Standby Cluster Restore</p>
+                <h3 className="text-base font-semibold text-slate-900 dark:text-white">Disaster Recovery Restoration</h3>
+                <p className="text-xs text-rose-600 dark:text-rose-400">Sandbox Verification &amp; Standby Cluster Restore</p>
               </div>
             </div>
 
             {restoreSuccessMsg ? (
               <div className="space-y-4">
-                <div className="p-3 bg-emerald-950/80 border border-emerald-500/40 rounded-lg text-emerald-300 text-xs flex items-start gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
+                <div className="p-3 bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-500/40 rounded-lg text-emerald-800 dark:text-emerald-300 text-xs flex items-start gap-2">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                   <div>
-                    <div className="font-semibold text-white">Restoration Successful</div>
+                    <div className="font-semibold text-slate-900 dark:text-white">Restoration Successful</div>
                     <div className="mt-1">{restoreSuccessMsg}</div>
                   </div>
                 </div>
@@ -628,7 +628,7 @@ export default function BackupManagementPage() {
                       setRestoreSuccessMsg('');
                       setRestoreVerificationCode('');
                     }}
-                    className="px-4 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium"
+                    className="px-4 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium"
                   >
                     Close
                   </button>
@@ -636,21 +636,21 @@ export default function BackupManagementPage() {
               </div>
             ) : (
               <form onSubmit={handleRestoreSubmit} className="space-y-4 text-xs">
-                <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg space-y-1">
-                  <div className="text-slate-400">Selected Snapshot Archive:</div>
-                  <div className="font-mono font-semibold text-white flex items-center gap-1.5">
-                    <Database className="h-3.5 w-3.5 text-rose-400" />
+                <div className="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg space-y-1">
+                  <div className="text-slate-500 dark:text-slate-400">Selected Snapshot Archive:</div>
+                  <div className="font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <Database className="h-3.5 w-3.5 text-rose-600 dark:text-rose-400" />
                     {selectedBackupForRestore.backupId}
                   </div>
-                  <div className="text-[11px] text-slate-400 font-mono">
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
                     Size: {selectedBackupForRestore.fileSizeMb} MB | SHA-256: {selectedBackupForRestore.checksumSha256?.substring(0, 20)}...
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Restoration Target Mode</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Restoration Target Mode</label>
                   <div className="space-y-2">
-                    <label className="flex items-center gap-2 p-2.5 rounded-lg border border-indigo-500/30 bg-indigo-950/20 cursor-pointer">
+                    <label className="flex items-center gap-2 p-2.5 rounded-lg border border-indigo-200 dark:border-indigo-500/30 bg-indigo-50/50 dark:bg-indigo-950/20 cursor-pointer">
                       <input
                         type="radio"
                         name="targetEnv"
@@ -659,12 +659,12 @@ export default function BackupManagementPage() {
                         className="text-indigo-600 focus:ring-0"
                       />
                       <div>
-                        <div className="font-semibold text-indigo-300">Isolated Disaster Recovery Sandbox (Recommended)</div>
-                        <div className="text-[11px] text-slate-400">Restores to sandbox port 5433 for automated health verification without disrupting production.</div>
+                        <div className="font-semibold text-indigo-700 dark:text-indigo-300">Isolated Disaster Recovery Sandbox (Recommended)</div>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400">Restores to sandbox port 5433 for automated health verification without disrupting production.</div>
                       </div>
                     </label>
 
-                    <label className="flex items-center gap-2 p-2.5 rounded-lg border border-rose-500/40 bg-rose-950/20 cursor-pointer">
+                    <label className="flex items-center gap-2 p-2.5 rounded-lg border border-rose-200 dark:border-rose-500/40 bg-rose-50/50 dark:bg-rose-950/20 cursor-pointer">
                       <input
                         type="radio"
                         name="targetEnv"
@@ -673,52 +673,52 @@ export default function BackupManagementPage() {
                         className="text-rose-600 focus:ring-0"
                       />
                       <div>
-                        <div className="font-semibold text-rose-300 flex items-center gap-1">
+                        <div className="font-semibold text-rose-700 dark:text-rose-300 flex items-center gap-1">
                           <AlertTriangle className="h-3.5 w-3.5" /> Active Production Live Cluster Overwrite (HIGH RISK)
                         </div>
-                        <div className="text-[11px] text-slate-400">Will replace current live tables and disconnect active manufacturing sessions.</div>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400">Will replace current live tables and disconnect active manufacturing sessions.</div>
                       </div>
                     </label>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">
-                    Security Confirmation Phrase <span className="text-rose-400">*</span>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">
+                    Security Confirmation Phrase <span className="text-rose-600 dark:text-rose-400">*</span>
                   </label>
-                  <p className="text-[11px] text-slate-400 mb-1.5">
-                    Type <code className="bg-slate-900 text-rose-300 px-1 py-0.5 rounded font-mono">RESTORE_CONFIRM_SAFE</code> below to unlock:
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mb-1.5">
+                    Type <code className="bg-slate-100 dark:bg-slate-900 text-rose-700 dark:text-rose-300 px-1 py-0.5 rounded font-mono">RESTORE_CONFIRM_SAFE</code> below to unlock:
                   </p>
                   <input
                     type="text"
                     value={restoreVerificationCode}
                     onChange={(e) => setRestoreVerificationCode(e.target.value)}
                     placeholder="RESTORE_CONFIRM_SAFE"
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 font-mono tracking-wider focus:outline-none focus:border-rose-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 font-mono tracking-wider focus:outline-none focus:border-rose-500"
                   />
                 </div>
 
                 {restoreError && (
-                  <div className="p-2.5 bg-rose-950/80 border border-rose-500/40 rounded-lg text-rose-300 text-[11px]">
+                  <div className="p-2.5 bg-rose-50 dark:bg-rose-950/80 border border-rose-200 dark:border-rose-500/40 rounded-lg text-rose-700 dark:text-rose-300 text-[11px]">
                     {restoreError}
                   </div>
                 )}
 
-                <div className="flex justify-end gap-2 pt-3 border-t border-slate-800">
+                <div className="flex justify-end gap-2 pt-3 border-t border-slate-200 dark:border-slate-800">
                   <button
                     type="button"
                     onClick={() => {
                       setIsRestoreModalOpen(false);
                       setRestoreError('');
                     }}
-                    className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                    className="px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={isRestoring}
-                    className="px-4 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-medium transition-colors flex items-center gap-1.5 disabled:opacity-50"
+                    className="px-4 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-medium transition-colors flex items-center gap-1.5 disabled:opacity-50 shadow-md shadow-rose-600/20"
                   >
                     {isRestoring ? (
                       <>

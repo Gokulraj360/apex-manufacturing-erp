@@ -314,6 +314,7 @@ enum DefectSeverity {
   MINOR
   MAJOR
   CRITICAL
+  COSMETIC
 }
 
 // ==================== WAREHOUSE MODULE ENUMS ====================
@@ -1171,12 +1172,6 @@ enum QCStatus {
   CONDITIONALLY_ACCEPTED
 }
 
-enum DefectSeverity {
-  CRITICAL
-  MAJOR
-  MINOR
-  COSMETIC
-}
 
 enum DefectCategory {
   DIMENSIONAL
@@ -1734,6 +1729,7 @@ enum EmploymentType {
   TEMPORARY
   APPRENTICE
   SHIFT_WORKER
+  TRAINEE
 }
 
 enum AttendanceStatus {
@@ -1752,6 +1748,8 @@ enum LeaveType {
   MATERNITY
   PATERNITY
   COMPENSATORY_OFF
+  MEDICAL
+  MATERNITY_PATERNITY
 }
 
 enum LeaveStatus {
@@ -1856,7 +1854,7 @@ model Employee {
 
   attendanceLogs        AttendanceLog[]
   shiftRosters          ShiftRoster[]
-  leaveRequests         LeaveRequest[]
+  leaveRequests         EmployeeLeaveRequest[]
   overtimeRecords       OvertimeRecord[]
   onboardingDocuments   OnboardingDocument[]
   safetyTrainingRecords SafetyTrainingRecord[]
@@ -1918,7 +1916,7 @@ model ShiftRoster {
   @@index([shiftCode])
 }
 
-model LeaveRequest {
+model EmployeeLeaveRequest {
   id              String      @id @default(uuid())
   employeeId      String
   employee        Employee    @relation(fields: [employeeId], references: [id], onDelete: Cascade)
@@ -2782,7 +2780,7 @@ enum RequisitionPriority {
   CRITICAL
 }
 
-enum RequisitionStatus {
+enum PurchaseRequisitionStatus {
   DRAFT
   SUBMITTED
   APPROVED
@@ -2878,7 +2876,7 @@ model PurchaseRequisition {
   department           String
   requiredByDate       DateTime
   priority             RequisitionPriority @default(MEDIUM)
-  status               RequisitionStatus   @default(DRAFT)
+  status               PurchaseRequisitionStatus   @default(DRAFT)
   totalEstimatedCost   Decimal             @db.Decimal(14, 2)
   justification        String
   items                Json                // [{ itemSku, itemName, quantity, uom, estimatedUnitPrice, preferredVendorId }]
@@ -4419,7 +4417,7 @@ model DesignSpecification {
 // FLEET & TRANSPORT MANAGEMENT MODULE
 // =========================================================================
 
-enum VehicleType {
+enum FleetVehicleType {
   HEAVY_TRUCK
   MEDIUM_TRUCK
   DELIVERY_VAN
@@ -4490,7 +4488,7 @@ model FleetVehicle {
   modelName             String                      // e.g., 'Tata Prima 4028.S'
   make                  String                      // e.g., 'Tata Motors'
   year                  Int                         @default(2024)
-  vehicleType           VehicleType                 @default(HEAVY_TRUCK)
+  vehicleType           FleetVehicleType            @default(HEAVY_TRUCK)
   status                VehicleStatus               @default(AVAILABLE)
   fuelType              FuelType                    @default(DIESEL)
   payloadCapacityKg     Decimal                     @db.Decimal(10, 2)
@@ -4971,25 +4969,12 @@ model DepartmentTaskProgressLog {
   @@index([timestamp])
 }
 
-enum LeaveType {
-  CASUAL
-  MEDICAL
-  SICK
-  EARNED
-  MATERNITY_PATERNITY
-}
 
 enum LeaveRecipientType {
   DEPARTMENT_MANAGER
   HR
 }
 
-enum LeaveStatus {
-  PENDING
-  APPROVED
-  REJECTED
-  CANCELLED
-}
 
 model LeaveRequest {
   id                 String             @id @default(uuid())
@@ -5036,12 +5021,6 @@ enum PayrollBatchStatus {
   REJECTED
 }
 
-enum EmploymentType {
-  FULL_TIME
-  CONTRACT
-  SHIFT_WORKER
-  TRAINEE
-}
 
 enum SalaryPaymentMode {
   DIRECT_BANK_TRANSFER

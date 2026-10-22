@@ -306,15 +306,15 @@ export default function IncomingQualityPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-              <Scan className="w-7 h-7 text-blue-400" />
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+              <Scan className="w-7 h-7 text-blue-500" />
               Incoming Raw Material QC Portal
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
               Pre-GRN Release
             </span>
           </div>
-          <p className="text-sm text-neutral-400 mt-1">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
             Conduct multi-parameter laboratory tests, verify Supplier CoAs, and issue pre-GRN clearance approvals.
           </p>
         </div>
@@ -330,82 +330,82 @@ export default function IncomingQualityPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Awaiting QC Testing</span>
-            <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 border border-amber-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Awaiting QC Testing</span>
+            <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500 dark:text-amber-400 border border-amber-500/20">
               <Clock className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-amber-400">{pendingCount}</span>
-            <span className="text-xs text-neutral-400 font-medium">lots in staging</span>
+            <span className="text-2xl font-bold text-amber-500 dark:text-amber-400">{pendingCount}</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">lots in staging</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Quarantine holding area</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Quarantine holding area</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Passed & Cleared</span>
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Passed & Cleared</span>
+            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 dark:text-emerald-400 border border-emerald-500/20">
               <CheckCircle2 className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white">{passedCount}</span>
-            <span className="text-xs text-emerald-400 font-medium">unlocked for GRN</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">{passedCount}</span>
+            <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">unlocked for GRN</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">100% parameter compliance</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">100% parameter compliance</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Conditional Passes</span>
-            <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 border border-purple-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Conditional Passes</span>
+            <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 dark:text-purple-400 border border-purple-500/20">
               <AlertTriangle className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-purple-300">{conditionalCount}</span>
-            <span className="text-xs text-neutral-400 font-medium">split disposition</span>
+            <span className="text-2xl font-bold text-purple-600 dark:text-purple-300">{conditionalCount}</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">split disposition</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Concession waiver approved</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Concession waiver approved</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Rejected Lots</span>
-            <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 border border-rose-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Rejected Lots</span>
+            <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-500 dark:text-rose-400 border border-rose-500/20">
               <XCircle className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-rose-400">{rejectedCount}</span>
-            <span className="text-xs text-rose-400 font-medium">RTV initiated</span>
+            <span className="text-2xl font-bold text-rose-500 dark:text-rose-400">{rejectedCount}</span>
+            <span className="text-xs text-rose-500 dark:text-rose-400 font-medium">RTV initiated</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Return to vendor</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Return to vendor</p>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
       <div className="flex flex-col sm:flex-row gap-3 items-center justify-between">
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" />
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             placeholder="Search ticket #, PO #, supplier, item..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-neutral-900 border border-neutral-800 rounded-lg pl-9 pr-4 py-2 text-sm text-neutral-200 placeholder-neutral-500 focus:outline-none focus:border-blue-500"
+            className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg pl-9 pr-4 py-2 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-blue-500"
           />
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <Filter className="w-4 h-4 text-neutral-400" />
+          <Filter className="w-4 h-4 text-slate-500 dark:text-slate-400" />
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-neutral-900 border border-neutral-800 rounded-lg px-3 py-2 text-sm text-neutral-200 focus:outline-none focus:border-blue-500"
+            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-3 py-2 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500"
           >
             <option value="ALL">All Statuses</option>
             <option value="IN_PROGRESS">In Progress</option>
@@ -424,23 +424,23 @@ export default function IncomingQualityPage() {
           return (
             <div
               key={item.id}
-              className="rounded-xl bg-neutral-900 border border-neutral-800 overflow-hidden transition"
+              className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm overflow-hidden transition"
             >
               {/* Header Card */}
               <div
                 onClick={() => setExpandedId(isExpanded ? null : item.id)}
-                className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-neutral-800/50 transition"
+                className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition"
               >
                 <div className="flex items-center gap-3">
                   <div
                     className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xs border ${
                       item.status === 'PASSED'
-                        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                        ? 'bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 border-emerald-500/20'
                         : item.status === 'FAILED'
-                        ? 'bg-rose-500/10 text-rose-400 border-rose-500/20'
+                        ? 'bg-rose-500/10 text-rose-500 dark:text-rose-400 border-rose-500/20'
                         : item.status === 'CONDITIONALLY_ACCEPTED'
-                        ? 'bg-purple-500/10 text-purple-300 border-purple-500/30'
-                        : 'bg-blue-500/10 text-blue-400 border-blue-500/20'
+                        ? 'bg-purple-500/10 text-purple-600 dark:text-purple-300 border-purple-500/30'
+                        : 'bg-blue-500/10 text-blue-500 dark:text-blue-400 border-blue-500/20'
                     }`}
                   >
                     {item.status === 'PASSED' ? (
@@ -456,32 +456,32 @@ export default function IncomingQualityPage() {
 
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-semibold text-white">{item.inspectionNumber}</span>
-                      <span className="text-xs text-neutral-400 font-mono">[{item.poNumber}]</span>
+                      <span className="font-semibold text-slate-900 dark:text-white">{item.inspectionNumber}</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">[{item.poNumber}]</span>
                       <span
                         className={`px-2 py-0.5 rounded text-[11px] font-semibold border ${
                           item.status === 'PASSED'
-                            ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                            ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20'
                             : item.status === 'FAILED'
-                            ? 'bg-rose-500/10 text-rose-400 border-rose-500/20'
+                            ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20'
                             : item.status === 'CONDITIONALLY_ACCEPTED'
-                            ? 'bg-purple-500/10 text-purple-300 border-purple-500/30'
-                            : 'bg-blue-500/10 text-blue-400 border-blue-500/20'
+                            ? 'bg-purple-500/10 text-purple-600 dark:text-purple-300 border-purple-500/30'
+                            : 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20'
                         }`}
                       >
                         {item.status.replace('_', ' ')}
                       </span>
                       {item.certificateOfAnalysisAttached && (
-                        <span className="px-1.5 py-0.2 rounded text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
+                        <span className="px-1.5 py-0.2 rounded text-[10px] font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
                           <FileCheck className="w-3 h-3" /> CoA Verified
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-neutral-300 mt-1 font-medium">
-                      {item.itemName} <span className="font-mono text-emerald-400">({item.itemCode})</span>
+                    <p className="text-xs text-slate-700 dark:text-slate-300 mt-1 font-medium">
+                      {item.itemName} <span className="font-mono text-emerald-600 dark:text-emerald-400">({item.itemCode})</span>
                     </p>
-                    <p className="text-xs text-neutral-400 mt-0.5">
-                      Supplier: <strong className="text-neutral-300">{item.supplierName}</strong> • Sample Size: {item.sampleSize} / {item.quantityInspected} units
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                      Supplier: <strong className="text-slate-700 dark:text-slate-300">{item.supplierName}</strong> • Sample Size: {item.sampleSize} / {item.quantityInspected} units
                     </p>
                   </div>
                 </div>
@@ -501,36 +501,36 @@ export default function IncomingQualityPage() {
                     </button>
                   )}
                   {isExpanded ? (
-                    <ChevronUp className="w-5 h-5 text-neutral-400" />
+                    <ChevronUp className="w-5 h-5 text-slate-400" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-neutral-400" />
+                    <ChevronDown className="w-5 h-5 text-slate-400" />
                   )}
                 </div>
               </div>
 
               {/* Expanded Parameter Matrix */}
               {isExpanded && (
-                <div className="border-t border-neutral-800 p-4 bg-neutral-950/40 space-y-3">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-neutral-400 bg-neutral-900/60 p-2.5 rounded-lg border border-neutral-800">
+                <div className="border-t border-slate-200 dark:border-slate-800 p-4 bg-slate-50/50 dark:bg-slate-950/40 space-y-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800">
                     <div>
-                      <span>Inspector: <strong className="text-neutral-200">{item.inspectorName}</strong></span>
-                      {item.clearedAt && <span className="ml-3">Cleared: <strong className="text-neutral-200">{item.clearedAt}</strong></span>}
+                      <span>Inspector: <strong className="text-slate-800 dark:text-neutral-200">{item.inspectorName}</strong></span>
+                      {item.clearedAt && <span className="ml-3">Cleared: <strong className="text-slate-800 dark:text-neutral-200">{item.clearedAt}</strong></span>}
                     </div>
                     <div>
-                      <span>Accepted: <strong className="text-emerald-400 font-mono">{item.quantityAccepted}</strong></span>
-                      <span className="ml-3">Rejected: <strong className="text-rose-400 font-mono">{item.quantityRejected}</strong></span>
+                      <span>Accepted: <strong className="text-emerald-600 dark:text-emerald-400 font-mono">{item.quantityAccepted}</strong></span>
+                      <span className="ml-3">Rejected: <strong className="text-rose-600 dark:text-rose-400 font-mono">{item.quantityRejected}</strong></span>
                     </div>
                   </div>
 
                   {item.remarks && (
-                    <p className="text-xs text-neutral-300 italic bg-neutral-900/80 p-2.5 rounded-lg border border-neutral-800">
+                    <p className="text-xs text-slate-600 dark:text-neutral-300 italic bg-white dark:bg-slate-900 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800">
                       QC Notes: {item.remarks}
                     </p>
                   )}
 
                   <div className="overflow-x-auto">
                     <table className="w-full text-left text-xs">
-                      <thead className="bg-neutral-900 text-neutral-400 uppercase tracking-wider font-semibold border-b border-neutral-800">
+                      <thead className="bg-slate-100 dark:bg-slate-950 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
                         <tr>
                           <th className="px-3 py-2">Test Parameter</th>
                           <th className="px-3 py-2">Engineering Specification</th>
@@ -539,20 +539,20 @@ export default function IncomingQualityPage() {
                           <th className="px-3 py-2 text-center">Result</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-neutral-800 text-neutral-300">
+                      <tbody className="divide-y divide-slate-200 dark:divide-neutral-800 text-slate-700 dark:text-neutral-300">
                         {item.parameters.map((param, idx) => (
-                          <tr key={idx} className="hover:bg-neutral-800/40">
-                            <td className="px-3 py-2.5 font-medium text-neutral-200">{param.parameter}</td>
-                            <td className="px-3 py-2.5 font-mono text-neutral-300">{param.specification}</td>
-                            <td className="px-3 py-2.5 font-mono font-semibold text-white">{param.measuredValue}</td>
-                            <td className="px-3 py-2.5 font-mono text-neutral-400">{param.tolerance}</td>
+                          <tr key={idx} className="hover:bg-slate-100/60 dark:hover:bg-neutral-800/40">
+                            <td className="px-3 py-2.5 font-medium text-slate-800 dark:text-neutral-200">{param.parameter}</td>
+                            <td className="px-3 py-2.5 font-mono text-slate-600 dark:text-neutral-300">{param.specification}</td>
+                            <td className="px-3 py-2.5 font-mono font-semibold text-slate-900 dark:text-white">{param.measuredValue}</td>
+                            <td className="px-3 py-2.5 font-mono text-slate-500 dark:text-neutral-400">{param.tolerance}</td>
                             <td className="px-3 py-2.5 text-center">
                               {param.isPass ? (
-                                <span className="inline-flex items-center gap-1 text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-medium">
+                                <span className="inline-flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 font-medium">
                                   <CheckCircle2 className="w-3 h-3" /> PASS
                                 </span>
                               ) : (
-                                <span className="inline-flex items-center gap-1 text-[11px] text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20 font-medium">
+                                <span className="inline-flex items-center gap-1 text-[11px] text-rose-600 dark:text-rose-400 bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/20 font-medium">
                                   <XCircle className="w-3 h-3" /> FAIL
                                 </span>
                               )}
@@ -572,15 +572,15 @@ export default function IncomingQualityPage() {
       {/* MODAL: NEW INSPECTION TICKET */}
       {isNewInspectionModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl w-full max-w-lg p-6 space-y-4 shadow-xl">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-lg p-6 space-y-4 shadow-xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <Scan className="w-5 h-5 text-blue-400" />
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Scan className="w-5 h-5 text-blue-500" />
                 Initiate Incoming Material Inspection
               </h3>
               <button
                 onClick={() => setIsNewInspectionModalOpen(false)}
-                className="text-neutral-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -589,56 +589,56 @@ export default function IncomingQualityPage() {
             <form onSubmit={handleCreateInspection} className="space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Purchase Order (PO #)</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Purchase Order (PO #)</label>
                   <input
                     type="text"
                     value={newForm.poNumber}
                     onChange={(e) => setNewForm({ ...newForm, poNumber: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-blue-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500 font-mono"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Lot / Batch Number</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Lot / Batch Number</label>
                   <input
                     type="text"
                     value={newForm.lotBatchNumber}
                     onChange={(e) => setNewForm({ ...newForm, lotBatchNumber: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-blue-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500 font-mono"
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Supplier Name</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Supplier Name</label>
                 <input
                   type="text"
                   value={newForm.supplierName}
                   onChange={(e) => setNewForm({ ...newForm, supplierName: e.target.value })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500"
                   required
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Item Code</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Item Code</label>
                   <input
                     type="text"
                     value={newForm.itemCode}
                     onChange={(e) => setNewForm({ ...newForm, itemCode: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-blue-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500 font-mono"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Item Description</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Item Description</label>
                   <input
                     type="text"
                     value={newForm.itemName}
                     onChange={(e) => setNewForm({ ...newForm, itemName: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500"
                     required
                   />
                 </div>
@@ -646,22 +646,22 @@ export default function IncomingQualityPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Lot Quantity</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Lot Quantity</label>
                   <input
                     type="number"
                     value={newForm.quantityInspected}
                     onChange={(e) => setNewForm({ ...newForm, quantityInspected: Number(e.target.value) })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">QC Sample Size</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">QC Sample Size</label>
                   <input
                     type="number"
                     value={newForm.sampleSize}
                     onChange={(e) => setNewForm({ ...newForm, sampleSize: Number(e.target.value) })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500"
                     required
                   />
                 </div>
@@ -673,20 +673,20 @@ export default function IncomingQualityPage() {
                   id="coa"
                   checked={newForm.certificateOfAnalysisAttached}
                   onChange={(e) => setNewForm({ ...newForm, certificateOfAnalysisAttached: e.target.checked })}
-                  className="rounded bg-neutral-800 border-neutral-700 text-blue-600 focus:ring-0"
+                  className="rounded bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-blue-600 focus:ring-0"
                 />
-                <label htmlFor="coa" className="text-xs text-neutral-300">
+                <label htmlFor="coa" className="text-xs text-slate-700 dark:text-slate-300">
                   Manufacturer Certificate of Analysis (CoA) Attached & Validated
                 </label>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Assigned QC Inspector</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Assigned QC Inspector</label>
                 <input
                   type="text"
                   value={newForm.inspectorName}
                   onChange={(e) => setNewForm({ ...newForm, inspectorName: e.target.value })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-blue-500"
                   required
                 />
               </div>
@@ -695,7 +695,7 @@ export default function IncomingQualityPage() {
                 <button
                   type="button"
                   onClick={() => setIsNewInspectionModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-sm font-medium transition"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium transition"
                 >
                   Cancel
                 </button>
@@ -715,46 +715,46 @@ export default function IncomingQualityPage() {
       {/* MODAL: ISSUE PRE-GRN CLEARANCE */}
       {isClearanceModalOpen && selectedInspectionForClearance && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl w-full max-w-md p-6 space-y-4 shadow-xl">
-            <div className="flex items-center gap-3 text-blue-400">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-md p-6 space-y-4 shadow-xl">
+            <div className="flex items-center gap-3 text-blue-500">
               <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white">Pre-GRN Quality Clearance</h3>
-                <p className="text-xs text-neutral-400">{selectedInspectionForClearance.inspectionNumber}</p>
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Pre-GRN Quality Clearance</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">{selectedInspectionForClearance.inspectionNumber}</p>
               </div>
             </div>
 
-            <div className="p-3.5 rounded-lg bg-neutral-950 border border-neutral-800 text-xs space-y-2">
+            <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs space-y-2">
               <div className="flex justify-between">
-                <span className="text-neutral-400">Material:</span>
-                <span className="text-white font-medium">{selectedInspectionForClearance.itemName}</span>
+                <span className="text-slate-500 dark:text-slate-400">Material:</span>
+                <span className="text-slate-900 dark:text-white font-medium">{selectedInspectionForClearance.itemName}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-neutral-400">PO Ref:</span>
-                <span className="text-emerald-400 font-mono">{selectedInspectionForClearance.poNumber}</span>
+                <span className="text-slate-500 dark:text-slate-400">PO Ref:</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-mono">{selectedInspectionForClearance.poNumber}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-neutral-400">Total Lot Units:</span>
-                <span className="text-white font-bold font-mono">{selectedInspectionForClearance.quantityInspected} units</span>
+                <span className="text-slate-500 dark:text-slate-400">Total Lot Units:</span>
+                <span className="text-slate-900 dark:text-white font-bold font-mono">{selectedInspectionForClearance.quantityInspected} units</span>
               </div>
             </div>
 
-            <p className="text-xs text-neutral-400">
+            <p className="text-xs text-slate-600 dark:text-slate-400">
               Authorize disposal clearance for warehouse dock receiving. Releasing as passed will unlock automated Goods Received Note (GRN) generation and putaway allocation.
             </p>
 
             <div className="grid grid-cols-3 gap-2 pt-2">
               <button
                 onClick={() => handleIssueClearance('FAILED')}
-                className="px-3 py-2 rounded-lg bg-rose-600/20 hover:bg-rose-600/30 text-rose-400 border border-rose-500/30 text-xs font-semibold transition"
+                className="px-3 py-2 rounded-lg bg-rose-600/20 hover:bg-rose-600/30 text-rose-600 dark:text-rose-400 border border-rose-500/30 text-xs font-semibold transition"
               >
                 Reject Lot
               </button>
               <button
                 onClick={() => handleIssueClearance('CONDITIONALLY_ACCEPTED')}
-                className="px-3 py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/30 text-purple-300 border border-purple-500/30 text-xs font-semibold transition"
+                className="px-3 py-2 rounded-lg bg-purple-600/20 hover:bg-purple-600/30 text-purple-600 dark:text-purple-300 border border-purple-500/30 text-xs font-semibold transition"
               >
                 Conditional Pass
               </button>

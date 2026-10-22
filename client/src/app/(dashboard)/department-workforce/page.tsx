@@ -260,15 +260,15 @@ export default function DepartmentWorkforcePage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/10 text-teal-400 border border-teal-500/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20">
               Department Operations
             </span>
-            <span className="text-xs text-slate-500">Shop Floor Worker Deployment Engine</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">Shop Floor Worker Deployment Engine</span>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white mt-1">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white mt-1">
             Department-Wise Worker Management Hub
           </h1>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-slate-600 dark:text-slate-400">
             Allocate workers to specific workstations, machines, and lines; track daily check-ins, overtime, target output yield, safety certs, and HR/payroll handoffs.
           </p>
         </div>
@@ -283,9 +283,9 @@ export default function DepartmentWorkforcePage() {
           </Link>
           <Link
             href="/department-workforce/attendance"
-            className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-sm font-medium transition-colors border border-slate-700"
+            className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-sm font-medium transition-colors border border-slate-200 dark:border-slate-700"
           >
-            <Clock className="w-4 h-4 text-teal-400" />
+            <Clock className="w-4 h-4 text-teal-600 dark:text-teal-400" />
             Shift Check-Ins
           </Link>
         </div>
@@ -293,58 +293,58 @@ export default function DepartmentWorkforcePage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-[#0d1322] border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between shadow-sm">
           <div>
-            <div className="text-xs text-slate-400">Active Workstation Deployments</div>
-            <div className="text-2xl font-bold text-white mt-1">{metrics.activeDeployments} Stations</div>
-            <div className="text-xs text-teal-400 flex items-center gap-1 mt-1">
+            <div className="text-xs text-slate-500 dark:text-slate-400">Active Workstation Deployments</div>
+            <div className="text-2xl font-bold text-slate-900 dark:text-white mt-1">{metrics.activeDeployments} Stations</div>
+            <div className="text-xs text-teal-600 dark:text-teal-400 flex items-center gap-1 mt-1">
               <Layers className="w-3.5 h-3.5" />
               100% Machine Safety Certified
             </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-400">
+          <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center text-teal-600 dark:text-teal-400">
             <UserCheck className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between shadow-sm">
           <div>
-            <div className="text-xs text-slate-400">Today's Present Attendance</div>
-            <div className="text-2xl font-bold text-emerald-400 mt-1">
+            <div className="text-xs text-slate-500 dark:text-slate-400">Today's Present Attendance</div>
+            <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mt-1">
               {metrics.todayAttendanceRate}%
             </div>
-            <div className="text-xs text-slate-400 mt-1">
+            <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               {metrics.todayPresentWorkers} / {metrics.totalActiveWorkers} Shop Floor Workers
             </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
             <Clock className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between shadow-sm">
           <div>
-            <div className="text-xs text-slate-400">Target Production Efficiency</div>
-            <div className="text-2xl font-bold text-cyan-400 mt-1">
+            <div className="text-xs text-slate-500 dark:text-slate-400">Target Production Efficiency</div>
+            <div className="text-2xl font-bold text-cyan-600 dark:text-cyan-400 mt-1">
               {metrics.averageProductionEfficiencyPct}%
             </div>
-            <div className="text-xs text-cyan-400/80 mt-1">Daily shift output quota</div>
+            <div className="text-xs text-cyan-700 dark:text-cyan-400/80 mt-1">Daily shift output quota</div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-600 dark:text-cyan-400">
             <Target className="w-5 h-5" />
           </div>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 p-4 rounded-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 p-4 rounded-xl flex items-center justify-between shadow-sm">
           <div>
-            <div className="text-xs text-slate-400">Logged Overtime & Payroll Handoff</div>
-            <div className="text-2xl font-bold text-amber-400 mt-1">{metrics.todayTotalOvertimeHours}h OT</div>
-            <div className="text-xs text-emerald-400 flex items-center gap-1 mt-1">
+            <div className="text-xs text-slate-500 dark:text-slate-400">Logged Overtime &amp; Payroll Handoff</div>
+            <div className="text-2xl font-bold text-amber-600 dark:text-amber-400 mt-1">{metrics.todayTotalOvertimeHours}h OT</div>
+            <div className="text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-1 mt-1">
               <CheckCircle2 className="w-3.5 h-3.5" />
-              HR & Payroll Ready
+              HR &amp; Payroll Ready
             </div>
           </div>
-          <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+          <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
             <BarChart3 className="w-5 h-5" />
           </div>
         </div>
@@ -353,28 +353,28 @@ export default function DepartmentWorkforcePage() {
       {/* Quick Navigation Cards */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
         {[
-          { title: 'Workstation Deployments', desc: 'Station, line & machine matrix', href: '/department-workforce/deployments', icon: Layers, color: 'text-teal-400' },
-          { title: 'Attendance & Overtime', desc: 'Biometric logs & approvals', href: '/department-workforce/attendance', icon: Clock, color: 'text-emerald-400' },
-          { title: 'Target vs Actual Yield', desc: 'Piece-rate & efficiency rates', href: '/department-workforce/outputs', icon: Target, color: 'text-cyan-400' },
-          { title: 'Machine Safety Certs', desc: '5-Axis & press safety checks', href: '/department-workforce/certifications', icon: ShieldCheck, color: 'text-purple-400' },
-          { title: 'Labor Metrics & Payroll', desc: 'Utilization & audit export', href: '/department-workforce/analytics', icon: BarChart3, color: 'text-pink-400' },
+          { title: 'Workstation Deployments', desc: 'Station, line & machine matrix', href: '/department-workforce/deployments', icon: Layers, color: 'text-teal-600 dark:text-teal-400' },
+          { title: 'Attendance & Overtime', desc: 'Biometric logs & approvals', href: '/department-workforce/attendance', icon: Clock, color: 'text-emerald-600 dark:text-emerald-400' },
+          { title: 'Target vs Actual Yield', desc: 'Piece-rate & efficiency rates', href: '/department-workforce/outputs', icon: Target, color: 'text-cyan-600 dark:text-cyan-400' },
+          { title: 'Machine Safety Certs', desc: '5-Axis & press safety checks', href: '/department-workforce/certifications', icon: ShieldCheck, color: 'text-purple-600 dark:text-purple-400' },
+          { title: 'Labor Metrics & Payroll', desc: 'Utilization & audit export', href: '/department-workforce/analytics', icon: BarChart3, color: 'text-pink-600 dark:text-pink-400' },
         ].map((item, idx) => {
           const Icon = item.icon;
           return (
             <Link
               key={idx}
               href={item.href}
-              className="bg-[#0d1322] border border-slate-800 hover:border-teal-500/50 p-3.5 rounded-xl transition-all shadow-sm group space-y-2 flex flex-col justify-between"
+              className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 hover:border-teal-500/50 p-3.5 rounded-xl transition-all shadow-sm group space-y-2 flex flex-col justify-between"
             >
               <div className="flex items-center justify-between">
                 <Icon className={`w-5 h-5 ${item.color}`} />
-                <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:text-white transition-colors" />
+                <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
               </div>
               <div>
-                <div className="text-xs font-bold text-white group-hover:text-teal-300 transition-colors">
+                <div className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-300 transition-colors">
                   {item.title}
                 </div>
-                <div className="text-[11px] text-slate-400 mt-0.5">{item.desc}</div>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{item.desc}</div>
               </div>
             </Link>
           );
@@ -382,20 +382,20 @@ export default function DepartmentWorkforcePage() {
       </div>
 
       {/* DEPARTMENT PERFORMANCE SUMMARY CARDS */}
-      <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5 shadow-lg space-y-4">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-5 shadow-sm space-y-4">
+        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
           <div>
-            <h2 className="text-base font-bold text-white flex items-center gap-2">
-              <Building2 className="w-5 h-5 text-teal-400" />
-              Department-Wise Workforce Efficiency & Output Indicators
+            <h2 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <Building2 className="w-5 h-5 text-teal-600 dark:text-teal-400" />
+              Department-Wise Workforce Efficiency &amp; Output Indicators
             </h2>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               Live shop floor staffing, attendance conformity, machine specialization, and overtime loads.
             </p>
           </div>
           <Link
             href="/department-workforce/analytics"
-            className="text-xs text-teal-400 hover:underline flex items-center gap-1 font-medium"
+            className="text-xs text-teal-600 dark:text-teal-400 hover:underline flex items-center gap-1 font-medium"
           >
             Audit Reports <ChevronRight className="w-3.5 h-3.5" />
           </Link>
@@ -405,47 +405,47 @@ export default function DepartmentWorkforcePage() {
           {departments.map((dept) => (
             <div
               key={dept.code}
-              className="bg-[#090d16] border border-slate-800/90 rounded-xl p-4 space-y-3 hover:border-teal-500/40 transition-all flex flex-col justify-between"
+              className="bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800/90 rounded-xl p-4 space-y-3 hover:border-teal-500/40 transition-all flex flex-col justify-between"
             >
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] font-bold text-teal-400 bg-teal-500/10 px-1.5 py-0.5 rounded border border-teal-500/20">
+                  <span className="font-mono text-[10px] font-bold text-teal-700 dark:text-teal-400 bg-teal-500/10 px-1.5 py-0.5 rounded border border-teal-500/20">
                     {dept.code}
                   </span>
                   <span
                     className={`text-[9px] font-semibold px-2 py-0.5 rounded-full ${
                       dept.status === 'OPTIMAL'
-                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                        : 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
+                        ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
+                        : 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20'
                     }`}
                   >
                     {dept.status}
                   </span>
                 </div>
-                <h3 className="font-bold text-white text-xs line-clamp-1">{dept.name}</h3>
-                <div className="text-[11px] text-slate-400">Head: {dept.head}</div>
+                <h3 className="font-bold text-slate-900 dark:text-white text-xs line-clamp-1">{dept.name}</h3>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400">Head: {dept.head}</div>
               </div>
 
-              <div className="space-y-2 pt-2 border-t border-slate-800/80 text-xs">
+              <div className="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800/80 text-xs">
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Staffing:</span>
-                  <span className="text-white font-mono font-medium">{dept.activeOperators} Workers ({dept.stationCount} Stns)</span>
+                  <span className="text-slate-500 dark:text-slate-400">Staffing:</span>
+                  <span className="text-slate-900 dark:text-white font-mono font-medium">{dept.activeOperators} Workers ({dept.stationCount} Stns)</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Attendance:</span>
-                  <span className="text-emerald-400 font-mono font-bold">{dept.attendanceRate}%</span>
+                  <span className="text-slate-500 dark:text-slate-400">Attendance:</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold">{dept.attendanceRate}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Yield Eff.:</span>
-                  <span className="text-cyan-400 font-mono font-bold">{dept.efficiencyRate}%</span>
+                  <span className="text-slate-500 dark:text-slate-400">Yield Eff.:</span>
+                  <span className="text-cyan-600 dark:text-cyan-400 font-mono font-bold">{dept.efficiencyRate}%</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Overtime:</span>
-                  <span className="text-amber-400 font-mono font-medium">{dept.overtimeHours}h</span>
+                  <span className="text-slate-500 dark:text-slate-400">Overtime:</span>
+                  <span className="text-amber-600 dark:text-amber-400 font-mono font-medium">{dept.overtimeHours}h</span>
                 </div>
               </div>
 
-              <div className="text-[10px] text-slate-400 bg-[#0d1322] p-2 rounded-lg border border-slate-800 line-clamp-1">
+              <div className="text-[10px] text-slate-600 dark:text-slate-400 bg-white dark:bg-[#0d1322] p-2 rounded-lg border border-slate-200 dark:border-slate-800 line-clamp-1">
                 Asset: {dept.topMachine}
               </div>
             </div>
@@ -456,18 +456,18 @@ export default function DepartmentWorkforcePage() {
       {/* TWO COLUMN SECTION: ACTIVE DEPLOYMENTS & TARGET OUTPUT PROGRESS */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Active Deployments */}
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5 shadow-lg space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
             <div>
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <Layers className="w-4 h-4 text-teal-400" />
-                Live Workstation & Machine Deployments
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Layers className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+                Live Workstation &amp; Machine Deployments
               </h3>
-              <p className="text-xs text-slate-400 mt-0.5">Assigned operators, machine models, and roles.</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Assigned operators, machine models, and roles.</p>
             </div>
             <Link
               href="/department-workforce/deployments"
-              className="text-xs text-teal-400 hover:underline flex items-center gap-1 font-medium"
+              className="text-xs text-teal-600 dark:text-teal-400 hover:underline flex items-center gap-1 font-medium"
             >
               View All <ChevronRight className="w-3.5 h-3.5" />
             </Link>
@@ -477,28 +477,28 @@ export default function DepartmentWorkforcePage() {
             {deployments.map((d) => (
               <div
                 key={d.id}
-                className="bg-[#090d16] border border-slate-800 p-3.5 rounded-xl space-y-2 hover:border-teal-500/30 transition-all text-xs"
+                className="bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 p-3.5 rounded-xl space-y-2 hover:border-teal-500/30 transition-all text-xs"
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <span className="font-mono text-teal-400 font-bold">{d.assignmentCode}</span>
-                    <span className="mx-1 text-slate-500">•</span>
-                    <span className="text-slate-300 font-medium">{d.stationIdentifier}</span>
+                    <span className="font-mono text-teal-700 dark:text-teal-400 font-bold">{d.assignmentCode}</span>
+                    <span className="mx-1 text-slate-400 dark:text-slate-500">•</span>
+                    <span className="text-slate-700 dark:text-slate-300 font-medium">{d.stationIdentifier}</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                     {d.status}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="font-semibold text-white">
+                    <div className="font-semibold text-slate-900 dark:text-white">
                       {d.employee.firstName} {d.employee.lastName} ({d.employee.employeeCode})
                     </div>
-                    <div className="text-slate-400 text-[11px]">{d.employee.designation?.title}</div>
+                    <div className="text-slate-500 dark:text-slate-400 text-[11px]">{d.employee.designation?.title}</div>
                   </div>
                   <div className="text-right">
-                    <span className="px-2 py-0.5 rounded bg-slate-800 text-cyan-300 text-[10px] font-semibold">
+                    <span className="px-2 py-0.5 rounded bg-slate-200/80 dark:bg-slate-800 text-cyan-800 dark:text-cyan-300 text-[10px] font-semibold">
                       {d.roleOnStation.replace(/_/g, ' ')}
                     </span>
                     <div className="text-[10px] text-slate-500 font-mono mt-0.5">{d.shiftCode}</div>
@@ -506,7 +506,7 @@ export default function DepartmentWorkforcePage() {
                 </div>
 
                 {d.supervisorRemarks && (
-                  <p className="text-slate-400 text-[11px] italic bg-[#0d1322] p-2 rounded-lg border border-slate-800">
+                  <p className="text-slate-600 dark:text-slate-400 text-[11px] italic bg-white dark:bg-[#0d1322] p-2 rounded-lg border border-slate-200 dark:border-slate-800">
                     "{d.supervisorRemarks}"
                   </p>
                 )}
@@ -516,18 +516,18 @@ export default function DepartmentWorkforcePage() {
         </div>
 
         {/* Target vs Actual Outputs Progress */}
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5 shadow-lg space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-5 shadow-sm space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
             <div>
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <Target className="w-4 h-4 text-cyan-400" />
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Target className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
                 Shift Target Output vs Actual Production
               </h3>
-              <p className="text-xs text-slate-400 mt-0.5">Real-time yields, piece counts, and scrap rates.</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Real-time yields, piece counts, and scrap rates.</p>
             </div>
             <Link
               href="/department-workforce/outputs"
-              className="text-xs text-cyan-400 hover:underline flex items-center gap-1 font-medium"
+              className="text-xs text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1 font-medium"
             >
               Output Log <ChevronRight className="w-3.5 h-3.5" />
             </Link>
@@ -537,26 +537,26 @@ export default function DepartmentWorkforcePage() {
             {outputs.map((o) => (
               <div
                 key={o.id}
-                className="bg-[#090d16] border border-slate-800 p-3.5 rounded-xl space-y-2.5 text-xs"
+                className="bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800 p-3.5 rounded-xl space-y-2.5 text-xs"
               >
                 <div className="flex items-center justify-between">
-                  <div className="font-semibold text-white truncate max-w-[280px]">
+                  <div className="font-semibold text-slate-900 dark:text-white truncate max-w-[280px]">
                     {o.productName}
                   </div>
-                  <span className="font-mono text-cyan-400 font-bold text-sm">
+                  <span className="font-mono text-cyan-600 dark:text-cyan-400 font-bold text-sm">
                     {o.efficiencyRatePct}% Yield
                   </span>
                 </div>
 
                 {/* Progress Bar */}
                 <div className="space-y-1">
-                  <div className="flex justify-between text-[11px] text-slate-400">
+                  <div className="flex justify-between text-[11px] text-slate-500 dark:text-slate-400">
                     <span>
-                      Output: <strong className="text-white">{o.actualQuantity}</strong> / {o.targetQuantity} target PCS
+                      Output: <strong className="text-slate-900 dark:text-white">{o.actualQuantity}</strong> / {o.targetQuantity} target PCS
                     </span>
-                    <span>Rejects: <strong className="text-red-400">{o.rejectedQuantity}</strong></span>
+                    <span>Rejects: <strong className="text-rose-600 dark:text-red-400">{o.rejectedQuantity}</strong></span>
                   </div>
-                  <div className="w-full bg-[#0d1322] h-2 rounded-full overflow-hidden border border-slate-800">
+                  <div className="w-full bg-slate-200 dark:bg-[#0d1322] h-2 rounded-full overflow-hidden border border-slate-300 dark:border-slate-800">
                     <div
                       className="bg-gradient-to-r from-teal-500 to-cyan-500 h-full rounded-full transition-all"
                       style={{ width: `${Math.min(100, o.efficiencyRatePct)}%` }}
@@ -564,18 +564,18 @@ export default function DepartmentWorkforcePage() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-[11px] text-slate-400 pt-1 border-t border-slate-800/80">
+                <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 pt-1 border-t border-slate-200 dark:border-slate-800/80">
                   <span>
-                    Operator: <strong className="text-slate-200">{o.employee.firstName} {o.employee.lastName}</strong> ({o.workstationOrLine})
+                    Operator: <strong className="text-slate-800 dark:text-slate-200">{o.employee.firstName} {o.employee.lastName}</strong> ({o.workstationOrLine})
                   </span>
-                  <span>Signoff: <strong className="text-emerald-400">{o.supervisorSignoff}</strong></span>
+                  <span>Signoff: <strong className="text-emerald-600 dark:text-emerald-400">{o.supervisorSignoff}</strong></span>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-xl text-xs text-teal-300 flex items-center justify-between">
-            <span>Seamless HR & Payroll Integration Active</span>
+          <div className="p-3 bg-teal-500/10 border border-teal-500/20 rounded-xl text-xs text-teal-800 dark:text-teal-300 flex items-center justify-between">
+            <span>Seamless HR &amp; Payroll Integration Active</span>
             <Link
               href="/department-workforce/analytics"
               className="px-2.5 py-1 bg-teal-600 hover:bg-teal-700 text-white rounded-lg text-xs font-medium"

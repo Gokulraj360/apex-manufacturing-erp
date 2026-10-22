@@ -294,22 +294,22 @@ export default function MarketingOverviewPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 p-6 space-y-6">
+    <div className="min-h-screen bg-slate-50/50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 p-6 space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
         <div>
           <div className="flex items-center gap-2.5">
-            <div className="h-10 w-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shadow-lg shadow-amber-500/10">
+            <div className="h-10 w-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-500 dark:text-amber-400 shadow-lg shadow-amber-500/10">
               <Megaphone className="h-5 w-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
                 Marketing Command Center
-                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30">
                   Growth Engine
                 </span>
               </h1>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Demand generation campaigns, B2B lead attribution, competitor pricing intelligence & brand equity
               </p>
             </div>
@@ -320,9 +320,9 @@ export default function MarketingOverviewPage() {
           <button
             onClick={fetchData}
             disabled={isRefreshing}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition shadow-xs"
           >
-            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-amber-400' : ''}`} />
+            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-amber-500 dark:text-amber-400' : ''}`} />
             Sync Telemetry
           </button>
           <Link
@@ -334,9 +334,9 @@ export default function MarketingOverviewPage() {
           </Link>
           <Link
             href="/marketing/assets"
-            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold transition"
+            className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white text-xs font-semibold transition shadow-xs"
           >
-            <BookOpen className="h-3.5 w-3.5 text-amber-400" />
+            <BookOpen className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
             Digital Assets
           </Link>
         </div>
@@ -345,101 +345,101 @@ export default function MarketingOverviewPage() {
       {/* Top 4 Performance Metric Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         {/* Card 1: Pipeline Value & Lead Generation */}
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-amber-500/40 transition">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-amber-500/40 transition shadow-sm">
           <div className="absolute top-0 right-0 h-24 w-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition" />
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">
+          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
               Pipeline Value Generated
             </span>
-            <div className="h-8 w-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+            <div className="h-8 w-8 rounded-lg bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
               <DollarSign className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-white">
+          <div className="text-2xl font-black text-slate-900 dark:text-white">
             ${(metrics.totalPipelineValue / 1000).toFixed(0)}k
           </div>
           <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-slate-400">
-              <strong className="text-emerald-400 font-semibold">{metrics.totalLeadsGenerated}</strong> Qualified Deals
+            <span className="text-slate-500 dark:text-slate-400">
+              <strong className="text-emerald-600 dark:text-emerald-400 font-semibold">{metrics.totalLeadsGenerated}</strong> Qualified Deals
             </span>
-            <span className="text-emerald-400 flex items-center gap-0.5 text-[11px] font-medium">
+            <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-0.5 text-[11px] font-medium">
               <ArrowUpRight className="h-3 w-3" /> +24% QoQ
             </span>
           </div>
         </div>
 
         {/* Card 2: Marketing ROI & Spend */}
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-amber-500/40 transition">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-amber-500/40 transition shadow-sm">
           <div className="absolute top-0 right-0 h-24 w-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition" />
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">
+          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
               Blended Campaign ROI
             </span>
-            <div className="h-8 w-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+            <div className="h-8 w-8 rounded-lg bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
               <TrendingUp className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-emerald-400">
+          <div className="text-2xl font-black text-emerald-600 dark:text-emerald-400">
             {metrics.averageRoiPct}%
           </div>
           <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-slate-400">
-              Spent: <strong className="text-white">${(metrics.totalActualSpent / 1000).toFixed(1)}k</strong> / ${(metrics.totalBudgetAllocated / 1000).toFixed(1)}k
+            <span className="text-slate-500 dark:text-slate-400">
+              Spent: <strong className="text-slate-900 dark:text-white">${(metrics.totalActualSpent / 1000).toFixed(1)}k</strong> / ${(metrics.totalBudgetAllocated / 1000).toFixed(1)}k
             </span>
-            <span className="text-slate-400 text-[11px]">
+            <span className="text-slate-500 dark:text-slate-400 text-[11px]">
               {Math.round((metrics.totalActualSpent / metrics.totalBudgetAllocated) * 100)}% budget burn
             </span>
           </div>
         </div>
 
         {/* Card 3: Digital Asset Reach & Engagement */}
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-amber-500/40 transition">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-amber-500/40 transition shadow-sm">
           <div className="absolute top-0 right-0 h-24 w-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition" />
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">
+          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
               Digital Specs & Brochures
             </span>
-            <div className="h-8 w-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+            <div className="h-8 w-8 rounded-lg bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
               <BookOpen className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-white">
+          <div className="text-2xl font-black text-slate-900 dark:text-white">
             {metrics.totalAssetDownloads.toLocaleString()}
           </div>
           <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-slate-400">
-              <strong className="text-white">{metrics.totalAssetsCount}</strong> Active Documents
+            <span className="text-slate-500 dark:text-slate-400">
+              <strong className="text-slate-900 dark:text-white">{metrics.totalAssetsCount}</strong> Active Documents
             </span>
-            <span className="text-amber-400 flex items-center gap-0.5 text-[11px] font-medium">
+            <span className="text-amber-600 dark:text-amber-400 flex items-center gap-0.5 text-[11px] font-medium">
               <Download className="h-3 w-3" /> Downloads
             </span>
           </div>
         </div>
 
         {/* Card 4: Customer Satisfaction & Brand Equity */}
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-amber-500/40 transition">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl p-4.5 relative overflow-hidden group hover:border-amber-500/40 transition shadow-sm">
           <div className="absolute top-0 right-0 h-24 w-24 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/10 transition" />
-          <div className="flex items-center justify-between text-slate-400 mb-2">
-            <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">
+          <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 mb-2">
+            <span className="text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-amber-400">
               Brand Perception & CSAT
             </span>
-            <div className="h-8 w-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+            <div className="h-8 w-8 rounded-lg bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400">
               <Award className="h-4 w-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-amber-300 flex items-center gap-2">
+          <div className="text-2xl font-black text-amber-600 dark:text-amber-300 flex items-center gap-2">
             <span>{metrics.avgCsatScore}</span>
-            <span className="text-xs font-normal text-slate-400">/ 5.0</span>
-            <span className="text-xs font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-1.5 py-0.5 rounded ml-auto">
+            <span className="text-xs font-normal text-slate-500 dark:text-slate-400">/ 5.0</span>
+            <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-500/30 px-1.5 py-0.5 rounded ml-auto">
               {metrics.avgBrandPerception}% Equity
             </span>
           </div>
           <div className="mt-2 flex items-center justify-between text-xs">
-            <span className="text-slate-400">
-              Demand Heat Index: <strong className="text-white">{metrics.avgMarketDemandIndex}/100</strong>
+            <span className="text-slate-500 dark:text-slate-400">
+              Demand Heat Index: <strong className="text-slate-900 dark:text-white">{metrics.avgMarketDemandIndex}/100</strong>
             </span>
-            <span className="text-amber-400 flex items-center gap-0.5 text-[11px]">
-              <Star className="h-3 w-3 fill-amber-400 text-amber-400" /> Top Tier
+            <span className="text-amber-600 dark:text-amber-400 flex items-center gap-0.5 text-[11px]">
+              <Star className="h-3 w-3 fill-amber-500 text-amber-500 dark:fill-amber-400 dark:text-amber-400" /> Top Tier
             </span>
           </div>
         </div>
@@ -489,22 +489,22 @@ export default function MarketingOverviewPage() {
             <Link
               key={i}
               href={module.href}
-              className="bg-[#0d1322] border border-slate-800 hover:border-amber-500/50 rounded-xl p-3.5 transition group flex flex-col justify-between"
+              className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 hover:border-amber-500/50 rounded-xl p-3.5 transition group flex flex-col justify-between shadow-xs"
             >
               <div className="flex items-center justify-between mb-2">
-                <div className="h-8 w-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 group-hover:scale-105 transition">
+                <div className="h-8 w-8 rounded-lg bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:scale-105 transition">
                   <Icon className="h-4 w-4" />
                 </div>
-                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-amber-300">
+                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-amber-700 dark:text-amber-300">
                   {module.badge}
                 </span>
               </div>
               <div>
-                <h4 className="text-xs font-bold text-white group-hover:text-amber-300 transition flex items-center justify-between">
+                <h4 className="text-xs font-bold text-slate-800 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-300 transition flex items-center justify-between">
                   {module.title}
-                  <ChevronRight className="h-3 w-3 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-0.5 transition" />
+                  <ChevronRight className="h-3 w-3 text-slate-400 group-hover:text-amber-600 dark:group-hover:text-amber-400 group-hover:translate-x-0.5 transition" />
                 </h4>
-                <p className="text-[11px] text-slate-400 line-clamp-1">{module.desc}</p>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">{module.desc}</p>
               </div>
             </Link>
           );
@@ -516,20 +516,20 @@ export default function MarketingOverviewPage() {
         {/* Left Column (2 Cols): Active Demand Generation Campaigns */}
         <div className="lg:col-span-2 space-y-6">
           {/* Active Campaigns Panel */}
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-4">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <Target className="h-4 w-4 text-amber-400" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <Target className="h-4 w-4 text-amber-500 dark:text-amber-400" />
                   Active Demand Generation Campaigns
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   Performance tracking across trade shows, digital ads, and engineering webinars
                 </p>
               </div>
               <Link
                 href="/marketing/campaigns"
-                className="text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1"
+                className="text-xs font-semibold text-amber-600 dark:text-amber-400 hover:text-amber-500 dark:hover:text-amber-300 flex items-center gap-1"
               >
                 View All Campaigns <ChevronRight className="h-3.5 w-3.5" />
               </Link>
@@ -539,42 +539,42 @@ export default function MarketingOverviewPage() {
               {campaigns.map((camp) => (
                 <div
                   key={camp.id}
-                  className="p-4 rounded-xl bg-slate-900/70 border border-slate-800/90 hover:border-slate-700 transition"
+                  className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800/90 hover:border-slate-300 dark:hover:border-slate-700 transition"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-mono font-bold text-amber-400 bg-amber-950/40 border border-amber-500/20 px-2 py-0.5 rounded">
+                      <span className="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-500/20 px-2 py-0.5 rounded">
                         {camp.campaignCode}
                       </span>
-                      <h4 className="text-xs font-bold text-white">{camp.name}</h4>
+                      <h4 className="text-xs font-bold text-slate-900 dark:text-white">{camp.name}</h4>
                     </div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 self-start">
+                    <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 self-start">
                       {camp.status}
                     </span>
                   </div>
 
-                  <p className="text-[11px] text-slate-400 mb-3">{camp.description}</p>
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mb-3">{camp.description}</p>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 px-3 rounded-lg bg-[#090d16] border border-slate-800/60 text-xs">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-2 px-3 rounded-lg bg-white dark:bg-[#090d16] border border-slate-200 dark:border-slate-800/60 text-xs shadow-2xs">
                     <div>
                       <span className="text-[10px] text-slate-500 block uppercase font-medium">Channel</span>
-                      <span className="text-slate-200 font-semibold truncate block">{camp.channel}</span>
+                      <span className="text-slate-800 dark:text-slate-200 font-semibold truncate block">{camp.channel}</span>
                     </div>
                     <div>
                       <span className="text-[10px] text-slate-500 block uppercase font-medium">Budget Burn</span>
-                      <span className="text-slate-200 font-semibold">
+                      <span className="text-slate-800 dark:text-slate-200 font-semibold">
                         ${camp.actualSpent.toLocaleString()} / ${camp.allocatedBudget.toLocaleString()}
                       </span>
                     </div>
                     <div>
                       <span className="text-[10px] text-slate-500 block uppercase font-medium">Leads Fed to CRM</span>
-                      <span className="text-amber-400 font-bold">
+                      <span className="text-amber-600 dark:text-amber-400 font-bold">
                         {camp.leadsGenerated} Leads (${(camp.pipelineValueGenerated / 1000).toFixed(0)}k val)
                       </span>
                     </div>
                     <div>
                       <span className="text-[10px] text-slate-500 block uppercase font-medium">Estimated ROI</span>
-                      <span className="text-emerald-400 font-bold">+{camp.roiPercentage}%</span>
+                      <span className="text-emerald-600 dark:text-emerald-400 font-bold">+{camp.roiPercentage}%</span>
                     </div>
                   </div>
                 </div>
@@ -583,20 +583,20 @@ export default function MarketingOverviewPage() {
           </div>
 
           {/* Competitor Pricing Variance Radar */}
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-4">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-rose-400" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <TrendingUp className="h-4 w-4 text-rose-500 dark:text-rose-400" />
                   Competitor Pricing Variance Radar
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   Real-time market price differences & strategic counter-measures
                 </p>
               </div>
               <Link
                 href="/marketing/intelligence"
-                className="text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1"
+                className="text-xs font-semibold text-amber-600 dark:text-amber-400 hover:text-amber-500 dark:hover:text-amber-300 flex items-center gap-1"
               >
                 Intelligence Desk <ChevronRight className="h-3.5 w-3.5" />
               </Link>
@@ -606,46 +606,46 @@ export default function MarketingOverviewPage() {
               {trends.map((t) => (
                 <div
                   key={t.id}
-                  className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3"
+                  className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3"
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-xs font-bold text-white">{t.competitorName}</span>
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                      <span className="text-xs font-bold text-slate-900 dark:text-white">{t.competitorName}</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-700">
                         {t.marketSegment}
                       </span>
                       <span
                         className={`text-[9px] font-bold px-1.5 py-0.2 rounded uppercase ${
                           t.impactLevel === 'CRITICAL'
-                            ? 'bg-rose-950 text-rose-300 border border-rose-500/30'
-                            : 'bg-amber-950 text-amber-300 border border-amber-500/30'
+                            ? 'bg-rose-50 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/30'
+                            : 'bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30'
                         }`}
                       >
                         {t.impactLevel} Threat
                       </span>
                     </div>
-                    <p className="text-[11px] text-slate-400 italic">"{t.marketObservations}"</p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 italic">"{t.marketObservations}"</p>
                     {t.recommendedStrategy && (
-                      <p className="text-[11px] text-amber-300/90 font-medium">
+                      <p className="text-[11px] text-amber-700 dark:text-amber-300/90 font-medium">
                         <strong>Counter-Tactic:</strong> {t.recommendedStrategy}
                       </p>
                     )}
                   </div>
 
-                  <div className="flex items-center gap-4 text-xs font-mono shrink-0 bg-[#090d16] p-2.5 rounded-lg border border-slate-800">
+                  <div className="flex items-center gap-4 text-xs font-mono shrink-0 bg-white dark:bg-[#090d16] p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-2xs">
                     <div>
                       <span className="text-[9px] text-slate-500 block uppercase">Their Price</span>
-                      <span className="text-slate-300 font-bold">${t.observedPricePerUnit}</span>
+                      <span className="text-slate-800 dark:text-slate-300 font-bold">${t.observedPricePerUnit}</span>
                     </div>
-                    <div className="border-l border-slate-800 pl-3">
+                    <div className="border-l border-slate-200 dark:border-slate-800 pl-3">
                       <span className="text-[9px] text-slate-500 block uppercase">Our Price</span>
-                      <span className="text-slate-300 font-bold">${t.ourComparablePrice}</span>
+                      <span className="text-slate-800 dark:text-slate-300 font-bold">${t.ourComparablePrice}</span>
                     </div>
-                    <div className="border-l border-slate-800 pl-3">
+                    <div className="border-l border-slate-200 dark:border-slate-800 pl-3">
                       <span className="text-[9px] text-slate-500 block uppercase">Variance</span>
                       <span
                         className={`font-bold ${
-                          (t.priceVariancePct || 0) < 0 ? 'text-rose-400' : 'text-emerald-400'
+                          (t.priceVariancePct || 0) < 0 ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'
                         }`}
                       >
                         {t.priceVariancePct}%
@@ -661,18 +661,18 @@ export default function MarketingOverviewPage() {
         {/* Right Column (1 Col): Budgets & Digital Asset Activity */}
         <div className="space-y-6">
           {/* Advertising Budget Approval Gateway */}
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-4">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <DollarSign className="h-4 w-4 text-emerald-400" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <DollarSign className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                   Budgets & Finance Approval
                 </h3>
-                <p className="text-xs text-slate-400">Accounts reconciliation & journal ledger links</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Accounts reconciliation & journal ledger links</p>
               </div>
               <Link
                 href="/marketing/budgets"
-                className="text-xs font-semibold text-amber-400 hover:text-amber-300"
+                className="text-xs font-semibold text-amber-600 dark:text-amber-400 hover:text-amber-500 dark:hover:text-amber-300"
               >
                 Ledger
               </Link>
@@ -682,32 +682,32 @@ export default function MarketingOverviewPage() {
               {budgets.map((b) => (
                 <div
                   key={b.id}
-                  className="p-3 rounded-lg bg-slate-900/70 border border-slate-800 space-y-1.5"
+                  className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 space-y-1.5"
                 >
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-white truncate max-w-[160px]">{b.eventName}</span>
+                    <span className="font-semibold text-slate-900 dark:text-white truncate max-w-[160px]">{b.eventName}</span>
                     <span
                       className={`text-[9px] font-bold px-1.5 py-0.5 rounded uppercase ${
                         b.approvalStatus === 'DISBURSED'
-                          ? 'bg-emerald-950 text-emerald-300 border border-emerald-500/30'
+                          ? 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30'
                           : b.approvalStatus === 'ACCOUNTS_APPROVED'
-                          ? 'bg-blue-950 text-blue-300 border border-blue-500/30'
-                          : 'bg-amber-950 text-amber-300 border border-amber-500/30'
+                          ? 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30'
+                          : 'bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30'
                       }`}
                     >
                       {b.approvalStatus.replace(/_/g, ' ')}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-xs text-slate-400">
+                  <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
                     <span>{b.category.replace(/_/g, ' ')}</span>
-                    <span className="font-mono text-white font-bold">
+                    <span className="font-mono text-slate-900 dark:text-white font-bold">
                       ${(b.approvedAmount || b.proposedAmount).toLocaleString()}
                     </span>
                   </div>
                   {b.journalEntryRef && (
-                    <div className="text-[10px] text-slate-400 font-mono flex items-center gap-1 pt-1 border-t border-slate-800/60">
-                      <CheckCircle2 className="h-3 w-3 text-emerald-400" />
-                      GL Linked: <strong className="text-slate-300">{b.journalEntryRef}</strong>
+                    <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono flex items-center gap-1 pt-1 border-t border-slate-200 dark:border-slate-800/60">
+                      <CheckCircle2 className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
+                      GL Linked: <strong className="text-slate-700 dark:text-slate-300">{b.journalEntryRef}</strong>
                     </div>
                   )}
                 </div>
@@ -716,18 +716,18 @@ export default function MarketingOverviewPage() {
           </div>
 
           {/* Top Downloaded Digital Assets */}
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800 mb-4">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <BookOpen className="h-4 w-4 text-amber-400" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <BookOpen className="h-4 w-4 text-amber-500 dark:text-amber-400" />
                   Top Distributed Assets
                 </h3>
-                <p className="text-xs text-slate-400">Client brochures, CAD files & spec sheets</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Client brochures, CAD files & spec sheets</p>
               </div>
               <Link
                 href="/marketing/assets"
-                className="text-xs font-semibold text-amber-400 hover:text-amber-300"
+                className="text-xs font-semibold text-amber-600 dark:text-amber-400 hover:text-amber-500 dark:hover:text-amber-300"
               >
                 Browse All
               </Link>
@@ -737,19 +737,19 @@ export default function MarketingOverviewPage() {
               {assets.map((ast) => (
                 <div
                   key={ast.id}
-                  className="p-3 rounded-lg bg-slate-900/70 border border-slate-800 flex items-center justify-between gap-3"
+                  className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3"
                 >
                   <div className="space-y-0.5 overflow-hidden">
-                    <h5 className="text-xs font-semibold text-white truncate">{ast.title}</h5>
-                    <div className="flex items-center gap-2 text-[10px] text-slate-400">
-                      <span className="text-amber-400 font-mono">{ast.version}</span>
+                    <h5 className="text-xs font-semibold text-slate-900 dark:text-white truncate">{ast.title}</h5>
+                    <div className="flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400">
+                      <span className="text-amber-600 dark:text-amber-400 font-mono">{ast.version}</span>
                       <span>•</span>
                       <span>{ast.type.replace(/_/g, ' ')}</span>
                     </div>
                   </div>
                   <div className="text-right shrink-0">
-                    <span className="text-xs font-bold font-mono text-white flex items-center gap-1 justify-end">
-                      <Download className="h-3 w-3 text-amber-400" /> {ast.downloadCount}
+                    <span className="text-xs font-bold font-mono text-slate-900 dark:text-white flex items-center gap-1 justify-end">
+                      <Download className="h-3 w-3 text-amber-500 dark:text-amber-400" /> {ast.downloadCount}
                     </span>
                     <span className="text-[9px] text-slate-500 uppercase">Hits</span>
                   </div>
@@ -759,12 +759,12 @@ export default function MarketingOverviewPage() {
           </div>
 
           {/* Client Sentiment Strengths */}
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-5">
-            <h3 className="text-sm font-bold text-white flex items-center gap-2 mb-2">
-              <Award className="h-4 w-4 text-amber-400" />
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl p-5 shadow-sm">
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2 mb-2">
+              <Award className="h-4 w-4 text-amber-500 dark:text-amber-400" />
               Verified Brand Strengths
             </h3>
-            <p className="text-xs text-slate-400 mb-3">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">
               Top attributes recognized by OEM partners in post-delivery satisfaction audits:
             </p>
             <div className="flex flex-wrap gap-1.5">
@@ -777,7 +777,7 @@ export default function MarketingOverviewPage() {
               ].map((strength, idx) => (
                 <span
                   key={idx}
-                  className="text-[10px] px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700/80 text-amber-300 font-medium"
+                  className="text-[10px] px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-amber-700 dark:text-amber-300 font-medium"
                 >
                   ✓ {strength}
                 </span>

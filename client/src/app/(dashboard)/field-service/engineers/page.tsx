@@ -243,17 +243,17 @@ export default function FieldEngineersPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-400 border border-orange-500/20">
+            <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-500 dark:text-orange-400 border border-orange-500/20">
               <Users className="h-5 w-5" />
             </span>
-            <h1 className="text-xl font-bold text-white tracking-tight">
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
               Field Engineer Dispatch & Mobile Fleet Management
             </h1>
           </div>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Real-time technician presence tracking, GPS corridor dispatching, specialization matching, and visit telemetry logging.
           </p>
         </div>
@@ -268,55 +268,55 @@ export default function FieldEngineersPage() {
 
       {/* Corridor Telemetry Snapshot */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-        <div className="p-3.5 rounded-xl bg-[#0d1322] border border-slate-800 flex items-center justify-between">
+        <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center justify-between">
           <div>
-            <div className="text-slate-400 text-[11px]">Total Technicians</div>
-            <div className="text-xl font-bold text-white mt-0.5">{engineers.length} Engineers</div>
+            <div className="text-slate-500 dark:text-slate-400 text-[11px]">Total Technicians</div>
+            <div className="text-xl font-bold text-slate-900 dark:text-white mt-0.5">{engineers.length} Engineers</div>
           </div>
-          <div className="p-2 rounded-lg bg-orange-500/10 text-orange-400">
+          <div className="p-2 rounded-lg bg-orange-500/10 text-orange-500 dark:text-orange-400">
             <Users className="h-4 w-4" />
           </div>
         </div>
 
-        <div className="p-3.5 rounded-xl bg-[#0d1322] border border-slate-800 flex items-center justify-between">
+        <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center justify-between">
           <div>
-            <div className="text-slate-400 text-[11px]">Available for Dispatch</div>
-            <div className="text-xl font-bold text-emerald-400 mt-0.5">
+            <div className="text-slate-500 dark:text-slate-400 text-[11px]">Available for Dispatch</div>
+            <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">
               {engineers.filter((e) => e.currentStatus === 'AVAILABLE').length} Standby
             </div>
           </div>
-          <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-400">
+          <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500 dark:text-emerald-400">
             <CheckCircle2 className="h-4 w-4" />
           </div>
         </div>
 
-        <div className="p-3.5 rounded-xl bg-[#0d1322] border border-slate-800 flex items-center justify-between">
+        <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center justify-between">
           <div>
-            <div className="text-slate-400 text-[11px]">Active On Site</div>
-            <div className="text-xl font-bold text-purple-400 mt-0.5">
+            <div className="text-slate-500 dark:text-slate-400 text-[11px]">Active On Site</div>
+            <div className="text-xl font-bold text-purple-600 dark:text-purple-400 mt-0.5">
               {engineers.filter((e) => e.currentStatus === 'ON_SITE').length} Technicians
             </div>
           </div>
-          <div className="p-2 rounded-lg bg-purple-500/10 text-purple-400">
+          <div className="p-2 rounded-lg bg-purple-500/10 text-purple-500 dark:text-purple-400">
             <Wrench className="h-4 w-4" />
           </div>
         </div>
 
-        <div className="p-3.5 rounded-xl bg-[#0d1322] border border-slate-800 flex items-center justify-between">
+        <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center justify-between">
           <div>
-            <div className="text-slate-400 text-[11px]">En Route / In Transit</div>
-            <div className="text-xl font-bold text-blue-400 mt-0.5">
+            <div className="text-slate-500 dark:text-slate-400 text-[11px]">En Route / In Transit</div>
+            <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mt-0.5">
               {engineers.filter((e) => e.currentStatus === 'IN_TRANSIT').length} Vans
             </div>
           </div>
-          <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400">
+          <div className="p-2 rounded-lg bg-blue-500/10 text-blue-500 dark:text-blue-400">
             <Truck className="h-4 w-4" />
           </div>
         </div>
       </div>
 
       {/* Search and Filters */}
-      <div className="p-4 rounded-xl bg-[#0d1322] border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+      <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
         <div className="relative w-full md:w-80">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
           <input
@@ -324,7 +324,7 @@ export default function FieldEngineersPage() {
             placeholder="Search technician name, code, skill, territory..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-orange-500"
+            className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-lg pl-9 pr-3 py-2 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-orange-500"
           />
         </div>
 
@@ -332,7 +332,7 @@ export default function FieldEngineersPage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-800 text-slate-300 rounded-lg px-2.5 py-2 focus:outline-none focus:border-orange-500 text-xs"
+            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:border-orange-500 text-xs"
           >
             <option value="ALL">All Statuses</option>
             <option value="AVAILABLE">Available</option>
@@ -345,7 +345,7 @@ export default function FieldEngineersPage() {
           <select
             value={territoryFilter}
             onChange={(e) => setTerritoryFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-800 text-slate-300 rounded-lg px-2.5 py-2 focus:outline-none focus:border-orange-500 text-xs"
+            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 rounded-lg px-2.5 py-2 focus:outline-none focus:border-orange-500 text-xs"
           >
             <option value="ALL">All Territories</option>
             <option value="Pune">Pune Corridor</option>
@@ -363,7 +363,7 @@ export default function FieldEngineersPage() {
         {filteredEngineers.map((eng) => (
           <div
             key={eng.id}
-            className="p-5 rounded-xl bg-[#0d1322] border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between space-y-4"
+            className="p-5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 transition-all flex flex-col justify-between space-y-4"
           >
             <div>
               {/* Header with Avatar & Status */}
@@ -373,8 +373,8 @@ export default function FieldEngineersPage() {
                     {eng.fullName.split(' ').map((n) => n[0]).join('')}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-sm text-white">{eng.fullName}</h3>
-                    <div className="text-[11px] font-mono text-orange-400 font-medium">
+                    <h3 className="font-semibold text-sm text-slate-900 dark:text-white">{eng.fullName}</h3>
+                    <div className="text-[11px] font-mono text-orange-600 dark:text-orange-400 font-medium">
                       {eng.employeeCode}
                     </div>
                   </div>
@@ -390,17 +390,17 @@ export default function FieldEngineersPage() {
               </div>
 
               {/* Territory & Contact */}
-              <div className="mt-3.5 space-y-1.5 text-xs text-slate-300">
-                <div className="flex items-center gap-2 text-slate-400">
-                  <MapPin className="h-3.5 w-3.5 text-orange-400 shrink-0" />
+              <div className="mt-3.5 space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                  <MapPin className="h-3.5 w-3.5 text-orange-500 dark:text-orange-400 shrink-0" />
                   <span>{eng.operatingTerritoryCity}</span>
                 </div>
-                <div className="flex items-center gap-2 text-slate-400">
-                  <Phone className="h-3.5 w-3.5 text-slate-500 shrink-0" />
+                <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400">
+                  <Phone className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500 shrink-0" />
                   <span>{eng.phone}</span>
                 </div>
                 {eng.lastLocationUpdate && (
-                  <div className="flex items-center gap-2 text-[11px] text-blue-400">
+                  <div className="flex items-center gap-2 text-[11px] text-blue-600 dark:text-blue-400">
                     <Navigation className="h-3 w-3 shrink-0" />
                     <span>GPS Telemetry: {eng.lastLocationUpdate}</span>
                   </div>
@@ -409,14 +409,14 @@ export default function FieldEngineersPage() {
 
               {/* Specializations Tags */}
               <div className="mt-3.5">
-                <div className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-1.5">
+                <div className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1.5">
                   Core Skills & Equipment Mastery
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {eng.technicalSpecializations.map((spec, i) => (
                     <span
                       key={i}
-                      className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] font-medium border border-slate-700/60"
+                      className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-[10px] font-medium border border-slate-200 dark:border-slate-700/60"
                     >
                       {spec}
                     </span>
@@ -426,20 +426,20 @@ export default function FieldEngineersPage() {
             </div>
 
             {/* Performance Metrics Bar & Actions */}
-            <div className="pt-3 border-t border-slate-800/80 space-y-3">
+            <div className="pt-3 border-t border-slate-200 dark:border-slate-800/80 space-y-3">
               <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                <div className="p-1.5 rounded bg-slate-900/80 border border-slate-800">
-                  <div className="text-[10px] text-slate-400">Jobs Done</div>
-                  <div className="font-bold text-white mt-0.5">{eng.totalCompletedJobs}</div>
+                <div className="p-1.5 rounded bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Jobs Done</div>
+                  <div className="font-bold text-slate-900 dark:text-white mt-0.5">{eng.totalCompletedJobs}</div>
                 </div>
-                <div className="p-1.5 rounded bg-slate-900/80 border border-slate-800">
-                  <div className="text-[10px] text-slate-400">FTFR</div>
-                  <div className="font-bold text-emerald-400 mt-0.5">{eng.ftfrRate}%</div>
+                <div className="p-1.5 rounded bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">FTFR</div>
+                  <div className="font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">{eng.ftfrRate}%</div>
                 </div>
-                <div className="p-1.5 rounded bg-slate-900/80 border border-slate-800">
-                  <div className="text-[10px] text-slate-400">CSAT</div>
-                  <div className="font-bold text-amber-400 mt-0.5 flex items-center justify-center gap-1">
-                    <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                <div className="p-1.5 rounded bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">CSAT</div>
+                  <div className="font-bold text-amber-500 dark:text-amber-400 mt-0.5 flex items-center justify-center gap-1">
+                    <Star className="h-3 w-3 fill-amber-400 text-amber-500 dark:text-amber-400" />
                     <span>{eng.customerRatingAvg}</span>
                   </div>
                 </div>
@@ -451,13 +451,13 @@ export default function FieldEngineersPage() {
                     setSelectedEngineer(eng);
                     setIsLogModalOpen(true);
                   }}
-                  className="flex-1 py-1.5 rounded-lg bg-orange-600/20 hover:bg-orange-600/30 text-orange-300 border border-orange-500/30 text-xs font-semibold transition-all flex items-center justify-center gap-1.5"
+                  className="flex-1 py-1.5 rounded-lg bg-orange-600/10 hover:bg-orange-600/20 text-orange-600 dark:text-orange-300 border border-orange-500/30 text-xs font-semibold transition-all flex items-center justify-center gap-1.5"
                 >
                   <FileText className="h-3.5 w-3.5" /> Log On-Site Event
                 </button>
                 <a
                   href={`tel:${eng.phone}`}
-                  className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all"
+                  className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all"
                   title="Call Technician"
                 >
                   <Phone className="h-4 w-4" />
@@ -471,17 +471,17 @@ export default function FieldEngineersPage() {
       {/* Modal: Enroll Field Engineer */}
       {isEnrollModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-md w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-400">
+                <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-500 dark:text-orange-400">
                   <Users className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Enroll New Field Engineer</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Enroll New Field Engineer</h3>
               </div>
               <button
                 onClick={() => setIsEnrollModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -490,68 +490,68 @@ export default function FieldEngineersPage() {
             <form onSubmit={handleEnrollEngineer} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Full Name *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Full Name *</label>
                   <input
                     type="text"
                     required
                     value={enrollForm.fullName}
                     onChange={(e) => setEnrollForm({ ...enrollForm, fullName: e.target.value })}
                     placeholder="e.g. Rahul Patil"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Employee Code *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Employee Code *</label>
                   <input
                     type="text"
                     required
                     value={enrollForm.employeeCode}
                     onChange={(e) => setEnrollForm({ ...enrollForm, employeeCode: e.target.value })}
                     placeholder="FSE-120"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500 uppercase"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500 uppercase"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Contact Phone *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Contact Phone *</label>
                   <input
                     type="text"
                     required
                     value={enrollForm.phone}
                     onChange={(e) => setEnrollForm({ ...enrollForm, phone: e.target.value })}
                     placeholder="+91 98230 00000"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Official Email *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Official Email *</label>
                   <input
                     type="email"
                     required
                     value={enrollForm.email}
                     onChange={(e) => setEnrollForm({ ...enrollForm, email: e.target.value })}
                     placeholder="rahul.p@apex-field.com"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Operating Territory / Base City *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1">Operating Territory / Base City *</label>
                 <input
                   type="text"
                   required
                   value={enrollForm.operatingTerritoryCity}
                   onChange={(e) => setEnrollForm({ ...enrollForm, operatingTerritoryCity: e.target.value })}
                   placeholder="e.g. Pune Industrial Belt"
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">
+                <label className="block text-slate-700 dark:text-slate-300 mb-1">
                   Technical Specializations (comma-separated) *
                 </label>
                 <input
@@ -560,15 +560,15 @@ export default function FieldEngineersPage() {
                   value={enrollForm.specializations}
                   onChange={(e) => setEnrollForm({ ...enrollForm, specializations: e.target.value })}
                   placeholder="e.g. Hydraulics, PLC Siemens, Servo Drives"
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsEnrollModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                 >
                   Cancel
                 </button>
@@ -587,49 +587,49 @@ export default function FieldEngineersPage() {
       {/* Modal: Log On-Site Event */}
       {isLogModalOpen && selectedEngineer && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-md w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-400">
+                <span className="p-1.5 rounded-lg bg-orange-500/10 text-orange-500 dark:text-orange-400">
                   <FileText className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Log Field Event / Visit Telemetry</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Log Field Event / Visit Telemetry</h3>
               </div>
               <button
                 onClick={() => setIsLogModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs space-y-1">
-              <div className="font-semibold text-white">
+            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 text-xs space-y-1">
+              <div className="font-semibold text-slate-900 dark:text-white">
                 {selectedEngineer.fullName} ({selectedEngineer.employeeCode})
               </div>
-              <div className="text-slate-400">{selectedEngineer.operatingTerritoryCity}</div>
+              <div className="text-slate-500 dark:text-slate-400">{selectedEngineer.operatingTerritoryCity}</div>
             </div>
 
             <form onSubmit={handleCreateServiceLog} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Target Ticket Number *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Target Ticket Number *</label>
                   <input
                     type="text"
                     required
                     value={serviceLogForm.ticketNumber}
                     onChange={(e) => setServiceLogForm({ ...serviceLogForm, ticketNumber: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500 font-mono"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Event Type *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1">Event Type *</label>
                   <select
                     value={serviceLogForm.logType}
                     onChange={(e) =>
                       setServiceLogForm({ ...serviceLogForm, logType: e.target.value as ServiceLogType })
                     }
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                   >
                     <option value="ARRIVAL_CHECKIN">Arrival Check-in</option>
                     <option value="DIAGNOSTIC_NOTE">Diagnostic Findings</option>
@@ -642,33 +642,33 @@ export default function FieldEngineersPage() {
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">GPS Coordinates</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1">GPS Coordinates</label>
                 <input
                   type="text"
                   value={serviceLogForm.coordinates}
                   onChange={(e) => setServiceLogForm({ ...serviceLogForm, coordinates: e.target.value })}
                   placeholder="18.6279 N, 73.8131 E"
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500 font-mono"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500 font-mono"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Technical Notes & Observations *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1">Technical Notes & Observations *</label>
                 <textarea
                   required
                   rows={3}
                   value={serviceLogForm.notes}
                   onChange={(e) => setServiceLogForm({ ...serviceLogForm, notes: e.target.value })}
                   placeholder="Observed hydraulic pressure oscillation in proportional valve..."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-orange-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-100 focus:outline-none focus:border-orange-500"
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsLogModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                 >
                   Cancel
                 </button>

@@ -105,7 +105,7 @@ export interface SubcontractorChallanItem {
   challanType: SubcontractChallanType;
   jobWorkOrderId: string;
   jobWorkOrder?: {
-    id: string;
+    id?: string;
     orderNumber: string;
     processDescription: string;
     targetProductPart: string;
@@ -136,7 +136,7 @@ export interface SubcontractorReceiptItem {
   receiptNumber: string;
   jobWorkOrderId: string;
   jobWorkOrder?: {
-    id: string;
+    id?: string;
     orderNumber: string;
     processDescription: string;
     targetProductPart: string;
@@ -184,7 +184,7 @@ export interface SubcontractorBillItem {
   };
   jobWorkOrderId: string;
   jobWorkOrder?: {
-    id: string;
+    id?: string;
     orderNumber: string;
     processDescription: string;
     targetProductPart: string;

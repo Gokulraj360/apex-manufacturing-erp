@@ -14,6 +14,7 @@ import {
   Truck,
   Building2,
   Calendar,
+  Clock,
   DollarSign,
   Layers,
   ChevronRight,
@@ -256,17 +257,17 @@ export default function JobWorkOrdersPage() {
           <div className="flex items-center gap-2">
             <Link
               href="/subcontracting"
-              className="text-xs text-teal-400 hover:text-teal-300 flex items-center gap-1 transition-colors"
+              className="text-xs text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 flex items-center gap-1 transition-colors"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               Subcontracting Hub
             </Link>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2.5 mt-1">
-            <FileSpreadsheet className="h-6 w-6 text-teal-400" />
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2.5 mt-1">
+            <FileSpreadsheet className="h-6 w-6 text-teal-600 dark:text-teal-400" />
             Job Work Orders (JWO) &amp; Vendor Allocation Board
           </h1>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
             Issuance of external manufacturing contracts for heat treatment, plating, and casting processes with unit processing rate verification.
           </p>
         </div>
@@ -275,7 +276,7 @@ export default function JobWorkOrdersPage() {
           {activeTab === 'ORDERS' ? (
             <button
               onClick={() => setIsCreateOrderModalOpen(true)}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-medium text-xs shadow-lg shadow-teal-600/20 transition-colors"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-medium text-xs shadow-sm shadow-teal-600/20 transition-colors"
             >
               <Plus className="h-4 w-4" />
               Issue Job Work Order
@@ -283,7 +284,7 @@ export default function JobWorkOrdersPage() {
           ) : (
             <button
               onClick={() => setIsEnrollVendorModalOpen(true)}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-medium text-xs shadow-lg shadow-teal-600/20 transition-colors"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-medium text-xs shadow-sm shadow-teal-600/20 transition-colors"
             >
               <Plus className="h-4 w-4" />
               Enroll Subcontractor
@@ -294,76 +295,76 @@ export default function JobWorkOrdersPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Total JWOs Issued</span>
-            <div className="h-8 w-8 rounded-lg bg-teal-500/10 flex items-center justify-center">
-              <FileSpreadsheet className="h-4 w-4 text-teal-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total JWOs Issued</span>
+            <div className="h-8 w-8 rounded-lg bg-teal-50 dark:bg-teal-500/10 flex items-center justify-center">
+              <FileSpreadsheet className="h-4 w-4 text-teal-600 dark:text-teal-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{orders.length} Orders</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{orders.length} Orders</span>
           </div>
-          <div className="mt-2 text-[11px] text-slate-400">Total job work contracts</div>
+          <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">Total job work contracts</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Active In-Process</span>
-            <div className="h-8 w-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-              <Layers className="h-4 w-4 text-indigo-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Active In-Process</span>
+            <div className="h-8 w-8 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center">
+              <Layers className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-indigo-300 font-mono">
+            <span className="text-3xl font-bold text-indigo-600 dark:text-indigo-300 font-mono">
               {orders.filter((o) => o.status === 'IN_PROGRESS' || o.status === 'ISSUED').length} Orders
             </span>
           </div>
-          <div className="mt-2 text-[11px] text-indigo-300">Materials currently at vendor sites</div>
+          <div className="mt-2 text-[11px] text-indigo-600 dark:text-indigo-300">Materials currently at vendor sites</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Contracted Value</span>
-            <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-              <DollarSign className="h-4 w-4 text-emerald-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Contracted Value</span>
+            <div className="h-8 w-8 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center">
+              <DollarSign className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">
               ${orders.reduce((sum, o) => sum + o.totalOrderValue, 0).toLocaleString()}
             </span>
           </div>
-          <div className="mt-2 text-[11px] text-emerald-400">Processing charge commitments</div>
+          <div className="mt-2 text-[11px] text-emerald-600 dark:text-emerald-400">Processing charge commitments</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Approved Vendors</span>
-            <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-              <Building2 className="h-4 w-4 text-amber-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Approved Vendors</span>
+            <div className="h-8 w-8 rounded-lg bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center">
+              <Building2 className="h-4 w-4 text-amber-600 dark:text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{vendors.length} Partners</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{vendors.length} Partners</span>
           </div>
-          <div className="mt-2 text-[11px] text-amber-300">Audited quality ISO suppliers</div>
+          <div className="mt-2 text-[11px] text-amber-700 dark:text-amber-300">Audited quality ISO suppliers</div>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-800">
+      <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800">
         <button
           onClick={() => setActiveTab('ORDERS')}
           className={`pb-3 px-3 text-xs font-semibold flex items-center gap-2 border-b-2 transition-colors ${
             activeTab === 'ORDERS'
-              ? 'border-teal-500 text-teal-400'
-              : 'border-transparent text-slate-400 hover:text-slate-300'
+              ? 'border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400'
+              : 'border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300'
           }`}
         >
           <FileSpreadsheet className="h-4 w-4" />
           Job Work Orders Console
-          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-300">
+          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
             {orders.length}
           </span>
         </button>
@@ -372,22 +373,22 @@ export default function JobWorkOrdersPage() {
           onClick={() => setActiveTab('VENDORS')}
           className={`pb-3 px-3 text-xs font-semibold flex items-center gap-2 border-b-2 transition-colors ${
             activeTab === 'VENDORS'
-              ? 'border-teal-500 text-teal-400'
-              : 'border-transparent text-slate-400 hover:text-slate-300'
+              ? 'border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400'
+              : 'border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300'
           }`}
         >
           <Building2 className="h-4 w-4" />
           Subcontractor Vendor Directory
-          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-300">
+          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
             {vendors.length}
           </span>
         </button>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 dark:text-slate-500" />
           <input
             type="text"
             placeholder={
@@ -397,17 +398,17 @@ export default function JobWorkOrdersPage() {
             }
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 bg-[#0b0f19] border border-slate-700 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-teal-500 transition-colors"
+            className="w-full pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-700 rounded-lg text-xs text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-500 transition-colors"
           />
         </div>
 
         {activeTab === 'ORDERS' && (
           <div className="flex flex-wrap items-center gap-2">
-            <Filter className="h-3.5 w-3.5 text-slate-400" />
+            <Filter className="h-3.5 w-3.5 text-slate-500 dark:text-slate-400" />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-[#0b0f19] border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-teal-500"
+              className="bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:border-teal-500"
             >
               <option value="ALL">All Statuses</option>
               <option value="ISSUED">Issued</option>
@@ -418,7 +419,7 @@ export default function JobWorkOrdersPage() {
             <select
               value={processFilter}
               onChange={(e) => setProcessFilter(e.target.value)}
-              className="bg-[#0b0f19] border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-teal-500"
+              className="bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:border-teal-500"
             >
               <option value="ALL">All Processes</option>
               <option value="ELECTROPLATING">Electroplating</option>
@@ -432,17 +433,17 @@ export default function JobWorkOrdersPage() {
 
       {/* TAB 1: WORK ORDERS TABLE */}
       {activeTab === 'ORDERS' && (
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
-          <div className="p-4 border-b border-slate-800 flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
+          <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <FileSpreadsheet className="h-4 w-4 text-teal-400" />
-              <h2 className="text-sm font-semibold text-white">Job Work Orders Queue</h2>
+              <FileSpreadsheet className="h-4 w-4 text-teal-600 dark:text-teal-400" />
+              <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Job Work Orders Queue</h2>
             </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+              <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Order # &amp; Process</th>
                   <th className="py-3 px-4">Subcontractor Vendor</th>
@@ -454,64 +455,64 @@ export default function JobWorkOrdersPage() {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
+              <tbody className="divide-y divide-slate-200/80 dark:divide-slate-800/60 text-slate-600 dark:text-slate-300">
                 {filteredOrders.map((order) => {
                   const pct = order.targetQuantity > 0 ? (order.receivedQuantity / order.targetQuantity) * 100 : 0;
                   return (
-                    <tr key={order.id} className="hover:bg-slate-800/30 transition-colors">
+                    <tr key={order.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
                       <td className="py-3 px-4 font-mono">
-                        <div className="font-bold text-white flex items-center gap-1.5">
-                          <FileSpreadsheet className="h-3.5 w-3.5 text-teal-400 shrink-0" />
+                        <div className="font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                          <FileSpreadsheet className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400 shrink-0" />
                           {order.orderNumber}
                         </div>
-                        <span className="inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+                        <span className="inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
                           {order.processType}
                         </span>
                       </td>
 
                       <td className="py-3 px-4">
-                        <div className="font-semibold text-white">{order.vendor?.companyName}</div>
-                        <div className="text-[11px] text-slate-400 font-mono">{order.vendor?.vendorCode} ({order.vendor?.city})</div>
+                        <div className="font-semibold text-slate-900 dark:text-white">{order.vendor?.companyName}</div>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">{order.vendor?.vendorCode} ({order.vendor?.city})</div>
                       </td>
 
                       <td className="py-3 px-4">
-                        <div className="font-medium text-slate-200">{order.targetProductPart}</div>
-                        <div className="text-[10px] text-slate-400 font-mono mt-0.5">
+                        <div className="font-medium text-slate-800 dark:text-slate-200">{order.targetProductPart}</div>
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono mt-0.5">
                           In: {order.inputItemSku} &rarr; Out: {order.outputItemSku}
                         </div>
                       </td>
 
                       <td className="py-3 px-4">
-                        <div className="font-mono text-white font-medium">
+                        <div className="font-mono text-slate-900 dark:text-white font-medium">
                           {order.receivedQuantity} / {order.targetQuantity} pcs
                         </div>
-                        <div className="w-24 bg-slate-800 h-1.5 rounded-full overflow-hidden mt-1">
+                        <div className="w-24 bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden mt-1">
                           <div className="bg-teal-500 h-full rounded-full" style={{ width: `${pct}%` }}></div>
                         </div>
                       </td>
 
                       <td className="py-3 px-4 font-mono">
-                        <div className="font-semibold text-white">${order.totalOrderValue.toLocaleString()}</div>
-                        <div className="text-[10px] text-slate-400">${order.unitProcessingRate}/unit</div>
+                        <div className="font-semibold text-slate-900 dark:text-white">${order.totalOrderValue.toLocaleString()}</div>
+                        <div className="text-[10px] text-slate-500 dark:text-slate-400">${order.unitProcessingRate}/unit</div>
                       </td>
 
-                      <td className="py-3 px-4 font-mono text-[11px] text-slate-300">
+                      <td className="py-3 px-4 font-mono text-[11px] text-slate-600 dark:text-slate-300">
                         {order.expectedDeliveryDate}
                       </td>
 
                       <td className="py-3 px-4">
                         {order.status === 'IN_PROGRESS' && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-950/80 text-teal-300 border border-teal-500/30 flex items-center gap-1 w-fit">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-500/30 flex items-center gap-1 w-fit">
                             <Layers className="h-3 w-3" /> In Progress
                           </span>
                         )}
                         {order.status === 'ISSUED' && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-950/80 text-blue-300 border border-blue-500/30 flex items-center gap-1 w-fit">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30 flex items-center gap-1 w-fit">
                             <Clock className="h-3 w-3" /> Issued
                           </span>
                         )}
                         {order.status === 'COMPLETED' && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-500/30 flex items-center gap-1 w-fit">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 flex items-center gap-1 w-fit">
                             <CheckCircle2 className="h-3 w-3" /> Completed
                           </span>
                         )}
@@ -520,7 +521,7 @@ export default function JobWorkOrdersPage() {
                       <td className="py-3 px-4 text-right">
                         <Link
                           href={`/subcontracting/challans`}
-                          className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-teal-400 text-[11px] font-medium transition-colors inline-flex items-center gap-1"
+                          className="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-teal-700 dark:text-teal-400 border border-slate-200 dark:border-slate-700 text-[11px] font-medium transition-colors inline-flex items-center gap-1"
                         >
                           <Truck className="h-3 w-3" /> Dispatch DC
                         </Link>
@@ -536,17 +537,17 @@ export default function JobWorkOrdersPage() {
 
       {/* TAB 2: VENDORS DIRECTORY */}
       {activeTab === 'VENDORS' && (
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
-          <div className="p-4 border-b border-slate-800 flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
+          <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Building2 className="h-4 w-4 text-teal-400" />
-              <h2 className="text-sm font-semibold text-white">Subcontractor Vendor Partners</h2>
+              <Building2 className="h-4 w-4 text-teal-600 dark:text-teal-400" />
+              <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Subcontractor Vendor Partners</h2>
             </div>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+              <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Vendor Code &amp; Company</th>
                   <th className="py-3 px-4">Contact Person &amp; Phone</th>
@@ -557,47 +558,47 @@ export default function JobWorkOrdersPage() {
                   <th className="py-3 px-4">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
+              <tbody className="divide-y divide-slate-200/80 dark:divide-slate-800/60 text-slate-600 dark:text-slate-300">
                 {filteredVendors.map((ven) => (
-                  <tr key={ven.id} className="hover:bg-slate-800/30 transition-colors">
+                  <tr key={ven.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
                     <td className="py-3 px-4">
-                      <div className="font-mono font-bold text-white flex items-center gap-1.5">
-                        <Building2 className="h-3.5 w-3.5 text-teal-400 shrink-0" />
+                      <div className="font-mono font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                        <Building2 className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400 shrink-0" />
                         {ven.vendorCode}
                       </div>
-                      <div className="font-semibold text-slate-200 mt-0.5">{ven.companyName}</div>
+                      <div className="font-semibold text-slate-800 dark:text-slate-200 mt-0.5">{ven.companyName}</div>
                     </td>
 
                     <td className="py-3 px-4">
-                      <div className="text-white">{ven.contactPerson}</div>
-                      <div className="text-[11px] text-slate-400 font-mono">{ven.phone}</div>
+                      <div className="text-slate-900 dark:text-white font-medium">{ven.contactPerson}</div>
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">{ven.phone}</div>
                     </td>
 
                     <td className="py-3 px-4">
-                      <div className="text-slate-300">{ven.city}</div>
-                      <div className="text-[10px] text-slate-500">{ven.address}</div>
+                      <div className="text-slate-800 dark:text-slate-300 font-medium">{ven.city}</div>
+                      <div className="text-[10px] text-slate-400 dark:text-slate-500">{ven.address}</div>
                     </td>
 
                     <td className="py-3 px-4">
                       <div className="flex flex-wrap gap-1">
                         {ven.specializedProcesses.map((p, idx) => (
-                          <span key={idx} className="px-1.5 py-0.2 rounded text-[10px] bg-slate-800 text-teal-300 border border-slate-700">
+                          <span key={idx} className="px-1.5 py-0.2 rounded text-[10px] bg-slate-100 dark:bg-slate-800 text-teal-700 dark:text-teal-300 border border-slate-200 dark:border-slate-700">
                             {p}
                           </span>
                         ))}
                       </div>
                     </td>
 
-                    <td className="py-3 px-4 font-mono font-bold text-emerald-400">
+                    <td className="py-3 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400">
                       {ven.qualityRating}%
                     </td>
 
-                    <td className="py-3 px-4 font-mono text-slate-200">
+                    <td className="py-3 px-4 font-mono text-slate-800 dark:text-slate-200">
                       {ven.avgTurnaroundDays} Days
                     </td>
 
                     <td className="py-3 px-4">
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-500/30 flex items-center gap-1 w-fit">
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 flex items-center gap-1 w-fit">
                         <CheckCircle2 className="h-3 w-3" /> Active
                       </span>
                     </td>
@@ -611,33 +612,33 @@ export default function JobWorkOrdersPage() {
 
       {/* Issue Job Work Order Modal */}
       {isCreateOrderModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs">
-          <div className="bg-[#0f172a] border border-slate-700 rounded-xl max-w-lg w-full p-5 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/75 backdrop-blur-xs">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-700 rounded-xl max-w-lg w-full p-5 shadow-2xl relative">
             <button
               onClick={() => setIsCreateOrderModalOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
             >
               <X className="h-4 w-4" />
             </button>
 
-            <div className="flex items-center gap-2 mb-4 border-b border-slate-800 pb-3">
-              <div className="h-8 w-8 rounded-lg bg-teal-500/20 flex items-center justify-center">
-                <FileSpreadsheet className="h-4 w-4 text-teal-400" />
+            <div className="flex items-center gap-2 mb-4 border-b border-slate-200 dark:border-slate-800 pb-3">
+              <div className="h-8 w-8 rounded-lg bg-teal-50 dark:bg-teal-500/20 flex items-center justify-center">
+                <FileSpreadsheet className="h-4 w-4 text-teal-600 dark:text-teal-400" />
               </div>
               <div>
-                <h3 className="text-base font-semibold text-white">Issue Job Work Order (JWO)</h3>
-                <p className="text-xs text-slate-400">Allocate parts to external subcontractor for specialized processing</p>
+                <h3 className="text-base font-semibold text-slate-900 dark:text-white">Issue Job Work Order (JWO)</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Allocate parts to external subcontractor for specialized processing</p>
               </div>
             </div>
 
             <form onSubmit={handleCreateOrder} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Select Subcontractor Vendor</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Select Subcontractor Vendor</label>
                   <select
                     value={selectedVendorId}
                     onChange={(e) => setSelectedVendorId(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-teal-500"
                   >
                     {vendors.map((v) => (
                       <option key={v.id} value={v.id}>
@@ -648,11 +649,11 @@ export default function JobWorkOrdersPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Specialized Process Type</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Specialized Process Type</label>
                   <select
                     value={newProcessType}
                     onChange={(e) => setNewProcessType(e.target.value as SubcontractProcessType)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-teal-500"
                   >
                     <option value="ELECTROPLATING">ELECTROPLATING</option>
                     <option value="HEAT_TREATMENT">HEAT_TREATMENT</option>
@@ -665,103 +666,103 @@ export default function JobWorkOrdersPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Process Detailed Description</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Process Detailed Description</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Zinc Nickel Plating with Black Passivation 12 Micron"
                   value={newDescription}
                   onChange={(e) => setNewDescription(e.target.value)}
-                  className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-teal-500"
+                  className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Target Component</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Target Component</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Flange Bushing FB-12"
                     value={newPart}
                     onChange={(e) => setNewPart(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Input Item SKU</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Input Item SKU</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. RAW-FB-12"
                     value={newInputSku}
                     onChange={(e) => setNewInputSku(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 font-mono focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 font-mono placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Output Item SKU</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Output Item SKU</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. FIN-FB-12-PLT"
                     value={newOutputSku}
                     onChange={(e) => setNewOutputSku(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 font-mono focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 font-mono placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Target Qty (Pcs)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Target Qty (Pcs)</label>
                   <input
                     type="number"
                     min="1"
                     required
                     value={newTargetQty}
                     onChange={(e) => setNewTargetQty(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 font-mono focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 font-mono focus:outline-none focus:border-teal-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Processing Rate ($/Unit)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Processing Rate ($/Unit)</label>
                   <input
                     type="number"
                     step="0.1"
                     required
                     value={newRate}
                     onChange={(e) => setNewRate(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 font-mono focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 font-mono focus:outline-none focus:border-teal-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Delivery Due Date</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Delivery Due Date</label>
                   <input
                     type="date"
                     required
                     value={newDueDate}
                     onChange={(e) => setNewDueDate(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 focus:outline-none focus:border-teal-500"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end gap-2 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-2 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setIsCreateOrderModalOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-medium transition-colors"
+                  className="px-4 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-medium transition-colors shadow-sm"
                 >
                   Issue Order Contract
                 </button>
@@ -773,101 +774,101 @@ export default function JobWorkOrdersPage() {
 
       {/* Enroll Vendor Modal */}
       {isEnrollVendorModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs">
-          <div className="bg-[#0f172a] border border-slate-700 rounded-xl max-w-md w-full p-5 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-black/75 backdrop-blur-xs">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-700 rounded-xl max-w-md w-full p-5 shadow-2xl relative">
             <button
               onClick={() => setIsEnrollVendorModalOpen(false)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
             >
               <X className="h-4 w-4" />
             </button>
 
-            <div className="flex items-center gap-2 mb-4 border-b border-slate-800 pb-3">
-              <div className="h-8 w-8 rounded-lg bg-teal-500/20 flex items-center justify-center">
-                <Building2 className="h-4 w-4 text-teal-400" />
+            <div className="flex items-center gap-2 mb-4 border-b border-slate-200 dark:border-slate-800 pb-3">
+              <div className="h-8 w-8 rounded-lg bg-teal-50 dark:bg-teal-500/20 flex items-center justify-center">
+                <Building2 className="h-4 w-4 text-teal-600 dark:text-teal-400" />
               </div>
               <div>
-                <h3 className="text-base font-semibold text-white">Enroll Subcontractor Vendor</h3>
-                <p className="text-xs text-slate-400">Register qualified processing supplier</p>
+                <h3 className="text-base font-semibold text-slate-900 dark:text-white">Enroll Subcontractor Vendor</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Register qualified processing supplier</p>
               </div>
             </div>
 
             <form onSubmit={handleEnrollVendor} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Company Legal Name</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Company Legal Name</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Micro Finishers Pvt Ltd"
                   value={newVenName}
                   onChange={(e) => setNewVenName(e.target.value)}
-                  className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-teal-500"
+                  className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Contact Person</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Contact Person</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Rajesh Sharma"
                     value={newContact}
                     onChange={(e) => setNewContact(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">City / Region</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">City / Region</label>
                   <input
                     type="text"
                     required
                     placeholder="e.g. Pune"
                     value={newCity}
                     onChange={(e) => setNewCity(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Phone</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Phone</label>
                   <input
                     type="text"
                     required
                     placeholder="+91 98..."
                     value={newPhone}
                     onChange={(e) => setNewPhone(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 font-mono placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Email</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Email</label>
                   <input
                     type="email"
                     required
                     placeholder="vendor@company.com"
                     value={newEmail}
                     onChange={(e) => setNewEmail(e.target.value)}
-                    className="w-full bg-[#0b0f19] border border-slate-700 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-teal-500"
+                    className="w-full bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-teal-500"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end gap-2 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-2 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setIsEnrollVendorModalOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-medium transition-colors"
+                  className="px-4 py-1.5 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-medium transition-colors shadow-sm"
                 >
                   Enroll Partner
                 </button>

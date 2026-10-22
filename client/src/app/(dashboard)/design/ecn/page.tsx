@@ -250,29 +250,29 @@ export default function EcnWorkflowPage() {
   const criticalCount = ecns.filter((e) => e.priority === 'CRITICAL').length;
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-slate-100 p-6 space-y-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#090d16] text-slate-900 dark:text-slate-100 p-6 space-y-6">
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-slate-800">
         <div>
-          <div className="flex items-center gap-2 text-xs text-slate-400 mb-1">
-            <Link href="/design" className="hover:text-violet-400">
+          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-1">
+            <Link href="/design" className="hover:text-violet-600 dark:hover:text-violet-400">
               Design Engineering
             </Link>
             <ChevronRight className="h-3 w-3" />
-            <span className="text-slate-200">Engineering Change Notice (ECN)</span>
+            <span className="text-slate-700 dark:text-slate-200">Engineering Change Notice (ECN)</span>
           </div>
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-violet-400 shadow-lg shadow-violet-500/10">
+            <div className="h-10 w-10 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-center justify-center text-violet-600 dark:text-violet-400 shadow-lg shadow-violet-500/10">
               <GitCompare className="h-5 w-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
                 Engineering Change Notice (ECN) Workflow
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-950 text-amber-400 border border-amber-500/30">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400 border border-amber-300 dark:border-amber-500/30">
                   {pendingCount} Pending Review
                 </span>
               </h1>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Formal design modifications, alloy substitutions, drawing tolerance updates & existing inventory disposition
               </p>
             </div>
@@ -283,9 +283,9 @@ export default function EcnWorkflowPage() {
           <button
             onClick={fetchEcns}
             disabled={isRefreshing}
-            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-slate-900 border border-slate-800 text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition"
+            className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition shadow-sm"
           >
-            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-violet-400' : ''}`} />
+            <RefreshCw className={`h-3.5 w-3.5 ${isRefreshing ? 'animate-spin text-violet-500 dark:text-violet-400' : ''}`} />
             Refresh
           </button>
           <button
@@ -300,12 +300,12 @@ export default function EcnWorkflowPage() {
 
       {/* Success Notification Alert */}
       {notification && (
-        <div className="p-3.5 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-200 text-xs flex items-center justify-between animate-in fade-in">
+        <div className="p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-500/40 text-emerald-800 dark:text-emerald-200 text-xs flex items-center justify-between animate-in fade-in">
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+            <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
             <span>{notification}</span>
           </div>
-          <button onClick={() => setNotification(null)} className="text-emerald-400 hover:text-white">
+          <button onClick={() => setNotification(null)} className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-white">
             <X className="h-3.5 w-3.5" />
           </button>
         </div>
@@ -313,54 +313,54 @@ export default function EcnWorkflowPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4">
-          <span className="text-xs text-slate-400 block font-medium">Total Registered ECNs</span>
-          <span className="text-xl font-black text-white mt-1 block">{ecns.length} Notices</span>
-          <span className="text-[11px] text-slate-500">Design change audit trail</span>
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
+          <span className="text-xs text-slate-500 dark:text-slate-400 block font-medium">Total Registered ECNs</span>
+          <span className="text-xl font-black text-slate-900 dark:text-white mt-1 block">{ecns.length} Notices</span>
+          <span className="text-[11px] text-slate-400 dark:text-slate-500">Design change audit trail</span>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4">
-          <span className="text-xs text-amber-400 block font-medium">Pending Review Gate</span>
-          <span className="text-xl font-black text-amber-300 mt-1 block">{pendingCount} Active</span>
-          <span className="text-[11px] text-slate-500">Awaiting engineering sign-off</span>
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
+          <span className="text-xs text-amber-600 dark:text-amber-400 block font-medium">Pending Review Gate</span>
+          <span className="text-xl font-black text-amber-600 dark:text-amber-300 mt-1 block">{pendingCount} Active</span>
+          <span className="text-[11px] text-slate-400 dark:text-slate-500">Awaiting engineering sign-off</span>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4">
-          <span className="text-xs text-rose-400 block font-medium">Critical Priority</span>
-          <span className="text-xl font-black text-rose-400 mt-1 block">{criticalCount} Urgent</span>
-          <span className="text-[11px] text-slate-500">Defect fixes & tight tolerances</span>
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
+          <span className="text-xs text-rose-600 dark:text-rose-400 block font-medium">Critical Priority</span>
+          <span className="text-xl font-black text-rose-600 dark:text-rose-400 mt-1 block">{criticalCount} Urgent</span>
+          <span className="text-[11px] text-slate-400 dark:text-slate-500">Defect fixes & tight tolerances</span>
         </div>
 
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4">
-          <span className="text-xs text-emerald-400 block font-medium">Total Cost Impact</span>
-          <span className="text-xl font-black text-emerald-400 mt-1 block">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
+          <span className="text-xs text-emerald-600 dark:text-emerald-400 block font-medium">Total Cost Impact</span>
+          <span className="text-xl font-black text-emerald-600 dark:text-emerald-400 mt-1 block">
             ${(totalCost / 1000).toFixed(1)}k Est.
           </span>
-          <span className="text-[11px] text-slate-500">Tooling & rework expenditure</span>
+          <span className="text-[11px] text-slate-400 dark:text-slate-500">Tooling & rework expenditure</span>
         </div>
       </div>
 
       {/* Filter Toolbar */}
-      <div className="bg-[#0d1322] border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="relative w-full md:w-80">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-500" />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400 dark:text-slate-500" />
           <input
             type="text"
             placeholder="Search ECN code, scope, reason..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-[#090d16] border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-violet-500/50"
+            className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-violet-500/50"
           />
         </div>
 
         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-          <div className="flex items-center gap-1.5 text-xs text-slate-400">
-            <Filter className="h-3.5 w-3.5 text-slate-500" />
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
+            <Filter className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500" />
             <span>Priority:</span>
             <select
               value={priorityFilter}
               onChange={(e) => setPriorityFilter(e.target.value)}
-              className="bg-[#090d16] border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-violet-500/50"
+              className="bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:border-violet-500/50"
             >
               <option value="ALL">All Priorities</option>
               <option value="CRITICAL">Critical</option>
@@ -370,12 +370,12 @@ export default function EcnWorkflowPage() {
             </select>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs text-slate-400">
+          <div className="flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400">
             <span>Status:</span>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-[#090d16] border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-violet-500/50"
+              className="bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:border-violet-500/50"
             >
               <option value="ALL">All Statuses</option>
               <option value="SUBMITTED">Submitted</option>
@@ -393,16 +393,16 @@ export default function EcnWorkflowPage() {
         {filteredEcns.map((ecn) => (
           <div
             key={ecn.id}
-            className="bg-[#0d1322] border border-slate-800 rounded-xl p-5 hover:border-violet-500/30 transition space-y-3"
+            className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl p-5 hover:border-violet-400 dark:hover:border-violet-500/30 shadow-sm transition space-y-3"
           >
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div className="flex items-center gap-2.5">
-                <span className="text-xs font-mono font-bold text-amber-400 bg-amber-950/40 border border-amber-500/20 px-2 py-0.5 rounded">
+                <span className="text-xs font-mono font-bold text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-500/20 px-2 py-0.5 rounded">
                   {ecn.ecnNumber}
                 </span>
-                <h3 className="text-sm font-bold text-white">{ecn.title}</h3>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-medium">
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white">{ecn.title}</h3>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">
                   {ecn.reasonForChange.replace(/_/g, ' ')}
                 </span>
               </div>
@@ -411,10 +411,10 @@ export default function EcnWorkflowPage() {
                 <span
                   className={`text-[9px] font-bold px-2 py-0.5 rounded uppercase ${
                     ecn.priority === 'CRITICAL'
-                      ? 'bg-rose-950 text-rose-300 border border-rose-500/40'
+                      ? 'bg-rose-50 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-300 dark:border-rose-500/40'
                       : ecn.priority === 'HIGH'
-                      ? 'bg-amber-950 text-amber-300 border border-amber-500/40'
-                      : 'bg-slate-800 text-slate-300'
+                      ? 'bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-500/40'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
                   }`}
                 >
                   {ecn.priority}
@@ -423,10 +423,10 @@ export default function EcnWorkflowPage() {
                 <span
                   className={`text-[9px] font-bold px-2 py-0.5 rounded uppercase ${
                     ecn.status === 'APPROVED' || ecn.status === 'IMPLEMENTED'
-                      ? 'bg-emerald-950 text-emerald-300 border border-emerald-500/40'
+                      ? 'bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-500/40'
                       : ecn.status === 'UNDER_REVIEW'
-                      ? 'bg-blue-950 text-blue-300 border border-blue-500/40'
-                      : 'bg-amber-950 text-amber-300 border border-amber-500/40'
+                      ? 'bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-500/40'
+                      : 'bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-500/40'
                   }`}
                 >
                   {ecn.status.replace(/_/g, ' ')}
@@ -434,46 +434,46 @@ export default function EcnWorkflowPage() {
               </div>
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed">{ecn.description}</p>
+            <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{ecn.description}</p>
 
             {/* Scope & Disposition */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-3 rounded-lg bg-[#090d16] border border-slate-800/80 text-xs">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-3 rounded-lg bg-slate-50 dark:bg-[#090d16] border border-slate-200 dark:border-slate-800/80 text-xs">
               <div>
                 <span className="text-[10px] text-slate-500 uppercase font-medium block">Scope of Change</span>
-                <span className="text-slate-200 font-semibold">{ecn.changeScope}</span>
+                <span className="text-slate-800 dark:text-slate-200 font-semibold">{ecn.changeScope}</span>
               </div>
 
               <div>
                 <span className="text-[10px] text-slate-500 uppercase font-medium block">
                   Existing Stock Disposition
                 </span>
-                <span className="text-violet-300 font-bold font-mono">
+                <span className="text-violet-700 dark:text-violet-300 font-bold font-mono">
                   {ecn.inventoryDisposition?.replace(/_/g, ' ')}
                 </span>
               </div>
 
               <div>
                 <span className="text-[10px] text-slate-500 uppercase font-medium block">Cost Impact Estimate</span>
-                <span className="text-emerald-400 font-mono font-bold">
+                <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold">
                   ${ecn.costImpactEstimate?.toLocaleString() || 0}
                 </span>
               </div>
             </div>
 
             {/* Actions & Dates */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-slate-800/60 text-[11px] text-slate-500">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-slate-200 dark:border-slate-800/60 text-[11px] text-slate-500">
               <div className="flex items-center gap-3">
                 <span>
-                  Requested by: <strong className="text-slate-400">{ecn.requestedBy}</strong>
+                  Requested by: <strong className="text-slate-700 dark:text-slate-400">{ecn.requestedBy}</strong>
                 </span>
                 {ecn.approvedBy && (
                   <span>
-                    Approved by: <strong className="text-emerald-400">{ecn.approvedBy}</strong>
+                    Approved by: <strong className="text-emerald-600 dark:text-emerald-400">{ecn.approvedBy}</strong>
                   </span>
                 )}
                 {ecn.implementationTargetDate && (
                   <span>
-                    Target: <strong className="text-slate-300">{new Date(ecn.implementationTargetDate).toLocaleDateString()}</strong>
+                    Target: <strong className="text-slate-700 dark:text-slate-300">{new Date(ecn.implementationTargetDate).toLocaleDateString()}</strong>
                   </span>
                 )}
               </div>
@@ -490,7 +490,7 @@ export default function EcnWorkflowPage() {
                     });
                     setShowReviewModal(true);
                   }}
-                  className="px-3 py-1.5 rounded-lg bg-violet-500/10 hover:bg-violet-500/20 text-violet-400 border border-violet-500/30 text-xs font-semibold transition flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-lg bg-violet-50 hover:bg-violet-100 dark:bg-violet-500/10 dark:hover:bg-violet-500/20 text-violet-700 dark:text-violet-400 border border-violet-200 dark:border-violet-500/30 text-xs font-semibold transition flex items-center gap-1.5"
                 >
                   <ShieldCheck className="h-3.5 w-3.5" />
                   Review & Sign-Off
@@ -503,34 +503,34 @@ export default function EcnWorkflowPage() {
 
       {/* Modal: Submit New ECN */}
       {showCreateModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <GitCompare className="h-4 w-4 text-violet-400" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 dark:bg-black/75 p-4 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <GitCompare className="h-4 w-4 text-violet-600 dark:text-violet-400" />
                 Submit Engineering Change Notice (ECN)
               </h3>
-              <button onClick={() => setShowCreateModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowCreateModal(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
 
             <form onSubmit={handleCreateECN} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">ECN Title / Subject *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">ECN Title / Subject *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Spindle Housing Bearing Pocket Tolerance Tightening"
                   value={createForm.title}
                   onChange={(e) => setCreateForm({ ...createForm, title: e.target.value })}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-violet-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-violet-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Reason for Change *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Reason for Change *</label>
                   <select
                     value={createForm.reasonForChange}
                     onChange={(e) =>
@@ -539,7 +539,7 @@ export default function EcnWorkflowPage() {
                         reasonForChange: e.target.value as ECNChangeReason,
                       })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   >
                     <option value="DESIGN_OPTIMIZATION">Design Optimization</option>
                     <option value="DEFECT_FIX">Defect Fix (Runout/Thermal)</option>
@@ -551,7 +551,7 @@ export default function EcnWorkflowPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Priority *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Priority *</label>
                   <select
                     value={createForm.priority}
                     onChange={(e) =>
@@ -560,7 +560,7 @@ export default function EcnWorkflowPage() {
                         priority: e.target.value as ECNPriority,
                       })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   >
                     <option value="CRITICAL">Critical (Stop Production)</option>
                     <option value="HIGH">High Priority</option>
@@ -571,38 +571,38 @@ export default function EcnWorkflowPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">Scope of Impacted Components *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Scope of Impacted Components *</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Machine Bed Casting (DWG-SPN-0104) and Assembly BOM"
                   value={createForm.changeScope}
                   onChange={(e) => setCreateForm({ ...createForm, changeScope: e.target.value })}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-violet-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-violet-500"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 mb-1 font-medium">Detailed Change Description *</label>
+                <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Detailed Change Description *</label>
                 <textarea
                   rows={2}
                   required
                   placeholder="Technical details of dimensional adjustments or alloy substitutions..."
                   value={createForm.description}
                   onChange={(e) => setCreateForm({ ...createForm, description: e.target.value })}
-                  className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white placeholder-slate-600 focus:outline-none focus:border-violet-500"
+                  className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-violet-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Existing Inventory Disposition</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Existing Inventory Disposition</label>
                   <select
                     value={createForm.inventoryDisposition}
                     onChange={(e) =>
                       setCreateForm({ ...createForm, inventoryDisposition: e.target.value })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   >
                     <option value="USE_EXISTING_STOCK_FIRST">Use Existing Stock First</option>
                     <option value="REWORK_IN_SHOP">Rework in Shop Bay</option>
@@ -611,7 +611,7 @@ export default function EcnWorkflowPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Estimated Cost Impact ($)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Estimated Cost Impact ($)</label>
                   <input
                     type="number"
                     min={0}
@@ -622,16 +622,16 @@ export default function EcnWorkflowPage() {
                         costImpactEstimate: Number(e.target.value),
                       })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 >
                   Cancel
                 </button>
@@ -649,19 +649,19 @@ export default function EcnWorkflowPage() {
 
       {/* Modal: Review & Sign-Off ECN */}
       {showReviewModal && selectedEcnForReview && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 dark:bg-black/75 p-4 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div>
-                <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                  <ShieldCheck className="h-4 w-4 text-emerald-400" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                   Engineering Change Review & Authorization
                 </h3>
-                <p className="text-[11px] text-slate-400 mt-0.5 font-mono">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 font-mono">
                   {selectedEcnForReview.ecnNumber} • {selectedEcnForReview.title}
                 </p>
               </div>
-              <button onClick={() => setShowReviewModal(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setShowReviewModal(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -669,13 +669,13 @@ export default function EcnWorkflowPage() {
             <form onSubmit={handleReviewECN} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Sign-Off Decision *</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Sign-Off Decision *</label>
                   <select
                     value={reviewForm.status}
                     onChange={(e) =>
                       setReviewForm({ ...reviewForm, status: e.target.value as ECNStatus })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   >
                     <option value="APPROVED">Approved for Implementation</option>
                     <option value="IMPLEMENTED">Mark as Implemented</option>
@@ -685,13 +685,13 @@ export default function EcnWorkflowPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Inventory Disposition</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Inventory Disposition</label>
                   <select
                     value={reviewForm.inventoryDisposition}
                     onChange={(e) =>
                       setReviewForm({ ...reviewForm, inventoryDisposition: e.target.value })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   >
                     <option value="USE_EXISTING_STOCK_FIRST">Use Existing Stock First</option>
                     <option value="REWORK_IN_SHOP">Rework in Shop Bay</option>
@@ -702,7 +702,7 @@ export default function EcnWorkflowPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Reviewed By</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Reviewed By</label>
                   <input
                     type="text"
                     required
@@ -710,12 +710,12 @@ export default function EcnWorkflowPage() {
                     onChange={(e) =>
                       setReviewForm({ ...reviewForm, reviewedBy: e.target.value })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 mb-1 font-medium">Approved By (Authority)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Approved By (Authority)</label>
                   <input
                     type="text"
                     required
@@ -723,16 +723,16 @@ export default function EcnWorkflowPage() {
                     onChange={(e) =>
                       setReviewForm({ ...reviewForm, approvedBy: e.target.value })
                     }
-                    className="w-full bg-[#090d16] border border-slate-800 rounded-lg p-2.5 text-white focus:outline-none focus:border-violet-500"
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
                   />
                 </div>
               </div>
 
-              <div className="flex justify-end gap-3 pt-3 border-t border-slate-800">
+              <div className="flex justify-end gap-3 pt-3 border-t border-slate-200 dark:border-slate-800">
                 <button
                   type="button"
                   onClick={() => setShowReviewModal(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 >
                   Cancel
                 </button>

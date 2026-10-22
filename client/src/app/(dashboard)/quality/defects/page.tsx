@@ -218,15 +218,15 @@ export default function DefectConsolePage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-              <AlertOctagon className="w-7 h-7 text-rose-400" />
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+              <AlertOctagon className="w-7 h-7 text-rose-500" />
               Defect Logging & CAPA Console
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/20">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
               Root Cause & Scrap Ledger
             </span>
           </div>
-          <p className="text-sm text-neutral-400 mt-1">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
             Track failure modes, record scrap costs, execute 5-Why root cause investigations, and enforce containment actions.
           </p>
         </div>
@@ -242,83 +242,83 @@ export default function DefectConsolePage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Total Scrap Loss</span>
-            <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-400 border border-rose-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Scrap Loss</span>
+            <div className="w-8 h-8 rounded-lg bg-rose-500/10 flex items-center justify-center text-rose-500 dark:text-rose-400 border border-rose-500/20">
               <DollarSign className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-rose-400">${totalLoss.toFixed(2)}</span>
-            <span className="text-xs text-neutral-400 font-medium">{totalScrapUnits} units scrapped</span>
+            <span className="text-2xl font-bold text-rose-500 dark:text-rose-400">${totalLoss.toFixed(2)}</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">{totalScrapUnits} units scrapped</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Direct material write-off</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Direct material write-off</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Critical Severities</span>
-            <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 border border-amber-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Critical Severities</span>
+            <div className="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500 dark:text-amber-400 border border-amber-500/20">
               <ShieldAlert className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-amber-400">{criticalCount}</span>
-            <span className="text-xs text-neutral-400 font-medium">high impact events</span>
+            <span className="text-2xl font-bold text-amber-500 dark:text-amber-400">{criticalCount}</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">high impact events</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Automatic line pause triggered</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Automatic line pause triggered</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Open CAPA Actions</span>
-            <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Open CAPA Actions</span>
+            <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 dark:text-blue-400 border border-blue-500/20">
               <Clock className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white">{openCapaCount}</span>
-            <span className="text-xs text-blue-400 font-medium">actions pending</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">{openCapaCount}</span>
+            <span className="text-xs text-blue-500 dark:text-blue-400 font-medium">actions pending</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Under 8D review</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Under 8D review</p>
         </div>
 
-        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800">
+        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-neutral-400 uppercase tracking-wider">Total Defect Incidents</span>
-            <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 border border-purple-500/20">
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Defect Incidents</span>
+            <div className="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 dark:text-purple-400 border border-purple-500/20">
               <AlertOctagon className="w-4 h-4" />
             </div>
           </div>
           <div className="mt-2 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white">{defects.length}</span>
-            <span className="text-xs text-neutral-400 font-medium">all manufacturing tiers</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white">{defects.length}</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">all manufacturing tiers</span>
           </div>
-          <p className="text-xs text-neutral-500 mt-1">Logged this month</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Logged this month</p>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
       <div className="flex flex-col lg:flex-row gap-3 items-center justify-between">
         <div className="relative w-full lg:w-72">
-          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" />
+          <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             placeholder="Search defect code, reason, item..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-neutral-900 border border-neutral-800 rounded-lg pl-9 pr-4 py-2 text-sm text-neutral-200 placeholder-neutral-500 focus:outline-none focus:border-rose-500"
+            className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg pl-9 pr-4 py-2 text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:border-rose-500"
           />
         </div>
 
         <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto">
-          <Filter className="w-4 h-4 text-neutral-400" />
+          <Filter className="w-4 h-4 text-slate-500 dark:text-slate-400" />
           
           <select
             value={stageFilter}
             onChange={(e) => setStageFilter(e.target.value)}
-            className="bg-neutral-900 border border-neutral-800 rounded-lg px-2.5 py-1.5 text-xs text-neutral-200 focus:outline-none focus:border-rose-500"
+            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
           >
             <option value="ALL">All Stages</option>
             <option value="INCOMING">Incoming QC</option>
@@ -329,7 +329,7 @@ export default function DefectConsolePage() {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="bg-neutral-900 border border-neutral-800 rounded-lg px-2.5 py-1.5 text-xs text-neutral-200 focus:outline-none focus:border-rose-500"
+            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
           >
             <option value="ALL">All Categories</option>
             <option value="DIMENSIONAL">Dimensional</option>
@@ -342,7 +342,7 @@ export default function DefectConsolePage() {
           <select
             value={severityFilter}
             onChange={(e) => setSeverityFilter(e.target.value)}
-            className="bg-neutral-900 border border-neutral-800 rounded-lg px-2.5 py-1.5 text-xs text-neutral-200 focus:outline-none focus:border-rose-500"
+            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
           >
             <option value="ALL">All Severities</option>
             <option value="CRITICAL">Critical</option>
@@ -360,20 +360,20 @@ export default function DefectConsolePage() {
           return (
             <div
               key={d.id}
-              className="rounded-xl bg-neutral-900 border border-neutral-800 overflow-hidden transition"
+              className="rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm overflow-hidden transition"
             >
               <div
                 onClick={() => setExpandedId(isExpanded ? null : d.id)}
-                className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-neutral-800/50 transition"
+                className="p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/50 transition"
               >
                 <div className="flex items-center gap-3">
                   <div
                     className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xs border ${
                       d.severity === 'CRITICAL'
-                        ? 'bg-rose-500/20 text-rose-400 border-rose-500/40'
+                        ? 'bg-rose-500/20 text-rose-500 dark:text-rose-400 border-rose-500/40'
                         : d.severity === 'MAJOR'
-                        ? 'bg-amber-500/10 text-amber-400 border-amber-500/20'
-                        : 'bg-blue-500/10 text-blue-400 border-blue-500/20'
+                        ? 'bg-amber-500/10 text-amber-500 dark:text-amber-400 border-amber-500/20'
+                        : 'bg-blue-500/10 text-blue-500 dark:text-blue-400 border-blue-500/20'
                     }`}
                   >
                     <AlertOctagon className="w-5 h-5" />
@@ -381,39 +381,39 @@ export default function DefectConsolePage() {
 
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="font-semibold text-white">{d.defectCode}</span>
-                      <span className="text-xs text-neutral-400 font-mono">[{d.sourceStage}]</span>
+                      <span className="font-semibold text-slate-900 dark:text-white">{d.defectCode}</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">[{d.sourceStage}]</span>
                       <span
                         className={`px-2 py-0.5 rounded text-[11px] font-semibold border ${
                           d.severity === 'CRITICAL'
-                            ? 'bg-rose-500/20 text-rose-400 border-rose-500/40'
+                            ? 'bg-rose-500/20 text-rose-500 dark:text-rose-400 border-rose-500/40'
                             : d.severity === 'MAJOR'
-                            ? 'bg-amber-500/10 text-amber-400 border-amber-500/20'
-                            : 'bg-blue-500/10 text-blue-400 border-blue-500/20'
+                            ? 'bg-amber-500/10 text-amber-500 dark:text-amber-400 border-amber-500/20'
+                            : 'bg-blue-500/10 text-blue-500 dark:text-blue-400 border-blue-500/20'
                         }`}
                       >
                         {d.severity}
                       </span>
-                      <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-neutral-800 text-neutral-300 border border-neutral-700">
+                      <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-100 dark:bg-neutral-800 text-slate-700 dark:text-neutral-300 border border-slate-200 dark:border-neutral-700">
                         {d.defectCategory}
                       </span>
-                      <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-purple-500/10 text-purple-300 border border-purple-500/30">
+                      <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-300 border border-purple-500/30">
                         Disposition: {d.actionTaken}
                       </span>
                     </div>
-                    <p className="text-xs text-neutral-200 mt-1 font-medium">
-                      {d.itemName} <span className="font-mono text-emerald-400">({d.itemCode})</span>
+                    <p className="text-xs text-slate-800 dark:text-neutral-200 mt-1 font-medium">
+                      {d.itemName} <span className="font-mono text-emerald-600 dark:text-emerald-400">({d.itemCode})</span>
                     </p>
-                    <p className="text-xs text-neutral-400 mt-0.5 truncate max-w-xl">
-                      Failure: <strong className="text-neutral-300">{d.defectReason}</strong>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 truncate max-w-xl">
+                      Failure: <strong className="text-slate-700 dark:text-slate-300">{d.defectReason}</strong>
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4 self-end md:self-center">
                   <div className="text-right">
-                    <span className="text-xs text-neutral-400 block">Financial Scrap</span>
-                    <span className="text-sm font-mono font-bold text-rose-400">
+                    <span className="text-xs text-slate-500 dark:text-slate-400 block">Financial Scrap</span>
+                    <span className="text-sm font-mono font-bold text-rose-500 dark:text-rose-400">
                       -${d.financialLoss.toFixed(2)} ({d.scrapQuantity} pcs)
                     </span>
                   </div>
@@ -423,39 +423,39 @@ export default function DefectConsolePage() {
                       e.stopPropagation();
                       openCapaModal(d);
                     }}
-                    className="px-3 py-1.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-200 text-xs font-semibold border border-neutral-700 transition"
+                    className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-slate-700 dark:text-neutral-200 text-xs font-semibold border border-slate-200 dark:border-neutral-700 transition"
                   >
                     CAPA Action
                   </button>
 
                   {isExpanded ? (
-                    <ChevronUp className="w-5 h-5 text-neutral-400" />
+                    <ChevronUp className="w-5 h-5 text-slate-400" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-neutral-400" />
+                    <ChevronDown className="w-5 h-5 text-slate-400" />
                   )}
                 </div>
               </div>
 
               {isExpanded && (
-                <div className="border-t border-neutral-800 p-4 bg-neutral-950/40 space-y-3">
+                <div className="border-t border-slate-200 dark:border-slate-800 p-4 bg-slate-50/50 dark:bg-slate-950/40 space-y-3">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                    <div className="p-3 bg-neutral-900 rounded-lg border border-neutral-800 space-y-1">
-                      <span className="text-neutral-400 uppercase text-[10px] tracking-wider font-semibold block">
+                    <div className="p-3 bg-white dark:bg-neutral-900 rounded-lg border border-slate-200 dark:border-neutral-800 space-y-1">
+                      <span className="text-slate-500 dark:text-neutral-400 uppercase text-[10px] tracking-wider font-semibold block">
                         Root Cause Analysis (5-Why / Ishikawa)
                       </span>
-                      <p className="text-neutral-200">{d.rootCause || 'Root cause investigation in progress.'}</p>
+                      <p className="text-slate-800 dark:text-neutral-200">{d.rootCause || 'Root cause investigation in progress.'}</p>
                     </div>
 
-                    <div className="p-3 bg-neutral-900 rounded-lg border border-neutral-800 space-y-1">
-                      <span className="text-neutral-400 uppercase text-[10px] tracking-wider font-semibold block">
+                    <div className="p-3 bg-white dark:bg-neutral-900 rounded-lg border border-slate-200 dark:border-neutral-800 space-y-1">
+                      <span className="text-slate-500 dark:text-neutral-400 uppercase text-[10px] tracking-wider font-semibold block">
                         Immediate Containment & Prevention (CAPA)
                       </span>
-                      <p className="text-emerald-400">{d.containmentMeasures || 'Containment quarantine locked.'}</p>
+                      <p className="text-emerald-600 dark:text-emerald-400">{d.containmentMeasures || 'Containment quarantine locked.'}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between text-[11px] text-neutral-500 pt-1">
-                    <span>Reported by: <strong className="text-neutral-300">{d.reportedBy}</strong></span>
+                  <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1">
+                    <span>Reported by: <strong className="text-slate-700 dark:text-slate-300">{d.reportedBy}</strong></span>
                     <span>Logged timestamp: {d.createdAt}</span>
                   </div>
                 </div>
@@ -468,15 +468,15 @@ export default function DefectConsolePage() {
       {/* MODAL: LOG DEFECT */}
       {isNewDefectModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl w-full max-w-lg p-6 space-y-4 shadow-xl">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-lg p-6 space-y-4 shadow-xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <AlertOctagon className="w-5 h-5 text-rose-400" />
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <AlertOctagon className="w-5 h-5 text-rose-500" />
                 Record Non-Conformance / Scrap Incident
               </h3>
               <button
                 onClick={() => setIsNewDefectModalOpen(false)}
-                className="text-neutral-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -485,11 +485,11 @@ export default function DefectConsolePage() {
             <form onSubmit={handleCreateDefect} className="space-y-4">
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Source Stage</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Source Stage</label>
                   <select
                     value={newDefectForm.sourceStage}
                     onChange={(e) => setNewDefectForm({ ...newDefectForm, sourceStage: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-xs text-neutral-200 focus:outline-none focus:border-rose-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
                   >
                     <option value="INCOMING">Incoming QC</option>
                     <option value="IN_PROCESS">In-Process</option>
@@ -497,11 +497,11 @@ export default function DefectConsolePage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Category</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Category</label>
                   <select
                     value={newDefectForm.defectCategory}
                     onChange={(e) => setNewDefectForm({ ...newDefectForm, defectCategory: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-xs text-neutral-200 focus:outline-none focus:border-rose-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
                   >
                     <option value="DIMENSIONAL">Dimensional</option>
                     <option value="VISUAL">Visual</option>
@@ -512,11 +512,11 @@ export default function DefectConsolePage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Severity</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Severity</label>
                   <select
                     value={newDefectForm.severity}
                     onChange={(e) => setNewDefectForm({ ...newDefectForm, severity: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-xs text-neutral-200 focus:outline-none focus:border-rose-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
                   >
                     <option value="CRITICAL">Critical</option>
                     <option value="MAJOR">Major</option>
@@ -528,22 +528,22 @@ export default function DefectConsolePage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Item Code</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Item Code</label>
                   <input
                     type="text"
                     value={newDefectForm.itemCode}
                     onChange={(e) => setNewDefectForm({ ...newDefectForm, itemCode: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-rose-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500 font-mono"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Item Description</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Item Description</label>
                   <input
                     type="text"
                     value={newDefectForm.itemName}
                     onChange={(e) => setNewDefectForm({ ...newDefectForm, itemName: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-rose-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
                     required
                   />
                 </div>
@@ -551,32 +551,32 @@ export default function DefectConsolePage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Scrap Quantity</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Scrap Quantity</label>
                   <input
                     type="number"
                     value={newDefectForm.scrapQuantity}
                     onChange={(e) => setNewDefectForm({ ...newDefectForm, scrapQuantity: Number(e.target.value) })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-rose-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Financial Loss ($)</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Financial Loss ($)</label>
                   <input
                     type="number"
                     step="0.01"
                     value={newDefectForm.financialLoss}
                     onChange={(e) => setNewDefectForm({ ...newDefectForm, financialLoss: Number(e.target.value) })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-rose-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-neutral-300 mb-1">Disposition Action</label>
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Disposition Action</label>
                   <select
                     value={newDefectForm.actionTaken}
                     onChange={(e) => setNewDefectForm({ ...newDefectForm, actionTaken: e.target.value })}
-                    className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-xs text-neutral-200 focus:outline-none focus:border-rose-500"
+                    className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-xs text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
                   >
                     <option value="SCRAP">SCRAP</option>
                     <option value="REWORK">REWORK</option>
@@ -588,33 +588,33 @@ export default function DefectConsolePage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Defect Description / Failure Mode</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Defect Description / Failure Mode</label>
                 <textarea
                   value={newDefectForm.defectReason}
                   onChange={(e) => setNewDefectForm({ ...newDefectForm, defectReason: e.target.value })}
                   rows={2}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-rose-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Root Cause Analysis (5-Why)</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Root Cause Analysis (5-Why)</label>
                 <textarea
                   value={newDefectForm.rootCause}
                   onChange={(e) => setNewDefectForm({ ...newDefectForm, rootCause: e.target.value })}
                   rows={2}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-rose-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Containment & Prevention Action (CAPA)</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Containment & Prevention Action (CAPA)</label>
                 <input
                   type="text"
                   value={newDefectForm.containmentMeasures}
                   onChange={(e) => setNewDefectForm({ ...newDefectForm, containmentMeasures: e.target.value })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-rose-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-rose-500"
                 />
               </div>
 
@@ -622,7 +622,7 @@ export default function DefectConsolePage() {
                 <button
                   type="button"
                   onClick={() => setIsNewDefectModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-sm font-medium transition"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium transition"
                 >
                   Cancel
                 </button>
@@ -642,15 +642,15 @@ export default function DefectConsolePage() {
       {/* MODAL: UPDATE CAPA */}
       {isCapaModalOpen && selectedDefectForCapa && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-neutral-900 border border-neutral-800 rounded-xl w-full max-w-md p-6 space-y-4 shadow-xl">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-md p-6 space-y-4 shadow-xl">
             <div className="flex items-center justify-between">
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                <RotateCcw className="w-5 h-5 text-amber-400" />
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <RotateCcw className="w-5 h-5 text-amber-500" />
                 Update 8D / CAPA Resolution
               </h3>
               <button
                 onClick={() => setIsCapaModalOpen(false)}
-                className="text-neutral-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-700 dark:hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -658,33 +658,33 @@ export default function DefectConsolePage() {
 
             <form onSubmit={handleSaveCapa} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Root Cause Analysis (RCA)</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Root Cause Analysis (RCA)</label>
                 <textarea
                   value={capaForm.rootCause}
                   onChange={(e) => setCapaForm({ ...capaForm, rootCause: e.target.value })}
                   rows={3}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-amber-500"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Containment & Preventive Action</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Containment & Preventive Action</label>
                 <textarea
                   value={capaForm.containmentMeasures}
                   onChange={(e) => setCapaForm({ ...capaForm, containmentMeasures: e.target.value })}
                   rows={2}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-amber-500"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-neutral-300 mb-1">Final Disposition</label>
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Final Disposition</label>
                 <select
                   value={capaForm.actionTaken}
                   onChange={(e) => setCapaForm({ ...capaForm, actionTaken: e.target.value as DefectAction })}
-                  className="w-full bg-neutral-800 border border-neutral-700 rounded-lg p-2.5 text-sm text-neutral-200 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 text-sm text-slate-900 dark:text-slate-100 focus:outline-none focus:border-amber-500"
                 >
                   <option value="SCRAP">SCRAP</option>
                   <option value="REWORK">REWORK</option>
@@ -698,7 +698,7 @@ export default function DefectConsolePage() {
                 <button
                   type="button"
                   onClick={() => setIsCapaModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-sm font-medium transition"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-sm font-medium transition"
                 >
                   Cancel
                 </button>

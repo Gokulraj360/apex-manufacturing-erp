@@ -167,15 +167,15 @@ export default function LogisticsCommandCenterPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-              <ShieldAlert className="h-6 w-6 text-cyan-400" />
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+              <ShieldAlert className="h-6 w-6 text-cyan-500 dark:text-cyan-400" />
               Logistics & Gate Entry Command Center
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-950/80 text-cyan-400 border border-cyan-500/30">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cyan-50 dark:bg-cyan-950/80 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/30">
               Perimeter Security Active
             </span>
           </div>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
             Real-time vehicle access tracking, weighbridge gross/tare automation, outbound seal verification, and GPS fleet trip telemetry.
           </p>
         </div>
@@ -190,9 +190,9 @@ export default function LogisticsCommandCenterPage() {
           </Link>
           <Link
             href="/logistics-gate/inbound-check"
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-xs transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-medium text-xs shadow-sm transition-colors"
           >
-            <Scale className="h-4 w-4 text-cyan-400" />
+            <Scale className="h-4 w-4 text-cyan-500 dark:text-cyan-400" />
             Weighbridge Station
           </Link>
         </div>
@@ -200,69 +200,69 @@ export default function LogisticsCommandCenterPage() {
 
       {/* KPI Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-cyan-500/30 rounded-xl p-4 shadow-sm relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-cyan-200 dark:border-cyan-500/30 rounded-xl p-4 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-cyan-400 uppercase tracking-wider">Vehicles On-Premises</span>
-            <div className="h-8 w-8 rounded-lg bg-cyan-500/20 flex items-center justify-center">
-              <Truck className="h-4 w-4 text-cyan-400" />
+            <span className="text-xs font-medium text-cyan-600 dark:text-cyan-400 uppercase tracking-wider">Vehicles On-Premises</span>
+            <div className="h-8 w-8 rounded-lg bg-cyan-50 dark:bg-cyan-500/20 flex items-center justify-center">
+              <Truck className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white">{onPremisesCount}</span>
-            <span className="text-xs text-slate-400">vehicles inside</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white">{onPremisesCount}</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">vehicles inside</span>
           </div>
-          <div className="mt-2 flex items-center gap-1 text-[11px] text-cyan-300">
+          <div className="mt-2 flex items-center gap-1 text-[11px] text-cyan-600 dark:text-cyan-300">
             <Activity className="h-3.5 w-3.5" />
             <span>2 heavy trucks, 1 visitor vehicle</span>
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Weighbridge Inbound Queue</span>
-            <div className="h-8 w-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
-              <Scale className="h-4 w-4 text-blue-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Weighbridge Inbound Queue</span>
+            <div className="h-8 w-8 rounded-lg bg-blue-50 dark:bg-blue-500/10 flex items-center justify-center">
+              <Scale className="h-4 w-4 text-blue-500 dark:text-blue-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white">4</span>
-            <span className="text-xs text-slate-400">trucks queued</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white">4</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">trucks queued</span>
           </div>
-          <div className="mt-2 flex items-center gap-1 text-[11px] text-blue-400">
+          <div className="mt-2 flex items-center gap-1 text-[11px] text-blue-600 dark:text-blue-400">
             <Clock className="h-3.5 w-3.5" />
             <span>Avg tare turnaround: 11 mins</span>
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Active Fleet in Transit</span>
-            <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-              <Navigation className="h-4 w-4 text-amber-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Active Fleet in Transit</span>
+            <div className="h-8 w-8 rounded-lg bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center">
+              <Navigation className="h-4 w-4 text-amber-500 dark:text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white">6</span>
-            <span className="text-xs text-slate-400">GPS trips live</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white">6</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">GPS trips live</span>
           </div>
-          <div className="mt-2 flex items-center gap-1 text-[11px] text-emerald-400">
+          <div className="mt-2 flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400">
             <CheckCircle2 className="h-3.5 w-3.5" />
             <span>100% On-schedule delivery</span>
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Security & Zero Leakage</span>
-            <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-              <ShieldCheck className="h-4 w-4 text-emerald-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Security & Zero Leakage</span>
+            <div className="h-8 w-8 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center">
+              <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-emerald-400">100%</span>
-            <span className="text-xs text-slate-400">tamper-free rate</span>
+            <span className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">100%</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">tamper-free rate</span>
           </div>
-          <div className="mt-2 flex items-center gap-1 text-[11px] text-slate-400">
+          <div className="mt-2 flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400">
             <span>0 unauthorized removals today</span>
           </div>
         </div>
@@ -272,81 +272,81 @@ export default function LogisticsCommandCenterPage() {
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
         <Link
           href="/logistics-gate/gate-entries"
-          className="p-3.5 rounded-xl bg-[#0f172a] border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/40 transition-all group flex flex-col justify-between"
+          className="p-3.5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-cyan-500/50 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-all group flex flex-col justify-between"
         >
           <div className="flex items-center justify-between">
-            <div className="h-7 w-7 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+            <div className="h-7 w-7 rounded-lg bg-cyan-500/10 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 flex items-center justify-center">
               <LogIn className="h-3.5 w-3.5" />
             </div>
-            <ArrowUpRight className="h-3.5 w-3.5 text-slate-500 group-hover:text-cyan-400 transition-colors" />
+            <ArrowUpRight className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors" />
           </div>
           <div className="mt-3">
-            <h4 className="text-xs font-semibold text-slate-200 group-hover:text-white">Gate Passes</h4>
-            <p className="text-[10px] text-slate-400 mt-0.5">Live check-in & badges</p>
+            <h4 className="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white">Gate Passes</h4>
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Live check-in & badges</p>
           </div>
         </Link>
 
         <Link
           href="/logistics-gate/inbound-check"
-          className="p-3.5 rounded-xl bg-[#0f172a] border border-slate-800 hover:border-blue-500/50 hover:bg-slate-800/40 transition-all group flex flex-col justify-between"
+          className="p-3.5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-blue-500/50 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-all group flex flex-col justify-between"
         >
           <div className="flex items-center justify-between">
-            <div className="h-7 w-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center">
+            <div className="h-7 w-7 rounded-lg bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
               <Scale className="h-3.5 w-3.5" />
             </div>
-            <ArrowUpRight className="h-3.5 w-3.5 text-slate-500 group-hover:text-blue-400 transition-colors" />
+            <ArrowUpRight className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors" />
           </div>
           <div className="mt-3">
-            <h4 className="text-xs font-semibold text-slate-200 group-hover:text-white">Inbound Weighbridge</h4>
-            <p className="text-[10px] text-slate-400 mt-0.5">PO & Gross/Tare check</p>
+            <h4 className="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white">Inbound Weighbridge</h4>
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">PO & Gross/Tare check</p>
           </div>
         </Link>
 
         <Link
           href="/logistics-gate/outbound-clearance"
-          className="p-3.5 rounded-xl bg-[#0f172a] border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-800/40 transition-all group flex flex-col justify-between"
+          className="p-3.5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-emerald-500/50 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-all group flex flex-col justify-between"
         >
           <div className="flex items-center justify-between">
-            <div className="h-7 w-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+            <div className="h-7 w-7 rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
               <ShieldCheck className="h-3.5 w-3.5" />
             </div>
-            <ArrowUpRight className="h-3.5 w-3.5 text-slate-500 group-hover:text-emerald-400 transition-colors" />
+            <ArrowUpRight className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500 group-hover:text-emerald-500 dark:group-hover:text-emerald-400 transition-colors" />
           </div>
           <div className="mt-3">
-            <h4 className="text-xs font-semibold text-slate-200 group-hover:text-white">Outbound Clearance</h4>
-            <p className="text-[10px] text-slate-400 mt-0.5">Seals & Challan audit</p>
+            <h4 className="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white">Outbound Clearance</h4>
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Seals & Challan audit</p>
           </div>
         </Link>
 
         <Link
           href="/logistics-gate/trips"
-          className="p-3.5 rounded-xl bg-[#0f172a] border border-slate-800 hover:border-amber-500/50 hover:bg-slate-800/40 transition-all group flex flex-col justify-between"
+          className="p-3.5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-amber-500/50 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-all group flex flex-col justify-between"
         >
           <div className="flex items-center justify-between">
-            <div className="h-7 w-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
+            <div className="h-7 w-7 rounded-lg bg-amber-500/10 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center">
               <Navigation className="h-3.5 w-3.5" />
             </div>
-            <ArrowUpRight className="h-3.5 w-3.5 text-slate-500 group-hover:text-amber-400 transition-colors" />
+            <ArrowUpRight className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors" />
           </div>
           <div className="mt-3">
-            <h4 className="text-xs font-semibold text-slate-200 group-hover:text-white">Fleet GPS & POD</h4>
-            <p className="text-[10px] text-slate-400 mt-0.5">Waypoints & delivery proof</p>
+            <h4 className="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white">Fleet GPS & POD</h4>
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Waypoints & delivery proof</p>
           </div>
         </Link>
 
         <Link
           href="/logistics-gate/special-passes"
-          className="p-3.5 rounded-xl bg-[#0f172a] border border-slate-800 hover:border-purple-500/50 hover:bg-slate-800/40 transition-all group flex flex-col justify-between"
+          className="p-3.5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200/80 dark:border-slate-800 shadow-sm hover:border-purple-500/50 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-all group flex flex-col justify-between"
         >
           <div className="flex items-center justify-between">
-            <div className="h-7 w-7 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center">
+            <div className="h-7 w-7 rounded-lg bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center">
               <FileCheck className="h-3.5 w-3.5" />
             </div>
-            <ArrowUpRight className="h-3.5 w-3.5 text-slate-500 group-hover:text-purple-400 transition-colors" />
+            <ArrowUpRight className="h-3.5 w-3.5 text-slate-400 dark:text-slate-500 group-hover:text-purple-500 dark:group-hover:text-purple-400 transition-colors" />
           </div>
           <div className="mt-3">
-            <h4 className="text-xs font-semibold text-slate-200 group-hover:text-white">Special Gate Passes</h4>
-            <p className="text-[10px] text-slate-400 mt-0.5">Repairs, scrap & returns</p>
+            <h4 className="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white">Special Gate Passes</h4>
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Repairs, scrap & returns</p>
           </div>
         </Link>
       </div>
@@ -354,24 +354,24 @@ export default function LogisticsCommandCenterPage() {
       {/* Main Grid: Active Vehicles Inside Premises + Live In-Transit Trips */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Vehicles Live Stream */}
-        <div className="lg:col-span-2 bg-[#0d1322] border border-slate-800 rounded-xl overflow-hidden flex flex-col">
-          <div className="p-4 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="lg:col-span-2 bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl overflow-hidden flex flex-col shadow-sm">
+          <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <Truck className="h-4 w-4 text-cyan-400" />
-              <h2 className="text-sm font-semibold text-white">Live Gate Movement & Perimeter Vehicles</h2>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-medium">
+              <Truck className="h-4 w-4 text-cyan-600 dark:text-cyan-400" />
+              <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Live Gate Movement & Perimeter Vehicles</h2>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-50 dark:bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 font-medium border border-cyan-200 dark:border-cyan-500/30">
                 Live Sensor Sync
               </span>
             </div>
 
             <div className="relative">
-              <Search className="h-3.5 w-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+              <Search className="h-3.5 w-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500" />
               <input
                 type="text"
                 placeholder="Search plate, driver, pass #..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-8 pr-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 w-full sm:w-60"
+                className="pl-8 pr-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-xs text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-cyan-500 w-full sm:w-60"
               />
             </div>
           </div>
@@ -379,7 +379,7 @@ export default function LogisticsCommandCenterPage() {
           <div className="overflow-x-auto flex-1">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="bg-slate-900/60 text-slate-400 border-b border-slate-800">
+                <tr className="bg-slate-50 dark:bg-slate-900/60 text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-slate-800">
                   <th className="py-2.5 px-3 font-semibold">Pass / Gate</th>
                   <th className="py-2.5 px-3 font-semibold">Vehicle Plate & Type</th>
                   <th className="py-2.5 px-3 font-semibold">Driver & Contact</th>
@@ -388,47 +388,47 @@ export default function LogisticsCommandCenterPage() {
                   <th className="py-2.5 px-3 font-semibold">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
                 {filteredVehicles.map((v) => (
-                  <tr key={v.id} className="hover:bg-slate-800/30 transition-colors">
+                  <tr key={v.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
                     <td className="py-3 px-3">
-                      <div className="font-mono text-cyan-300 font-medium">{v.passNumber}</div>
-                      <div className="text-[10px] text-slate-400 flex items-center gap-1 mt-0.5">
-                        <MapPin className="h-3 w-3 text-slate-500" />
+                      <div className="font-mono text-cyan-700 dark:text-cyan-300 font-medium">{v.passNumber}</div>
+                      <div className="text-[10px] text-slate-500 dark:text-slate-400 flex items-center gap-1 mt-0.5">
+                        <MapPin className="h-3 w-3 text-slate-400 dark:text-slate-500" />
                         {v.gateNumber}
                       </div>
                     </td>
                     <td className="py-3 px-3">
-                      <div className="font-bold text-white tracking-wide">{v.vehicleNumber}</div>
-                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 mt-0.5 inline-block">
+                      <div className="font-bold text-slate-900 dark:text-white tracking-wide">{v.vehicleNumber}</div>
+                      <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 mt-0.5 inline-block">
                         {v.vehicleType.replace('_', ' ')}
                       </span>
                     </td>
                     <td className="py-3 px-3">
-                      <div className="text-white font-medium">{v.driverName}</div>
-                      <div className="text-[10px] text-slate-400">{v.driverPhone}</div>
+                      <div className="text-slate-900 dark:text-white font-medium">{v.driverName}</div>
+                      <div className="text-[10px] text-slate-500 dark:text-slate-400">{v.driverPhone}</div>
                     </td>
                     <td className="py-3 px-3 max-w-[200px]">
-                      <div className="truncate text-slate-200" title={v.purpose}>
+                      <div className="truncate text-slate-800 dark:text-slate-200 font-medium" title={v.purpose}>
                         {v.purpose}
                       </div>
-                      <div className="text-[10px] text-slate-400 truncate">{v.transporterName || 'Self / Company'}</div>
+                      <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">{v.transporterName || 'Self / Company'}</div>
                     </td>
-                    <td className="py-3 px-3 font-mono text-[11px] text-slate-300">
+                    <td className="py-3 px-3 font-mono text-[11px] text-slate-600 dark:text-slate-300">
                       <div>{v.entryTimestamp}</div>
-                      {v.exitTimestamp && <div className="text-slate-500 text-[10px]">Out: {v.exitTimestamp}</div>}
+                      {v.exitTimestamp && <div className="text-slate-500 dark:text-slate-500 text-[10px]">Out: {v.exitTimestamp}</div>}
                     </td>
                     <td className="py-3 px-3">
                       <span
                         className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold ${
                           v.status === 'INSIDE_PREMISES'
-                            ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
+                            ? 'bg-amber-50 dark:bg-amber-500/15 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30'
                             : v.status === 'CHECKED_OUT'
-                            ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
-                            : 'bg-red-500/15 text-red-300 border border-red-500/30'
+                            ? 'bg-emerald-50 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30'
+                            : 'bg-rose-50 dark:bg-red-500/15 text-rose-700 dark:text-red-300 border border-rose-200 dark:border-red-500/30'
                         }`}
                       >
-                        {v.status === 'INSIDE_PREMISES' && <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />}
+                        {v.status === 'INSIDE_PREMISES' && <span className="h-1.5 w-1.5 rounded-full bg-amber-500 dark:bg-amber-400 animate-pulse" />}
                         {v.status.replace('_', ' ')}
                       </span>
                     </td>
@@ -438,22 +438,22 @@ export default function LogisticsCommandCenterPage() {
             </table>
           </div>
 
-          <div className="p-3 border-t border-slate-800 bg-[#090d16]/60 flex items-center justify-between text-xs text-slate-400">
+          <div className="p-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#090d16]/60 flex items-center justify-between text-xs text-slate-600 dark:text-slate-400">
             <span>Showing {filteredVehicles.length} records</span>
-            <Link href="/logistics-gate/gate-entries" className="text-cyan-400 hover:text-cyan-300 font-medium flex items-center gap-1">
+            <Link href="/logistics-gate/gate-entries" className="text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 font-medium flex items-center gap-1">
               View all vehicle history logs &rarr;
             </Link>
           </div>
         </div>
 
         {/* Live Delivery Fleet Radar */}
-        <div className="bg-[#0d1322] border border-slate-800 rounded-xl overflow-hidden flex flex-col">
-          <div className="p-4 border-b border-slate-800 flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl overflow-hidden flex flex-col shadow-sm">
+          <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Navigation className="h-4 w-4 text-amber-400" />
-              <h2 className="text-sm font-semibold text-white">Live Dispatched Fleet (GPS)</h2>
+              <Navigation className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+              <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Live Dispatched Fleet (GPS)</h2>
             </div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
               Active Radar
             </span>
           </div>
@@ -462,15 +462,15 @@ export default function LogisticsCommandCenterPage() {
             {trips.map((trip) => (
               <div
                 key={trip.id}
-                className="p-3.5 rounded-lg bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition-colors space-y-2.5"
+                className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-colors space-y-2.5"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold text-amber-400">{trip.tripTrackingNumber}</span>
+                  <span className="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">{trip.tripTrackingNumber}</span>
                   <span
                     className={`text-[9px] font-bold px-2 py-0.5 rounded-full uppercase ${
                       trip.status === 'DISPATCHED'
-                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                        : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                        ? 'bg-amber-50 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-500/40'
+                        : 'bg-emerald-50 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/40'
                     }`}
                   >
                     {trip.status}
@@ -478,23 +478,23 @@ export default function LogisticsCommandCenterPage() {
                 </div>
 
                 <div className="text-xs">
-                  <div className="font-semibold text-white">{trip.vehicleNumber} ({trip.carrierName})</div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">Driver: {trip.driverName} &bull; {trip.driverPhone}</div>
+                  <div className="font-semibold text-slate-900 dark:text-white">{trip.vehicleNumber} ({trip.carrierName})</div>
+                  <div className="text-slate-500 dark:text-slate-400 text-[11px] mt-0.5">Driver: {trip.driverName} &bull; {trip.driverPhone}</div>
                 </div>
 
-                <div className="text-[11px] text-slate-300 bg-slate-950/60 p-2 rounded border border-slate-800/80">
-                  <div className="text-[10px] text-slate-400 uppercase font-semibold">Route & Waypoint:</div>
-                  <div className="text-slate-200 mt-0.5">{trip.routePlan}</div>
-                  <div className="text-amber-400/90 text-[10px] font-mono mt-1 flex items-center gap-1">
-                    <MapPin className="h-3 w-3 text-amber-400" />
+                <div className="text-[11px] text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-950/60 p-2 rounded border border-slate-200 dark:border-slate-800/80">
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase font-semibold">Route & Waypoint:</div>
+                  <div className="text-slate-800 dark:text-slate-200 mt-0.5">{trip.routePlan}</div>
+                  <div className="text-amber-600 dark:text-amber-400/90 text-[10px] font-mono mt-1 flex items-center gap-1">
+                    <MapPin className="h-3 w-3 text-amber-500 dark:text-amber-400" />
                     {trip.currentLocationGps}
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-slate-800/60">
+                <div className="flex items-center justify-between text-[10px] text-slate-500 dark:text-slate-400 pt-1 border-t border-slate-200 dark:border-slate-800/60">
                   <span>ETA: {trip.estimatedArrival}</span>
                   {trip.proofOfDeliveryUrl && (
-                    <span className="text-emerald-400 font-medium flex items-center gap-1">
+                    <span className="text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1">
                       <CheckCircle2 className="h-3 w-3" />
                       POD Verified
                     </span>
@@ -504,10 +504,10 @@ export default function LogisticsCommandCenterPage() {
             ))}
           </div>
 
-          <div className="p-3 border-t border-slate-800 bg-[#090d16]/60">
+          <div className="p-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#090d16]/60">
             <Link
               href="/logistics-gate/trips"
-              className="text-xs text-amber-400 hover:text-amber-300 font-medium flex items-center justify-center gap-1 w-full"
+              className="text-xs text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 font-medium flex items-center justify-center gap-1 w-full"
             >
               Open Fleet Trip Dispatcher &rarr;
             </Link>

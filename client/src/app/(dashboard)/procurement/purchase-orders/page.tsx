@@ -299,38 +299,38 @@ export default function PurchaseOrdersManagementPage() {
   const getStatusBadge = (s: ProcurementPOStatus) => {
     switch (s) {
       case 'PENDING_APPROVAL':
-        return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+        return 'bg-amber-50 dark:bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-500/20';
       case 'ISSUED':
-        return 'bg-blue-500/10 text-blue-400 border-blue-500/20';
+        return 'bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-200 dark:border-blue-500/20';
       case 'ACKNOWLEDGED':
-        return 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20';
+        return 'bg-indigo-50 dark:bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border-indigo-200 dark:border-indigo-500/20';
       case 'IN_TRANSIT':
-        return 'bg-purple-500/10 text-purple-400 border-purple-500/20';
+        return 'bg-purple-50 dark:bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-500/20';
       case 'PARTIALLY_DELIVERED':
-        return 'bg-teal-500/10 text-teal-400 border-teal-500/20';
+        return 'bg-teal-50 dark:bg-teal-500/10 text-teal-700 dark:text-teal-400 border-teal-200 dark:border-teal-500/20';
       case 'FULFILLED':
-        return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
+        return 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-500/20';
       case 'CANCELLED':
-        return 'bg-rose-500/10 text-rose-400 border-rose-500/20';
+        return 'bg-rose-50 dark:bg-rose-500/10 text-rose-700 dark:text-rose-400 border-rose-200 dark:border-rose-500/20';
       default:
-        return 'bg-slate-800 text-slate-400 border-slate-700';
+        return 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-700';
     }
   };
 
   return (
     <div className="space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+            <span className="p-1.5 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
               <PackageCheck className="h-5 w-5" />
             </span>
-            <h1 className="text-xl font-bold text-white tracking-tight">
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
               Purchase Orders & Delivery Schedule Tracking
             </h1>
           </div>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Draft official procurement orders, monitor vendor delivery milestones, adjust schedule delays, and dispatch automated arrival reminders.
           </p>
         </div>
@@ -345,21 +345,21 @@ export default function PurchaseOrdersManagementPage() {
 
       {/* Overdue Warning Alert */}
       {overduePOs.length > 0 && (
-        <div className="p-4 rounded-xl bg-rose-950/20 border border-rose-500/30 flex items-center justify-between">
+        <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-500/30 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-rose-500/20 text-rose-400">
+            <div className="p-2 rounded-lg bg-rose-100 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400">
               <AlertTriangle className="h-5 w-5" />
             </div>
             <div>
-              <div className="text-xs font-semibold text-rose-200">
+              <div className="text-xs font-semibold text-rose-800 dark:text-rose-200">
                 {overduePOs.length} Purchase Order(s) Passed Promised Delivery Date
               </div>
-              <div className="text-[11px] text-rose-300/70">
+              <div className="text-[11px] text-rose-600/80 dark:text-rose-300/70">
                 Vendor shipments delayed past factory commitment date. Trigger automated reminders or adjust revised schedule.
               </div>
             </div>
           </div>
-          <span className="text-xs font-bold text-rose-300 font-mono">
+          <span className="text-xs font-bold text-rose-700 dark:text-rose-300 font-mono">
             Critical Watchlist
           </span>
         </div>
@@ -367,13 +367,13 @@ export default function PurchaseOrdersManagementPage() {
 
       {/* Tab Navigation and Search */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center p-1 bg-slate-900 border border-slate-800 rounded-xl">
+        <div className="flex items-center p-1 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl">
           <button
             onClick={() => setActiveTab('orders')}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               activeTab === 'orders'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
-                : 'text-slate-400 hover:text-white'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <PackageCheck className="h-4 w-4" />
@@ -384,7 +384,7 @@ export default function PurchaseOrdersManagementPage() {
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               activeTab === 'schedule'
                 ? 'bg-blue-600 text-white shadow-md shadow-blue-500/20'
-                : 'text-slate-400 hover:text-white'
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             <Clock className="h-4 w-4" />
@@ -393,23 +393,23 @@ export default function PurchaseOrdersManagementPage() {
         </div>
 
         <div className="relative w-full sm:w-72">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400 dark:text-slate-500" />
           <input
             type="text"
             placeholder="Search PO #, supplier, material..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+            className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg pl-9 pr-3 py-2 text-xs text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-blue-500 shadow-sm"
           />
         </div>
       </div>
 
       {/* Tab Content: Purchase Orders Table */}
       {activeTab === 'orders' && (
-        <div className="rounded-xl bg-[#0d1322] border border-slate-800 overflow-hidden shadow-sm">
+        <div className="rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-900/80 text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+              <thead className="bg-slate-50 dark:bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
                 <tr>
                   <th className="py-3 px-4">PO Number</th>
                   <th className="py-3 px-4">Supplier & Facility</th>
@@ -421,7 +421,7 @@ export default function PurchaseOrdersManagementPage() {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300 font-normal">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300 font-normal">
                 {filteredPOs.map((po) => {
                   const isOverdue =
                     new Date(po.promisedDeliveryDate) < now &&
@@ -429,37 +429,37 @@ export default function PurchaseOrdersManagementPage() {
                     po.status !== 'CANCELLED';
 
                   return (
-                    <tr key={po.id} className="hover:bg-slate-800/40 transition-colors">
-                      <td className="py-3.5 px-4 font-mono font-semibold text-white">
+                    <tr key={po.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                      <td className="py-3.5 px-4 font-mono font-semibold text-slate-900 dark:text-white">
                         {po.poNumber}
                       </td>
                       <td className="py-3.5 px-4">
-                        <div className="font-medium text-white">{po.vendorName}</div>
-                        <div className="text-[11px] text-slate-400">{po.vendorEmail}</div>
+                        <div className="font-medium text-slate-900 dark:text-white">{po.vendorName}</div>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400">{po.vendorEmail}</div>
                       </td>
                       <td className="py-3.5 px-4">
-                        <div className="font-medium text-slate-200">{po.items[0]?.itemName}</div>
-                        <div className="text-[11px] font-mono text-slate-400">
+                        <div className="font-medium text-slate-800 dark:text-slate-200">{po.items[0]?.itemName}</div>
+                        <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
                           {po.items[0]?.orderedQty} units @ ${po.items[0]?.unitPrice}
                         </div>
                       </td>
                       <td className="py-3.5 px-4">
-                        <div className={isOverdue ? 'text-rose-400 font-bold' : 'text-white'}>
+                        <div className={isOverdue ? 'text-rose-600 dark:text-rose-400 font-bold' : 'text-slate-900 dark:text-white'}>
                           {po.promisedDeliveryDate}
                         </div>
                         {isOverdue && (
-                          <span className="text-[10px] text-rose-400 font-bold block">
+                          <span className="text-[10px] text-rose-600 dark:text-rose-400 font-bold block">
                             OVERDUE
                           </span>
                         )}
                       </td>
-                      <td className="py-3.5 px-4 font-bold text-white">
+                      <td className="py-3.5 px-4 font-bold text-slate-900 dark:text-white">
                         ${po.totalAmount.toLocaleString()}
                       </td>
                       <td className="py-3.5 px-4">
-                        <span className="text-slate-300">{po.remindersSentCount} sent</span>
+                        <span className="text-slate-700 dark:text-slate-300">{po.remindersSentCount} sent</span>
                         {po.lastReminderSentAt && (
-                          <div className="text-[10px] text-slate-500">
+                          <div className="text-[10px] text-slate-500 dark:text-slate-500">
                             {po.lastReminderSentAt.split('T')[0]}
                           </div>
                         )}
@@ -479,25 +479,25 @@ export default function PurchaseOrdersManagementPage() {
                             <>
                               <button
                                 onClick={() => handleSendReminder(po)}
-                                className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all"
+                                className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-all"
                                 title="Send Email Reminder"
                               >
                                 <Mail className="h-3.5 w-3.5" />
                               </button>
                               <button
                                 onClick={() => {
-                                  setSelectedPO(po);
-                                  setNewScheduleDate(po.promisedDeliveryDate);
-                                  setIsScheduleAdjustModalOpen(true);
+                                   setSelectedPO(po);
+                                   setNewScheduleDate(po.promisedDeliveryDate);
+                                   setIsScheduleAdjustModalOpen(true);
                                 }}
-                                className="px-2 py-1 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/30 text-[11px] font-semibold transition-all"
+                                className="px-2 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 dark:bg-blue-600/20 dark:hover:bg-blue-600/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30 text-[11px] font-semibold transition-all"
                               >
                                 Reschedule
                               </button>
                             </>
                           )}
                           {po.status === 'FULFILLED' && (
-                            <span className="text-emerald-400 font-medium flex items-center gap-1 text-[11px]">
+                            <span className="text-emerald-600 dark:text-emerald-400 font-medium flex items-center gap-1 text-[11px]">
                               <CheckCircle2 className="h-3.5 w-3.5" /> Received
                             </span>
                           )}
@@ -515,68 +515,68 @@ export default function PurchaseOrdersManagementPage() {
       {/* Tab Content: Delivery Schedule Radar */}
       {activeTab === 'schedule' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="rounded-xl bg-[#0d1322] border border-rose-900/40 p-4 space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-rose-900/40">
-              <span className="text-xs font-semibold text-rose-300 uppercase tracking-wider flex items-center gap-1.5">
+          <div className="rounded-xl bg-white dark:bg-[#0d1322] border border-rose-200 dark:border-rose-900/40 p-4 space-y-3 shadow-sm">
+            <div className="flex items-center justify-between pb-2 border-b border-rose-200 dark:border-rose-900/40">
+              <span className="text-xs font-semibold text-rose-700 dark:text-rose-300 uppercase tracking-wider flex items-center gap-1.5">
                 <AlertTriangle className="h-4 w-4" /> Overdue Inbound Deliveries
               </span>
-              <span className="text-xs font-bold text-rose-400">{overduePOs.length}</span>
+              <span className="text-xs font-bold text-rose-600 dark:text-rose-400">{overduePOs.length}</span>
             </div>
             <div className="space-y-2">
               {overduePOs.map((po) => (
-                <div key={po.id} className="p-3 rounded-lg bg-rose-950/20 border border-rose-900/30 text-xs space-y-1">
-                  <div className="flex justify-between font-bold text-white">
+                <div key={po.id} className="p-3 rounded-lg bg-rose-50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900/30 text-xs space-y-1">
+                  <div className="flex justify-between font-bold text-slate-900 dark:text-white">
                     <span>{po.poNumber}</span>
-                    <span className="text-rose-400">Due: {po.promisedDeliveryDate}</span>
+                    <span className="text-rose-600 dark:text-rose-400">Due: {po.promisedDeliveryDate}</span>
                   </div>
-                  <div className="text-slate-300">{po.vendorName}</div>
-                  <div className="text-[11px] text-slate-400">{po.items[0]?.itemName}</div>
+                  <div className="text-slate-700 dark:text-slate-300">{po.vendorName}</div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400">{po.items[0]?.itemName}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="rounded-xl bg-[#0d1322] border border-amber-900/40 p-4 space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-amber-900/40">
-              <span className="text-xs font-semibold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+          <div className="rounded-xl bg-white dark:bg-[#0d1322] border border-amber-200 dark:border-amber-900/40 p-4 space-y-3 shadow-sm">
+            <div className="flex items-center justify-between pb-2 border-b border-amber-200 dark:border-amber-900/40">
+              <span className="text-xs font-semibold text-amber-700 dark:text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
                 <Clock className="h-4 w-4" /> Arriving in &lt; 7 Days
               </span>
-              <span className="text-xs font-bold text-amber-400">2</span>
+              <span className="text-xs font-bold text-amber-600 dark:text-amber-400">2</span>
             </div>
             <div className="space-y-2">
               {purchaseOrders
                 .filter((p) => p.status === 'IN_TRANSIT' || p.status === 'ACKNOWLEDGED')
                 .map((po) => (
-                  <div key={po.id} className="p-3 rounded-lg bg-amber-950/20 border border-amber-900/30 text-xs space-y-1">
-                    <div className="flex justify-between font-bold text-white">
+                  <div key={po.id} className="p-3 rounded-lg bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/30 text-xs space-y-1">
+                    <div className="flex justify-between font-bold text-slate-900 dark:text-white">
                       <span>{po.poNumber}</span>
-                      <span className="text-amber-400">{po.promisedDeliveryDate}</span>
+                      <span className="text-amber-600 dark:text-amber-400">{po.promisedDeliveryDate}</span>
                     </div>
-                    <div className="text-slate-300">{po.vendorName}</div>
-                    <div className="text-[11px] text-slate-400">{po.items[0]?.itemName}</div>
+                    <div className="text-slate-700 dark:text-slate-300">{po.vendorName}</div>
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400">{po.items[0]?.itemName}</div>
                   </div>
                 ))}
             </div>
           </div>
 
-          <div className="rounded-xl bg-[#0d1322] border border-emerald-900/40 p-4 space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-emerald-900/40">
-              <span className="text-xs font-semibold text-emerald-300 uppercase tracking-wider flex items-center gap-1.5">
+          <div className="rounded-xl bg-white dark:bg-[#0d1322] border border-emerald-200 dark:border-emerald-900/40 p-4 space-y-3 shadow-sm">
+            <div className="flex items-center justify-between pb-2 border-b border-emerald-200 dark:border-emerald-900/40">
+              <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300 uppercase tracking-wider flex items-center gap-1.5">
                 <CheckCircle2 className="h-4 w-4" /> Recently Completed Receipts
               </span>
-              <span className="text-xs font-bold text-emerald-400">1</span>
+              <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">1</span>
             </div>
             <div className="space-y-2">
               {purchaseOrders
                 .filter((p) => p.status === 'FULFILLED')
                 .map((po) => (
-                  <div key={po.id} className="p-3 rounded-lg bg-emerald-950/20 border border-emerald-900/30 text-xs space-y-1">
-                    <div className="flex justify-between font-bold text-white">
+                  <div key={po.id} className="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/30 text-xs space-y-1">
+                    <div className="flex justify-between font-bold text-slate-900 dark:text-white">
                       <span>{po.poNumber}</span>
-                      <span className="text-emerald-400">Received</span>
+                      <span className="text-emerald-600 dark:text-emerald-400">Received</span>
                     </div>
-                    <div className="text-slate-300">{po.vendorName}</div>
-                    <div className="text-[11px] text-slate-400">{po.items[0]?.itemName}</div>
+                    <div className="text-slate-700 dark:text-slate-300">{po.vendorName}</div>
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400">{po.items[0]?.itemName}</div>
                   </div>
                 ))}
             </div>
@@ -586,18 +586,18 @@ export default function PurchaseOrdersManagementPage() {
 
       {/* Modal: Draft Purchase Order */}
       {isDraftPOModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
+                <span className="p-1.5 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400">
                   <PackageCheck className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Draft Official Purchase Order</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Draft Official Purchase Order</h3>
               </div>
               <button
                 onClick={() => setIsDraftPOModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -606,119 +606,119 @@ export default function PurchaseOrdersManagementPage() {
             <form onSubmit={handleDraftPO} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Supplier Name *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Supplier Name *</label>
                   <input
                     type="text"
                     required
                     value={newPO.vendorName}
                     onChange={(e) => setNewPO({ ...newPO, vendorName: e.target.value })}
                     placeholder="e.g. Tata Steel Division"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Supplier Email *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Supplier Email *</label>
                   <input
                     type="email"
                     required
                     value={newPO.vendorEmail}
                     onChange={(e) => setNewPO({ ...newPO, vendorEmail: e.target.value })}
                     placeholder="orders@vendor.com"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Material SKU *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Material SKU *</label>
                   <input
                     type="text"
                     required
                     value={newPO.itemSku}
                     onChange={(e) => setNewPO({ ...newPO, itemSku: e.target.value })}
                     placeholder="RAW-STL-316-BILLET"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500 font-mono"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500 font-mono"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Material Description *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Material Description *</label>
                   <input
                     type="text"
                     required
                     value={newPO.itemName}
                     onChange={(e) => setNewPO({ ...newPO, itemName: e.target.value })}
                     placeholder="SS 316 Billets 100mm"
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Quantity *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Quantity *</label>
                   <input
                     type="number"
                     required
                     value={newPO.orderedQty}
                     onChange={(e) => setNewPO({ ...newPO, orderedQty: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Unit Price ($) *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Unit Price ($) *</label>
                   <input
                     type="number"
                     required
                     value={newPO.unitPrice}
                     onChange={(e) => setNewPO({ ...newPO, unitPrice: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Promised Date *</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Promised Date *</label>
                   <input
                     type="date"
                     required
                     value={newPO.promisedDeliveryDate}
                     onChange={(e) => setNewPO({ ...newPO, promisedDeliveryDate: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-400 mb-1">Payment Terms</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Payment Terms</label>
                   <input
                     type="text"
                     value={newPO.paymentTerms}
                     onChange={(e) => setNewPO({ ...newPO, paymentTerms: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-400 mb-1">Delivery Destination</label>
+                  <label className="block text-slate-700 dark:text-slate-400 mb-1">Delivery Destination</label>
                   <input
                     type="text"
                     value={newPO.deliveryAddress}
                     onChange={(e) => setNewPO({ ...newPO, deliveryAddress: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsDraftPOModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold"
+                  className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition"
                 >
                   Create Purchase Order
                 </button>
@@ -730,64 +730,64 @@ export default function PurchaseOrdersManagementPage() {
 
       {/* Modal: Adjust Delivery Schedule */}
       {isScheduleAdjustModalOpen && selectedPO && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0d1322] border border-slate-800 rounded-xl max-w-md w-full p-6 space-y-4 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 dark:bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <span className="p-1.5 rounded-lg bg-blue-500/10 text-blue-400">
+                <span className="p-1.5 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400">
                   <Clock className="h-5 w-5" />
                 </span>
-                <h3 className="text-sm font-semibold text-white">Adjust Promised Delivery Date</h3>
+                <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Adjust Promised Delivery Date</h3>
               </div>
               <button
                 onClick={() => setIsScheduleAdjustModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="p-3 rounded-lg bg-slate-900/60 border border-slate-800 text-xs space-y-1">
-              <div className="font-semibold text-white font-mono">{selectedPO.poNumber}</div>
-              <div className="text-slate-300">{selectedPO.vendorName}</div>
-              <div className="text-slate-400">Current Promised Date: <strong className="text-white">{selectedPO.promisedDeliveryDate}</strong></div>
+            <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs space-y-1">
+              <div className="font-semibold text-slate-900 dark:text-white font-mono">{selectedPO.poNumber}</div>
+              <div className="text-slate-700 dark:text-slate-300">{selectedPO.vendorName}</div>
+              <div className="text-slate-500 dark:text-slate-400">Current Promised Date: <strong className="text-slate-800 dark:text-white">{selectedPO.promisedDeliveryDate}</strong></div>
             </div>
 
             <form onSubmit={handleAdjustSchedule} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-400 mb-1">New Agreed Delivery Date *</label>
+                <label className="block text-slate-700 dark:text-slate-400 mb-1">New Agreed Delivery Date *</label>
                 <input
                   type="date"
                   required
                   value={newScheduleDate}
                   onChange={(e) => setNewScheduleDate(e.target.value)}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                  className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-400 mb-1">Adjustment Reason & Audit Note *</label>
+                <label className="block text-slate-700 dark:text-slate-400 mb-1">Adjustment Reason & Audit Note *</label>
                 <textarea
                   required
                   rows={3}
                   value={scheduleReason}
                   onChange={(e) => setScheduleReason(e.target.value)}
                   placeholder="e.g. Inbound transporter truck breakdown in transit; revised ETA agreed with vendor."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                  className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 rounded-lg px-3 py-2 text-slate-900 dark:text-white focus:outline-none focus:border-blue-500"
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 flex items-center justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsScheduleAdjustModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white"
+                  className="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold"
+                  className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition"
                 >
                   Confirm Schedule Change
                 </button>

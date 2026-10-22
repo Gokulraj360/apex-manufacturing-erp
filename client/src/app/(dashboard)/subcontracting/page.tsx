@@ -138,6 +138,7 @@ const MOCK_PENDING_RECEIPTS: SubcontractorReceiptItem[] = [
     receiptNumber: 'SR-2026-0081',
     jobWorkOrderId: 'jwo-1',
     jobWorkOrder: {
+      id: 'jwo-1',
       orderNumber: 'JWO-2026-0042',
       processDescription: 'Hard Chrome Electroplating 25 Micron',
       targetProductPart: 'Hydraulic Piston Rod PR-90',
@@ -180,15 +181,15 @@ export default function SubcontractingOverviewPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-              <Share2 className="h-6 w-6 text-teal-400" />
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+              <Share2 className="h-6 w-6 text-teal-600 dark:text-teal-400" />
               Subcontracting &amp; Outsourced Manufacturing Operations Hub
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-950/80 text-teal-300 border border-teal-500/30">
+            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-500/30">
               Active Vendors: 12
             </span>
           </div>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
             End-to-end Job Work Order (JWO) execution, returnable delivery challans, input-output material reconciliation, and vendor SLA turnarounds.
           </p>
         </div>
@@ -196,23 +197,23 @@ export default function SubcontractingOverviewPage() {
         <div className="flex items-center gap-2.5">
           <Link
             href="/subcontracting/work-orders"
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-medium text-xs shadow-lg shadow-teal-600/20 transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-teal-600 hover:bg-teal-500 text-white font-medium text-xs shadow-sm shadow-teal-600/20 transition-colors"
           >
             <Plus className="h-4 w-4" />
             Issue Job Work Order
           </Link>
           <Link
             href="/subcontracting/challans"
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-xs transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-medium text-xs shadow-sm transition-colors"
           >
-            <Truck className="h-4 w-4 text-teal-400" />
+            <Truck className="h-4 w-4 text-teal-600 dark:text-teal-400" />
             Generate Challan
           </Link>
           <Link
             href="/subcontracting/billing"
-            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-medium text-xs transition-colors"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 font-medium text-xs shadow-sm transition-colors"
           >
-            <Receipt className="h-4 w-4 text-teal-400" />
+            <Receipt className="h-4 w-4 text-teal-600 dark:text-teal-400" />
             Processing Bills
           </Link>
         </div>
@@ -220,64 +221,64 @@ export default function SubcontractingOverviewPage() {
 
       {/* KPI Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-teal-500/30 rounded-xl p-4 shadow-sm relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-teal-200 dark:border-teal-500/30 rounded-xl p-4 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-teal-400 uppercase tracking-wider">Active Outsourced JWOs</span>
-            <div className="h-8 w-8 rounded-lg bg-teal-500/20 flex items-center justify-center">
-              <FileSpreadsheet className="h-4 w-4 text-teal-400" />
+            <span className="text-xs font-medium text-teal-600 dark:text-teal-400 uppercase tracking-wider">Active Outsourced JWOs</span>
+            <div className="h-8 w-8 rounded-lg bg-teal-50 dark:bg-teal-500/20 flex items-center justify-center">
+              <FileSpreadsheet className="h-4 w-4 text-teal-600 dark:text-teal-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">14 Orders</span>
-            <span className="text-xs text-slate-400">across 6 vendors</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">14 Orders</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">across 6 vendors</span>
           </div>
-          <div className="mt-2 flex items-center gap-1 text-[11px] text-teal-300">
+          <div className="mt-2 flex items-center gap-1 text-[11px] text-teal-600 dark:text-teal-300">
             <span>Plating, Heat Treatment &amp; Casting</span>
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Dispatched WIP Valuation</span>
-            <div className="h-8 w-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
-              <Truck className="h-4 w-4 text-indigo-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Dispatched WIP Valuation</span>
+            <div className="h-8 w-8 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center">
+              <Truck className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">$148,200</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">$148,200</span>
           </div>
-          <div className="mt-2 text-[11px] text-slate-400">Covered under 18 active delivery challans</div>
+          <div className="mt-2 text-[11px] text-slate-500 dark:text-slate-400">Covered under 18 active delivery challans</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">On-Time TAT Compliance</span>
-            <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-              <Clock className="h-4 w-4 text-emerald-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">On-Time TAT Compliance</span>
+            <div className="h-8 w-8 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center">
+              <Clock className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">94.6%</span>
-            <span className="text-xs text-emerald-400 font-medium">Avg: 3.4 Days</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">94.6%</span>
+            <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Avg: 3.4 Days</span>
           </div>
-          <div className="mt-2 flex items-center gap-1 text-[11px] text-emerald-400">
+          <div className="mt-2 flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400">
             <CheckCircle2 className="h-3 w-3" />
             <span>Target turnaround &lt; 4.0 days maintained</span>
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Material Reconciliation</span>
-            <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-              <PackageCheck className="h-4 w-4 text-amber-400" />
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Material Reconciliation</span>
+            <div className="h-8 w-8 rounded-lg bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center">
+              <PackageCheck className="h-4 w-4 text-amber-600 dark:text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-amber-400 font-mono">98.2%</span>
-            <span className="text-xs text-slate-400">Balanced</span>
+            <span className="text-3xl font-bold text-amber-600 dark:text-amber-400 font-mono">98.2%</span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">Balanced</span>
           </div>
-          <div className="mt-2 text-[11px] text-amber-300">
+          <div className="mt-2 text-[11px] text-amber-600 dark:text-amber-300">
             1 open variance pending vendor explanation
           </div>
         </div>
@@ -286,18 +287,18 @@ export default function SubcontractingOverviewPage() {
       {/* Main Grid: Active Outsourced Orders & Pending Receipts */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left 2 Cols: Active Job Work Orders in Process */}
-        <div className="lg:col-span-2 bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm p-5 space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="lg:col-span-2 bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl shadow-sm p-5 space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
             <div className="flex items-center gap-2">
-              <FileSpreadsheet className="h-5 w-5 text-teal-400" />
+              <FileSpreadsheet className="h-5 w-5 text-teal-600 dark:text-teal-400" />
               <div>
-                <h2 className="text-sm font-semibold text-white">Outsourced Job Work Pipeline</h2>
-                <p className="text-xs text-slate-400">Specialized surface finishing, plating, and casting allocations</p>
+                <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Outsourced Job Work Pipeline</h2>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Specialized surface finishing, plating, and casting allocations</p>
               </div>
             </div>
             <Link
               href="/subcontracting/work-orders"
-              className="text-xs text-teal-400 hover:text-teal-300 flex items-center gap-1 font-medium transition-colors"
+              className="text-xs text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 flex items-center gap-1 font-medium transition-colors"
             >
               All Orders <ChevronRight className="h-3.5 w-3.5" />
             </Link>
@@ -309,19 +310,19 @@ export default function SubcontractingOverviewPage() {
               return (
                 <div
                   key={jwo.id}
-                  className="p-3 bg-[#0b0f19] border border-slate-800 hover:border-slate-700 rounded-lg flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 transition-colors"
+                  className="p-3 bg-slate-50 dark:bg-[#0b0f19] border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-lg flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 transition-colors"
                 >
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-xs font-bold text-teal-400">{jwo.orderNumber}</span>
-                      <span className="text-xs text-slate-400 font-mono">[{jwo.vendor?.vendorCode}]</span>
-                      <span className="text-xs font-semibold text-white">{jwo.vendor?.companyName}</span>
+                      <span className="font-mono text-xs font-bold text-teal-600 dark:text-teal-400">{jwo.orderNumber}</span>
+                      <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">[{jwo.vendor?.vendorCode}]</span>
+                      <span className="text-xs font-semibold text-slate-900 dark:text-white">{jwo.vendor?.companyName}</span>
                     </div>
-                    <p className="text-xs text-slate-200 font-medium">{jwo.processDescription}</p>
-                    <div className="flex items-center gap-3 text-[11px] text-slate-400">
-                      <span>Part: <strong className="text-slate-300">{jwo.targetProductPart}</strong></span>
-                      <span>Target: <strong className="text-slate-300">{jwo.targetQuantity} pcs</strong></span>
-                      <span>Rate: <strong className="text-teal-300">${jwo.unitProcessingRate}/pc</strong></span>
+                    <p className="text-xs text-slate-700 dark:text-slate-200 font-medium">{jwo.processDescription}</p>
+                    <div className="flex items-center gap-3 text-[11px] text-slate-500 dark:text-slate-400">
+                      <span>Part: <strong className="text-slate-700 dark:text-slate-300">{jwo.targetProductPart}</strong></span>
+                      <span>Target: <strong className="text-slate-700 dark:text-slate-300">{jwo.targetQuantity} pcs</strong></span>
+                      <span>Rate: <strong className="text-teal-700 dark:text-teal-300">${jwo.unitProcessingRate}/pc</strong></span>
                     </div>
                   </div>
 
@@ -329,18 +330,18 @@ export default function SubcontractingOverviewPage() {
                     <span
                       className={`px-2 py-0.5 rounded text-[10px] font-semibold ${
                         jwo.status === 'IN_PROGRESS'
-                          ? 'bg-teal-950/80 text-teal-300 border border-teal-500/30'
+                          ? 'bg-teal-50 dark:bg-teal-950/80 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-500/30'
                           : jwo.status === 'COMPLETED'
-                          ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/30'
-                          : 'bg-blue-950/80 text-blue-300 border border-blue-500/30'
+                          ? 'bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30'
+                          : 'bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-500/30'
                       }`}
                     >
                       {jwo.status.replace('_', ' ')}
                     </span>
-                    <div className="text-[11px] font-mono text-slate-400">
-                      Progress: <strong className="text-white">{progressPct.toFixed(0)}%</strong> ({jwo.receivedQuantity}/{jwo.targetQuantity})
+                    <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                      Progress: <strong className="text-slate-900 dark:text-white">{progressPct.toFixed(0)}%</strong> ({jwo.receivedQuantity}/{jwo.targetQuantity})
                     </div>
-                    <div className="w-28 bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                    <div className="w-28 bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
                       <div className="bg-teal-500 h-full rounded-full" style={{ width: `${progressPct}%` }}></div>
                     </div>
                   </div>
@@ -351,18 +352,18 @@ export default function SubcontractingOverviewPage() {
         </div>
 
         {/* Right 1 Col: Inbound Receipts Awaiting QC & Material Balance */}
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm p-5 space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl shadow-sm p-5 space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
             <div className="flex items-center gap-2">
-              <PackageCheck className="h-5 w-5 text-teal-400" />
+              <PackageCheck className="h-5 w-5 text-teal-600 dark:text-teal-400" />
               <div>
-                <h2 className="text-sm font-semibold text-white">Inbound Receipts Pending QC</h2>
-                <p className="text-xs text-slate-400">Material reconciliation handover</p>
+                <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Inbound Receipts Pending QC</h2>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Material reconciliation handover</p>
               </div>
             </div>
             <Link
               href="/subcontracting/receipts"
-              className="text-xs text-teal-400 hover:text-teal-300 flex items-center gap-1 font-medium transition-colors"
+              className="text-xs text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 flex items-center gap-1 font-medium transition-colors"
             >
               Verify <ChevronRight className="h-3.5 w-3.5" />
             </Link>
@@ -372,33 +373,33 @@ export default function SubcontractingOverviewPage() {
             {pendingReceipts.map((rcp) => (
               <div
                 key={rcp.id}
-                className="p-3 bg-[#0b0f19] border border-amber-500/30 rounded-lg space-y-2"
+                className="p-3 bg-slate-50 dark:bg-[#0b0f19] border border-amber-300 dark:border-amber-500/30 rounded-lg space-y-2"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold text-amber-400">{rcp.receiptNumber}</span>
-                  <span className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-amber-950/80 text-amber-300 border border-amber-500/30">
+                  <span className="font-mono text-xs font-bold text-amber-600 dark:text-amber-400">{rcp.receiptNumber}</span>
+                  <span className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-amber-50 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30">
                     QC Pending
                   </span>
                 </div>
-                <div className="text-xs font-medium text-white">{rcp.jobWorkOrder?.targetProductPart}</div>
-                <div className="text-[11px] text-slate-400">
-                  Vendor: <strong className="text-slate-300">{rcp.vendor?.companyName}</strong>
+                <div className="text-xs font-medium text-slate-900 dark:text-white">{rcp.jobWorkOrder?.targetProductPart}</div>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                  Vendor: <strong className="text-slate-700 dark:text-slate-300">{rcp.vendor?.companyName}</strong>
                 </div>
 
-                <div className="pt-2 border-t border-slate-800 grid grid-cols-2 gap-2 text-[11px] font-mono">
+                <div className="pt-2 border-t border-slate-200 dark:border-slate-800 grid grid-cols-2 gap-2 text-[11px] font-mono">
                   <div>
-                    <span className="text-slate-500">Recv Qty:</span> <strong className="text-white">{rcp.receivedQuantity}</strong>
+                    <span className="text-slate-500 dark:text-slate-400">Recv Qty:</span> <strong className="text-slate-900 dark:text-white">{rcp.receivedQuantity}</strong>
                   </div>
                   <div>
-                    <span className="text-slate-500">Challan Sent:</span> <strong className="text-white">{rcp.challan?.totalQuantitySent}</strong>
+                    <span className="text-slate-500 dark:text-slate-400">Challan Sent:</span> <strong className="text-slate-900 dark:text-white">{rcp.challan?.totalQuantitySent}</strong>
                   </div>
                 </div>
 
-                <div className="p-2 bg-amber-950/20 border border-amber-500/20 rounded text-[10px] text-amber-300 flex items-center justify-between">
+                <div className="p-2 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-500/20 rounded text-[10px] text-amber-800 dark:text-amber-300 flex items-center justify-between">
                   <span>Balance Variance: <strong>{rcp.reconciliationVariance} pcs</strong> remaining</span>
                   <Link
                     href="/subcontracting/receipts"
-                    className="text-teal-400 hover:underline font-semibold"
+                    className="text-teal-600 dark:text-teal-400 hover:underline font-semibold"
                   >
                     Reconcile &rarr;
                   </Link>
@@ -408,20 +409,20 @@ export default function SubcontractingOverviewPage() {
           </div>
 
           {/* Quick Subcontractor SLA Snapshot */}
-          <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg space-y-2 text-xs">
-            <div className="font-semibold text-white flex items-center justify-between">
+          <div className="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg space-y-2 text-xs">
+            <div className="font-semibold text-slate-900 dark:text-white flex items-center justify-between">
               <span>Top Vendor Quality SLA</span>
-              <span className="text-emerald-400 font-mono">Tier 1</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-mono">Tier 1</span>
             </div>
-            <div className="text-[11px] text-slate-400">
-              Apex Electroplating: <strong className="text-emerald-400">98.2%</strong> (2.8d TAT)
+            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+              Apex Electroplating: <strong className="text-emerald-600 dark:text-emerald-400">98.2%</strong> (2.8d TAT)
             </div>
-            <div className="text-[11px] text-slate-400">
-              Bharat Heat Treaters: <strong className="text-emerald-400">96.5%</strong> (3.5d TAT)
+            <div className="text-[11px] text-slate-500 dark:text-slate-400">
+              Bharat Heat Treaters: <strong className="text-emerald-600 dark:text-emerald-400">96.5%</strong> (3.5d TAT)
             </div>
             <Link
               href="/subcontracting/analytics"
-              className="text-teal-400 text-[11px] font-medium hover:underline inline-block pt-1"
+              className="text-teal-600 dark:text-teal-400 text-[11px] font-medium hover:underline inline-block pt-1"
             >
               View Full Vendor Scorecards &rarr;
             </Link>
