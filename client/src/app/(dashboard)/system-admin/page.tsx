@@ -22,11 +22,14 @@ import {
   Zap,
   RefreshCw,
   Sliders,
+  Globe,
+  Sparkles,
 } from 'lucide-react';
 
 const MOCK_SERVICES = [
   { name: 'Core NestJS ERP Gateway', port: 4000, status: 'HEALTHY', latency: '4ms', uptime: '99.99%', memory: '245 MB' },
   { name: 'PostgreSQL Database Engine', port: 5432, status: 'HEALTHY', latency: '2ms', uptime: '100%', memory: '2.4 GB' },
+  { name: 'Web Route State Hydration Guard', port: 3000, status: 'HEALTHY', latency: '1ms', uptime: '100%', memory: '34 MB' },
   { name: 'MQTT Broker (Shop Floor IoT)', port: 1883, status: 'HEALTHY', latency: '6ms', uptime: '99.98%', memory: '110 MB' },
   { name: 'Redis Cache & Session Store', port: 6379, status: 'HEALTHY', latency: '1ms', uptime: '100%', memory: '85 MB' },
   { name: 'Nginx Reverse Proxy & SSL Vault', port: 443, status: 'HEALTHY', latency: '3ms', uptime: '100%', memory: '48 MB' },
@@ -155,7 +158,7 @@ export default function SystemAdminOverviewPage() {
       </div>
 
       {/* Quick Nav Modules */}
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
         <Link
           href="/system-admin/users"
           className="p-3.5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 hover:border-rose-500/50 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-all group flex flex-col justify-between shadow-xs"
@@ -201,6 +204,22 @@ export default function SystemAdminOverviewPage() {
           <div className="mt-3">
             <h4 className="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-white">Backup Vault</h4>
             <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Disaster recovery & snapshots</p>
+          </div>
+        </Link>
+
+        <Link
+          href="/system-admin/backups"
+          className="p-3.5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 hover:border-rose-500/50 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-all group flex flex-col justify-between shadow-xs"
+        >
+          <div className="flex items-center justify-between">
+            <div className="h-7 w-7 rounded-lg bg-rose-50 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400 flex items-center justify-center">
+              <Globe className="h-3.5 w-3.5" />
+            </div>
+            <ArrowUpRight className="h-3.5 w-3.5 text-slate-400 group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors" />
+          </div>
+          <div className="mt-3">
+            <h4 className="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-rose-600 dark:group-hover:text-white">Page Crash Recovery</h4>
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Instant rollback & self-heal</p>
           </div>
         </Link>
 

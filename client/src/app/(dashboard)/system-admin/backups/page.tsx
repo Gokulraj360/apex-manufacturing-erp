@@ -110,6 +110,168 @@ const INITIAL_BACKUPS: BackupLogItem[] = [
   },
 ];
 
+
+export interface PageRouteSnapshot {
+  id: string;
+  routePath: string;
+  pageName: string;
+  department: string;
+  status: 'OPERATIONAL' | 'DEGRADED' | 'CRASHED';
+  lastCrashReason?: string;
+  lastSnapshotTime: string;
+  snapshotId: string;
+  snapshotHash: string;
+  cacheSizeBytes: string;
+  recoveryHistoryCount: number;
+}
+
+const INITIAL_PAGE_SNAPSHOTS: PageRouteSnapshot[] = [
+  {
+    id: 'pg-1',
+    routePath: '/finance/ap-matching',
+    pageName: 'Automated 3-Way AP Matching Engine',
+    department: 'Corporate Finance & Accounts Payable',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-APM-902',
+    snapshotHash: 'sha256:7a813c990a42',
+    cacheSizeBytes: '1.24 MB',
+    recoveryHistoryCount: 0,
+  },
+  {
+    id: 'pg-2',
+    routePath: '/customer-portal',
+    pageName: 'B2B Customer Portal & CoC Engine',
+    department: 'Client Relations & Fulfillment',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-CUST-881',
+    snapshotHash: 'sha256:3cd2e8412b11',
+    cacheSizeBytes: '1.45 MB',
+    recoveryHistoryCount: 0,
+  },
+  {
+    id: 'pg-3',
+    routePath: '/supplier-portal',
+    pageName: 'B2B Supplier Self-Service Gateway',
+    department: 'Supply Chain Sourcing',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-SUPP-772',
+    snapshotHash: 'sha256:91bc7721a450',
+    cacheSizeBytes: '1.62 MB',
+    recoveryHistoryCount: 0,
+  },
+  {
+    id: 'pg-4',
+    routePath: '/approvals',
+    pageName: 'Central Multi-Department Approval Inbox',
+    department: 'Executive Governance & Controls',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-APPR-603',
+    snapshotHash: 'sha256:88ad554109fe',
+    cacheSizeBytes: '1.18 MB',
+    recoveryHistoryCount: 0,
+  },
+  {
+    id: 'pg-5',
+    routePath: '/top-management',
+    pageName: 'Executive Boardroom C-Suite Cockpit',
+    department: 'C-Suite Strategy & Governance',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-TOP-550',
+    snapshotHash: 'sha256:12ba9942ff01',
+    cacheSizeBytes: '2.05 MB',
+    recoveryHistoryCount: 0,
+  },
+  {
+    id: 'pg-6',
+    routePath: '/quality/hardware-diagnostics',
+    pageName: 'Automated Station Hardware Diagnostics Suite',
+    department: 'Quality Assurance & Cleanroom ATE',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-ATE-419',
+    snapshotHash: 'sha256:77da310899bb',
+    cacheSizeBytes: '1.38 MB',
+    recoveryHistoryCount: 0,
+  },
+  {
+    id: 'pg-7',
+    routePath: '/legal',
+    pageName: 'Contract Lifecycle Management (CLM)',
+    department: 'Legal Counsel & Compliance',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-LEG-332',
+    snapshotHash: 'sha256:99f01124cc45',
+    cacheSizeBytes: '1.82 MB',
+    recoveryHistoryCount: 0,
+  },
+  {
+    id: 'pg-8',
+    routePath: '/my-workspace',
+    pageName: 'Employee Self-Service (ESS) Personal Workspace',
+    department: 'Workforce Operations & HR',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-ESS-219',
+    snapshotHash: 'sha256:44ef8821bb33',
+    cacheSizeBytes: '1.15 MB',
+    recoveryHistoryCount: 0,
+  },
+  {
+    id: 'pg-9',
+    routePath: '/super-admin/rbac-matrix',
+    pageName: '2D RBAC Permission Matrix & SoD Auditor',
+    department: 'Enterprise Cybersecurity & IAM',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-RBAC-101',
+    snapshotHash: 'sha256:05ef3399aa19',
+    cacheSizeBytes: '1.74 MB',
+    recoveryHistoryCount: 0,
+  },
+  {
+    id: 'pg-10',
+    routePath: '/production/work-orders',
+    pageName: 'Shop Floor MES Work Orders Tracking',
+    department: 'Plant Operations & Assembly',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-PROD-998',
+    snapshotHash: 'sha256:22bc4412ef88',
+    cacheSizeBytes: '1.92 MB',
+    recoveryHistoryCount: 0,
+  },
+  {
+    id: 'pg-11',
+    routePath: '/design/blueprints',
+    pageName: 'CAD Drawing & Blueprints Vault',
+    department: 'Design & Hardware Engineering',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-DSG-840',
+    snapshotHash: 'sha256:66fd22998833',
+    cacheSizeBytes: '2.40 MB',
+    recoveryHistoryCount: 0,
+  },
+  {
+    id: 'pg-12',
+    routePath: '/warehouse/receiving',
+    pageName: 'Inbound Gate Receiving & Electronic GRN',
+    department: 'Warehouse & Weighbridge Logistics',
+    status: 'OPERATIONAL',
+    lastSnapshotTime: 'Today 04:15 UTC (Golden Master)',
+    snapshotId: 'SNAP-PAGE-WHS-710',
+    snapshotHash: 'sha256:33ee1199cb12',
+    cacheSizeBytes: '1.30 MB',
+    recoveryHistoryCount: 0,
+  },
+];
+
 export default function BackupManagementPage() {
   const [backups, setBackups] = useState<BackupLogItem[]>(INITIAL_BACKUPS);
   const [searchQuery, setSearchQuery] = useState('');
