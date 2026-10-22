@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 import {
   Scale,
   FileText,
@@ -292,6 +293,73 @@ export default function LegalCompliancePage() {
     return matchesSearch && matchesType;
   });
 
+  const handleDownloadContractDoc = (c: ContractRecord) => {
+    generateAndDownloadWordDoc(`Apex_Legal_Contract_${c.id}`, {
+      title: 'EXECUTED MASTER COMMERCIAL AGREEMENT & STATUTORY COVENANT',
+      documentRef: c.id,
+      classification: 'PRIVILEGED & CONFIDENTIAL — GENERAL COUNSEL & LEGAL AFFAIRS',
+      department: 'Office of the General Counsel & Regulatory Compliance',
+      author: c.leadCounsel,
+      date: c.effectiveDate,
+      summary: `Official legally binding ${c.type.replace(/_/g, ' ')} entered into by and between Apex Manufacturing Technologies Corporation and ${c.counterparty}. This instrument governs procurement terms, quality acceptance specifications, liability caps, and dispute resolution mechanisms.`,
+      sections: [
+        {
+          heading: 'Parties, Recitals & Effective Scope',
+          content: [
+            `This Agreement is entered into as of ${c.effectiveDate} ("Effective Date"), by and between Apex Manufacturing Technologies Corporation, a Delaware corporation having its principal manufacturing operations at 100 Innovation Blvd, Austin, TX ("Apex"), and ${c.counterparty} ("Counterparty").`,
+            'WHEREAS, Apex operates advanced precision electronics assembly cleanrooms and requires specialized materials, equipment, and services adhering to ISO 9001:2015 and IATF 16949 standards;',
+            'WHEREAS, Counterparty possesses the certified technical expertise, facilities, and supply chain capacity to perform in accordance with the terms and specifications set forth herein.',
+          ],
+          table: {
+            headers: ['Contract Term Parameter', 'Legally Binding Specification', 'Compliance Standard'],
+            rows: [
+              ['Agreement Instrument Ref', c.id, 'Executed Master Agreement'],
+              ['Contract Classification', c.type.replace(/_/g, ' '), 'Commercial Enterprise Level'],
+              ['Contracted Value / Consideration', c.value, 'Net 30 Financial Settlement'],
+              ['Effective Period & Tenure', `${c.effectiveDate} through ${c.expiryDate}`, c.autoRenew ? 'Automatic 1-Year Renewal Covenant' : 'Fixed Term Expiration'],
+              ['Governing Law & Jurisdiction', c.jurisdiction, 'State & Federal Commercial Courts'],
+              ['Liability & Indemnification Cap', c.indemnityCap, 'Mutual Direct Consequential Cap'],
+              ['Supervising Lead Counsel', c.leadCounsel, 'Apex Corporate Legal Directorate'],
+            ],
+          },
+        },
+        {
+          heading: 'Service Level Agreement (SLA) & Quality Warranty',
+          content: [
+            'Counterparty warrants that all deliverables shall conform strictly to the agreed engineering drawings, Bill of Materials (BOM), and IPC-A-610 Class 3 workmanship standards.',
+            'In the event that defective components exceed 50 PPM (Parts Per Million), Apex reserves the unconditional right to reject incoming shipments, demand immediate expedited replacement at Counterparty expense, and issue formal discrepancy debit notes.',
+          ],
+          callout: {
+            title: 'Indemnity & Force Majeure Clause',
+            text: `Counterparty agrees to defend, indemnify, and hold harmless Apex and its officers from all third-party claims, patent infringement liabilities, and losses up to the contracted liability limit of ${c.indemnityCap}. Standard Force Majeure applies only upon immediate formal written notification within 48 hours of occurrence.`,
+            type: 'warning',
+          },
+        },
+        {
+          heading: 'Confidentiality, IP Ownership & Trade Secrets',
+          content: [
+            'All engineering schematics, Gerber files, firmware injection protocols, and manufacturing process recipes disclosed by Apex shall remain the exclusive intellectual property of Apex.',
+            'Counterparty covenants not to reverse-engineer, decompile, or disclose proprietary manufacturing techniques to any third-party competitor for a minimum period of seven (7) years following contract termination.',
+          ],
+        },
+      ],
+      signatories: [
+        {
+          name: c.leadCounsel,
+          role: 'Lead Corporate Counsel',
+          organization: 'Apex Manufacturing Technologies Corporation',
+          signatureDate: c.effectiveDate,
+        },
+        {
+          name: 'Executive Representative',
+          role: 'Authorized Commercial Signatory',
+          organization: c.counterparty,
+          signatureDate: c.effectiveDate,
+        },
+      ],
+    });
+  };
+
   return (
     <div className="space-y-6 p-6">
       {/* Top Banner */}
@@ -530,11 +598,11 @@ export default function LegalCompliancePage() {
                       <td className="p-3 text-right">
                         <div className="inline-flex items-center gap-1">
                           <button
-                            onClick={() => alert(`Downloading signed legal PDF for ${c.id}`)}
-                            className="p-1.5 rounded-md hover:bg-accent text-foreground"
-                            title="Download Signed PDF"
+                            onClick={() => handleDownloadContractDoc(c)}
+                            className="p-1.5 rounded-md hover:bg-accent text-foreground transition-colors"
+                            title="Download Signed Contract Document in Word Format"
                           >
-                            <Download className="w-4 h-4" />
+                            <Download className="w-4 h-4 text-primary" />
                           </button>
                           <button
                             onClick={() => alert(`Lead Counsel: ${c.leadCounsel}\nJurisdiction: ${c.jurisdiction}\nIndemnity: ${c.indemnityCap}`)}

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 import {
   Users,
   Activity,
@@ -222,6 +223,135 @@ export default function CustomerPortalPage() {
     setIsRmaModalOpen(false);
     setNewImei('');
     setNewRemarks('');
+  };
+
+  const handleDownloadCoCDoc = (cert: QualityCertificateItem) => {
+    generateAndDownloadWordDoc(`Apex_Certificate_of_Conformance_${cert.certNumber}`, {
+      title: 'CERTIFIED CERTIFICATE OF CONFORMANCE & QUALITY ACCEPTANCE (CoC)',
+      documentRef: cert.certNumber,
+      classification: 'OFFICIAL CERTIFICATE — AEROSPACE & TELECOM INDUSTRIAL QUALITY ASSURANCE',
+      department: 'Corporate Quality Assurance & Metrology Laboratory',
+      author: cert.inspectorLead,
+      date: cert.inspectionDate,
+      summary: `Official statement of quality verification and conformance certifying that hardware batch ${cert.batchNumber} (${cert.deviceModel}) has been 100% manufactured, assembled, and tested in full compliance with ISO 9001:2015, IATF 16949, IPC-A-610 Class 3, and customer contract specification ${cert.workOrderRef}.`,
+      sections: [
+        {
+          heading: 'Manufacturing Batch & Hardware Traceability',
+          table: {
+            headers: ['Traceability Parameter', 'Verified Batch Record', 'Standard & Verification Specification'],
+            rows: [
+              ['Certificate Identification', cert.certNumber, 'Cryptographically Stamped & Digitally Signed'],
+              ['Device Model / Nomenclature', cert.deviceModel, 'Quad-Band 5G High-Reliability Industrial Terminal'],
+              ['Production Lot / Batch ID', cert.batchNumber, 'Cleanroom Bay 4 Surface Mount Placement'],
+              ['Work Order Authorization', cert.workOrderRef, 'Commercial Client Master Purchase Order'],
+              ['Inspection Date & Shift', cert.inspectionDate, 'QA Station 4 Shift A Automated Optical Inspection'],
+              ['QA Lead Inspector', cert.inspectorLead, 'IPC-A-610 Certified Metrology Specialist'],
+            ],
+          },
+        },
+        {
+          heading: 'Environmental & Hazardous Material Compliance',
+          callout: {
+            title: 'Full RoHS 3 & REACH SVHC Compliance Confirmed',
+            text: 'Independent laboratory screening verifies lead-free soldering (< 1000 ppm Pb) and zero presence of 235 Substances of Very High Concern (SVHC) per EU Directive 2011/65/EU and Regulation (EC) No 1907/2006.',
+            type: 'success',
+          },
+          table: {
+            headers: ['Regulatory Directive', 'Permissible Threshold', 'Measured Concentration', 'Compliance Verification'],
+            rows: [
+              ['EU RoHS 3 (Directive 2015/863)', 'Lead (Pb) < 1,000 ppm', '< 45 ppm (XRF Tested)', 'PASSED (Fully Compliant)'],
+              ['EU REACH Regulation 1907/2006', 'SVHC < 0.1% w/w', '0.00% Not Detected', 'PASSED (Fully Compliant)'],
+              ['Dodd-Frank Act Section 1502', 'Conflict Free (3TG)', 'Smelters Audited RMI', 'PASSED (Conflict-Free Certified)'],
+              ['Halogen-Free IEC 61249-2-21', 'Br < 900 ppm, Cl < 900 ppm', '< 120 ppm Aggregate', 'PASSED (Halogen-Free Compliant)'],
+            ],
+          },
+        },
+        {
+          heading: 'Laboratory Physical & RF Metrology Test Results',
+          content: [
+            'Every serialized unit in this production lot underwent automated test equipment (ATE) verification across high-frequency RF transmission, power rail dissipation, and mechanical durability.',
+          ],
+          table: {
+            headers: ['Test Protocol', 'Target Specification Limits', 'Measured Batch Average', 'Test Result'],
+            rows: [
+              ['Sub-6GHz RF 5G Tx Power', '+23.0 dBm ± 1.5 dBm', '+23.4 dBm Peak Power', 'PASSED (Zero Deviation)'],
+              ['OLED Display Color Accuracy', 'Delta-E (ΔE) < 1.5', 'ΔE = 0.82 Chromaticity', 'PASSED (Calibrated)'],
+              ['1.5-Meter Mechanical Drop Test', '0 Structural / Optical Cracks', '6-Axis Drop Validated', 'PASSED (MIL-STD-810H)'],
+              ['ESD Static Discharge Immunity', '±8kV Contact / ±15kV Air', 'IEC 61000-4-2 Level 4', 'PASSED (No Latch-up)'],
+              ['Continuous Burn-in Thermal Test', '72 Hours @ 50°C 85% RH', 'Zero Thermal Throttling', 'PASSED (100% Reliability)'],
+            ],
+          },
+        },
+      ],
+      signatories: [
+        {
+          name: cert.inspectorLead,
+          role: 'Lead Metrology & Quality Assurance Inspector',
+          organization: 'Apex Manufacturing Quality Directorate',
+          signatureDate: cert.inspectionDate,
+        },
+        {
+          name: 'David O\'Connor',
+          role: 'VP Quality & Product Reliability',
+          organization: 'Apex Manufacturing Technologies Corporation',
+          signatureDate: cert.inspectionDate,
+        },
+      ],
+    });
+  };
+
+  const handleDownloadInvoiceDoc = (inv: ClientInvoiceRecord) => {
+    generateAndDownloadWordDoc(`Apex_Tax_Invoice_${inv.invoiceNumber}`, {
+      title: 'COMMERCIAL TAX INVOICE & STATEMENT OF REMITTANCE',
+      documentRef: inv.invoiceNumber,
+      classification: 'OFFICIAL COMMERCIAL INVOICE — FINANCIAL ACCOUNTS RECORD',
+      department: 'Corporate Accounts Receivable & Treasury',
+      author: 'Commercial Billing Operations',
+      date: inv.invoiceDate,
+      summary: `Commercial B2B tax invoice and delivery billing slip for Purchase Order ${inv.orderNumber}. All charges represent contracted deliverable hardware assemblies and certified packaging.`,
+      sections: [
+        {
+          heading: 'Invoice Billing & Client Account Information',
+          table: {
+            headers: ['Invoice Field', 'Verified Billing Record', 'Payment Terms & Remittance'],
+            rows: [
+              ['Invoice Number', inv.invoiceNumber, 'Official Commercial Tax Bill'],
+              ['Sales Order Reference', inv.orderNumber, 'Binding Client PO Contract'],
+              ['Issue Date', inv.invoiceDate, 'Net 30 Payment Terms'],
+              ['Payment Status', inv.paymentStatus, inv.paymentStatus === 'PAID' ? 'Fully Settled via Wire' : 'Due Within 30 Calendar Days'],
+              ['Billed Client Entity', 'AeroDynamics Defense & Space LLC', 'Vendor ID: APEX-VND-99210'],
+            ],
+          },
+        },
+        {
+          heading: 'Itemized Deliverables & Tax Breakdown',
+          table: {
+            headers: ['Item / SKU Description', 'Contracted Deliverable', 'Tax (GST 18%)', 'Total Extended Price (USD)'],
+            rows: [
+              ['Apex Industrial Edge Gateway Gen 3', 'High-Density Assemblies with CoC', `$${inv.taxAmount.toLocaleString()}`, `$${(inv.totalAmount - inv.taxAmount).toLocaleString()}`],
+              ['Commercial GST / Tax Remittance', 'Federal & State Value-Added Tax', '18.00% Standard Rate', `$${inv.taxAmount.toLocaleString()}`],
+              ['Total Net Amount Payable', 'Full Commercial Settlement', 'USD Currency', `$${inv.totalAmount.toLocaleString()}`],
+            ],
+          },
+        },
+        {
+          heading: 'Electronic Funds Wire & Banking Instructions',
+          callout: {
+            title: 'International SWIFT / Fedwire Banking Information',
+            text: `Please remit total wire transfer of $${inv.totalAmount.toLocaleString()} referencing invoice number ${inv.invoiceNumber} to: JPMorgan Chase Bank, N.A., ABA Routing: 111000614, Swift: CHASUS33, Account: 4092-8812-9901.`,
+            type: 'info',
+          },
+        },
+      ],
+      signatories: [
+        {
+          name: 'Samantha Sterling',
+          role: 'Chief Financial Officer (CFO)',
+          organization: 'Apex Manufacturing Technologies Corporation',
+          signatureDate: inv.invoiceDate,
+        },
+      ],
+    });
   };
 
   return (
@@ -448,8 +578,12 @@ export default function CustomerPortalPage() {
                   </div>
                 </div>
 
-                <button className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 shrink-0">
-                  <Download className="h-3.5 w-3.5" /> Download Stamped CoC (PDF)
+                <button
+                  onClick={() => handleDownloadCoCDoc(cert)}
+                  className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 shrink-0"
+                  title="Download Official Certified Certificate of Conformance in Word Format"
+                >
+                  <Download className="h-3.5 w-3.5" /> Download Certified CoC (.doc)
                 </button>
               </div>
             ))}
@@ -547,8 +681,12 @@ export default function CustomerPortalPage() {
                       )}
                     </td>
                     <td className="py-3.5 px-4 text-right">
-                      <button className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded text-[11px] font-medium border border-slate-200 dark:border-slate-700 transition-all inline-flex items-center gap-1">
-                        <Download className="h-3 w-3" /> Invoice (PDF)
+                      <button
+                        onClick={() => handleDownloadInvoiceDoc(inv)}
+                        className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded text-[11px] font-medium border border-slate-200 dark:border-slate-700 transition-all inline-flex items-center gap-1 hover:border-primary"
+                        title="Download Commercial Tax Invoice in Word Format"
+                      >
+                        <Download className="h-3 w-3" /> Invoice (.doc)
                       </button>
                     </td>
                   </tr>

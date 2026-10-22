@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 import {
   User,
   Calendar,
@@ -153,6 +154,105 @@ export default function MyWorkspacePage() {
     setLeaves([newReq, ...leaves]);
     setIsLeaveModalOpen(false);
     setLeaveReason('');
+  };
+
+  const handleDownloadPayslipDoc = () => {
+    generateAndDownloadWordDoc('Apex_Employee_Compensation_Statement_Alex_Jordan_Sept2026', {
+      title: 'OFFICIAL EMPLOYEE MONTHLY EARNINGS & STATUTORY TAX WITHHOLDING STATEMENT',
+      documentRef: 'STMT-PAY-2026-09-88204',
+      classification: 'PRIVATE & CONFIDENTIAL — STRICTLY FOR EMPLOYEE & PAYROLL AUDIT',
+      department: 'Corporate Payroll & Human Resources Directorate',
+      author: 'Corporate Payroll Services & Treasury',
+      summary:
+        'Official certified compensation statement, earnings breakdown, overtime multiplier reconciliation, statutory federal and state tax withholdings, retirement plan contributions, and ACH direct deposit disbursement record for Alex Jordan (Badge ID: EMP-88204) for the monthly pay period ending September 30, 2026.',
+      sections: [
+        {
+          heading: 'Employee Position & Manufacturing Profile',
+          table: {
+            headers: ['Employee Attribute', 'Verified Record Details', 'Department & Cleanroom Cell', 'Security Clearance'],
+            rows: [
+              ['Employee Legal Name', 'Alex Jordan', 'Phone Assembly Operations', 'Level 1 Operational'],
+              ['Employee Identification', 'EMP-88204 (Active Full-Time)', 'Cleanroom Bay 3 (SMT Lines)', 'IPC-A-610 Specialist'],
+              ['Designated Work Shift', 'Shift A (06:00 - 14:30 EST)', 'Direct Supervisor: Sarah Jenkins', 'Austin Flagship Campus'],
+              ['Pay Period / Cycle', 'September 1, 2026 to September 30, 2026', 'Disbursement Date: Sept 30, 2026', 'ACH Ref: #ACH-994120'],
+            ],
+          },
+        },
+        {
+          heading: 'Itemized Earnings & Cleanroom Incentive Premiums',
+          content: [
+            'Earnings represent base contracted compensation along with authorized overtime hours calculated at time-and-a-half (1.5x regular base rate of $39.00/hour) verified via turnstile badge swipes and MES production logging.',
+          ],
+          table: {
+            headers: ['Earnings Component', 'Basis / Rate of Pay', 'Hours / Units Logged', 'Gross Disbursed Amount (USD)'],
+            rows: [
+              ['Regular Basic Salary', 'Salaried Contracted Base', '160 Standard Hours', '$5,200.00'],
+              ['Housing & Utility Allowance (HRA)', 'Fixed Monthly Corporate Benefit', 'Standard Tier', '$1,400.00'],
+              ['Overtime Premium Compensation', '1.5x Premium Rate ($39.00/hr)', '16.5 Verified OT Hours', '$643.50'],
+              ['Cleanroom Metrology Specialist Premium', 'IPC-A-610 Class 3 Certified', 'Monthly Skill Stipend', '$300.00'],
+              ['Total Gross Compensation', 'Pre-Tax Aggregate Earnings', '176.5 Total Hours', '$7,543.50'],
+            ],
+          },
+        },
+        {
+          heading: 'Statutory Taxes, Deductions & Voluntary Contributions',
+          content: [
+            'All deductions comply with Title 26 of the United States Internal Revenue Code (IRC) and applicable state labor standards.',
+          ],
+          table: {
+            headers: ['Deduction Category', 'Statutory Authority', 'Calculation Basis / Rate', 'Deducted Amount (USD)'],
+            rows: [
+              ['Federal Income Tax (FITW)', 'Internal Revenue Service (IRS)', 'W-4 Standard Withholding', '-$1,130.00'],
+              ['State Income Tax (SITW)', 'State of Texas Comptroller', 'Texas Zero State Tax Rate', '$0.00'],
+              ['Social Security (OASDI)', 'Federal Insurance Contributions (FICA)', '6.20% of Eligible Gross', '-$467.70'],
+              ['Medicare Hospitalization (HI)', 'Federal Insurance Contributions (FICA)', '1.45% of Eligible Gross', '-$109.38'],
+              ['401(k) Pre-Tax Retirement Plan', 'Fidelity Corporate Trust (Apex Match 4%)', 'Voluntary Employee Deferral', '-$450.00'],
+              ['Total Statutory & Plan Deductions', 'Cumulative Withholdings', 'Aggregate Reductions', '-$2,157.08'],
+            ],
+          },
+        },
+        {
+          heading: 'Net Compensation Disbursement Proof & Bank Routing',
+          callout: {
+            title: 'Direct Deposit Electronic Funds Transfer (EFT) Confirmed',
+            text: 'Net Take-Home Pay of $5,386.42 was successfully credited via NACHA ACH protocol to Chase National Bank Account (Ending in ****4092) on September 30, 2026 at 02:15:08 EST.',
+            type: 'success',
+          },
+          table: {
+            headers: ['Financial Institution', 'Routing Transit (ABA)', 'Account Type & Last 4', 'Net Remittance'],
+            rows: [
+              ['JPMorgan Chase Bank, N.A.', '111000614 (Austin Financial Center)', 'Checking Account (****4092)', '$5,386.42 USD'],
+            ],
+          },
+        },
+        {
+          heading: 'Year-to-Date (YTD) Cumulative Tax & Earnings Summary',
+          table: {
+            headers: ['Metric Description', 'Q1-Q3 Cumulative Total', 'Projected Annual Total', 'Tax Filing Proof Status'],
+            rows: [
+              ['YTD Gross Compensation', '$67,891.50', '$90,522.00', 'Verified on W-2 Record Ledger'],
+              ['YTD Federal Income Tax Withheld', '$10,170.00', '$13,560.00', 'Remitted to IRS Treasury'],
+              ['YTD FICA & Medicare Contribution', '$5,193.72', '$6,924.96', 'Social Security Administration'],
+              ['YTD 401(k) Retirement Contributions', '$4,050.00', '$5,400.00', 'Fidelity Institutional Trust'],
+            ],
+          },
+        },
+      ],
+      signatories: [
+        {
+          name: 'Marcus Brody',
+          role: 'Head of Corporate Payroll Operations',
+          organization: 'Apex Manufacturing Technologies Corporation',
+          signatureDate: 'September 30, 2026',
+        },
+        {
+          name: 'Sarah Jenkins',
+          role: 'VP Operations & Plant Floor Supervisor',
+          organization: 'Apex Manufacturing Technologies Corporation',
+          signatureDate: 'September 30, 2026',
+        },
+      ],
+    });
   };
 
   return (
@@ -510,11 +610,12 @@ export default function MyWorkspacePage() {
                 <p className="text-xs text-muted-foreground">Disbursed on Sept 30, 2026 • Direct Deposit Ref: #ACH-994120</p>
               </div>
               <button
-                onClick={() => alert('Downloading official stamped payslip PDF...')}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold border border-border px-3 py-1.5 rounded-lg hover:bg-accent text-foreground"
+                onClick={handleDownloadPayslipDoc}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold border border-border px-3 py-1.5 rounded-lg hover:bg-accent text-foreground transition-colors"
+                title="Download Official Compensation Statement in Word Format"
               >
                 <Download className="w-3.5 h-3.5" />
-                Download PDF
+                Download Statement (.doc)
               </button>
             </div>
 

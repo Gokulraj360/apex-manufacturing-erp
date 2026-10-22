@@ -21,6 +21,7 @@ import {
   History,
   FileText,
 } from 'lucide-react';
+import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 
 type PermissionAction = 'VIEW' | 'CREATE' | 'EDIT' | 'DELETE' | 'APPROVE' | 'EXPORT';
 const ACTIONS: PermissionAction[] = ['VIEW', 'CREATE', 'EDIT', 'DELETE', 'APPROVE', 'EXPORT'];
@@ -233,6 +234,74 @@ export default function DynamicRbacMatrixPage() {
     setTimeout(() => setSavedNotification(false), 3000);
   };
 
+  const handleExportRbacAuditDoc = () => {
+    generateAndDownloadWordDoc('Apex_Enterprise_RBAC_and_SoD_Compliance_Audit', {
+      title: 'ENTERPRISE RBAC AUTHORIZATION MATRIX & SEGREGATION OF DUTIES (SoD) AUDIT',
+      documentRef: 'SEC-RBAC-2026-Q3-01',
+      classification: 'RESTRICTED // CISO & REGULATORY COMPLIANCE RECORD',
+      department: 'Enterprise Cybersecurity & Identity Governance',
+      author: 'Alexander Vance, CISO & Plant Controller',
+      summary: 'Comprehensive 2D Role-Based Access Control (RBAC) security architecture, data perimeter boundaries, and Segregation of Duties (SoD) toxic role conflict matrix established pursuant to ISO/IEC 27001:2022, SOC 2 Type II, and Sarbanes-Oxley (SOX) Section 404.',
+      sections: [
+        {
+          heading: '1. Identity Architecture & SoD Compliance Posture',
+          content: [
+            'Apex Manufacturing ERP enforces fine-grained authorization with 6 discrete Action primitives (View, Create, Edit, Delete, Approve, Export) evaluated dynamically against geographic and hierarchical Data Scopes.',
+            'Current system-wide SoD compliance is verified at 94.2% across 1,080 matrix evaluation cells. Two identified toxic conflict combinations have been placed under automated supervisory escrows.'
+          ],
+          table: {
+            headers: ['Security Audit Parameter', 'System Configuration', 'Standard Baseline', 'Compliance Verification'],
+            rows: [
+              ['Segregation of Duties (SoD) Health', '94.2% Score', '≥ 90.0%', 'FULLY COMPLIANT'],
+              ['Granular Authorization Matrix Nodes', '1,080 Nodes (18 Roles × 10 Modules × 6 Actions)', 'Full Coverage', 'AUDITED & LOCKED'],
+              ['Export / Download Security Controls', 'Restricted to Department Heads & Controllers', 'FIPS 140-2 Encrypted', 'AUDIT LOGGED'],
+              ['Session Token Lifecycle & Timeout', '15 Minutes Inactivity / Dual Factor MFA', 'NIST SP 800-63B', 'ACTIVE']
+            ]
+          }
+        },
+        {
+          heading: '2. Toxic Segregation of Duties (SoD) Conflict Ledger',
+          content: [
+            'The following toxic role combinations are restricted by automated ERP engine blocking to prevent internal fraud, unverified inventory write-offs, or illicit payment disbursement.'
+          ],
+          table: {
+            headers: ['Conflict Code', 'Conflicting ERP Modules', 'Risk Category', 'Risk Description & Financial Exposure', 'Enforced Mitigation'],
+            rows: [
+              ['SOD-01', 'Procurement (PO) ↔ Finance (AP)', 'HIGH SEVERITY', 'User can create purchase order and unilaterally approve corresponding vendor invoice payment.', 'Mandatory Dual Separation / Auto-Blocked'],
+              ['SOD-02', 'Warehouse (GRN) ↔ Quality (QA Acceptance)', 'HIGH SEVERITY', 'User can accept physical truck shipment and sign off laboratory Certificate of Conformance.', 'Separated by Role Scoping'],
+              ['SOD-03', 'Production Engineering ↔ Quality Quarantine', 'MEDIUM SEVERITY', 'Engineer could dismiss in-line test failures without QA concession.', 'Supervisory Escalation Escrow']
+            ]
+          },
+          callout: {
+            title: 'CISO Compliance Certification',
+            text: 'I certify that this RBAC matrix enforces strict least-privilege principles and meets all external SOC 2 Type II access governance mandates.',
+            type: 'success'
+          }
+        }
+      ],
+      signatories: [
+        {
+          name: 'Alexander Vance',
+          role: 'Chief Information Security Officer & Director',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'Sarah Chen, CPA',
+          role: 'Chief Financial Officer',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'Rachel V. Hughes',
+          role: 'Lead Cybersecurity & IT Auditor',
+          organization: 'PricewaterhouseCoopers (PwC) Digital Assurance',
+          signatureDate: '2026-10-22'
+        }
+      ]
+    });
+  };
+
   const activeRoleData = roles.find((r) => r.roleId === selectedRole) || roles[0];
 
   return (
@@ -258,8 +327,15 @@ export default function DynamicRbacMatrixPage() {
 
         <div className="flex items-center gap-2.5">
           <button
+            onClick={handleExportRbacAuditDoc}
+            title="Download Official RBAC Security & SoD Compliance Audit in Word Format"
+            className="flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold shadow-sm transition-all cursor-pointer"
+          >
+            <Download className="h-4 w-4 text-purple-600 dark:text-purple-400" /> Export RBAC Audit (.doc)
+          </button>
+          <button
             onClick={handleSaveMatrix}
-            className="flex items-center gap-2 px-3.5 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-lg text-xs font-semibold shadow-md shadow-purple-500/20 transition-all"
+            className="flex items-center gap-2 px-3.5 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-lg text-xs font-semibold shadow-md shadow-purple-500/20 transition-all cursor-pointer"
           >
             <Save className="h-4 w-4" /> Save Permission Matrix
           </button>

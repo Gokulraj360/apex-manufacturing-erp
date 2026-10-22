@@ -27,6 +27,7 @@ import {
   ChevronRight,
   Send,
 } from 'lucide-react';
+import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 
 interface RFQItem {
   id: string;
@@ -307,6 +308,250 @@ export default function SupplierPortalPage() {
     setIsAsnModalOpen(false);
   };
 
+  const handleDownloadPoSpecsDoc = (po: SupplierPOItem) => {
+    generateAndDownloadWordDoc(`Apex_PO_Spec_Dossier_${po.poNumber}`, {
+      title: 'PURCHASE ORDER CONTRACT & TECHNICAL MANUFACTURING SPECIFICATIONS',
+      documentRef: `${po.poNumber}-SPEC-REV4`,
+      classification: 'OFFICIAL PROCUREMENT ORDER // PROPRIETARY SPECIFICATIONS',
+      department: 'Global Supply Chain & Procurement Engineering',
+      author: 'David O\'Connor, Global SCM Sourcing Lead',
+      summary: `Official purchase contract and manufacturing execution specification for Purchase Order ${po.poNumber} issued to Precision Component Technologies Ltd. Defines dimensional tolerances (±0.005mm), raw material certifications (Aerospace Titanium Grade 5 Ti-6Al-4V), cleanroom packaging protocols, and strict delivery milestone dates.`,
+      sections: [
+        {
+          heading: '1. Purchase Order Commercial Scope & Milestone Commitments',
+          content: [
+            `This contractual release authorizes Precision Component Technologies Ltd to procure approved raw stock, commence precision CNC fabrication, and schedule inbound logistics under Apex Master Procurement Agreement (MPA-2026-088).`,
+            `Total contract commitment is valued at $${po.totalValue.toLocaleString()} USD across ${po.lineItemsCount} production line items.`
+          ],
+          table: {
+            headers: ['Line Item', 'Part Description & Number', 'Ordered Quantity', 'Unit Price (USD)', 'Extended Amount', 'Required Delivery Date'],
+            rows: [
+              ['Item 01', 'CNC Titanium Camera Bezel Ring (APX-CAM-BZ-902)', '10,000 pcs', '$3.95', '$39,500.00', po.promisedDate],
+              ['Item 02', 'High-Purity Sapphire Lens Cover Ring (APX-SPH-088)', '5,000 pcs', '$4.50', '$22,500.00', po.promisedDate],
+              ['Item 03', 'Aerospace O-Ring Fluorosilicone Gasket (GSK-AER-441)', '15,000 pcs', '$1.50', '$22,500.00', po.promisedDate]
+            ]
+          }
+        },
+        {
+          heading: '2. Engineering Tolerances & Quality Inspection Criteria',
+          content: [
+            'All lots must comply with Critical-to-Quality (CTQ) dimensional parameters verified via calibrated Coordinate Measuring Machines (CMM).',
+            'Surface roughness (Ra) must not exceed 0.2 µm. Submissions require raw material mill test reports and Certificate of Conformance (CoC).'
+          ],
+          table: {
+            headers: ['Characteristic', 'Engineering Nominal', 'Lower Spec Limit (LSL)', 'Upper Spec Limit (USL)', 'Cpk Minimum Threshold'],
+            rows: [
+              ['Outer Ring Diameter', '24.500 mm', '24.495 mm', '24.505 mm', '≥ 1.67 Cpk'],
+              ['Wall Thickness', '0.800 mm', '0.790 mm', '0.810 mm', '≥ 1.50 Cpk'],
+              ['Hardness (Rockwell C)', '36.0 HRC', '34.0 HRC', '38.0 HRC', '≥ 1.67 Cpk'],
+              ['Helium Leak Rate', '< 1.0e-8 mbar·L/s', '0.0', '1.0e-8', '100% Hermetic Test']
+            ]
+          },
+          callout: {
+            title: 'Critical Delivery Clause',
+            text: 'Failure to furnish Advance Shipping Notice (ASN) prior to factory gate arrival will result in weighbridge quarantine and automated demurrage assessment.',
+            type: 'warning'
+          }
+        }
+      ],
+      signatories: [
+        {
+          name: 'David O\'Connor',
+          role: 'Director of Global Procurement',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'Dr. Marcus Reyes',
+          role: 'VP of Hardware Engineering & Tolerancing',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'Vikram Rajput',
+          role: 'Authorized Vendor Managing Director',
+          organization: 'Precision Component Technologies Ltd',
+          signatureDate: '2026-10-22'
+        }
+      ]
+    });
+  };
+
+  const handleDownloadAsnManifestDoc = (asn: ASNItem) => {
+    generateAndDownloadWordDoc(`Apex_ASN_Freight_Manifest_${asn.asnNumber}`, {
+      title: 'ADVANCE SHIPPING NOTICE (ASN) & INBOUND FREIGHT MANIFEST',
+      documentRef: asn.asnNumber,
+      classification: 'OFFICIAL INBOUND LOGISTICS & WEIGHBRIDGE PASS',
+      department: 'Logistics, Gate Clearance & Receiving Operations',
+      author: 'Vikram Rajput, Logistics Dispatch Controller',
+      summary: `Official Advance Shipping Notice (ASN) and Electronic Consignment Manifest for Inbound Freight Shipment ${asn.asnNumber} bound for Apex North Gate Weighbridge. Provides verified vehicle registration, tamper-evident security seal numbers, gross weight declarations, and container pallet inventory.`,
+      sections: [
+        {
+          heading: '1. Transport & Vehicle Security Verification',
+          content: [
+            `The consignment described herein is dispatched under direct electronic tracking and must be processed immediately through Gate Weighbridge Scale 2 upon arrival at the Apex Manufacturing Complex.`,
+            `Tamper-evident container seal integrity must be verified by factory security before unloading into receiving staging bay.`
+          ],
+          table: {
+            headers: ['Carrier / Transporter', 'Vehicle Registration', 'Assigned Driver', 'Driver Mobile', 'Tamper Security Seal #', 'Gross Freight Weight'],
+            rows: [
+              [asn.transporterName, asn.vehicleNumber, asn.driverName, asn.driverPhone, asn.containerSealNumber, `${asn.grossWeightKg} kg (${asn.totalCartons} Cartons)`]
+            ]
+          }
+        },
+        {
+          heading: '2. Consignment Cargo Manifest & Associated Purchase Orders',
+          content: [
+            'Each pallet has been scanned and cross-referenced with production line kit allocations.'
+          ],
+          table: {
+            headers: ['Pallet / Container ID', 'PO Reference', 'Part Description', 'Quantity Packed', 'Gross Weight', 'Storage Condition'],
+            rows: [
+              ['PLT-2026-001', asn.poReference, 'CNC Camera Bezel Rings (Lot #B492)', '5,000 units', '450.0 kg', 'Ambient Clean / Anti-Static'],
+              ['PLT-2026-002', asn.poReference, 'Sapphire Lens Cover Rings (Lot #S109)', '2,500 units', '320.5 kg', 'Nitrogen Purged / Sealed'],
+              ['PLT-2026-003', asn.poReference, 'Fluorosilicone O-Ring Gaskets (Lot #G882)', '7,500 units', '650.0 kg', 'Climate Controlled 20°C']
+            ]
+          },
+          callout: {
+            title: 'Weighbridge Instructions',
+            text: 'Driver must display digital QR pass at gate scanner. Tare weight calculation will automatically trigger electronic GRN creation.',
+            type: 'info'
+          }
+        }
+      ],
+      signatories: [
+        {
+          name: 'Vikram Rajput',
+          role: 'Logistics & Dispatch Manager',
+          organization: 'Precision Component Technologies Ltd',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'Chief Security Officer',
+          role: 'Logistics Gate & Weighbridge Authority',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        }
+      ]
+    });
+  };
+
+  const handleDownloadRfqSpecsDoc = (rfq: RFQItem) => {
+    generateAndDownloadWordDoc(`Apex_RFQ_Technical_Drawing_${rfq.rfqNumber}`, {
+      title: 'ENGINEERING RFQ TECHNICAL DRAWING & PROCUREMENT SPECIFICATION',
+      documentRef: rfq.rfqNumber,
+      classification: 'CONFIDENTIAL // B2B COMPETITIVE BID PACKAGE',
+      department: 'Design Engineering & Strategic Sourcing',
+      author: 'Dr. Marcus Reyes, Chief Engineer',
+      summary: `Detailed engineering blueprint, metallurgical specifications, and competitive bidding guidelines for RFQ ${rfq.rfqNumber} (${rfq.partName}). Outlines production volumes, CAD model checksums, coordinate inspection criteria, and submission deadlines.`,
+      sections: [
+        {
+          heading: '1. RFQ Technical Overview & Target Economics',
+          content: [
+            `Apex Industrial Technologies invites qualified Tier-1 manufacturing suppliers to submit formal binding quotations for component ${rfq.partName} (${rfq.partNumber}).`,
+            `Target production commitment: ${rfq.targetQuantity.toLocaleString()} units with target cost envelope of ${rfq.targetPriceRange}.`
+          ],
+          table: {
+            headers: ['Parameter', 'Specification Requirement', 'Verification Method'],
+            rows: [
+              ['Part Identification', `${rfq.partName} [${rfq.partNumber}]`, 'Visual Laser Engraving / 2D Barcode'],
+              ['Material Substrate', 'Titanium Grade 5 (Ti-6Al-4V) Vacuum Melted', 'Spectrometry Mill Test Certificate'],
+              ['Surface Finish', 'Anodized Type II Matte Black, Ra ≤ 0.2 µm', 'Profilometer & Optical Glossmeter'],
+              ['Delivery Commitment', rfq.deliveryDueDate, 'Factory Receiving Bay Dock Door 3']
+            ]
+          }
+        },
+        {
+          heading: '2. Subcontractor Bidding Rules & Submission Terms',
+          content: [
+            'All submitted quotes must itemize unit piece rate, tooling/NRE amortization, and production lead times in calendar days.',
+            'Late submissions or deviations from geometry drawings will disqualify the bidding supplier from the evaluation matrix.'
+          ],
+          callout: {
+            title: 'Proprietary IP Notice',
+            text: 'CAD geometry files and 3D step models shared under this RFQ are covered by the Mutual Non-Disclosure Agreement (NDA). Unauthorized reproduction is strictly prohibited.',
+            type: 'warning'
+          }
+        }
+      ],
+      signatories: [
+        {
+          name: 'Dr. Marcus Reyes',
+          role: 'VP of Hardware Design & Engineering',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'David O\'Connor',
+          role: 'Head of Strategic Global Sourcing',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        }
+      ]
+    });
+  };
+
+  const handleExportVendorScorecardDoc = () => {
+    generateAndDownloadWordDoc('Apex_Supplier_Quality_PPM_Scorecard_Q3', {
+      title: 'ANNUAL SUPPLIER QUALITY PERFORMANCE & AUDIT DOSSIER',
+      documentRef: 'SQA-VEND-2026-Q3-088',
+      classification: 'OFFICIAL SUPPLIER PERFORMANCE RATING // TIER-1 ACCREDITATION',
+      department: 'Supplier Quality Assurance & SCM Operations',
+      author: 'Elena Rostova, VP Quality & Reliability',
+      summary: 'Comprehensive rolling quarterly quality evaluation, Parts Per Million (PPM) defect scoring, On-Time In-Full (OTIF) delivery punctuality, and ISO 9001:2015 / IATF 16949 audit grading for Precision Component Technologies Ltd (Vendor Code: VEN-SC-001).',
+      sections: [
+        {
+          heading: '1. Executive Supplier Quality Metrics Summary',
+          content: [
+            'Precision Component Technologies Ltd has maintained Preferred Tier-1 Vendor Status with an aggregate supplier excellence index score of 98.4 / 100 for Q3 2026.',
+            'Quality defect frequency is measured at 18 PPM, significantly outperforming the contract threshold maximum of 50 PPM.'
+          ],
+          table: {
+            headers: ['Evaluation Dimension', 'Current Rating', 'Benchmark Standard', 'Accreditation Status'],
+            rows: [
+              ['PPM Defect Rate', '18 PPM', '< 50 PPM', 'TIER-1 EXCELLENCE (TOP 5%)'],
+              ['On-Time In-Full (OTIF) Delivery', '99.1%', '≥ 95.0%', 'EXCEEDS TARGET'],
+              ['Invoice & Commercial Compliance', '100% (Zero Disputes)', '≥ 98.0%', 'PERFECT SCORE'],
+              ['Corrective Action (8D) Cycle Time', '3.8 Days', '< 7.0 Days', 'RAPID RESOLUTION'],
+              ['Overall Supplier Quality Rating', '98.4 / 100', '≥ 90.0', 'CERTIFIED PREFERRED VENDOR']
+            ]
+          }
+        },
+        {
+          heading: '2. Cleanroom Audit & Traceability Compliance Review',
+          content: [
+            'On-site surveillance audit conducted by Apex SQA engineers confirmed full compliance with aerospace cleanroom protocols (ISO 14644 Class 7) and automated laser serialization traceability.'
+          ],
+          callout: {
+            title: 'Early Remittance Discounting Eligibility',
+            text: 'As an accredited Tier-1 Preferred Supplier with 100% commercial compliance, Precision Component Technologies is eligible for 10-day early settlement discount programs.',
+            type: 'success'
+          }
+        }
+      ],
+      signatories: [
+        {
+          name: 'Elena Rostova',
+          role: 'VP Quality & Supplier Reliability',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'David O\'Connor',
+          role: 'Global SCM Director',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'Alexander Vance',
+          role: 'Plant Director & General Manager',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        }
+      ]
+    });
+  };
+
   return (
     <div className="space-y-6">
       {/* Top Banner */}
@@ -500,8 +745,12 @@ export default function SupplierPortalPage() {
                           Confirm Schedule
                         </button>
                       )}
-                      <button className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded text-[11px] font-medium border border-slate-200 dark:border-slate-700 transition-all inline-flex items-center gap-1">
-                        <Download className="h-3 w-3" /> Specs
+                      <button
+                        onClick={() => handleDownloadPoSpecsDoc(po)}
+                        title="Download Official PO Manufacturing Specifications in Word Format"
+                        className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded text-[11px] font-medium border border-slate-200 dark:border-slate-700 transition-all inline-flex items-center gap-1 cursor-pointer"
+                      >
+                        <Download className="h-3 w-3 text-emerald-600 dark:text-emerald-400" /> Specs (.doc)
                       </button>
                     </td>
                   </tr>
@@ -552,7 +801,16 @@ export default function SupplierPortalPage() {
 
                 <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
                   <span className="text-slate-500">Cartons: <strong>{asn.totalCartons}</strong> ({asn.grossWeightKg} kg)</span>
-                  <span className="text-emerald-600 dark:text-emerald-400 font-semibold">ETA: {asn.estimatedArrival}</span>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => handleDownloadAsnManifestDoc(asn)}
+                      title="Download Official ASN Freight Manifest in Word Format"
+                      className="px-2 py-1 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded text-[11px] font-medium border border-slate-200 dark:border-slate-700 transition-all inline-flex items-center gap-1 cursor-pointer"
+                    >
+                      <Download className="h-3 w-3 text-emerald-600 dark:text-emerald-400" /> Manifest (.doc)
+                    </button>
+                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold">ETA: {asn.estimatedArrival}</span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -602,8 +860,12 @@ export default function SupplierPortalPage() {
                       Submit Formal Bid
                     </button>
                   )}
-                  <button className="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium transition-all flex items-center gap-1">
-                    <Download className="h-3.5 w-3.5" /> Technical Drawings
+                  <button
+                    onClick={() => handleDownloadRfqSpecsDoc(rfq)}
+                    title="Download Official RFQ Technical Drawing Dossier in Word Format"
+                    className="px-3 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-medium transition-all flex items-center gap-1 cursor-pointer"
+                  >
+                    <Download className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" /> Technical Drawings (.doc)
                   </button>
                 </div>
               </div>
@@ -668,8 +930,23 @@ export default function SupplierPortalPage() {
 
       {/* TAB 5: SCORECARD */}
       {activeTab === 'scorecard' && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-5 rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 space-y-4 shadow-sm">
+        <div className="space-y-4">
+          <div className="flex items-center justify-between p-4 bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 rounded-xl shadow-sm">
+            <div>
+              <h2 className="text-sm font-semibold text-slate-900 dark:text-white">Supplier Quality Rating & Annual PPM Audit</h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400">Quarterly certified performance metrics, cleanroom compliance, and early discount eligibility.</p>
+            </div>
+            <button
+              onClick={handleExportVendorScorecardDoc}
+              title="Download Official Vendor Quality & PPM Scorecard in Word Format"
+              className="flex items-center gap-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold shadow-sm transition-all cursor-pointer"
+            >
+              <Download className="h-4 w-4" /> Export Scorecard (.doc)
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-5 rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 space-y-4 shadow-sm">
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2">
               <Award className="h-4 w-4 text-emerald-500" /> Quality & PPM Score
             </h3>
@@ -705,6 +982,7 @@ export default function SupplierPortalPage() {
             <div className="text-[11px] text-slate-500">Eligible for Priority Early Remittance Discounting</div>
           </div>
         </div>
+      </div>
       )}
 
       {/* MODAL: SUBMIT FORMAL BID */}

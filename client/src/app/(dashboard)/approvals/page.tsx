@@ -26,6 +26,7 @@ import {
   Layers,
   Sparkles,
 } from 'lucide-react';
+import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 
 interface ApprovalItem {
   id: string;
@@ -215,6 +216,91 @@ export default function ApprovalsPage() {
       })
     );
     setSelectedIds([]);
+  };
+
+  const handleExportAuditTrailDoc = () => {
+    generateAndDownloadWordDoc('Apex_SOX_Executive_Approval_Audit_Ledger', {
+      title: 'EXECUTIVE APPROVAL & DELEGATION AUDIT LEDGER',
+      documentRef: 'AUD-SOX-2026-Q3-099',
+      classification: 'CONFIDENTIAL // REGULATORY COMPLIANCE RECORD',
+      department: 'Corporate Governance & Internal Audit',
+      author: 'Alexander Vance, Plant Director & Controller',
+      summary: 'Official immutable transaction ledger of cross-departmental financial delegations, CapEx authorizations, ECN engineering sign-offs, and proxy handover controls recorded pursuant to Sarbanes-Oxley (SOX) Section 404, ISO 9001:2015 Clause 5.3, and IATF 16949.',
+      sections: [
+        {
+          heading: '1. Executive Authorization Summary & Cryptographic Validation',
+          content: [
+            'This document provides an unalterable audit trail of all executive approvals, line-item budget releases, engineering concessions, and temporary proxy delegations executed within the Apex ERP Governance Framework during the current operating period.',
+            'All records contained herein have been verified against hardware cryptographic keys (FIPS 140-2 Level 3 HSM) and timestamped via RFC 3161 compliant trusted time authorities.'
+          ],
+          table: {
+            headers: ['Audit Token', 'Document Ref / Item', 'Action / Decision', 'Authorized Signatory', 'Timestamp (UTC/EST)', 'Cryptographic Hash (SHA-256)'],
+            rows: [
+              ['#AUD-9912', 'PO-2026-9012 (CNC Tooling Inserts)', 'APPROVED', 'Alexander Vance (Plant Director)', '2026-10-21 17:22:04 EST', 'sha256:8f9a3c21e78a4b010cde456'],
+              ['#AUD-9911', 'CAPEX-2026-0889 (Additive 3D Titanium Printer)', 'APPROVED', 'Sarah Chen (Chief Financial Officer)', '2026-10-21 16:05:11 EST', 'sha256:d41d8cd98f00b204e980099'],
+              ['#AUD-9910', 'ECO-2026-0412 (Titanium Alloy Spec Refinement)', 'APPROVED', 'Dr. Marcus Reyes (Chief Engineer)', '2026-10-21 14:12:49 EST', 'sha256:e3b0c44298fc1c149afbf4c'],
+              ['#AUD-9909', 'SCRAP-2026-0184 (Defective Casting Lot Discard)', 'APPROVED', 'Elena Rostova (VP Quality & Reliability)', '2026-10-21 11:30:20 EST', 'sha256:7b521fa9822a10bced4561a'],
+              ['#AUD-9908', 'LEAVE-2026-0523 (Medical Leave - Senior Tech)', 'APPROVED', 'Sarah Jenkins (Ops Supervisor)', '2026-10-21 09:15:33 EST', 'sha256:9f83c2e64b882a12fedc301']
+            ]
+          }
+        },
+        {
+          heading: '2. Multi-Level Financial Hierarchy & Delegation Matrix',
+          content: [
+            'Operational delegations enforce strict approval limits according to the Corporate Governance Delegations Policy (CGD-Rev-4). Any item exceeding $100,000 mandates dual sign-off including the CFO.'
+          ],
+          table: {
+            headers: ['Approval Level', 'Role / Title', 'Single Transaction Cap', 'Mandatory Escrows', 'Current Signatory Status'],
+            rows: [
+              ['Level 1', 'Frontline Shopfloor Supervisor', '$5,000.00 USD', 'None', 'Active (Shift A & B)'],
+              ['Level 2', 'Department Operations Manager', '$25,000.00 USD', 'Variance Audit', 'Active'],
+              ['Level 3', 'Plant General Manager / Director', '$100,000.00 USD', 'Corporate Budget Match', 'Active (Alexander Vance)'],
+              ['Level 4', 'Chief Financial Officer (CFO)', '$500,000.00 USD', 'Board Committee Audit', 'Active (Sarah Chen)'],
+              ['Level 5', 'Chief Executive Officer / Board', 'Unlimited / >$500K USD', 'Board Minute Resolution', 'Active']
+            ]
+          }
+        },
+        {
+          heading: '3. Temporary Proxy Delegations & Segregation of Duties (SoD) Review',
+          content: [
+            'During executive travel and off-site customer audits, administrative authority is delegated under strict financial caps and pre-assigned duration limits.',
+            'No delegation policy violates Separation of Duties (SoD) principles; delegators cannot assign approval authority to the originators of purchase requisitions.'
+          ],
+          table: {
+            headers: ['Original Principal', 'Appointed Proxy', 'Role / Department', 'Approval Limit Cap', 'Valid From', 'Valid To', 'Status'],
+            rows: [
+              ['Alexander Vance', 'Marcus Reyes', 'VP Engineering', '$100,000.00 USD', '2026-10-20', '2026-10-28', 'ACTIVE DELEGATION'],
+              ['Sarah Chen', 'Rachel Green', 'Corporate Financial Controller', '$250,000.00 USD', '2026-10-15', '2026-10-18', 'EXPIRED / REVERTED']
+            ]
+          },
+          callout: {
+            title: 'Audit Compliance Certification Notice',
+            text: 'Independent audit confirmed 0 unapproved financial bypasses. All items exceeding $50,000 required dual-authorization with hardware Multi-Factor Authentication.',
+            type: 'success'
+          }
+        }
+      ],
+      signatories: [
+        {
+          name: 'Alexander Vance',
+          role: 'Plant Director & General Manager',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'Sarah Chen, CPA',
+          role: 'Chief Financial Officer',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'David K. Rosenthal',
+          role: 'Head of Corporate Internal Audit & Compliance',
+          organization: 'Deloitte Risk & Regulatory Advisory (Independent SOX Auditor)',
+          signatureDate: '2026-10-22'
+        }
+      ]
+    });
   };
 
   const filteredItems = items.filter((item) => {
@@ -735,9 +821,13 @@ export default function ApprovalsPage() {
                 Cryptographically hashed audit ledger for external SOX, ISO 9001, and IATF 16949 regulatory examinations.
               </p>
             </div>
-            <button className="inline-flex items-center gap-2 text-xs border border-border px-3 py-1.5 rounded-md hover:bg-accent text-foreground">
-              <Download className="w-3.5 h-3.5" />
-              Export Audit Trail (CSV)
+            <button
+              onClick={handleExportAuditTrailDoc}
+              title="Download Official SOX Compliance Audit Dossier in Word Format"
+              className="inline-flex items-center gap-2 text-xs border border-border px-3 py-1.5 rounded-md hover:bg-accent text-foreground transition-all cursor-pointer shadow-sm hover:border-primary/50"
+            >
+              <Download className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+              Export Audit Trail (.doc)
             </button>
           </div>
 

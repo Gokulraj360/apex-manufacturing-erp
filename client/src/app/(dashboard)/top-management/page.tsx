@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 import {
   TrendingUp,
   DollarSign,
@@ -147,6 +148,129 @@ export default function TopManagementPage() {
   const dailyTurnover = 406849;
   const cashFreedUp = ((baseCcc - simulatedCcc) * dailyTurnover) / 1000000;
 
+  const handleExportBoardBriefing = () => {
+    generateAndDownloadWordDoc('Apex_Board_of_Directors_Strategic_Briefing_FY2026_Q3', {
+      title: 'BOARD OF DIRECTORS EXECUTIVE BRIEFING & STRATEGIC OPERATIONS DOSSIER',
+      documentRef: 'DOC-BOD-2026-Q3-STRAT',
+      classification: 'HIGHLY CONFIDENTIAL — BOARD OF DIRECTORS & EXECUTIVE COMMITTEE ONLY',
+      department: 'Executive Office of the CEO & CFO',
+      author: 'Arthur Pendelton (CEO) & Samantha Sterling (CFO)',
+      summary:
+        'Comprehensive Q3 fiscal year operational review, working capital liquidity analysis, multi-plant manufacturing EBITDA waterfall reconciliation, DuPont ROE decomposition, and strategic capital expenditure (CapEx) commitments across Austin, Stuttgart, and Singapore manufacturing campuses.',
+      sections: [
+        {
+          heading: 'Executive Financial Summary & Consolidated Performance',
+          content: [
+            'For the nine-month period ending FY2026 Q3, Apex Manufacturing Technologies consolidated revenue reached $148,500,000, representing an annualized year-over-year expansion of +14.2% driven by robust delivery fulfillment of high-density telecommunication gateway contracts and defense-grade IoT assemblies.',
+            'Consolidated Operating EBITDA expanded to $35,900,000, achieving a blended operating margin of 24.17% (+180 basis points ahead of the board-approved target of 22.37%). Gross margins benefited from automated 3-way accounts payable matching and strict scrap minimization programs implemented in Cleanroom Bay 4.',
+          ],
+          callout: {
+            title: 'Q3 Board Milestone Achieved',
+            text: 'Working capital optimization initiatives across raw silicon inventory and dynamic supplier payment terms successfully released $3.46M in operational liquidity, maintaining total liquidity reserves above $48.2M.',
+            type: 'success',
+          },
+        },
+        {
+          heading: 'Working Capital & Cash Conversion Cycle (CCC) Breakdown',
+          content: [
+            'The Cash Conversion Cycle represents the velocity at which cash invested in direct raw materials transitions through manufacturing work-in-progress into customer cash collections. Formula: CCC = Days Sales Outstanding (DSO) + Days Inventory Outstanding (DIO) - Days Payables Outstanding (DPO).',
+          ],
+          table: {
+            headers: ['Working Capital Metric', 'Q2 Baseline', 'Q3 Current', 'Simulated Target', 'Variance Impact'],
+            rows: [
+              ['Days Sales Outstanding (DSO)', '45.6 Days', '42.1 Days', '38.6 Days', '-3.5 Days (Frees +$1.42M Cash)'],
+              ['Days Inventory Outstanding (DIO)', '61.4 Days', '56.4 Days', '51.4 Days', '-5.0 Days (Frees +$2.03M Cash)'],
+              ['Days Payables Outstanding (DPO)', '57.8 Days', '61.8 Days', '65.8 Days', '+4.0 Days (Retains +$1.62M Cash)'],
+              ['Net Cash Conversion Cycle (CCC)', '49.2 Days', '36.7 Days', '24.2 Days', '-12.5 Days (-$5.08M Total Working Capital Released)'],
+            ],
+          },
+        },
+        {
+          heading: 'Consolidated Manufacturing EBITDA Waterfall Bridge',
+          content: [
+            'The following waterfall bridges Gross Topline Revenue down to Operating EBITDA, isolating direct material absorption, cleanroom factory labor, and facility overhead costs.',
+          ],
+          table: {
+            headers: ['P&L Cost Component', 'Nominal Value (USD)', '% of Gross Revenue', 'Status & Operational Commentary'],
+            rows: [
+              ['Gross Topline Revenue', '$148,500,000', '100.00%', 'Contracted commercial deliveries across 3 plants'],
+              ['Direct Materials COGS (Substrates/ICs)', '-$78,200,000', '52.66%', 'Raw silicon wafers, BGAs, solder paste, passive passives'],
+              ['Direct Cleanroom Factory Labor', '-$18,400,000', '12.39%', '1,420 full-time floor technicians across Shifts A/B/C'],
+              ['Factory Overhead, Electricity & Nitrogen', '-$8,900,000', '5.99%', 'Ultra-pure N2 purge, high-vacuum pumps, HVAC cleanroom'],
+              ['SG&A, Commercial Logistics & Legal', '-$7,100,000', '4.78%', 'Enterprise software, patent filings, global logistics'],
+              ['Consolidated Operating EBITDA', '$35,900,000', '24.17%', 'Exceeds EMS global industry median of 18.2%'],
+            ],
+          },
+        },
+        {
+          heading: 'Multi-Plant Manufacturing Campus Benchmarking',
+          content: [
+            'Operational benchmarking across our three primary international manufacturing facilities reveals sustained throughput leadership in Austin, solid sensor scaling in Stuttgart, and targeted yield improvement initiatives in Singapore.',
+          ],
+          table: {
+            headers: ['Manufacturing Facility', 'Location', 'Q3 Revenue', 'EBITDA Margin', 'Plant OEE', 'First-Pass Yield (FPY)'],
+            rows: [
+              ['Austin Flagship Campus', 'Austin, Texas, USA', '$68,400,000', '26.61%', '89.2%', '98.8% (Target Exceeded)'],
+              ['Stuttgart Automotive Sensor Hub', 'Stuttgart, Germany', '$49,100,000', '24.03%', '87.5%', '98.4% (IATF 16949 Pass)'],
+              ['Singapore Microelectronics Plant', 'Jurong District, Singapore', '$31,000,000', '19.03%', '82.1%', '96.9% (Continuous Kaizen)'],
+            ],
+          },
+        },
+        {
+          heading: 'DuPont 3-Tier Return on Equity (ROE) Model',
+          content: [
+            'The DuPont model demonstrates that shareholder value is driven through balanced profitability, asset efficiency, and prudent financial leverage.',
+            'Formula: ROE = Net Profit Margin (16.20%) × Asset Turnover Ratio (1.42x) × Financial Leverage Equity Multiplier (1.35x) = 31.05% Return on Equity.',
+          ],
+          table: {
+            headers: ['DuPont Tier', 'Measured Metric', 'Industry Benchmark', 'Performance Assessment'],
+            rows: [
+              ['Tier 1: Net Profit Margin', '16.20%', '11.40%', 'Top decile operating margin efficiency'],
+              ['Tier 2: Asset Turnover Ratio', '1.42x', '1.18x', 'High capital utilization across SMT lines'],
+              ['Tier 3: Equity Multiplier', '1.35x', '1.65x', 'Conservative low-debt capital structure'],
+              ['Synthesized ROE', '31.05%', '22.20%', 'Significant outperformance vs Peer Group'],
+            ],
+          },
+        },
+        {
+          heading: 'Strategic Capital Expenditure (CapEx) Commitments',
+          content: [
+            'The Board has authorized the following high-return capital allocations to maintain technical superiority in high-speed automated electronics placement.',
+          ],
+          table: {
+            headers: ['Project Code & Name', 'Plant Assignment', 'Approved Budget', 'Committed', 'Projected IRR', 'Payback Period'],
+            rows: [
+              ['CPX-2026-01: SMT Line 4 High-Speed Upgrade', 'Austin Campus', '$1,850,000', '$1,720,000', '28.4%', '2.1 Years'],
+              ['CPX-2026-02: Cleanroom AGV Fleet Logistics', 'Stuttgart Hub', '$850,000', '$820,000', '34.2%', '1.4 Years'],
+              ['CPX-2026-03: 2.4MW Rooftop Solar PV Microgrid', 'Austin Campus', '$1,200,000', '$1,100,000', '18.5%', '4.2 Years'],
+              ['CPX-2026-04: High-Temp Nitrogen Induction Wave', 'Singapore Plant', '$650,000', '$650,000', '22.1%', '2.8 Years'],
+            ],
+          },
+        },
+      ],
+      signatories: [
+        {
+          name: 'Arthur Pendelton',
+          role: 'Chief Executive Officer (CEO)',
+          organization: 'Apex Manufacturing Technologies Corporation',
+          signatureDate: 'October 22, 2026',
+        },
+        {
+          name: 'Samantha Sterling',
+          role: 'Chief Financial Officer (CFO)',
+          organization: 'Apex Manufacturing Technologies Corporation',
+          signatureDate: 'October 22, 2026',
+        },
+        {
+          name: 'Alexander Vance',
+          role: 'VP Global Operations & Plant Director',
+          organization: 'Apex Manufacturing Technologies Corporation',
+          signatureDate: 'October 22, 2026',
+        },
+      ],
+    });
+  };
+
   return (
     <div className="space-y-6 p-6">
       {/* Top Banner */}
@@ -171,11 +295,11 @@ export default function TopManagementPage() {
             Fiscal Year: <strong className="text-foreground">FY2026 Q3 YTD</strong>
           </div>
           <button
-            onClick={() => alert('Generating Board of Directors Executive Briefing PDF...')}
+            onClick={handleExportBoardBriefing}
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-3.5 py-2 text-xs font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm"
           >
             <Download className="w-3.5 h-3.5" />
-            Export Board Briefing
+            Export Board Briefing (.doc)
           </button>
         </div>
       </div>

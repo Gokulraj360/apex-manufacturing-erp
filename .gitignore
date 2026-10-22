@@ -41,3 +41,5 @@ redis_data/
 .vercel/
 .DS_Store
 Thumbs.db
+
+.vercel

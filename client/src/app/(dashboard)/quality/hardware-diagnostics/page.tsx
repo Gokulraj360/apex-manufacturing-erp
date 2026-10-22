@@ -22,7 +22,9 @@ import {
   Filter,
   ArrowRight,
   TrendingUp,
+  Download,
 } from 'lucide-react';
+import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 
 interface DiagnosticStep {
   id: number;
@@ -145,6 +147,78 @@ export default function HardwareDiagnosticsPage() {
     }, 700);
   };
 
+  const handleExportTestBenchDoc = () => {
+    generateAndDownloadWordDoc(`Apex_Hardware_Diagnostics_Dossier_${scannedSerial}`, {
+      title: 'AUTOMATED HARDWARE DIAGNOSTICS & STATION CALIBRATION DOSSIER',
+      documentRef: `ATE-DIAG-2026-ST4-${scannedSerial.slice(-5)}`,
+      classification: 'OFFICIAL QUALITY RECORD // IATF 16949 & ISO 9001 COMPLIANT',
+      department: 'Advanced Manufacturing Quality Engineering & ATE Operations',
+      author: 'Elena Rostova, VP Quality & Reliability',
+      summary: `Automated Test Equipment (ATE) diagnostic telemetry, RF Sub-6GHz wireless calibration verification, BGA micro-solder continuity testing, and automated defect sorting record for Device Under Test (DUT) Serial: ${scannedSerial}.`,
+      sections: [
+        {
+          heading: '1. Device Under Test (DUT) & Test Bench Station Configuration',
+          content: [
+            `The unit serial ${scannedSerial} was evaluated on Automated Test Station ST-04 (Cleanroom Bay 4) running automated firmware flash build APX-OS-v4.1.2-RC3.`,
+            `All RF test parameters were measured utilizing high-precision Rohde & Schwarz / Keysight vector network analyzers with active temperature compensation.`
+          ],
+          table: {
+            headers: ['Test Station Parameter', 'Measured Telemetry / Configuration', 'Calibration Reference', 'Result Status'],
+            rows: [
+              ['Target Device Under Test', `${scannedSerial} (Apex Industrial IoT Gateway)`, 'Laser Etched 2D Datamatrix', 'VERIFIED'],
+              ['Motherboard PCB Revision', 'Rev 4.2B (Lead-Free ENIG Gold Finish)', 'BOM Hash #8921a', 'MATCHED'],
+              ['Station Calibration Expiry', '2027-03-31 (Keysight Metrology Lab)', 'CAL-CERT-2026-991', 'ACTIVE VALID'],
+              ['First Pass Yield (FPY)', '98.4% across 10,000 Station Cycles', 'Benchmark ≥ 98.0%', 'EXCEEDS TARGET'],
+              ['Conveyor Robotic Routing', 'Automated Diverter Arm 1 -> Clean Packing', 'Zero Operator Touch', 'ROUTED TO PACK']
+            ]
+          }
+        },
+        {
+          heading: '2. Multi-Vector Diagnostic Step Execution Ledger',
+          content: [
+            'All diagnostic steps were executed sequentially via automated JTAG / SWD test fixtures with milliamp-level power rails monitoring.'
+          ],
+          table: {
+            headers: ['Diagnostic Step', 'Domain / Category', 'Nominal Range', 'Measured Value', 'Verification Status'],
+            rows: [
+              ['SoC BIST Logic Self-Test', 'Core Processor', '100% Logic Vectors Pass', '100% Vector Pass (0 Err)', 'PASSED'],
+              ['DDR5 Memory Bus Stress', 'RAM Subsystem', 'Zero Bit Flips (> 100M Cycles)', '0 Bit Flips / Error-Free', 'PASSED'],
+              ['RF Sub-6GHz Output Power', 'Wireless / 5G', '21.5 dBm - 23.5 dBm', '22.8 dBm (Calibrated)', 'PASSED'],
+              ['Battery Internal Impedance', 'Power / BMS', '< 45.0 mΩ', '31.4 mΩ (Optimal)', 'PASSED'],
+              ['OLED Display Optical Uniformity', 'Display / Optics', 'Delta E < 1.50', 'Delta E = 0.82', 'PASSED'],
+              ['Thermal Chamber Soak Run', 'Environmental', 'Core Temp < 78.0°C at 100% Load', '64.2°C Stabilized', 'PASSED']
+            ]
+          },
+          callout: {
+            title: 'Quality Concession Notice',
+            text: 'This unit has fulfilled all IATF 16949 automotive / industrial tier-1 burn-in benchmarks and is certified for immediate commercial shipment.',
+            type: 'success'
+          }
+        }
+      ],
+      signatories: [
+        {
+          name: 'Elena Rostova',
+          role: 'VP Quality & Product Reliability',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'Vikram Sundaram',
+          role: 'Chief ATE Diagnostics Systems Engineer',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        },
+        {
+          name: 'Alexander Vance',
+          role: 'Plant Director & General Manager',
+          organization: 'Apex Industrial Technologies Inc.',
+          signatureDate: '2026-10-22'
+        }
+      ]
+    });
+  };
+
   return (
     <div className="space-y-6 p-6">
       {/* Top Banner */}
@@ -176,9 +250,17 @@ export default function HardwareDiagnosticsPage() {
             />
           </div>
           <button
+            onClick={handleExportTestBenchDoc}
+            title="Download Official ATE Hardware Diagnostics Dossier in Word Format"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-3 py-2 text-xs font-semibold text-foreground hover:bg-accent transition-all shadow-sm cursor-pointer"
+          >
+            <Download className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            Export Test Dossier (.doc)
+          </button>
+          <button
             onClick={startAutomatedSequence}
             disabled={isRunning}
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 transition-colors disabled:opacity-50 cursor-pointer"
           >
             {isRunning ? (
               <>
