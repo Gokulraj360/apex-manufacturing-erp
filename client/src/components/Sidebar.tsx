@@ -43,6 +43,7 @@ import {
   ListTodo,
   Calendar,
   Sparkles,
+  Globe,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { cn } from '@/lib/utils';
@@ -276,6 +277,7 @@ export function Sidebar() {
         defaultOpen: true,
         items: [
           { name: 'Serial Number Setup & Factory IT Admin', href: '/system-admin', icon: ShieldCheck },
+          { name: 'Web Page Crash Recovery & Rollback', href: '/system-admin/backups', icon: Globe },
           { name: 'Staff Onboarding & Security Credentials', href: '/credentials', icon: UserCheck },
           { name: 'Dynamic Role Permissions & Matrix', href: '/admin/role-permissions', icon: ShieldCheck },
         ],

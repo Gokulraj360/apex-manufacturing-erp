@@ -81,6 +81,7 @@ export const PATH_TO_FUNCTION_KEY: Record<string, string> = {
   '/marketing': 'FUNC_MKT_LAUNCH_CAMPAIGNS',
   '/department-workforce': 'FUNC_HR_SHIFT_ROSTER_LOCK',
   '/system-admin': 'FUNC_RBAC_MANAGEMENT',
+  '/system-admin/backups': 'FUNC_RBAC_MANAGEMENT',
   '/task-delegation': 'FUNC_HR_EMPLOYEE_DIRECTORY',
   '/supplier-portal': 'FUNC_SCM_VENDOR_PORTAL',
   '/customer-portal': 'FUNC_CRM_CARRIER_CONTRACTS',
@@ -192,6 +193,7 @@ export const CATEGORY_TO_PATHS_MAP: Record<string, string[]> = {
   ],
   'FACTORY IT & SYSTEMS': [
     '/system-admin',
+    '/system-admin/backups',
     '/credentials',
     '/admin/role-permissions',
   ],
@@ -549,6 +551,7 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     allowedCategoryTitles: ['FACTORY IT & SYSTEMS', 'MY WORKSPACE'],
     allowedPaths: [
       '/system-admin',
+      '/system-admin/backups',
       '/credentials',
       '/admin/role-permissions',
       '/super-admin/rbac-matrix',
