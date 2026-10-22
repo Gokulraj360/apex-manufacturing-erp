@@ -42,6 +42,7 @@ import {
   Box,
   ListTodo,
   Calendar,
+  Sparkles,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { cn } from '@/lib/utils';
@@ -99,6 +100,10 @@ export function Sidebar() {
         title: 'TOP MANAGEMENT (OWNER / MD)',
         defaultOpen: true,
         items: [
+          { name: 'Executive Boardroom C-Suite Cockpit', href: '/top-management', icon: Sparkles },
+          { name: 'Universal Approvals & Governance Inbox', href: '/approvals', icon: ClipboardCheck },
+          { name: 'Multi-Persona Portal Gallery', href: '/portals', icon: Users },
+          { name: '2D RBAC Matrix & SoD Auditor', href: '/super-admin/rbac-matrix', icon: ShieldCheck },
           { name: 'Product Cost & Selling Prices', href: '/pricing-control', icon: Coins },
           { name: 'Factory Electricity & Running Costs', href: '/pricing-control?tab=overheads', icon: Zap },
           { name: 'Machine Performance & Plant Uptime', href: '/super-admin', icon: LayoutGrid },
@@ -116,6 +121,7 @@ export function Sidebar() {
         defaultOpen: true,
         items: [
           { name: 'Factory Accounts & Money Overview', href: '/finance', icon: DollarSign },
+          { name: 'Automated 3-Way AP Matching Engine', href: '/finance/ap-matching', icon: Receipt },
           { name: 'Supplier Bills & Invoice Match', href: '/finance/vendor-bills', icon: Receipt },
           { name: 'Customer Bills & Delivery Slips', href: '/finance/invoices', icon: FileSpreadsheet },
           { name: 'Tax & GST Filing Reports', href: '/finance/tax-reports', icon: CreditCard },
@@ -144,6 +150,7 @@ export function Sidebar() {
         title: 'PHONE QUALITY CHECKS',
         defaultOpen: true,
         items: [
+          { name: 'Station Hardware Diagnostics Suite', href: '/quality/hardware-diagnostics', icon: Activity },
           { name: 'First-Time Quality Pass Rate', href: '/quality', icon: ShieldCheck },
           { name: 'Incoming Parts Quality Check', href: '/quality/incoming', icon: ShieldCheck },
           { name: 'Screen Brightness & Color Check', href: '/quality/in-process', icon: Activity },
@@ -183,6 +190,7 @@ export function Sidebar() {
         defaultOpen: true,
         items: [
           { name: 'Customer Orders & Delivery Planning', href: '/crm', icon: ClipboardCheck },
+          { name: 'B2B Commercial Client Portal', href: '/customer-portal', icon: Share2 },
         ],
       },
       {
@@ -190,6 +198,7 @@ export function Sidebar() {
         defaultOpen: true,
         items: [
           { name: 'Material Planning & Sourcing Hub', href: '/supply-chain', icon: PackageCheck },
+          { name: 'B2B Supplier Self-Service Portal', href: '/supplier-portal', icon: Factory },
           { name: 'Chip Stock & Shortage Alerts', href: '/supply-chain/mrp', icon: Activity },
           { name: 'Supplier & Vendor Directory', href: '/supply-chain/vendors', icon: Factory },
         ],
@@ -271,9 +280,17 @@ export function Sidebar() {
         ],
       },
       {
+        title: 'LEGAL, CONTRACTS & COMPLIANCE',
+        defaultOpen: true,
+        items: [
+          { name: 'Legal CLM & Statutory Standards', href: '/legal', icon: Scale },
+        ],
+      },
+      {
         title: 'MY WORKSPACE',
         defaultOpen: true,
         items: [
+          { name: 'Employee Self-Service (ESS) Personal Desk', href: '/my-workspace', icon: UserCheck },
           { name: 'Department Worker Wages & Attendance', href: '/department-payroll', icon: Users },
           { name: 'Task Assignments & Team Work', href: '/task-delegation', icon: ListTodo },
           { name: 'Employee Leave Requests & Approvals', href: '/leave', icon: Calendar },

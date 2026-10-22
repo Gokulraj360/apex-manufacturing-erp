@@ -82,6 +82,16 @@ export const PATH_TO_FUNCTION_KEY: Record<string, string> = {
   '/department-workforce': 'FUNC_HR_SHIFT_ROSTER_LOCK',
   '/system-admin': 'FUNC_RBAC_MANAGEMENT',
   '/task-delegation': 'FUNC_HR_EMPLOYEE_DIRECTORY',
+  '/supplier-portal': 'FUNC_SCM_VENDOR_PORTAL',
+  '/customer-portal': 'FUNC_CRM_CARRIER_CONTRACTS',
+  '/finance/ap-matching': 'FUNC_VENDOR_BILL_MATCH',
+  '/super-admin/rbac-matrix': 'FUNC_RBAC_MANAGEMENT',
+  '/approvals': 'FUNC_EXECUTIVE_COMMAND',
+  '/legal': 'FUNC_LEGAL_COMPLIANCE',
+  '/my-workspace': 'FUNC_HR_EMPLOYEE_DIRECTORY',
+  '/quality/hardware-diagnostics': 'FUNC_QA_RF_5G_TEST',
+  '/portals': 'FUNC_EXECUTIVE_COMMAND',
+  '/top-management': 'FUNC_EXECUTIVE_COMMAND',
 };
 
 /**
@@ -89,6 +99,10 @@ export const PATH_TO_FUNCTION_KEY: Record<string, string> = {
  */
 export const CATEGORY_TO_PATHS_MAP: Record<string, string[]> = {
   'TOP MANAGEMENT (OWNER / MD)': [
+    '/top-management',
+    '/approvals',
+    '/portals',
+    '/super-admin/rbac-matrix',
     '/pricing-control',
     '/super-admin',
     '/admin/role-permissions',
@@ -96,6 +110,7 @@ export const CATEGORY_TO_PATHS_MAP: Record<string, string[]> = {
   ],
   'FINANCE & ACCOUNTS DESK': [
     '/finance',
+    '/finance/ap-matching',
     '/finance/vendor-bills',
     '/finance/invoices',
     '/finance/tax-reports',
@@ -112,6 +127,7 @@ export const CATEGORY_TO_PATHS_MAP: Record<string, string[]> = {
     '/warehouse/locations',
   ],
   'PHONE QUALITY CHECKS': [
+    '/quality/hardware-diagnostics',
     '/quality',
     '/quality/incoming',
     '/quality/in-process',
@@ -134,9 +150,11 @@ export const CATEGORY_TO_PATHS_MAP: Record<string, string[]> = {
   ],
   'CUSTOMER CARE & ORDERS': [
     '/crm',
+    '/customer-portal',
   ],
   'SUPPLY CHAIN & SOURCING': [
     '/supply-chain',
+    '/supplier-portal',
     '/supply-chain/mrp',
     '/supply-chain/vendors',
   ],
@@ -176,7 +194,11 @@ export const CATEGORY_TO_PATHS_MAP: Record<string, string[]> = {
     '/credentials',
     '/admin/role-permissions',
   ],
+  'LEGAL, CONTRACTS & COMPLIANCE': [
+    '/legal',
+  ],
   'MY WORKSPACE': [
+    '/my-workspace',
     '/department-payroll',
     '/task-delegation',
     '/leave',
@@ -580,8 +602,13 @@ export function isPathAuthorizedForRole(targetHref: string, roleId?: string): bo
     return true;
   }
 
-  // Always permit universal employee hierarchical workflow routes: task delegation and leave
-  if (cleanTarget === '/task-delegation' || cleanTarget === '/leave') {
+  // Always permit universal employee hierarchical workflow routes: task delegation, leave, employee workspace, and persona gallery
+  if (
+    cleanTarget === '/task-delegation' ||
+    cleanTarget === '/leave' ||
+    cleanTarget === '/my-workspace' ||
+    cleanTarget === '/portals'
+  ) {
     return true;
   }
 

@@ -115,6 +115,46 @@ const ROUTE_TITLE_MAP: Record<string, { title: string; badge: string }> = {
     title: 'New Phone Launches & Promotions',
     badge: 'MKT-015',
   },
+  '/supplier-portal': {
+    title: 'B2B Supplier Self-Service Portal & ASN Desk',
+    badge: 'SUP-016',
+  },
+  '/customer-portal': {
+    title: 'B2B Commercial Client Portal & Live WIP',
+    badge: 'CLI-017',
+  },
+  '/finance/ap-matching': {
+    title: 'Automated 3-Way AP Matching Engine & Tolerance Workbench',
+    badge: 'AP-018',
+  },
+  '/super-admin/rbac-matrix': {
+    title: '2D RBAC Permission Matrix & SoD Auditor',
+    badge: 'SEC-019',
+  },
+  '/approvals': {
+    title: 'Universal Approvals & Governance Inbox',
+    badge: 'APP-020',
+  },
+  '/legal': {
+    title: 'Legal, Contracts & Regulatory Compliance CLM',
+    badge: 'LGL-021',
+  },
+  '/my-workspace': {
+    title: 'Employee Self-Service (ESS) Personal Workspace',
+    badge: 'ESS-022',
+  },
+  '/quality/hardware-diagnostics': {
+    title: 'Automated Station Hardware Diagnostics Suite',
+    badge: 'ATE-023',
+  },
+  '/portals': {
+    title: 'Enterprise Multi-Persona Portal Gallery',
+    badge: 'GAL-024',
+  },
+  '/top-management': {
+    title: 'Executive Boardroom C-Suite Cockpit & Working Capital Engine',
+    badge: 'EXEC-025',
+  },
 };
 
 export default function DashboardLayout({
