@@ -244,6 +244,7 @@ export function Sidebar() {
         defaultOpen: true,
         items: [
           { name: 'Parts Purchasing & Ordering', href: '/procurement', icon: PackageCheck },
+          { name: 'B2B Supplier Self-Service Portal', href: '/supplier-portal', icon: Factory },
           { name: 'Supplier Price Quotes & Bids', href: '/procurement/rfqs', icon: Scale },
           { name: 'Supplier & Vendor Directory', href: '/supply-chain/vendors', icon: Factory },
         ],
@@ -291,6 +292,7 @@ export function Sidebar() {
         defaultOpen: true,
         items: [
           { name: 'Employee Self-Service (ESS) Personal Desk', href: '/my-workspace', icon: UserCheck },
+          { name: 'Multi-Persona Portal Gallery', href: '/portals', icon: Users },
           { name: 'Department Worker Wages & Attendance', href: '/department-payroll', icon: Users },
           { name: 'Task Assignments & Team Work', href: '/task-delegation', icon: ListTodo },
           { name: 'Employee Leave Requests & Approvals', href: '/leave', icon: Calendar },

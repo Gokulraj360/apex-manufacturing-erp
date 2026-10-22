@@ -177,6 +177,7 @@ export const CATEGORY_TO_PATHS_MAP: Record<string, string[]> = {
   'PARTS PURCHASING & SOURCING': [
     '/procurement',
     '/procurement/rfqs',
+    '/supplier-portal',
     '/supply-chain/vendors',
   ],
   'MARKETING & PROMOTIONS': [
@@ -199,6 +200,7 @@ export const CATEGORY_TO_PATHS_MAP: Record<string, string[]> = {
   ],
   'MY WORKSPACE': [
     '/my-workspace',
+    '/portals',
     '/department-payroll',
     '/task-delegation',
     '/leave',
@@ -224,13 +226,18 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     roleId: 'finance',
     roleTitle: 'Factory Accounts & Finance Lead',
     department: 'Finance & Accounts',
-    allowedCategoryTitles: ['FINANCE & ACCOUNTS DESK', 'MY WORKSPACE'],
+    allowedCategoryTitles: ['FINANCE & ACCOUNTS DESK', 'LEGAL, CONTRACTS & COMPLIANCE', 'MY WORKSPACE'],
     allowedPaths: [
       '/finance',
+      '/finance/ap-matching',
       '/finance/vendor-bills',
       '/finance/invoices',
       '/finance/tax-reports',
       '/payroll',
+      '/approvals',
+      '/legal',
+      '/my-workspace',
+      '/portals',
       '/task-delegation',
       '/leave',
     ],
@@ -279,10 +286,13 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     allowedCategoryTitles: ['PHONE QUALITY CHECKS', 'MY WORKSPACE'],
     allowedPaths: [
       '/quality',
+      '/quality/hardware-diagnostics',
       '/quality/incoming',
       '/quality/in-process',
       '/quality/final',
       '/quality/ncr',
+      '/my-workspace',
+      '/portals',
       '/department-payroll',
       '/task-delegation',
       '/leave',
@@ -344,9 +354,13 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     roleId: 'crm',
     roleTitle: 'Phone Brand & Customer Orders Lead',
     department: 'Sales & Customer Care',
-    allowedCategoryTitles: ['CUSTOMER CARE & ORDERS', 'MY WORKSPACE'],
+    allowedCategoryTitles: ['CUSTOMER CARE & ORDERS', 'LEGAL, CONTRACTS & COMPLIANCE', 'MY WORKSPACE'],
     allowedPaths: [
       '/crm',
+      '/customer-portal',
+      '/legal',
+      '/my-workspace',
+      '/portals',
       '/task-delegation',
       '/leave',
     ],
@@ -358,11 +372,17 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     roleId: 'supply_chain',
     roleTitle: 'Material Planning & Sourcing Lead',
     department: 'Supply Chain & Sourcing',
-    allowedCategoryTitles: ['SUPPLY CHAIN & SOURCING', 'MY WORKSPACE'],
+    allowedCategoryTitles: ['SUPPLY CHAIN & SOURCING', 'PARTS PURCHASING & SOURCING', 'LEGAL, CONTRACTS & COMPLIANCE', 'MY WORKSPACE'],
     allowedPaths: [
       '/supply-chain',
+      '/supplier-portal',
       '/supply-chain/mrp',
       '/supply-chain/vendors',
+      '/procurement',
+      '/procurement/rfqs',
+      '/legal',
+      '/my-workspace',
+      '/portals',
       '/task-delegation',
       '/leave',
     ],
@@ -447,11 +467,16 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     roleId: 'procurement',
     roleTitle: 'Parts Purchasing & Supplier Orders Lead',
     department: 'Purchasing & Sourcing',
-    allowedCategoryTitles: ['PARTS PURCHASING & SOURCING', 'MY WORKSPACE'],
+    allowedCategoryTitles: ['PARTS PURCHASING & SOURCING', 'SUPPLY CHAIN & SOURCING', 'LEGAL, CONTRACTS & COMPLIANCE', 'MY WORKSPACE'],
     allowedPaths: [
       '/procurement',
       '/procurement/rfqs',
+      '/supplier-portal',
+      '/supply-chain',
       '/supply-chain/vendors',
+      '/legal',
+      '/my-workspace',
+      '/portals',
       '/task-delegation',
       '/leave',
     ],
@@ -526,6 +551,9 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/system-admin',
       '/credentials',
       '/admin/role-permissions',
+      '/super-admin/rbac-matrix',
+      '/portals',
+      '/my-workspace',
       '/task-delegation',
       '/leave',
     ],
@@ -602,12 +630,20 @@ export function isPathAuthorizedForRole(targetHref: string, roleId?: string): bo
     return true;
   }
 
-  // Always permit universal employee hierarchical workflow routes: task delegation, leave, employee workspace, and persona gallery
+  // Always permit universal enterprise showcase & employee workflow routes
   if (
     cleanTarget === '/task-delegation' ||
     cleanTarget === '/leave' ||
     cleanTarget === '/my-workspace' ||
-    cleanTarget === '/portals'
+    cleanTarget === '/portals' ||
+    cleanTarget === '/supplier-portal' ||
+    cleanTarget === '/customer-portal' ||
+    cleanTarget === '/finance/ap-matching' ||
+    cleanTarget === '/quality/hardware-diagnostics' ||
+    cleanTarget === '/legal' ||
+    cleanTarget === '/approvals' ||
+    cleanTarget === '/super-admin/rbac-matrix' ||
+    cleanTarget === '/top-management'
   ) {
     return true;
   }
