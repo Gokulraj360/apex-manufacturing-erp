@@ -1,5 +1,10 @@
 # Apex Manufacturing ERP - Production-Grade Enterprise Platform
 
+[![Live Demo](https://img.shields.io/badge/Vercel-Live_Production_ERP-blue?style=for-the-badge&logo=vercel)](https://apex-manufacturing-erp.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/Gokulraj360/apex-manufacturing-erp)
+
+**Live Production Deployment:** [https://apex-manufacturing-erp.vercel.app](https://apex-manufacturing-erp.vercel.app)
+
 Apex Manufacturing ERP is a full-stack, enterprise-grade Manufacturing Execution System (MES) and Enterprise Resource Planning (ERP) platform designed for discrete and process manufacturing operations.
 
 ---
