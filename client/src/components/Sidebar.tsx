@@ -294,7 +294,6 @@ export function Sidebar() {
         defaultOpen: true,
         items: [
           { name: 'Employee Self-Service (ESS) Personal Desk', href: '/my-workspace', icon: UserCheck },
-          { name: 'Multi-Persona Portal Gallery', href: '/portals', icon: Users },
           { name: 'Department Worker Wages & Attendance', href: '/department-payroll', icon: Users },
           { name: 'Task Assignments & Team Work', href: '/task-delegation', icon: ListTodo },
           { name: 'Employee Leave Requests & Approvals', href: '/leave', icon: Calendar },

@@ -202,7 +202,6 @@ export const CATEGORY_TO_PATHS_MAP: Record<string, string[]> = {
   ],
   'MY WORKSPACE': [
     '/my-workspace',
-    '/portals',
     '/department-payroll',
     '/task-delegation',
     '/leave',
@@ -239,7 +238,6 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/approvals',
       '/legal',
       '/my-workspace',
-      '/portals',
       '/task-delegation',
       '/leave',
     ],
@@ -294,7 +292,6 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/quality/final',
       '/quality/ncr',
       '/my-workspace',
-      '/portals',
       '/department-payroll',
       '/task-delegation',
       '/leave',
@@ -362,7 +359,6 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/customer-portal',
       '/legal',
       '/my-workspace',
-      '/portals',
       '/task-delegation',
       '/leave',
     ],
@@ -384,7 +380,6 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/procurement/rfqs',
       '/legal',
       '/my-workspace',
-      '/portals',
       '/task-delegation',
       '/leave',
     ],
@@ -478,7 +473,6 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/supply-chain/vendors',
       '/legal',
       '/my-workspace',
-      '/portals',
       '/task-delegation',
       '/leave',
     ],
@@ -555,7 +549,6 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/credentials',
       '/admin/role-permissions',
       '/super-admin/rbac-matrix',
-      '/portals',
       '/my-workspace',
       '/task-delegation',
       '/leave',
@@ -638,7 +631,6 @@ export function isPathAuthorizedForRole(targetHref: string, roleId?: string): bo
     cleanTarget === '/task-delegation' ||
     cleanTarget === '/leave' ||
     cleanTarget === '/my-workspace' ||
-    cleanTarget === '/portals' ||
     cleanTarget === '/supplier-portal' ||
     cleanTarget === '/customer-portal' ||
     cleanTarget === '/finance/ap-matching' ||

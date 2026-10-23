@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
 import {
   Users,
   Shield,
@@ -242,6 +243,7 @@ const ENTERPRISE_PERSONAS: EnterprisePersona[] = [
 ];
 
 export default function PortalsGalleryPage() {
+  const { session } = useAuth();
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
   const [searchTerm, setSearchTerm] = useState('');
   const [simulatedRole, setSimulatedRole] = useState<EnterprisePersona | null>(null);
@@ -256,6 +258,29 @@ export default function PortalsGalleryPage() {
     return matchesCat && matchesSearch;
   });
 
+  // Strict Super Admin Access Guard
+  if (session && session.roleId !== 'super_admin') {
+    return (
+      <div className="max-w-xl mx-auto mt-12 p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center">
+        <div className="w-14 h-14 rounded-2xl bg-red-50 dark:bg-red-950/50 border border-red-100 dark:border-red-900/50 text-red-600 dark:text-red-400 flex items-center justify-center mx-auto mb-4">
+          <Shield className="w-7 h-7" />
+        </div>
+        <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+          Executive Privilege Required
+        </h2>
+        <p className="text-xs text-slate-600 dark:text-slate-400 mb-4 max-w-md mx-auto leading-relaxed">
+          The Multi-Persona Portal Gallery and cross-role cockpit launchers are restricted exclusively to <span className="font-semibold text-slate-800 dark:text-slate-200">Top Management (Owner / MD)</span>.
+        </p>
+        <Link
+          href="/top-management"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm transition-all"
+        >
+          Return to Authorized Station
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6 p-6">
       {/* Top Banner */}
@@ -268,6 +293,10 @@ export default function PortalsGalleryPage() {
             <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
               <Sparkles className="w-3.5 h-3.5 mr-1" />
               18 Enterprise Roles
+            </span>
+            <span className="inline-flex items-center rounded-full bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 text-xs font-semibold text-amber-600 dark:text-amber-400">
+              <Crown className="w-3.5 h-3.5 mr-1" />
+              Top Admin Exclusive
             </span>
           </div>
           <p className="text-sm text-muted-foreground mt-1">
