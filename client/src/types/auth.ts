@@ -25,6 +25,7 @@ export interface UserSession {
   department: string;
   dashboardRoute: string;
   loginTimestamp: string;
+  originalAdmin?: boolean;
 }
 
 export const ALL_ROLES: RoleDefinition[] = [

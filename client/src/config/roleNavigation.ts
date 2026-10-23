@@ -636,9 +636,7 @@ export function isPathAuthorizedForRole(targetHref: string, roleId?: string): bo
     cleanTarget === '/finance/ap-matching' ||
     cleanTarget === '/quality/hardware-diagnostics' ||
     cleanTarget === '/legal' ||
-    cleanTarget === '/approvals' ||
-    cleanTarget === '/super-admin/rbac-matrix' ||
-    cleanTarget === '/top-management'
+    cleanTarget === '/approvals'
   ) {
     return true;
   }

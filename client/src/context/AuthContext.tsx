@@ -33,7 +33,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const parsed: UserSession = JSON.parse(stored);
         const matchedRole = ALL_ROLES.find((r) => r.id === parsed.roleId);
         if (matchedRole) {
-          setSession(parsed);
+          setSession({
+            ...parsed,
+            originalAdmin: parsed.originalAdmin ?? (parsed.roleId === 'super_admin'),
+          });
         } else {
           // Fallback to default
           setSession({
@@ -43,6 +46,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             department: DEFAULT_SUPER_ADMIN_ROLE.department,
             dashboardRoute: DEFAULT_SUPER_ADMIN_ROLE.dashboardRoute,
             loginTimestamp: new Date().toISOString(),
+            originalAdmin: true,
           });
         }
       } else {
@@ -54,6 +58,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           department: DEFAULT_SUPER_ADMIN_ROLE.department,
           dashboardRoute: DEFAULT_SUPER_ADMIN_ROLE.dashboardRoute,
           loginTimestamp: new Date().toISOString(),
+          originalAdmin: true,
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(initialSession));
         setSession(initialSession);
@@ -109,6 +114,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       department: targetRole.department,
       dashboardRoute: `/dashboard/${targetRole.id}`,
       loginTimestamp: new Date().toISOString(),
+      originalAdmin: targetRole.id === 'super_admin',
     };
 
     try {
@@ -132,6 +138,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const switchRole = (newRoleId: string) => {
+    // Multi-portal switching is strictly restricted to Top Admin!
+    if (!session?.originalAdmin && session?.roleId !== 'super_admin') {
+      console.warn('Unauthorized multi-portal switch attempt blocked: only Top Admin can switch portals.');
+      return;
+    }
+
     const targetRole = ALL_ROLES.find((r) => r.id === newRoleId);
     if (!targetRole) return;
 
@@ -142,6 +154,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       department: targetRole.department,
       dashboardRoute: `/dashboard/${targetRole.id}`,
       loginTimestamp: new Date().toISOString(),
+      originalAdmin: true,
     };
 
     try {

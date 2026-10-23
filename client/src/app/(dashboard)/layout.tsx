@@ -2,7 +2,7 @@
 
 import React, { useMemo } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Sun, Moon, ShieldAlert, ArrowLeft, Lock } from 'lucide-react';
+import { Sun, Moon, ShieldAlert, ArrowLeft, Lock, Crown, RotateCcw } from 'lucide-react';
 import { Sidebar } from '@/components/Sidebar';
 import { GlobalWorkflowOrchestrator } from '@/components/GlobalWorkflowOrchestrator';
 import { useAuth } from '@/context/AuthContext';
@@ -214,30 +214,58 @@ export default function DashboardLayout({
             {/* Universal Cross-Role Workflow Orchestrator (Available on Every Page) */}
             <GlobalWorkflowOrchestrator />
 
-            {/* Quick 21-Role Switcher for testing and role navigation scoping */}
-            <div className="hidden md:flex items-center gap-1.5 px-2 py-1 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
-              <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500">
-                Role:
-              </span>
-              <select
-                value={session?.roleId || 'super_admin'}
-                onChange={(e) => {
-                  const newId = e.target.value;
-                  switchRole(newId);
-                  const roleObj = ALL_ROLES.find((r) => r.id === newId);
-                  if (roleObj?.dashboardRoute) {
-                    router.push(roleObj.dashboardRoute);
-                  }
-                }}
-                className="text-xs font-semibold rounded-lg bg-transparent text-slate-800 dark:text-slate-200 focus:outline-none cursor-pointer max-w-[170px] truncate"
-              >
-                {ALL_ROLES.map((r) => (
-                  <option key={r.id} value={r.id} className="bg-white dark:bg-slate-900">
-                    {r.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+            {/* Multi-Portal Access Switcher: Strictly Reserved for Top Admin */}
+            {(session?.roleId === 'super_admin' || session?.originalAdmin) ? (
+              <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-amber-500/10 dark:bg-amber-950/30 border border-amber-500/30">
+                <Crown className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
+                <span className="text-[10px] uppercase font-bold text-amber-700 dark:text-amber-400">
+                  Admin Portal:
+                </span>
+                <select
+                  value={session?.roleId || 'super_admin'}
+                  onChange={(e) => {
+                    const newId = e.target.value;
+                    switchRole(newId);
+                    const roleObj = ALL_ROLES.find((r) => r.id === newId);
+                    if (roleObj?.dashboardRoute) {
+                      router.push(roleObj.dashboardRoute);
+                    }
+                  }}
+                  className="text-xs font-semibold rounded-lg bg-transparent text-slate-800 dark:text-slate-200 focus:outline-none cursor-pointer max-w-[170px] truncate"
+                >
+                  {ALL_ROLES.map((r) => (
+                    <option key={r.id} value={r.id} className="bg-white dark:bg-slate-900">
+                      {r.name}
+                    </option>
+                  ))}
+                </select>
+
+                {session?.roleId !== 'super_admin' && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      switchRole('super_admin');
+                      router.push('/top-management');
+                    }}
+                    className="ml-1 inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] font-bold bg-amber-600 hover:bg-amber-500 text-white shadow-xs transition-all"
+                    title="Exit simulation and return to Top Management Cockpit"
+                  >
+                    <RotateCcw className="w-2.5 h-2.5" />
+                    <span>Exit Sim</span>
+                  </button>
+                )}
+              </div>
+            ) : (
+              <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
+                <Lock className="w-3 h-3 text-slate-400 dark:text-slate-500 shrink-0" />
+                <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500">
+                  Station:
+                </span>
+                <span className="text-xs font-semibold text-slate-700 dark:text-slate-300 max-w-[150px] truncate">
+                  {session?.roleName || 'Station Operator'}
+                </span>
+              </div>
+            )}
             {/* Light / Dark Mode Toggle Button */}
             <button
               type="button"

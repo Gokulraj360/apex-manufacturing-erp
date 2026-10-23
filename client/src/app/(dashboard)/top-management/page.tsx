@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
 import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 import { workflowStore, WorkflowItem } from '@/lib/workflowStore';
 import {
@@ -127,8 +129,32 @@ const CAPEX_PROJECTS: CapexProject[] = [
 ];
 
 export default function TopManagementPage() {
+  const { session } = useAuth();
   const [activeTab, setActiveTab] = useState<'CCC' | 'WATERFALL' | 'DUPONT' | 'CAPEX' | 'APPROVALS'>('CCC');
   const [executiveApprovals, setExecutiveApprovals] = useState<WorkflowItem[]>([]);
+
+  // Strict Top Admin Access Guard
+  if (session && session.roleId !== 'super_admin' && !session.originalAdmin) {
+    return (
+      <div className="max-w-xl mx-auto mt-12 p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center">
+        <div className="w-14 h-14 rounded-2xl bg-red-50 dark:bg-red-950/50 border border-red-100 dark:border-red-900/50 text-red-600 dark:text-red-400 flex items-center justify-center mx-auto mb-4">
+          <ShieldCheck className="w-7 h-7" />
+        </div>
+        <h2 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+          Executive Privilege Required
+        </h2>
+        <p className="text-xs text-slate-600 dark:text-slate-400 mb-4 max-w-md mx-auto leading-relaxed">
+          The Executive Boardroom C-Suite Cockpit is restricted exclusively to <span className="font-semibold text-slate-800 dark:text-slate-200">Top Management (Owner / MD)</span>.
+        </p>
+        <Link
+          href={session.dashboardRoute || '/my-workspace'}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-sm transition-all"
+        >
+          Return to My Workspace
+        </Link>
+      </div>
+    );
+  }
 
   useEffect(() => {
     const syncApprovals = () => {
