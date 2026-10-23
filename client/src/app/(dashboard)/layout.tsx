@@ -4,6 +4,7 @@ import React, { useMemo } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { Sun, Moon, ShieldAlert, ArrowLeft, Lock } from 'lucide-react';
 import { Sidebar } from '@/components/Sidebar';
+import { GlobalWorkflowOrchestrator } from '@/components/GlobalWorkflowOrchestrator';
 import { useAuth } from '@/context/AuthContext';
 import { useTheme } from '@/context/ThemeContext';
 import { ALL_ROLES } from '@/types/auth';
@@ -208,8 +209,11 @@ export default function DashboardLayout({
             </span>
           </div>
 
-          {/* Header Right: Role Switcher, Theme Toggle & User Profile */}
-          <div className="flex items-center gap-3 sm:gap-4">
+          {/* Header Right: Workflow Orchestrator, Role Switcher, Theme Toggle & User Profile */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Universal Cross-Role Workflow Orchestrator (Available on Every Page) */}
+            <GlobalWorkflowOrchestrator />
+
             {/* Quick 21-Role Switcher for testing and role navigation scoping */}
             <div className="hidden md:flex items-center gap-1.5 px-2 py-1 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
               <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500">

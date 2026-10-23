@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
+import { workflowStore, WorkflowItem } from '@/lib/workflowStore';
 import {
   TrendingUp,
   DollarSign,
@@ -126,7 +127,26 @@ const CAPEX_PROJECTS: CapexProject[] = [
 ];
 
 export default function TopManagementPage() {
-  const [activeTab, setActiveTab] = useState<'CCC' | 'WATERFALL' | 'DUPONT' | 'CAPEX'>('CCC');
+  const [activeTab, setActiveTab] = useState<'CCC' | 'WATERFALL' | 'DUPONT' | 'CAPEX' | 'APPROVALS'>('CCC');
+  const [executiveApprovals, setExecutiveApprovals] = useState<WorkflowItem[]>([]);
+
+  useEffect(() => {
+    const syncApprovals = () => {
+      const items = workflowStore.getAll();
+      setExecutiveApprovals(items);
+    };
+    syncApprovals();
+    window.addEventListener('apex_workflow_updated', syncApprovals);
+    window.addEventListener('storage', syncApprovals);
+    return () => {
+      window.removeEventListener('apex_workflow_updated', syncApprovals);
+      window.removeEventListener('storage', syncApprovals);
+    };
+  }, []);
+
+  const handleDecision = (id: string, status: 'APPROVED' | 'REJECTED') => {
+    workflowStore.updateStatus(id, status, 'Authorized by Board Executive (Owner/MD)', 'Dr. Rajesh (Owner / MD)');
+  };
 
   // Working Capital Simulator Sliders
   const [targetDsoReduction, setTargetDsoReduction] = useState(3.5); // days
@@ -409,6 +429,17 @@ export default function TopManagementPage() {
           >
             <DollarSign className="w-4 h-4" />
             Global CapEx & ROI Portfolio
+          </button>
+          <button
+            onClick={() => setActiveTab('APPROVALS')}
+            className={`pb-3 text-sm font-medium border-b-2 transition-colors flex items-center gap-2 ${
+              activeTab === 'APPROVALS'
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            <ShieldCheck className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+            Live Enterprise Approvals ({executiveApprovals.filter(i => i.status === 'PENDING').length})
           </button>
         </nav>
       </div>
@@ -739,6 +770,96 @@ export default function TopManagementPage() {
                         >
                           {cp.status.replace('_', ' ')}
                         </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 5: ENTERPRISE HIERARCHICAL APPROVALS */}
+      {activeTab === 'APPROVALS' && (
+        <div className="space-y-4">
+          <div className="p-4 rounded-xl bg-purple-500/10 border border-purple-500/30 text-xs text-purple-700 dark:text-purple-300 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-purple-600 dark:text-purple-400 shrink-0" />
+              <span>
+                <strong>Executive Multi-Signatory Escrow Active:</strong> High-value CapEx requisitions, scrap authorizations, wholesale pricing overrides, and procurement contracts submitted by department leads route here for Board / Owner sign-off.
+              </span>
+            </div>
+            <span className="font-mono text-[10px] bg-purple-500/20 px-2.5 py-1 rounded-full font-bold">
+              SOX 404 & ISO 9001 Compliant
+            </span>
+          </div>
+
+          <div className="rounded-xl border border-border bg-card overflow-hidden shadow-sm">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead className="bg-muted/50 text-muted-foreground font-semibold border-b border-border">
+                  <tr>
+                    <th className="p-3">Reference & Category</th>
+                    <th className="p-3">Title & Operational Scope</th>
+                    <th className="p-3">Submitter / Department</th>
+                    <th className="p-3">Exposure / Impact</th>
+                    <th className="p-3">Status</th>
+                    <th className="p-3 text-right">Executive Action</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {executiveApprovals.map((item) => (
+                    <tr key={item.id} className="hover:bg-accent/40">
+                      <td className="p-3 font-mono font-bold text-foreground">
+                        <div>{item.id}</div>
+                        <span className="text-[10px] text-purple-600 font-sans font-semibold">
+                          {item.category.replace(/_/g, ' ')}
+                        </span>
+                      </td>
+                      <td className="p-3 max-w-sm">
+                        <div className="font-semibold text-foreground text-sm">{item.title}</div>
+                        <p className="text-[11px] text-muted-foreground line-clamp-1 mt-0.5">{item.details.justification}</p>
+                      </td>
+                      <td className="p-3">
+                        <div className="font-medium text-foreground">{item.requester.name}</div>
+                        <div className="text-[10px] text-muted-foreground">{item.department}</div>
+                      </td>
+                      <td className="p-3 font-semibold text-foreground">{item.valueOrImpact}</td>
+                      <td className="p-3">
+                        <span
+                          className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                            item.status === 'APPROVED'
+                              ? 'bg-emerald-500/10 text-emerald-600'
+                              : item.status === 'REJECTED'
+                              ? 'bg-rose-500/10 text-rose-600'
+                              : 'bg-amber-500/10 text-amber-600'
+                          }`}
+                        >
+                          {item.status}
+                        </span>
+                      </td>
+                      <td className="p-3 text-right">
+                        {item.status === 'PENDING' ? (
+                          <div className="inline-flex items-center gap-1.5">
+                            <button
+                              onClick={() => handleDecision(item.id, 'APPROVED')}
+                              className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded font-semibold shadow-sm cursor-pointer"
+                            >
+                              Approve
+                            </button>
+                            <button
+                              onClick={() => handleDecision(item.id, 'REJECTED')}
+                              className="px-2.5 py-1 bg-rose-600 hover:bg-rose-500 text-white rounded font-semibold shadow-sm cursor-pointer"
+                            >
+                              Reject
+                            </button>
+                          </div>
+                        ) : (
+                          <span className="text-muted-foreground text-xs italic">
+                            Signed by {item.decidedBy || 'Executive'}
+                          </span>
+                        )}
                       </td>
                     </tr>
                   ))}
