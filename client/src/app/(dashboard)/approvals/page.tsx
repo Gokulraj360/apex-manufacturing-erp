@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   CheckCircle2,
   XCircle,
@@ -27,6 +27,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
+import { workflowStore, WorkflowItem } from '@/lib/workflowStore';
 
 interface ApprovalItem {
   id: string;
@@ -167,6 +168,23 @@ export default function ApprovalsPage() {
   const [filterPriority, setFilterPriority] = useState<string>('ALL');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Sync with reactive cross-role workflow store
+  useEffect(() => {
+    const syncItems = () => {
+      const all = workflowStore.getAll();
+      if (all && all.length > 0) {
+        setItems(all as any);
+      }
+    };
+    syncItems();
+    window.addEventListener('apex_workflow_updated', syncItems);
+    window.addEventListener('storage', syncItems);
+    return () => {
+      window.removeEventListener('apex_workflow_updated', syncItems);
+      window.removeEventListener('storage', syncItems);
+    };
+  }, []);
+
   // Decision Modal State
   const [modalItem, setModalItem] = useState<ApprovalItem | null>(null);
   const [decisionType, setDecisionType] = useState<'APPROVE' | 'REJECT' | 'REQUEST_INFO' | null>(null);
@@ -190,12 +208,17 @@ export default function ApprovalsPage() {
 
   const executeDecision = () => {
     if (!modalItem || !decisionType) return;
+    const newStatus = decisionType === 'APPROVE' ? 'APPROVED' : 'REJECTED';
+    
+    // Update central workflow store (updates employee's view and top management)
+    workflowStore.updateStatus(modalItem.id, newStatus, decisionNotes, 'Sarah Jenkins (VP of Operations)');
+
     setItems((prev) =>
       prev.map((item) => {
         if (item.id === modalItem.id) {
           return {
             ...item,
-            status: decisionType === 'APPROVE' ? 'APPROVED' : 'REJECTED',
+            status: newStatus,
           };
         }
         return item;
@@ -207,6 +230,9 @@ export default function ApprovalsPage() {
   };
 
   const executeBatchApprove = () => {
+    selectedIds.forEach((id) => {
+      workflowStore.updateStatus(id, 'APPROVED', 'Batch executive approval granted', 'Sarah Jenkins (VP of Operations)');
+    });
     setItems((prev) =>
       prev.map((item) => {
         if (selectedIds.includes(item.id)) {
@@ -216,6 +242,156 @@ export default function ApprovalsPage() {
       })
     );
     setSelectedIds([]);
+  };
+
+  const handleExportItemDossier = (item: ApprovalItem) => {
+    const isTechnical = item.category === 'ECN_ECO' || item.category === 'CAPEX' || item.category === 'QUALITY_SCRAP';
+
+    generateAndDownloadWordDoc(`Apex_Approval_Dossier_${item.id}`, {
+      title: `OFFICIAL EXECUTIVE APPROVAL & ENGINEERING AUTHORIZATION DOSSIER: ${item.id}`,
+      documentRef: `EXEC-AUTH-${item.id}`,
+      classification: item.priority === 'CRITICAL' ? 'STRICTLY CONFIDENTIAL // BOARD & AUDIT REVIEW' : 'CORPORATE OPERATIONAL RECORD',
+      department: item.department,
+      author: `${item.requester.name} (${item.requester.role})`,
+      summary: `Official certified approval dossier for ${item.title}. Submitted on ${item.submittedAt} with financial / operational exposure of ${item.valueOrImpact}. Justification: ${item.details.justification}`,
+      sections: [
+        {
+          heading: '1. Requisition Metadata & Corporate Allocation',
+          table: {
+            headers: ['Attribute', 'Operational Details', 'Financial / Audit Code', 'Risk Tier'],
+            rows: [
+              ['Item Reference', item.id, item.details.glAccount || 'GL-77200 General CapEx', item.priority],
+              ['Requesting Party', `${item.requester.name} (${item.requester.role})`, item.department, 'Level 2 Authorization'],
+              ['Financial Exposure', item.valueOrImpact, 'Q4 Budget Allocation', 'Pre-Audited'],
+              ['Target Plant System', item.details.affectedSystem, 'Cleanroom Bay 4', 'Active Service'],
+            ],
+          },
+          callout: {
+            title: 'Executive Scope & Governance Mandate',
+            text: item.details.justification,
+            type: item.priority === 'CRITICAL' ? 'warning' : 'info',
+          },
+        },
+        ...(isTechnical
+          ? [
+              {
+                heading: '2. Engineering Drawing, CAD Blueprint & Metrology Tolerance Spec',
+                subheading: 'ASME Y14.5M Geometric Dimensioning & CMM Inspection Coordinates',
+                cadBlueprint: {
+                  drawingNumber: `DWG-APEX-${item.id}`,
+                  revision: 'C',
+                  partName: item.title,
+                  material: 'Aerospace Grade 6061-T6 Aluminum Anodized / FR-4 TG170',
+                  surfaceFinish: 'Ra 0.4 µm (Precision Milled)',
+                  units: 'MILLIMETERS [mm]' as const,
+                  scale: '1:1',
+                  gdtCallouts: [
+                    {
+                      symbol: '⌖',
+                      tolerance: '⌀ 0.05 Ⓜ',
+                      datumRefs: 'A | B | C',
+                      description: 'Mounting bore hole position with Maximum Material Condition (MMC)',
+                    },
+                    {
+                      symbol: '⌓',
+                      tolerance: '0.03 mm',
+                      datumRefs: 'A | B',
+                      description: 'Thermal contact surface flatness and heat transfer profile',
+                    },
+                    {
+                      symbol: '⟂',
+                      tolerance: '0.02 mm',
+                      datumRefs: 'A',
+                      description: 'Fin extrusion perpendicularity to baseplate datum',
+                    },
+                  ],
+                  dimensions: [
+                    {
+                      featureId: 'FEAT-01',
+                      featureDescription: 'Overall Enclosure Length Span',
+                      nominalMm: 146.50,
+                      toleranceMm: '±0.05 mm',
+                      uslMm: 146.55,
+                      lslMm: 146.45,
+                      measuredMm: 146.51,
+                      deviationMm: '+0.01',
+                      inspectionMethod: 'Zeiss Prismo Coordinate Metrology (CMM)',
+                      status: 'CONFORMING' as const,
+                    },
+                    {
+                      featureId: 'FEAT-02',
+                      featureDescription: 'Transverse Width Profile',
+                      nominalMm: 72.80,
+                      toleranceMm: '±0.03 mm',
+                      uslMm: 72.83,
+                      lslMm: 72.77,
+                      measuredMm: 72.80,
+                      deviationMm: '0.00',
+                      inspectionMethod: 'Zeiss Prismo Coordinate Metrology (CMM)',
+                      status: 'CONFORMING' as const,
+                    },
+                    {
+                      featureId: 'FEAT-03',
+                      featureDescription: 'Baseplate Wall Thickness (Section A-A)',
+                      nominalMm: 8.45,
+                      toleranceMm: '±0.02 mm',
+                      uslMm: 8.47,
+                      lslMm: 8.43,
+                      measuredMm: 8.46,
+                      deviationMm: '+0.01',
+                      inspectionMethod: 'Ultrasonic Pulse-Echo Metrology Gage',
+                      status: 'CONFORMING' as const,
+                    },
+                    {
+                      featureId: 'FEAT-04',
+                      featureDescription: '4x Precision Mounting Bore Diameter',
+                      nominalMm: 4.20,
+                      toleranceMm: '+0.012/-0.000 mm',
+                      uslMm: 4.212,
+                      lslMm: 4.200,
+                      measuredMm: 4.205,
+                      deviationMm: '+0.005',
+                      inspectionMethod: 'Mitutoyo Holtest Internal Micrometer',
+                      status: 'CRITICAL_PASS' as const,
+                    },
+                  ],
+                },
+              },
+            ]
+          : [
+              {
+                heading: '2. Personnel & Workforce Attendance Coverage Roster',
+                table: {
+                  headers: ['Shift Roster Code', 'Station Assignment', 'Relief Specialist', 'MES Clearance'],
+                  rows: [
+                    ['Shift A (06:00 - 14:30)', 'Cleanroom SMT Bay 3', 'Aaron Miller (Cross-Trained)', 'Level 1 Active'],
+                    ['Shift B (14:00 - 22:30)', 'Testing & Diagnostics', 'Marcus Vance (Secondary Lead)', 'Level 2 Active'],
+                  ],
+                },
+              },
+            ]),
+        {
+          heading: '3. Compliance & Governance Verification Sign-off',
+          content: [
+            'Authorization complies with the Corporate Delegation of Authority Matrix (DoA Rev 5.1) and Sarbanes-Oxley 404 audit separation mandates.',
+          ],
+        },
+      ],
+      signatories: [
+        {
+          name: 'Sarah Jenkins',
+          role: 'VP Operations & Shift Director',
+          organization: 'Apex Manufacturing Technologies Inc.',
+          signatureDate: '2026-10-22',
+        },
+        {
+          name: 'Alexander Vance',
+          role: 'Plant General Manager & Controller',
+          organization: 'Apex Manufacturing Technologies Inc.',
+          signatureDate: '2026-10-22',
+        },
+      ],
+    });
   };
 
   const handleExportAuditTrailDoc = () => {
@@ -641,32 +817,41 @@ export default function ApprovalsPage() {
                           )}
                         </td>
                         <td className="p-3 text-right">
-                          {isPending ? (
-                            <div className="inline-flex items-center gap-1.5">
-                              <button
-                                onClick={() => {
-                                  setModalItem(item);
-                                  setDecisionType('APPROVE');
-                                }}
-                                className="p-1.5 rounded-md bg-emerald-600 text-white hover:bg-emerald-500 transition-colors shadow-sm"
-                                title="Approve Request"
-                              >
-                                <CheckCircle2 className="w-4 h-4" />
-                              </button>
-                              <button
-                                onClick={() => {
-                                  setModalItem(item);
-                                  setDecisionType('REJECT');
-                                }}
-                                className="p-1.5 rounded-md bg-rose-600 text-white hover:bg-rose-500 transition-colors shadow-sm"
-                                title="Reject Request"
-                              >
-                                <XCircle className="w-4 h-4" />
-                              </button>
-                            </div>
-                          ) : (
-                            <span className="text-muted-foreground text-xs italic">Closed</span>
-                          )}
+                          <div className="inline-flex items-center gap-1.5">
+                            <button
+                              onClick={() => handleExportItemDossier(item)}
+                              className="p-1.5 rounded-md bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition-colors shadow-sm cursor-pointer"
+                              title="Download Official Dossier with CAD & Spec Sheet (.doc)"
+                            >
+                              <Download className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                            </button>
+                            {isPending ? (
+                              <>
+                                <button
+                                  onClick={() => {
+                                    setModalItem(item);
+                                    setDecisionType('APPROVE');
+                                  }}
+                                  className="p-1.5 rounded-md bg-emerald-600 text-white hover:bg-emerald-500 transition-colors shadow-sm cursor-pointer"
+                                  title="Approve Request"
+                                >
+                                  <CheckCircle2 className="w-4 h-4" />
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    setModalItem(item);
+                                    setDecisionType('REJECT');
+                                  }}
+                                  className="p-1.5 rounded-md bg-rose-600 text-white hover:bg-rose-500 transition-colors shadow-sm cursor-pointer"
+                                  title="Reject Request"
+                                >
+                                  <XCircle className="w-4 h-4" />
+                                </button>
+                              </>
+                            ) : (
+                              <span className="text-muted-foreground text-xs italic ml-1">Closed</span>
+                            )}
+                          </div>
                         </td>
                       </tr>
                     );

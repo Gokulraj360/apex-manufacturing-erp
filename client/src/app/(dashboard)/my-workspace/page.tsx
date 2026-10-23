@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
+import { workflowStore, WorkflowItem } from '@/lib/workflowStore';
 import {
   User,
   Calendar,
@@ -124,6 +125,41 @@ export default function MyWorkspacePage() {
   const [activeTab, setActiveTab] = useState<'SCHEDULE' | 'LEAVE' | 'EXPENSES' | 'PAYSLIP' | 'ASSETS'>('SCHEDULE');
   const [leaves, setLeaves] = useState<LeaveRecord[]>(INITIAL_LEAVES);
   const [expenses, setExpenses] = useState<ExpenseClaim[]>(INITIAL_EXPENSES);
+  const [routingNotification, setRoutingNotification] = useState<string | null>(null);
+
+  // Sync with cross-role workflow store
+  useEffect(() => {
+    const syncWorkflow = () => {
+      const items = workflowStore.getAll();
+      const hrLeaves = items.filter((it) => it.category === 'HR_LEAVE' && it.requester.name === 'Alex Jordan');
+      if (hrLeaves.length > 0) {
+        const mappedLeaves: LeaveRecord[] = hrLeaves.map((it) => ({
+          id: it.id,
+          type: (it.details.metadata?.leaveType as any) || 'ANNUAL_PTO',
+          startDate: it.details.metadata?.startDate || '2026-11-01',
+          endDate: it.details.metadata?.endDate || '2026-11-03',
+          days: it.details.metadata?.days || 2,
+          reason: it.details.justification,
+          status: it.status === 'APPROVED' ? 'APPROVED' : it.status === 'REJECTED' ? 'REJECTED' : 'PENDING',
+        }));
+        
+        // Merge with existing seeded ones without duplicates
+        setLeaves((prev) => {
+          const ids = new Set(mappedLeaves.map((m) => m.id));
+          const rest = prev.filter((p) => !ids.has(p.id));
+          return [...mappedLeaves, ...rest];
+        });
+      }
+    };
+
+    syncWorkflow();
+    window.addEventListener('apex_workflow_updated', syncWorkflow);
+    window.addEventListener('storage', syncWorkflow);
+    return () => {
+      window.removeEventListener('apex_workflow_updated', syncWorkflow);
+      window.removeEventListener('storage', syncWorkflow);
+    };
+  }, []);
 
   // Leave Modal State
   const [isLeaveModalOpen, setIsLeaveModalOpen] = useState(false);
@@ -141,8 +177,9 @@ export default function MyWorkspacePage() {
     e.preventDefault();
     if (!leaveStart || !leaveEnd || !leaveReason) return;
 
+    const reqId = `LV-2026-${Math.floor(100 + Math.random() * 900)}`;
     const newReq: LeaveRecord = {
-      id: `LV-2026-${Math.floor(100 + Math.random() * 900)}`,
+      id: reqId,
       type: leaveType,
       startDate: leaveStart,
       endDate: leaveEnd,
@@ -151,9 +188,72 @@ export default function MyWorkspacePage() {
       status: 'PENDING',
     };
 
+    // Dispatch directly to Cross-Role Workflow Store
+    workflowStore.createRequest({
+      id: reqId,
+      category: 'HR_LEAVE',
+      title: `${leaveType.replace('_', ' ')}: Alex Jordan (${leaveStart} to ${leaveEnd})`,
+      department: 'Cleanroom Assembly Shift A',
+      targetRole: 'production_supervisor',
+      requester: {
+        name: 'Alex Jordan',
+        role: 'Phone Assembly Operator',
+        roleId: 'operator',
+        avatar: 'AJ',
+        email: 'alex.jordan@apex-mfg.internal',
+      },
+      valueOrImpact: '16 Standard Hours (Shift Cover Requested)',
+      deadlineHoursRemaining: 24,
+      priority: 'NORMAL',
+      details: {
+        justification: leaveReason,
+        affectedSystem: 'Cleanroom Bay 3 (SMT Lines)',
+        metadata: {
+          leaveType,
+          startDate: leaveStart,
+          endDate: leaveEnd,
+          days: 2,
+        },
+      },
+    });
+
     setLeaves([newReq, ...leaves]);
     setIsLeaveModalOpen(false);
     setLeaveReason('');
+    setRoutingNotification(`Leave request ${reqId} successfully routed to Supervisor Sarah Jenkins and Management Approvals Inbox.`);
+    setTimeout(() => setRoutingNotification(null), 5000);
+  };
+
+  const handleApplyOvertime = () => {
+    const otReqId = `OT-2026-${Math.floor(100 + Math.random() * 900)}`;
+    workflowStore.createRequest({
+      id: otReqId,
+      category: 'HR_OVERTIME',
+      title: `Overtime Authorization: Alex Jordan (${otHours} Hours)`,
+      department: 'Cleanroom Assembly Shift A',
+      targetRole: 'production_supervisor',
+      requester: {
+        name: 'Alex Jordan',
+        role: 'Phone Assembly Operator',
+        roleId: 'operator',
+        avatar: 'AJ',
+      },
+      valueOrImpact: `$${(parseFloat(otHours || '0') * 39).toFixed(2)} USD (1.5x Multiplier)`,
+      deadlineHoursRemaining: 12,
+      priority: 'HIGH',
+      details: {
+        justification: otReason,
+        affectedSystem: 'Cleanroom SMT Bay 3',
+        glAccount: 'GL-52100 (Direct Labor Overtime Expense)',
+        metadata: {
+          hours: otHours,
+        },
+      },
+    });
+
+    setIsOtModalOpen(false);
+    setRoutingNotification(`Overtime request ${otReqId} (${otHours} hrs) dispatched to Supervisor for sign-off.`);
+    setTimeout(() => setRoutingNotification(null), 5000);
   };
 
   const handleDownloadPayslipDoc = () => {
@@ -255,8 +355,212 @@ export default function MyWorkspacePage() {
     });
   };
 
+  const handleDownloadCalibrationDoc = (asset: IssuedAsset) => {
+    generateAndDownloadWordDoc(`Apex_Metrology_Calibration_Certificate_${asset.id}`, {
+      title: 'CERTIFICATE OF CALIBRATION & METROLOGY TOLERANCE SPECIFICATION',
+      documentRef: `CERT-MET-2026-${asset.id}`,
+      classification: 'QUALITY CRITICAL RECORD // NIST TRACEABLE CALIBRATION',
+      department: 'Central Metrology Laboratory & Quality Standards',
+      author: 'Marcus Vance, Lead Calibration Specialist (ASQ CCT)',
+      summary: `Official certified calibration protocol, dimensional tolerance verification, and precision CAD schematic for ${asset.name} (Serial: ${asset.serialNumber}) assigned to cleanroom operator Alex Jordan. Validated pursuant to ISO/IEC 17025:2017, ANSI/NCSL Z540-1, and ASME B89.1.13.`,
+      sections: [
+        {
+          heading: '1. Asset Custody & Calibration Standards Traceability',
+          table: {
+            headers: ['Tool Attribute', 'Certified Parameter', 'Environmental Condition', 'Metrology Baseline'],
+            rows: [
+              ['Tool Description', asset.name, 'Ambient Temperature', '20.0°C ± 0.4°C (ISO Standard)'],
+              ['Serial Number', asset.serialNumber, 'Relative Humidity', '42.5% RH (Non-Condensing)'],
+              ['Assigned Custodian', 'Alex Jordan (EMP-88204)', 'Calibration Standard', 'NIST Test No. 681/280419-21'],
+              ['Traceability Reference', 'Master Gauge Block Set Grade 0 (SN: MGB-8841)', 'Next Calibration Due', asset.calibrationDue || '2027-04-15'],
+            ],
+          },
+        },
+        {
+          heading: '2. Precision CAD Blueprint Schematic & Orthographic Geometry',
+          subheading: 'ASME Y14.5M Geometric Tolerancing and Spindle Concentricity Bounding Box',
+          cadBlueprint: {
+            drawingNumber: `DWG-CAL-${asset.id}`,
+            revision: 'E',
+            partName: asset.name,
+            material: 'Tungsten Carbide Faces & Chrome Plated Frame',
+            surfaceFinish: 'Optical Polish Ra ≤ 0.05 µm',
+            units: 'MILLIMETERS [mm]',
+            scale: '1:1',
+            gdtCallouts: [
+              {
+                symbol: '⌖',
+                tolerance: '⌀ 0.001 Ⓜ',
+                datumRefs: 'A | B',
+                description: 'Spindle axial alignment and rotational true position',
+              },
+              {
+                symbol: '⌓',
+                tolerance: '0.0003 mm',
+                datumRefs: 'A',
+                description: 'Anvil and spindle measuring face optical flatness',
+              },
+              {
+                symbol: '⟂',
+                tolerance: '0.0008 mm',
+                datumRefs: 'A',
+                description: 'Perpendicularity of spindle face to centerline axis',
+              },
+            ],
+            dimensions: [
+              {
+                featureId: 'DIM-01',
+                featureDescription: 'Measuring Face Flatness (Optical Flat)',
+                nominalMm: 0.0000,
+                toleranceMm: '±0.0003 mm',
+                uslMm: 0.0003,
+                lslMm: 0.0000,
+                measuredMm: 0.0001,
+                deviationMm: '+0.0001',
+                inspectionMethod: 'Monochromatic He-Ne Light Interference',
+                status: 'CONFORMING',
+              },
+              {
+                featureId: 'DIM-02',
+                featureDescription: 'Parallelism Between Anvil and Spindle',
+                nominalMm: 0.0000,
+                toleranceMm: '±0.0010 mm',
+                uslMm: 0.0010,
+                lslMm: 0.0000,
+                measuredMm: 0.0004,
+                deviationMm: '+0.0004',
+                inspectionMethod: 'Precision Parallel Optical Blocks',
+                status: 'CONFORMING',
+              },
+              {
+                featureId: 'DIM-03',
+                featureDescription: 'Micrometer Screw Lead Pitch Accuracy (5.00mm Step)',
+                nominalMm: 5.0000,
+                toleranceMm: '±0.0010 mm',
+                uslMm: 5.0010,
+                lslMm: 4.9990,
+                measuredMm: 5.0002,
+                deviationMm: '+0.0002',
+                inspectionMethod: 'Mitutoyo Linear CMM Gage Probe',
+                status: 'CONFORMING',
+              },
+              {
+                featureId: 'DIM-04',
+                featureDescription: 'Lead Screw Pitch Accuracy (15.00mm Step)',
+                nominalMm: 15.0000,
+                toleranceMm: '±0.0015 mm',
+                uslMm: 15.0015,
+                lslMm: 14.9985,
+                measuredMm: 15.0005,
+                deviationMm: '+0.0005',
+                inspectionMethod: 'Mitutoyo Linear CMM Gage Probe',
+                status: 'CONFORMING',
+              },
+              {
+                featureId: 'DIM-05',
+                featureDescription: 'Lead Screw Pitch Accuracy (25.00mm Full Range)',
+                nominalMm: 25.0000,
+                toleranceMm: '±0.0020 mm',
+                uslMm: 25.0020,
+                lslMm: 24.9980,
+                measuredMm: 25.0008,
+                deviationMm: '+0.0008',
+                inspectionMethod: 'Mitutoyo Linear CMM Gage Probe',
+                status: 'CRITICAL_PASS',
+              },
+            ],
+          },
+        },
+        {
+          heading: '3. Quality Conformance & Metrology Certification Verdict',
+          callout: {
+            title: 'NIST & ISO/IEC 17025 Calibrated Pass',
+            text: `This instrument has been calibrated using reference standards whose accuracies are traceable to the National Institute of Standards and Technology (NIST). Measurement uncertainty: U = 0.0006 mm (k = 2, 95% confidence).`,
+            type: 'success',
+          },
+        },
+      ],
+      signatories: [
+        {
+          name: 'Marcus Vance, ASQ CCT',
+          role: 'Lead Metrology Calibration Engineer',
+          organization: 'Apex Industrial Standards & Metrology Directorate',
+          signatureDate: '2026-10-22',
+        },
+        {
+          name: 'David O\'Connor',
+          role: 'Plant Quality Assurance Director',
+          organization: 'Apex Manufacturing Technologies Inc.',
+          signatureDate: '2026-10-22',
+        },
+      ],
+    });
+  };
+
+  const handleDownloadLeaveDoc = (leave: LeaveRecord) => {
+    generateAndDownloadWordDoc(`Apex_Authorized_Leave_Pass_${leave.id}`, {
+      title: 'CERTIFIED EMPLOYEE LEAVE AUTHORIZATION & SHIFT ROSTER PASS',
+      documentRef: `LEAVE-AUTH-${leave.id}`,
+      classification: 'OFFICIAL HR RECORD // OPERATIONAL COVERAGE PASS',
+      department: 'Cleanroom Assembly Operations & HR Workforce Management',
+      author: 'Sarah Jenkins, Operations VP & Shift Director',
+      summary: `Official management leave pass, shift cover dispatch, and payroll attendance adjustment for Alex Jordan (Badge EMP-88204) covering ${leave.days} business days from ${leave.startDate} to ${leave.endDate}.`,
+      sections: [
+        {
+          heading: '1. Employee Leave Authorization Ledger',
+          table: {
+            headers: ['Parameter', 'Record Detail', 'Administrative Verification', 'Status'],
+            rows: [
+              ['Employee Name', 'Alex Jordan', 'Badge ID: EMP-88204', 'VERIFIED'],
+              ['Leave Classification', leave.type.replace('_', ' '), 'Paid Time Off Account', 'DEDUCTED'],
+              ['Effective Dates', `${leave.startDate} through ${leave.endDate}`, `${leave.days} Scheduled Work Days`, 'AUTHORIZED'],
+              ['Operational Justification', leave.reason, 'Shift Relief: Aaron Miller assigned', 'CONFIRMED'],
+            ],
+          },
+        },
+        {
+          heading: '2. Cleanroom Production Roster Impact & Handover Protocol',
+          content: [
+            'All cleanroom station handover procedures, ESD smock custody transfer, and station calibration logs have been officially executed prior to leave commencement.',
+          ],
+          callout: {
+            title: 'Supervisor Approval Granted',
+            text: 'Authorized by Shift Supervisor. Zero cleanroom line disruption verified on SMT Line 3.',
+            type: 'success',
+          },
+        },
+      ],
+      signatories: [
+        {
+          name: 'Sarah Jenkins',
+          role: 'Operations VP & Shift Supervisor',
+          organization: 'Apex Manufacturing Technologies Inc.',
+          signatureDate: '2026-10-22',
+        },
+        {
+          name: 'Alex Jordan',
+          role: 'Cleanroom Operator (EMP-88204)',
+          organization: 'Apex Manufacturing Technologies Inc.',
+          signatureDate: '2026-10-22',
+        },
+      ],
+    });
+  };
+
   return (
     <div className="space-y-6 p-6">
+      {routingNotification && (
+        <div className="p-3.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-semibold flex items-center justify-between shadow-sm animate-in fade-in duration-200">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" />
+            <span>{routingNotification}</span>
+          </div>
+          <span className="text-[10px] uppercase font-mono tracking-wider bg-purple-500/20 px-2 py-0.5 rounded">
+            Live Cross-Role Synced
+          </span>
+        </div>
+      )}
+
       {/* Employee Profile Header */}
       <div className="rounded-2xl border border-border bg-gradient-to-r from-card via-card to-primary/5 p-6 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -515,6 +819,7 @@ export default function MyWorkspacePage() {
                     <th className="p-3">Duration</th>
                     <th className="p-3">Reason</th>
                     <th className="p-3">Status</th>
+                    <th className="p-3 text-right">Official Document</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
@@ -530,11 +835,22 @@ export default function MyWorkspacePage() {
                           className={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
                             l.status === 'APPROVED'
                               ? 'bg-emerald-500/10 text-emerald-600'
+                              : l.status === 'REJECTED'
+                              ? 'bg-rose-500/10 text-rose-600'
                               : 'bg-amber-500/10 text-amber-600'
                           }`}
                         >
                           {l.status}
                         </span>
+                      </td>
+                      <td className="p-3 text-right">
+                        <button
+                          onClick={() => handleDownloadLeaveDoc(l)}
+                          title="Download Official Leave Authorization & Shift Roster Pass in Word Format"
+                          className="inline-flex items-center gap-1 px-2.5 py-1 bg-muted/60 hover:bg-muted text-foreground border border-border rounded text-[11px] font-medium cursor-pointer"
+                        >
+                          <Download className="w-3 h-3 text-primary" /> Leave Pass (.doc)
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -723,18 +1039,27 @@ export default function MyWorkspacePage() {
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-border flex items-center justify-between text-xs">
+                <div className="mt-4 pt-3 border-t border-border flex flex-col gap-2 text-xs">
+                  <div className="flex items-center justify-between">
+                    <button
+                      onClick={() => alert(`Submitting calibration recalibration ticket for ${a.name}`)}
+                      className="text-primary hover:underline font-semibold"
+                    >
+                      Request Recalibration
+                    </button>
+                    <button
+                      onClick={() => alert(`Reporting damage/issue for ${a.name}`)}
+                      className="text-muted-foreground hover:text-rose-500"
+                    >
+                      Report Issue
+                    </button>
+                  </div>
                   <button
-                    onClick={() => alert(`Submitting calibration recalibration ticket for ${a.name}`)}
-                    className="text-primary hover:underline font-semibold"
+                    onClick={() => handleDownloadCalibrationDoc(a)}
+                    className="w-full mt-1 flex items-center justify-center gap-1.5 py-1.5 px-3 bg-purple-50 hover:bg-purple-100 dark:bg-purple-950/40 dark:hover:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800 rounded-lg text-[11px] font-semibold transition-all cursor-pointer"
                   >
-                    Request Recalibration
-                  </button>
-                  <button
-                    onClick={() => alert(`Reporting damage/issue for ${a.name}`)}
-                    className="text-muted-foreground hover:text-rose-500"
-                  >
-                    Report Issue
+                    <Download className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />
+                    Download Metrology CAD Calibration (.doc)
                   </button>
                 </div>
               </div>
@@ -870,13 +1195,10 @@ export default function MyWorkspacePage() {
                 </button>
                 <button
                   type="button"
-                  onClick={() => {
-                    alert(`Logged ${otHours} hours overtime. Routed to Supervisor Sarah Jenkins.`);
-                    setIsOtModalOpen(false);
-                  }}
-                  className="px-4 py-2 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90"
+                  onClick={handleApplyOvertime}
+                  className="px-4 py-2 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 cursor-pointer"
                 >
-                  Log OT Hours
+                  Submit for Supervisor Approval
                 </button>
               </div>
             </div>
