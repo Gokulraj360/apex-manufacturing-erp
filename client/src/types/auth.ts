@@ -36,7 +36,7 @@ export const ALL_ROLES: RoleDefinition[] = [
     department: 'Top Management (Owner / MD)',
     defaultUsername: 'super_admin',
     description: 'Multi-plant enterprise EBITDA waterfalls, Cash Conversion Cycle, global approvals, and strategic governance.',
-    dashboardRoute: '/pricing-control',
+    dashboardRoute: '/top-management',
     accentColor: 'blue',
     primaryDepartmentKey: 'executive',
   },

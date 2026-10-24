@@ -58,12 +58,12 @@ export interface LeaveItem {
 
 // Department list and managers
 const DEPARTMENTS = [
-  { key: 'SMT_PRODUCTION', label: 'Circuit Board Assembly Lines', managerName: 'Rajesh Sharma', managerRole: 'Assembly Line Lead' },
-  { key: 'WAREHOUSE_IMEI', label: 'Warehouse & Parts Stock', managerName: 'Kavita Patel', managerRole: 'Warehouse Head' },
-  { key: 'QUALITY_RF', label: 'Phone Quality & Testing', managerName: 'Arun Verma', managerRole: 'Quality Check Head' },
+  { key: 'SMT_PRODUCTION', label: 'Precision Assembly Lines', managerName: 'Rajesh Sharma', managerRole: 'Assembly Line Lead' },
+  { key: 'WAREHOUSE_STOCK', label: 'Warehouse & Raw Materials Inventory', managerName: 'Kavita Patel', managerRole: 'Warehouse Head' },
+  { key: 'QUALITY_ASSURANCE', label: 'Quality Assurance & Testing Bench', managerName: 'Arun Verma', managerRole: 'Quality Check Head' },
   { key: 'SUPPLY_CHAIN', label: 'Supply Chain & Sourcing', managerName: 'Pooja Deshmukh', managerRole: 'SCM Director' },
   { key: 'COMMERCIAL_FINANCE', label: 'Finance & Accounts', managerName: 'Amitabh Sen', managerRole: 'Commercial Finance Lead' },
-  { key: 'MOBILE_ENGINEERING', label: 'Design & Engineering', managerName: 'Siddharth Roy', managerRole: 'Hardware Engineering Lead' },
+  { key: 'INDUSTRIAL_ENGINEERING', label: 'Design & Tooling Engineering', managerName: 'Siddharth Roy', managerRole: 'Hardware Engineering Lead' },
   { key: 'FLEET_LOGISTICS', label: 'Fleet & Logistics', managerName: 'Girish Rao', managerRole: 'Fleet Transport Lead' },
   { key: 'FIELD_SERVICE', label: 'Field & Client Care', managerName: 'Dr. Sunita Kulkarni', managerRole: 'Field Service Lead' },
   { key: 'HUMAN_RESOURCES', label: 'Human Resources', managerName: 'Deepak Chawla', managerRole: 'HR Lead' },

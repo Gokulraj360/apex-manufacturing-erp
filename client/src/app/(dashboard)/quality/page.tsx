@@ -126,7 +126,7 @@ const INITIAL_AUDITS: QualityAuditLogItem[] = [
     auditNumber: 'Q-AUD-2026-02',
     standard: 'SIX_SIGMA',
     auditType: 'INTERNAL_SURVEILLANCE',
-    department: 'Line 3: Camera Lens Focus & Tuning',
+    department: 'Line 3: Sensor Calibration & Optical Tuning',
     auditorName: 'Priya Sharma (Optics QC)',
     scorePercentage: 97.2,
     findingsCount: 2,
@@ -134,7 +134,7 @@ const INITIAL_AUDITS: QualityAuditLogItem[] = [
     correctiveActionStatus: 'ACTION_PLAN_SUBMITTED',
     auditDate: '2026-09-15',
     nextAuditDate: '2027-03-15',
-    summary: 'Camera laser focusing calibration frequency adjusted to hourly checks for ultra-sharp photos.',
+    summary: 'Optical telemetry laser focusing calibration frequency adjusted to hourly checks for precision alignment.',
   },
 ];
 
@@ -147,12 +147,12 @@ export default function QualityAnalyticsDashboard() {
   const [auditForm, setAuditForm] = useState({
     standard: 'ISO_9001',
     auditType: 'Routine Quality Check',
-    department: 'Line 2: Dust-Free Screen Fitting',
+    department: 'Line 2: Subassembly & Component Bonding',
     auditorName: 'Vikram Joshi (Senior Inspector)',
     scorePercentage: 98.0,
     findingsCount: 1,
     criticalNonConformances: 0,
-    summary: 'Routine verification of cleanroom dust levels and AMOLED screen touch response.',
+    summary: 'Routine verification of cleanroom particulate levels and interface bonding impedance.',
   });
 
   const handleCreateAudit = (e: React.FormEvent) => {

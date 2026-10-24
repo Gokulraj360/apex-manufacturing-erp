@@ -74,9 +74,9 @@ export default function PricingControlDashboardPage() {
   const [bomItems, setBomItems] = useState<BomItem[]>([
     {
       id: 'BOM-001',
-      name: 'Qualcomm Snapdragon 8 Gen-3 Octa-Core SoC',
-      category: 'Semiconductor / Chipset',
-      supplier: 'Qualcomm Enterprise Direct',
+      name: 'Industrial High-Performance Embedded Processor SoC',
+      category: 'Semiconductor / Main Controller',
+      supplier: 'Enterprise Semiconductor Solutions',
       unitCost: 8200,
       quantity: 1,
       scrapRate: 0.2,
@@ -84,9 +84,9 @@ export default function PricingControlDashboardPage() {
     },
     {
       id: 'BOM-002',
-      name: '6.78" 1.5K 144Hz LTPO AMOLED Panel Assembly',
+      name: 'High-Resolution Low-Latency Optical Interface & Display Panel',
       category: 'Display / Optoelectronics',
-      supplier: 'BOE Display Technologies',
+      supplier: 'BOE Industrial Display Technologies',
       unitCost: 4800,
       quantity: 1,
       scrapRate: 0.5,
@@ -94,9 +94,9 @@ export default function PricingControlDashboardPage() {
     },
     {
       id: 'BOM-003',
-      name: 'Sony IMX989 50MP 1-inch Optical Camera Module',
+      name: 'Precision Optical Telemetry & Imaging Sensor Module',
       category: 'Optics & Sensors',
-      supplier: 'Sony Semiconductor Solutions',
+      supplier: 'Precision Sensor Solutions',
       unitCost: 3400,
       quantity: 1,
       scrapRate: 0.4,
@@ -104,9 +104,9 @@ export default function PricingControlDashboardPage() {
     },
     {
       id: 'BOM-004',
-      name: '5400mAh High-Density Dual-Cell Li-ion Battery',
+      name: 'High-Density Dual-Cell Power Storage & Thermal Battery Unit',
       category: 'Power & Storage',
-      supplier: 'Sunwoda Electronic Co.',
+      supplier: 'Amperex Energy Systems Corp.',
       unitCost: 1350,
       quantity: 1,
       scrapRate: 0.1,
@@ -114,7 +114,7 @@ export default function PricingControlDashboardPage() {
     },
     {
       id: 'BOM-005',
-      name: 'Aerospace Grade 7-Series CNC Aluminum Chassis',
+      name: 'Aerospace Grade 7-Series CNC Aluminum Structural Enclosure',
       category: 'Mechanical / Housing',
       supplier: 'Foxconn Precision Tooling',
       unitCost: 1250,
@@ -124,7 +124,7 @@ export default function PricingControlDashboardPage() {
     },
     {
       id: 'BOM-006',
-      name: 'Integrated Vapor Chamber 4500mm² Cooling Sheet',
+      name: 'Integrated Vapor Chamber 4500mm² Heat Dissipation Sheet',
       category: 'Thermal Sub-assembly',
       supplier: 'Auras Technology Corp.',
       unitCost: 750,
@@ -381,13 +381,13 @@ export default function PricingControlDashboardPage() {
         {/* Highlight Profitability Banner (Exact green banner in screenshot) */}
         <div className="bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800/40 rounded-2xl p-6 transition-colors">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Column 1: Net Profit Margin / Phone */}
+            {/* Column 1: Net Profit Margin / Unit */}
             <div>
               <div className="text-xs font-medium text-slate-600 dark:text-slate-400 mb-1">
-                Net Profit Margin / Phone
+                Net Profit Margin / Manufactured Unit
               </div>
               <div className="text-2xl sm:text-3xl font-bold text-emerald-600 dark:text-emerald-400 font-mono tracking-tight">
-                ₹ {netProfitPerUnit.toLocaleString()} / Phone
+                ₹ {netProfitPerUnit.toLocaleString()} / Unit
               </div>
             </div>
 
@@ -410,7 +410,7 @@ export default function PricingControlDashboardPage() {
                 ₹ {potentialBatchProfitCrores} Crores
               </div>
               <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Against {productionTarget.toLocaleString()} assembleable phones
+                Against {productionTarget.toLocaleString()} assembled units
               </div>
             </div>
           </div>
@@ -490,10 +490,10 @@ export default function PricingControlDashboardPage() {
           <div className="space-y-6 pt-1">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                Phone Parts & Making Cost List:
+                Manufacturing Parts & Recipe Cost Structure:
               </h3>
               <span className="text-xs text-slate-500 dark:text-slate-400">
-                Total Cost to Make 1 Phone: <strong className="text-slate-900 dark:text-white">₹ {costPrice.toLocaleString()}</strong>
+                Total Cost to Manufacture 1 Unit: <strong className="text-slate-900 dark:text-white">₹ {costPrice.toLocaleString()}</strong>
               </span>
             </div>
 

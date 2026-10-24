@@ -40,8 +40,8 @@ interface ActiveOrderProgress {
 const mockOrders: ActiveOrderProgress[] = [
   {
     orderNumber: 'WO-2026-049',
-    sku: 'APEX-PRO-5G-BLK',
-    productName: 'Apex Pro 5G - Phantom Black (256GB)',
+    sku: 'APEX-PREC-CTRL-01',
+    productName: 'Apex Precision Embedded Controller (Rev 3)',
     targetUnits: 3000,
     completedUnits: 2450,
     scrapUnits: 12,
@@ -50,13 +50,13 @@ const mockOrders: ActiveOrderProgress[] = [
     lineNumber: 1,
     supervisor: 'M. Vance',
     status: 'IN_PROGRESS',
-    currentStage: 'Line 1: Circuit Board Assembly Work',
+    currentStage: 'Line 1: Precision SMT & Circuit Assembly',
     otdRisk: 'ON_TRACK',
   },
   {
     orderNumber: 'WO-2026-050',
-    sku: 'APEX-NEO-5G-BLU',
-    productName: 'Apex Neo 5G - Glacier Blue (128GB)',
+    sku: 'APEX-EV-BATTPACK-02',
+    productName: 'Apex EV High-Density Battery Pack Subassembly',
     targetUnits: 2500,
     completedUnits: 1800,
     scrapUnits: 18,
@@ -65,13 +65,13 @@ const mockOrders: ActiveOrderProgress[] = [
     lineNumber: 2,
     supervisor: 'K. Patel',
     status: 'IN_PROGRESS',
-    currentStage: 'Line 2: Dust-Free Screen Fitting',
+    currentStage: 'Line 2: Subassembly & Component Bonding',
     otdRisk: 'ON_TRACK',
   },
   {
     orderNumber: 'WO-2026-051',
-    sku: 'APEX-ULTRA-5G-GRY',
-    productName: 'Apex Ultra 5G - Titanium Grey (512GB)',
+    sku: 'APEX-ROBOT-JOINT-03',
+    productName: 'Apex 6-Axis Robotic Actuator Joint Module',
     targetUnits: 1500,
     completedUnits: 420,
     scrapUnits: 28,
@@ -80,13 +80,13 @@ const mockOrders: ActiveOrderProgress[] = [
     lineNumber: 3,
     supervisor: 'J. Chen',
     status: 'QUALITY_HOLD',
-    currentStage: 'Line 3: Camera Lens Focus & Tuning',
+    currentStage: 'Line 3: Sensor Calibration & Optical Tuning',
     otdRisk: 'AT_RISK',
   },
   {
     orderNumber: 'WO-2026-052',
-    sku: 'APEX-AIR-4G-WHT',
-    productName: 'Apex Air 4G - Ceramic White (64GB)',
+    sku: 'APEX-MED-DIAG-04',
+    productName: 'Apex Class III Bio-Sensor Micro-Assembly Kit',
     targetUnits: 2000,
     completedUnits: 1980,
     scrapUnits: 6,
@@ -95,7 +95,7 @@ const mockOrders: ActiveOrderProgress[] = [
     lineNumber: 6,
     supervisor: 'D. Miller',
     status: 'IN_PROGRESS',
-    currentStage: 'Line 6: Box Packing & Serial Number Sticker',
+    currentStage: 'Line 6: Box Packing, Serial QR & Palletizing',
     otdRisk: 'ON_TRACK',
   },
 ];
@@ -108,12 +108,12 @@ export default function ProductionOverviewPage() {
 
   // Grouped Bar Chart Data: Target vs Actual Output across SMT & Assembly Lines
   const lineOutputComparisonData = [
-    { label: 'Line 1: SMT Board', target: 3000, actual: 2450 },
-    { label: 'Line 2: Screen Fitting', target: 2500, actual: 1800 },
-    { label: 'Line 3: Camera Tuning', target: 1500, actual: 420 },
-    { label: 'Line 4: 5G Signal Test', target: 2000, actual: 1650 },
-    { label: 'Line 5: Battery Drop', target: 2200, actual: 2050 },
-    { label: 'Line 6: Box Packing', target: 2000, actual: 1980 },
+    { label: 'Line 1: SMT Assembly', target: 3000, actual: 2450 },
+    { label: 'Line 2: Bonding & Subassembly', target: 2500, actual: 1800 },
+    { label: 'Line 3: Sensor Tuning', target: 1500, actual: 420 },
+    { label: 'Line 4: Signal Diagnostics', target: 2000, actual: 1650 },
+    { label: 'Line 5: Aging & Reliability', target: 2200, actual: 2050 },
+    { label: 'Line 6: Packing & Dispatch', target: 2000, actual: 1980 },
   ];
 
   const totalTarget = orders.reduce((acc, o) => acc + o.targetUnits, 0);
@@ -125,9 +125,9 @@ export default function ProductionOverviewPage() {
       {/* Super Admin Supervisory Mode Banner */}
       {isSuperAdmin && (
         <SupervisoryBanner
-          departmentName="Phone Assembly Lines"
+          departmentName="Precision Assembly & Production"
           departmentCode="PROD-001"
-          staffRoleTitle="Phone Assembly & Screen Fitting Lead"
+          staffRoleTitle="Precision Assembly & Production Lead"
           onViewAuditFeed={() => {
             const el = document.getElementById('dept-audit-feed');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -143,7 +143,7 @@ export default function ProductionOverviewPage() {
             Factory Floor Assembly & Orders
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Live daily phone assembly tracking, batch deadlines, and on-time completion checks.
+            Live daily multi-plant assembly tracking, batch deadlines, and on-time completion telemetry.
           </p>
         </div>
 

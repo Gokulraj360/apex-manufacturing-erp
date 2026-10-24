@@ -77,27 +77,27 @@ export interface DepartmentPairing {
   assistant: { id: string; name: string; role: string };
 }
 
-// 21 Preconfigured Department Pairings matching all roles in ApexMobile ERP
+// 21 Preconfigured Department Pairings matching all roles in Apex Enterprise ERP
 const ALL_DEPARTMENT_PAIRINGS: DepartmentPairing[] = [
   {
     department: 'SMT_PRODUCTION',
-    label: 'SMT & PCB Production',
+    label: 'Precision SMT & PCB Assembly',
     roleKey: 'production',
     manager: { id: 'production', name: 'Rajesh Sharma', role: 'SMT Floor Lead' },
     assistant: { id: 'ast-prod-01', name: 'Vikram Joshi', role: 'Assistant SMT Line Supervisor' },
   },
   {
-    department: 'WAREHOUSE_IMEI',
-    label: 'Warehouse & IMEI Stock',
+    department: 'WAREHOUSE_STOCK',
+    label: 'Warehouse & Inventory Stock',
     roleKey: 'warehouse',
     manager: { id: 'warehouse', name: 'Kavita Patel', role: 'Warehouse Master Lead' },
     assistant: { id: 'ast-wh-01', name: 'Suresh Nair', role: 'Assistant Bins & Putaway Officer' },
   },
   {
     department: 'QUALITY_RF',
-    label: 'Quality Assurance & 5G RF',
+    label: 'Quality Assurance & Testing Bench',
     roleKey: 'quality',
-    manager: { id: 'quality', name: 'Arun Verma', role: 'Quality & RF Lead' },
+    manager: { id: 'quality', name: 'Arun Verma', role: 'Quality & Diagnostics Lead' },
     assistant: { id: 'ast-qa-01', name: 'Divya Sundaram', role: 'Assistant Optical & Testing Lead' },
   },
   {
@@ -105,7 +105,7 @@ const ALL_DEPARTMENT_PAIRINGS: DepartmentPairing[] = [
     label: 'Supply Chain & Sourcing',
     roleKey: 'supply_chain',
     manager: { id: 'supply_chain', name: 'Pooja Deshmukh', role: 'SCM Director' },
-    assistant: { id: 'ast-scm-01', name: 'Rohan Mehta', role: 'Assistant Silicon Sourcing Specialist' },
+    assistant: { id: 'ast-scm-01', name: 'Rohan Mehta', role: 'Assistant Sourcing Specialist' },
   },
   {
     department: 'COMMERCIAL_FINANCE',
@@ -115,8 +115,8 @@ const ALL_DEPARTMENT_PAIRINGS: DepartmentPairing[] = [
     assistant: { id: 'ast-fin-01', name: 'Neha Kapoor', role: 'Assistant Cost Accountant' },
   },
   {
-    department: 'MOBILE_ENGINEERING',
-    label: 'Design & Engineering',
+    department: 'DESIGN_ENGINEERING',
+    label: 'Design & Tooling Engineering',
     roleKey: 'design',
     manager: { id: 'design', name: 'Siddharth Roy', role: 'Hardware Engineering Lead' },
     assistant: { id: 'ast-eng-01', name: 'Ananya Iyer', role: 'Assistant CAD Drafter & Thermal Tech' },
@@ -214,7 +214,7 @@ const ALL_DEPARTMENT_PAIRINGS: DepartmentPairing[] = [
   },
   {
     department: 'FACTORY_IT',
-    label: 'IMEI Burn-In & Factory Cloud',
+    label: 'Factory Systems & IT Infrastructure',
     roleKey: 'system_admin',
     manager: { id: 'system_admin', name: 'Kunal Sen', role: 'Factory IT Lead' },
     assistant: { id: 'ast-it-01', name: 'Devendra Rao', role: 'Assistant Edge Cluster Admin' },
@@ -241,8 +241,8 @@ const INITIAL_TASKS: TaskDelegationItem[] = [
     assistantId: 'ast-prod-01',
     assistantName: 'Vikram Joshi',
     assistantRole: 'Assistant SMT Line Supervisor',
-    title: 'Optimize Line 1 Solder Paste Stencil Alignment for Snapdragon 8 Gen 3',
-    description: 'Perform optical AOI calibration on Line 1 solder paste deposition. Ensure zero solder bridging on micro-BGA pitch 0.35mm before starting 20k motherboard batch.',
+    title: 'Optimize Line 1 Solder Paste Stencil Alignment for Main System SoC',
+    description: 'Perform optical AOI calibration on Line 1 solder paste deposition. Ensure zero solder bridging on micro-BGA pitch 0.35mm before starting 20k controller batch.',
     priority: 'CRITICAL',
     status: 'IN_PROGRESS',
     progressPercentage: 65,
@@ -279,16 +279,16 @@ const INITIAL_TASKS: TaskDelegationItem[] = [
   {
     id: 'task-del-102',
     taskCode: 'DEL-2026-0102',
-    department: 'WAREHOUSE_IMEI',
-    departmentLabel: 'Warehouse & IMEI Stock',
+    department: 'WAREHOUSE_STOCK',
+    departmentLabel: 'Warehouse & Inventory Stock',
     managerId: 'warehouse',
     managerName: 'Kavita Patel',
     managerRole: 'Warehouse Master Lead',
     assistantId: 'ast-wh-01',
     assistantName: 'Suresh Nair',
     assistantRole: 'Assistant Bins & Putaway Officer',
-    title: 'Audit Dual-SIM TAC & Serial Allocations for Apex Pro Batch #48',
-    description: 'Verify 15,000 dual-SIM IMEI records matching GS1 Type Allocation Codes (TAC: 86420106 & 86420107). Reconcile laser barcode reel counts against secure vault inventory.',
+    title: 'Audit Unit Serial & UID Tracking Allocations for Apex Batch #48',
+    description: 'Verify 15,000 unit serial records matching GS1 Type Allocation Codes. Reconcile laser barcode reel counts against secure vault inventory.',
     priority: 'HIGH',
     status: 'UNDER_REVIEW',
     progressPercentage: 90,
@@ -380,8 +380,8 @@ const INITIAL_TASKS: TaskDelegationItem[] = [
     assistantId: 'ast-fin-01',
     assistantName: 'Neha Kapoor',
     assistantRole: 'Assistant Cost Accountant',
-    title: 'Recalculate Apex Lite BOM Landed Cost with Updated AMOLED Tariffs',
-    description: 'Incorporate new 2.5% customs duty surcharge on 6.67" 120Hz FHD+ flexible OLED panels. Update target wholesale margin model to maintain 22.4% EBITDA.',
+    title: 'Recalculate Apex BOM Landed Cost with Updated Display Interface Tariffs',
+    description: 'Incorporate new 2.5% customs duty surcharge on flexible optical display panels. Update target wholesale margin model to maintain 22.4% EBITDA.',
     priority: 'MEDIUM',
     status: 'IN_PROGRESS',
     progressPercentage: 40,
@@ -393,8 +393,8 @@ const INITIAL_TASKS: TaskDelegationItem[] = [
   {
     id: 'task-del-106',
     taskCode: 'DEL-2026-0106',
-    department: 'MOBILE_ENGINEERING',
-    departmentLabel: 'Design & Engineering',
+    department: 'DESIGN_ENGINEERING',
+    departmentLabel: 'Design & Tooling Engineering',
     managerId: 'design',
     managerName: 'Siddharth Roy',
     managerRole: 'Hardware Engineering Lead',

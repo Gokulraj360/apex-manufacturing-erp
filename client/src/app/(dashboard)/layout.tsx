@@ -94,11 +94,11 @@ const ROUTE_TITLE_MAP: Record<string, { title: string; badge: string }> = {
     badge: 'PROC-009',
   },
   '/subcontracting': {
-    title: 'External Board Assembly Job-Work',
+    title: 'External Manufacturing & Assembly Job-Work',
     badge: 'SUB-010',
   },
   '/design': {
-    title: 'Phone Body 3D Designs & Blueprints',
+    title: 'Product 3D CAD Designs & Blueprints',
     badge: 'ENG-011',
   },
   '/fleet': {
@@ -114,7 +114,7 @@ const ROUTE_TITLE_MAP: Record<string, { title: string; badge: string }> = {
     badge: 'CRM-014',
   },
   '/marketing': {
-    title: 'New Phone Launches & Promotions',
+    title: 'New Product Launches & Commercial Promotions',
     badge: 'MKT-015',
   },
   '/supplier-portal': {

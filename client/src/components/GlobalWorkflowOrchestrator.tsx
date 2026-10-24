@@ -421,8 +421,8 @@ export function GlobalWorkflowOrchestrator() {
                     >
                       <option value="super_admin">Top Management (Owner / MD)</option>
                       <option value="finance">Factory Accounts & Finance Lead</option>
-                      <option value="production">Phone Assembly & Screen Fitting Lead</option>
-                      <option value="quality">Phone Quality & Signal Testing Lead</option>
+                      <option value="production">Precision Assembly & Production Lead</option>
+                      <option value="quality">Quality Assurance & Testing Lead</option>
                       <option value="supply_chain">Material Planning & Sourcing Lead</option>
                       <option value="asset_reliability">Machine Maintenance Lead</option>
                     </select>

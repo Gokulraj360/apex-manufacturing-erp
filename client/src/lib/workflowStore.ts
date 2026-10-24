@@ -89,7 +89,7 @@ const EVENT_NAME = 'apex_workflow_updated';
 
 // Contextual operational action presets for every role
 export const ROLE_WORKFLOW_PRESETS: Record<string, RoleActionPreset[]> = {
-  // 1. Phone Assembly & Operator
+  // 1. Precision Assembly & Operator
   production: [
     {
       id: 'PRESET-PROD-01',
@@ -107,7 +107,7 @@ export const ROLE_WORKFLOW_PRESETS: Record<string, RoleActionPreset[]> = {
       id: 'PRESET-PROD-02',
       category: 'HR_OVERTIME',
       title: 'Overtime Production Run (2.5 Hours): SMT Batch Catch-Up',
-      department: 'Phone Assembly Operations',
+      department: 'Precision Assembly Operations',
       targetRole: 'super_admin',
       targetRoleName: 'Top Management (Owner / MD)',
       valueOrImpact: '$97.50 USD (1.5x Premium Multiplier)',
@@ -120,7 +120,7 @@ export const ROLE_WORKFLOW_PRESETS: Record<string, RoleActionPreset[]> = {
       id: 'PRESET-PROD-03',
       category: 'MAINTENANCE_OVERHAUL',
       title: 'Emergency SMT Nozzle Vacuum Failure & Line 2 Jam',
-      department: 'Phone Assembly Lines',
+      department: 'Precision Assembly Lines',
       targetRole: 'asset_reliability',
       targetRoleName: 'Assembly Machines & Cooling Maintenance Lead',
       valueOrImpact: 'High Line Stoppage Risk (0.8h Downtime)',
@@ -134,9 +134,9 @@ export const ROLE_WORKFLOW_PRESETS: Record<string, RoleActionPreset[]> = {
       id: 'PRESET-OP-01',
       category: 'HR_LEAVE',
       title: 'Medical Sick Leave Request (2 Business Days)',
-      department: 'Dust-Free Screen Assembly',
+      department: 'Dust-Free Interface Assembly',
       targetRole: 'production',
-      targetRoleName: 'Phone Assembly Floor Lead',
+      targetRoleName: 'Precision Assembly Floor Lead',
       valueOrImpact: '16 Hours Scheduled Coverage',
       defaultJustification: 'Acute viral fever and clinical observation. Station handover completed.',
       affectedSystem: 'Optical Bonding Station 4',
@@ -146,11 +146,11 @@ export const ROLE_WORKFLOW_PRESETS: Record<string, RoleActionPreset[]> = {
       id: 'PRESET-OP-02',
       category: 'HR_OVERTIME',
       title: 'Late Shift Cleanroom Overtime (3.0 Hours)',
-      department: 'Cleanroom Screen Fitting',
+      department: 'Cleanroom Bonding Station',
       targetRole: 'production',
-      targetRoleName: 'Phone Assembly Floor Lead',
+      targetRoleName: 'Precision Assembly Floor Lead',
       valueOrImpact: '$117.00 USD (1.5x Multiplier)',
-      defaultJustification: 'Extended screen lamination run for OLED displays to clear queue for morning testing.',
+      defaultJustification: 'Extended optical interface bonding run to clear queue for morning testing.',
       affectedSystem: 'Dust-Free Cleanroom Bay 2',
       priority: 'NORMAL',
     },
@@ -194,7 +194,7 @@ export const ROLE_WORKFLOW_PRESETS: Record<string, RoleActionPreset[]> = {
       title: 'ECN-7804: Thermal Heat-Sink Fin Geometry Refinement',
       department: 'Design & Engineering (Hardware R&D)',
       targetRole: 'quality',
-      targetRoleName: 'Phone Quality & Signal Testing Lead',
+      targetRoleName: 'Quality Assurance & Testing Lead',
       valueOrImpact: 'BOM Cost Neutral / +8.2°C Thermal Margin',
       defaultJustification: 'Modifies copper extruded fin density from 14 FPI to 18 FPI to prevent throttling at 45°C ambient. Tested in wind tunnel.',
       affectedSystem: 'Apex Industrial Gateway Gen 3',
@@ -236,7 +236,7 @@ export const ROLE_WORKFLOW_PRESETS: Record<string, RoleActionPreset[]> = {
       title: 'Temporary Deviation Concession: Display Bezel Anodize Color Tint',
       department: 'Quality Assurance',
       targetRole: 'design',
-      targetRoleName: 'Phone Body 3D Design Engineer',
+      targetRoleName: 'Product 3D CAD & Tooling Engineer',
       valueOrImpact: 'Zero Functional Impact / Delta E = 1.2',
       defaultJustification: 'Incoming batch of 4,000 bezels exhibits minor matte black color shift within consumer acceptable variance. Concession requested.',
       affectedSystem: 'Final Casing Assembly Line 4',

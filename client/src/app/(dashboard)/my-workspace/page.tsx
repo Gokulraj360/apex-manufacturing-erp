@@ -197,7 +197,7 @@ export default function MyWorkspacePage() {
       targetRole: 'production_supervisor',
       requester: {
         name: 'Alex Jordan',
-        role: 'Phone Assembly Operator',
+        role: 'Precision Assembly Technician',
         roleId: 'operator',
         avatar: 'AJ',
         email: 'alex.jordan@apex-mfg.internal',
@@ -234,7 +234,7 @@ export default function MyWorkspacePage() {
       targetRole: 'production_supervisor',
       requester: {
         name: 'Alex Jordan',
-        role: 'Phone Assembly Operator',
+        role: 'Precision Assembly Technician',
         roleId: 'operator',
         avatar: 'AJ',
       },
@@ -271,7 +271,7 @@ export default function MyWorkspacePage() {
           table: {
             headers: ['Employee Attribute', 'Verified Record Details', 'Department & Cleanroom Cell', 'Security Clearance'],
             rows: [
-              ['Employee Legal Name', 'Alex Jordan', 'Phone Assembly Operations', 'Level 1 Operational'],
+              ['Employee Legal Name', 'Alex Jordan', 'Precision Assembly Operations', 'Level 1 Operational'],
               ['Employee Identification', 'EMP-88204 (Active Full-Time)', 'Cleanroom Bay 3 (SMT Lines)', 'IPC-A-610 Specialist'],
               ['Designated Work Shift', 'Shift A (06:00 - 14:30 EST)', 'Direct Supervisor: Sarah Jenkins', 'Austin Flagship Campus'],
               ['Pay Period / Cycle', 'September 1, 2026 to September 30, 2026', 'Disbursement Date: Sept 30, 2026', 'ACH Ref: #ACH-994120'],

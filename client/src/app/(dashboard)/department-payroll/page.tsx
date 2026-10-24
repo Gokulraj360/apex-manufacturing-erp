@@ -43,7 +43,7 @@ import { useAuth } from '@/context/AuthContext';
 // Pre-seeded Department Templates
 const INITIAL_TEMPLATES: DepartmentTemplate[] = [
   {
-    department: 'Line 1: Circuit Board Assembly Work',
+    department: 'Line 1: Precision SMT & Circuit Assembly',
     departmentCode: 'SMT-001',
     managerName: 'Suresh Raina (Line 1 Production Manager)',
     managerId: 'mgr-prod-01',
@@ -56,37 +56,37 @@ const INITIAL_TEMPLATES: DepartmentTemplate[] = [
     ],
   },
   {
-    department: 'Line 2: Dust-Free Screen Fitting',
-    departmentCode: 'DISP-002',
+    department: 'Line 2: Subassembly & Component Bonding',
+    departmentCode: 'ASSM-002',
     managerName: 'Ananya Deshmukh (Cleanroom Line Manager)',
     managerId: 'mgr-disp-02',
     workers: [
       { workerId: 'EMP-2026-0201', workerName: 'Sunita Rao', role: 'Vacuum Screen Laminator', baseSalaryRate: 21000, daysPresent: 26, overtimeHours: 12, allowances: 2200 },
-      { workerId: 'EMP-2026-0202', workerName: 'Manoj Kumar', role: 'Dust Particle Inspection Tech', baseSalaryRate: 18500, daysPresent: 26, overtimeHours: 8, allowances: 1400 },
-      { workerId: 'EMP-2026-0203', workerName: 'Deepa Varma', role: 'AMOLED Display Bonding Lead', baseSalaryRate: 24000, daysPresent: 25, overtimeHours: 6, allowances: 2500 },
-      { workerId: 'EMP-2026-0204', workerName: 'Kishore Hegde', role: 'Screen Bezel Pressure Tester', baseSalaryRate: 19000, daysPresent: 26, overtimeHours: 10, allowances: 1200 },
+      { workerId: 'EMP-2026-0202', workerName: 'Manoj Kumar', role: 'Particulate Inspection Tech', baseSalaryRate: 18500, daysPresent: 26, overtimeHours: 8, allowances: 1400 },
+      { workerId: 'EMP-2026-0203', workerName: 'Deepa Varma', role: 'Precision Interface Bonding Lead', baseSalaryRate: 24000, daysPresent: 25, overtimeHours: 6, allowances: 2500 },
+      { workerId: 'EMP-2026-0204', workerName: 'Kishore Hegde', role: 'Pressure Tolerance Tester', baseSalaryRate: 19000, daysPresent: 26, overtimeHours: 10, allowances: 1200 },
     ],
   },
   {
-    department: 'Warehouse & Parts Stock',
+    department: 'Warehouse & Raw Materials Inventory',
     departmentCode: 'WH-001',
     managerName: 'Vikram Malhotra (Warehouse Store Head)',
     managerId: 'mgr-wh-01',
     workers: [
-      { workerId: 'EMP-2026-0301', workerName: 'Prakash Rao', role: 'Chipset Storage Bin Handler', baseSalaryRate: 17500, daysPresent: 26, overtimeHours: 10, allowances: 1000 },
+      { workerId: 'EMP-2026-0301', workerName: 'Prakash Rao', role: 'Component Storage Bin Handler', baseSalaryRate: 17500, daysPresent: 26, overtimeHours: 10, allowances: 1000 },
       { workerId: 'EMP-2026-0302', workerName: 'Santosh Gowda', role: 'Barcode & QR Scanner Staff', baseSalaryRate: 16500, daysPresent: 24, overtimeHours: 4, allowances: 1000 },
       { workerId: 'EMP-2026-0303', workerName: 'Mohd. Imran', role: 'Forklift & Pallet Operator', baseSalaryRate: 19000, daysPresent: 26, overtimeHours: 18, allowances: 1500 },
     ],
   },
   {
-    department: 'Phone Quality Checks',
+    department: 'Quality Assurance & Testing Bench',
     departmentCode: 'QA-005',
     managerName: 'Dr. Meenakshi Sundaram (Quality Head)',
     managerId: 'mgr-qa-01',
     workers: [
-      { workerId: 'EMP-2026-0401', workerName: 'Devendra Joshi', role: 'Battery Drop & Stress Tester', baseSalaryRate: 23000, daysPresent: 26, overtimeHours: 6, allowances: 2000 },
-      { workerId: 'EMP-2026-0402', workerName: 'Kavita Shinde', role: 'Display Color Calibrator', baseSalaryRate: 21500, daysPresent: 25, overtimeHours: 12, allowances: 1800 },
-      { workerId: 'EMP-2026-0403', workerName: 'Tariq Ansari', role: '5G Antenna RF Chamber Tester', baseSalaryRate: 24000, daysPresent: 26, overtimeHours: 8, allowances: 2200 },
+      { workerId: 'EMP-2026-0401', workerName: 'Devendra Joshi', role: 'Drop & Environmental Stress Tester', baseSalaryRate: 23000, daysPresent: 26, overtimeHours: 6, allowances: 2000 },
+      { workerId: 'EMP-2026-0402', workerName: 'Kavita Shinde', role: 'Optical Sensor & Visual Calibrator', baseSalaryRate: 21500, daysPresent: 25, overtimeHours: 12, allowances: 1800 },
+      { workerId: 'EMP-2026-0403', workerName: 'Tariq Ansari', role: 'RF Signal & Diagnostics Chamber Tester', baseSalaryRate: 24000, daysPresent: 26, overtimeHours: 8, allowances: 2200 },
     ],
   },
 ];
