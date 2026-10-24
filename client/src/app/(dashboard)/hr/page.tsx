@@ -33,12 +33,12 @@ import { SupervisoryBanner } from '@/components/SupervisoryBanner';
 import { DepartmentAuditFeed } from '@/components/DepartmentAuditFeed';
 
 const MOCK_DEPARTMENTS: DepartmentItem[] = [
-  { id: 'dept-1', name: 'Phone Assembly Lines', code: 'PROD', headOfDepartment: 'Sunil Rao', _count: { employees: 64, jobOpenings: 3 } },
-  { id: 'dept-2', name: 'Warehouse & Parts Stock', code: 'WHS', headOfDepartment: 'Rajesh Mehra', _count: { employees: 28, jobOpenings: 2 } },
-  { id: 'dept-3', name: 'Phone Quality & Testing', code: 'QA', headOfDepartment: 'Dr. Anand Verma', _count: { employees: 18, jobOpenings: 1 } },
-  { id: 'dept-4', name: 'Finance & Accounts', code: 'FIN', headOfDepartment: 'Priya Nambiar', _count: { employees: 12, jobOpenings: 1 } },
-  { id: 'dept-5', name: 'HR & Worker Safety', code: 'HR', headOfDepartment: 'Kavita Menon', _count: { employees: 8, jobOpenings: 1 } },
-  { id: 'dept-6', name: 'Machine Repair & Upkeep', code: 'ENG', headOfDepartment: 'Anil Kulkarni', _count: { employees: 14, jobOpenings: 2 } },
+  { id: 'dept-1', name: 'Precision Assembly Lines (Line 1-3)', code: 'PROD', headOfDepartment: 'Sunil Rao', _count: { employees: 64, jobOpenings: 3 } },
+  { id: 'dept-2', name: 'Raw Materials & Parts Stock', code: 'WHS', headOfDepartment: 'Rajesh Mehra', _count: { employees: 28, jobOpenings: 2 } },
+  { id: 'dept-3', name: 'Quality Assurance & Reliability Bench', code: 'QA', headOfDepartment: 'Dr. Anand Verma', _count: { employees: 18, jobOpenings: 1 } },
+  { id: 'dept-4', name: 'Finance & Plant Accounts', code: 'FIN', headOfDepartment: 'Priya Nambiar', _count: { employees: 12, jobOpenings: 1 } },
+  { id: 'dept-5', name: 'HR & Industrial Safety', code: 'HR', headOfDepartment: 'Kavita Menon', _count: { employees: 8, jobOpenings: 1 } },
+  { id: 'dept-6', name: 'Robotics, Tooling & Machine Upkeep', code: 'ENG', headOfDepartment: 'Anil Kulkarni', _count: { employees: 14, jobOpenings: 2 } },
 ];
 
 const MOCK_ATTENDANCE_SUMMARY = {
@@ -54,8 +54,8 @@ const MOCK_TODAY_ALERTS = [
   {
     id: 'alt-1',
     severity: 'WARNING',
-    message: 'Screen fitting station running at 75% staffing due to 2 unplanned absences.',
-    dept: 'Phone Assembly',
+    message: 'High-precision assembly station running at 75% staffing due to 2 unplanned absences.',
+    dept: 'Precision Assembly',
     time: '08:45 AM',
   },
   {
@@ -68,7 +68,7 @@ const MOCK_TODAY_ALERTS = [
   {
     id: 'alt-3',
     severity: 'COMPLIANCE',
-    message: 'Annual factory worker safety check ready for sign-off.',
+    message: 'Annual industrial worker safety certification ready for executive sign-off.',
     dept: 'Safety & Compliance',
     time: '09:30 AM',
   },

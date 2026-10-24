@@ -130,31 +130,31 @@ export function Sidebar() {
         ],
       },
       {
-        title: 'PHONE ASSEMBLY LINES',
+        title: 'PRECISION ASSEMBLY LINES',
         defaultOpen: true,
         items: [
-          { name: 'Line 1: Circuit Board Assembly Work', href: '/production', icon: Cpu },
-          { name: 'Line 2: Dust-Free Screen Fitting', href: '/production/work-orders', icon: Layers },
-          { name: 'Line 3: Camera Lens Focus & Tuning', href: '/production/batches', icon: Activity },
+          { name: 'Line 1: Precision SMT & Circuit Assembly', href: '/production', icon: Cpu },
+          { name: 'Line 2: Subassembly & Component Bonding', href: '/production/work-orders', icon: Layers },
+          { name: 'Line 3: Sensor Calibration & Optical Tuning', href: '/production/batches', icon: Activity },
         ],
       },
       {
-        title: 'WAREHOUSE & PARTS STOCK',
+        title: 'WAREHOUSE & INVENTORY STOCK',
         defaultOpen: true,
         items: [
-          { name: 'Raw Materials & Screen Parts Stock', href: '/warehouse', icon: Warehouse },
+          { name: 'Raw Materials & Components Stock', href: '/warehouse', icon: Warehouse },
           { name: 'Small Parts Storage Bins & Safety Stock', href: '/warehouse/inventory', icon: Boxes },
-          { name: 'Phone Serial Numbers & SIM Registry', href: '/warehouse/locations', icon: Barcode },
+          { name: 'Product Serial Numbers & Unit Tracking', href: '/warehouse/locations', icon: Barcode },
         ],
       },
       {
-        title: 'PHONE QUALITY CHECKS',
+        title: 'QUALITY ASSURANCE & TESTING BENCH',
         defaultOpen: true,
         items: [
           { name: 'Station Hardware Diagnostics Suite', href: '/quality/hardware-diagnostics', icon: Activity },
           { name: 'First-Time Quality Pass Rate', href: '/quality', icon: ShieldCheck },
           { name: 'Incoming Parts Quality Check', href: '/quality/incoming', icon: ShieldCheck },
-          { name: 'Screen Brightness & Color Check', href: '/quality/in-process', icon: Activity },
+          { name: 'In-Process Sensor & Optical Tuning', href: '/quality/in-process', icon: Activity },
           { name: 'Pre-Dispatch Quality Stamp & Seals', href: '/quality/final', icon: ShieldCheck },
           { name: 'Quality Issue & Damage Reports', href: '/quality/ncr', icon: RotateCcw },
         ],
@@ -164,7 +164,7 @@ export function Sidebar() {
         defaultOpen: true,
         items: [
           { name: 'Dispatch Control Center', href: '/dispatch', icon: Send },
-          { name: 'Ready Phones Storage Bays', href: '/dispatch/storage', icon: Grid },
+          { name: 'Finished Goods & Batch Storage Bays', href: '/dispatch/storage', icon: Grid },
           { name: 'Shipping Box Labels & Stickers', href: '/dispatch/packaging', icon: Barcode },
         ],
       },
@@ -208,7 +208,7 @@ export function Sidebar() {
         title: 'DESIGN & CAD R&D',
         defaultOpen: true,
         items: [
-          { name: 'Phone Body 3D Designs & Blueprints', href: '/design', icon: Compass },
+          { name: 'Product 3D CAD Designs & Blueprints', href: '/design', icon: Compass },
           { name: 'Product Parts List & Recipe Stock', href: '/design/bom-editor', icon: Layers },
         ],
       },
@@ -254,7 +254,7 @@ export function Sidebar() {
         title: 'MARKETING & PROMOTIONS',
         defaultOpen: true,
         items: [
-          { name: 'New Phone Launches & Promotions', href: '/marketing', icon: Megaphone },
+          { name: 'New Product Launches & Commercial Campaigns', href: '/marketing', icon: Megaphone },
         ],
       },
       {
@@ -342,15 +342,15 @@ export function Sidebar() {
       <div className="flex flex-col flex-1 min-h-0">
         <div className="h-16 flex items-center justify-between px-5 border-b border-slate-100 dark:border-slate-800/80 flex-shrink-0">
           <Link href="/pricing-control" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900/40 flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-sm transition-transform group-hover:scale-105">
-              <Smartphone className="w-5 h-5" />
+            <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-500/20 transition-transform group-hover:scale-105">
+              <Layers className="w-5 h-5" />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-base tracking-tight text-slate-900 dark:text-white leading-tight">
-                ApexMobile ERP
+                Apex Enterprise OS
               </span>
               <span className="text-[10px] text-slate-400">
-                Smartphone Factory Edition
+                Universal Multi-Franchise ERP
               </span>
             </div>
           </Link>

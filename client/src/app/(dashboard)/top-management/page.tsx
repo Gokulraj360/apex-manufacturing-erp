@@ -39,7 +39,7 @@ interface PlantPerformance {
 const PLANT_METRICS: PlantPerformance[] = [
   {
     plantName: 'Plant 1: Austin Flagship Advanced Electronics',
-    location: 'Austin, Texas, USA',
+    location: 'Austin, Texas, USA (🇺🇸)',
     revenue: '$68.4M',
     ebitda: '$18.2M',
     ebitdaMargin: 26.6,
@@ -48,8 +48,8 @@ const PLANT_METRICS: PlantPerformance[] = [
     status: 'EXCEEDING_TARGET',
   },
   {
-    plantName: 'Plant 2: Stuttgart Automotive Sensor Hub',
-    location: 'Stuttgart, Germany',
+    plantName: 'Plant 2: Stuttgart EV Battery & Inverter Hub',
+    location: 'Stuttgart, Germany (🇩🇪)',
     revenue: '$49.1M',
     ebitda: '$11.8M',
     ebitdaMargin: 24.0,
@@ -58,14 +58,34 @@ const PLANT_METRICS: PlantPerformance[] = [
     status: 'ON_TRACK',
   },
   {
-    plantName: 'Plant 3: Singapore High-Density Microelectronics',
-    location: 'Jurong Innovation District, Singapore',
+    plantName: 'Plant 3: Jurong Precision Machinery Complex',
+    location: 'Jurong Innovation District, Singapore (🇸🇬)',
     revenue: '$31.0M',
     ebitda: '$5.9M',
     ebitdaMargin: 19.0,
     oee: 82.1,
     fpy: 96.9,
     status: 'ATTENTION_REQUIRED',
+  },
+  {
+    plantName: 'Plant 4: Midwest Automated Bottling & Packaging',
+    location: 'Chicago, Illinois, USA (🇺🇸)',
+    revenue: '$42.8M',
+    ebitda: '$9.4M',
+    ebitdaMargin: 22.0,
+    oee: 88.0,
+    fpy: 99.1,
+    status: 'EXCEEDING_TARGET',
+  },
+  {
+    plantName: 'Plant 5: Basel Bio-Medical Micro-Assembly',
+    location: 'Basel, Switzerland (🇨🇭)',
+    revenue: '$55.2M',
+    ebitda: '$16.5M',
+    ebitdaMargin: 29.8,
+    oee: 91.4,
+    fpy: 99.7,
+    status: 'EXCEEDING_TARGET',
   },
 ];
 

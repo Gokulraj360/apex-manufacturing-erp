@@ -3,13 +3,18 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { ALL_ROLES, RoleDefinition, UserSession } from '@/types/auth';
+import { userCredentialVault, VaultUser } from '@/lib/userCredentialVault';
 
 interface AuthContextType {
   session: UserSession | null;
   activeRole: RoleDefinition;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (roleId: string, username: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  login: (
+    emailOrUsername: string,
+    password: string,
+    legacyRoleId?: string
+  ) => Promise<{ success: boolean; error?: string; targetRoute?: string; user?: VaultUser }>;
   logout: () => void;
   switchRole: (roleId: string) => void;
 }
@@ -76,45 +81,39 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return found || DEFAULT_SUPER_ADMIN_ROLE;
   }, [session]);
 
-  const login = async (roleId: string, username: string, password: string) => {
-    const trimmedUser = username.trim();
-    const trimmedPass = password.trim();
+  const login = async (
+    arg1: string,
+    arg2: string,
+    arg3?: string
+  ): Promise<{ success: boolean; error?: string; targetRoute?: string; user?: VaultUser }> => {
+    let emailOrUser = arg1;
+    let password = arg2;
 
-    const targetRole = ALL_ROLES.find((r) => r.id === roleId);
-    if (!targetRole) {
-      return { success: false, error: 'Invalid role selection.' };
+    // Support legacy signature login(roleId, username, password)
+    if (arg3 !== undefined) {
+      emailOrUser = arg2;
+      password = arg3;
     }
 
-    if (!trimmedUser) {
-      return { success: false, error: 'Please enter a valid Username or Employee ID.' };
+    // Authenticate against the tamper-proof user credential vault
+    const authResult = userCredentialVault.authenticate(emailOrUser, password);
+    if (!authResult.success || !authResult.user) {
+      return { success: false, error: authResult.error || 'Authentication credentials could not be verified.' };
     }
 
-    // Role-Specific Validation Rules
-    if (roleId === 'super_admin') {
-      if (trimmedUser !== 'super_admin' || trimmedPass !== '123') {
-        return {
-          success: false,
-          error: 'Super Admin authentication failed. Expected username: "super_admin" and password: "123".',
-        };
-      }
-    } else {
-      if (trimmedPass !== '1234') {
-        return {
-          success: false,
-          error: `Invalid credentials for ${targetRole.name}. Expected password is "1234".`,
-        };
-      }
-    }
+    const vaultUser = authResult.user;
+    const targetRole = ALL_ROLES.find((r) => r.id === vaultUser.roleId) || ALL_ROLES[0];
+    const targetRoute = vaultUser.dashboardRoute || targetRole.dashboardRoute || `/dashboard/${targetRole.id}`;
 
     // Validated: Persist session
     const newSession: UserSession = {
-      username: trimmedUser,
-      roleId: targetRole.id,
-      roleName: targetRole.name,
-      department: targetRole.department,
-      dashboardRoute: `/dashboard/${targetRole.id}`,
+      username: vaultUser.username,
+      roleId: vaultUser.roleId,
+      roleName: vaultUser.roleName,
+      department: vaultUser.department,
+      dashboardRoute: targetRoute,
       loginTimestamp: new Date().toISOString(),
-      originalAdmin: targetRole.id === 'super_admin',
+      originalAdmin: vaultUser.roleId === 'super_admin',
     };
 
     try {
@@ -124,7 +123,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     setSession(newSession);
-    return { success: true };
+    return { success: true, targetRoute, user: vaultUser };
   };
 
   const logout = () => {

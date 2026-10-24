@@ -1,14 +1,15 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Sun, Moon, ShieldAlert, ArrowLeft, Lock, Crown, RotateCcw } from 'lucide-react';
+import { Sun, Moon, ShieldAlert, ArrowLeft, Lock, Crown, RotateCcw, Building2 } from 'lucide-react';
 import { Sidebar } from '@/components/Sidebar';
 import { GlobalWorkflowOrchestrator } from '@/components/GlobalWorkflowOrchestrator';
 import { useAuth } from '@/context/AuthContext';
 import { useTheme } from '@/context/ThemeContext';
 import { ALL_ROLES } from '@/types/auth';
 import { isPathAuthorizedForRole } from '@/config/roleNavigation';
+import { franchiseStore, FRANCHISE_PROFILES, FranchiseProfile } from '@/lib/franchiseStore';
 
 // Route to Title mapping for mobile manufacturing facility
 const ROUTE_TITLE_MAP: Record<string, { title: string; badge: string }> = {
@@ -41,31 +42,31 @@ const ROUTE_TITLE_MAP: Record<string, { title: string; badge: string }> = {
     badge: 'EMP-001',
   },
   '/production': {
-    title: 'Line 1: Circuit Board Assembly Work',
+    title: 'Line 1: Precision SMT & Circuit Assembly',
     badge: 'SMT-001',
   },
   '/production/work-orders': {
-    title: 'Line 2: Dust-Free Screen Fitting',
-    badge: 'DISP-002',
+    title: 'Line 2: Subassembly & Component Bonding',
+    badge: 'ASSM-002',
   },
   '/production/batches': {
-    title: 'Line 3: Camera Lens Focus & Tuning',
-    badge: 'CAM-003',
+    title: 'Line 3: Sensor Calibration & Optical Tuning',
+    badge: 'CAL-003',
   },
   '/asset-reliability': {
-    title: 'Line 4: Software Loading & 5G Signal Test',
-    badge: 'RF-004',
+    title: 'Line 4: Firmware Loading & Signal Testing',
+    badge: 'FW-004',
   },
   '/quality': {
-    title: 'Line 5: Battery Aging & Drop Resistance Test',
+    title: 'Line 5: Stress Testing & Environmental Aging',
     badge: 'QA-005',
   },
   '/dispatch': {
-    title: 'Line 6: Box Packing & Serial Number Sticker',
+    title: 'Line 6: Box Packing, Serial QR & Palletizing',
     badge: 'BOX-006',
   },
   '/warehouse': {
-    title: 'Raw Materials & Screen Parts Stock',
+    title: 'Raw Materials & Components Stock',
     badge: 'WH-001',
   },
   '/warehouse/inventory': {
@@ -73,8 +74,8 @@ const ROUTE_TITLE_MAP: Record<string, { title: string; badge: string }> = {
     badge: 'BIN-002',
   },
   '/warehouse/locations': {
-    title: 'Phone Serial Numbers & SIM Registry',
-    badge: 'IMEI-003',
+    title: 'Product Serial Numbers & Unit Tracking',
+    badge: 'UID-003',
   },
   '/finance': {
     title: 'Factory Accounts & Money Overview',
@@ -180,8 +181,8 @@ export default function DashboardLayout({
     : (session?.username || 'Dr. Rajesh (Owner/MD)');
 
   const displayEmail = session?.roleId === 'super_admin'
-    ? 'owner@apexmobile.com'
-    : `${(session?.username || 'user').toLowerCase().replace(/\s+/g, '')}@apexmobile.com`;
+    ? 'owner@apexcorp.com'
+    : `${(session?.username || 'user').toLowerCase().replace(/\s+/g, '')}@apexcorp.com`;
 
   const userInitial = displayName.charAt(0).toUpperCase() || 'D';
 
@@ -189,6 +190,19 @@ export default function DashboardLayout({
   const isAuthorized = useMemo(() => {
     return isPathAuthorizedForRole(pathname, session?.roleId);
   }, [pathname, session?.roleId]);
+
+  // Active Multi-Franchise Operating Profile
+  const [activeFranchise, setActiveFranchise] = useState<FranchiseProfile>(() => franchiseStore.getActiveProfile());
+
+  useEffect(() => {
+    const handleFranchiseChange = () => {
+      setActiveFranchise(franchiseStore.getActiveProfile());
+    };
+    window.addEventListener('apex_franchise_changed', handleFranchiseChange);
+    return () => {
+      window.removeEventListener('apex_franchise_changed', handleFranchiseChange);
+    };
+  }, []);
 
   return (
     <div className="flex h-screen bg-[#f8fafc] dark:bg-[#0b0f17] text-slate-900 dark:text-slate-100 overflow-hidden font-sans transition-colors duration-200">
@@ -209,10 +223,35 @@ export default function DashboardLayout({
             </span>
           </div>
 
-          {/* Header Right: Workflow Orchestrator, Role Switcher, Theme Toggle & User Profile */}
+          {/* Header Right: Workflow Orchestrator, Franchise Switcher, Role Switcher, Theme Toggle & User Profile */}
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Universal Cross-Role Workflow Orchestrator (Available on Every Page) */}
             <GlobalWorkflowOrchestrator />
+
+            {/* Universal Multi-Franchise Plant Switcher */}
+            <div
+              className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800"
+              title="Active Multi-Franchise Operating Plant"
+            >
+              <Building2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+              <span className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400">
+                Plant:
+              </span>
+              <select
+                value={activeFranchise.id}
+                onChange={(e) => {
+                  franchiseStore.setActiveProfile(e.target.value);
+                  setActiveFranchise(franchiseStore.getActiveProfile());
+                }}
+                className="text-xs font-semibold rounded-lg bg-transparent text-slate-800 dark:text-slate-200 focus:outline-none cursor-pointer max-w-[170px] truncate"
+              >
+                {FRANCHISE_PROFILES.map((f) => (
+                  <option key={f.id} value={f.id} className="bg-white dark:bg-slate-900">
+                    {f.flag} {f.name.replace(' Franchise', '')}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             {/* Multi-Portal Access Switcher: Strictly Reserved for Top Admin */}
             {(session?.roleId === 'super_admin' || session?.originalAdmin) ? (

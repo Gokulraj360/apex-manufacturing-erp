@@ -36,13 +36,13 @@ const INITIAL_STAFF: EmployeeCredentialItem[] = [
     id: 'cred-1',
     employeeId: 'EMP-2026-0101',
     name: 'Rameshwar Patil',
-    email: 'rameshwar@apexmobile.com',
+    email: 'rameshwar@apexcorp.com',
     phone: '+91 98451 22334',
     nationalId: 'XXXX-XXXX-8921',
-    address: 'Electronics City Phase 1, Bengaluru',
+    address: 'Austin Advanced Manufacturing Campus, TX',
     role: 'production',
-    roleTitle: 'SMT Line 1 Machine Operator',
-    department: 'Phone Assembly Lines',
+    roleTitle: 'SMT Line 1 Precision Assembly Lead',
+    department: 'Precision Assembly Lines',
     accessPermissions: ['READ_WORK_ORDERS', 'LOG_ASSEMBLY_OUTPUT', 'VIEW_PARTS_RECIPE'],
     username: 'rameshwar_patil',
     isActive: true,
@@ -74,13 +74,13 @@ const INITIAL_STAFF: EmployeeCredentialItem[] = [
     id: 'cred-2',
     employeeId: 'EMP-2026-0102',
     name: 'Priya Sharma',
-    email: 'priya.sharma@apexmobile.com',
+    email: 'priya.sharma@apexcorp.com',
     phone: '+91 91234 56789',
     nationalId: 'XXXX-XXXX-4412',
-    address: 'HSR Layout Sector 2, Bengaluru',
+    address: 'Stuttgart EV Engineering Facility, Germany',
     role: 'quality',
-    roleTitle: 'AMOLED Display Quality Inspector',
-    department: 'Phone Quality Checks',
+    roleTitle: 'Precision Component Quality Inspector',
+    department: 'Quality Assurance & Testing',
     accessPermissions: ['LOG_QC_INSPECTION', 'RAISE_DEFECT_REPORT', 'APPROVE_BATCH'],
     username: 'priya_sharma',
     isActive: true,
@@ -112,13 +112,13 @@ const INITIAL_STAFF: EmployeeCredentialItem[] = [
     id: 'cred-3',
     employeeId: 'EMP-2026-0103',
     name: 'Dilip Sawant',
-    email: 'dilip.sawant@apexmobile.com',
+    email: 'dilip.sawant@apexcorp.com',
     phone: '+91 99887 76655',
     nationalId: 'XXXX-XXXX-1109',
-    address: 'Bommasandra Industrial Area, Bengaluru',
+    address: 'Jurong Precision Robotics Hub, Singapore',
     role: 'fleet',
-    roleTitle: 'Commercial Fleet Delivery Driver',
-    department: 'Fleet & Logistics',
+    roleTitle: 'Commercial Fleet & Delivery Logistics Driver',
+    department: 'Fleet & Vehicle Logistics',
     accessPermissions: ['VIEW_ASSIGNED_TRIP', 'UPDATE_ODOMETER', 'LOG_FUEL_SLIP'],
     username: 'dilip_sawant',
     isActive: true,
@@ -150,13 +150,13 @@ const INITIAL_STAFF: EmployeeCredentialItem[] = [
     id: 'cred-4',
     employeeId: 'EMP-2026-0104',
     name: 'Kavita Menon',
-    email: 'kavita.menon@apexmobile.com',
+    email: 'kavita.menon@apexcorp.com',
     phone: '+91 98765 12345',
     nationalId: 'XXXX-XXXX-6677',
-    address: 'Koramangala 4th Block, Bengaluru',
+    address: 'Corporate Global Headquarters, Austin, TX',
     role: 'hr',
     roleTitle: 'HR & Labor Compliance Officer',
-    department: 'Human Resources',
+    department: 'Human Resources & Safety',
     accessPermissions: ['ONBOARD_STAFF', 'SUBMIT_PAYROLL', 'APPROVE_LEAVES'],
     username: 'kavita_menon',
     isActive: true,
@@ -188,10 +188,10 @@ const INITIAL_STAFF: EmployeeCredentialItem[] = [
     id: 'cred-5',
     employeeId: 'EMP-2026-0105',
     name: 'Amitabh Sen',
-    email: 'amitabh.sen@apexmobile.com',
+    email: 'amitabh.sen@apexcorp.com',
     phone: '+91 97654 32109',
     nationalId: 'XXXX-XXXX-3344',
-    address: 'Indiranagar 100ft Road, Bengaluru',
+    address: 'Midwest Operations Center, Chicago, IL',
     role: 'finance',
     roleTitle: 'Commercial Finance & Accounts Lead',
     department: 'Finance & Accounts',
@@ -444,6 +444,15 @@ export default function EmployeeCredentialsPage() {
         </div>
 
         <div className="flex items-center gap-2.5 flex-wrap">
+          <Link
+            href="/system-admin/users"
+            className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 rounded-xl transition-colors shadow-xs"
+            title="Open Tamper-Proof IT Admin Identity Vault & Password Governance Workbench"
+          >
+            <ShieldCheck className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+            IT Admin Identity Vault
+          </Link>
+
           <Link
             href="/payroll"
             className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-xl transition-colors shadow-xs"

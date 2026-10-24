@@ -117,17 +117,17 @@ export const CATEGORY_TO_PATHS_MAP: Record<string, string[]> = {
     '/finance/tax-reports',
     '/payroll',
   ],
-  'PHONE ASSEMBLY LINES': [
+  'PRECISION ASSEMBLY LINES': [
     '/production',
     '/production/work-orders',
     '/production/batches',
   ],
-  'WAREHOUSE & PARTS STOCK': [
+  'WAREHOUSE & INVENTORY STOCK': [
     '/warehouse',
     '/warehouse/inventory',
     '/warehouse/locations',
   ],
-  'PHONE QUALITY CHECKS': [
+  'QUALITY ASSURANCE & TESTING BENCH': [
     '/quality/hardware-diagnostics',
     '/quality',
     '/quality/incoming',
@@ -244,12 +244,12 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     description: 'P&L, Accounts Payable/Receivable, Tax Mapping, Payout Settlement, and Payroll Verification.',
   },
 
-  // 3. Phone Assembly & Screen Fitting Lead
+  // 3. Precision Assembly & Production Lead
   production: {
     roleId: 'production',
-    roleTitle: 'Phone Assembly & Screen Fitting Lead',
-    department: 'Phone Assembly Lines',
-    allowedCategoryTitles: ['PHONE ASSEMBLY LINES', 'MY WORKSPACE'],
+    roleTitle: 'Precision Assembly & Production Lead',
+    department: 'Precision Assembly Operations',
+    allowedCategoryTitles: ['PRECISION ASSEMBLY LINES', 'MY WORKSPACE'],
     allowedPaths: [
       '/production',
       '/production/work-orders',
@@ -258,15 +258,15 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/task-delegation',
       '/leave',
     ],
-    description: 'Circuit Board SMT/PCB Assembly Lines, Screen Fitting, Daily Attendance & Wages Calculation, and Leave Requests.',
+    description: 'Precision Assembly Lines, Subassembly Bonding, Daily Attendance & Wages Calculation, and Leave Requests.',
   },
 
-  // 4. Parts & Phone Inventory Lead (Warehouse Manager)
+  // 4. Raw Materials & Inventory Lead (Warehouse Manager)
   warehouse: {
     roleId: 'warehouse',
-    roleTitle: 'Parts & Phone Inventory Lead',
+    roleTitle: 'Raw Materials & Inventory Lead',
     department: 'Warehouse & Inventory',
-    allowedCategoryTitles: ['WAREHOUSE & PARTS STOCK', 'MY WORKSPACE'],
+    allowedCategoryTitles: ['WAREHOUSE & INVENTORY STOCK', 'MY WORKSPACE'],
     allowedPaths: [
       '/warehouse',
       '/warehouse/inventory',
@@ -275,15 +275,15 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/task-delegation',
       '/leave',
     ],
-    description: 'Raw Materials & Screen Stock, Small Parts Storage Bins, Phone Serial Numbers & SIM Registry, and Department Wages.',
+    description: 'Raw Materials & Components Stock, Small Parts Storage Bins, Product Serial Numbers & Unit Tracking, and Department Wages.',
   },
 
-  // 5. Phone Quality & Signal Testing Lead
+  // 5. Quality Assurance & Testing Lead
   quality: {
     roleId: 'quality',
-    roleTitle: 'Phone Quality & Signal Testing Lead',
-    department: 'Quality Checks',
-    allowedCategoryTitles: ['PHONE QUALITY CHECKS', 'MY WORKSPACE'],
+    roleTitle: 'Quality Assurance & Testing Lead',
+    department: 'Quality & Diagnostics Hub',
+    allowedCategoryTitles: ['QUALITY ASSURANCE & TESTING BENCH', 'MY WORKSPACE'],
     allowedPaths: [
       '/quality',
       '/quality/hardware-diagnostics',
@@ -296,7 +296,7 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/task-delegation',
       '/leave',
     ],
-    description: 'First-Pass Yield, Screen Optical Check, RF Chamber 5G Test, Battery Drop Tests, and Quality NCR Reports.',
+    description: 'First-Pass Yield, Sensor Optical Calibration, RF Chamber Signal Tests, Environmental Aging, and Quality NCR Reports.',
   },
 
   // 6. Retail Box Packing & Serial Sticker Lead
@@ -348,10 +348,10 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     description: 'Factory Shift Rosters, Staff Onboarding & Credentials, Monthly Payroll Batches, and Leave Approvals.',
   },
 
-  // 9. Phone Brand & Customer Orders Lead (CRM / Sales)
+  // 9. Commercial Brand & Client Orders Lead (CRM / Sales)
   crm: {
     roleId: 'crm',
-    roleTitle: 'Phone Brand & Customer Orders Lead',
+    roleTitle: 'Commercial Brand & Client Orders Lead',
     department: 'Sales & Customer Care',
     allowedCategoryTitles: ['CUSTOMER CARE & ORDERS', 'LEGAL, CONTRACTS & COMPLIANCE', 'MY WORKSPACE'],
     allowedPaths: [
@@ -362,7 +362,7 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/task-delegation',
       '/leave',
     ],
-    description: 'Telecom Carrier Contracts, Customer Orders, Delivery Planning, and Team Leave Requests.',
+    description: 'Enterprise Client Contracts, Customer Orders, Delivery Planning, and Team Leave Requests.',
   },
 
   // 10. Material Planning & Sourcing Lead (SCM)
@@ -383,13 +383,13 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/task-delegation',
       '/leave',
     ],
-    description: 'Material Planning Hub, Chip Stock & MRP Shortages, and Supplier Directory.',
+    description: 'Material Planning Hub, Inventory Buffer & MRP Shortages, and Supplier Directory.',
   },
 
-  // 11. Phone Body 3D Design & CAD Engineer
+  // 11. Product 3D CAD & Tooling Engineer
   design: {
     roleId: 'design',
-    roleTitle: 'Phone Body 3D Design & CAD Engineer',
+    roleTitle: 'Product 3D CAD & Tooling Engineer',
     department: 'Design & Engineering',
     allowedCategoryTitles: ['DESIGN & CAD R&D', 'MY WORKSPACE'],
     allowedPaths: [
@@ -398,13 +398,13 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/task-delegation',
       '/leave',
     ],
-    description: 'Phone Body 3D Blueprints, BOM Parts List Editor, and Engineering Change Requests (ECN).',
+    description: 'Product 3D CAD Blueprints, BOM Recipe Editor, and Engineering Change Requests (ECN).',
   },
 
   // 12. Delivery Trucks & Vehicle Tracker Lead (Fleet Manager)
   fleet: {
     roleId: 'fleet',
-    roleTitle: 'Delivery Trucks & Vehicle Tracker Lead',
+    roleTitle: 'Delivery Fleet & Vehicle Logistics Lead',
     department: 'Fleet & Delivery',
     allowedCategoryTitles: ['FLEET & DELIVERY VEHICLES', 'MY WORKSPACE'],
     allowedPaths: [
@@ -413,7 +413,7 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/task-delegation',
       '/leave',
     ],
-    description: 'Phone Delivery Trucks, GPS Live Tracker, Fuel Expense Management, and Driver Attendance.',
+    description: 'Finished Goods Delivery Fleet, GPS Live Tracker, Fuel Expense Management, and Driver Attendance.',
   },
 
   // 13. Assembly Machines & Cooling Maintenance Lead
@@ -479,11 +479,11 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     description: 'Parts Purchase Orders, Supplier RFQ Comparisons, and Vendor Directory.',
   },
 
-  // 17. New Phone Launches & Promotions Manager
+  // 17. New Product Launches & Commercial Manager
   marketing: {
     roleId: 'marketing',
-    roleTitle: 'New Phone Launches & Promotions Manager',
-    department: 'Marketing & Brand',
+    roleTitle: 'New Product Launches & Commercial Manager',
+    department: 'Marketing & Brand Strategy',
     allowedCategoryTitles: ['MARKETING & PROMOTIONS', 'MY WORKSPACE'],
     allowedPaths: [
       '/marketing',
