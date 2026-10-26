@@ -29,6 +29,9 @@ import {
 } from 'lucide-react';
 import { ALL_ROLES } from '@/types/auth';
 import { EmployeeCredentialItem } from '@/types/payroll-cred';
+import { userCredentialVault } from '@/lib/userCredentialVault';
+
+const STAFF_STORAGE_KEY = 'apex_credentials_staff_list_v2';
 
 // Pre-seeded factory staff
 const INITIAL_STAFF: EmployeeCredentialItem[] = [
@@ -233,6 +236,23 @@ export default function EmployeeCredentialsPage() {
   const [editingStaff, setEditingStaff] = useState<EmployeeCredentialItem | null>(null);
   const [successToast, setSuccessToast] = useState<string | null>(null);
 
+  // Load persisted staff list from localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const stored = localStorage.getItem(STAFF_STORAGE_KEY);
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            setStaffList(parsed);
+          }
+        }
+      } catch (e) {
+        console.error('Error loading stored staff list:', e);
+      }
+    }
+  }, []);
+
   // Form State for Onboarding
   const [formData, setFormData] = useState({
     name: '',
@@ -242,8 +262,8 @@ export default function EmployeeCredentialsPage() {
     nationalId: '',
     address: '',
     roleId: 'production',
-    roleTitle: 'Phone Assembly Line Technician',
-    department: 'Phone Assembly Lines',
+    roleTitle: 'Precision Assembly Line Technician',
+    department: 'Precision Assembly Lines',
     username: '',
     password: '123',
     employmentType: 'FULL_TIME',
@@ -343,22 +363,43 @@ export default function EmployeeCredentialsPage() {
       updatedAt: new Date().toISOString(),
     };
 
-    setStaffList([newStaff, ...staffList]);
+    const updatedList = [newStaff, ...staffList];
+    setStaffList(updatedList);
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem(STAFF_STORAGE_KEY, JSON.stringify(updatedList));
+      } catch (err) {
+        console.error('Failed to persist staff list:', err);
+      }
+    }
+
+    // Register user in the real security credential vault for immediate login
+    userCredentialVault.registerUser({
+      employeeId: newStaff.employeeId,
+      name: newStaff.name,
+      email: newStaff.email,
+      username: newStaff.username,
+      password: formData.password || '123',
+      roleId: newStaff.role,
+      roleName: newStaff.roleTitle,
+      department: newStaff.department,
+    });
+
     setIsOnboardingModalOpen(false);
-    setSuccessToast(`Staff [${newStaff.name} - ${newStaff.employeeId}] onboarded with Net Salary ₹${newStaff.salaryStructure.netSalary.toLocaleString()}/mo.`);
+    setSuccessToast(`Staff [${newStaff.name} - ${newStaff.employeeId}] onboarded successfully. Corporate credentials registered in Vault.`);
     setTimeout(() => setSuccessToast(null), 4000);
 
     // Reset form
     setFormData({
       name: '',
-      employeeId: `EMP-2026-0${107 + staffList.length}`,
+      employeeId: `EMP-2026-0${107 + updatedList.length}`,
       email: '',
       phone: '',
       nationalId: '',
       address: '',
       roleId: 'production',
-      roleTitle: 'Phone Assembly Line Technician',
-      department: 'Phone Assembly Lines',
+      roleTitle: 'Precision Assembly Line Technician',
+      department: 'Precision Assembly Lines',
       username: '',
       password: '123',
       employmentType: 'FULL_TIME',
@@ -377,9 +418,24 @@ export default function EmployeeCredentialsPage() {
   };
 
   const handleToggleStatus = (id: string) => {
-    setStaffList((prev) =>
-      prev.map((s) => (s.id === id ? { ...s, isActive: !s.isActive } : s)),
-    );
+    setStaffList((prev) => {
+      const updated = prev.map((s) => (s.id === id ? { ...s, isActive: !s.isActive } : s));
+      if (typeof window !== 'undefined') {
+        try {
+          localStorage.setItem(STAFF_STORAGE_KEY, JSON.stringify(updated));
+        } catch (e) {
+          console.error(e);
+        }
+      }
+      const target = updated.find((s) => s.id === id);
+      if (target) {
+        const vaultUser = userCredentialVault.getUserByEmail(target.email);
+        if (vaultUser) {
+          userCredentialVault.toggleAccountStatus(vaultUser.id, target.isActive);
+        }
+      }
+      return updated;
+    });
   };
 
   // Filtered staff list

@@ -11,10 +11,7 @@ import {
   Mail,
   Lock,
   AlertCircle,
-  Sparkles,
-  ChevronDown,
-  ChevronUp,
-  ShieldCheck,
+  Briefcase,
 } from "lucide-react";
 
 export interface DemoUserOption {
@@ -85,8 +82,7 @@ export function LoginPage3({
   const [internalPassword, setInternalPassword] = useState("123");
   const [internalRememberMe, setInternalRememberMe] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
-  const [showDemoDirectory, setShowDemoDirectory] = useState(false);
-  const [ssoFeedback, setSsoFeedback] = useState("");
+  const [selectedRole, setSelectedRole] = useState("");
 
   const email = controlledEmail !== undefined ? controlledEmail : internalEmail;
   const setEmail = setControlledEmail || setInternalEmail;
@@ -95,6 +91,26 @@ export function LoginPage3({
   const rememberMe = controlledRememberMe !== undefined ? controlledRememberMe : internalRememberMe;
   const setRememberMe = setControlledRememberMe || setInternalRememberMe;
 
+  const handleRoleChange = (roleEmail: string) => {
+    setSelectedRole(roleEmail);
+    if (!roleEmail) return;
+
+    const matched = demoUsers.find(
+      (u) => u.email.toLowerCase() === roleEmail.toLowerCase()
+    );
+    if (matched) {
+      if (onSelectDemoUser) {
+        onSelectDemoUser({
+          email: matched.email,
+          passwordHash: matched.passwordHash || "123",
+        });
+      } else {
+        setEmail(matched.email);
+        setPassword(matched.passwordHash || "123");
+      }
+    }
+  };
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (controlledOnSubmit) {
@@ -102,18 +118,13 @@ export function LoginPage3({
     }
   };
 
-  const handleSocialClick = (name: string) => {
-    setSsoFeedback(`Enterprise Single Sign-On via ${name} initiated...`);
-    setTimeout(() => setSsoFeedback(""), 3500);
-  };
-
   return (
     <section className="relative isolate flex min-h-dvh w-full items-center justify-center overflow-x-hidden bg-slate-50 text-slate-900 font-sans py-10 px-4">
       <div className="relative z-10 container mx-auto flex min-h-dvh items-center justify-center">
         <Card className="relative w-full max-w-md ring-0 p-8 shadow-xl bg-white border border-slate-200/90 rounded-2xl text-slate-900">
           {/* Header Icon & Title */}
-          <div className="mb-8 flex flex-col items-center">
-            <div className="my-4 flex justify-center">
+          <div className="mb-6 flex flex-col items-center">
+            <div className="my-3 flex justify-center">
               <div className="bg-slate-100 relative size-14 rounded-full border border-slate-200/80 shadow-xs">
                 <div className="flex h-full items-center justify-center text-slate-800">
                   <svg
@@ -157,7 +168,7 @@ export function LoginPage3({
                 </div>
               </div>
             </div>
-            <h1 className="mb-2 text-center text-2xl font-bold tracking-tight text-slate-900">
+            <h1 className="mb-1.5 text-center text-2xl font-bold tracking-tight text-slate-900">
               Welcome Back!
             </h1>
             <p className="text-slate-500 text-center text-sm">
@@ -173,22 +184,45 @@ export function LoginPage3({
             </div>
           )}
 
-          {/* SSO Feedback Note */}
-          {ssoFeedback && (
-            <div className="mb-4 p-2.5 rounded-lg bg-blue-50 border border-blue-200 text-blue-700 text-xs text-center animate-in fade-in">
-              {ssoFeedback}
-            </div>
-          )}
-
           {/* Login Form */}
-          <form onSubmit={handleFormSubmit} className="flex flex-col gap-5">
+          <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
+            {/* Quick Role Selection Dropdown (All 21 Enterprise Roles) */}
+            {demoUsers.length > 0 && (
+              <div className="space-y-1">
+                <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+                  <span className="flex items-center gap-1.5">
+                    <Briefcase className="w-3.5 h-3.5 text-slate-600" />
+                    <span>Select Role / Profile</span>
+                  </span>
+                  <span className="text-[11px] font-normal text-slate-400">
+                    Auto-fill credentials
+                  </span>
+                </div>
+                <select
+                  value={selectedRole}
+                  onChange={(e) => handleRoleChange(e.target.value)}
+                  className="w-full h-10 px-3 bg-white border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-900 font-medium cursor-pointer truncate shadow-2xs"
+                >
+                  <option value="">-- Choose Role from Directory (21 Roles) --</option>
+                  {demoUsers.map((user) => (
+                    <option key={user.id} value={user.email}>
+                      {user.roleName || user.name} &bull; {user.name} ({user.email})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
             {/* Email Field */}
             <div className="relative">
               <Input
                 type="email"
                 placeholder="me@example.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setSelectedRole("");
+                }}
                 required
                 className="bg-transparent ps-10 h-10 text-sm border-slate-200 focus-visible:ring-slate-900 text-slate-900 placeholder:text-slate-400"
                 autoComplete="email"
@@ -243,7 +277,7 @@ export function LoginPage3({
                 href="#forgot"
                 onClick={(e) => {
                   e.preventDefault();
-                  alert("Corporate Password Recovery: Contact IT Admin or check your secure Vault credentials.");
+                  alert("Corporate Password Recovery: Contact IT Admin or check your credentials in the System Vault.");
                 }}
                 className="text-sm text-slate-700 underline-offset-4 hover:underline"
               >
@@ -261,7 +295,7 @@ export function LoginPage3({
             </Button>
 
             {/* Social Login Divider */}
-            <div className="relative my-4 text-center">
+            <div className="relative my-2 text-center">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-slate-200"></div>
               </div>
@@ -279,7 +313,6 @@ export function LoginPage3({
                   key={index}
                   type="button"
                   variant="outline"
-                  onClick={() => handleSocialClick(button.name)}
                   className="h-10 px-4 py-2 w-full cursor-pointer border-slate-200 hover:bg-slate-50 text-slate-700"
                   title={`Sign in with ${button.name}`}
                 >
@@ -290,81 +323,19 @@ export function LoginPage3({
           </form>
 
           {/* Sign Up Link */}
-          <p className="mt-6 flex justify-center gap-1 text-center text-sm text-slate-500">
+          <p className="mt-5 flex justify-center gap-1 text-center text-sm text-slate-500">
             <span>Don&apos;t have an account?</span>
             <a
               href="#signup"
               onClick={(e) => {
                 e.preventDefault();
-                alert("New staff registration is provisioned by Corporate HR & IT Administration.");
+                alert("New staff accounts are provisioned via Corporate HR in Staff Onboarding.");
               }}
               className="underline underline-offset-4 text-slate-900 font-medium"
             >
               Create an account
             </a>
           </p>
-
-          {/* Demo Presentation Quick-Fill Directory Accordion */}
-          {demoUsers.length > 0 && (
-            <div className="mt-6 pt-4 border-t border-slate-100">
-              <button
-                type="button"
-                onClick={() => setShowDemoDirectory(!showDemoDirectory)}
-                className="w-full flex items-center justify-between text-xs text-slate-500 hover:text-slate-900 font-medium py-1 transition-colors"
-              >
-                <span className="flex items-center gap-1.5">
-                  <Sparkles className="h-3.5 w-3.5 text-blue-600" />
-                  <span>Demo Role Quick-Fill (21 Corporate Accounts)</span>
-                </span>
-                {showDemoDirectory ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
-              </button>
-
-              {showDemoDirectory && (
-                <div className="mt-3 space-y-2 max-h-56 overflow-y-auto pr-1">
-                  <p className="text-[11px] text-slate-400">
-                    Click any enterprise role to auto-populate credentials for presentation:
-                  </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-                    {demoUsers.map((user) => (
-                      <button
-                        key={user.id}
-                        type="button"
-                        onClick={() => {
-                          if (onSelectDemoUser) {
-                            onSelectDemoUser({
-                              email: user.email,
-                              passwordHash: user.passwordHash || "123",
-                            });
-                          } else {
-                            setEmail(user.email);
-                            setPassword(user.passwordHash || "123");
-                          }
-                        }}
-                        className="p-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-left transition-colors text-[11px] flex flex-col justify-between"
-                      >
-                        <div className="font-medium text-slate-900 truncate">
-                          {user.name}
-                        </div>
-                        <div className="text-blue-600 font-mono text-[10px] truncate">
-                          {user.email}
-                        </div>
-                        <div className="text-slate-400 text-[9px] flex items-center justify-between mt-0.5">
-                          <span className="truncate">{user.badge || user.roleName}</span>
-                          <span className="font-mono text-slate-500">pw: {user.passwordHash || "123"}</span>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Security Tag */}
-          <div className="mt-6 flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
-            <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
-            <span>Encrypted Corporate Directory & Role-Based Routing</span>
-          </div>
         </Card>
       </div>
     </section>

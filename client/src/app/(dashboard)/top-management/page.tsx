@@ -16,7 +16,6 @@ import {
   Sliders,
   Building2,
   Calendar,
-  Sparkles,
   Download,
   ShieldCheck,
   Zap,
@@ -342,15 +341,9 @@ export default function TopManagementPage() {
       {/* Top Banner */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-b border-border/40 pb-5">
         <div>
-          <div className="flex items-center gap-3">
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
-              Executive Boardroom & C-Suite Cockpit
-            </h1>
-            <span className="inline-flex items-center rounded-full bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-600 dark:text-amber-400">
-              <Sparkles className="w-3.5 h-3.5 mr-1" />
-              Strategic Cockpit
-            </span>
-          </div>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            Executive Boardroom & C-Suite Cockpit
+          </h1>
           <p className="text-sm text-muted-foreground mt-1">
             Cash Conversion Cycle decomposition, multi-plant EBITDA bridges, DuPont ROE models, and global CapEx allocation.
           </p>
@@ -373,12 +366,9 @@ export default function TopManagementPage() {
       {/* C-Suite Core KPIs */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Annualized Net Revenue</span>
-            <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-600">
-              <DollarSign className="w-4 h-4" />
-            </div>
-          </div>
+          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider block">
+            Annualized Net Revenue
+          </span>
           <div className="mt-3">
             <span className="text-2xl font-bold text-foreground">$148.5M</span>
             <span className="text-xs text-emerald-600 ml-2 font-semibold">↑ +14.2% YoY</span>
@@ -387,12 +377,9 @@ export default function TopManagementPage() {
         </div>
 
         <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Consolidated EBITDA</span>
-            <div className="p-2 rounded-lg bg-blue-500/10 text-blue-600">
-              <TrendingUp className="w-4 h-4" />
-            </div>
-          </div>
+          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider block">
+            Consolidated EBITDA
+          </span>
           <div className="mt-3">
             <span className="text-2xl font-bold text-blue-600">$35.9M</span>
             <span className="text-xs text-muted-foreground ml-2">(24.17% Margin)</span>
@@ -401,12 +388,9 @@ export default function TopManagementPage() {
         </div>
 
         <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Cash Conversion Cycle</span>
-            <div className="p-2 rounded-lg bg-purple-500/10 text-purple-600">
-              <Activity className="w-4 h-4" />
-            </div>
-          </div>
+          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider block">
+            Cash Conversion Cycle
+          </span>
           <div className="mt-3">
             <span className="text-2xl font-bold text-foreground">{baseCcc.toFixed(1)} Days</span>
             <span className="text-xs text-emerald-600 ml-2 font-semibold">↓ -4.8d faster</span>
@@ -415,12 +399,9 @@ export default function TopManagementPage() {
         </div>
 
         <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">DuPont ROE Metric</span>
-            <div className="p-2 rounded-lg bg-amber-500/10 text-amber-600">
-              <PieChart className="w-4 h-4" />
-            </div>
-          </div>
+          <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider block">
+            DuPont ROE Metric
+          </span>
           <div className="mt-3">
             <span className="text-2xl font-bold text-foreground">31.0%</span>
             <span className="text-xs text-emerald-600 ml-2 font-semibold">Tier 1 Elite</span>

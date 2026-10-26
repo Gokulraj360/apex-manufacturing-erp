@@ -1,3 +1,5 @@
+import { ALL_ROLES } from '@/types/auth';
+
 /**
  * Apex Enterprise User Credential Vault & Tamper-Proof Security Engine
  * 
@@ -606,6 +608,88 @@ class UserCredentialVaultService {
   public getAllUsers(): VaultUser[] {
     this.loadFromStorage();
     return [...this.users];
+  }
+
+  public registerUser(userData: {
+    employeeId?: string;
+    name: string;
+    email: string;
+    username?: string;
+    password?: string;
+    roleId: string;
+    roleName?: string;
+    department?: string;
+    dashboardRoute?: string;
+    badge?: string;
+    franchiseLocation?: string;
+  }): VaultUser {
+    this.loadFromStorage();
+    const cleanEmail = userData.email.trim().toLowerCase();
+    const cleanPassword = (userData.password || '123').trim();
+    const roleDef = ALL_ROLES.find((r) => r.id === userData.roleId);
+    const route = userData.dashboardRoute || roleDef?.dashboardRoute || (userData.roleId === 'super_admin' ? '/top-management' : `/${userData.roleId.replace(/_/g, '-')}`);
+
+    const existingIndex = this.users.findIndex(
+      (u) => u.email.toLowerCase() === cleanEmail || (userData.username && u.username.toLowerCase() === userData.username.trim().toLowerCase())
+    );
+
+    if (existingIndex >= 0) {
+      const existing = this.users[existingIndex];
+      existing.name = userData.name.trim();
+      existing.email = cleanEmail;
+      existing.passwordHash = cleanPassword;
+      existing.roleId = userData.roleId;
+      existing.roleName = userData.roleName || roleDef?.name || existing.roleName;
+      existing.department = userData.department || roleDef?.department || existing.department;
+      existing.dashboardRoute = route;
+      existing.badge = userData.badge || roleDef?.badge || existing.badge;
+      existing.isActive = true;
+      existing.failedLoginAttempts = 0;
+      this.saveUsers();
+      this.logAudit({
+        action: 'USER_CREATED',
+        targetUserId: existing.id,
+        targetUserEmail: cleanEmail,
+        performedByAdmin: 'super_admin',
+        details: `Employee credentials updated with password for role [${existing.roleName}].`,
+        ipAddress: '127.0.0.1 (HR Onboarding Portal)',
+      });
+      return existing;
+    }
+
+    const newUser: VaultUser = {
+      id: `usr-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`,
+      employeeId: userData.employeeId || `EMP-2026-0${100 + this.users.length + 1}`,
+      name: userData.name.trim(),
+      email: cleanEmail,
+      username: userData.username?.trim().toLowerCase() || cleanEmail.split('@')[0],
+      passwordHash: cleanPassword,
+      roleId: userData.roleId,
+      roleName: userData.roleName || roleDef?.name || 'Enterprise Specialist',
+      department: userData.department || roleDef?.department || 'Operations',
+      dashboardRoute: route,
+      badge: userData.badge || roleDef?.badge || 'Staff',
+      isActive: true,
+      mfaEnabled: false,
+      failedLoginAttempts: 0,
+      franchiseLocation: userData.franchiseLocation || 'Austin Industrial Plant 1',
+      forcePasswordReset: false,
+      lastPasswordChangedAt: new Date().toISOString(),
+    };
+
+    this.users.push(newUser);
+    this.saveUsers();
+
+    this.logAudit({
+      action: 'USER_CREATED',
+      targetUserId: newUser.id,
+      targetUserEmail: cleanEmail,
+      performedByAdmin: 'super_admin',
+      details: `New employee onboarded with password for role [${newUser.roleName}] with route [${route}].`,
+      ipAddress: '127.0.0.1 (HR Onboarding Portal)',
+    });
+
+    return newUser;
   }
 
   public getUserById(id: string): VaultUser | undefined {
