@@ -55,10 +55,10 @@ interface QualityCertificateItem {
 interface CustomerRMAItem {
   id: string;
   rmaNumber: string;
-  deviceSerialImei: string;
+  deviceSerialUid: string;
   deviceModel: string;
   reportedDefect: string;
-  failureCategory: 'OLED_TOUCH_UNRESPONSIVE' | 'BATTERY_THERMAL_SHUTDOWN' | 'RF_5G_DROP' | 'CAMERA_FOCUS_BLUR';
+  failureCategory: 'SENSOR_ARRAY_UNRESPONSIVE' | 'BATTERY_THERMAL_SHUTDOWN' | 'RF_5G_DROP' | 'CAMERA_FOCUS_BLUR';
   createdDate: string;
   status: 'PENDING_TRIAGE' | 'RETURN_LABEL_ISSUED' | 'DEVICE_RECEIVED_INSPECTED' | 'REPLACED_CREDITED';
   warrantyStatus: 'ACTIVE_UNDER_WARRANTY' | 'EXPIRED';
@@ -147,10 +147,10 @@ const MOCK_RMAS: CustomerRMAItem[] = [
   {
     id: 'rma-1',
     rmaNumber: 'RMA-APEX-2026-0041',
-    deviceSerialImei: '869012059942109',
+    deviceSerialUid: '869012059942109',
     deviceModel: 'Apex Industrial Module Pro',
     reportedDefect: 'Touch digitizer ghost touching after cold boot',
-    failureCategory: 'OLED_TOUCH_UNRESPONSIVE',
+    failureCategory: 'SENSOR_ARRAY_UNRESPONSIVE',
     createdDate: '2026-10-20',
     status: 'RETURN_LABEL_ISSUED',
     warrantyStatus: 'ACTIVE_UNDER_WARRANTY',
@@ -158,7 +158,7 @@ const MOCK_RMAS: CustomerRMAItem[] = [
   {
     id: 'rma-2',
     rmaNumber: 'RMA-APEX-2026-0038',
-    deviceSerialImei: '869012059881024',
+    deviceSerialUid: '869012059881024',
     deviceModel: 'Apex Core Automation Unit',
     reportedDefect: 'Battery thermals throttling charging speed to 5W',
     failureCategory: 'BATTERY_THERMAL_SHUTDOWN',
@@ -202,7 +202,7 @@ export default function CustomerPortalPage() {
   const [isRmaModalOpen, setIsRmaModalOpen] = useState(false);
   const [newImei, setNewImei] = useState('');
   const [newModel, setNewModel] = useState('Apex Industrial Module Pro');
-  const [newCategory, setNewCategory] = useState<CustomerRMAItem['failureCategory']>('OLED_TOUCH_UNRESPONSIVE');
+  const [newCategory, setNewCategory] = useState<CustomerRMAItem['failureCategory']>('SENSOR_ARRAY_UNRESPONSIVE');
   const [newRemarks, setNewRemarks] = useState('');
 
   const handleCreateRma = (e: React.FormEvent) => {
@@ -210,7 +210,7 @@ export default function CustomerPortalPage() {
     const newEntry: CustomerRMAItem = {
       id: `rma-${Date.now()}`,
       rmaNumber: `RMA-APEX-2026-${Math.floor(1000 + Math.random() * 9000)}`,
-      deviceSerialImei: newImei || '869012059900112',
+      deviceSerialUid: newImei || '869012059900112',
       deviceModel: newModel,
       reportedDefect: newRemarks || 'Diagnostic failure reported during QA',
       failureCategory: newCategory,
@@ -274,7 +274,7 @@ export default function CustomerPortalPage() {
             headers: ['Test Protocol', 'Target Specification Limits', 'Measured Batch Average', 'Test Result'],
             rows: [
               ['Sub-6GHz RF 5G Tx Power', '+23.0 dBm ± 1.5 dBm', '+23.4 dBm Peak Power', 'PASSED (Zero Deviation)'],
-              ['OLED Display Color Accuracy', 'Delta-E (ΔE) < 1.5', 'ΔE = 0.82 Chromaticity', 'PASSED (Calibrated)'],
+              ['Optical Calibration & Telemetry Accuracy', 'Delta-E (ΔE) < 1.5', 'ΔE = 0.82 Chromaticity', 'PASSED (Calibrated)'],
               ['1.5-Meter Mechanical Drop Test', '0 Structural / Optical Cracks', '6-Axis Drop Validated', 'PASSED (MIL-STD-810H)'],
               ['ESD Static Discharge Immunity', '±8kV Contact / ±15kV Air', 'IEC 61000-4-2 Level 4', 'PASSED (No Latch-up)'],
               ['Continuous Burn-in Thermal Test', '72 Hours @ 50°C 85% RH', 'Zero Thermal Throttling', 'PASSED (100% Reliability)'],
@@ -623,7 +623,7 @@ export default function CustomerPortalPage() {
 
                 <div className="text-xs space-y-1 text-slate-600 dark:text-slate-300">
                   <div><strong>Device:</strong> {rma.deviceModel}</div>
-                  <div><strong>IMEI / Serial:</strong> <span className="font-mono text-purple-600 dark:text-purple-400">{rma.deviceSerialImei}</span></div>
+                  <div><strong>Serial / / Serial:</strong> <span className="font-mono text-purple-600 dark:text-purple-400">{rma.deviceSerialUid}</span></div>
                   <div><strong>Reported Failure:</strong> {rma.reportedDefect}</div>
                   <div><strong>Category:</strong> <span className="font-semibold text-slate-800 dark:text-slate-200">{rma.failureCategory.replace(/_/g, ' ')}</span></div>
                 </div>
@@ -706,7 +706,7 @@ export default function CustomerPortalPage() {
             </div>
             <form onSubmit={handleCreateRma} className="space-y-3 text-xs">
               <div>
-                <label className="block text-slate-700 dark:text-slate-300 font-semibold mb-1">Device IMEI / Serial Number</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-semibold mb-1">Unit Serial / Hardware UID</label>
                 <input
                   type="text"
                   placeholder="e.g. 869012059942109"
@@ -736,7 +736,7 @@ export default function CustomerPortalPage() {
                     onChange={(e) => setNewCategory(e.target.value as any)}
                     className="w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white"
                   >
-                    <option value="OLED_TOUCH_UNRESPONSIVE">OLED Touch Unresponsive</option>
+                    <option value="SENSOR_ARRAY_UNRESPONSIVE">Precision Sensor Array Unresponsive</option>
                     <option value="BATTERY_THERMAL_SHUTDOWN">Battery Thermal Shutdown</option>
                     <option value="RF_5G_DROP">RF 5G Signal Drop</option>
                     <option value="CAMERA_FOCUS_BLUR">Camera Focus / OIS Failure</option>

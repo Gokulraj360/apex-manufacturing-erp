@@ -67,7 +67,7 @@ const DEFAULT_ALERTS: ActionAlertItem[] = [
     badge: 'ACCOUNTS PAYABLE MATCH',
     badgeColor: 'blue',
     title: 'Inbound Supplier Bills Awaiting 3-Way GRN Match',
-    description: '2 raw material invoices from Qualcomm Technologies (PO-9042) and Sony Sensors matched against warehouse receiving slips.',
+    description: '2 raw material invoices from Semiconductor Core Technologies (PO-9042) and Sony Sensors matched against warehouse receiving slips.',
     submittedBy: 'Procurement & Warehouse Dock',
     timestamp: 'Today, 08:30 AM',
     primaryActionLabel: 'Inspect Bills & Match GRN',
@@ -83,7 +83,7 @@ const DEFAULT_ALERTS: ActionAlertItem[] = [
     badge: 'EXECUTIVE CLEARANCE REQUIRED',
     badgeColor: 'purple',
     title: 'Department Wage Allocation & Overtime Sign-Off',
-    description: 'Line 1 Circuit Board Assembly Manager submitted shift overtime authorization (14 hrs night sprint) for Snapdragon motherboard production.',
+    description: 'Line 1 Circuit Board Assembly Manager submitted shift overtime authorization (14 hrs night sprint) for Precision Controller & Motherboard Production.',
     submittedBy: 'Suresh Raina (Line 1 Production Manager)',
     timestamp: 'Today, 09:45 AM',
     primaryActionLabel: 'Authorize Department Wage Sheet',
@@ -97,7 +97,7 @@ const DEFAULT_ALERTS: ActionAlertItem[] = [
     roleId: 'super_admin',
     badge: 'HIGH-VALUE PURCHASE ORDER',
     badgeColor: 'amber',
-    title: 'High-Value PO Sign-Off: Qualcomm Snapdragon Processors',
+    title: 'High-Value PO Sign-Off: Precision Industrial Microprocessors',
     description: 'PO-9042 for 10,000 chipset modules totaling ₹1,45,00,000 awaiting final MD signature.',
     submittedBy: 'Sourcing & Supply Chain Team',
     timestamp: 'Yesterday, 04:30 PM',
@@ -501,7 +501,7 @@ export function RoleActionAlerts({ roleId }: { roleId?: string }) {
             </div>
 
             <p className="text-xs text-slate-600 dark:text-slate-400">
-              Line 1 Production Manager Suresh Raina submitted the monthly attendance and shift overtime sheet for <strong>Snapdragon motherboard assembly</strong>.
+              Line 1 Production Manager Suresh Raina submitted the monthly attendance and shift overtime sheet for <strong>Precision Controller & Motherboard Assembly</strong>.
             </p>
 
             <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-xs space-y-1">

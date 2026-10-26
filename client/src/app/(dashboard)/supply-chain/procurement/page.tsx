@@ -472,7 +472,7 @@ export default function ProcurementManagementPage() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#0f172a]/60 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-white dark:bg-[#0f172a]/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="relative w-full md:w-96">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
           <input
@@ -518,7 +518,7 @@ export default function ProcurementManagementPage() {
 
       {/* TAB 1: Purchase Requisitions Table */}
       {activeTab === 'REQUISITIONS' && (
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <FileCheck className="h-4 w-4 text-cyan-400" />
@@ -531,8 +531,8 @@ export default function ProcurementManagementPage() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-300">
-              <thead className="bg-slate-900/80 text-slate-400 uppercase font-medium border-b border-slate-800">
+            <table className="w-full text-left text-xs text-slate-700 dark:text-slate-300">
+              <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-medium border-b border-slate-800">
                 <tr>
                   <th className="py-3 px-4">PR # &amp; Requested By</th>
                   <th className="py-3 px-4">Department</th>
@@ -544,18 +544,18 @@ export default function ProcurementManagementPage() {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 font-normal">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 font-normal">
                 {filteredRequisitions.map((pr) => (
                   <tr key={pr.id} className="hover:bg-slate-800/40 transition-colors">
                     <td className="py-3.5 px-4">
-                      <div className="font-semibold text-white font-mono">{pr.requisitionNumber}</div>
+                      <div className="font-semibold text-slate-900 dark:text-white font-mono">{pr.requisitionNumber}</div>
                       <div className="text-[11px] text-slate-400 mt-0.5">{pr.requestedBy}</div>
                     </td>
 
                     <td className="py-3.5 px-4 font-medium text-slate-200">{pr.department}</td>
 
                     <td className="py-3.5 px-4">
-                      <div className="flex items-center gap-1 text-slate-300">
+                      <div className="flex items-center gap-1 text-slate-700 dark:text-slate-300">
                         <Calendar className="h-3 w-3 text-cyan-400" />
                         <span>{pr.requiredByDate}</span>
                       </div>
@@ -625,7 +625,7 @@ export default function ProcurementManagementPage() {
 
       {/* TAB 2: Purchase Orders Table */}
       {activeTab === 'ORDERS' && (
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <ShoppingCart className="h-4 w-4 text-cyan-400" />
@@ -638,8 +638,8 @@ export default function ProcurementManagementPage() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-300">
-              <thead className="bg-slate-900/80 text-slate-400 uppercase font-medium border-b border-slate-800">
+            <table className="w-full text-left text-xs text-slate-700 dark:text-slate-300">
+              <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-medium border-b border-slate-800">
                 <tr>
                   <th className="py-3 px-4">PO # &amp; Date</th>
                   <th className="py-3 px-4">Supplier &amp; City</th>
@@ -651,11 +651,11 @@ export default function ProcurementManagementPage() {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 font-normal">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 font-normal">
                 {filteredOrders.map((po) => (
                   <tr key={po.id} className="hover:bg-slate-800/40 transition-colors">
                     <td className="py-3.5 px-4">
-                      <div className="font-semibold text-white font-mono">{po.poNumber}</div>
+                      <div className="font-semibold text-slate-900 dark:text-white font-mono">{po.poNumber}</div>
                       <div className="text-[11px] text-slate-400 mt-0.5">{po.orderDate}</div>
                     </td>
 
@@ -678,13 +678,13 @@ export default function ProcurementManagementPage() {
                     </td>
 
                     <td className="py-3.5 px-4">
-                      <div className="flex items-center gap-1 text-slate-300">
+                      <div className="flex items-center gap-1 text-slate-700 dark:text-slate-300">
                         <Clock className="h-3 w-3 text-cyan-400" />
                         <span>{po.expectedDeliveryDate}</span>
                       </div>
                     </td>
 
-                    <td className="py-3.5 px-4 font-mono text-[11px] text-slate-300">
+                    <td className="py-3.5 px-4 font-mono text-[11px] text-slate-700 dark:text-slate-300">
                       {po.paymentTerms} / {po.incoterms}
                     </td>
 
@@ -750,7 +750,7 @@ export default function ProcurementManagementPage() {
       {/* MODAL 1: Raise Purchase Requisition */}
       {isRequisitionModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
             <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
               <div className="flex items-center gap-2">
                 <FileCheck className="h-5 w-5 text-cyan-400" />
@@ -900,7 +900,7 @@ export default function ProcurementManagementPage() {
                 <button
                   type="button"
                   onClick={() => setIsRequisitionModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
+                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors"
                 >
                   Cancel
                 </button>
@@ -920,7 +920,7 @@ export default function ProcurementManagementPage() {
       {/* MODAL 2: Issue Direct Purchase Order */}
       {isOrderModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
             <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
               <div className="flex items-center gap-2">
                 <ShoppingCart className="h-5 w-5 text-cyan-400" />
@@ -1064,7 +1064,7 @@ export default function ProcurementManagementPage() {
                 <button
                   type="button"
                   onClick={() => setIsOrderModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
+                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors"
                 >
                   Cancel
                 </button>

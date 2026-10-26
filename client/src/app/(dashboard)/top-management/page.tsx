@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 import { workflowStore, WorkflowItem } from '@/lib/workflowStore';
+import { useActiveFranchise } from '@/lib/franchiseStore';
 import {
   TrendingUp,
   DollarSign,
@@ -148,6 +149,7 @@ const CAPEX_PROJECTS: CapexProject[] = [
 ];
 
 export default function TopManagementPage() {
+  const activeFranchise = useActiveFranchise();
   const { session } = useAuth();
   const [activeTab, setActiveTab] = useState<'CCC' | 'WATERFALL' | 'DUPONT' | 'CAPEX' | 'APPROVALS'>('CCC');
   const [executiveApprovals, setExecutiveApprovals] = useState<WorkflowItem[]>([]);
@@ -341,11 +343,17 @@ export default function TopManagementPage() {
       {/* Top Banner */}
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-b border-border/40 pb-5">
         <div>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/40 mb-1.5">
+            <span>{activeFranchise.flag}</span>
+            <span>Focus Facility: {activeFranchise.plantName}</span>
+            <span className="text-slate-400">·</span>
+            <span>{activeFranchise.primaryIndustry}</span>
+          </div>
           <h1 className="text-2xl font-bold tracking-tight text-foreground">
             Executive Boardroom & C-Suite Cockpit
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Cash Conversion Cycle decomposition, multi-plant EBITDA bridges, DuPont ROE models, and global CapEx allocation.
+            Cash Conversion Cycle decomposition, multi-plant EBITDA bridges, DuPont ROE models, and global CapEx allocation for <strong>{activeFranchise.flagshipProduct}</strong>.
           </p>
         </div>
 

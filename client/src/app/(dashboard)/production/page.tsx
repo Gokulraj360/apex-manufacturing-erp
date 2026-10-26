@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { useActiveFranchise } from '@/lib/franchiseStore';
 import {
   Activity,
   Boxes,
@@ -20,6 +21,8 @@ import { useAuth } from '@/context/AuthContext';
 import { SupervisoryBanner } from '@/components/SupervisoryBanner';
 import { DepartmentAuditFeed } from '@/components/DepartmentAuditFeed';
 import { BarChart } from '@/components/charts';
+import { Download } from 'lucide-react';
+import { exportToCsv } from '@/lib/exportUtils';
 
 interface ActiveOrderProgress {
   orderNumber: string;
@@ -104,21 +107,74 @@ export default function ProductionOverviewPage() {
   const { session } = useAuth();
   const isSuperAdmin = session?.roleId === 'super_admin';
 
-  const [orders] = useState<ActiveOrderProgress[]>(mockOrders);
+  const activeFranchise = useActiveFranchise();
 
-  // Grouped Bar Chart Data: Target vs Actual Output across SMT & Assembly Lines
-  const lineOutputComparisonData = [
-    { label: 'Line 1: SMT Assembly', target: 3000, actual: 2450 },
-    { label: 'Line 2: Bonding & Subassembly', target: 2500, actual: 1800 },
-    { label: 'Line 3: Sensor Tuning', target: 1500, actual: 420 },
-    { label: 'Line 4: Signal Diagnostics', target: 2000, actual: 1650 },
-    { label: 'Line 5: Aging & Reliability', target: 2200, actual: 2050 },
-    { label: 'Line 6: Packing & Dispatch', target: 2000, actual: 1980 },
-  ];
+  // Dynamic order progress mapped reactively to the active industrial franchise
+  const orders: ActiveOrderProgress[] = useMemo(() => {
+    return activeFranchise.productionLines.map((line, idx) => {
+      const statuses: ('IN_PROGRESS' | 'QUALITY_HOLD' | 'COMPLETED' | 'PLANNED')[] = [
+        'IN_PROGRESS',
+        'IN_PROGRESS',
+        'QUALITY_HOLD',
+        'IN_PROGRESS',
+        'IN_PROGRESS',
+        'COMPLETED',
+      ];
+      const supervisors = ['M. Vance', 'K. Patel', 'J. Chen', 'D. Miller', 'A. Schmidt', 'L. Wei'];
+      const days = [10, 7, 4, 2, 8, 1];
+      const risks: ('ON_TRACK' | 'AT_RISK' | 'DELAYED')[] = ['ON_TRACK', 'ON_TRACK', 'AT_RISK', 'ON_TRACK', 'ON_TRACK', 'ON_TRACK'];
+
+      return {
+        orderNumber: `WO-2026-0${49 + idx}`,
+        sku: line.sku,
+        productName: idx === 0 
+          ? activeFranchise.flagshipProduct 
+          : activeFranchise.productSeries[idx % activeFranchise.productSeries.length] || `${activeFranchise.flagshipProduct} (Subassembly ${idx + 1})`,
+        targetUnits: line.target,
+        completedUnits: line.actual,
+        scrapUnits: Math.max(2, Math.round(line.defectPpm / 5)),
+        dueDate: `2026-10-${18 - idx * 2}`,
+        daysRemaining: days[idx],
+        lineNumber: line.number,
+        supervisor: supervisors[idx],
+        status: statuses[idx],
+        currentStage: line.name,
+        otdRisk: risks[idx],
+      };
+    });
+  }, [activeFranchise]);
+
+  // Grouped Bar Chart Data: Target vs Actual Output dynamically synchronized to active facility
+  const lineOutputComparisonData = useMemo(() => {
+    return activeFranchise.productionLines.map((l) => ({
+      label: `Line ${l.number}: ${l.name.split(':')[1]?.trim().split('&')[0]?.trim() || l.name}`,
+      target: l.target,
+      actual: l.actual,
+    }));
+  }, [activeFranchise]);
 
   const totalTarget = orders.reduce((acc, o) => acc + o.targetUnits, 0);
   const totalCompleted = orders.reduce((acc, o) => acc + o.completedUnits, 0);
   const overallProgress = Math.round((totalCompleted / totalTarget) * 100);
+
+  const handleExportProductionCsv = () => {
+    exportToCsv(
+      `Production_Floor_Orders_${activeFranchise.id}_${new Date().toISOString().split('T')[0]}`,
+      ['Order Number', 'SKU', 'Product Name', 'Target Units', 'Completed Units', 'Scrap Units', 'Line', 'Supervisor', 'Status', 'Due Date'],
+      orders.map(o => [
+        o.orderNumber,
+        o.sku,
+        o.productName,
+        o.targetUnits,
+        o.completedUnits,
+        o.scrapUnits,
+        `Line ${o.lineNumber}`,
+        o.supervisor,
+        o.status,
+        o.dueDate
+      ])
+    );
+  };
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto pb-12 font-sans">
@@ -138,12 +194,18 @@ export default function ProductionOverviewPage() {
       {/* Title Bar */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/40 mb-1.5">
+            <span>{activeFranchise.flag}</span>
+            <span>{activeFranchise.plantName}</span>
+            <span className="text-slate-400">·</span>
+            <span>{activeFranchise.primaryIndustry}</span>
+          </div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
             <Activity className="h-6 w-6 text-blue-600 dark:text-blue-400" />
             Factory Floor Assembly & Orders
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Live daily multi-plant assembly tracking, batch deadlines, and on-time completion telemetry.
+            Live daily assembly tracking for <strong>{activeFranchise.flagshipProduct}</strong>, batch deadlines, and on-time completion telemetry.
           </p>
         </div>
 

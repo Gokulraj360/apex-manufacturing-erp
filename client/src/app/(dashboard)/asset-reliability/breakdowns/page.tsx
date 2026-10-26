@@ -280,9 +280,9 @@ export default function BreakdownTicketsPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Active Breakdowns</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Active Breakdowns</span>
             <div className="h-8 w-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
               <AlertOctagon className="h-4 w-4 text-rose-400" />
             </div>
@@ -295,41 +295,41 @@ export default function BreakdownTicketsPage() {
           <div className="mt-2 text-[11px] text-slate-400">1 Critical, 1 Moderate</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Total Downtime Elapsed</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Downtime Elapsed</span>
             <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
               <Clock className="h-4 w-4 text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">10.3 hrs</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">10.3 hrs</span>
           </div>
           <div className="mt-2 text-[11px] text-amber-300">Across 2 ongoing repair incidents</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Field Tech Response Time</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Field Tech Response Time</span>
             <div className="h-8 w-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
               <Zap className="h-4 w-4 text-indigo-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">4.2 min</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">4.2 min</span>
           </div>
           <div className="mt-2 text-[11px] text-emerald-400">Avg alert-to-floor arrival</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Resolved This Week</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Resolved This Week</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">
               {tickets.filter((t) => t.status === 'RESOLVED').length} Tickets
             </span>
           </div>
@@ -338,7 +338,7 @@ export default function BreakdownTicketsPage() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
           <input
@@ -346,7 +346,7 @@ export default function BreakdownTicketsPage() {
             placeholder="Search by ticket #, asset tag, reporter, or failure symptom..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 bg-[#0b0f19] border border-slate-700 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500 transition-colors"
+            className="w-full pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500 transition-colors"
           />
         </div>
 
@@ -378,7 +378,7 @@ export default function BreakdownTicketsPage() {
       </div>
 
       {/* Breakdown Tickets Table */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <AlertOctagon className="h-4 w-4 text-rose-400" />
@@ -389,7 +389,7 @@ export default function BreakdownTicketsPage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+            <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Ticket # &amp; Asset</th>
                 <th className="py-3 px-4">Failure Symptoms &amp; Root Cause</th>
@@ -400,7 +400,7 @@ export default function BreakdownTicketsPage() {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
               {filteredTickets.map((t) => (
                 <tr key={t.id} className="hover:bg-slate-800/30 transition-colors">
                   <td className="py-3 px-4">
@@ -474,7 +474,7 @@ export default function BreakdownTicketsPage() {
                       {!t.assignedTechnician && t.status !== 'RESOLVED' && (
                         <button
                           onClick={() => setAssigningTicket(t)}
-                          className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-medium transition-colors"
+                          className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-medium transition-colors"
                         >
                           Assign Tech
                         </button>
@@ -520,7 +520,7 @@ export default function BreakdownTicketsPage() {
             <form onSubmit={handleReportBreakdown} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Target Asset Tag</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Target Asset Tag</label>
                   <input
                     type="text"
                     required
@@ -532,7 +532,7 @@ export default function BreakdownTicketsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Severity Level</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Severity Level</label>
                   <select
                     value={newSeverity}
                     onChange={(e) => setNewSeverity(e.target.value as BreakdownSeverity)}
@@ -547,7 +547,7 @@ export default function BreakdownTicketsPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Failure Subsystem / Category</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Failure Subsystem / Category</label>
                   <select
                     value={newCategory}
                     onChange={(e) => setNewCategory(e.target.value)}
@@ -563,7 +563,7 @@ export default function BreakdownTicketsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Reported By</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Reported By</label>
                   <input
                     type="text"
                     required
@@ -576,7 +576,7 @@ export default function BreakdownTicketsPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Observed Symptoms &amp; Fault Description</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Observed Symptoms &amp; Fault Description</label>
                 <textarea
                   required
                   rows={3}
@@ -591,7 +591,7 @@ export default function BreakdownTicketsPage() {
                 <button
                   type="button"
                   onClick={() => setIsReportModalOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>
@@ -630,7 +630,7 @@ export default function BreakdownTicketsPage() {
 
             <form onSubmit={handleAssignTechnician} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Select On-Duty Technician</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Select On-Duty Technician</label>
                 <select
                   value={selectedTech}
                   onChange={(e) => setSelectedTech(e.target.value)}
@@ -647,7 +647,7 @@ export default function BreakdownTicketsPage() {
                 <button
                   type="button"
                   onClick={() => setAssigningTicket(null)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>
@@ -685,13 +685,13 @@ export default function BreakdownTicketsPage() {
             </div>
 
             <form onSubmit={handleResolveTicket} className="space-y-3.5 text-xs">
-              <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">
+              <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg text-slate-700 dark:text-slate-300">
                 <div className="font-semibold text-white">{resolvingTicket.asset?.assetName}</div>
                 <div className="text-[11px] text-slate-400 mt-1">Issue: {resolvingTicket.symptomDescription}</div>
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Identified Root Cause (5-Why Analysis)</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Identified Root Cause (5-Why Analysis)</label>
                 <textarea
                   required
                   rows={2}
@@ -703,7 +703,7 @@ export default function BreakdownTicketsPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Corrective Action Taken</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Corrective Action Taken</label>
                 <textarea
                   required
                   rows={2}
@@ -716,7 +716,7 @@ export default function BreakdownTicketsPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Total Downtime (Hours)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Total Downtime (Hours)</label>
                   <input
                     type="number"
                     step="0.1"
@@ -728,7 +728,7 @@ export default function BreakdownTicketsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Estimated Cost ($)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Estimated Cost ($)</label>
                   <input
                     type="number"
                     value={repairCost}
@@ -742,7 +742,7 @@ export default function BreakdownTicketsPage() {
                 <button
                   type="button"
                   onClick={() => setResolvingTicket(null)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>

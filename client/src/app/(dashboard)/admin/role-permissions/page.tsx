@@ -84,7 +84,7 @@ const MASTER_FUNCTIONS: Omit<FunctionItem, 'isAllowed'>[] = [
     name: 'High-Value Purchase Order Sign-Off (₹50L+)',
     category: 'EXECUTIVE',
     categoryLabel: 'Top Management & Governance',
-    description: 'Final sign-off authority for high-value component purchase orders (Qualcomm SoCs, BOE displays).',
+    description: 'Final sign-off authority for high-value component purchase orders (Microprocessor Cores, Optical Sensing Arrays).',
     riskLevel: 'CRITICAL',
   },
   {
@@ -201,7 +201,7 @@ const MASTER_FUNCTIONS: Omit<FunctionItem, 'isAllowed'>[] = [
     key: 'FUNC_WHS_INBOUND_GRN',
     name: 'Inbound Goods Receipt Note (GRN) Verification',
     category: 'WAREHOUSE',
-    categoryLabel: 'Warehouse, Parts & IMEI Tracking',
+    categoryLabel: 'Warehouse, Parts & Serial Registry',
     description: 'Acknowledge deliveries, scan component barcodes, and verify delivered count against PO.',
     riskLevel: 'HIGH',
   },
@@ -214,7 +214,7 @@ const MASTER_FUNCTIONS: Omit<FunctionItem, 'isAllowed'>[] = [
     riskLevel: 'MEDIUM',
   },
   {
-    key: 'FUNC_WHS_IMEI_REGISTRATION',
+    key: 'FUNC_WHS_Serial UID_REGISTRATION',
     name: 'Enterprise Serial Numbers & Device Registry',
     category: 'WAREHOUSE',
     categoryLabel: 'Warehouse, Parts & Serial Tracking',
@@ -466,7 +466,7 @@ const BASELINE_DEFAULTS: Record<string, string[]> = {
     'FUNC_WHS_STOCK_MONITOR',
     'FUNC_WHS_INBOUND_GRN',
     'FUNC_WHS_BUFFER_RESERVE',
-    'FUNC_WHS_IMEI_REGISTRATION',
+    'FUNC_WHS_Serial UID_REGISTRATION',
     'FUNC_HR_LEAVE_APPROVAL',
   ],
   quality: [

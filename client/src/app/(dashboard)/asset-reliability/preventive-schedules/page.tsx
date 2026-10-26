@@ -273,22 +273,22 @@ export default function PreventiveMaintenancePage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Active PM Routines</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Active PM Routines</span>
             <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
               <CalendarClock className="h-4 w-4 text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{schedules.length} Routines</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{schedules.length} Routines</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">Continuous interval coverage</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Action Due Today</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Action Due Today</span>
             <div className="h-8 w-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
               <Clock className="h-4 w-4 text-rose-400" />
             </div>
@@ -301,35 +301,35 @@ export default function PreventiveMaintenancePage() {
           <div className="mt-2 text-[11px] text-rose-300">Requires technician shop floor signoff</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">PM Compliance Rate</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">PM Compliance Rate</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">96.4%</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">96.4%</span>
           </div>
           <div className="mt-2 text-[11px] text-emerald-400">On-time servicing SLA achieved</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Avg Routine Duration</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Avg Routine Duration</span>
             <div className="h-8 w-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
               <Wrench className="h-4 w-4 text-indigo-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">2.2 hrs</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">2.2 hrs</span>
           </div>
           <div className="mt-2 text-[11px] text-indigo-300">Scheduled during shift turnover</div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
           <input
@@ -337,7 +337,7 @@ export default function PreventiveMaintenancePage() {
             placeholder="Search by schedule code, routine title, asset tag, or technician..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 bg-[#0b0f19] border border-slate-700 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors"
+            className="w-full pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors"
           />
         </div>
 
@@ -372,7 +372,7 @@ export default function PreventiveMaintenancePage() {
       </div>
 
       {/* Schedules Table */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <CalendarClock className="h-4 w-4 text-amber-400" />
@@ -383,7 +383,7 @@ export default function PreventiveMaintenancePage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+            <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Routine Code &amp; Title</th>
                 <th className="py-3 px-4">Target Machine &amp; Bay</th>
@@ -394,7 +394,7 @@ export default function PreventiveMaintenancePage() {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
               {filteredSchedules.map((s) => (
                 <tr key={s.id} className="hover:bg-slate-800/30 transition-colors">
                   <td className="py-3 px-4">
@@ -402,7 +402,7 @@ export default function PreventiveMaintenancePage() {
                       <CalendarClock className="h-3.5 w-3.5 text-amber-400 shrink-0" />
                       {s.scheduleCode}
                     </div>
-                    <div className="text-slate-300 font-medium text-[11px] mt-0.5 max-w-xs">{s.title}</div>
+                    <div className="text-slate-700 dark:text-slate-300 font-medium text-[11px] mt-0.5 max-w-xs">{s.title}</div>
                   </td>
 
                   <td className="py-3 px-4">
@@ -411,7 +411,7 @@ export default function PreventiveMaintenancePage() {
                   </td>
 
                   <td className="py-3 px-4">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-700">
                       {s.scheduleType}
                     </span>
                     <div className="text-[11px] text-slate-400 mt-1 font-mono">{s.interval}</div>
@@ -491,14 +491,14 @@ export default function PreventiveMaintenancePage() {
             </div>
 
             <form onSubmit={handleCompleteSchedule} className="space-y-3.5 text-xs">
-              <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">
+              <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg text-slate-700 dark:text-slate-300">
                 <div className="font-semibold text-white">{completingSchedule.title}</div>
                 <div className="text-[11px] text-slate-400 mt-1">Location: {completingSchedule.asset?.facilityLocation}</div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Technician Performing</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Technician Performing</label>
                   <input
                     type="text"
                     required
@@ -509,7 +509,7 @@ export default function PreventiveMaintenancePage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Actual Duration (Hours)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Actual Duration (Hours)</label>
                   <input
                     type="number"
                     step="0.5"
@@ -522,7 +522,7 @@ export default function PreventiveMaintenancePage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Spare Parts Consumed</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Spare Parts Consumed</label>
                 <input
                   type="text"
                   placeholder="e.g. 1x SKF 6208 Bearing, 2L Shell Tellus ISO 46 Oil"
@@ -533,7 +533,7 @@ export default function PreventiveMaintenancePage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Observations &amp; Condition Remarks</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Observations &amp; Condition Remarks</label>
                 <textarea
                   required
                   rows={3}
@@ -548,7 +548,7 @@ export default function PreventiveMaintenancePage() {
                 <button
                   type="button"
                   onClick={() => setCompletingSchedule(null)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>
@@ -588,7 +588,7 @@ export default function PreventiveMaintenancePage() {
             <form onSubmit={handleCreateSchedule} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Target Asset Tag</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Target Asset Tag</label>
                   <input
                     type="text"
                     required
@@ -600,7 +600,7 @@ export default function PreventiveMaintenancePage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Schedule Code</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Schedule Code</label>
                   <input
                     type="text"
                     placeholder="e.g. PMS-CNC-M01"
@@ -612,7 +612,7 @@ export default function PreventiveMaintenancePage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Routine Title</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Routine Title</label>
                 <input
                   type="text"
                   required
@@ -625,7 +625,7 @@ export default function PreventiveMaintenancePage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Routine Type</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Routine Type</label>
                   <select
                     value={newType}
                     onChange={(e) => setNewType(e.target.value as MaintenanceScheduleType)}
@@ -641,7 +641,7 @@ export default function PreventiveMaintenancePage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Interval</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Interval</label>
                   <select
                     value={newInterval}
                     onChange={(e) => setNewInterval(e.target.value as MaintenanceInterval)}
@@ -660,7 +660,7 @@ export default function PreventiveMaintenancePage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Next Due Date</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Next Due Date</label>
                   <input
                     type="date"
                     required
@@ -671,7 +671,7 @@ export default function PreventiveMaintenancePage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Est. Duration (Hrs)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Est. Duration (Hrs)</label>
                   <input
                     type="number"
                     step="0.5"
@@ -682,7 +682,7 @@ export default function PreventiveMaintenancePage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Assigned Tech</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Assigned Tech</label>
                   <input
                     type="text"
                     placeholder="e.g. Anand Kumar"
@@ -697,7 +697,7 @@ export default function PreventiveMaintenancePage() {
                 <button
                   type="button"
                   onClick={() => setIsCreateModalOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>

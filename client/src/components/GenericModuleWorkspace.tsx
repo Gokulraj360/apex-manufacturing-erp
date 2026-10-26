@@ -378,9 +378,9 @@ export function GenericModuleWorkspace({ role, slug }: GenericModuleWorkspacePro
 
           <div className="flex items-center gap-4 text-[11px]">
             <span>Server Hub: <strong className="text-slate-700 dark:text-slate-300">Cluster APEX-PRD-01</strong></span>
-            <span className="text-slate-300 dark:text-slate-700">|</span>
+            <span className="text-slate-700 dark:text-slate-300 dark:text-slate-700">|</span>
             <span>Speed: <strong className="text-emerald-600 dark:text-emerald-400 font-semibold">12ms</strong></span>
-            <span className="text-slate-300 dark:text-slate-700">|</span>
+            <span className="text-slate-700 dark:text-slate-300 dark:text-slate-700">|</span>
             <span>Security Check: <strong className="text-slate-600 dark:text-slate-400">Verified Safe</strong></span>
           </div>
         </div>

@@ -43,7 +43,7 @@ const INITIAL_VEHICLES: FleetVehicleItem[] = [
     assignedDriver: 'Rameshwar Patil',
     fastagTagId: 'FTG-8829-KA',
     fuelCardNumber: 'FC-99120-001',
-    gpsImei: 'IMEI-86392019482',
+    gpsTelematicsId: 'GPS-86392019482',
     purchaseDate: '2024-03-15T00:00:00.000Z',
     insurancePolicyExpiry: '2026-12-15T00:00:00.000Z',
     pucExpiry: '2026-11-20T00:00:00.000Z',
@@ -67,7 +67,7 @@ const INITIAL_VEHICLES: FleetVehicleItem[] = [
     assignedDriver: 'Dilip Sawant',
     fastagTagId: 'FTG-5519-MH',
     fuelCardNumber: 'FC-99120-002',
-    gpsImei: 'IMEI-86392019483',
+    gpsTelematicsId: 'GPS-86392019483',
     purchaseDate: '2023-08-20T00:00:00.000Z',
     insurancePolicyExpiry: '2026-11-05T00:00:00.000Z',
     pucExpiry: '2026-10-25T00:00:00.000Z',
@@ -91,7 +91,7 @@ const INITIAL_VEHICLES: FleetVehicleItem[] = [
     assignedDriver: 'Anand Kumar',
     fastagTagId: 'FTG-3129-KA',
     fuelCardNumber: 'FC-99120-003',
-    gpsImei: 'IMEI-86392019484',
+    gpsTelematicsId: 'GPS-86392019484',
     purchaseDate: '2024-02-10T00:00:00.000Z',
     insurancePolicyExpiry: '2026-10-18T00:00:00.000Z',
     pucExpiry: '2026-10-30T00:00:00.000Z',
@@ -115,7 +115,7 @@ const INITIAL_VEHICLES: FleetVehicleItem[] = [
     assignedDriver: 'Suresh Rao (Yard)',
     fastagTagId: null,
     fuelCardNumber: null,
-    gpsImei: 'IMEI-86392019485',
+    gpsTelematicsId: 'GPS-86392019485',
     purchaseDate: '2025-01-05T00:00:00.000Z',
     insurancePolicyExpiry: '2027-01-20T00:00:00.000Z',
     pucExpiry: null,
@@ -139,7 +139,7 @@ const INITIAL_VEHICLES: FleetVehicleItem[] = [
     assignedDriver: 'Vinod Hegde',
     fastagTagId: 'FTG-9012-KA',
     fuelCardNumber: 'FC-99120-005',
-    gpsImei: 'IMEI-86392019486',
+    gpsTelematicsId: 'GPS-86392019486',
     purchaseDate: '2023-04-12T00:00:00.000Z',
     insurancePolicyExpiry: '2027-04-10T00:00:00.000Z',
     pucExpiry: '2027-01-15T00:00:00.000Z',
@@ -174,7 +174,7 @@ export default function FleetRegistryPage() {
     assignedDriver: '',
     fastagTagId: '',
     fuelCardNumber: '',
-    gpsImei: '',
+    gpsTelematicsId: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -218,7 +218,7 @@ export default function FleetRegistryPage() {
         assignedDriver: formData.assignedDriver || null,
         fastagTagId: formData.fastagTagId || null,
         fuelCardNumber: formData.fuelCardNumber || null,
-        gpsImei: formData.gpsImei || null,
+        gpsTelematicsId: formData.gpsTelematicsId || null,
       };
 
       const res = await fetch('/api/v1/fleet/vehicles', {
@@ -306,7 +306,7 @@ export default function FleetRegistryPage() {
             Commercial Fleet Inventory Console
           </h1>
           <p className="text-xs text-slate-400 mt-1">
-            Maintain technical engine specs, Fastag credentials, GPS IMEI tags, and driver trip allocations for company assets.
+            Maintain technical engine specs, Fastag credentials, GPS Telematics IDs, and driver trip allocations for company assets.
           </p>
         </div>
 
@@ -509,10 +509,10 @@ export default function FleetRegistryPage() {
                 <div className="flex items-center justify-between p-2 rounded bg-slate-950/60 border border-slate-800/80">
                   <div className="flex items-center gap-2 text-slate-400">
                     <Radio className="h-3.5 w-3.5 text-emerald-400" />
-                    <span>GPS Telematics IMEI:</span>
+                    <span>GPS Telematics Device ID:</span>
                   </div>
                   <span className="font-mono text-slate-200 text-[11px]">
-                    {selectedVehicle.gpsImei || 'Not Installed'}
+                    {selectedVehicle.gpsTelematicsId || 'Not Installed'}
                   </span>
                 </div>
 
@@ -740,12 +740,12 @@ export default function FleetRegistryPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-400 mb-1">GPS Telematics IMEI</label>
+                  <label className="block text-slate-400 mb-1">GPS Telematics Device ID</label>
                   <input
                     type="text"
-                    placeholder="e.g. IMEI-86392019489"
-                    value={formData.gpsImei}
-                    onChange={(e) => setFormData({ ...formData, gpsImei: e.target.value })}
+                    placeholder="e.g. GPS-86392019489"
+                    value={formData.gpsTelematicsId}
+                    onChange={(e) => setFormData({ ...formData, gpsTelematicsId: e.target.value })}
                     className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-emerald-500"
                   />
                 </div>

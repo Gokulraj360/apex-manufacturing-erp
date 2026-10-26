@@ -103,7 +103,7 @@ const MOCK_RFQS: RFQItem[] = [
   {
     id: 'rfq-2',
     rfqNumber: 'RFQ-SCM-2026-0042',
-    partName: 'Ultra-Thin Flexible OLED Display FPC Cable',
+    partName: 'Ultra-Thin Flexible Industrial FPC Sensor Cable',
     partNumber: 'FPC-DISP-FLX-011',
     targetQuantity: 50000,
     deliveryDueDate: '2026-11-01',

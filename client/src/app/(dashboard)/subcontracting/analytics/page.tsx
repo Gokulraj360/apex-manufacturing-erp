@@ -304,62 +304,62 @@ export default function SubcontractorAnalyticsPage() {
 
       {/* KPI Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Avg Processing TAT</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Avg Processing TAT</span>
             <div className="h-8 w-8 rounded-lg bg-teal-500/10 flex items-center justify-center">
               <Clock className="h-4 w-4 text-teal-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{avgTurnaround}</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{avgTurnaround}</span>
             <span className="text-xs text-slate-400">calendar days</span>
           </div>
           <div className="mt-2 text-[11px] text-teal-400">Target SLA threshold: &lt; 4.0 days</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">On-Time Delivery SLA</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">On-Time Delivery SLA</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
               <TrendingUp className="h-4 w-4 text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{avgOnTime}%</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{avgOnTime}%</span>
           </div>
           <div className="mt-2 text-[11px] text-emerald-400">95% contractual minimum target</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Avg Quality Rejections</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Avg Quality Rejections</span>
             <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
               <Percent className="h-4 w-4 text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{avgRejection}%</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{avgRejection}%</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">Allowable defect tolerance: &lt; 2.0%</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Avg Scrap Generation</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Avg Scrap Generation</span>
             <div className="h-8 w-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
               <Sliders className="h-4 w-4 text-purple-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{avgScrap}%</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{avgScrap}%</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">Within statutory GST burning allowance</div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#0f172a]/60 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-white dark:bg-[#0f172a]/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="relative w-full md:w-96">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
           <input
@@ -392,7 +392,7 @@ export default function SubcontractorAnalyticsPage() {
         {filteredLogs.map((log) => (
           <div
             key={log.id}
-            className="bg-[#0f172a]/80 border border-slate-800 rounded-2xl p-5 shadow-sm space-y-4 hover:border-slate-700 transition-colors"
+            className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-5 shadow-sm space-y-4 hover:border-slate-700 transition-colors"
           >
             <div className="flex items-start justify-between gap-4">
               <div>
@@ -429,7 +429,7 @@ export default function SubcontractorAnalyticsPage() {
             {/* Performance Metric Matrix */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
               <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 text-center">
-                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Turnaround</span>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider block">Turnaround</span>
                 <span className="text-base font-bold font-mono text-white mt-0.5 block">
                   {log.avgTurnaroundDays}d
                 </span>
@@ -437,7 +437,7 @@ export default function SubcontractorAnalyticsPage() {
               </div>
 
               <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 text-center">
-                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">On-Time SLA</span>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider block">On-Time SLA</span>
                 <span className="text-base font-bold font-mono text-emerald-400 mt-0.5 block">
                   {log.onTimeDeliveryRate}%
                 </span>
@@ -445,7 +445,7 @@ export default function SubcontractorAnalyticsPage() {
               </div>
 
               <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 text-center">
-                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Rejection Rate</span>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider block">Rejection Rate</span>
                 <span className="text-base font-bold font-mono text-amber-400 mt-0.5 block">
                   {log.rejectionRate}%
                 </span>
@@ -453,7 +453,7 @@ export default function SubcontractorAnalyticsPage() {
               </div>
 
               <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 text-center">
-                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Scrap Rate</span>
+                <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wider block">Scrap Rate</span>
                 <span className="text-base font-bold font-mono text-purple-400 mt-0.5 block">
                   {log.scrapRate}%
                 </span>
@@ -492,7 +492,7 @@ export default function SubcontractorAnalyticsPage() {
       </div>
 
       {filteredLogs.length === 0 && (
-        <div className="py-12 text-center text-slate-500 text-sm bg-[#0f172a]/60 border border-slate-800 rounded-xl">
+        <div className="py-12 text-center text-slate-500 text-sm bg-white dark:bg-[#0f172a]/60 border border-slate-200 dark:border-slate-800 rounded-xl">
           No vendor scorecards found matching your filters.
         </div>
       )}
@@ -500,7 +500,7 @@ export default function SubcontractorAnalyticsPage() {
       {/* MODAL: Log Performance Audit Evaluation */}
       {isEvaluationModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
             <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
               <div className="flex items-center gap-2">
                 <Award className="h-5 w-5 text-teal-400" />
@@ -675,7 +675,7 @@ export default function SubcontractorAnalyticsPage() {
                 <button
                   type="button"
                   onClick={() => setIsEvaluationModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
+                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors"
                 >
                   Cancel
                 </button>

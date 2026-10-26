@@ -1,6 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { Download } from 'lucide-react';
+import { useActiveFranchise } from '@/lib/franchiseStore';
+import { exportToCsv } from '@/lib/exportUtils';
 import {
   Wallet,
   TrendingUp,
@@ -24,6 +27,14 @@ import { BarChart, DonutChart } from '@/components/charts';
 export default function CashFlowOverviewPage() {
   const { session } = useAuth();
   const isSuperAdmin = session?.roleId === 'super_admin';
+  const activeFranchise = useActiveFranchise();
+
+  const curr = activeFranchise.currencySymbol || "$";
+  const isINR = activeFranchise.currency === 'INR';
+
+  const fmtCrOrM = (v: number) => isINR ? `${curr} ${(v / 10000000).toFixed(2)} Cr` : `${curr} ${(v / 1000000).toFixed(2)}M`;
+  const fmtLakhOrK = (v: number) => isINR ? `${curr} ${(v / 100000).toFixed(2)} Lakhs` : `${curr} ${(v / 1000).toFixed(0)}k`;
+  const fmtShortLOrK = (v: number) => isINR ? `${curr} ${(v / 100000).toFixed(2)}L` : `${curr} ${(v / 1000).toFixed(0)}k`;
 
   const [metrics] = useState({
     cashAndEquivalents: 32500000, // ₹3.25 Cr
@@ -41,7 +52,7 @@ export default function CashFlowOverviewPage() {
 
   const [dailyMovement] = useState([
     { time: '09:15 AM', type: 'INFLOW', party: 'Reliance Enterprise Retail Stores', category: 'Bulk Commercial Order (5,000 units)', amount: 25000000, method: 'Direct Bank Transfer' },
-    { time: '11:30 AM', type: 'OUTFLOW', party: 'Qualcomm Enterprise Direct', category: 'Computing Modules PO-9042', amount: 14500000, method: 'NEFT Transfer' },
+    { time: '11:30 AM', type: 'OUTFLOW', party: 'Apex Core Semiconductor Partner', category: 'Computing Modules PO-9042', amount: 14500000, method: 'NEFT Transfer' },
     { time: '01:45 PM', type: 'INFLOW', party: 'Croma Megastores Distribution', category: 'Apex Enterprise Series Batch Payment', amount: 8200000, method: 'RTGS Transfer' },
     { time: '03:10 PM', type: 'OUTFLOW', party: 'State Electricity Board', category: 'Factory Power & Cleanroom Air Conditioning', amount: 3420000, method: 'Direct Debit' },
   ]);
@@ -106,12 +117,18 @@ export default function CashFlowOverviewPage() {
       {/* Title Bar */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/40 mb-1.5">
+            <span>{activeFranchise.flag}</span>
+            <span>{activeFranchise.plantName}</span>
+            <span className="text-slate-400">·</span>
+            <span>Treasury ({activeFranchise.currency})</span>
+          </div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
             <Wallet className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
             Factory Accounts & Money Overview
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Live bank balance, money in & out today, and cash reserves for coming months.
+            Live bank balance, operating burn rates, and treasury reserves in <strong>{activeFranchise.currency}</strong>.
           </p>
         </div>
 
@@ -135,7 +152,7 @@ export default function CashFlowOverviewPage() {
           </div>
           <div className="mt-3">
             <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight font-mono">
-              ₹ {(metrics.cashAndEquivalents / 10000000).toFixed(2)} Cr
+              {fmtCrOrM(metrics.cashAndEquivalents)}
             </div>
             <div className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 mt-1 font-medium">
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -153,10 +170,10 @@ export default function CashFlowOverviewPage() {
           </div>
           <div className="mt-3">
             <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 tracking-tight font-mono">
-              ₹ {(metrics.workingCapital / 10000000).toFixed(2)} Cr
+              {fmtCrOrM(metrics.workingCapital)}
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Total Assets: <strong className="text-slate-800 dark:text-slate-200">₹ {(metrics.currentAssets / 10000000).toFixed(2)} Cr</strong>
+              Total Assets: <strong className="text-slate-800 dark:text-slate-200">{fmtCrOrM(metrics.currentAssets)}</strong>
             </div>
           </div>
         </div>
@@ -190,7 +207,7 @@ export default function CashFlowOverviewPage() {
               {metrics.runwayMonths} Months
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Running Cost: <strong className="text-slate-800 dark:text-slate-200">₹ {(metrics.monthlyBurnRate / 100000).toFixed(1)} Lakhs/mo</strong>
+              Running Cost: <strong className="text-slate-800 dark:text-slate-200">{fmtLakhOrK(metrics.monthlyBurnRate)}/mo</strong>
             </div>
           </div>
         </div>
@@ -209,8 +226,8 @@ export default function CashFlowOverviewPage() {
             mode="grouped"
             title="4-Week Rolling Cash Flow Forecast"
             subtitle="Projected incoming customer settlements vs scheduled supplier payments"
-            yAxisFormatter={(v) => `₹ ${(v / 10000000).toFixed(1)} Cr`}
-            tooltipFormatter={(v) => `₹ ${(v / 100000).toFixed(2)} Lakhs`}
+            yAxisFormatter={(v) => fmtCrOrM(v)}
+            tooltipFormatter={(v) => fmtLakhOrK(v)}
             height={270}
           />
         </div>
@@ -219,11 +236,11 @@ export default function CashFlowOverviewPage() {
           <DonutChart
             data={payoutDistribution}
             title="Monthly Payout & Statutory Deductions"
-            subtitle="₹39.20 Lakhs gross salary batch distribution (144 Technicians)"
+            subtitle={"Payroll gross batch distribution (144 Technicians)"}
             centerLabel="Net Take-Home"
             centerValue="86.5%"
-            centerSubtext="₹33.91L Payout"
-            valueFormatter={(v) => `₹ ${(v / 100000).toFixed(2)}L`}
+            centerSubtext={curr + " Net Payout"}
+            valueFormatter={(v) => fmtShortLOrK(v)}
             height={270}
           />
         </div>
@@ -244,7 +261,7 @@ export default function CashFlowOverviewPage() {
               </p>
             </div>
             <span className="text-xs bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 px-2.5 py-1 rounded-lg font-semibold">
-              Net: +₹ 1.52 Cr
+              {'Net: +' + fmtCrOrM(15200000)}
             </span>
           </div>
 
@@ -290,7 +307,7 @@ export default function CashFlowOverviewPage() {
                         isInflow ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                       }`}
                     >
-                      {isInflow ? '+' : '-'} ₹ {(item.amount / 100000).toFixed(2)} Lakhs
+                      {isInflow ? '+' : '-'} {fmtLakhOrK(item.amount)}
                     </div>
                     <div className="text-[10px] text-slate-400 font-mono">
                       {item.time}
@@ -326,13 +343,13 @@ export default function CashFlowOverviewPage() {
                   <div key={i} className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200/60 dark:border-slate-800 space-y-1">
                     <div className="text-xs font-semibold text-slate-800 dark:text-slate-200">{f.week}</div>
                     <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
-                      <span>Inflows: ₹ {(f.expectedInflows / 10000000).toFixed(2)} Cr</span>
-                      <span>Outflows: ₹ {(f.expectedOutflows / 10000000).toFixed(2)} Cr</span>
+                      <span>Inflows: {fmtCrOrM(f.expectedInflows)}</span>
+                      <span>Outflows: {fmtCrOrM(f.expectedOutflows)}</span>
                     </div>
                     <div className="flex justify-between items-center pt-1 border-t border-slate-200/60 dark:border-slate-800">
                       <span className="text-[11px] text-slate-500 dark:text-slate-400">Net Balance:</span>
                       <span className={`text-xs font-mono font-bold ${isPositive ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
-                        {isPositive ? '+' : ''}₹ {(f.netProjected / 10000000).toFixed(2)} Cr
+                        {isPositive ? '+' : ''}{fmtCrOrM(f.netProjected)}
                       </span>
                     </div>
                   </div>
@@ -343,7 +360,7 @@ export default function CashFlowOverviewPage() {
 
           <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-center">
             <div className="text-xs text-slate-500 dark:text-slate-400">
-              Estimated 30-Day Cash Surplus: <strong className="text-emerald-600 dark:text-emerald-400 font-mono">+₹ 9.00 Cr</strong>
+              Estimated 30-Day Cash Surplus: <strong className="text-emerald-600 dark:text-emerald-400 font-mono">{'+' + fmtCrOrM(90000000)}</strong>
             </div>
           </div>
         </div>

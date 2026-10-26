@@ -83,7 +83,7 @@ export class StatementsService {
       partyName: 'Samsung Display Co., Ltd.',
       partyType: 'VENDOR',
       transactionType: 'VENDOR_DEBIT',
-      description: 'Commercial invoice settlement for 120Hz LTPO OLED displays',
+      description: 'Commercial invoice settlement for Industrial Sensor & Display Panels',
       debit: 34000000.0, // ₹3.40 Cr
       credit: 0,
       balance: 199240000.0,
@@ -122,7 +122,7 @@ export class StatementsService {
       partyName: 'Tata Croma Digital Logistics',
       partyType: 'CUSTOMER',
       transactionType: 'SALES_CREDIT',
-      description: 'Customer credit payment for 4,800 finished smartphones',
+      description: 'Customer credit payment for 4,800 finished precision modular units',
       debit: 0,
       credit: 84960000.0, // ₹8.496 Cr
       balance: 275592500.0,

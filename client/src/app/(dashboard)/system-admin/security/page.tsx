@@ -309,23 +309,23 @@ export default function CybersecurityPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Threat Defense Score</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Threat Defense Score</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
               <ShieldCheck className="h-4 w-4 text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">98.4%</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">98.4%</span>
             <span className="text-xs text-emerald-400 font-medium">Optimal</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">SOC-2 Type II benchmark compliant</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Active Breaches</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Active Breaches</span>
             <div className="h-8 w-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
               <ShieldAlert className="h-4 w-4 text-rose-400" />
             </div>
@@ -337,29 +337,29 @@ export default function CybersecurityPage() {
           <div className="mt-2 text-[11px] text-slate-400">1 ongoing Supervisor investigation</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">MFA Mandate Adoption</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">MFA Mandate Adoption</span>
             <div className="h-8 w-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
               <Key className="h-4 w-4 text-indigo-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">100%</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">100%</span>
             <span className="text-xs text-slate-400">(18 / 18 Admins)</span>
           </div>
           <div className="mt-2 text-[11px] text-indigo-300">TOTP Hardware Authenticator active</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Firewall Probes Dropped</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Firewall Probes Dropped</span>
             <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
               <Flame className="h-4 w-4 text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">1,429</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">1,429</span>
             <span className="text-xs text-slate-400">Past 24h</span>
           </div>
           <div className="mt-2 text-[11px] text-amber-300">Automatic IP jail enforced</div>
@@ -373,12 +373,12 @@ export default function CybersecurityPage() {
           className={`pb-3 px-3 text-xs font-semibold flex items-center gap-2 border-b-2 transition-colors ${
             activeTab === 'INCIDENTS'
               ? 'border-rose-500 text-rose-400'
-              : 'border-transparent text-slate-400 hover:text-slate-300'
+              : 'border-transparent text-slate-400 hover:text-slate-700 dark:text-slate-300'
           }`}
         >
           <ShieldAlert className="h-4 w-4" />
           Intrusion Detection &amp; Security Incident Log
-          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-300">
+          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-700 dark:text-slate-300">
             {incidents.length}
           </span>
         </button>
@@ -388,19 +388,19 @@ export default function CybersecurityPage() {
           className={`pb-3 px-3 text-xs font-semibold flex items-center gap-2 border-b-2 transition-colors ${
             activeTab === 'FIREWALL'
               ? 'border-rose-500 text-rose-400'
-              : 'border-transparent text-slate-400 hover:text-slate-300'
+              : 'border-transparent text-slate-400 hover:text-slate-700 dark:text-slate-300'
           }`}
         >
           <Flame className="h-4 w-4" />
           Perimeter Firewall &amp; CIDR Ingress Rules
-          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-300">
+          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-700 dark:text-slate-300">
             {firewallRules.length}
           </span>
         </button>
       </div>
 
       {/* Search and Filters */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
           <input
@@ -412,7 +412,7 @@ export default function CybersecurityPage() {
             }
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 bg-[#0b0f19] border border-slate-700 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500 transition-colors"
+            className="w-full pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500 transition-colors"
           />
         </div>
 
@@ -436,7 +436,7 @@ export default function CybersecurityPage() {
 
       {/* TAB CONTENT: INCIDENTS */}
       {activeTab === 'INCIDENTS' && (
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <ShieldAlert className="h-4 w-4 text-rose-400" />
@@ -450,7 +450,7 @@ export default function CybersecurityPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+              <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Threat Event</th>
                   <th className="py-3 px-4">Source IP &amp; Client</th>
@@ -461,7 +461,7 @@ export default function CybersecurityPage() {
                   <th className="py-3 px-4 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
                 {filteredIncidents.map((inc) => (
                   <tr key={inc.id} className="hover:bg-slate-800/30 transition-colors">
                     <td className="py-3 px-4 font-mono font-semibold text-white">
@@ -495,7 +495,7 @@ export default function CybersecurityPage() {
                     </td>
 
                     <td className="py-3 px-4 max-w-sm">
-                      <p className="text-slate-300 text-[11px]">{inc.details}</p>
+                      <p className="text-slate-700 dark:text-slate-300 text-[11px]">{inc.details}</p>
                       {inc.mitigationActionTaken && (
                         <div className="text-[10px] text-emerald-400 font-mono mt-1 flex items-center gap-1">
                           <CheckCircle2 className="h-3 w-3 shrink-0" /> {inc.mitigationActionTaken}
@@ -539,7 +539,7 @@ export default function CybersecurityPage() {
 
       {/* TAB CONTENT: FIREWALL */}
       {activeTab === 'FIREWALL' && (
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Flame className="h-4 w-4 text-rose-400" />
@@ -552,7 +552,7 @@ export default function CybersecurityPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+              <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Rule Name</th>
                   <th className="py-3 px-4">CIDR / Source Range</th>
@@ -563,7 +563,7 @@ export default function CybersecurityPage() {
                   <th className="py-3 px-4 text-right">Toggle</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
                 {filteredRules.map((r) => (
                   <tr key={r.id} className="hover:bg-slate-800/30 transition-colors">
                     <td className="py-3 px-4 font-semibold text-white">
@@ -576,7 +576,7 @@ export default function CybersecurityPage() {
                       </span>
                     </td>
 
-                    <td className="py-3 px-4 font-mono text-slate-300">
+                    <td className="py-3 px-4 font-mono text-slate-700 dark:text-slate-300">
                       {r.protocol} : {r.portRange}
                     </td>
 
@@ -613,7 +613,7 @@ export default function CybersecurityPage() {
                             )
                           );
                         }}
-                        className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] font-mono transition-colors"
+                        className="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[10px] font-mono transition-colors"
                       >
                         {r.status === 'ACTIVE' ? 'Disable' : 'Enable'}
                       </button>
@@ -649,7 +649,7 @@ export default function CybersecurityPage() {
 
             <form onSubmit={handleCreateIncident} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Threat Event Type</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Threat Event Type</label>
                 <select
                   value={newEventType}
                   onChange={(e) => setNewEventType(e.target.value)}
@@ -665,7 +665,7 @@ export default function CybersecurityPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Source IP Address</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Source IP Address</label>
                   <input
                     type="text"
                     required
@@ -677,7 +677,7 @@ export default function CybersecurityPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Severity Level</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Severity Level</label>
                   <select
                     value={newSeverity}
                     onChange={(e) => setNewSeverity(e.target.value as SecurityIncidentSeverity)}
@@ -692,7 +692,7 @@ export default function CybersecurityPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Incident Details</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Incident Details</label>
                 <textarea
                   required
                   rows={3}
@@ -707,7 +707,7 @@ export default function CybersecurityPage() {
                 <button
                   type="button"
                   onClick={() => setIsLogIncidentModalOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>
@@ -745,13 +745,13 @@ export default function CybersecurityPage() {
             </div>
 
             <form onSubmit={handleResolveIncident} className="space-y-3.5 text-xs">
-              <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">
+              <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg text-slate-700 dark:text-slate-300">
                 <span className="font-semibold text-white">Offending IP:</span> {resolvingIncident.sourceIp}
                 <div className="text-[11px] text-slate-400 mt-1">{resolvingIncident.details}</div>
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Mitigation Action Taken</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Mitigation Action Taken</label>
                 <textarea
                   required
                   rows={3}
@@ -766,7 +766,7 @@ export default function CybersecurityPage() {
                 <button
                   type="button"
                   onClick={() => setResolvingIncident(null)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>
@@ -805,7 +805,7 @@ export default function CybersecurityPage() {
 
             <form onSubmit={handleCreateFirewallRule} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Rule Name</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Rule Name</label>
                 <input
                   type="text"
                   required
@@ -818,7 +818,7 @@ export default function CybersecurityPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">CIDR Block / Subnet</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">CIDR Block / Subnet</label>
                   <input
                     type="text"
                     required
@@ -830,7 +830,7 @@ export default function CybersecurityPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Port Range</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Port Range</label>
                   <input
                     type="text"
                     required
@@ -844,7 +844,7 @@ export default function CybersecurityPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Protocol</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Protocol</label>
                   <select
                     value={newProtocol}
                     onChange={(e) => setNewProtocol(e.target.value as any)}
@@ -857,7 +857,7 @@ export default function CybersecurityPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Policy Action</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Policy Action</label>
                   <select
                     value={newAction}
                     onChange={(e) => setNewAction(e.target.value as any)}
@@ -870,7 +870,7 @@ export default function CybersecurityPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Description / Business Justification</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Description / Business Justification</label>
                 <textarea
                   required
                   rows={2}
@@ -885,7 +885,7 @@ export default function CybersecurityPage() {
                 <button
                   type="button"
                   onClick={() => setIsAddFirewallModalOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>

@@ -1240,12 +1240,12 @@ model CostingParameter {
 }
 
 // ----------------------------------------------------------------------------
-// 19. Shop Floor & Serialized IMEI Tracking
+// 19. Shop Floor & Serialized Serial UID Tracking
 // ----------------------------------------------------------------------------
 
 model SerializedUnit {
   id             String               @id @default(uuid()) @db.Uuid
-  serialNumber   String               @unique @db.VarChar(50) // 15-digit IMEI or UID
+  serialNumber   String               @unique @db.VarChar(50) // 15-digit Serial UID or UID
   productId      String               @db.Uuid
   currentStation ProductionStation    @default(SMT_LINE)
   status         SerializedUnitStatus @default(IN_PROCESS)

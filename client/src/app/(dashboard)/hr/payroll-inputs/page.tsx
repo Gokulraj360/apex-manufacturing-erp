@@ -136,7 +136,7 @@ export default function PayrollInputsPage() {
         <div className="flex items-center gap-2.5">
           <button
             onClick={() => alert('Exporting payroll attendance audit sheet (.CSV)...')}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-medium"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-700 text-xs font-medium"
           >
             <Download className="h-3.5 w-3.5" />
             Export Audit CSV
@@ -177,7 +177,7 @@ export default function PayrollInputsPage() {
               <span className="text-xs font-bold text-emerald-300 block">
                 Payroll Cycle Data Transferred to Finance Module
               </span>
-              <p className="text-[11px] text-slate-300 mt-0.5">
+              <p className="text-[11px] text-slate-700 dark:text-slate-300 mt-0.5">
                 Attendance days and approved overtime amounts for {selectedMonth}/{selectedYear} are now staged in General Ledger AP for executive approval.
               </p>
             </div>
@@ -201,16 +201,16 @@ export default function PayrollInputsPage() {
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white font-mono">₹{totalGross.toLocaleString()}</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white font-mono">₹{totalGross.toLocaleString()}</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">
             For {totalEmployees} active personnel
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Overtime Payout (OT)</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Overtime Payout (OT)</span>
             <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
               <Clock className="h-4 w-4 text-amber-400" />
             </div>
@@ -223,9 +223,9 @@ export default function PayrollInputsPage() {
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Statutory Deductions (12%)</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Statutory Deductions (12%)</span>
             <div className="h-8 w-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
               <Calculator className="h-4 w-4 text-blue-400" />
             </div>
@@ -240,15 +240,15 @@ export default function PayrollInputsPage() {
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Active Cycle</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Active Cycle</span>
             <div className="h-8 w-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
               <Building className="h-4 w-4 text-indigo-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-white font-mono">Oct 2026</span>
+            <span className="text-2xl font-bold text-slate-900 dark:text-white font-mono">Oct 2026</span>
           </div>
           <div className="mt-2 text-[11px] text-emerald-400 font-medium">
             Cutoff date: 26th of month
@@ -291,7 +291,7 @@ export default function PayrollInputsPage() {
                 <th className="py-3 px-3 font-semibold text-right">Gross Total (₹)</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
               {filtered.map((item) => (
                 <tr key={item.employeeId} className="hover:bg-slate-800/20 transition-colors">
                   <td className="py-3 px-3">
@@ -302,7 +302,7 @@ export default function PayrollInputsPage() {
                     <div className="text-slate-200">{item.designation}</div>
                     <div className="text-[10px] text-slate-500">{item.department}</div>
                   </td>
-                  <td className="py-3 px-3 font-mono text-slate-300 font-medium">
+                  <td className="py-3 px-3 font-mono text-slate-700 dark:text-slate-300 font-medium">
                     ₹{item.baseSalary.toLocaleString()}
                   </td>
                   <td className="py-3 px-3 font-mono font-bold text-emerald-400">

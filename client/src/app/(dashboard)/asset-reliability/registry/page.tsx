@@ -296,22 +296,22 @@ export default function MachineAssetRegistryPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Total Enrolled Assets</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Enrolled Assets</span>
             <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
               <Cog className="h-4 w-4 text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{assets.length} Units</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{assets.length} Units</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">Spread across 5 plant bays</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Operational Availability</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Operational Availability</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
             </div>
@@ -324,9 +324,9 @@ export default function MachineAssetRegistryPage() {
           <div className="mt-2 text-[11px] text-slate-400">1 Breakdown Stoppage, 1 Degraded</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Critical Bottlenecks</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Critical Bottlenecks</span>
             <div className="h-8 w-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
               <AlertOctagon className="h-4 w-4 text-rose-400" />
             </div>
@@ -339,15 +339,15 @@ export default function MachineAssetRegistryPage() {
           <div className="mt-2 text-[11px] text-rose-300">Requires 24/7 condition telemetry</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Under OEM Warranty</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Under OEM Warranty</span>
             <div className="h-8 w-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
               <ShieldCheck className="h-4 w-4 text-indigo-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">
               {assets.filter((a) => a.warrantyExpiryDate && new Date(a.warrantyExpiryDate) > new Date()).length} Units
             </span>
           </div>
@@ -356,7 +356,7 @@ export default function MachineAssetRegistryPage() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
           <input
@@ -364,7 +364,7 @@ export default function MachineAssetRegistryPage() {
             placeholder="Search by asset tag, machine model, manufacturer, or bay..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 bg-[#0b0f19] border border-slate-700 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors"
+            className="w-full pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors"
           />
         </div>
 
@@ -410,7 +410,7 @@ export default function MachineAssetRegistryPage() {
       </div>
 
       {/* Machinery Assets Table */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Cog className="h-4 w-4 text-amber-400" />
@@ -425,7 +425,7 @@ export default function MachineAssetRegistryPage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+            <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Asset Tag &amp; Machine</th>
                 <th className="py-3 px-4">Manufacturer &amp; Model</th>
@@ -437,7 +437,7 @@ export default function MachineAssetRegistryPage() {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
               {filteredAssets.map((asset) => (
                 <tr key={asset.id} className="hover:bg-slate-800/30 transition-colors">
                   <td className="py-3 px-4">
@@ -445,7 +445,7 @@ export default function MachineAssetRegistryPage() {
                       <Cog className="h-3.5 w-3.5 text-amber-400 shrink-0" />
                       {asset.assetTag}
                     </div>
-                    <div className="font-medium text-slate-300 text-[11px] mt-0.5">{asset.assetName}</div>
+                    <div className="font-medium text-slate-700 dark:text-slate-300 text-[11px] mt-0.5">{asset.assetName}</div>
                   </td>
 
                   <td className="py-3 px-4">
@@ -454,7 +454,7 @@ export default function MachineAssetRegistryPage() {
                   </td>
 
                   <td className="py-3 px-4">
-                    <div className="flex items-center gap-1 text-slate-300">
+                    <div className="flex items-center gap-1 text-slate-700 dark:text-slate-300">
                       <MapPin className="h-3 w-3 text-amber-400 shrink-0" />
                       {asset.facilityLocation}
                     </div>
@@ -512,7 +512,7 @@ export default function MachineAssetRegistryPage() {
                   <td className="py-3 px-4 text-right">
                     <button
                       onClick={() => setSelectedAssetForDetails(asset)}
-                      className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-medium transition-colors"
+                      className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-medium transition-colors"
                     >
                       Specifications
                     </button>
@@ -567,7 +567,7 @@ export default function MachineAssetRegistryPage() {
 
               <div>
                 <h4 className="font-semibold text-slate-200 mb-2">Technical Specifications:</h4>
-                <div className="bg-[#0b0f19] border border-slate-800 rounded-lg p-3 font-mono text-[11px] text-slate-300 space-y-1">
+                <div className="bg-[#0b0f19] border border-slate-800 rounded-lg p-3 font-mono text-[11px] text-slate-700 dark:text-slate-300 space-y-1">
                   {selectedAssetForDetails.specifications &&
                     Object.entries(selectedAssetForDetails.specifications).map(([key, val]) => (
                       <div key={key} className="flex justify-between">
@@ -579,7 +579,7 @@ export default function MachineAssetRegistryPage() {
               </div>
 
               <div className="p-3 bg-slate-900/80 border border-slate-800 rounded-lg flex items-center justify-between">
-                <div className="flex items-center gap-2 text-slate-300">
+                <div className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
                   <FileText className="h-4 w-4 text-amber-400" />
                   <span>OEM Maintenance &amp; Wiring Diagram Manual</span>
                 </div>
@@ -625,7 +625,7 @@ export default function MachineAssetRegistryPage() {
             <form onSubmit={handleEnrollAsset} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Asset Tag</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Asset Tag</label>
                   <input
                     type="text"
                     required
@@ -637,7 +637,7 @@ export default function MachineAssetRegistryPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Asset Category</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Asset Category</label>
                   <select
                     value={newCategory}
                     onChange={(e) => setNewCategory(e.target.value as AssetCategory)}
@@ -654,7 +654,7 @@ export default function MachineAssetRegistryPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Asset Full Name</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Asset Full Name</label>
                 <input
                   type="text"
                   required
@@ -667,7 +667,7 @@ export default function MachineAssetRegistryPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Manufacturer</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Manufacturer</label>
                   <input
                     type="text"
                     required
@@ -679,7 +679,7 @@ export default function MachineAssetRegistryPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Model Number</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Model Number</label>
                   <input
                     type="text"
                     required
@@ -693,7 +693,7 @@ export default function MachineAssetRegistryPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Serial Number</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Serial Number</label>
                   <input
                     type="text"
                     required
@@ -705,7 +705,7 @@ export default function MachineAssetRegistryPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Plant Location / Bay</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Plant Location / Bay</label>
                   <input
                     type="text"
                     required
@@ -719,7 +719,7 @@ export default function MachineAssetRegistryPage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Power Rating (kW)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Power Rating (kW)</label>
                   <input
                     type="number"
                     step="0.5"
@@ -730,7 +730,7 @@ export default function MachineAssetRegistryPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Voltage</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Voltage</label>
                   <input
                     type="text"
                     value={newVoltage}
@@ -740,7 +740,7 @@ export default function MachineAssetRegistryPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Criticality</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Criticality</label>
                   <select
                     value={newCriticality}
                     onChange={(e) => setNewCriticality(e.target.value as AssetCriticality)}
@@ -758,7 +758,7 @@ export default function MachineAssetRegistryPage() {
                 <button
                   type="button"
                   onClick={() => setIsEnrollModalOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>

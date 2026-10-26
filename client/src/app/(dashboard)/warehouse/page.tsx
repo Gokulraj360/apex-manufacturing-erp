@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { useActiveFranchise } from '@/lib/franchiseStore';
 import {
   Warehouse,
   AlertTriangle,
@@ -23,12 +24,14 @@ import { useAuth } from '@/context/AuthContext';
 import { SupervisoryBanner } from '@/components/SupervisoryBanner';
 import { DepartmentAuditFeed } from '@/components/DepartmentAuditFeed';
 import { BarChart, DonutChart } from '@/components/charts';
+import { Download } from 'lucide-react';
+import { exportToCsv } from '@/lib/exportUtils';
 
 const initialStocks: WarehouseStockItem[] = [
   {
     id: 's-1',
     itemCode: 'PART-SOC-SD8G3',
-    itemName: 'Qualcomm Snapdragon 8 Gen-3 Processor (Chipset)',
+    itemName: 'Apex Core Industrial Embedded Microprocessor (SoC)',
     category: 'RAW_MATERIAL',
     currentQuantity: 4200,
     reservedQuantity: 2500,
@@ -88,7 +91,7 @@ const initialStocks: WarehouseStockItem[] = [
   {
     id: 's-5',
     itemCode: 'PART-CAM-50MP',
-    itemName: '50MP Sony IMX989 Main Camera Lens Module (OIS)',
+    itemName: 'High-Precision Optical Telemetry & Alignment Sensor Module',
     category: 'RAW_MATERIAL',
     currentQuantity: 180,
     reservedQuantity: 160,
@@ -97,7 +100,7 @@ const initialStocks: WarehouseStockItem[] = [
     unitOfMeasure: 'PCS',
     unitValuation: 3200,
     binCode: 'RACK-C1-TRAY-08',
-    lotBatchNumber: 'LOT-SNY-811',
+    lotBatchNumber: 'LOT-SENS-811',
     isBelowReorderThreshold: true,
   },
 ];
@@ -105,8 +108,21 @@ const initialStocks: WarehouseStockItem[] = [
 export default function WarehouseOverviewPage() {
   const { session } = useAuth();
   const isSuperAdmin = session?.roleId === 'super_admin';
+  const activeFranchise = useActiveFranchise();
 
-  const [stocks] = useState<WarehouseStockItem[]>(initialStocks);
+  // Dynamically adapt finished goods item name to active facility's flagship product
+  const stocks = useMemo(() => {
+    return initialStocks.map(s => {
+      if (s.category === 'FINISHED_GOODS') {
+        return {
+          ...s,
+          itemName: `${activeFranchise.flagshipProduct} - Enterprise Edition (Finished Packaged Unit)`,
+          unitValuation: activeFranchise.currency === 'EUR' ? 420 : activeFranchise.currency === 'CHF' ? 450 : activeFranchise.currency === 'USD' ? 480 : 38500
+        };
+      }
+      return s;
+    });
+  }, [activeFranchise]);
 
   const totalValuation = stocks.reduce(
     (acc, s) => acc + s.currentQuantity * s.unitValuation,
@@ -115,12 +131,29 @@ export default function WarehouseOverviewPage() {
   const lowStockAlerts = stocks.filter((s) => s.isBelowReorderThreshold);
   const totalPhysicalItems = stocks.reduce((acc, s) => acc + s.currentQuantity, 0);
 
+  const handleExportWarehouseCsv = () => {
+    exportToCsv(
+      `Warehouse_Stock_Audit_${activeFranchise.id}_${new Date().toISOString().split('T')[0]}`,
+      ['Item Code', 'Item Name', 'Category', 'Current Qty', 'Reserved Qty', 'Bin Code', 'Unit Valuation', 'Lot / Batch'],
+      stocks.map(s => [
+        s.itemCode,
+        s.itemName,
+        s.category,
+        s.currentQuantity,
+        s.reservedQuantity,
+        s.binCode,
+        s.unitValuation,
+        s.lotBatchNumber
+      ])
+    );
+  };
+
   // Component Stock Level Distribution for Bar Chart
   const stockLevelChartData = [
-    { label: 'Qualcomm SoC', current: 4200, reserved: 2500, safetyMin: 1500 },
-    { label: 'AMOLED Display', current: 850, reserved: 800, safetyMin: 1000 },
+    { label: 'Microprocessor SoC', current: 4200, reserved: 2500, safetyMin: 1500 },
+    { label: 'Precision Display Module', current: 850, reserved: 800, safetyMin: 1000 },
     { label: '5000mAh Battery', current: 6200, reserved: 6000, safetyMin: 2000 },
-    { label: 'Sony 50MP Lens', current: 180, reserved: 160, safetyMin: 250 },
+    { label: 'Optical Sensor', current: 180, reserved: 160, safetyMin: 250 },
     { label: 'Apex Pro Boxed', current: 1800, reserved: 1200, safetyMin: 500 },
   ];
 
@@ -205,7 +238,7 @@ export default function WarehouseOverviewPage() {
           </div>
           <div className="mt-3">
             <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight font-mono">
-              {formatCurrency(totalValuation)}
+              {formatCurrency(totalValuation, activeFranchise.currency)}
             </div>
             <div className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 mt-1 font-medium">
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -347,7 +380,17 @@ export default function WarehouseOverviewPage() {
           <span className="text-xs font-bold text-slate-800 dark:text-slate-300 uppercase tracking-wider">
             Live Warehouse Stock & Parts List
           </span>
-          <span className="text-xs text-slate-500 dark:text-slate-400">{stocks.length} Parts in Catalog</span>
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-slate-500 dark:text-slate-400">{stocks.length} Parts in Catalog</span>
+            <button
+              type="button"
+              onClick={handleExportWarehouseCsv}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Export CSV</span>
+            </button>
+          </div>
         </div>
 
         <div className="overflow-x-auto">
@@ -417,7 +460,7 @@ export default function WarehouseOverviewPage() {
                     </td>
 
                     <td className="py-3 px-4 font-mono text-slate-700 dark:text-slate-300">
-                      ₹{stock.unitValuation.toLocaleString()}
+                      {formatCurrency(stock.unitValuation, activeFranchise.currency)}
                     </td>
 
                     <td className="py-3 px-4 font-mono font-bold text-emerald-600 dark:text-emerald-400 text-right">

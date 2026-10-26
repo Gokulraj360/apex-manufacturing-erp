@@ -83,7 +83,7 @@ export interface DepartmentPayrollSheetRecord {
 export class DepartmentPayrollService {
   private readonly logger = new Logger(DepartmentPayrollService.name);
 
-  // In-memory data store seeded with authentic smartphone manufacturing facility records
+  // In-memory data store seeded with authentic industrial manufacturing facility records
   private sheets: DepartmentPayrollSheetRecord[] = [];
 
   constructor(private readonly prisma: PrismaService) {
@@ -135,7 +135,7 @@ export class DepartmentPayrollService {
       workerId: input.workerId,
       workerName: input.workerName,
       role: input.role,
-      department: input.department || 'Phone Assembly Lines',
+      department: input.department || 'Precision Subassembly Lines',
       totalWorkingDays,
       daysPresent,
       daysAbsent,
@@ -407,14 +407,14 @@ export class DepartmentPayrollService {
         ],
       },
       {
-        department: 'Line 2: Dust-Free Screen Fitting',
+        department: 'Line 2: Precision Component Subassembly',
         departmentCode: 'DISP-002',
         managerName: 'Ananya Deshmukh (Cleanroom Line Manager)',
         managerId: 'mgr-disp-02',
         workers: [
           { workerId: 'EMP-2026-0201', workerName: 'Sunita Rao', role: 'Vacuum Screen Laminator', baseSalaryRate: 21000, daysPresent: 26, overtimeHours: 12, allowances: 2200 },
           { workerId: 'EMP-2026-0202', workerName: 'Manoj Kumar', role: 'Dust Particle Inspection Tech', baseSalaryRate: 18500, daysPresent: 26, overtimeHours: 8, allowances: 1400 },
-          { workerId: 'EMP-2026-0203', workerName: 'Deepa Varma', role: 'AMOLED Display Bonding Lead', baseSalaryRate: 24000, daysPresent: 25, overtimeHours: 6, allowances: 2500 },
+          { workerId: 'EMP-2026-0203', workerName: 'Deepa Varma', role: 'Precision Optical Subassembly Lead', baseSalaryRate: 24000, daysPresent: 25, overtimeHours: 6, allowances: 2500 },
         ],
       },
       {
@@ -482,7 +482,7 @@ export class DepartmentPayrollService {
       totalPfAmount: smtCalculated.reduce((a, b) => a + b.pfDeduction, 0),
       totalAmount: smtCalculated.reduce((a, b) => a + b.netPayable, 0),
       status: 'SUBMITTED_TO_REVIEW',
-      managerNotes: 'Full 3-shift rotation completed. All overtime authorized for Snapdragon 8 Gen 3 motherboard sprint.',
+      managerNotes: 'Full 3-shift rotation completed. All overtime authorized for Precision Core Controller & Logic Board Sprint.',
       submittedAt: '2026-10-04T09:30:00.000Z',
       hrReviewerId: 'hr-lead-01',
       hrReviewerName: 'Kavita Menon (HR Lead)',
@@ -505,18 +505,18 @@ export class DepartmentPayrollService {
       updatedAt: '2026-10-05T14:15:00.000Z',
     };
 
-    // Seed 2: Line 2 Dust-Free Screen Fitting - Approved By Finance (September 2026)
+    // Seed 2: Line 2 Precision Component Subassembly - Approved By Finance (September 2026)
     const dispSheetId = 'dept-sheet-disp-2026-09';
     const dispWorkers: WorkerAttendanceInputDto[] = [
-      { workerId: 'EMP-2026-0201', workerName: 'Sunita Rao', role: 'Vacuum Screen Laminator', department: 'Line 2: Dust-Free Screen Fitting', baseSalaryRate: 21000, daysPresent: 26, overtimeHours: 12, allowances: 2200 },
-      { workerId: 'EMP-2026-0202', workerName: 'Manoj Kumar', role: 'Dust Particle Inspection Tech', department: 'Line 2: Dust-Free Screen Fitting', baseSalaryRate: 18500, daysPresent: 26, overtimeHours: 8, allowances: 1400 },
-      { workerId: 'EMP-2026-0203', workerName: 'Deepa Varma', role: 'AMOLED Display Bonding Lead', department: 'Line 2: Dust-Free Screen Fitting', baseSalaryRate: 24000, daysPresent: 25, overtimeHours: 6, allowances: 2500 },
+      { workerId: 'EMP-2026-0201', workerName: 'Sunita Rao', role: 'Vacuum Screen Laminator', department: 'Line 2: Precision Component Subassembly', baseSalaryRate: 21000, daysPresent: 26, overtimeHours: 12, allowances: 2200 },
+      { workerId: 'EMP-2026-0202', workerName: 'Manoj Kumar', role: 'Dust Particle Inspection Tech', department: 'Line 2: Precision Component Subassembly', baseSalaryRate: 18500, daysPresent: 26, overtimeHours: 8, allowances: 1400 },
+      { workerId: 'EMP-2026-0203', workerName: 'Deepa Varma', role: 'Precision Optical Subassembly Lead', department: 'Line 2: Precision Component Subassembly', baseSalaryRate: 24000, daysPresent: 25, overtimeHours: 6, allowances: 2500 },
     ];
     const dispCalculated = dispWorkers.map(w => this.computeWorkerSalary(w, dispSheetId, 26));
 
     const dispSheet: DepartmentPayrollSheetRecord = {
       id: dispSheetId,
-      department: 'Line 2: Dust-Free Screen Fitting',
+      department: 'Line 2: Precision Component Subassembly',
       departmentCode: 'DISP-002',
       managerId: 'mgr-disp-02',
       managerName: 'Ananya Deshmukh (Cleanroom Line Manager)',

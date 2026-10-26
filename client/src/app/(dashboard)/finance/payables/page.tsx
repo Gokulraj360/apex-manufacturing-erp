@@ -187,9 +187,9 @@ export default function AccountsPayablePage() {
       )}
 
       {/* Bills Table */}
-      <div className="rounded-xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-sm">
+      <div className="rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-          <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+          <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
             Vendor Bills & Matching Verification Queue
           </span>
           <span className="text-xs text-slate-400">{bills.length} Total Bills</span>
@@ -197,7 +197,7 @@ export default function AccountsPayablePage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-800">
+            <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Bill #</th>
                 <th className="py-3 px-4">Vendor & Invoice</th>
@@ -209,7 +209,7 @@ export default function AccountsPayablePage() {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
               {bills.map((bill) => {
                 const isExact = bill.matchStatus === 'EXACT_MATCH';
                 const isDiscrepancy = bill.matchStatus === 'QTY_DISCREPANCY' || bill.matchStatus === 'PRICE_DISCREPANCY';
@@ -233,7 +233,7 @@ export default function AccountsPayablePage() {
                       <div className="text-slate-500">{bill.grnNumber || 'No GRN'}</div>
                     </td>
 
-                    <td className="py-3 px-4 text-slate-300 font-mono">
+                    <td className="py-3 px-4 text-slate-700 dark:text-slate-300 font-mono">
                       {bill.dueDate}
                     </td>
 
@@ -310,7 +310,7 @@ export default function AccountsPayablePage() {
       {/* Modal: 3-Way Match Verification Inspector */}
       {matchingModalBill && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-xl bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <FileCheck2 className="h-5 w-5 text-blue-400" />
@@ -335,7 +335,7 @@ export default function AccountsPayablePage() {
               <div className="p-3 rounded-lg bg-slate-900 border border-slate-800">
                 <div className="text-slate-400 font-semibold mb-1">2. Goods Received Note</div>
                 <div className="text-white font-bold">{matchingModalBill.grnNumber || 'Pending'}</div>
-                <div className="text-slate-300 font-mono mt-1">Warehouse Gate 01</div>
+                <div className="text-slate-700 dark:text-slate-300 font-mono mt-1">Warehouse Gate 01</div>
               </div>
 
               <div className="p-3 rounded-lg bg-slate-900 border border-slate-800">
@@ -351,7 +351,7 @@ export default function AccountsPayablePage() {
               </div>
             )}
 
-            <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-300">
+            <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs text-slate-700 dark:text-slate-300">
               Contract terms verify that pricing adheres to master enterprise supply agreement. Tolerances within 0.00% variance threshold.
             </div>
 
@@ -359,7 +359,7 @@ export default function AccountsPayablePage() {
               <button
                 type="button"
                 onClick={() => setMatchingModalBill(null)}
-                className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800"
+                className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-800"
               >
                 Close
               </button>
@@ -378,7 +378,7 @@ export default function AccountsPayablePage() {
       {/* Modal: Schedule Payment */}
       {paymentModalBill && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <Calendar className="h-5 w-5 text-indigo-400" />
@@ -393,7 +393,7 @@ export default function AccountsPayablePage() {
               </button>
             </div>
 
-            <div className="text-xs text-slate-300 space-y-1">
+            <div className="text-xs text-slate-700 dark:text-slate-300 space-y-1">
               <div>Vendor: <strong className="text-white">{paymentModalBill.vendorName}</strong></div>
               <div>Invoice: <strong className="text-white">{paymentModalBill.vendorInvoiceNo}</strong></div>
               <div>Amount to Pay: <strong className="text-emerald-400 font-mono">{formatCurrency(paymentModalBill.totalAmount)}</strong></div>
@@ -401,7 +401,7 @@ export default function AccountsPayablePage() {
 
             <form onSubmit={handleSchedulePayment} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Scheduled Payment Execution Date
                 </label>
                 <input
@@ -417,7 +417,7 @@ export default function AccountsPayablePage() {
                 <button
                   type="button"
                   onClick={() => setPaymentModalBill(null)}
-                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800"
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-800"
                 >
                   Cancel
                 </button>

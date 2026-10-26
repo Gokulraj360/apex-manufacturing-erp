@@ -55,7 +55,7 @@ const DEPARTMENT_AUDIT_DATABASE: Record<string, AuditFeedItem[]> = {
       actorRole: 'Senior Accounts Officer',
       action: 'INVOICE_3WAY_MATCH',
       entity: 'VendorBill',
-      details: 'Matched Qualcomm Enterprise Invoice #QC-9042 (₹1.45 Cr) against Inbound GRN-9021 and PO-9042 with 0 variance.',
+      details: 'Matched Apex Core Semiconductor Invoice #QC-9042 (₹1.45 Cr) against Inbound GRN-9021 and PO-9042 with 0 variance.',
       severity: 'INFO',
       timestamp: 'Today, 09:30 AM',
       tamperChecksum: '76d1e4ca51871e8c7921a8b111dc503284aa179603e87d291ba40192e4cc1862',

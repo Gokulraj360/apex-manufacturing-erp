@@ -1,6 +1,6 @@
 /**
  * Comprehensive System Operational Functions Catalog
- * Across all 10 ERP Operational Modules in ApexMobile ERP
+ * Across all 10 ERP Operational Modules in Apex Enterprise ERP
  */
 
 export interface ErpFunctionDefinition {
@@ -16,7 +16,7 @@ export const ERP_FUNCTION_CATEGORIES = [
   { key: 'EXECUTIVE', label: 'Top Management & Governance' },
   { key: 'FINANCE', label: 'Finance, Banking & Accounts' },
   { key: 'PRODUCTION', label: 'Phone Assembly & SMT Operations' },
-  { key: 'WAREHOUSE', label: 'Warehouse, Parts & IMEI Tracking' },
+  { key: 'WAREHOUSE', label: 'Warehouse, Parts & Serial Registry' },
   { key: 'QUALITY', label: 'Phone Quality & Testing' },
   { key: 'HR_WORKFORCE', label: 'Human Resources & Payroll' },
   { key: 'LOGISTICS_FLEET', label: 'Logistics, Gate & Vehicle Fleet' },
@@ -48,7 +48,7 @@ export const ALL_ERP_FUNCTIONS: ErpFunctionDefinition[] = [
     name: 'High-Value Purchase Order Sign-Off (₹50L+)',
     category: 'EXECUTIVE',
     categoryLabel: 'Top Management & Governance',
-    description: 'Final sign-off authority for high-value component purchase orders (Qualcomm SoCs, BOE displays).',
+    description: 'Final sign-off authority for high-value component purchase orders (Microprocessor Cores, Optical Sensing Arrays).',
     riskLevel: 'CRITICAL',
   },
   {
@@ -132,7 +132,7 @@ export const ALL_ERP_FUNCTIONS: ErpFunctionDefinition[] = [
     name: 'Dust-Free Cleanroom Screen Bonding',
     category: 'PRODUCTION',
     categoryLabel: 'Phone Assembly & SMT Operations',
-    description: 'Record cleanroom AMOLED screen fittings, battery connections, and camera lens alignments.',
+    description: 'Record cleanroom precision fittings, wiring connections, and optical alignments.',
     riskLevel: 'LOW',
   },
   {
@@ -152,12 +152,12 @@ export const ALL_ERP_FUNCTIONS: ErpFunctionDefinition[] = [
     riskLevel: 'HIGH',
   },
 
-  // 4. WAREHOUSE, PARTS & IMEI TRACKING
+  // 4. WAREHOUSE, PARTS & Serial UID TRACKING
   {
     key: 'FUNC_WHS_STOCK_MONITOR',
     name: 'Raw Materials & Storage Shelf Monitor',
     category: 'WAREHOUSE',
-    categoryLabel: 'Warehouse, Parts & IMEI Tracking',
+    categoryLabel: 'Warehouse, Parts & Serial Registry',
     description: 'Monitor storage racks, small parts trays, stock valuations, and low-part reorder alerts.',
     riskLevel: 'LOW',
   },
@@ -165,7 +165,7 @@ export const ALL_ERP_FUNCTIONS: ErpFunctionDefinition[] = [
     key: 'FUNC_WHS_INBOUND_GRN',
     name: 'Inbound Goods Receipt Note (GRN) Verification',
     category: 'WAREHOUSE',
-    categoryLabel: 'Warehouse, Parts & IMEI Tracking',
+    categoryLabel: 'Warehouse, Parts & Serial Registry',
     description: 'Acknowledge deliveries, scan component barcodes, and verify delivered count against PO.',
     riskLevel: 'HIGH',
   },
@@ -173,23 +173,23 @@ export const ALL_ERP_FUNCTIONS: ErpFunctionDefinition[] = [
     key: 'FUNC_WHS_BUFFER_RESERVE',
     name: 'Component Buffer Reservation for Assembly',
     category: 'WAREHOUSE',
-    categoryLabel: 'Warehouse, Parts & IMEI Tracking',
+    categoryLabel: 'Warehouse, Parts & Serial Registry',
     description: 'Reserve processor chips, screens, and batteries for planned manufacturing shifts.',
     riskLevel: 'MEDIUM',
   },
   {
-    key: 'FUNC_WHS_IMEI_REGISTRATION',
-    name: 'IMEI Serial Numbers & Factory SIM Registry',
+    key: 'FUNC_WHS_Serial UID_REGISTRATION',
+    name: 'Unit Serial Numbers & Hardware UID Registry',
     category: 'WAREHOUSE',
-    categoryLabel: 'Warehouse, Parts & IMEI Tracking',
-    description: 'Register unique 15-digit IMEI serial numbers, ICCID SIM IDs, and MAC addresses on completed devices.',
+    categoryLabel: 'Warehouse, Parts & Serial Registry',
+    description: 'Register unique 15-digit hardware serial numbers, firmware identifiers, and telemetry addresses on completed units.',
     riskLevel: 'HIGH',
   },
   {
     key: 'FUNC_WHS_DISPATCH_BOXING',
     name: 'Retail Phone Box Packing & Shipping Dispatch',
     category: 'WAREHOUSE',
-    categoryLabel: 'Warehouse, Parts & IMEI Tracking',
+    categoryLabel: 'Warehouse, Parts & Serial Registry',
     description: 'Final retail phone packaging, warranty sticker sealing, carton labeling, and courier release.',
     riskLevel: 'MEDIUM',
   },
@@ -208,7 +208,7 @@ export const ALL_ERP_FUNCTIONS: ErpFunctionDefinition[] = [
     name: 'Screen Optical Inspection & Color Calibration',
     category: 'QUALITY',
     categoryLabel: 'Phone Quality & Testing',
-    description: 'Inspect AMOLED screens for dead sub-pixels, color uniformity, and touch response speed.',
+    description: 'Inspect subassembly sensor arrays for optical uniformity, calibration tolerances, and response speed.',
     riskLevel: 'MEDIUM',
   },
   {
@@ -300,7 +300,7 @@ export const ALL_ERP_FUNCTIONS: ErpFunctionDefinition[] = [
     name: 'Finished Phone Air-Cargo Convoy Dispatch',
     category: 'LOGISTICS_FLEET',
     categoryLabel: 'Logistics, Gate & Vehicle Fleet',
-    description: 'Issue convoy gate clearance for high-value smartphone shipments en route to distribution hubs.',
+    description: 'Issue convoy gate clearance for high-value industrial production shipments en route to distribution hubs.',
     riskLevel: 'HIGH',
   },
   {
@@ -383,7 +383,7 @@ export const ALL_ERP_FUNCTIONS: ErpFunctionDefinition[] = [
   // 10. CUSTOMER ORDERS, CRM & MARKETING
   {
     key: 'FUNC_CRM_CARRIER_CONTRACTS',
-    name: 'Carrier Bulk Smartphone Contracts & Orders',
+    name: 'Commercial Enterprise Production Contracts & Orders',
     category: 'SALES_MARKETING',
     categoryLabel: 'Customer Orders, CRM & Marketing',
     description: 'Manage telecom carrier orders, wholesale commitments, and dispatch schedule commitments.',
@@ -402,7 +402,7 @@ export const ALL_ERP_FUNCTIONS: ErpFunctionDefinition[] = [
     name: 'Customer Warranty & Service Center Repairs',
     category: 'SALES_MARKETING',
     categoryLabel: 'Customer Orders, CRM & Marketing',
-    description: 'Verify phone warranty claims by IMEI serial number, log screen replacements, and dispatch spare parts.',
+    description: 'Verify unit warranty claims by serial number, log subassembly replacements, and dispatch spare parts.',
     riskLevel: 'MEDIUM',
   },
 ];
@@ -441,7 +441,7 @@ export const DEFAULT_ROLE_PERMISSIONS: Record<string, string[]> = {
     'FUNC_WHS_STOCK_MONITOR',
     'FUNC_WHS_INBOUND_GRN',
     'FUNC_WHS_BUFFER_RESERVE',
-    'FUNC_WHS_IMEI_REGISTRATION',
+    'FUNC_WHS_Serial UID_REGISTRATION',
     'FUNC_HR_LEAVE_APPROVAL',
   ],
 

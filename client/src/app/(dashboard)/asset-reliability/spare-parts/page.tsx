@@ -354,22 +354,22 @@ export default function SparePartsToolCribPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Catalogued SKUs</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Catalogued SKUs</span>
             <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
               <Boxes className="h-4 w-4 text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{parts.length} SKUs</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{parts.length} SKUs</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">Across 6 maintenance categories</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Low Stock Threshold</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Low Stock Threshold</span>
             <div className="h-8 w-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
               <AlertTriangle className="h-4 w-4 text-rose-400" />
             </div>
@@ -382,22 +382,22 @@ export default function SparePartsToolCribPage() {
           <div className="mt-2 text-[11px] text-rose-300">Below minimum safety threshold</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Crib Inventory Value</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Crib Inventory Value</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
               <DollarSign className="h-4 w-4 text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">$24,650</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">$24,650</span>
           </div>
           <div className="mt-2 text-[11px] text-emerald-400">Audited inventory value</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Pending Requisitions</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Pending Requisitions</span>
             <div className="h-8 w-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
               <Clock className="h-4 w-4 text-indigo-400" />
             </div>
@@ -418,12 +418,12 @@ export default function SparePartsToolCribPage() {
           className={`pb-3 px-3 text-xs font-semibold flex items-center gap-2 border-b-2 transition-colors ${
             activeTab === 'PARTS'
               ? 'border-amber-500 text-amber-400'
-              : 'border-transparent text-slate-400 hover:text-slate-300'
+              : 'border-transparent text-slate-400 hover:text-slate-700 dark:text-slate-300'
           }`}
         >
           <Boxes className="h-4 w-4" />
           Tool Crib Spare Parts Catalog
-          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-300">
+          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-700 dark:text-slate-300">
             {parts.length}
           </span>
         </button>
@@ -433,19 +433,19 @@ export default function SparePartsToolCribPage() {
           className={`pb-3 px-3 text-xs font-semibold flex items-center gap-2 border-b-2 transition-colors ${
             activeTab === 'REQUISITIONS'
               ? 'border-amber-500 text-amber-400'
-              : 'border-transparent text-slate-400 hover:text-slate-300'
+              : 'border-transparent text-slate-400 hover:text-slate-700 dark:text-slate-300'
           }`}
         >
           <Send className="h-4 w-4" />
           Component Requisitions Desk
-          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-300">
+          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-700 dark:text-slate-300">
             {requisitions.length}
           </span>
         </button>
       </div>
 
       {/* Search and Filters */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
           <input
@@ -457,7 +457,7 @@ export default function SparePartsToolCribPage() {
             }
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 bg-[#0b0f19] border border-slate-700 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors"
+            className="w-full pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors"
           />
         </div>
 
@@ -483,7 +483,7 @@ export default function SparePartsToolCribPage() {
 
       {/* TAB 1: SPARE PARTS */}
       {activeTab === 'PARTS' && (
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Boxes className="h-4 w-4 text-amber-400" />
@@ -494,7 +494,7 @@ export default function SparePartsToolCribPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+              <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Part Code &amp; Name</th>
                   <th className="py-3 px-4">Category</th>
@@ -505,7 +505,7 @@ export default function SparePartsToolCribPage() {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
                 {filteredParts.map((part) => {
                   const isLow = part.currentStock <= part.minimumThreshold;
                   return (
@@ -515,17 +515,17 @@ export default function SparePartsToolCribPage() {
                           <Boxes className="h-3.5 w-3.5 text-amber-400 shrink-0" />
                           {part.partCode}
                         </div>
-                        <div className="text-slate-300 text-[11px] mt-0.5">{part.partName}</div>
+                        <div className="text-slate-700 dark:text-slate-300 text-[11px] mt-0.5">{part.partName}</div>
                       </td>
 
                       <td className="py-3 px-4 font-mono text-[11px]">
-                        <span className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                        <span className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-700">
                           {part.category}
                         </span>
                       </td>
 
                       <td className="py-3 px-4">
-                        <div className="flex items-center gap-1 text-slate-300 font-mono text-[11px]">
+                        <div className="flex items-center gap-1 text-slate-700 dark:text-slate-300 font-mono text-[11px]">
                           <MapPin className="h-3 w-3 text-amber-400 shrink-0" />
                           {part.cribBinLocation}
                         </div>
@@ -562,7 +562,7 @@ export default function SparePartsToolCribPage() {
                       <td className="py-3 px-4 text-right">
                         <button
                           onClick={() => setAdjustingPart(part)}
-                          className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] font-medium transition-colors"
+                          className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-medium transition-colors"
                         >
                           Adjust Stock
                         </button>
@@ -578,7 +578,7 @@ export default function SparePartsToolCribPage() {
 
       {/* TAB 2: REQUISITIONS */}
       {activeTab === 'REQUISITIONS' && (
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Send className="h-4 w-4 text-amber-400" />
@@ -588,7 +588,7 @@ export default function SparePartsToolCribPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+              <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Requisition #</th>
                   <th className="py-3 px-4">Component Requested</th>
@@ -599,7 +599,7 @@ export default function SparePartsToolCribPage() {
                   <th className="py-3 px-4 text-right">Storekeeper Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
                 {filteredRequisitions.map((req) => (
                   <tr key={req.id} className="hover:bg-slate-800/30 transition-colors">
                     <td className="py-3 px-4 font-mono font-bold text-white">
@@ -615,7 +615,7 @@ export default function SparePartsToolCribPage() {
                       {req.quantity} {req.sparePart?.unitOfMeasure}
                     </td>
 
-                    <td className="py-3 px-4 text-slate-300">
+                    <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
                       {req.breakdownTicket && (
                         <div className="text-[11px]">
                           <strong className="text-rose-400">{req.breakdownTicket.ticketNumber}</strong> ({req.breakdownTicket.asset?.assetTag})
@@ -704,13 +704,13 @@ export default function SparePartsToolCribPage() {
             </div>
 
             <form onSubmit={handleAdjustStock} className="space-y-3.5 text-xs">
-              <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">
+              <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg text-slate-700 dark:text-slate-300">
                 <div className="font-semibold text-white">{adjustingPart.partName}</div>
                 <div className="text-[11px] text-slate-400 mt-1">Current Stock: {adjustingPart.currentStock} {adjustingPart.unitOfMeasure}</div>
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Adjustment Quantity (+ to add, - to reduce)</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Adjustment Quantity (+ to add, - to reduce)</label>
                 <input
                   type="number"
                   required
@@ -721,7 +721,7 @@ export default function SparePartsToolCribPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Adjustment Reason / Purchase Order Reference</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Adjustment Reason / Purchase Order Reference</label>
                 <input
                   type="text"
                   required
@@ -735,7 +735,7 @@ export default function SparePartsToolCribPage() {
                 <button
                   type="button"
                   onClick={() => setAdjustingPart(null)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>
@@ -775,7 +775,7 @@ export default function SparePartsToolCribPage() {
             <form onSubmit={handleAddPart} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Part Code / SKU</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Part Code / SKU</label>
                   <input
                     type="text"
                     required
@@ -787,7 +787,7 @@ export default function SparePartsToolCribPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Category</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Category</label>
                   <select
                     value={newCategory}
                     onChange={(e) => setNewCategory(e.target.value)}
@@ -804,7 +804,7 @@ export default function SparePartsToolCribPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Part Description / Name</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Part Description / Name</label>
                 <input
                   type="text"
                   required
@@ -817,7 +817,7 @@ export default function SparePartsToolCribPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Crib Bin Location</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Crib Bin Location</label>
                   <input
                     type="text"
                     required
@@ -829,7 +829,7 @@ export default function SparePartsToolCribPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Supplier / OEM</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Supplier / OEM</label>
                   <input
                     type="text"
                     placeholder="e.g. SKF Industrial Ltd"
@@ -842,7 +842,7 @@ export default function SparePartsToolCribPage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Initial Stock</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Initial Stock</label>
                   <input
                     type="number"
                     value={newStock}
@@ -852,7 +852,7 @@ export default function SparePartsToolCribPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Min Threshold</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Min Threshold</label>
                   <input
                     type="number"
                     value={newThreshold}
@@ -862,7 +862,7 @@ export default function SparePartsToolCribPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Unit Cost ($)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Unit Cost ($)</label>
                   <input
                     type="number"
                     step="0.01"
@@ -877,7 +877,7 @@ export default function SparePartsToolCribPage() {
                 <button
                   type="button"
                   onClick={() => setIsAddPartModalOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>
@@ -916,7 +916,7 @@ export default function SparePartsToolCribPage() {
 
             <form onSubmit={handleCreateRequisition} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Select Spare Part</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Select Spare Part</label>
                 <select
                   value={reqPartId}
                   onChange={(e) => setReqPartId(e.target.value)}
@@ -932,7 +932,7 @@ export default function SparePartsToolCribPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Quantity Needed</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Quantity Needed</label>
                   <input
                     type="number"
                     min="1"
@@ -944,7 +944,7 @@ export default function SparePartsToolCribPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Requested By</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Requested By</label>
                   <input
                     type="text"
                     required
@@ -957,7 +957,7 @@ export default function SparePartsToolCribPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Purpose / Work Order Ref</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Purpose / Work Order Ref</label>
                 <textarea
                   required
                   rows={2}
@@ -972,7 +972,7 @@ export default function SparePartsToolCribPage() {
                 <button
                   type="button"
                   onClick={() => setIsNewRequisitionModalOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>

@@ -19,7 +19,7 @@ export class SerializedController {
   constructor(private readonly serializedService: SerializedService) {}
 
   /**
-   * Scan IMEI / UID barcode and validate cleanroom station transition
+   * Scan Serial UID / UID barcode and validate cleanroom station transition
    * Enforces prior station clearance and records checkpoint into JSONB audit trail
    */
   @Post('scan')

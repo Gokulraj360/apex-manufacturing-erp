@@ -31,7 +31,7 @@ export class UsersService {
       firstName: 'Plant Owner',
       lastName: 'MD',
       name: 'Plant Owner / MD',
-      email: 'owner@apexmobile.com',
+      email: 'owner@apexenterprise.com',
       passwordRaw: 'owner123',
       role: 'TOP_MANAGEMENT',
       salary: 500000.0,

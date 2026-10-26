@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { useActiveFranchise } from '@/lib/franchiseStore';
 import {
   Boxes,
   Play,
@@ -212,7 +213,7 @@ export default function WorkOrderExecutionPage() {
           return (
             <div
               key={wo.id}
-              className="rounded-xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-sm"
+              className="rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm"
             >
               {/* Order Header Card */}
               <div
@@ -231,7 +232,7 @@ export default function WorkOrderExecutionPage() {
                       <span className="font-mono text-xs font-semibold text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded">
                         {wo.sku}
                       </span>
-                      <span className="text-sm text-slate-300 font-medium hidden sm:inline">
+                      <span className="text-sm text-slate-700 dark:text-slate-300 font-medium hidden sm:inline">
                         {wo.productName}
                       </span>
                     </div>
@@ -269,7 +270,7 @@ export default function WorkOrderExecutionPage() {
                 <div className="p-5 border-t border-slate-800 bg-slate-900/40 space-y-6">
                   {/* Milestones Tracker */}
                   <div className="space-y-3">
-                    <div className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
+                    <div className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center justify-between">
                       <span>Manufacturing Milestones</span>
                       <span className="text-slate-400 font-normal">Click checkmark to update state</span>
                     </div>
@@ -282,7 +283,7 @@ export default function WorkOrderExecutionPage() {
                           className={`p-3 rounded-lg border cursor-pointer transition-all ${
                             m.isCompleted
                               ? 'bg-emerald-950/20 border-emerald-500/40 text-emerald-200'
-                              : 'bg-slate-900 border-slate-800 text-slate-300 hover:border-slate-700'
+                              : 'bg-slate-900 border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-700'
                           }`}
                         >
                           <div className="flex items-center justify-between">
@@ -308,7 +309,7 @@ export default function WorkOrderExecutionPage() {
                   {/* Production Batches Queue */}
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+                      <div className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                         Active Production Batches
                       </div>
                       <button
@@ -336,7 +337,7 @@ export default function WorkOrderExecutionPage() {
                                   {batch.batchNumber}
                                 </span>
                                 <span className="text-slate-400">&bull;</span>
-                                <span className="text-xs text-slate-300">
+                                <span className="text-xs text-slate-700 dark:text-slate-300">
                                   Station: <strong className="text-white">{batch.currentStation}</strong>
                                 </span>
                                 <span className="text-slate-400">&bull;</span>
@@ -345,7 +346,7 @@ export default function WorkOrderExecutionPage() {
                                 </span>
                               </div>
                               <div className="text-xs text-slate-400 mt-1">
-                                Planned Units: <strong className="text-white font-mono">{batch.plannedUnits}</strong> &bull; Completed: <strong className="text-emerald-400 font-mono">{batch.producedUnits}</strong> &bull; Defects: <strong className="text-red-400 font-mono">{batch.defectiveUnits}</strong>
+                                Planned Units: <strong className="text-slate-900 dark:text-white font-mono">{batch.plannedUnits}</strong> &bull; Completed: <strong className="text-emerald-400 font-mono">{batch.producedUnits}</strong> &bull; Defects: <strong className="text-red-400 font-mono">{batch.defectiveUnits}</strong>
                               </div>
                             </div>
 
@@ -409,7 +410,7 @@ export default function WorkOrderExecutionPage() {
       {/* Modal: Dispatch New Batch */}
       {newBatchModalOrder && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <Boxes className="h-5 w-5 text-blue-400" />
@@ -424,13 +425,13 @@ export default function WorkOrderExecutionPage() {
               </button>
             </div>
 
-            <div className="text-xs text-slate-300">
-              Order: <strong className="text-white font-mono">{newBatchModalOrder.orderNumber}</strong> ({newBatchModalOrder.sku})
+            <div className="text-xs text-slate-700 dark:text-slate-300">
+              Order: <strong className="text-slate-900 dark:text-white font-mono">{newBatchModalOrder.orderNumber}</strong> ({newBatchModalOrder.sku})
             </div>
 
             <form onSubmit={handleLaunchBatch} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Batch Planned Units
                 </label>
                 <input
@@ -443,7 +444,7 @@ export default function WorkOrderExecutionPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Ingest Station Name
                 </label>
                 <input
@@ -459,7 +460,7 @@ export default function WorkOrderExecutionPage() {
                 <button
                   type="button"
                   onClick={() => setNewBatchModalOrder(null)}
-                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800"
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-800"
                 >
                   Cancel
                 </button>

@@ -7,7 +7,7 @@ export class CreateCredentialDto {
   address?: string;
   role: string; // e.g. 'production', 'quality', 'finance'
   roleTitle: string; // e.g. 'SMT Machine Operator'
-  department: string; // e.g. 'Phone Assembly Lines'
+  department: string; // e.g. 'Precision Subassembly Lines'
   accessPermissions?: string[];
   username: string;
   password?: string;

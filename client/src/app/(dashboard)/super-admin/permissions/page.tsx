@@ -250,7 +250,7 @@ export default function PermissionsPage() {
       </div>
 
       {/* Detailed Matrix Table for Selected Role */}
-      <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-6">
+      <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-6">
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <div>
             <h3 className="text-base font-bold text-white flex items-center gap-2">
@@ -281,14 +281,14 @@ export default function PermissionsPage() {
 
             return (
               <div key={resource} className="rounded-lg bg-slate-900/60 border border-slate-800 overflow-hidden">
-                <div className="bg-slate-800/50 px-4 py-2.5 text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center justify-between">
+                <div className="bg-slate-800/50 px-4 py-2.5 text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center justify-between">
                   <span>Resource Domain: {resource}</span>
                   <span className="text-[10px] text-slate-400 font-normal">
                     {resourcePerms.length} Action Points
                   </span>
                 </div>
 
-                <div className="divide-y divide-slate-800/60">
+                <div className="divide-y divide-slate-200 dark:divide-slate-800/60">
                   {resourcePerms.map((perm) => {
                     const permKey = `${perm.action}:${perm.resource}`;
                     const isGranted = selectedRole.permissions.includes(permKey);
@@ -347,7 +347,7 @@ export default function PermissionsPage() {
       {/* Modal for Creating New Role */}
       {showNewRoleModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <Plus className="h-4 w-4 text-blue-400" />
@@ -370,7 +370,7 @@ export default function PermissionsPage() {
 
             <form onSubmit={handleCreateRole} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Role Title
                 </label>
                 <input
@@ -385,7 +385,7 @@ export default function PermissionsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Description
                 </label>
                 <textarea
@@ -400,7 +400,7 @@ export default function PermissionsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Hierarchy Authority Level: {newRoleForm.hierarchyLevel}
                   <span className="text-[10px] text-slate-400 block font-normal">
                     (0 = Super Admin, 100 = Floor Operator)
@@ -425,7 +425,7 @@ export default function PermissionsPage() {
                 <button
                   type="button"
                   onClick={() => setShowNewRoleModal(false)}
-                  className="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-800 transition-colors"
                 >
                   Cancel
                 </button>

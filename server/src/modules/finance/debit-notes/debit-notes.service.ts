@@ -115,7 +115,7 @@ export class DebitNotesService {
         vendorGstin: '29AABCS8891B1Z2',
         lotRef: 'LOT-SAM-2026-118',
         poNumber: 'PO-2026-0884',
-        itemName: '6.7" OLED Curved Display 120Hz LTPO',
+        itemName: 'Industrial Optical Display & Sensor Panel 120Hz',
         rejectedQty: 180,
         uom: 'PCS',
         amount: 612000.0, // 180 * 3400

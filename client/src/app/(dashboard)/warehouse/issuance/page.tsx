@@ -116,7 +116,7 @@ export default function MaterialIssuancePage() {
       </div>
 
       {/* Pending Fulfillment Queue */}
-      <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4">
+      <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4">
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <div>
             <h3 className="text-base font-bold text-white flex items-center gap-2">
@@ -147,7 +147,7 @@ export default function MaterialIssuancePage() {
                   <span className="font-mono text-xs font-semibold text-cyan-400">
                     {item.workOrderNumber}
                   </span>
-                  <span className="text-xs text-slate-300 font-medium">
+                  <span className="text-xs text-slate-700 dark:text-slate-300 font-medium">
                     ({item.productName})
                   </span>
                 </div>
@@ -194,9 +194,9 @@ export default function MaterialIssuancePage() {
       </div>
 
       {/* Issuance Ledger Table */}
-      <div className="rounded-xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-sm">
+      <div className="rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-          <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+          <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
             Completed Material Issuance History
           </span>
           <span className="text-xs text-slate-400">{issuances.length} Historical Records</span>
@@ -204,7 +204,7 @@ export default function MaterialIssuancePage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-800">
+            <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Issuance Ref</th>
                 <th className="py-3 px-4">Work Order</th>
@@ -215,7 +215,7 @@ export default function MaterialIssuancePage() {
                 <th className="py-3 px-4 text-right">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
               {issuances.map((iss) => (
                 <tr key={iss.id} className="hover:bg-slate-800/20">
                   <td className="py-3 px-4 font-mono font-bold text-white">

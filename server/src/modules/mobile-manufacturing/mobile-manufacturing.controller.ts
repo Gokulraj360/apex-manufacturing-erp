@@ -1,11 +1,11 @@
 import { Controller, Get, Post, Body, Query } from '@nestjs/common';
-import { ImeiTrackingService } from './imei-tracking.service';
+import { ImeiTrackingService } from './serialNumber-tracking.service';
 import { MobileAssemblyService } from './mobile-assembly.service';
 
 @Controller('api/mobile')
 export class MobileManufacturingController {
   constructor(
-    private readonly imeiService: ImeiTrackingService,
+    private readonly serialNumberService: ImeiTrackingService,
     private readonly assemblyService: MobileAssemblyService,
   ) {}
 
@@ -25,30 +25,30 @@ export class MobileManufacturingController {
     };
   }
 
-  @Get('imei/telemetry')
+  @Get('serialNumber/telemetry')
   getImeiTelemetry() {
     return {
       success: true,
-      data: this.imeiService.getImeiTelemetrySummary(),
+      data: this.serialNumberService.getImeiTelemetrySummary(),
     };
   }
 
-  @Post('imei/generate-pair')
+  @Post('serialNumber/generate-pair')
   generateDualImei(
     @Body('model') model: 'PRO' | 'LITE' = 'PRO',
     @Body('sequenceNumber') sequenceNumber = 4812,
   ) {
     return {
       success: true,
-      pair: this.imeiService.generateDualImeiPair(model, sequenceNumber),
+      pair: this.serialNumberService.generateDualImeiPair(model, sequenceNumber),
     };
   }
 
-  @Post('imei/validate')
-  validateImei(@Body('imei') imei: string) {
+  @Post('serialNumber/validate')
+  validateImei(@Body('serialNumber') serialNumber: string) {
     return {
       success: true,
-      result: this.imeiService.validateImei(imei),
+      result: this.serialNumberService.validateImei(serialNumber),
     };
   }
 

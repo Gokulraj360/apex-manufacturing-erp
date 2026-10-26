@@ -181,7 +181,7 @@ export default function RequisitionsPage() {
             return (
               <div
                 key={req.id}
-                className="p-5 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4 shadow-sm"
+                className="p-5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm"
               >
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
                   <div className="flex items-center gap-3">
@@ -219,7 +219,7 @@ export default function RequisitionsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                   {/* Requested Items */}
                   <div className="space-y-2">
-                    <div className="font-semibold text-slate-300">Requested Components:</div>
+                    <div className="font-semibold text-slate-700 dark:text-slate-300">Requested Components:</div>
                     <div className="space-y-1.5">
                       {req.requestedItems.map((item, i) => (
                         <div key={i} className="p-2 rounded bg-slate-900 border border-slate-800 flex justify-between font-mono">
@@ -252,9 +252,9 @@ export default function RequisitionsPage() {
 
       {/* WIP Stock View */}
       {activeTab === 'WIP' && (
-        <div className="rounded-xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-sm">
+        <div className="rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+            <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
               Floor Buffers & Stage Inventory
             </span>
             <span className="text-xs text-slate-400">{wipStocks.length} Active Stations</span>
@@ -262,7 +262,7 @@ export default function RequisitionsPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-800">
+              <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-semibold border-b border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Station Stage</th>
                   <th className="py-3 px-4">Work Order & SKU</th>
@@ -272,7 +272,7 @@ export default function RequisitionsPage() {
                   <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800 text-slate-300">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                 {wipStocks.map((wip) => (
                   <tr key={wip.id} className="hover:bg-slate-800/20">
                     <td className="py-3 px-4 font-semibold text-white">
@@ -288,7 +288,7 @@ export default function RequisitionsPage() {
                       {wip.stageUnits} Units
                     </td>
 
-                    <td className="py-3 px-4 text-slate-300 font-mono text-[11px]">
+                    <td className="py-3 px-4 text-slate-700 dark:text-slate-300 font-mono text-[11px]">
                       {wip.holdingLocation}
                     </td>
 

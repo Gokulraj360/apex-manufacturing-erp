@@ -160,7 +160,7 @@ export default function RecipesPage() {
       </div>
 
       {/* Selected Recipe Header Overview Card */}
-      <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4">
+      <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-800 pb-4">
           <div>
             <div className="flex items-center gap-3">
@@ -196,23 +196,23 @@ export default function RecipesPage() {
 
         {/* Blueprint Specifications Grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3 pt-1">
-          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+          <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs">
             <span className="text-slate-400 block text-[10px] uppercase">Alloy Grade</span>
-            <strong className="text-slate-200 font-medium">{selectedRecipe.blueprintSpecifications.alloyGrade}</strong>
+            <strong className="text-slate-800 dark:text-slate-200 font-medium">{selectedRecipe.blueprintSpecifications.alloyGrade}</strong>
           </div>
-          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+          <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs">
             <span className="text-slate-400 block text-[10px] uppercase">Machining Tolerance</span>
             <strong className="text-cyan-400 font-mono font-medium">{selectedRecipe.blueprintSpecifications.toleranceMm}</strong>
           </div>
-          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+          <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs">
             <span className="text-slate-400 block text-[10px] uppercase">Tensile Strength</span>
-            <strong className="text-slate-200 font-mono font-medium">{selectedRecipe.blueprintSpecifications.tensileStrengthMpa} MPa</strong>
+            <strong className="text-slate-800 dark:text-slate-200 font-mono font-medium">{selectedRecipe.blueprintSpecifications.tensileStrengthMpa} MPa</strong>
           </div>
-          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+          <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs">
             <span className="text-slate-400 block text-[10px] uppercase">Surface Finish (Ra)</span>
-            <strong className="text-slate-200 font-mono font-medium">{selectedRecipe.blueprintSpecifications.surfaceFinishRa}</strong>
+            <strong className="text-slate-800 dark:text-slate-200 font-mono font-medium">{selectedRecipe.blueprintSpecifications.surfaceFinishRa}</strong>
           </div>
-          <div className="p-2.5 rounded-lg bg-slate-900/60 border border-slate-800 text-xs">
+          <div className="p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-xs">
             <span className="text-slate-400 block text-[10px] uppercase">CAD Blueprint</span>
             <span className="text-blue-400 font-mono flex items-center gap-1 cursor-pointer hover:underline">
               {selectedRecipe.blueprintSpecifications.cadRevision} <ExternalLink className="h-3 w-3" />
@@ -224,9 +224,9 @@ export default function RecipesPage() {
       {/* Two Column Layout: Bill of Materials vs Assembly Routing Instructions */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Bill of Materials (Components) */}
-        <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-            <h4 className="text-sm font-bold text-white flex items-center gap-2">
+        <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Layers className="h-4 w-4 text-cyan-400" />
               Bill of Materials (Raw Components)
             </h4>
@@ -237,7 +237,7 @@ export default function RecipesPage() {
             {selectedRecipe.components.map((comp) => (
               <div
                 key={comp.partNumber}
-                className="p-3 rounded-lg bg-slate-900/80 border border-slate-800 flex items-center justify-between gap-3 text-xs"
+                className="p-3 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3 text-xs"
               >
                 <div>
                   <div className="font-mono font-semibold text-white">
@@ -262,9 +262,9 @@ export default function RecipesPage() {
         </div>
 
         {/* Step-by-Step Assembly Routing Instructions */}
-        <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-            <h4 className="text-sm font-bold text-white flex items-center gap-2">
+        <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <Compass className="h-4 w-4 text-blue-400" />
               Assembly Routing & Quality Gates
             </h4>
@@ -275,7 +275,7 @@ export default function RecipesPage() {
             {selectedRecipe.routings.map((step) => (
               <div
                 key={step.id}
-                className="p-3.5 rounded-lg bg-slate-900/80 border border-slate-800 space-y-2 text-xs"
+                className="p-3.5 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-2 text-xs"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2 font-semibold text-slate-200">
@@ -289,13 +289,13 @@ export default function RecipesPage() {
                   </span>
                 </div>
 
-                <p className="text-slate-300 text-[11px] pl-7">
+                <p className="text-slate-700 dark:text-slate-300 text-[11px] pl-7">
                   {step.instruction}
                 </p>
 
                 {step.toolingRequired && (
                   <div className="text-[11px] text-slate-400 pl-7">
-                    Tooling: <strong className="text-slate-300">{step.toolingRequired}</strong>
+                    Tooling: <strong className="text-slate-700 dark:text-slate-300">{step.toolingRequired}</strong>
                   </div>
                 )}
 

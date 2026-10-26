@@ -57,7 +57,7 @@ const INITIAL_STEPS: DiagnosticStep[] = [
   },
   {
     id: 3,
-    name: 'OLED Display Sub-Pixel Drive & Optical Color Delta-E',
+    name: 'Sensor Array Calibration & Optical Telemetry Delta-E',
     category: 'Display & Optoelectronics',
     expectedRange: 'ΔE < 1.5 / 0 Dead Pixels',
     measuredValue: 'ΔE 0.82 / 0 Defects Detected',
@@ -185,7 +185,7 @@ export default function HardwareDiagnosticsPage() {
               ['DDR5 Memory Bus Stress', 'RAM Subsystem', 'Zero Bit Flips (> 100M Cycles)', '0 Bit Flips / Error-Free', 'PASSED'],
               ['RF Sub-6GHz Output Power', 'Wireless / 5G', '21.5 dBm - 23.5 dBm', '22.8 dBm (Calibrated)', 'PASSED'],
               ['Battery Internal Impedance', 'Power / BMS', '< 45.0 mΩ', '31.4 mΩ (Optimal)', 'PASSED'],
-              ['OLED Display Optical Uniformity', 'Display / Optics', 'Delta E < 1.50', 'Delta E = 0.82', 'PASSED'],
+              ['Sensor Array Optical Uniformity', 'Display / Optics', 'Delta E < 1.50', 'Delta E = 0.82', 'PASSED'],
               ['Thermal Chamber Soak Run', 'Environmental', 'Core Temp < 78.0°C at 100% Load', '64.2°C Stabilized', 'PASSED']
             ]
           },
@@ -328,7 +328,7 @@ export default function HardwareDiagnosticsPage() {
               type="text"
               value={scannedSerial}
               onChange={(e) => setScannedSerial(e.target.value)}
-              placeholder="Scan DUT Serial / IMEI..."
+              placeholder="Scan DUT Serial / Hardware UID..."
               className="bg-transparent text-xs text-foreground font-mono focus:outline-none w-48"
             />
           </div>
@@ -676,7 +676,7 @@ export default function HardwareDiagnosticsPage() {
               { code: 'ERR-RF-TX-ATTEN', desc: 'RF Sub-6GHz Output Power Low (< 21.5 dBm)', count: 42, pct: 44.2, color: 'bg-rose-500' },
               { code: 'ERR-BATT-HIGH-ESR', desc: 'Battery Internal Impedance Exceeds 45 mΩ', count: 28, pct: 29.5, color: 'bg-amber-500' },
               { code: 'ERR-BGA-BRIDGING', desc: 'Solder Micro-Bridging on SoC Pinouts', count: 15, pct: 15.8, color: 'bg-blue-500' },
-              { code: 'ERR-OLED-DELTA-E', desc: 'Display Optical Calibration Out-of-Spec', count: 10, pct: 10.5, color: 'bg-purple-500' },
+              { code: 'ERR-SENSOR-CALIB-DELTA-E', desc: 'Sensor Array Optical Calibration Out-of-Spec', count: 10, pct: 10.5, color: 'bg-purple-500' },
             ].map((p) => (
               <div key={p.code} className="border border-border rounded-lg p-3 bg-muted/10">
                 <div className="flex items-center justify-between text-xs mb-1">

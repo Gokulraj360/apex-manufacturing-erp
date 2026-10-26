@@ -227,15 +227,15 @@ export default function HardwareSupportPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Open Hardware Tickets</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Open Hardware Tickets</span>
             <div className="h-8 w-8 rounded-lg bg-rose-500/10 flex items-center justify-center">
               <AlertTriangle className="h-4 w-4 text-rose-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">
               {tickets.filter((t) => t.status === 'OPEN' || t.status === 'IN_INVESTIGATION').length}
             </span>
             <span className="text-xs text-rose-400 font-medium">1 Critical</span>
@@ -243,43 +243,43 @@ export default function HardwareSupportPage() {
           <div className="mt-2 text-[11px] text-slate-400">Average response time: 6.2 mins</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Mean Time to Resolve</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Mean Time to Resolve</span>
             <div className="h-8 w-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
               <Clock className="h-4 w-4 text-indigo-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">24.5 min</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">24.5 min</span>
             <span className="text-xs text-emerald-400 font-medium">SLA Compliant</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">Target SLA threshold: &lt; 45 mins</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Hardware Availability</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Hardware Availability</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">99.8%</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">99.8%</span>
             <span className="text-xs text-slate-400">60 Terminals</span>
           </div>
           <div className="mt-2 text-[11px] text-emerald-400">59 / 60 devices functioning</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Resolved This Month</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Resolved This Month</span>
             <div className="h-8 w-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
               <Wrench className="h-4 w-4 text-blue-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">42</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">42</span>
             <span className="text-xs text-slate-400">Total closed</span>
           </div>
           <div className="mt-2 text-[11px] text-blue-300">Zero recurring hardware faults</div>
@@ -350,7 +350,7 @@ export default function HardwareSupportPage() {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
           <input
@@ -358,7 +358,7 @@ export default function HardwareSupportPage() {
             placeholder="Search tickets by number, hardware issue, reporter, or shop floor bay..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 bg-[#0b0f19] border border-slate-700 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500 transition-colors"
+            className="w-full pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500 transition-colors"
           />
         </div>
 
@@ -403,7 +403,7 @@ export default function HardwareSupportPage() {
       </div>
 
       {/* Ticket Queue Table */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Headphones className="h-4 w-4 text-rose-400" />
@@ -418,7 +418,7 @@ export default function HardwareSupportPage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+            <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Ticket # &amp; Subsystem</th>
                 <th className="py-3 px-4">Issue Description &amp; Resolution</th>
@@ -429,12 +429,12 @@ export default function HardwareSupportPage() {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
               {filteredTickets.map((t) => (
                 <tr key={t.id} className="hover:bg-slate-800/30 transition-colors">
                   <td className="py-3 px-4 font-mono">
                     <div className="font-semibold text-white">{t.ticketNumber}</div>
-                    <span className="inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-slate-300 border border-slate-700">
+                    <span className="inline-block mt-1 px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-700">
                       {t.category.replace('_', ' ')}
                     </span>
                   </td>
@@ -449,7 +449,7 @@ export default function HardwareSupportPage() {
                     )}
                   </td>
 
-                  <td className="py-3 px-4 font-mono text-slate-300">
+                  <td className="py-3 px-4 font-mono text-slate-700 dark:text-slate-300">
                     {t.affectedLocation}
                   </td>
 
@@ -488,7 +488,7 @@ export default function HardwareSupportPage() {
                   </td>
 
                   <td className="py-3 px-4">
-                    <div className="text-slate-300 font-medium">{t.reportedByName}</div>
+                    <div className="text-slate-700 dark:text-slate-300 font-medium">{t.reportedByName}</div>
                     <div className="text-[11px] text-slate-500 flex items-center gap-1 mt-0.5">
                       <UserCheck className="h-3 w-3 text-rose-400" />
                       {t.assignedToEngineer || 'Unassigned'}
@@ -535,7 +535,7 @@ export default function HardwareSupportPage() {
 
             <form onSubmit={handleCreateTicket} className="space-y-3.5 text-xs">
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Issue Headline / Title</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Issue Headline / Title</label>
                 <input
                   type="text"
                   required
@@ -548,7 +548,7 @@ export default function HardwareSupportPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Hardware Category</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Hardware Category</label>
                   <select
                     value={newCategory}
                     onChange={(e) => setNewCategory(e.target.value)}
@@ -564,7 +564,7 @@ export default function HardwareSupportPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Priority Level</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Priority Level</label>
                   <select
                     value={newPriority}
                     onChange={(e) => setNewPriority(e.target.value as SupportTicketPriority)}
@@ -580,7 +580,7 @@ export default function HardwareSupportPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Affected Bay / Location</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Affected Bay / Location</label>
                   <input
                     type="text"
                     required
@@ -592,7 +592,7 @@ export default function HardwareSupportPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Reported By</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Reported By</label>
                   <input
                     type="text"
                     required
@@ -605,7 +605,7 @@ export default function HardwareSupportPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Detailed Symptoms &amp; Error Messages</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Detailed Symptoms &amp; Error Messages</label>
                 <textarea
                   required
                   rows={3}
@@ -620,7 +620,7 @@ export default function HardwareSupportPage() {
                 <button
                   type="button"
                   onClick={() => setIsCreateModalOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>
@@ -658,13 +658,13 @@ export default function HardwareSupportPage() {
             </div>
 
             <form onSubmit={handleResolveTicket} className="space-y-3.5 text-xs">
-              <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg text-slate-300">
+              <div className="p-3 bg-slate-900 border border-slate-800 rounded-lg text-slate-700 dark:text-slate-300">
                 <div className="font-semibold text-white">{resolvingTicket.title}</div>
                 <div className="text-[11px] text-slate-400 mt-1">{resolvingTicket.description}</div>
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Attending Engineer</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Attending Engineer</label>
                 <input
                   type="text"
                   required
@@ -675,7 +675,7 @@ export default function HardwareSupportPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Resolution &amp; Corrective Action Taken</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Resolution &amp; Corrective Action Taken</label>
                 <textarea
                   required
                   rows={3}
@@ -690,7 +690,7 @@ export default function HardwareSupportPage() {
                 <button
                   type="button"
                   onClick={() => setResolvingTicket(null)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>

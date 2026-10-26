@@ -52,7 +52,7 @@ export default function ExecutiveOverviewPage() {
       name: 'Component Parts (COGS)',
       value: 262000000,
       color: '#6366f1',
-      description: 'Snapdragon chips, AMOLED displays & cameras',
+      description: 'Precision microprocessors, optical sensors & telemetry modules',
     },
     {
       name: 'Net Factory Profit',

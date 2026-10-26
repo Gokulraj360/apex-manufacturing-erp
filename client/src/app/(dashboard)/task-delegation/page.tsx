@@ -295,7 +295,7 @@ const INITIAL_TASKS: TaskDelegationItem[] = [
     dueDate: new Date(Date.now() + 86400000 * 1).toISOString(),
     createdAt: new Date(Date.now() - 86400000 * 3).toISOString(),
     updatedAt: new Date(Date.now() - 3600000 * 2).toISOString(),
-    completionNotes: 'All 15,000 primary and secondary IMEIs matched in cryptographically signed ledger. Awaiting Manager sign-off.',
+    completionNotes: 'All 15,000 primary and secondary Serial UIDs matched in cryptographically signed ledger. Awaiting Manager sign-off.',
     progressLogs: [
       {
         id: 'log-03',
@@ -446,7 +446,7 @@ const INITIAL_TASKS: TaskDelegationItem[] = [
     assistantId: 'ast-fld-01',
     assistantName: 'Harish Pillai',
     assistantRole: 'Assistant Warranty Claims Specialist',
-    title: 'Dispatch 1,200 OLED Screen Replacement Modules to Tier-1 Service Centers',
+    title: 'Dispatch 1,200 Precision Subassembly Modules to Tier-1 Service Centers',
     description: 'Reconcile weekly RMA warranty claims. Package polarized anti-static display service kits with original optical adhesive for Mumbai and Bengaluru centers.',
     priority: 'MEDIUM',
     status: 'IN_PROGRESS',

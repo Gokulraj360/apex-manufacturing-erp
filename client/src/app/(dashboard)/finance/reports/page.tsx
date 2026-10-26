@@ -196,7 +196,7 @@ export default function FinancialReportsPage() {
 
       {/* Tab: P&L Statement */}
       {activeReportTab === 'PL' && (
-        <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-6">
+        <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-6">
           <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div>
               <h3 className="text-base font-bold text-white">
@@ -214,7 +214,7 @@ export default function FinancialReportsPage() {
             </div>
           </div>
 
-          <div className="divide-y divide-slate-800 text-xs">
+          <div className="divide-y divide-slate-200 dark:divide-slate-800 text-xs">
             {/* Revenue */}
             <div className="py-3 flex justify-between items-center text-sm font-semibold text-white">
               <span>Gross Manufacturing Revenue</span>
@@ -223,7 +223,7 @@ export default function FinancialReportsPage() {
 
             {/* COGS */}
             <div className="py-3 space-y-1.5">
-              <div className="font-semibold text-slate-300">Cost of Goods Sold (COGS):</div>
+              <div className="font-semibold text-slate-700 dark:text-slate-300">Cost of Goods Sold (COGS):</div>
               {pl.cogs.map((item, i) => (
                 <div key={i} className="flex justify-between pl-4 text-slate-400">
                   <span>{item.name}</span>
@@ -244,7 +244,7 @@ export default function FinancialReportsPage() {
 
             {/* OPEX */}
             <div className="py-3 space-y-1.5">
-              <div className="font-semibold text-slate-300">Operating Expenses (OPEX):</div>
+              <div className="font-semibold text-slate-700 dark:text-slate-300">Operating Expenses (OPEX):</div>
               {pl.opex.map((item, i) => (
                 <div key={i} className="flex justify-between pl-4 text-slate-400">
                   <span>{item.name}</span>
@@ -280,7 +280,7 @@ export default function FinancialReportsPage() {
 
       {/* Tab: Balance Sheet */}
       {activeReportTab === 'BS' && (
-        <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-6">
+        <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-6">
           <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div>
               <h3 className="text-base font-bold text-white">
@@ -303,7 +303,7 @@ export default function FinancialReportsPage() {
               </div>
 
               <div>
-                <div className="font-semibold text-slate-300 mb-1.5">Current Assets:</div>
+                <div className="font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Current Assets:</div>
                 <div className="space-y-1 pl-3 text-slate-400">
                   {bs.assets.current.map((item, i) => (
                     <div key={i} className="flex justify-between">
@@ -315,7 +315,7 @@ export default function FinancialReportsPage() {
               </div>
 
               <div>
-                <div className="font-semibold text-slate-300 mb-1.5">Non-Current & Fixed Assets:</div>
+                <div className="font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Non-Current & Fixed Assets:</div>
                 <div className="space-y-1 pl-3 text-slate-400">
                   {bs.assets.nonCurrent.map((item, i) => (
                     <div key={i} className="flex justify-between">
@@ -339,7 +339,7 @@ export default function FinancialReportsPage() {
               </div>
 
               <div>
-                <div className="font-semibold text-slate-300 mb-1.5">Current Liabilities:</div>
+                <div className="font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Current Liabilities:</div>
                 <div className="space-y-1 pl-3 text-slate-400">
                   {bs.liabilities.current.map((item, i) => (
                     <div key={i} className="flex justify-between">
@@ -351,7 +351,7 @@ export default function FinancialReportsPage() {
               </div>
 
               <div>
-                <div className="font-semibold text-slate-300 mb-1.5">Long-Term Liabilities:</div>
+                <div className="font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Long-Term Liabilities:</div>
                 <div className="space-y-1 pl-3 text-slate-400">
                   {bs.liabilities.nonCurrent.map((item, i) => (
                     <div key={i} className="flex justify-between">
@@ -387,7 +387,7 @@ export default function FinancialReportsPage() {
 
       {/* Tab: GST & Tax Reports */}
       {activeReportTab === 'TAX' && (
-        <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4">
+        <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4">
           <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div>
               <h3 className="text-base font-bold text-white flex items-center gap-2">
@@ -402,7 +402,7 @@ export default function FinancialReportsPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-800">
+              <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-semibold border-b border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Tax Period</th>
                   <th className="py-3 px-4">Report Type</th>
@@ -414,7 +414,7 @@ export default function FinancialReportsPage() {
                   <th className="py-3 px-4 text-right">Regulatory Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800 text-slate-300">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                 {taxReports.map((report) => {
                   const isFiled = report.status === 'FILED';
 
@@ -426,7 +426,7 @@ export default function FinancialReportsPage() {
                       <td className="py-3 px-4 font-semibold text-slate-200">
                         {report.reportType.replace(/_/g, ' ')}
                       </td>
-                      <td className="py-3 px-4 font-mono text-slate-300">
+                      <td className="py-3 px-4 font-mono text-slate-700 dark:text-slate-300">
                         {formatCurrency(report.taxableSales)}
                       </td>
                       <td className="py-3 px-4 font-mono text-slate-200">

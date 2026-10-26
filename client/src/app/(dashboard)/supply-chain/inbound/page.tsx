@@ -339,7 +339,7 @@ export default function InboundShippingPage() {
   const getMilestoneBadge = (milestone: ShipmentMilestone) => {
     switch (milestone) {
       case 'BOOKED':
-        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-slate-300 border border-slate-700">BOOKED</span>;
+        return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-700">BOOKED</span>;
       case 'DEPARTED_ORIGIN':
         return <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">DEPARTED</span>;
       case 'IN_CUSTOMS':
@@ -393,63 +393,63 @@ export default function InboundShippingPage() {
 
       {/* KPI Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">In-Transit Shipments</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">In-Transit Shipments</span>
             <div className="h-8 w-8 rounded-lg bg-cyan-500/10 flex items-center justify-center">
               <Ship className="h-4 w-4 text-cyan-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{inTransitCount}</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{inTransitCount}</span>
             <span className="text-xs text-slate-400">active consignments</span>
           </div>
           <div className="mt-2 text-[11px] text-cyan-400">Road, Air &amp; Ocean freight</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Delivered at Dock</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Delivered at Dock</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
               <CheckCircle2 className="h-4 w-4 text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{deliveredCount}</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{deliveredCount}</span>
             <span className="text-xs text-emerald-400 font-semibold">Received</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">Transferred to quarantine inspection</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Total Consigned Weight</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Consigned Weight</span>
             <div className="h-8 w-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
               <Boxes className="h-4 w-4 text-blue-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{(totalWeight / 1000).toFixed(1)} T</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{(totalWeight / 1000).toFixed(1)} T</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">Total freight tonnage in transit</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Transit Reliability</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Transit Reliability</span>
             <div className="h-8 w-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
               <Clock className="h-4 w-4 text-purple-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">98.5%</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">98.5%</span>
           </div>
           <div className="mt-2 text-[11px] text-purple-300">Zero critical logistics delays</div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#0f172a]/60 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-white dark:bg-[#0f172a]/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="relative w-full md:w-96">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
           <input
@@ -496,7 +496,7 @@ export default function InboundShippingPage() {
       </div>
 
       {/* Shipments Table */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Ship className="h-4 w-4 text-cyan-400" />
@@ -509,8 +509,8 @@ export default function InboundShippingPage() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase font-medium border-b border-slate-800">
+          <table className="w-full text-left text-xs text-slate-700 dark:text-slate-300">
+            <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-medium border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Tracking # &amp; PO</th>
                 <th className="py-3 px-4">Mode</th>
@@ -522,11 +522,11 @@ export default function InboundShippingPage() {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 font-normal">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 font-normal">
               {filteredShipments.map((shp) => (
                 <tr key={shp.id} className="hover:bg-slate-800/40 transition-colors">
                   <td className="py-3.5 px-4">
-                    <div className="font-semibold text-white font-mono">{shp.shipmentTrackingNumber}</div>
+                    <div className="font-semibold text-slate-900 dark:text-white font-mono">{shp.shipmentTrackingNumber}</div>
                     <div className="text-[11px] text-cyan-400 font-mono mt-0.5">PO: {shp.po?.poNumber}</div>
                     <div className="text-[10px] text-slate-500 font-mono mt-0.5">{shp.containerOrWaybillNumber}</div>
                   </td>
@@ -544,7 +544,7 @@ export default function InboundShippingPage() {
                   </td>
 
                   <td className="py-3.5 px-4">
-                    <div className="text-slate-300 font-medium">{shp.originPortCity}</div>
+                    <div className="text-slate-700 dark:text-slate-300 font-medium">{shp.originPortCity}</div>
                     <div className="text-[11px] text-cyan-400 flex items-center gap-1 mt-0.5">
                       <span>&rarr;</span>
                       <span>{shp.destinationPlantCity}</span>
@@ -598,7 +598,7 @@ export default function InboundShippingPage() {
       {/* MODAL 1: Register Inbound Shipment */}
       {isRegisterModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
             <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
               <div className="flex items-center gap-2">
                 <Ship className="h-5 w-5 text-cyan-400" />
@@ -767,7 +767,7 @@ export default function InboundShippingPage() {
                 <button
                   type="button"
                   onClick={() => setIsRegisterModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
+                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors"
                 >
                   Cancel
                 </button>
@@ -787,7 +787,7 @@ export default function InboundShippingPage() {
       {/* MODAL 2: Update Transit Milestone */}
       {isMilestoneModalOpen && selectedShipment && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
             <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
               <div className="flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-cyan-400" />
@@ -854,7 +854,7 @@ export default function InboundShippingPage() {
                 <button
                   type="button"
                   onClick={() => setIsMilestoneModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
+                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors"
                 >
                   Cancel
                 </button>
@@ -873,7 +873,7 @@ export default function InboundShippingPage() {
       {/* MODAL 3: Shipment Timeline & Route Details */}
       {isTimelineModalOpen && selectedShipment && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
             <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
               <div className="flex items-center gap-2">
                 <Navigation className="h-5 w-5 text-cyan-400" />
@@ -932,7 +932,7 @@ export default function InboundShippingPage() {
               <div className="pt-2 flex items-center justify-end border-t border-slate-800">
                 <button
                   onClick={() => setIsTimelineModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
+                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors"
                 >
                   Close
                 </button>

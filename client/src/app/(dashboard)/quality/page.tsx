@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { useActiveFranchise } from '@/lib/franchiseStore';
 import Link from 'next/link';
 import {
   BadgeCheck,
@@ -30,7 +31,7 @@ import { SupplierQualityScoreItem, QualityAuditLogItem } from '@/types/quality';
 const INITIAL_SUPPLIER_SCORES: SupplierQualityScoreItem[] = [
   {
     id: 'sq-1',
-    supplierName: 'Qualcomm Enterprise Direct',
+    supplierName: 'Apex Core Semiconductor Partner',
     periodMonth: '2026-10',
     totalLotsReceived: 32,
     lotsAccepted: 32,
@@ -60,7 +61,7 @@ const INITIAL_SUPPLIER_SCORES: SupplierQualityScoreItem[] = [
   },
   {
     id: 'sq-3',
-    supplierName: 'Sony Semiconductor Optical',
+    supplierName: 'Apex Precision Optical Systems',
     periodMonth: '2026-10',
     totalLotsReceived: 38,
     lotsAccepted: 38,

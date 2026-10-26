@@ -231,13 +231,13 @@ export default function OperationsPage() {
       )}
 
       {/* Production Lines Grid */}
-      <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-5">
+      <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-5">
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <h3 className="text-base font-bold text-white flex items-center gap-2">
             <Activity className="h-5 w-5 text-blue-400" />
             Real-Time Plant Floor Telemetry
           </h3>
-          <span className="text-xs bg-slate-800 text-slate-300 px-3 py-1 rounded font-medium">
+          <span className="text-xs bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1 rounded font-medium">
             Active Shift A - Supervisor: M. Vance
           </span>
         </div>
@@ -288,19 +288,19 @@ export default function OperationsPage() {
                   </div>
                   <div className="flex justify-between">
                     <span>Actual vs Target:</span>
-                    <strong className="text-white font-mono">
+                    <strong className="text-slate-900 dark:text-white font-mono">
                       {line.actualUnits.toLocaleString()} / {line.targetUnits.toLocaleString()} ({outputPercent}%)
                     </strong>
                   </div>
                   <div className="flex justify-between">
                     <span>Defect Rate:</span>
-                    <span className={line.defectRatePpm > 50 ? 'text-red-400 font-bold' : 'text-slate-300'}>
+                    <span className={line.defectRatePpm > 50 ? 'text-red-400 font-bold' : 'text-slate-700 dark:text-slate-300'}>
                       {line.defectRatePpm} PPM
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Operators on Floor:</span>
-                    <span className="text-slate-300">{line.activeOperators} Active</span>
+                    <span className="text-slate-700 dark:text-slate-300">{line.activeOperators} Active</span>
                   </div>
                 </div>
 
@@ -316,7 +316,7 @@ export default function OperationsPage() {
       </div>
 
       {/* High-Value Purchase Orders Approvals (> $50,000 threshold) */}
-      <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4">
+      <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4">
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <div>
             <h3 className="text-base font-bold text-white flex items-center gap-2">
@@ -347,7 +347,7 @@ export default function OperationsPage() {
                       {po.poNumber}
                     </span>
                     <span className="text-xs text-slate-400">&bull;</span>
-                    <span className="text-xs font-semibold text-slate-300">
+                    <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                       {po.supplierName}
                     </span>
                   </div>
@@ -399,7 +399,7 @@ export default function OperationsPage() {
       </div>
 
       {/* Major Client Manufacturing Contracts */}
-      <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4">
+      <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4">
         <h3 className="text-base font-bold text-white flex items-center gap-2">
           <Building className="h-5 w-5 text-indigo-400" />
           Enterprise Client Manufacturing Contracts
@@ -407,7 +407,7 @@ export default function OperationsPage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-800">
+            <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Contract #</th>
                 <th className="py-3 px-4">Client Enterprise</th>
@@ -416,7 +416,7 @@ export default function OperationsPage() {
                 <th className="py-3 px-4">Deliverables & Scope</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
               {contracts.map((c) => (
                 <tr key={c.id} className="hover:bg-slate-800/20">
                   <td className="py-3 px-4 font-mono font-semibold text-white">

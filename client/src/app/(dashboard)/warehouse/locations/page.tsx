@@ -209,7 +209,7 @@ export default function BinLocationsPage() {
       {/* Modal: Add New Bin */}
       {showNewBinModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <Grid className="h-5 w-5 text-amber-400" />
@@ -226,20 +226,20 @@ export default function BinLocationsPage() {
 
             <form onSubmit={handleCreateBin} className="space-y-4 text-xs">
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Bin Coordinate Identifier</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Bin Coordinate Identifier</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. ZONE-A-RACK-04-S2"
                   value={newBinForm.binCode}
                   onChange={(e) => setNewBinForm({ ...newBinForm, binCode: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-500"
+                  className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-amber-500"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Zone Domain</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Zone Domain</label>
                   <select
                     value={newBinForm.zone}
                     onChange={(e) => setNewBinForm({ ...newBinForm, zone: e.target.value })}
@@ -252,13 +252,13 @@ export default function BinLocationsPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Max Capacity Units</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Max Capacity Units</label>
                   <input
                     type="number"
                     required
                     value={newBinForm.capacityMaxUnits}
                     onChange={(e) => setNewBinForm({ ...newBinForm, capacityMaxUnits: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-amber-500"
                   />
                 </div>
               </div>
@@ -271,7 +271,7 @@ export default function BinLocationsPage() {
                   onChange={(e) => setNewBinForm({ ...newBinForm, isQuarantine: e.target.checked })}
                   className="rounded border-slate-700 bg-slate-900 accent-amber-500"
                 />
-                <label htmlFor="quarantineCheck" className="text-slate-300">
+                <label htmlFor="quarantineCheck" className="text-slate-700 dark:text-slate-300">
                   Quarantine / Defect Hold Storage Designation
                 </label>
               </div>
@@ -280,7 +280,7 @@ export default function BinLocationsPage() {
                 <button
                   type="button"
                   onClick={() => setShowNewBinModal(false)}
-                  className="px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 font-medium"
+                  className="px-3 py-1.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-800 font-medium"
                 >
                   Cancel
                 </button>

@@ -69,7 +69,7 @@ export interface FleetVehicleItem {
   assignedDriver?: string | null;
   fastagTagId?: string | null;
   fuelCardNumber?: string | null;
-  gpsImei?: string | null;
+  gpsTelematicsId?: string | null;
   purchaseDate?: string | null;
   insurancePolicyExpiry?: string | null;
   pucExpiry?: string | null;

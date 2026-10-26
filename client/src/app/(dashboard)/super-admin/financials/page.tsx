@@ -137,20 +137,20 @@ export default function FinancialsPage() {
 
       {/* Financial Metric Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-5 rounded-xl bg-[#0f172a] border border-slate-800">
-          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="p-5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800">
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
             Gross Revenue (MTD)
           </div>
           <div className="text-2xl font-bold text-white mt-2">
             {formatCurrency(financials.revenue)}
           </div>
           <div className="text-xs text-slate-400 mt-1">
-            COGS: <strong className="text-slate-300">{formatCurrency(financials.cogs)}</strong>
+            COGS: <strong className="text-slate-700 dark:text-slate-300">{formatCurrency(financials.cogs)}</strong>
           </div>
         </div>
 
-        <div className="p-5 rounded-xl bg-[#0f172a] border border-slate-800">
-          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="p-5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800">
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
             Net Profit & Margin
           </div>
           <div className="text-2xl font-bold text-emerald-400 mt-2">
@@ -162,8 +162,8 @@ export default function FinancialsPage() {
           </div>
         </div>
 
-        <div className="p-5 rounded-xl bg-[#0f172a] border border-slate-800">
-          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="p-5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800">
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
             Free Cash Flow (FCF)
           </div>
           <div className="text-2xl font-bold text-blue-400 mt-2">
@@ -174,8 +174,8 @@ export default function FinancialsPage() {
           </div>
         </div>
 
-        <div className="p-5 rounded-xl bg-[#0f172a] border border-slate-800">
-          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="p-5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800">
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
             Corporate Tax Provision
           </div>
           <div className="text-2xl font-bold text-amber-400 mt-2">
@@ -188,7 +188,7 @@ export default function FinancialsPage() {
       </div>
 
       {/* Executive Payroll Sign-Off Section */}
-      <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4">
+      <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4">
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <div>
             <h3 className="text-base font-bold text-white flex items-center gap-2">
@@ -206,7 +206,7 @@ export default function FinancialsPage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-800">
+            <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Period</th>
                 <th className="py-3 px-4">Headcount</th>
@@ -217,7 +217,7 @@ export default function FinancialsPage() {
                 <th className="py-3 px-4 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
               {payrolls.map((batch) => {
                 const isPending = batch.status === 'PENDING_SIGNOFF';
                 return (
@@ -225,7 +225,7 @@ export default function FinancialsPage() {
                     <td className="py-3 px-4 font-semibold text-white">
                       {batch.month} {batch.year}
                     </td>
-                    <td className="py-3 px-4 text-slate-300">
+                    <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
                       {batch.employeeCount} Workers
                     </td>
                     <td className="py-3 px-4 font-mono font-medium text-white">
@@ -277,7 +277,7 @@ export default function FinancialsPage() {
       </div>
 
       {/* Historical Monthly Financial Performance */}
-      <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800">
+      <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800">
         <h3 className="text-base font-bold text-white mb-4 flex items-center gap-2">
           <TrendingUp className="h-5 w-5 text-blue-400" />
           Multi-Month P&L History & Free Cash Flow
@@ -285,7 +285,7 @@ export default function FinancialsPage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-800">
+            <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Month</th>
                 <th className="py-3 px-4">Gross Revenue</th>
@@ -295,7 +295,7 @@ export default function FinancialsPage() {
                 <th className="py-3 px-4">Free Cash Flow</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
               {monthlyHistory.map((m) => (
                 <tr key={m.period} className="hover:bg-slate-800/20">
                   <td className="py-3 px-4 font-semibold text-white">{m.period}</td>
@@ -314,7 +314,7 @@ export default function FinancialsPage() {
       {/* Modal for Super Admin Payroll Authorization */}
       {approvalModalBatch && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <FileCheck2 className="h-5 w-5 text-amber-400" />
@@ -330,14 +330,14 @@ export default function FinancialsPage() {
             </div>
 
             <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 text-xs space-y-1.5">
-              <div className="text-slate-300">
+              <div className="text-slate-700 dark:text-slate-300">
                 Batch: <strong className="text-white">{approvalModalBatch.month} {approvalModalBatch.year}</strong>
               </div>
-              <div className="text-slate-300">
+              <div className="text-slate-700 dark:text-slate-300">
                 Total Headcount: <strong className="text-white">{approvalModalBatch.employeeCount} Employees</strong>
               </div>
-              <div className="text-slate-300">
-                Gross Sum: <strong className="text-white font-mono">{formatCurrency(approvalModalBatch.grossAmount)}</strong>
+              <div className="text-slate-700 dark:text-slate-300">
+                Gross Sum: <strong className="text-slate-900 dark:text-white font-mono">{formatCurrency(approvalModalBatch.grossAmount)}</strong>
               </div>
               <div className="text-emerald-400 font-semibold">
                 Net Disbursement: <span className="font-mono">{formatCurrency(approvalModalBatch.netDisbursement)}</span>
@@ -346,7 +346,7 @@ export default function FinancialsPage() {
 
             <form onSubmit={handleAuthorizePayroll} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Executive Approval Notes & Justification
                 </label>
                 <textarea
@@ -363,7 +363,7 @@ export default function FinancialsPage() {
                 <button
                   type="button"
                   onClick={() => setApprovalModalBatch(null)}
-                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800"
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-800"
                 >
                   Cancel
                 </button>

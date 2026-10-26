@@ -302,15 +302,15 @@ export default function AssetReliabilityAnalyticsPage() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Fleet MTBF Benchmark</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Fleet MTBF Benchmark</span>
             <div className="h-8 w-8 rounded-lg bg-indigo-500/10 flex items-center justify-center">
               <Activity className="h-4 w-4 text-indigo-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">348.5h</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">348.5h</span>
           </div>
           <div className="mt-2 text-[11px] text-emerald-400 flex items-center gap-1">
             <TrendingUp className="h-3 w-3" />
@@ -318,41 +318,41 @@ export default function AssetReliabilityAnalyticsPage() {
           </div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Fleet MTTR Benchmark</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Fleet MTTR Benchmark</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
               <Wrench className="h-4 w-4 text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">1.8h</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">1.8h</span>
           </div>
           <div className="mt-2 text-[11px] text-emerald-400">Target &lt; 2.5h maintained</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Fleet Operational Availability</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Fleet Operational Availability</span>
             <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
               <Gauge className="h-4 w-4 text-amber-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">98.7%</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">98.7%</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">Excludes scheduled shift pauses</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Total Maintenance YTD</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Maintenance YTD</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
               <DollarSign className="h-4 w-4 text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">$42,850</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">$42,850</span>
           </div>
           <div className="mt-2 text-[11px] text-emerald-400">Includes replacement parts &amp; labor</div>
         </div>
@@ -365,12 +365,12 @@ export default function AssetReliabilityAnalyticsPage() {
           className={`pb-3 px-3 text-xs font-semibold flex items-center gap-2 border-b-2 transition-colors ${
             activeTab === 'METRICS'
               ? 'border-amber-500 text-amber-400'
-              : 'border-transparent text-slate-400 hover:text-slate-300'
+              : 'border-transparent text-slate-400 hover:text-slate-700 dark:text-slate-300'
           }`}
         >
           <Activity className="h-4 w-4" />
           Reliability &amp; Availability Matrix
-          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-300">
+          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-700 dark:text-slate-300">
             {breakdownData.length}
           </span>
         </button>
@@ -380,19 +380,19 @@ export default function AssetReliabilityAnalyticsPage() {
           className={`pb-3 px-3 text-xs font-semibold flex items-center gap-2 border-b-2 transition-colors ${
             activeTab === 'LIFECYCLE'
               ? 'border-amber-500 text-amber-400'
-              : 'border-transparent text-slate-400 hover:text-slate-300'
+              : 'border-transparent text-slate-400 hover:text-slate-700 dark:text-slate-300'
           }`}
         >
           <History className="h-4 w-4" />
           Asset Lifecycle Milestone History
-          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-300">
+          <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-800 text-slate-700 dark:text-slate-300">
             {lifecycleLogs.length}
           </span>
         </button>
       </div>
 
       {/* Search Bar */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
           <input
@@ -404,14 +404,14 @@ export default function AssetReliabilityAnalyticsPage() {
             }
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 bg-[#0b0f19] border border-slate-700 rounded-lg text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors"
+            className="w-full pl-9 pr-3 py-1.5 bg-slate-50 dark:bg-[#0b0f19] border border-slate-300 dark:border-slate-700 rounded-lg text-xs text-slate-800 dark:text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors"
           />
         </div>
       </div>
 
       {/* TAB 1: RELIABILITY MATRIX */}
       {activeTab === 'METRICS' && (
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Activity className="h-4 w-4 text-amber-400" />
@@ -422,7 +422,7 @@ export default function AssetReliabilityAnalyticsPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+              <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Asset Tag &amp; Machine</th>
                   <th className="py-3 px-4">Location</th>
@@ -434,7 +434,7 @@ export default function AssetReliabilityAnalyticsPage() {
                   <th className="py-3 px-4 text-right">Availability</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
                 {filteredMetrics.map((item) => (
                   <tr key={item.assetId} className="hover:bg-slate-800/30 transition-colors">
                     <td className="py-3 px-4">
@@ -445,7 +445,7 @@ export default function AssetReliabilityAnalyticsPage() {
                       <div className="text-slate-200 font-medium text-[11px] mt-0.5">{item.assetName}</div>
                     </td>
 
-                    <td className="py-3 px-4 text-slate-300">
+                    <td className="py-3 px-4 text-slate-700 dark:text-slate-300">
                       {item.facilityLocation}
                     </td>
 
@@ -495,7 +495,7 @@ export default function AssetReliabilityAnalyticsPage() {
 
       {/* TAB 2: LIFECYCLE LOGS */}
       {activeTab === 'LIFECYCLE' && (
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <History className="h-4 w-4 text-amber-400" />
@@ -505,7 +505,7 @@ export default function AssetReliabilityAnalyticsPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-[#0b0f19] text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+              <thead className="bg-slate-50 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Event Type &amp; Date</th>
                   <th className="py-3 px-4">Target Machine Asset</th>
@@ -515,7 +515,7 @@ export default function AssetReliabilityAnalyticsPage() {
                   <th className="py-3 px-4 text-right">Cost Incurred</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-slate-300">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
                 {filteredLogs.map((log) => (
                   <tr key={log.id} className="hover:bg-slate-800/30 transition-colors">
                     <td className="py-3 px-4">
@@ -549,7 +549,7 @@ export default function AssetReliabilityAnalyticsPage() {
                       {log.performedBy}
                     </td>
 
-                    <td className="py-3 px-4 font-mono text-slate-300">
+                    <td className="py-3 px-4 font-mono text-slate-700 dark:text-slate-300">
                       {log.downtimeIncurredMinutes > 0 ? `${(log.downtimeIncurredMinutes / 60).toFixed(1)} hrs` : '0 hrs (Online)'}
                     </td>
 
@@ -588,7 +588,7 @@ export default function AssetReliabilityAnalyticsPage() {
             <form onSubmit={handleCreateMilestone} className="space-y-3.5 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Target Asset Tag</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Target Asset Tag</label>
                   <input
                     type="text"
                     required
@@ -599,7 +599,7 @@ export default function AssetReliabilityAnalyticsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Event Type</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Event Type</label>
                   <select
                     value={milestoneType}
                     onChange={(e) => setMilestoneType(e.target.value as AssetLifecycleEventType)}
@@ -616,7 +616,7 @@ export default function AssetReliabilityAnalyticsPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Milestone Event Title</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Milestone Event Title</label>
                 <input
                   type="text"
                   required
@@ -628,7 +628,7 @@ export default function AssetReliabilityAnalyticsPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Detailed Description &amp; Verification</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Detailed Description &amp; Verification</label>
                 <textarea
                   required
                   rows={2}
@@ -641,7 +641,7 @@ export default function AssetReliabilityAnalyticsPage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Cost Incurred ($)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Cost Incurred ($)</label>
                   <input
                     type="number"
                     value={milestoneCost}
@@ -651,7 +651,7 @@ export default function AssetReliabilityAnalyticsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Downtime (Mins)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Downtime (Mins)</label>
                   <input
                     type="number"
                     value={milestoneDowntime}
@@ -661,7 +661,7 @@ export default function AssetReliabilityAnalyticsPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Performed By</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Performed By</label>
                   <input
                     type="text"
                     value={milestoneBy}
@@ -675,7 +675,7 @@ export default function AssetReliabilityAnalyticsPage() {
                 <button
                   type="button"
                   onClick={() => setIsLogMilestoneOpen(false)}
-                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                  className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
                 >
                   Cancel
                 </button>

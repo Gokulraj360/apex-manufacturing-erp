@@ -359,7 +359,7 @@ export default function JobWorkOrdersPage() {
           className={`pb-3 px-3 text-xs font-semibold flex items-center gap-2 border-b-2 transition-colors ${
             activeTab === 'ORDERS'
               ? 'border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400'
-              : 'border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300'
+              : 'border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-700 dark:text-slate-300'
           }`}
         >
           <FileSpreadsheet className="h-4 w-4" />
@@ -374,7 +374,7 @@ export default function JobWorkOrdersPage() {
           className={`pb-3 px-3 text-xs font-semibold flex items-center gap-2 border-b-2 transition-colors ${
             activeTab === 'VENDORS'
               ? 'border-teal-600 dark:border-teal-400 text-teal-600 dark:text-teal-400'
-              : 'border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300'
+              : 'border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-700 dark:text-slate-300'
           }`}
         >
           <Building2 className="h-4 w-4" />

@@ -199,7 +199,7 @@ export interface BOMItem {
 }
 
 // ----------------------------------------------------------------------------
-// Shop Floor & Serialized IMEI Tracking
+// Shop Floor & Serialized Serial UID Tracking
 // ----------------------------------------------------------------------------
 
 export interface SerializedUnitHistoryEntry {
@@ -214,7 +214,7 @@ export interface SerializedUnitHistoryEntry {
 
 export interface SerializedUnit {
   id: string;
-  serialNumber: string;         // 15-digit IMEI or UID
+  serialNumber: string;         // 15-digit Serial UID or UID
   productId: string;
   currentStation: ProductionStation;
   status: SerializedUnitStatus;

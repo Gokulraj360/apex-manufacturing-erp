@@ -255,7 +255,7 @@ export class SerializedService {
   }
 
   /**
-   * Scan Serialized IMEI / UID and execute station transit validation
+   * Scan Serialized Serial UID / UID and execute station transit validation
    */
   async scanSerializedUnit(dto: ScanSerializedUnitDto): Promise<{
     unit: SerializedUnitRecord;
@@ -268,7 +268,7 @@ export class SerializedService {
     const cleanSerial = serialNumber.trim().toUpperCase();
     if (cleanSerial.length < 15 || cleanSerial.length > 20) {
       throw new BadRequestException(
-        `Invalid IMEI/Serial format: ${cleanSerial}. Cleanroom units must have a 15-20 digit UID/IMEI.`
+        `Invalid Serial UID/Serial format: ${cleanSerial}. Cleanroom units must have a 15-20 digit UID/Serial UID.`
       );
     }
 
@@ -292,7 +292,7 @@ export class SerializedService {
             id: dbUnit.id,
             serialNumber: dbUnit.serialNumber,
             productId: dbUnit.productId,
-            productName: dbUnit.product?.name || 'Apex Smartphone Unit',
+            productName: dbUnit.product?.name || 'Apex Industrial Precision Unit',
             currentStation: dbUnit.currentStation as unknown as ProductionStationEnum,
             status: dbUnit.status as unknown as SerializedUnitStatusEnum,
             historyLogs: (dbUnit.historyLogs as any) || [],
@@ -445,7 +445,7 @@ export class SerializedService {
         };
       case ProductionStationEnum.PACKAGING:
         return {
-          imeiLabelMatch: true,
+          serialNumberLabelMatch: true,
           antiTamperSealAffixed: true,
           boxWeightGrams: 485.2,
         };
@@ -480,7 +480,7 @@ export class SerializedService {
     const clean = serialNumber.trim().toUpperCase();
     const unit = this.activeUnits.get(clean);
     if (!unit) {
-      throw new NotFoundException(`Serialized unit with IMEI/Serial [${clean}] not found in cleanroom registry.`);
+      throw new NotFoundException(`Serialized unit with Serial UID/Serial [${clean}] not found in cleanroom registry.`);
     }
     return unit;
   }

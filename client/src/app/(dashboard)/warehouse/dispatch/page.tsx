@@ -160,7 +160,7 @@ export default function OutboundDispatchPage() {
           return (
             <div
               key={challan.id}
-              className="p-5 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4 shadow-sm"
+              className="p-5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4 shadow-sm"
             >
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 border-b border-slate-800 pb-3">
                 <div className="space-y-1">
@@ -184,7 +184,7 @@ export default function OutboundDispatchPage() {
                     {challan.vehicleNumber && (
                       <>
                         <span>&bull;</span>
-                        <span>Truck: <strong className="text-slate-300 font-mono">{challan.vehicleNumber}</strong></span>
+                        <span>Truck: <strong className="text-slate-700 dark:text-slate-300 font-mono">{challan.vehicleNumber}</strong></span>
                       </>
                     )}
                   </div>
@@ -228,7 +228,7 @@ export default function OutboundDispatchPage() {
               {/* Items in Challan */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                 <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 space-y-1">
-                  <div className="font-semibold text-slate-300 mb-1">Dispatched Freight Consignment:</div>
+                  <div className="font-semibold text-slate-700 dark:text-slate-300 mb-1">Dispatched Freight Consignment:</div>
                   {challan.dispatchedItems.map((item, i) => (
                     <div key={i} className="flex justify-between font-mono">
                       <span className="text-white">{item.itemCode} - {item.itemName}</span>
@@ -237,7 +237,7 @@ export default function OutboundDispatchPage() {
                   ))}
                   {challan.totalWeightKg && (
                     <div className="text-[11px] text-slate-400 pt-1 border-t border-slate-800">
-                      Total Gross Weight: <strong className="text-white font-mono">{challan.totalWeightKg} kg</strong>
+                      Total Gross Weight: <strong className="text-slate-900 dark:text-white font-mono">{challan.totalWeightKg} kg</strong>
                     </div>
                   )}
                 </div>
@@ -258,7 +258,7 @@ export default function OutboundDispatchPage() {
       {/* Modal: Create Challan */}
       {showNewChallanModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <Send className="h-5 w-5 text-amber-400" />
@@ -275,7 +275,7 @@ export default function OutboundDispatchPage() {
 
             <form onSubmit={handleCreateChallan} className="space-y-4 text-xs">
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Client Enterprise</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Client Enterprise</label>
                 <input
                   type="text"
                   required
@@ -287,17 +287,17 @@ export default function OutboundDispatchPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Sales Order Ref</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Sales Order Ref</label>
                   <input
                     type="text"
                     required
                     value={challanForm.salesOrderRef}
                     onChange={(e) => setChallanForm({ ...challanForm, salesOrderRef: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Carrier Freight</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Carrier Freight</label>
                   <input
                     type="text"
                     required
@@ -310,23 +310,23 @@ export default function OutboundDispatchPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Dispatched SKU</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Dispatched SKU</label>
                   <input
                     type="text"
                     required
                     value={challanForm.itemCode}
                     onChange={(e) => setChallanForm({ ...challanForm, itemCode: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Quantity</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Quantity</label>
                   <input
                     type="number"
                     required
                     value={challanForm.quantity}
                     onChange={(e) => setChallanForm({ ...challanForm, quantity: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-amber-500"
                   />
                 </div>
               </div>
@@ -335,7 +335,7 @@ export default function OutboundDispatchPage() {
                 <button
                   type="button"
                   onClick={() => setShowNewChallanModal(false)}
-                  className="px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 font-medium"
+                  className="px-3 py-1.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-800 font-medium"
                 >
                   Cancel
                 </button>

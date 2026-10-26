@@ -30,7 +30,7 @@ export interface MobileComponentShortageAlert {
 @Injectable()
 export class MobileAssemblyService {
   /**
-   * Return real-time status of all 6 smartphone assembly lines
+   * Return real-time status of all 6 precision subassembly lines
    */
   public getAssemblyLines(): MobileAssemblyLineDto[] {
     return [
@@ -81,9 +81,9 @@ export class MobileAssemblyService {
       },
       {
         lineNumber: 4,
-        lineName: 'Line 4: OS Flashing, IMEI Burn-in, & RF 5G Calibration',
+        lineName: 'Line 4: OS Flashing, Serial UID Burn-in, & RF 5G Calibration',
         stageCode: 'STAGE_4_OS_FLASH_RF_TEST',
-        stageDescription: 'High-speed USB-C firmware burn, Dual SIM IMEI write, 5G Sub-6GHz/LTE anechoic chamber test.',
+        stageDescription: 'High-speed USB-C firmware burn, Dual SIM Serial UID write, 5G Sub-6GHz/LTE anechoic chamber test.',
         targetUnits: 7600,
         actualUnits: 7210,
         firstPassYieldPct: 99.1,
@@ -98,7 +98,7 @@ export class MobileAssemblyService {
         lineNumber: 5,
         lineName: 'Line 5: Final Aging Stress Test & Laser Engraving',
         stageCode: 'STAGE_5_AGING_DROP_TEST',
-        stageDescription: '4-hour 45°C thermal thermal bake, 1.5m tumble drop check, rear chassis laser CE/IMEI mark.',
+        stageDescription: '4-hour 45°C thermal thermal bake, 1.5m tumble drop check, rear chassis laser CE/Serial UID mark.',
         targetUnits: 7600,
         actualUnits: 7150,
         firstPassYieldPct: 97.9,
@@ -111,8 +111,8 @@ export class MobileAssemblyService {
       },
       {
         lineNumber: 6,
-        lineName: 'Line 6: Retail Box Packing, Accessories & IMEI Barcode',
-        stageCode: 'STAGE_6_BOX_PACKING_IMEI_SCAN',
+        lineName: 'Line 6: Retail Box Packing, Accessories & Serial UID Barcode',
+        stageCode: 'STAGE_6_BOX_PACKING_SERIAL_SCAN',
         stageDescription: '67W GaN charger insertion, retail seal application, box GS1-128 barcode match verification.',
         targetUnits: 7600,
         actualUnits: 7080,
@@ -134,23 +134,23 @@ export class MobileAssemblyService {
     return [
       {
         sku: 'SOC-QCOM-8GEN3-01',
-        componentName: 'Qualcomm Snapdragon 8 Gen-3 Octa-Core SoC',
+        componentName: 'Apex Core Industrial Embedded Microprocessor (SoC)',
         category: 'Semiconductor / Chipset',
         currentStockUnits: 31920,
         dailyConsumptionRate: 7600,
         stockCoverDays: 4.2,
         severity: 'WARNING',
-        supplier: 'Qualcomm Enterprise Direct',
+        supplier: 'Apex Core Semiconductor Partner',
       },
       {
-        sku: 'DISP-AMOLED-144-02',
-        componentName: '6.78" 1.5K 144Hz LTPO AMOLED Panel Assembly',
+        sku: 'DISP-Precision Optics-144-02',
+        componentName: 'High-Precision Optical Telemetry Display Subassembly',
         category: 'Display / Optoelectronics',
         currentStockUnits: 48640,
         dailyConsumptionRate: 7600,
         stockCoverDays: 6.4,
         severity: 'NORMAL',
-        supplier: 'BOE Display Technologies',
+        supplier: 'Apex Precision Opto-Electronics',
       },
       {
         sku: 'CAM-SONY-IMX989-03',
@@ -186,7 +186,7 @@ export class MobileAssemblyService {
     const avgPpm = Math.round(lines.reduce((acc, l) => acc + l.defectPpm, 0) / lines.length);
 
     return {
-      facilityName: 'ApexMobile Plant #01 (Advanced Terminal Assembly)',
+      facilityName: 'Apex Enterprise Plant #01 (Advanced Terminal Assembly)',
       currentShift: 'Shift A (06:00 - 14:00)',
       targetPhoneUnits: 7600,
       assembledPhoneUnits: 7080,

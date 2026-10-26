@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ImeiTrackingService } from './imei-tracking.service';
+import { ImeiTrackingService } from './serialNumber-tracking.service';
 import { MobileAssemblyService } from './mobile-assembly.service';
 import { MobileManufacturingController } from './mobile-manufacturing.controller';
 

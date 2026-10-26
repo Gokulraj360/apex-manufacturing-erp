@@ -182,9 +182,9 @@ export default function GeneralLedgerPage() {
 
       {/* Tab Content: Chart of Accounts */}
       {activeTab === 'ACCOUNTS' && (
-        <div className="rounded-xl bg-[#0f172a] border border-slate-800 overflow-hidden">
+        <div className="rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 overflow-hidden">
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+            <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
               Official Master Account Hierarchy
             </span>
             <span className="text-xs text-slate-400">Normal Balance Rules Active</span>
@@ -192,7 +192,7 @@ export default function GeneralLedgerPage() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-800">
+              <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-semibold border-b border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Account Code</th>
                   <th className="py-3 px-4">Account Title</th>
@@ -201,7 +201,7 @@ export default function GeneralLedgerPage() {
                   <th className="py-3 px-4 text-right">Running Ledger Balance</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800 text-slate-300">
+              <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
                 {accounts.map((acc) => {
                   return (
                     <tr key={acc.id} className="hover:bg-slate-800/20">
@@ -245,7 +245,7 @@ export default function GeneralLedgerPage() {
           {entries.map((entry) => (
             <div
               key={entry.id}
-              className="p-5 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4"
+              className="p-5 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4"
             >
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
                 <div className="flex items-center gap-3">
@@ -278,7 +278,7 @@ export default function GeneralLedgerPage() {
                       <th className="py-2 px-3 text-right">Credit ($)</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/60 text-slate-300">
+                  <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 text-slate-700 dark:text-slate-300">
                     {entry.lines.map((line, i) => (
                       <tr key={i}>
                         <td className="py-2 px-3 font-mono font-medium text-white">
@@ -316,7 +316,7 @@ export default function GeneralLedgerPage() {
 
       {/* Tab Content: Accounting Periods */}
       {activeTab === 'PERIODS' && (
-        <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4">
+        <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4">
           <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div>
               <h3 className="text-base font-bold text-white flex items-center gap-2">
@@ -381,7 +381,7 @@ export default function GeneralLedgerPage() {
       {/* Modal: New Double-Entry Journal Entry */}
       {showNewEntryModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-2xl bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-2xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <Scale className="h-5 w-5 text-emerald-400" />
@@ -399,7 +399,7 @@ export default function GeneralLedgerPage() {
             <form onSubmit={handleCreateEntry} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Memo / Transaction Purpose
                   </label>
                   <input
@@ -412,7 +412,7 @@ export default function GeneralLedgerPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                     Accounting Period
                   </label>
                   <select
@@ -513,9 +513,9 @@ export default function GeneralLedgerPage() {
               <div className="p-3 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-between text-xs">
                 <div>
                   <span className="text-slate-400">Total Debit: </span>
-                  <strong className="text-white font-mono">{formatCurrency(totalDebit)}</strong>
+                  <strong className="text-slate-900 dark:text-white font-mono">{formatCurrency(totalDebit)}</strong>
                   <span className="text-slate-400 ml-4">Total Credit: </span>
-                  <strong className="text-white font-mono">{formatCurrency(totalCredit)}</strong>
+                  <strong className="text-slate-900 dark:text-white font-mono">{formatCurrency(totalCredit)}</strong>
                 </div>
 
                 <div className="flex items-center gap-1.5 font-semibold">
@@ -535,7 +535,7 @@ export default function GeneralLedgerPage() {
                 <button
                   type="button"
                   onClick={() => setShowNewEntryModal(false)}
-                  className="px-4 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800"
+                  className="px-4 py-2 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-800"
                 >
                   Cancel
                 </button>

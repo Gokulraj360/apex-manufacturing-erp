@@ -33,6 +33,7 @@ import {
 } from 'lucide-react';
 import { formatCurrency, cn } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
+import { useActiveFranchise } from '@/lib/franchiseStore';
 import { LineChart, DonutChart } from '@/components/charts';
 
 interface BomItem {
@@ -86,7 +87,7 @@ export default function PricingControlDashboardPage() {
       id: 'BOM-002',
       name: 'High-Resolution Low-Latency Optical Interface & Display Panel',
       category: 'Display / Optoelectronics',
-      supplier: 'BOE Industrial Display Technologies',
+      supplier: 'Apex Precision Opto-Electronics',
       unitCost: 4800,
       quantity: 1,
       scrapRate: 0.5,
@@ -196,7 +197,7 @@ export default function PricingControlDashboardPage() {
       name: 'Component Parts (BOM)',
       value: aggregatedComponentCost,
       color: '#6366f1',
-      description: 'Snapdragon SoC, AMOLED display & camera modules',
+      description: 'Microprocessor SoC, Telemetry Sensors & Optical Modules',
     },
     {
       name: 'Net Profit Margin',

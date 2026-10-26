@@ -4496,7 +4496,7 @@ model FleetVehicle {
   assignedDriver        String?
   fastagTagId           String?
   fuelCardNumber        String?
-  gpsImei               String?
+  gpsTelematicsId               String?
   purchaseDate          DateTime?
   insurancePolicyExpiry DateTime?
   pucExpiry             DateTime?
@@ -4745,10 +4745,10 @@ model PriceAuditRecord {
 }
 
 // ==========================================
-// APEXMOBILE ERP: SMARTPHONE MANUFACTURING EXTENSIONS
+// APEX_ENTERPRISE ERP: UNIVERSAL MULTI-FRANCHISE INDUSTRIAL EXTENSIONS
 // ==========================================
 
-enum MobileComponentCategory {
+enum IndustrialComponentCategory {
   CHIPSET_SOC
   RAM_LPDDR
   STORAGE_UFS
@@ -4763,16 +4763,16 @@ enum MobileComponentCategory {
   RETAIL_PACKAGING
 }
 
-enum SmartphoneAssemblyStage {
+enum IndustrialAssemblyStage {
   STAGE_1_SMT_PCB_PLACEMENT
   STAGE_2_CLEANROOM_DISPLAY_LAMINATION
   STAGE_3_CAMERA_CALIBRATION
   STAGE_4_OS_FLASH_RF_TEST
   STAGE_5_AGING_DROP_TEST
-  STAGE_6_BOX_PACKING_IMEI_SCAN
+  STAGE_6_BOX_PACKING_SERIAL_SCAN
 }
 
-enum MobileDeviceStatus {
+enum IndustrialUnitStatus {
   IN_SMT_PROGRESS
   IN_ASSEMBLY
   OS_FLASHED
@@ -4783,19 +4783,19 @@ enum MobileDeviceStatus {
   RMA_QUARANTINE
 }
 
-enum MobileRfTestStatus {
+enum IndustrialTelemetryTestStatus {
   PENDING
   PASSED
   FAILED
   RETEST_REQUIRED
 }
 
-model MobileComponentInventory {
+model IndustrialComponentInventory {
   id                   String                  @id @default(uuid())
   skuCode              String                  @unique // e.g. 'SOC-QCOM-8GEN3-01'
   name                 String
-  category             MobileComponentCategory
-  supplier             String                  // e.g. 'Qualcomm Enterprise Direct'
+  category             IndustrialComponentCategory
+  supplier             String                  // e.g. 'Apex Core Semiconductor Partner'
   specifications       String                  // e.g. '4nm TSMC, 3.3GHz Cortex-X4'
   unitCost             Decimal                 @db.Decimal(12, 2)
   stockQuantity        Int                     @default(0)
@@ -4811,11 +4811,11 @@ model MobileComponentInventory {
   @@index([skuCode])
 }
 
-model MobileDeviceUnit {
+model PrecisionIndustrialUnit {
   id                   String                  @id @default(uuid())
   serialNumber         String                  @unique // e.g. 'APX-2026-004812'
-  imei1                String                  @unique // 15-digit TAC+SNR+CD
-  imei2                String                  @unique // Dual SIM IMEI
+  serialNumberPrimary                String                  @unique // 15-digit TAC+SNR+CD
+  serialNumberSecondary                String                  @unique // Dual SIM Serial UID
   modelSku             String                  // e.g. 'APEX-PRO-5G-16GB-512GB'
   modelName            String                  @default("ApexPro 5G Flagship")
   colorVariant         String                  // e.g. 'Titanium Gray', 'Obsidian Black'
@@ -4825,11 +4825,11 @@ model MobileDeviceUnit {
   osBuildVersion       String                  @default("ApexOS-v2.5-Tiramisu")
   
   // 6 Assembly Line Milestones
-  currentStage         SmartphoneAssemblyStage @default(STAGE_1_SMT_PCB_PLACEMENT)
-  status               MobileDeviceStatus      @default(IN_SMT_PROGRESS)
+  currentStage         IndustrialAssemblyStage @default(STAGE_1_SMT_PCB_PLACEMENT)
+  status               IndustrialUnitStatus      @default(IN_SMT_PROGRESS)
 
   // Stage 4: RF & Calibration
-  rfTestStatus         MobileRfTestStatus      @default(PENDING)
+  rfTestStatus         IndustrialTelemetryTestStatus      @default(PENDING)
   rfBandsTested        String?                 // e.g. '5G NR: n1,n3,n28,n77,n78; LTE: B1,B3,B5,B40,B41'
   rfCalibratedAt       DateTime?
 
@@ -4847,19 +4847,19 @@ model MobileDeviceUnit {
   createdAt            DateTime                @default(now())
   updatedAt            DateTime                @updatedAt
 
-  @@index([imei1])
-  @@index([imei2])
+  @@index([serialNumberPrimary])
+  @@index([serialNumberSecondary])
   @@index([serialNumber])
   @@index([modelSku])
   @@index([status])
   @@index([currentStage])
 }
 
-model MobileProductionLine {
+model IndustrialProductionLine {
   id                   String                  @id @default(uuid())
   lineNumber           Int                     @unique // 1 to 6
   lineName             String                  // e.g. 'Line 1: SMT & PCB Placement'
-  stage                SmartphoneAssemblyStage
+  stage                IndustrialAssemblyStage
   targetOutputUnits    Int                     @default(7600)
   actualProducedUnits  Int                     @default(0)
   firstPassYieldPct    Decimal                 @db.Decimal(5, 2) @default(99.4) // e.g. 99.40%
@@ -4876,7 +4876,7 @@ model MobileProductionLine {
   @@index([stage])
 }
 
-model MobileImeiBurnInLog {
+model UnitSerialTelemetryLog {
   id                   String                  @id @default(uuid())
   burnInBatchCode      String                  @unique // e.g. 'BURN-2026-10-08-01'
   totalUnitsBurned     Int
@@ -4915,7 +4915,7 @@ enum TaskDelegationStatus {
 model DepartmentTaskDelegation {
   id                   String                 @id @default(uuid())
   taskCode             String                 @unique // e.g. 'DEL-2026-0042'
-  department           String                 // e.g. 'SMT_PRODUCTION', 'WAREHOUSE_IMEI', 'QUALITY_RF', 'SUPPLY_CHAIN', 'COMMERCIAL_FINANCE', 'MOBILE_ENGINEERING'
+  department           String                 // e.g. 'SMT_PRODUCTION', 'WAREHOUSE_Serial UID', 'QUALITY_RF', 'SUPPLY_CHAIN', 'COMMERCIAL_FINANCE', 'MOBILE_ENGINEERING'
   departmentLabel      String                 // e.g. 'SMT & PCB Production'
   
   // Manager (Delegator)
@@ -4982,7 +4982,7 @@ model LeaveRequest {
   employeeId         String             // e.g. 'plant_operator', 'maint_tech', 'production_lead'
   employeeName       String             // e.g. 'Sunil Joshi', 'Rajesh Sharma'
   employeeRole       String             // e.g. 'SMT Line Operator', 'SMT Floor Lead'
-  department         String             // e.g. 'SMT_PRODUCTION', 'WAREHOUSE_IMEI', 'QUALITY_RF'
+  department         String             // e.g. 'SMT_PRODUCTION', 'WAREHOUSE_Serial UID', 'QUALITY_RF'
   departmentLabel    String             // e.g. 'SMT & PCB Production'
   recipientType      LeaveRecipientType @default(DEPARTMENT_MANAGER)
   
@@ -5033,13 +5033,13 @@ model UserCredential {
   id                 String             @id @default(uuid())
   employeeId         String             @unique // e.g. 'EMP-2026-0101'
   name               String             // e.g. 'Rameshwar Patil'
-  email              String             // e.g. 'rameshwar@apexmobile.com'
+  email              String             // e.g. 'rameshwar@apexenterprise.com'
   phone              String             // e.g. '+91 98765 43210'
   nationalId         String?            // Aadhaar / National ID
   address            String?
   role               String             // e.g. 'production', 'quality', 'finance'
-  roleTitle          String             // e.g. 'Phone Assembly Technician'
-  department         String             // e.g. 'Phone Assembly Lines'
+  roleTitle          String             // e.g. 'Precision Assembly Technician'
+  department         String             // e.g. 'Precision Subassembly Lines'
   accessPermissions  String[]           @default(["STANDARD_WORKER_ACCESS"])
   username           String             @unique // e.g. 'rameshwar_patil'
   passwordHash       String
@@ -5138,7 +5138,7 @@ model PayrollLineItem {
   employeeId           String            // e.g. 'EMP-2026-0101'
   employeeName         String            // e.g. 'Rameshwar Patil'
   role                 String            // e.g. 'SMT Line Operator'
-  department           String            // e.g. 'Phone Assembly Lines'
+  department           String            // e.g. 'Precision Subassembly Lines'
   
   payableDays          Int               @default(30)
   presentDays          Int               @default(28)
@@ -5177,7 +5177,7 @@ model EmployeeSalaryCreditLog {
   employeeId        String             // e.g. 'EMP-2026-0101'
   employeeName      String             // e.g. 'Rameshwar Patil'
   role              String             // e.g. 'SMT Line Operator'
-  department        String             // e.g. 'Phone Assembly Lines'
+  department        String             // e.g. 'Precision Subassembly Lines'
   
   payrollBatchId    String
   payrollBatch      PayrollBatch       @relation(fields: [payrollBatchId], references: [id], onDelete: Cascade)
@@ -5273,7 +5273,7 @@ model WorkerAttendanceSalaryRecord {
   workerId            String                  // e.g. 'EMP-2026-0101'
   workerName          String                  // e.g. 'Rameshwar Patil'
   role                String                  // e.g. 'Circuit Board Pick-and-Place Operator'
-  department          String                  @default("Phone Assembly Lines")
+  department          String                  @default("Precision Subassembly Lines")
   
   totalWorkingDays    Int                     @default(26)
   daysPresent         Int                     @default(26)

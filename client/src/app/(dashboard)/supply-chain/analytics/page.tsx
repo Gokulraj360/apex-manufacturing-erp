@@ -269,29 +269,29 @@ export default function SupplyChainAnalyticsPage() {
 
       {/* KPI Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Inventory Turnover</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Inventory Turnover</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
               <TrendingUp className="h-4 w-4 text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">7.8x</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">7.8x</span>
             <span className="text-xs text-emerald-400 font-semibold">Turns/yr</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">Industry benchmark: 6.5x</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">Lead Time Variance</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Lead Time Variance</span>
             <div className="h-8 w-8 rounded-lg bg-cyan-500/10 flex items-center justify-center">
               <Clock className="h-4 w-4 text-cyan-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">&plusmn;1.2d</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">&plusmn;1.2d</span>
           </div>
           <div className="mt-2 text-[11px] text-cyan-400">Within contractual SLA tolerance</div>
         </div>
@@ -304,28 +304,28 @@ export default function SupplyChainAnalyticsPage() {
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">{criticalCount}</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">{criticalCount}</span>
             <span className="text-xs text-rose-400 font-semibold">Under Active Mitigation</span>
           </div>
           <div className="mt-2 text-[11px] text-rose-300">Total exposure: ${totalExposure.toLocaleString()}</div>
         </div>
 
-        <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl p-4 shadow-sm">
+        <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-400 uppercase tracking-wider">YTD Savings Realized</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">YTD Savings Realized</span>
             <div className="h-8 w-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
               <DollarSign className="h-4 w-4 text-blue-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-white font-mono">$142,500</span>
+            <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">$142,500</span>
           </div>
           <div className="mt-2 text-[11px] text-slate-400">Negotiated volume contracts</div>
         </div>
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-[#0f172a]/60 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="bg-white dark:bg-[#0f172a]/60 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex flex-col md:flex-row gap-4 items-center justify-between">
         <div className="relative w-full md:w-96">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
           <input
@@ -386,7 +386,7 @@ export default function SupplyChainAnalyticsPage() {
       </div>
 
       {/* Risks Registry Table */}
-      <div className="bg-[#0f172a]/80 border border-slate-800 rounded-xl overflow-hidden shadow-sm">
+      <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <ShieldAlert className="h-4 w-4 text-rose-400" />
@@ -399,8 +399,8 @@ export default function SupplyChainAnalyticsPage() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-slate-300">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase font-medium border-b border-slate-800">
+          <table className="w-full text-left text-xs text-slate-700 dark:text-slate-300">
+            <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-medium border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Risk Ref &amp; Date</th>
                 <th className="py-3 px-4">Affected SKU / Supplier</th>
@@ -412,11 +412,11 @@ export default function SupplyChainAnalyticsPage() {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800/60 font-normal">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60 font-normal">
               {filteredRisks.map((risk) => (
                 <tr key={risk.id} className="hover:bg-slate-800/40 transition-colors">
                   <td className="py-3.5 px-4">
-                    <div className="font-semibold text-white font-mono">{risk.riskRefNumber}</div>
+                    <div className="font-semibold text-slate-900 dark:text-white font-mono">{risk.riskRefNumber}</div>
                     <div className="text-[11px] text-slate-400 mt-0.5">{risk.reportedAt}</div>
                     <div className="text-[10px] text-slate-500 mt-0.5">Owner: {risk.owner}</div>
                   </td>
@@ -429,7 +429,7 @@ export default function SupplyChainAnalyticsPage() {
                   </td>
 
                   <td className="py-3.5 px-4">
-                    <span className="px-2 py-0.5 rounded bg-slate-800 font-mono text-[10px] text-slate-300 border border-slate-700">
+                    <span className="px-2 py-0.5 rounded bg-slate-800 font-mono text-[10px] text-slate-700 dark:text-slate-300 border border-slate-700">
                       {risk.riskCategory.replace(/_/g, ' ')}
                     </span>
                   </td>
@@ -489,7 +489,7 @@ export default function SupplyChainAnalyticsPage() {
       {/* MODAL 1: Log Supply Risk Assessment */}
       {isRiskModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
             <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
               <div className="flex items-center gap-2">
                 <Flame className="h-5 w-5 text-rose-400" />
@@ -641,7 +641,7 @@ export default function SupplyChainAnalyticsPage() {
                 <button
                   type="button"
                   onClick={() => setIsRiskModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
+                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors"
                 >
                   Cancel
                 </button>
@@ -661,7 +661,7 @@ export default function SupplyChainAnalyticsPage() {
       {/* MODAL 2: Update Mitigation Progress */}
       {isUpdateModalOpen && selectedRisk && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#0f172a] border border-slate-800 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
+          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-md overflow-hidden shadow-2xl">
             <div className="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
               <div className="flex items-center gap-2">
                 <Sliders className="h-5 w-5 text-cyan-400" />
@@ -711,7 +711,7 @@ export default function SupplyChainAnalyticsPage() {
                 <button
                   type="button"
                   onClick={() => setIsUpdateModalOpen(false)}
-                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
+                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-medium transition-colors"
                 >
                   Cancel
                 </button>

@@ -139,9 +139,9 @@ export default function ReceivingDockPage() {
       </div>
 
       {/* GRN Ledger Table */}
-      <div className="rounded-xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-sm">
+      <div className="rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-          <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+          <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
             Verified Goods Received Notes (GRN Ledger)
           </span>
           <span className="text-xs text-slate-400">{grns.length} Received Shipments</span>
@@ -149,7 +149,7 @@ export default function ReceivingDockPage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-800">
+            <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">GRN Number</th>
                 <th className="py-3 px-4">PO Reference</th>
@@ -160,7 +160,7 @@ export default function ReceivingDockPage() {
                 <th className="py-3 px-4">QA Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
               {grns.map((grn) => {
                 const isPassed = grn.inspectionPassed;
 
@@ -221,7 +221,7 @@ export default function ReceivingDockPage() {
       {/* Modal: Log Inbound Inspection */}
       {showInspectionModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-xl bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <FileCheck2 className="h-5 w-5 text-amber-400" />
@@ -239,17 +239,17 @@ export default function ReceivingDockPage() {
             <form onSubmit={handleCreateGrn} className="space-y-4 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Purchase Order #</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Purchase Order #</label>
                   <input
                     type="text"
                     required
                     value={form.poNumber}
                     onChange={(e) => setForm({ ...form, poNumber: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Supplier Enterprise</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Supplier Enterprise</label>
                   <input
                     type="text"
                     required
@@ -262,17 +262,17 @@ export default function ReceivingDockPage() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Item Code</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Item Code</label>
                   <input
                     type="text"
                     required
                     value={form.itemCode}
                     onChange={(e) => setForm({ ...form, itemCode: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Item Description</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Item Description</label>
                   <input
                     type="text"
                     required
@@ -285,60 +285,60 @@ export default function ReceivingDockPage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Quantity Received</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Quantity Received</label>
                   <input
                     type="number"
                     required
                     value={form.quantityReceived}
                     onChange={(e) => setForm({ ...form, quantityReceived: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Quantity Accepted</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Quantity Accepted</label>
                   <input
                     type="number"
                     required
                     value={form.quantityAccepted}
                     onChange={(e) => setForm({ ...form, quantityAccepted: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-emerald-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-emerald-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Quantity Rejected</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Quantity Rejected</label>
                   <input
                     type="number"
                     value={form.quantityRejected}
                     onChange={(e) => setForm({ ...form, quantityRejected: Number(e.target.value) })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-red-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-red-500"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Assigned Putaway Bin</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Assigned Putaway Bin</label>
                   <input
                     type="text"
                     required
                     value={form.storageBinCode}
                     onChange={(e) => setForm({ ...form, storageBinCode: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-amber-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-300 font-medium mb-1">Vendor Delivery Challan #</label>
+                  <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Vendor Delivery Challan #</label>
                   <input
                     type="text"
                     value={form.vendorDeliveryChallan}
                     onChange={(e) => setForm({ ...form, vendorDeliveryChallan: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white font-mono focus:outline-none focus:border-amber-500"
+                    className="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-900 dark:text-white font-mono focus:outline-none focus:border-amber-500"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">Inspection Remarks</label>
+                <label className="block text-slate-700 dark:text-slate-300 font-medium mb-1">Inspection Remarks</label>
                 <textarea
                   value={form.remarks}
                   onChange={(e) => setForm({ ...form, remarks: e.target.value })}
@@ -351,7 +351,7 @@ export default function ReceivingDockPage() {
                 <button
                   type="button"
                   onClick={() => setShowInspectionModal(false)}
-                  className="px-3 py-1.5 rounded-lg text-slate-300 hover:bg-slate-800 font-medium"
+                  className="px-3 py-1.5 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-800 font-medium"
                 >
                   Cancel
                 </button>

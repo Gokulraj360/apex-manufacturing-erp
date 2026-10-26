@@ -2,8 +2,8 @@ import { Injectable, Logger } from '@nestjs/common';
 
 export interface DualImeiResult {
   serialNumber: string;
-  imei1: string;
-  imei2: string;
+  serialNumberPrimary: string;
+  serialNumberSecondary: string;
   macWifi: string;
   macBluetooth: string;
   tacCode: string;
@@ -12,7 +12,7 @@ export interface DualImeiResult {
 
 export interface ImeiVerificationResult {
   isValid: boolean;
-  imei: string;
+  serialNumber: string;
   tac: string;
   snr: string;
   checkDigit: number;
@@ -25,13 +25,13 @@ export interface ImeiVerificationResult {
 export class ImeiTrackingService {
   private readonly logger = new Logger(ImeiTrackingService.name);
 
-  // Type Allocation Codes (TAC) for ApexMobile devices
+  // Type Allocation Codes (TAC) for Apex Enterprise devices
   // TAC is 8 digits: Reporting Body Identifier (RBI) + Model Type
   private readonly APEX_PRO_5G_TAC = '86420108'; // Approved TAC for ApexPro 5G
   private readonly APEX_LITE_5G_TAC = '86420109'; // Approved TAC for ApexLite 5G
 
   /**
-   * Luhn Algorithm Check Digit Calculation for 14-digit IMEI body
+   * Luhn Algorithm Check Digit Calculation for 14-digit Serial UID body
    */
   public calculateLuhnCheckDigit(fourteenDigits: string): number {
     let sum = 0;
@@ -51,7 +51,7 @@ export class ImeiTrackingService {
   }
 
   /**
-   * Generate 15-digit valid IMEI from TAC and 6-digit Serial
+   * Generate 15-digit valid Serial UID from TAC and 6-digit Serial
    */
   public generateImei(tac: string, sixDigitSerial: string): string {
     const fourteenDigits = `${tac}${sixDigitSerial}`;
@@ -60,15 +60,15 @@ export class ImeiTrackingService {
   }
 
   /**
-   * Generate paired Dual SIM IMEIs and MAC addresses for smartphone assembly
+   * Generate paired Dual SIM Serial UIDs and MAC addresses for industrial precision assembly
    */
   public generateDualImeiPair(model: 'PRO' | 'LITE' = 'PRO', sequenceNumber: number): DualImeiResult {
     const tac = model === 'PRO' ? this.APEX_PRO_5G_TAC : this.APEX_LITE_5G_TAC;
     const paddedSerial1 = String(sequenceNumber).padStart(6, '0');
     const paddedSerial2 = String(sequenceNumber + 500000).padStart(6, '0'); // Secondary radio channel
 
-    const imei1 = this.generateImei(tac, paddedSerial1);
-    const imei2 = this.generateImei(tac, paddedSerial2);
+    const serialNumberPrimary = this.generateImei(tac, paddedSerial1);
+    const serialNumberSecondary = this.generateImei(tac, paddedSerial2);
     const deviceSerial = `APX-${new Date().getFullYear()}-${String(sequenceNumber).padStart(6, '0')}`;
 
     // MAC addresses
@@ -76,12 +76,12 @@ export class ImeiTrackingService {
     const macWifi = `AC:5F:3B:${hexSeq.slice(0, 2)}:${hexSeq.slice(2, 4)}:${hexSeq.slice(4, 6)}`;
     const macBluetooth = `AC:5F:3C:${hexSeq.slice(0, 2)}:${hexSeq.slice(2, 4)}:${hexSeq.slice(4, 6)}`;
 
-    this.logger.log(`Generated Dual-SIM IMEI Pair for Device: ${deviceSerial} | IMEI-1: ${imei1} | IMEI-2: ${imei2}`);
+    this.logger.log(`Generated Dual-SIM Serial UID Pair for Device: ${deviceSerial} | Serial UID-1: ${serialNumberPrimary} | Serial UID-2: ${serialNumberSecondary}`);
 
     return {
       serialNumber: deviceSerial,
-      imei1,
-      imei2,
+      serialNumberPrimary,
+      serialNumberSecondary,
       macWifi,
       macBluetooth,
       tacCode: tac,
@@ -90,19 +90,19 @@ export class ImeiTrackingService {
   }
 
   /**
-   * Validate an IMEI string against the Luhn algorithm
+   * Validate an Serial UID string against the Luhn algorithm
    */
-  public validateImei(imei: string): ImeiVerificationResult {
-    const cleaned = imei.trim();
+  public validateImei(serialNumber: string): ImeiVerificationResult {
+    const cleaned = serialNumber.trim();
     if (!/^\d{15}$/.test(cleaned)) {
       return {
         isValid: false,
-        imei: cleaned,
+        serialNumber: cleaned,
         tac: '',
         snr: '',
         checkDigit: -1,
         calculatedCheckDigit: -1,
-        brand: 'ApexMobile',
+        brand: 'Apex Enterprise',
         status: 'MALFORMED_FORMAT',
       };
     }
@@ -114,18 +114,18 @@ export class ImeiTrackingService {
 
     return {
       isValid,
-      imei: cleaned,
+      serialNumber: cleaned,
       tac: cleaned.substring(0, 8),
       snr: cleaned.substring(8, 14),
       checkDigit: actualCheckDigit,
       calculatedCheckDigit,
-      brand: 'ApexMobile Devices',
+      brand: 'Apex Enterprise Devices',
       status: isValid ? 'CRYPTOGRAPHICALLY_VERIFIED' : 'LUHN_CHECK_FAILED',
     };
   }
 
   /**
-   * Telemetry summary for IMEI tracking database
+   * Telemetry summary for Serial UID tracking database
    */
   public getImeiTelemetrySummary() {
     return {

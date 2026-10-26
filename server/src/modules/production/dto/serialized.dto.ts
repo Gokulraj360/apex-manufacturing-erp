@@ -26,7 +26,7 @@ export enum SerializedUnitStatusEnum {
 export class ScanSerializedUnitDto {
   @IsString()
   @IsNotEmpty()
-  @Length(15, 20, { message: 'Serial number / IMEI must be between 15 and 20 alphanumeric characters' })
+  @Length(15, 20, { message: 'Serial number / Serial UID must be between 15 and 20 alphanumeric characters' })
   @Matches(/^[A-Za-z0-9-]+$/, { message: 'Serial number must contain only alphanumeric characters or hyphens' })
   serialNumber: string;
 

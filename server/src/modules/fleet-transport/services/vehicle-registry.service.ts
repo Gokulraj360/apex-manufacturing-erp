@@ -149,7 +149,7 @@ export class VehicleRegistryService {
         assignedDriver: dto.assignedDriver || null,
         fastagTagId: dto.fastagTagId || null,
         fuelCardNumber: dto.fuelCardNumber || null,
-        gpsImei: dto.gpsImei || null,
+        gpsTelematicsId: dto.gpsTelematicsId || null,
         purchaseDate: dto.purchaseDate ? new Date(dto.purchaseDate) : null,
         insurancePolicyExpiry: dto.insurancePolicyExpiry ? new Date(dto.insurancePolicyExpiry) : null,
         pucExpiry: dto.pucExpiry ? new Date(dto.pucExpiry) : null,
@@ -193,7 +193,7 @@ export class VehicleRegistryService {
     if (dto.assignedDriver !== undefined) data.assignedDriver = dto.assignedDriver || null;
     if (dto.fastagTagId !== undefined) data.fastagTagId = dto.fastagTagId || null;
     if (dto.fuelCardNumber !== undefined) data.fuelCardNumber = dto.fuelCardNumber || null;
-    if (dto.gpsImei !== undefined) data.gpsImei = dto.gpsImei || null;
+    if (dto.gpsTelematicsId !== undefined) data.gpsTelematicsId = dto.gpsTelematicsId || null;
     if (dto.purchaseDate) data.purchaseDate = new Date(dto.purchaseDate);
     if (dto.insurancePolicyExpiry) data.insurancePolicyExpiry = new Date(dto.insurancePolicyExpiry);
     if (dto.pucExpiry) data.pucExpiry = new Date(dto.pucExpiry);

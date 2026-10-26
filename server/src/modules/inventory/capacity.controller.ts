@@ -34,7 +34,7 @@ export class CapacityController {
     {
       id: 'comp-01',
       sku: 'IC-SNAP-8G3-01',
-      name: 'Snapdragon 5G Octa-Core SoC (4nm FinFET)',
+      name: 'Apex Core Embedded Microprocessor SoC (4nm FinFET)',
       category: 'IC',
       unit: 'PCS',
       costPerPiece: 5850.0,
@@ -46,8 +46,8 @@ export class CapacityController {
     },
     {
       id: 'comp-02',
-      sku: 'DISP-OLED-67-120',
-      name: '6.7" OLED Curved Display 120Hz LTPO',
+      sku: 'DISP-Precision Optics-67-120',
+      name: 'Industrial Optical Display & Sensor Panel 120Hz',
       category: 'DISPLAY',
       unit: 'PCS',
       costPerPiece: 3400.0,

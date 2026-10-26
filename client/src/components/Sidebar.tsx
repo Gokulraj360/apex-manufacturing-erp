@@ -400,7 +400,7 @@ export function Sidebar() {
                   <button
                     type="button"
                     onClick={() => toggleCategory(cat.title)}
-                    className="w-full text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase px-3 py-1.5 flex items-center justify-between hover:text-slate-600 dark:hover:text-slate-300 transition-colors text-left"
+                    className="w-full text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase px-3 py-1.5 flex items-center justify-between hover:text-slate-600 dark:hover:text-slate-700 dark:text-slate-300 transition-colors text-left"
                   >
                     <span className="truncate">{cat.title}</span>
                     {isCollapsed ? (
@@ -435,7 +435,7 @@ export function Sidebar() {
                                 'h-4 w-4 flex-shrink-0 transition-colors',
                                 isActive
                                   ? 'text-blue-600 dark:text-blue-400'
-                                  : 'text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300',
+                                  : 'text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-700 dark:text-slate-300',
                               )}
                             />
                             <span className="truncate leading-snug">{item.name}</span>

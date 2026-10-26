@@ -61,7 +61,7 @@ export class CreateVehicleDto {
 
   @IsOptional()
   @IsString()
-  gpsImei?: string;
+  gpsTelematicsId?: string;
 
   @IsOptional()
   @IsDateString()
@@ -141,7 +141,7 @@ export class UpdateVehicleDto {
 
   @IsOptional()
   @IsString()
-  gpsImei?: string;
+  gpsTelematicsId?: string;
 
   @IsOptional()
   @IsDateString()

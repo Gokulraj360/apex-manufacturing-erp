@@ -173,8 +173,8 @@ export default function AccountsReceivablePage() {
 
       {/* Aging Analysis Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="p-4 rounded-xl bg-[#0f172a] border border-slate-800">
-          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="p-4 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800">
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
             Current (0-30 Days)
           </div>
           <div className="text-xl font-bold font-mono text-emerald-400 mt-2">
@@ -183,8 +183,8 @@ export default function AccountsReceivablePage() {
           <div className="text-[11px] text-slate-400 mt-1">Within standard credit terms</div>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#0f172a] border border-slate-800">
-          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="p-4 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800">
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
             31 - 60 Days
           </div>
           <div className="text-xl font-bold font-mono text-blue-400 mt-2">
@@ -193,8 +193,8 @@ export default function AccountsReceivablePage() {
           <div className="text-[11px] text-slate-400 mt-1">Due for automated statement reminder</div>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#0f172a] border border-slate-800">
-          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="p-4 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800">
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
             61 - 90 Days (Overdue)
           </div>
           <div className="text-xl font-bold font-mono text-amber-400 mt-2">
@@ -203,8 +203,8 @@ export default function AccountsReceivablePage() {
           <div className="text-[11px] text-amber-400/80 mt-1">Executive collection action required</div>
         </div>
 
-        <div className="p-4 rounded-xl bg-[#0f172a] border border-slate-800">
-          <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+        <div className="p-4 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800">
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
             90+ Days (Critical)
           </div>
           <div className="text-xl font-bold font-mono text-slate-400 mt-2">
@@ -215,9 +215,9 @@ export default function AccountsReceivablePage() {
       </div>
 
       {/* Invoices Table */}
-      <div className="rounded-xl bg-[#0f172a] border border-slate-800 overflow-hidden shadow-sm">
+      <div className="rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
         <div className="p-4 border-b border-slate-800 flex items-center justify-between">
-          <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+          <span className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
             Active Client Invoices
           </span>
           <span className="text-xs text-slate-400">{invoices.length} Client Records</span>
@@ -225,7 +225,7 @@ export default function AccountsReceivablePage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-800">
+            <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Invoice #</th>
                 <th className="py-3 px-4">Client Enterprise</th>
@@ -237,7 +237,7 @@ export default function AccountsReceivablePage() {
                 <th className="py-3 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
               {invoices.map((inv) => {
                 const isPaid = inv.status === 'PAID';
                 const isOverdue = inv.status === 'OVERDUE';
@@ -257,7 +257,7 @@ export default function AccountsReceivablePage() {
                       {inv.issueDate}
                     </td>
 
-                    <td className="py-3 px-4 font-mono text-slate-300">
+                    <td className="py-3 px-4 font-mono text-slate-700 dark:text-slate-300">
                       {inv.dueDate}
                     </td>
 
@@ -278,7 +278,7 @@ export default function AccountsReceivablePage() {
                             ? 'bg-red-500/10 text-red-400 border border-red-500/20'
                             : isPartial
                             ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
-                            : 'bg-slate-800 text-slate-300'
+                            : 'bg-slate-800 text-slate-700 dark:text-slate-300'
                         }`}
                       >
                         {inv.status.replace(/_/g, ' ')}
@@ -323,7 +323,7 @@ export default function AccountsReceivablePage() {
       </div>
 
       {/* Credit Notes Ledger */}
-      <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4">
+      <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4">
         <h3 className="text-base font-bold text-white flex items-center gap-2">
           <RotateCcw className="h-5 w-5 text-indigo-400" />
           Issued Credit Notes & Adjustments
@@ -331,7 +331,7 @@ export default function AccountsReceivablePage() {
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/80 text-slate-400 uppercase font-semibold border-b border-slate-800">
+            <thead className="bg-slate-900/80 text-slate-500 dark:text-slate-400 uppercase font-semibold border-b border-slate-800">
               <tr>
                 <th className="py-3 px-4">Credit Note #</th>
                 <th className="py-3 px-4">Invoice Reference</th>
@@ -341,7 +341,7 @@ export default function AccountsReceivablePage() {
                 <th className="py-3 px-4">Status</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-800 text-slate-300">
+            <tbody className="divide-y divide-slate-200 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
               {creditNotes.map((cn) => (
                 <tr key={cn.id} className="hover:bg-slate-800/20">
                   <td className="py-3 px-4 font-mono font-bold text-white">
@@ -374,7 +374,7 @@ export default function AccountsReceivablePage() {
       {/* Modal: Record Client Payment */}
       {paymentModalInvoice && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <DollarSign className="h-5 w-5 text-emerald-400" />
@@ -389,7 +389,7 @@ export default function AccountsReceivablePage() {
               </button>
             </div>
 
-            <div className="text-xs text-slate-300 space-y-1">
+            <div className="text-xs text-slate-700 dark:text-slate-300 space-y-1">
               <div>Invoice: <strong className="text-white">{paymentModalInvoice.invoiceNumber}</strong></div>
               <div>Client: <strong className="text-white">{paymentModalInvoice.clientName}</strong></div>
               <div>Remaining Due: <strong className="text-blue-400 font-mono">{formatCurrency(paymentModalInvoice.totalAmount - paymentModalInvoice.paidAmount)}</strong></div>
@@ -397,7 +397,7 @@ export default function AccountsReceivablePage() {
 
             <form onSubmit={handleRecordPayment} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Amount Received ($)
                 </label>
                 <input
@@ -413,7 +413,7 @@ export default function AccountsReceivablePage() {
                 <button
                   type="button"
                   onClick={() => setPaymentModalInvoice(null)}
-                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800"
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-800"
                 >
                   Cancel
                 </button>
@@ -432,7 +432,7 @@ export default function AccountsReceivablePage() {
       {/* Modal: Issue Credit Note */}
       {creditModalInvoice && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <RotateCcw className="h-5 w-5 text-amber-400" />
@@ -449,7 +449,7 @@ export default function AccountsReceivablePage() {
 
             <form onSubmit={handleIssueCreditNote} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Credit Amount ($)
                 </label>
                 <input
@@ -462,7 +462,7 @@ export default function AccountsReceivablePage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Reason / Authorized Justification
                 </label>
                 <textarea
@@ -479,7 +479,7 @@ export default function AccountsReceivablePage() {
                 <button
                   type="button"
                   onClick={() => setCreditModalInvoice(null)}
-                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800"
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-800"
                 >
                   Cancel
                 </button>

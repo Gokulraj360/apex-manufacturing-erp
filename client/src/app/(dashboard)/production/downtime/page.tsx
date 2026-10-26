@@ -234,7 +234,7 @@ export default function MachineDowntimePage() {
       </div>
 
       {/* Maintenance Request Tickets Board */}
-      <div className="p-6 rounded-xl bg-[#0f172a] border border-slate-800 space-y-4">
+      <div className="p-6 rounded-xl bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 space-y-4">
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <div>
             <h3 className="text-base font-bold text-white flex items-center gap-2">
@@ -245,7 +245,7 @@ export default function MachineDowntimePage() {
               Urgent breakdowns, technician dispatch, and preventative maintenance logs.
             </p>
           </div>
-          <span className="text-xs bg-slate-800 text-slate-300 px-2.5 py-1 rounded font-medium">
+          <span className="text-xs bg-slate-800 text-slate-700 dark:text-slate-300 px-2.5 py-1 rounded font-medium">
             {tickets.length} Active Tickets
           </span>
         </div>
@@ -269,7 +269,7 @@ export default function MachineDowntimePage() {
                     <span className="font-mono text-xs text-cyan-400">
                       {ticket.machineCode}
                     </span>
-                    <span className="text-xs text-slate-300 font-medium">
+                    <span className="text-xs text-slate-700 dark:text-slate-300 font-medium">
                       ({ticket.machineName})
                     </span>
                   </div>
@@ -301,7 +301,7 @@ export default function MachineDowntimePage() {
                 </p>
 
                 {ticket.rootCauseAnalysis && (
-                  <div className="p-2.5 rounded bg-slate-950/60 border border-slate-800 text-[11px] text-slate-300">
+                  <div className="p-2.5 rounded bg-slate-950/60 border border-slate-800 text-[11px] text-slate-700 dark:text-slate-300">
                     <strong className="text-cyan-400">Root Cause Analysis:</strong> {ticket.rootCauseAnalysis}
                   </div>
                 )}
@@ -336,7 +336,7 @@ export default function MachineDowntimePage() {
       {/* Modal: Report Breakdown */}
       {showBreakdownModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-[#0f172a] border border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
+          <div className="w-full max-w-md bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <h3 className="font-bold text-white text-base flex items-center gap-2">
                 <AlertTriangle className="h-5 w-5 text-red-400" />
@@ -353,7 +353,7 @@ export default function MachineDowntimePage() {
 
             <form onSubmit={handleCreateTicket} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Machine Fleet Code
                 </label>
                 <select
@@ -368,7 +368,7 @@ export default function MachineDowntimePage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Severity Priority
                 </label>
                 <select
@@ -384,7 +384,7 @@ export default function MachineDowntimePage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Breakdown Description & Symptoms
                 </label>
                 <textarea
@@ -401,7 +401,7 @@ export default function MachineDowntimePage() {
                 <button
                   type="button"
                   onClick={() => setShowBreakdownModal(false)}
-                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800"
+                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-800"
                 >
                   Cancel
                 </button>
