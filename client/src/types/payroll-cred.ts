@@ -32,6 +32,14 @@ export interface EmployeeCredentialItem {
   accessPermissions: string[];
   username: string;
   isActive: boolean;
+  status?: 'ACTIVE' | 'TERMINATED';
+  password?: string;
+  terminationDetails?: {
+    date: string;
+    reason: string;
+    notes?: string;
+    terminatedBy?: string;
+  };
   employmentType: string;
   dateOfJoining: string;
   salaryStructure: EmployeeSalaryStructure;
