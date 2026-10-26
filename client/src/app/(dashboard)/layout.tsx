@@ -166,7 +166,7 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { session, switchRole } = useAuth();
+  const { session, switchRole, isLoading } = useAuth();
   const { theme, toggleTheme } = useTheme();
 
   // Determine current page title and badge
@@ -195,6 +195,12 @@ export default function DashboardLayout({
   const [activeFranchise, setActiveFranchise] = useState<FranchiseProfile>(() => franchiseStore.getActiveProfile());
 
   useEffect(() => {
+    if (!isLoading && !session) {
+      router.push('/login');
+    }
+  }, [isLoading, session, router]);
+
+  useEffect(() => {
     const handleFranchiseChange = () => {
       setActiveFranchise(franchiseStore.getActiveProfile());
     };
@@ -203,6 +209,19 @@ export default function DashboardLayout({
       window.removeEventListener('apex_franchise_changed', handleFranchiseChange);
     };
   }, []);
+
+  if (isLoading || !session) {
+    return (
+      <div className="flex h-screen w-screen items-center justify-center bg-[#f8fafc] dark:bg-[#0b0f17] text-slate-800 dark:text-slate-200">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 rounded-full border-2 border-indigo-600 border-t-transparent animate-spin" />
+          <span className="text-xs font-semibold tracking-wider uppercase text-slate-500 dark:text-slate-400">
+            Verifying Enterprise Session...
+          </span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen bg-[#f8fafc] dark:bg-[#0b0f17] text-slate-900 dark:text-slate-100 overflow-hidden font-sans transition-colors duration-200">
@@ -230,7 +249,7 @@ export default function DashboardLayout({
 
             {/* Universal Multi-Franchise Plant Switcher */}
             <div
-              className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800"
+              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800"
               title="Active Multi-Franchise Operating Plant"
             >
               <Building2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />

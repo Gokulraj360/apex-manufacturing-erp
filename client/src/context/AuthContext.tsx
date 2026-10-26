@@ -43,30 +43,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             originalAdmin: parsed.originalAdmin ?? (parsed.roleId === 'super_admin'),
           });
         } else {
-          // Fallback to default
-          setSession({
-            username: DEFAULT_SUPER_ADMIN_ROLE.defaultUsername,
-            roleId: DEFAULT_SUPER_ADMIN_ROLE.id,
-            roleName: DEFAULT_SUPER_ADMIN_ROLE.name,
-            department: DEFAULT_SUPER_ADMIN_ROLE.department,
-            dashboardRoute: DEFAULT_SUPER_ADMIN_ROLE.dashboardRoute,
-            loginTimestamp: new Date().toISOString(),
-            originalAdmin: true,
-          });
+          setSession(null);
         }
       } else {
-        // Create initial default super admin session so app is immediately usable
-        const initialSession: UserSession = {
-          username: DEFAULT_SUPER_ADMIN_ROLE.defaultUsername,
-          roleId: DEFAULT_SUPER_ADMIN_ROLE.id,
-          roleName: DEFAULT_SUPER_ADMIN_ROLE.name,
-          department: DEFAULT_SUPER_ADMIN_ROLE.department,
-          dashboardRoute: DEFAULT_SUPER_ADMIN_ROLE.dashboardRoute,
-          loginTimestamp: new Date().toISOString(),
-          originalAdmin: true,
-        };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(initialSession));
-        setSession(initialSession);
+        // No active session in storage - user must authenticate on /login
+        setSession(null);
       }
     } catch {
       // Local storage disabled or error

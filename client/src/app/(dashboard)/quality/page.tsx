@@ -45,7 +45,7 @@ const INITIAL_SUPPLIER_SCORES: SupplierQualityScoreItem[] = [
   },
   {
     id: 'sq-2',
-    supplierName: 'BOE Display Technologies Corp',
+    supplierName: 'Precision Display & Sensor Technologies',
     periodMonth: '2026-10',
     totalLotsReceived: 45,
     lotsAccepted: 44,
@@ -55,7 +55,7 @@ const INITIAL_SUPPLIER_SCORES: SupplierQualityScoreItem[] = [
     onTimeDeliveryRate: 96.0,
     qualityScore: 97.2,
     certificationStatus: 'Class 100 Cleanroom Certified',
-    evaluatedBy: 'Priya Sharma (Screen QC)',
+    evaluatedBy: 'Priya Sharma (Materials QC)',
     createdAt: '2026-10-05',
   },
   {
@@ -111,7 +111,7 @@ const INITIAL_AUDITS: QualityAuditLogItem[] = [
     auditNumber: 'Q-AUD-2026-03',
     standard: 'ISO_9001',
     auditType: 'SYSTEM_COMPLIANCE',
-    department: 'Receiving Dock & Screen Testing Staging',
+    department: 'Receiving Dock & Material Testing Staging',
     auditorName: 'Vikram Joshi (Senior Inspector)',
     scorePercentage: 99.0,
     findingsCount: 0,
@@ -185,7 +185,7 @@ export default function QualityAnalyticsDashboard() {
           <div className="flex items-center gap-3">
             <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
               <BadgeCheck className="w-6 sm:w-7 h-6 sm:h-7 text-purple-600 dark:text-purple-400" />
-              Phone Quality Checks & Testing
+              Industrial Quality Assurance & Pass Testing
             </h1>
             <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
               Zero Defect Standard
@@ -264,9 +264,9 @@ export default function QualityAnalyticsDashboard() {
           </div>
           <div className="mt-2 flex items-baseline gap-2">
             <span className="text-2xl font-bold text-slate-900 dark:text-white font-mono">99.6%</span>
-            <span className="text-xs text-purple-600 dark:text-purple-400 font-medium">Ready for retail boxes</span>
+            <span className="text-xs text-purple-600 dark:text-purple-400 font-medium">Ready for packaging</span>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Zero defective phones sent</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Zero defective units dispatched</p>
         </div>
 
         {/* KPI 4: Scrap Cost */}
@@ -303,7 +303,7 @@ export default function QualityAnalyticsDashboard() {
           </div>
           <h3 className="font-semibold text-slate-900 dark:text-white mt-3 text-sm">Incoming Parts Inspection</h3>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Check screen, battery, and chip shipments before moving to factory floor.
+            Check electronic parts, power units, and raw materials before moving to factory floor.
           </p>
         </Link>
 
@@ -321,7 +321,7 @@ export default function QualityAnalyticsDashboard() {
           </div>
           <h3 className="font-semibold text-slate-900 dark:text-white mt-3 text-sm">Live Assembly Line Checks</h3>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Circuit board assembly, screen fit, and camera tuning station checks.
+            Circuit board assembly, subassembly fit, and sensor calibration station checks.
           </p>
         </Link>
 
@@ -337,9 +337,9 @@ export default function QualityAnalyticsDashboard() {
               Approve <ArrowUpRight className="w-3.5 h-3.5" />
             </span>
           </div>
-          <h3 className="font-semibold text-slate-900 dark:text-white mt-3 text-sm">Final Phone Testing & Packaging</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-white mt-3 text-sm">Final Acceptance Testing & Packaging</h3>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Test phone audio, screen touch, 5G signal, and approve for boxed packing.
+            Test unit power, telemetry response, wireless diagnostics, and approve for boxed packing.
           </p>
         </Link>
 
@@ -498,7 +498,7 @@ export default function QualityAnalyticsDashboard() {
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 text-center">
           {[
-            { label: 'Screen Dust & Scratches', count: 18, color: 'text-amber-600 dark:text-amber-400', bar: 'w-[85%] bg-amber-500' },
+            { label: 'Surface Tolerances & Imperfections', count: 18, color: 'text-amber-600 dark:text-amber-400', bar: 'w-[85%] bg-amber-500' },
             { label: 'Circuit Solder Bridges', count: 12, color: 'text-blue-600 dark:text-blue-400', bar: 'w-[60%] bg-blue-500' },
             { label: 'Camera Alignment', count: 7, color: 'text-purple-600 dark:text-purple-400', bar: 'w-[35%] bg-purple-500' },
             { label: 'Battery Connector Fit', count: 5, color: 'text-emerald-600 dark:text-emerald-400', bar: 'w-[25%] bg-emerald-500' },

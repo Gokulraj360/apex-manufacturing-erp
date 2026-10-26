@@ -12,7 +12,6 @@ import {
   ShieldAlert,
   Clock,
   Sparkles,
-  Smartphone,
   Cpu,
   Radio,
   Box,
@@ -23,6 +22,7 @@ import {
 } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 import { RoleActionAlerts } from '@/components/RoleActionAlerts';
+import { useActiveFranchise } from '@/lib/franchiseStore';
 import { LineChart, DonutChart } from '@/components/charts';
 
 export default function ExecutiveOverviewPage() {
@@ -78,19 +78,21 @@ export default function ExecutiveOverviewPage() {
     chipsetCoverDays: 4.2,
   });
 
+  const activeFranchise = useActiveFranchise();
+
   const [pendingActions, setPendingActions] = useState([
     {
       id: 'po-1',
       type: 'SILICON_PO',
-      title: 'PO-2026-9042: 50,000x Qualcomm Snapdragon 8 Gen-3 Processors',
-      supplier: 'Qualcomm Enterprise Direct',
+      title: 'PO-2026-9042: 50,000x High-Performance Computing & Controller Modules',
+      supplier: 'Tier-1 Micro-Systems Direct',
       amount: 410000000, // ₹41 Crores
       urgent: true,
     },
     {
       id: 'pr-1',
       type: 'PAYROLL',
-      title: 'October 2026 Phone Assembly & Operator Shift Salary Batch',
+      title: 'October 2026 Shift Labor & Operations Salary Batch',
       supplier: 'Plant #01 Workforce (420 Technicians & Operators)',
       amount: 7800000, // ₹78 Lakhs
       urgent: true,
@@ -98,82 +100,15 @@ export default function ExecutiveOverviewPage() {
     {
       id: 'po-2',
       type: 'DISPLAY_PO',
-      title: 'PO-2026-9045: 25,000x 144Hz LTPO AMOLED Touchscreen Panels',
-      supplier: 'BOE Display Technologies Corp.',
+      title: 'PO-2026-9045: 25,000x High-Precision Electronic Display & Sensor Modules',
+      supplier: 'Precision Display & Sensor Technologies',
       amount: 120000000, // ₹12 Crores
       urgent: false,
     },
   ]);
 
-  // All 6 Smartphone Assembly Lines in Plain English
-  const productionLines = [
-    {
-      number: 1,
-      name: 'Line 1: Circuit Board Assembly Work',
-      stageDesc: 'Robotic chip placement, circuit board inspection, and soldering ovens',
-      sku: 'SMT-PCB-APEX-PRO',
-      actual: 7420,
-      target: 7600,
-      fpy: 99.4,
-      defectPpm: 24,
-      health: 'OPTIMAL',
-    },
-    {
-      number: 2,
-      name: 'Line 2: Dust-Free Screen Fitting',
-      stageDesc: 'Cleanroom screen bonding and pressure chamber sealing',
-      sku: 'DISP-AMOLED-BOND',
-      actual: 7350,
-      target: 7600,
-      fpy: 98.8,
-      defectPpm: 45,
-      health: 'OPTIMAL',
-    },
-    {
-      number: 3,
-      name: 'Line 3: Camera Lens Focus & Tuning',
-      stageDesc: 'Lens alignment, image stabilizer testing, and color calibration',
-      sku: 'CAM-SONY-IMX989-AA',
-      actual: 7290,
-      target: 7600,
-      fpy: 98.2,
-      defectPpm: 72,
-      health: 'OPTIMAL',
-    },
-    {
-      number: 4,
-      name: 'Line 4: Software Loading & 5G Signal Test',
-      stageDesc: 'Install phone software, write SIM serial numbers, and test mobile antenna',
-      sku: 'OS-RF-IMEI-BURN',
-      actual: 7210,
-      target: 7600,
-      fpy: 99.1,
-      defectPpm: 38,
-      health: 'OPTIMAL',
-    },
-    {
-      number: 5,
-      name: 'Line 5: Battery Aging & Drop Resistance Test',
-      stageDesc: 'Heat stress test, drop durability check, and regulatory laser marking',
-      sku: 'AGING-DROP-TEST',
-      actual: 7150,
-      target: 7600,
-      fpy: 97.9,
-      defectPpm: 88,
-      health: 'OPERATIONAL_WITH_WARNINGS',
-    },
-    {
-      number: 6,
-      name: 'Line 6: Box Packing & Serial Number Sticker',
-      stageDesc: 'Add fast charger and cable, seal box, and verify barcode match',
-      sku: 'BOX-PACK-DISPATCH',
-      actual: 7080,
-      target: 7600,
-      fpy: 99.8,
-      defectPpm: 12,
-      health: 'OPTIMAL',
-    },
-  ];
+  // Dynamic Industrial Assembly Lines adapt to the active franchise plant
+  const productionLines = activeFranchise.productionLines;
 
   const handleQuickApprove = (id: string) => {
     setPendingActions(pendingActions.filter((a) => a.id !== id));
@@ -187,11 +122,11 @@ export default function ExecutiveOverviewPage() {
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
             Factory Production & Machine Overview
             <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
-              Main Phone Factory #01
+              {activeFranchise.flag} {activeFranchise.plantName}
             </span>
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Live status across all 6 smartphone assembly lines, first-time quality pass rates, and phone serial numbers.
+            Live status across all {activeFranchise.operatingLines} {activeFranchise.primaryIndustry} assembly lines, pass rates, and serial registries.
           </p>
         </div>
 
@@ -211,9 +146,9 @@ export default function ExecutiveOverviewPage() {
         {/* Metric 1: Units Assembled */}
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-medium">
-            <span>Shift Phones Assembled</span>
+            <span>Shift Units Assembled</span>
             <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
-              <Smartphone className="h-4 w-4" />
+              <Layers className="h-4 w-4" />
             </div>
           </div>
           <div className="mt-3">
@@ -245,10 +180,10 @@ export default function ExecutiveOverviewPage() {
           </div>
         </div>
 
-        {/* Metric 3: IMEI Database Registry */}
+        {/* Metric 3: Serial Numbers Database Registry */}
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-medium">
-            <span>Phone Serial Numbers & SIM Registry</span>
+            <span>Hardware Serial Numbers & Registry</span>
             <div className="p-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
               <Barcode className="h-4 w-4" />
             </div>
@@ -258,7 +193,7 @@ export default function ExecutiveOverviewPage() {
               100% Synced
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              7,210 phone serial numbers verified
+              7,210 unit serial numbers verified
             </div>
           </div>
         </div>
@@ -266,7 +201,7 @@ export default function ExecutiveOverviewPage() {
         {/* Metric 4: Chipset Stock Days */}
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-medium">
-            <span>Processor Chip Stock Remaining</span>
+            <span>Core Component Stock Remaining</span>
             <div className="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-500 dark:text-amber-400">
               <Cpu className="h-4 w-4" />
             </div>
@@ -276,7 +211,7 @@ export default function ExecutiveOverviewPage() {
               {plantOperations.chipsetCoverDays} Days
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Qualcomm order #9042 arriving by air cargo
+              Tier-1 component shipment arriving by air cargo
             </div>
           </div>
         </div>
@@ -292,7 +227,7 @@ export default function ExecutiveOverviewPage() {
               { key: 'target', name: 'Shift Target Pace', color: '#10b981', strokeWidth: 2, isDashed: true },
             ]}
             xAxisKey="label"
-            title="Live Smartphone Assembly Line Throughput Trend"
+            title="Live Industrial Assembly Line Throughput Trend"
             subtitle="Hourly cumulative assembled units across 6 lines vs target shift pace"
             tooltipFormatter={(v, k) => `${v.toLocaleString()} Units`}
             yAxisFormatter={(v) => `${(v / 1000).toFixed(1)}k`}
@@ -314,15 +249,15 @@ export default function ExecutiveOverviewPage() {
         </div>
       </div>
 
-      {/* Main Grid: 6 Smartphone Production Lines & Urgent Approvals */}
+      {/* Main Grid: 6 Industrial Production Lines & Urgent Approvals */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Smartphone Assembly Stages (6 Lines) */}
+        {/* Industrial Assembly Stages (6 Lines) */}
         <div className="lg:col-span-2 p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-5">
             <div>
               <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <Activity className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                Smartphone Assembly Stages (Lines 1 to 6)
+                Industrial Assembly Stages (Lines 1 to 6)
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Assembly speed, visual inspection results, and current station status

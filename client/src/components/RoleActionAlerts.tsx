@@ -114,8 +114,8 @@ const DEFAULT_ALERTS: ActionAlertItem[] = [
     badge: 'WORKFORCE LEAVE APPROVALS',
     badgeColor: 'amber',
     title: 'Pending Leave Approvals from Shift Technicians',
-    description: '3 casual and medical leave requests submitted by Screen Assembly Line 2 technicians awaiting HR department approval.',
-    submittedBy: 'Phone Assembly Department',
+    description: '3 casual and medical leave requests submitted by Precision Assembly Line 2 technicians awaiting HR department approval.',
+    submittedBy: 'Precision Assembly Department',
     timestamp: 'Today, 08:15 AM',
     primaryActionLabel: 'Review & Approve Leave',
     primaryActionType: 'link',
@@ -130,7 +130,7 @@ const DEFAULT_ALERTS: ActionAlertItem[] = [
     badge: 'INBOUND RECEIVING DOCK',
     badgeColor: 'blue',
     title: 'Incoming Parts Shipment Docked at Gate Security',
-    description: 'Container Truck KA-04-E-8891 carrying 10,000 AMOLED display panels docked at Inbound Gate 02 awaiting warehouse barcode scan & GRN.',
+    description: 'Container Truck KA-04-E-8891 carrying 10,000 industrial display modules docked at Inbound Gate 02 awaiting warehouse barcode scan & GRN.',
     submittedBy: 'Logistics Gate Security',
     timestamp: 'Today, 09:00 AM',
     primaryActionLabel: 'Create Inbound Goods Receipt Note (GRN)',
@@ -161,8 +161,8 @@ const DEFAULT_ALERTS: ActionAlertItem[] = [
     roleId: 'quality',
     badge: 'PRE-DISPATCH QUALITY AUDIT',
     badgeColor: 'emerald',
-    title: 'Line 5 Battery Aging & Drop Test Certification Due',
-    description: 'Batch 5G-902 finished smartphones (500 units) awaiting final drop test stamps before box packaging.',
+    title: 'Line 5 Thermal Aging & Durability Certification Due',
+    description: 'Batch 5G-902 finished units (500 units) awaiting final quality compliance stamps before packaging.',
     submittedBy: 'Assembly Line 5',
     timestamp: 'Today, 10:00 AM',
     primaryActionLabel: 'Conduct Final Quality Check',
@@ -178,7 +178,7 @@ const DEFAULT_ALERTS: ActionAlertItem[] = [
     badge: 'TRIP DISPATCH READY',
     badgeColor: 'blue',
     title: 'Consignment Gate Pass Cleared for Transit',
-    description: 'Vehicle TRK-04 (Tata Ultra 1918) loaded with 2,500 retail-packed smartphones cleared by Gate Security for Chennai distribution hub.',
+    description: 'Vehicle TRK-04 (Tata Ultra 1918) loaded with 2,500 finished product units cleared by Gate Security for regional distribution hub.',
     submittedBy: 'Dispatch Dock & Gate Security',
     timestamp: 'Today, 11:00 AM',
     primaryActionLabel: 'Start Trip & Live Vehicle Tracker',
@@ -423,7 +423,7 @@ export function RoleActionAlerts({ roleId }: { roleId?: string }) {
             <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-xs space-y-1.5">
               <div className="flex justify-between">
                 <span className="text-slate-500">Department / Batch:</span>
-                <strong className="text-slate-800 dark:text-slate-200">Line 1 SMT & Phone Assembly (October 2026)</strong>
+                <strong className="text-slate-800 dark:text-slate-200">Line 1 SMT & Precision Assembly (October 2026)</strong>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-500">Total Factory Technicians:</span>

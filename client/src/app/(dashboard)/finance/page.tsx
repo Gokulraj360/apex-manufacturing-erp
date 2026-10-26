@@ -40,9 +40,9 @@ export default function CashFlowOverviewPage() {
   });
 
   const [dailyMovement] = useState([
-    { time: '09:15 AM', type: 'INFLOW', party: 'Reliance Retail Digital Stores', category: 'Bulk Smartphone Order (5,000 units)', amount: 25000000, method: 'Direct Bank Transfer' },
-    { time: '11:30 AM', type: 'OUTFLOW', party: 'Qualcomm Enterprise Direct', category: 'Processor Chips PO-9042', amount: 14500000, method: 'NEFT Transfer' },
-    { time: '01:45 PM', type: 'INFLOW', party: 'Croma Megastores Distribution', category: 'Apex Pro 5G Batch Payment', amount: 8200000, method: 'RTGS Transfer' },
+    { time: '09:15 AM', type: 'INFLOW', party: 'Reliance Enterprise Retail Stores', category: 'Bulk Commercial Order (5,000 units)', amount: 25000000, method: 'Direct Bank Transfer' },
+    { time: '11:30 AM', type: 'OUTFLOW', party: 'Qualcomm Enterprise Direct', category: 'Computing Modules PO-9042', amount: 14500000, method: 'NEFT Transfer' },
+    { time: '01:45 PM', type: 'INFLOW', party: 'Croma Megastores Distribution', category: 'Apex Enterprise Series Batch Payment', amount: 8200000, method: 'RTGS Transfer' },
     { time: '03:10 PM', type: 'OUTFLOW', party: 'State Electricity Board', category: 'Factory Power & Cleanroom Air Conditioning', amount: 3420000, method: 'Direct Debit' },
   ]);
 

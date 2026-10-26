@@ -42,8 +42,8 @@ const initialStocks: WarehouseStockItem[] = [
   },
   {
     id: 's-2',
-    itemCode: 'PART-DISP-LTPO',
-    itemName: '6.7" 144Hz LTPO AMOLED Touchscreen Display',
+    itemCode: 'PART-DISP-MOD',
+    itemName: '6.7" High-Resolution Industrial Display Module',
     category: 'RAW_MATERIAL',
     currentQuantity: 850,
     reservedQuantity: 800,
@@ -52,13 +52,13 @@ const initialStocks: WarehouseStockItem[] = [
     unitOfMeasure: 'PCS',
     unitValuation: 4800,
     binCode: 'RACK-A2-TRAY-04',
-    lotBatchNumber: 'LOT-BOE-2201',
+    lotBatchNumber: 'LOT-DISP-2201',
     isBelowReorderThreshold: true,
   },
   {
     id: 's-3',
     itemCode: 'PART-BAT-5000',
-    itemName: '5,000mAh Dual-Cell Lithium-Ion Battery Pack',
+    itemName: '5,000mAh High-Density Lithium Power Cell Pack',
     category: 'RAW_MATERIAL',
     currentQuantity: 6200,
     reservedQuantity: 6000,
@@ -73,7 +73,7 @@ const initialStocks: WarehouseStockItem[] = [
   {
     id: 's-4',
     itemCode: 'SKU-APEX-PRO',
-    itemName: 'Apex Pro 5G - Phantom Black 256GB (Finished Boxed Phone)',
+    itemName: 'Apex Industrial Module Pro - Enterprise Edition (Finished Packaged Unit)',
     category: 'FINISHED_GOODS',
     currentQuantity: 1800,
     reservedQuantity: 1200,
@@ -127,34 +127,34 @@ export default function WarehouseOverviewPage() {
   // Stock Valuation Breakdown by Category for Donut Chart
   const categoryValuationData = [
     {
-      name: 'Finished Boxed Phones',
+      name: 'Finished Packaged Units',
       value: 69300000,
       color: '#10b981',
-      description: '1,800 boxed phones ready for courier dispatch',
+      description: '1,800 packaged units ready for courier dispatch',
     },
     {
-      name: 'Processors & SoCs',
+      name: 'Processors & Controllers',
       value: 34440000,
       color: '#6366f1',
-      description: 'Qualcomm Snapdragon 8 Gen-3 tray lots',
+      description: 'High-performance computing modules & tray lots',
     },
     {
-      name: 'Battery Packs',
+      name: 'Power Cell Modules',
       value: 5890000,
       color: '#f59e0b',
-      description: '5,000mAh dual-cell packs in Rack-B1',
+      description: '5,000mAh high-density packs in Rack-B1',
     },
     {
-      name: 'LTPO Touch Displays',
+      name: 'Industrial Displays',
       value: 4080000,
       color: '#3b82f6',
-      description: '144Hz AMOLED screen inventory in Rack-A2',
+      description: 'High-resolution display inventory in Rack-A2',
     },
     {
-      name: 'Camera Sensors',
+      name: 'Sensors & Optical Modules',
       value: 576000,
       color: '#f43f5e',
-      description: 'Sony IMX989 1-inch modules in Rack-C1',
+      description: 'High-precision optical sensors in Rack-C1',
     },
   ];
 
@@ -165,7 +165,7 @@ export default function WarehouseOverviewPage() {
         <SupervisoryBanner
           departmentName="Warehouse & Parts Stock"
           departmentCode="WHS-001"
-          staffRoleTitle="Parts & Phone Inventory Lead"
+          staffRoleTitle="Parts & Finished Goods Inventory Lead"
           onViewAuditFeed={() => {
             const el = document.getElementById('dept-audit-feed');
             if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -331,7 +331,7 @@ export default function WarehouseOverviewPage() {
           <DonutChart
             data={categoryValuationData}
             title="Stock Valuation by Component Class"
-            subtitle="Inventory value distribution across parts & finished boxed smartphones"
+            subtitle="Inventory value distribution across parts & finished packaged units"
             centerLabel="Total Valuation"
             centerValue={formatCurrency(totalValuation)}
             centerSubtext={`${totalPhysicalItems.toLocaleString()} Pieces`}
@@ -390,9 +390,9 @@ export default function WarehouseOverviewPage() {
                         }`}
                       >
                         {stock.category === 'RAW_MATERIAL'
-                          ? 'Phone Component'
+                          ? 'Core Component'
                           : stock.category === 'FINISHED_GOODS'
-                          ? 'Boxed Phone'
+                          ? 'Finished Unit'
                           : stock.category.replace(/_/g, ' ')}
                       </span>
                     </td>
@@ -436,7 +436,7 @@ export default function WarehouseOverviewPage() {
         <div id="dept-audit-feed" className="pt-2">
           <DepartmentAuditFeed
             department="warehouse"
-            title="Warehouse Inbound GRN, Stock Reserves & IMEI Registry Audit Trail"
+            title="Warehouse Inbound GRN, Stock Reserves & Serial Registry Audit Trail"
           />
         </div>
       )}

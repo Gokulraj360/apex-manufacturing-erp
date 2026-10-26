@@ -1,5 +1,5 @@
 /**
- * ApexMobile ERP - Clean & Deduplicated Role-Based Navigation Configuration
+ * Apex Multi-Franchise Enterprise OS - Clean & Deduplicated Role-Based Navigation Configuration
  * 
  * Architecture & Governance Principles:
  * 1. Strict Departmental Scoping: Each of the 21 roles is strictly confined to its core operational domain.
@@ -49,15 +49,15 @@ export const PATH_TO_FUNCTION_KEY: Record<string, string> = {
   '/payroll': 'FUNC_HR_PAYROLL_BATCH_COMPILE',
   '/department-payroll': 'FUNC_PROD_OVERTIME_SUBMIT',
   '/production': 'FUNC_PROD_WORK_ORDER_EXECUTE',
-  '/production/work-orders': 'FUNC_PROD_SCREEN_FITTING',
+  '/production/work-orders': 'FUNC_PROD_SUBASSEMBLY_BONDING',
   '/production/batches': 'FUNC_PROD_SMT_CALIBRATION',
   '/warehouse': 'FUNC_WHS_STOCK_MONITOR',
   '/warehouse/inventory': 'FUNC_WHS_BUFFER_RESERVE',
-  '/warehouse/locations': 'FUNC_WHS_IMEI_REGISTRATION',
+  '/warehouse/locations': 'FUNC_WHS_SERIAL_REGISTRATION',
   '/quality': 'FUNC_PROD_LINE_YIELD_REPORT',
   '/quality/incoming': 'FUNC_QA_INCOMING_INSPECTION',
   '/quality/in-process': 'FUNC_QA_OPTICAL_SCAN',
-  '/quality/final': 'FUNC_QA_RF_5G_TEST',
+  '/quality/final': 'FUNC_QA_FINAL_ACCEPTANCE_TEST',
   '/quality/ncr': 'FUNC_QA_QUARANTINE_NCR',
   '/dispatch': 'FUNC_WHS_DISPATCH_BOXING',
   '/dispatch/storage': 'FUNC_WHS_BUFFER_RESERVE',
@@ -313,7 +313,7 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/task-delegation',
       '/leave',
     ],
-    description: 'Retail Box Packaging Lines, Ready Phones Storage Bays, Shipping Box Labels, and Department Wages.',
+    description: 'Automated Packaging Lines, Finished Goods Storage Bays, Outbound Pallet Labels, and Department Wages.',
   },
 
   // 7. Factory Gate Security & Receiving Officer
@@ -456,7 +456,7 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/task-delegation',
       '/leave',
     ],
-    description: 'Customer Warranty Claims, Screen & Battery Repairs, Service Spare Parts, and Device Return Tracking.',
+    description: 'Customer Warranty Claims, Component Repairs, Field Service Spare Parts, and Return Tracking.',
   },
 
   // 16. Parts Purchasing & Supplier Orders Lead (Procurement)
@@ -522,10 +522,10 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     description: 'Robotic Feeder Maintenance, Oven Thermal Sensors, Preventive Checklists, and Leave Submissions.',
   },
 
-  // 20. Dust-Free Screen Assembly & Bonding Operator
+  // 20. Precision Subassembly & Assembly Line Operator
   plant_operator: {
     roleId: 'plant_operator',
-    roleTitle: 'Dust-Free Screen Assembly & Bonding Operator',
+    roleTitle: 'Precision Subassembly & Assembly Line Operator',
     department: 'Shop Floor Assembly',
     allowedCategoryTitles: ['MY ASSEMBLY LINE', 'MY WORKSPACE'],
     allowedPaths: [
@@ -534,7 +534,7 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/task-delegation',
       '/leave',
     ],
-    description: 'Cleanroom Screen Laminating, Battery Connector Assembly, Personal Leave Requests, and Shift Tasks.',
+    description: 'Cleanroom Precision Subassembly, Component Bonding, Personal Leave Requests, and Shift Work Orders.',
   },
 
   // 21. Serial Number Setup & Factory IT Admin

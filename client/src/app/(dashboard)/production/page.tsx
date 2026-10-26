@@ -242,7 +242,7 @@ export default function ProductionOverviewPage() {
         xAxisKey="label"
         mode="grouped"
         title="SMT & Assembly Lines: Target vs Actual Output Comparison"
-        subtitle="Completed good units compared against planned work order targets across all 6 phone assembly lines"
+        subtitle="Completed good units compared against planned work order targets across all 6 industrial assembly lines"
         yAxisFormatter={(v) => `${v.toLocaleString()}`}
         tooltipFormatter={(v) => `${v.toLocaleString()} Units`}
         height={280}
@@ -337,7 +337,7 @@ export default function ProductionOverviewPage() {
                 <div className="mt-4 space-y-1.5">
                   <div className="flex justify-between items-center text-xs">
                     <span className="text-slate-600 dark:text-slate-400">
-                      Phones Assembled: <strong className="text-slate-900 dark:text-white font-mono">{order.completedUnits.toLocaleString()}</strong> of <span className="font-mono">{order.targetUnits.toLocaleString()}</span>
+                      Units Assembled: <strong className="text-slate-900 dark:text-white font-mono">{order.completedUnits.toLocaleString()}</strong> of <span className="font-mono">{order.targetUnits.toLocaleString()}</span>
                     </span>
                     <span className="text-slate-500 dark:text-slate-400">
                       Wasted / Defective: <strong className="text-rose-600 dark:text-rose-400 font-mono">{order.scrapUnits} units</strong> &bull; <strong className="text-blue-600 dark:text-blue-400 font-mono">{progress}% Complete</strong>

@@ -4,7 +4,7 @@ import { AuthProvider } from '@/context/AuthContext';
 import { ThemeProvider } from '@/context/ThemeContext';
 
 export const metadata: Metadata = {
-  title: 'ApexMobile ERP | Manufacturing & Operations Suite',
+  title: 'Apex Multi-Franchise Enterprise OS | Manufacturing & Operations Suite',
   description: 'Clean Minimalist Enterprise ERP for Industrial Manufacturing, Executive Commercial Engine, and Supply Chain Governance',
 };
 

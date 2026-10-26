@@ -202,7 +202,7 @@ export default function PricingControlDashboardPage() {
       name: 'Net Profit Margin',
       value: netProfitPerUnit,
       color: '#10b981',
-      description: 'Factory margin generated per manufactured phone',
+      description: 'Factory margin generated per manufactured unit',
     },
     {
       name: 'Factory Running Costs',
@@ -303,7 +303,7 @@ export default function PricingControlDashboardPage() {
               <Coins className="w-5 h-5" />
             </div>
             <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-              Total Cost to Make 1 Phone
+              Total Cost to Make 1 Unit
             </span>
           </div>
           <div className="mt-4">
@@ -345,7 +345,7 @@ export default function PricingControlDashboardPage() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h2 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight">
-              Profit Calculator & Phone Making Costs
+              Profit Calculator & Unit Manufacturing Costs
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               Live calculation connecting part prices, factory electricity costs, and your selling price
@@ -422,7 +422,7 @@ export default function PricingControlDashboardPage() {
             <DonutChart
               data={unitPriceBreakdown}
               title="Unit Commercial Cost & Margin Breakdown"
-              subtitle={`₹${sellingPrice.toLocaleString()} selling price allocation per manufactured smartphone`}
+              subtitle={`₹${sellingPrice.toLocaleString()} selling price allocation per manufactured unit`}
               centerLabel="Selling Price"
               centerValue={`₹${(sellingPrice / 1000).toFixed(1)}k`}
               centerSubtext={`${grossProfitMarginPercent.toFixed(1)}% Margin`}
@@ -459,7 +459,7 @@ export default function PricingControlDashboardPage() {
                 : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white',
             )}
           >
-            Phone Parts & Making Cost List
+            BOM Parts & Manufacturing Cost List
           </button>
           <button
             onClick={() => setActiveTab('rbac')}
@@ -654,7 +654,7 @@ export default function PricingControlDashboardPage() {
             <form onSubmit={handleUpdateTarget} className="space-y-4 pt-4">
               <div>
                 <label className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">
-                  Batch Size (Number of Phones)
+                  Batch Size (Number of Units)
                 </label>
                 <input
                   type="number"
@@ -704,7 +704,7 @@ export default function PricingControlDashboardPage() {
             <form onSubmit={handleUpdatePrice} className="space-y-4 pt-4">
               <div>
                 <label className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1">
-                  Target Selling Price (₹ per Phone)
+                  Target Selling Price (₹ per Unit)
                 </label>
                 <input
                   type="number"

@@ -4,7 +4,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  Smartphone,
   ChevronDown,
   ChevronRight,
   Zap,
@@ -94,7 +93,7 @@ export function Sidebar() {
   const normalizedId = normalizeRoleId(currentRoleId);
   const activeRule = ROLE_NAVIGATION_RULES[normalizedId];
 
-  // Clean, Deduplicated Master Categories across ApexMobile ERP
+  // Clean, Deduplicated Master Categories across Apex Multi-Franchise Enterprise OS
   const masterCategories: NavCategory[] = useMemo(
     () => [
       {
@@ -268,8 +267,8 @@ export function Sidebar() {
         title: 'MY ASSEMBLY LINE',
         defaultOpen: true,
         items: [
-          { name: 'Line 1: Circuit Board Assembly Work', href: '/production', icon: Cpu },
-          { name: 'Line 2: Dust-Free Screen Fitting', href: '/production/work-orders', icon: Layers },
+          { name: 'Line 1: Precision SMT & Board Assembly', href: '/production', icon: Cpu },
+          { name: 'Line 2: Core Subassembly & Component Bonding', href: '/production/work-orders', icon: Layers },
         ],
       },
       {

@@ -99,14 +99,14 @@ export default function DispatchOverviewPage() {
           <div className="flex items-center gap-3">
             <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
               <Send className="w-6 sm:w-7 h-6 sm:h-7 text-orange-500 dark:text-orange-400" />
-              Phone Box Packing & Dispatch Center
+              Finished Goods Packaging & Dispatch Center
             </h1>
             <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-orange-50 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 border border-orange-200 dark:border-orange-800">
               Active Dispatch Bay
             </span>
           </div>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Live tracking of packed phone boxes, barcode labels, customer order packing, and delivery truck loading.
+            Live tracking of packed master cartons, barcode labels, customer order fulfillment, and delivery truck loading.
           </p>
         </div>
 
@@ -162,7 +162,7 @@ export default function DispatchOverviewPage() {
           </div>
           <div className="mt-2 flex items-baseline gap-2">
             <span className="text-2xl font-bold text-orange-600 dark:text-orange-400 font-mono">₹4.78 Cr</span>
-            <span className="text-xs text-orange-600 dark:text-orange-400 font-medium">1,240 phones staged</span>
+            <span className="text-xs text-orange-600 dark:text-orange-400 font-medium">1,240 units staged</span>
           </div>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">Across 18 finished goods bays</p>
         </div>
@@ -196,9 +196,9 @@ export default function DispatchOverviewPage() {
               Bays <ArrowUpRight className="w-3.5 h-3.5" />
             </span>
           </div>
-          <h3 className="font-semibold text-slate-900 dark:text-white mt-3 text-sm">Packed Phone Storage Shelves</h3>
+          <h3 className="font-semibold text-slate-900 dark:text-white mt-3 text-sm">Finished Goods Storage Bays</h3>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Storage rack capacity & ready-to-sell phones mapping.
+            Storage rack capacity & ready-to-ship inventory mapping.
           </p>
         </Link>
 

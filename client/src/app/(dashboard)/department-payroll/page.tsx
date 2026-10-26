@@ -190,7 +190,7 @@ const INITIAL_SHEETS: DepartmentPayrollSheet[] = [
   },
   {
     id: 'sheet-disp-2026-09',
-    department: 'Line 2: Dust-Free Screen Fitting',
+    department: 'Line 2: Core Subassembly & Component Bonding',
     departmentCode: 'DISP-002',
     managerId: 'mgr-disp-02',
     managerName: 'Ananya Deshmukh (Cleanroom Line Manager)',
@@ -580,7 +580,7 @@ export default function DepartmentPayrollPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  Department & Phone Line
+                  Department & Assembly Line
                 </label>
                 <select
                   value={selectedDeptIndex}

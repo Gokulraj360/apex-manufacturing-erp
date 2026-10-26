@@ -32,11 +32,11 @@ import { ALL_ROLES, RoleDefinition } from '@/types/auth';
 import { useAuth } from '@/context/AuthContext';
 import { cn } from '@/lib/utils';
 
-// Human-friendly title mapper for common mobile smartphone manufacturing ERP slugs
+// Human-friendly title mapper for common industrial multi-franchise manufacturing ERP slugs
 const SLUG_TITLE_MAP: Record<string, { title: string; desc: string; badge: string }> = {
   inventory: {
     title: 'Small Parts Storage Bins & Safety Stock',
-    desc: 'Clean storage tracking for phone processors, display screens, and memory chips.',
+    desc: 'Clean storage tracking for critical microcontrollers, precision components, and subassemblies.',
     badge: 'Parts Bins',
   },
   'vendor-bills': {
@@ -70,42 +70,42 @@ const SLUG_TITLE_MAP: Record<string, { title: string; desc: string; badge: strin
     badge: 'Salaries',
   },
   'work-orders': {
-    title: 'Line 2: Dust-Free Screen Fitting',
-    desc: 'Fitting display glass to phone bodies without dust specks or air bubbles.',
-    badge: 'Screen Fitting',
+    title: 'Line 2: Core Subassembly & Component Bonding',
+    desc: 'High-precision subassembly, mechanical housing alignment, and automated bonding.',
+    badge: 'Subassembly',
   },
   batches: {
-    title: 'Line 3: Camera Lens Focus & Tuning',
-    desc: 'Adjusting camera lenses, image stabilization tuning, and photo color accuracy tests.',
-    badge: 'Camera Tuning',
+    title: 'Line 3: Sensor Calibration & Optical Alignment',
+    desc: 'Adjusting optical sensors, precision telemetry calibration, and response accuracy tests.',
+    badge: 'Sensor Calibration',
   },
   'in-process': {
-    title: 'Screen Brightness & Color Quality Check',
-    desc: 'Air cleanliness checks, display color uniformity, and quality charts.',
+    title: 'In-Line Tolerance & Quality Diagnostics Check',
+    desc: 'Environmental cleanroom checks, surface finish inspection, and automated quality diagnostics.',
     badge: 'Quality Station',
   },
   final: {
-    title: 'Pre-Dispatch Quality Stamp & Phone Seals',
-    desc: 'Matching phone serial number stickers, box seals, and final packing sign-off.',
+    title: 'Pre-Dispatch Quality Stamp & Outbound Seals',
+    desc: 'Matching finished product serial numbers, tamper-evident seals, and final packing sign-off.',
     badge: 'Pre-Dispatch Check',
   },
   ncr: {
     title: 'Quality Issue & Defect Damage Reports',
-    desc: 'Fixing circuit board soldering errors, loose parts, and phone drop test cracks.',
+    desc: 'Fixing circuit board soldering errors, structural deviations, and drop test stress fractures.',
     badge: 'Defect Reports',
   },
   deployments: {
     title: 'Line 1-6 Worker Station Placement',
-    desc: 'Worker allocation across Board Assembly, Screen Fitting, Camera Tuning, and Box Packing.',
+    desc: 'Worker allocation across Board Assembly, Subassembly, Sensor Calibration, and Packaging.',
     badge: 'Worker Stations',
   },
   outputs: {
-    title: 'Shift Daily Target Output (7,600 Phones)',
+    title: 'Shift Daily Target Output (7,600 Units)',
     desc: 'Hourly assembly speed, machine stop times, and First-Time Quality Pass Rate.',
     badge: 'Shift Target',
   },
   orders: {
-    title: 'External Board Assembly Job-Work',
+    title: 'External Subassembly Job-Work',
     desc: 'Outside contractor circuit cable assembly, sent material slips, and parts loss checks.',
     badge: 'Outside Work',
   },
@@ -120,8 +120,8 @@ const SLUG_TITLE_MAP: Record<string, { title: string; desc: string; badge: strin
     badge: 'Board Assembly',
   },
   'audit-logs': {
-    title: 'Activity Logs & System Checks',
-    desc: 'Safe phone serial number records, system logins, and price change activity logs.',
+    title: 'Activity Logs & System Audit Trails',
+    desc: 'Safe serial number records, system logins, and price change activity logs.',
     badge: 'Activity Logs',
   },
 };
@@ -654,7 +654,7 @@ export function GenericModuleWorkspace({ role, slug }: GenericModuleWorkspacePro
           <div className="space-y-2 pt-2">
             {[
               { event: 'User Signed In Successfully', user: session?.username || 'super_admin', time: '5 mins ago', status: 'OK' },
-              { event: 'Factory Screen Synced with Main Server', user: 'system_daemon', time: '14 mins ago', status: 'OK' },
+              { event: 'Factory Floor Terminal Synced with Main Server', user: 'system_daemon', time: '14 mins ago', status: 'OK' },
               { event: 'Assembly Line Machine Signal Checked', user: 'edge_sensor_01', time: '22 mins ago', status: 'OK' },
               { event: 'User Role & Price Access Checked', user: session?.username || 'super_admin', time: '40 mins ago', status: 'PASSED' },
             ].map((entry, idx) => (

@@ -156,7 +156,7 @@ const MOCK_ACTIVE_TRIPS: VehicleAssignmentItem[] = [
     driverName: 'Rameshwar Patil',
     driverContact: '+91 98451 22334',
     routeTitle: 'Factory Hub -> Reliance Retail Pune Depot',
-    originLocation: 'Apex Phone Factory Hub 01',
+    originLocation: 'Apex Manufacturing Hub 01',
     destinationLocation: 'Reliance Retail Mega Hub Gate 3',
     purpose: 'FINISHED_GOODS_DELIVERY',
     status: 'IN_TRANSIT',
@@ -275,7 +275,7 @@ export default function FleetDashboardOverviewPage() {
           vehicleId: selectedVehicleId,
           driverName: newTripDriver,
           routeTitle: `Factory -> ${newTripDestination}`,
-          originLocation: 'Apex Phone Factory Hub 01',
+          originLocation: 'Apex Manufacturing Hub 01',
           destinationLocation: newTripDestination,
           purpose: 'FINISHED_GOODS_DELIVERY',
           cargoWeightKg: Number(newTripCargoKg) || 0,
@@ -301,7 +301,7 @@ export default function FleetDashboardOverviewPage() {
           driverName: newTripDriver,
           driverContact: '+91 98000 00000',
           routeTitle: `Factory -> ${newTripDestination}`,
-          originLocation: 'Apex Phone Factory Hub 01',
+          originLocation: 'Apex Manufacturing Hub 01',
           destinationLocation: newTripDestination,
           purpose: 'FINISHED_GOODS_DELIVERY',
           status: 'DISPATCHED',
@@ -521,7 +521,7 @@ export default function FleetDashboardOverviewPage() {
                         <span className="text-slate-800 dark:text-slate-200 font-medium truncate block">{trip.destinationLocation}</span>
                       </div>
                       <div>
-                        <span className="text-slate-400 block text-[10px]">Phones Cargo</span>
+                        <span className="text-slate-400 block text-[10px]">Cargo Load</span>
                         <span className="text-slate-800 dark:text-slate-200 font-medium">{trip.cargoWeightKg ? `${trip.cargoWeightKg.toLocaleString()} kg` : 'N/A'}</span>
                       </div>
                       <div>
@@ -825,7 +825,7 @@ export default function FleetDashboardOverviewPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Phones Cargo Weight (kg)</label>
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">Cargo Weight (kg)</label>
                   <input
                     type="number"
                     value={newTripCargoKg}

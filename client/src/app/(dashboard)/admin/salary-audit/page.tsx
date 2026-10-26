@@ -61,8 +61,8 @@ const INITIAL_AUDIT_LOGS: SalaryAuditRecord[] = [
     id: 'scl-disc-01',
     employeeId: 'EMP-2026-0112',
     employeeName: 'Ganesh Shinde',
-    role: 'Dust-Free Screen Assembly & Bonding Operator',
-    department: 'Phone Assembly Lines',
+    role: 'Precision Subassembly & Assembly Line Operator',
+    department: 'Precision Assembly Lines',
     departmentCode: 'PROD',
     payrollBatchId: 'PAY-BATCH-2026-09',
     batchNumber: 'PAY-BATCH-2026-09',
@@ -85,7 +85,7 @@ const INITIAL_AUDIT_LOGS: SalaryAuditRecord[] = [
     employeeId: 'EMP-2026-0044',
     employeeName: 'Kavita Deshmukh',
     role: 'Cleanroom Optical Quality Inspector',
-    department: 'Phone Quality Checks',
+    department: 'Quality Assurance & Testing',
     departmentCode: 'QA',
     payrollBatchId: 'PAY-BATCH-2026-09',
     batchNumber: 'PAY-BATCH-2026-09',
@@ -248,8 +248,8 @@ const INITIAL_AUDIT_LOGS: SalaryAuditRecord[] = [
     id: 'scl-cred-03',
     employeeId: 'EMP-2026-0003',
     employeeName: 'Suresh Raina',
-    role: 'Phone Assembly & Screen Fitting Lead',
-    department: 'Phone Assembly Lines',
+    role: 'Precision Subassembly & Assembly Lead',
+    department: 'Precision Assembly Lines',
     departmentCode: 'PROD',
     payrollBatchId: 'PAY-BATCH-2026-09',
     batchNumber: 'PAY-BATCH-2026-09',
@@ -271,7 +271,7 @@ const INITIAL_AUDIT_LOGS: SalaryAuditRecord[] = [
     id: 'scl-cred-04',
     employeeId: 'EMP-2026-0004',
     employeeName: 'Vikram Malhotra',
-    role: 'Parts & Phone Inventory Lead',
+    role: 'Parts & Finished Goods Inventory Lead',
     department: 'Warehouse & Inventory',
     departmentCode: 'WHS',
     payrollBatchId: 'PAY-BATCH-2026-09',
@@ -294,8 +294,8 @@ const INITIAL_AUDIT_LOGS: SalaryAuditRecord[] = [
     id: 'scl-cred-05',
     employeeId: 'EMP-2026-0005',
     employeeName: 'Dr. Anand Verma',
-    role: 'Phone Quality & Signal Testing Lead',
-    department: 'Quality Checks',
+    role: 'Quality Assurance & Testing Lead',
+    department: 'Quality Assurance',
     departmentCode: 'QA',
     payrollBatchId: 'PAY-BATCH-2026-09',
     batchNumber: 'PAY-BATCH-2026-09',
@@ -318,7 +318,7 @@ const INITIAL_AUDIT_LOGS: SalaryAuditRecord[] = [
     employeeId: 'EMP-2026-0101',
     employeeName: 'Rameshwar Patil',
     role: 'Circuit Board Pick-and-Place Operator',
-    department: 'Phone Assembly Lines',
+    department: 'Precision Assembly Lines',
     departmentCode: 'PROD',
     payrollBatchId: 'PAY-BATCH-2026-09',
     batchNumber: 'PAY-BATCH-2026-09',
@@ -341,7 +341,7 @@ const INITIAL_AUDIT_LOGS: SalaryAuditRecord[] = [
     employeeId: 'EMP-2026-0102',
     employeeName: 'Sunil Jagtap',
     role: 'SMT Stencil Printer Specialist',
-    department: 'Phone Assembly Lines',
+    department: 'Precision Assembly Lines',
     departmentCode: 'PROD',
     payrollBatchId: 'PAY-BATCH-2026-09',
     batchNumber: 'PAY-BATCH-2026-09',
@@ -736,7 +736,7 @@ export default function SalaryCreditAuditPage() {
             className="px-2.5 py-1.5 rounded-xl text-xs border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-emerald-500 cursor-pointer"
           >
             <option value="ALL">All Departments</option>
-            <option value="Phone Assembly Lines">Phone Assembly Lines</option>
+            <option value="Precision Assembly Lines">Precision Assembly Lines</option>
             <option value="Warehouse & Inventory">Warehouse & Inventory</option>
             <option value="Quality Checks">Quality Checks</option>
             <option value="Finance & Accounts">Finance & Accounts</option>

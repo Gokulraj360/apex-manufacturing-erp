@@ -22,7 +22,6 @@ import {
   ArrowUpRight,
   TrendingUp,
   Cpu,
-  Smartphone,
   ExternalLink,
 } from 'lucide-react';
 
@@ -81,7 +80,7 @@ const MOCK_CLIENT_ORDERS: ClientWorkOrderProgress[] = [
     id: 'cwo-1',
     orderNumber: 'SO-CLI-2026-0912',
     contractPoRef: 'CLI-PO-88190',
-    deviceModel: 'Apex Edge Pro 5G (Titanium Grey, 256GB)',
+    deviceModel: 'Apex Industrial Module Pro (Titanium Series)',
     orderedQuantity: 5000,
     completedQuantity: 3820,
     currentStage: 'RF_5G_CALIBRATION',
@@ -93,7 +92,7 @@ const MOCK_CLIENT_ORDERS: ClientWorkOrderProgress[] = [
     id: 'cwo-2',
     orderNumber: 'SO-CLI-2026-0935',
     contractPoRef: 'CLI-PO-88240',
-    deviceModel: 'Apex Lite 5G (Ceramic White, 128GB)',
+    deviceModel: 'Apex Core Automation Unit (Enterprise Series)',
     orderedQuantity: 10000,
     completedQuantity: 2400,
     currentStage: 'SMT_BOARD_FABRICATION',
@@ -105,7 +104,7 @@ const MOCK_CLIENT_ORDERS: ClientWorkOrderProgress[] = [
     id: 'cwo-3',
     orderNumber: 'SO-CLI-2026-0880',
     contractPoRef: 'CLI-PO-88001',
-    deviceModel: 'Apex Ultra Fold 5G (Deep Obsidian, 512GB)',
+    deviceModel: 'Apex Precision Controller Ultra (Modular Series)',
     orderedQuantity: 2000,
     completedQuantity: 2000,
     currentStage: 'DISPATCH_READY',
@@ -121,7 +120,7 @@ const MOCK_CERTIFICATES: QualityCertificateItem[] = [
     certNumber: 'COC-APEX-2026-0499',
     workOrderRef: 'SO-CLI-2026-0880',
     batchNumber: 'BATCH-UF-2026-09A',
-    deviceModel: 'Apex Ultra Fold 5G',
+    deviceModel: 'Apex Precision Controller Ultra',
     inspectorLead: 'S. Kulkarni (Quality Director)',
     inspectionDate: '2026-10-19',
     rohsCompliant: true,
@@ -134,7 +133,7 @@ const MOCK_CERTIFICATES: QualityCertificateItem[] = [
     certNumber: 'COC-APEX-2026-0482',
     workOrderRef: 'SO-CLI-2026-0850',
     batchNumber: 'BATCH-EP-2026-08D',
-    deviceModel: 'Apex Edge Pro 5G',
+    deviceModel: 'Apex Industrial Module Pro',
     inspectorLead: 'M. Deshmukh (Lead Metrologist)',
     inspectionDate: '2026-10-10',
     rohsCompliant: true,
@@ -149,7 +148,7 @@ const MOCK_RMAS: CustomerRMAItem[] = [
     id: 'rma-1',
     rmaNumber: 'RMA-APEX-2026-0041',
     deviceSerialImei: '869012059942109',
-    deviceModel: 'Apex Edge Pro 5G',
+    deviceModel: 'Apex Industrial Module Pro',
     reportedDefect: 'Touch digitizer ghost touching after cold boot',
     failureCategory: 'OLED_TOUCH_UNRESPONSIVE',
     createdDate: '2026-10-20',
@@ -160,7 +159,7 @@ const MOCK_RMAS: CustomerRMAItem[] = [
     id: 'rma-2',
     rmaNumber: 'RMA-APEX-2026-0038',
     deviceSerialImei: '869012059881024',
-    deviceModel: 'Apex Lite 5G',
+    deviceModel: 'Apex Core Automation Unit',
     reportedDefect: 'Battery thermals throttling charging speed to 5W',
     failureCategory: 'BATTERY_THERMAL_SHUTDOWN',
     createdDate: '2026-10-14',
@@ -202,7 +201,7 @@ export default function CustomerPortalPage() {
   // New RMA Modal State
   const [isRmaModalOpen, setIsRmaModalOpen] = useState(false);
   const [newImei, setNewImei] = useState('');
-  const [newModel, setNewModel] = useState('Apex Edge Pro 5G');
+  const [newModel, setNewModel] = useState('Apex Industrial Module Pro');
   const [newCategory, setNewCategory] = useState<CustomerRMAItem['failureCategory']>('OLED_TOUCH_UNRESPONSIVE');
   const [newRemarks, setNewRemarks] = useState('');
 
@@ -725,9 +724,9 @@ export default function CustomerPortalPage() {
                     onChange={(e) => setNewModel(e.target.value)}
                     className="w-full p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white"
                   >
-                    <option value="Apex Edge Pro 5G">Apex Edge Pro 5G</option>
-                    <option value="Apex Lite 5G">Apex Lite 5G</option>
-                    <option value="Apex Ultra Fold 5G">Apex Ultra Fold 5G</option>
+                    <option value="Apex Industrial Module Pro">Apex Industrial Module Pro</option>
+                    <option value="Apex Core Automation Unit">Apex Core Automation Unit</option>
+                    <option value="Apex Precision Controller Ultra">Apex Precision Controller Ultra</option>
                   </select>
                 </div>
                 <div>
