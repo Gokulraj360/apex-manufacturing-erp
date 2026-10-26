@@ -186,33 +186,6 @@ export function LoginPage3({
 
           {/* Login Form */}
           <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
-            {/* Quick Role Selection Dropdown (All 21 Enterprise Roles) */}
-            {demoUsers.length > 0 && (
-              <div className="space-y-1">
-                <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
-                  <span className="flex items-center gap-1.5">
-                    <Briefcase className="w-3.5 h-3.5 text-slate-600" />
-                    <span>Select Role / Profile</span>
-                  </span>
-                  <span className="text-[11px] font-normal text-slate-400">
-                    Auto-fill credentials
-                  </span>
-                </div>
-                <select
-                  value={selectedRole}
-                  onChange={(e) => handleRoleChange(e.target.value)}
-                  className="w-full h-10 px-3 bg-white border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-900 font-medium cursor-pointer truncate shadow-2xs"
-                >
-                  <option value="">-- Choose Role from Directory (21 Roles) --</option>
-                  {demoUsers.map((user) => (
-                    <option key={user.id} value={user.email}>
-                      {user.roleName || user.name} &bull; {user.name} ({user.email})
-                    </option>
-                  ))}
-                </select>
-              </div>
-            )}
-
             {/* Email Field */}
             <div className="relative">
               <Input
@@ -336,6 +309,33 @@ export function LoginPage3({
               Create an account
             </a>
           </p>
+
+          {/* Quick Role Selection Dropdown (Positioned below Create an Account) */}
+          {demoUsers.length > 0 && (
+            <div className="mt-6 pt-4 border-t border-slate-100 space-y-1.5">
+              <div className="flex items-center justify-between text-xs font-semibold text-slate-700">
+                <span className="flex items-center gap-1.5">
+                  <Briefcase className="w-3.5 h-3.5 text-slate-500" />
+                  <span>Select Role / Profile</span>
+                </span>
+                <span className="text-[11px] font-normal text-slate-400">
+                  Auto-fill credentials
+                </span>
+              </div>
+              <select
+                value={selectedRole}
+                onChange={(e) => handleRoleChange(e.target.value)}
+                className="w-full h-9 px-3 bg-slate-50 hover:bg-slate-100/80 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-slate-900 font-medium cursor-pointer truncate shadow-2xs transition-colors"
+              >
+                <option value="">-- Choose Role from Directory (21 Roles) --</option>
+                {demoUsers.map((user) => (
+                  <option key={user.id} value={user.email}>
+                    {user.roleName || user.name} &bull; {user.name} ({user.email})
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
         </Card>
       </div>
     </section>
