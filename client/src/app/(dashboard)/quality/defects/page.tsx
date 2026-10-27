@@ -15,7 +15,6 @@ import {
   CheckCircle2,
   XCircle,
   Clock,
-  Sparkles,
   X,
   FileText,
   Sliders,

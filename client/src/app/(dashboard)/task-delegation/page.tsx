@@ -21,10 +21,10 @@ import {
   Flame,
   Award,
   ArrowUpRight,
-  Sparkles,
   Layers,
   CheckSquare,
   MessageSquare,
+  ArrowRight,
   X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -1017,9 +1017,9 @@ export default function TaskDelegationPage() {
                       <div className="text-xs font-bold text-slate-900 dark:text-white">
                         {pair.label}
                       </div>
-                      <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 inline-flex items-center gap-1">
                         <span className="font-medium text-slate-700 dark:text-slate-300">{pair.manager.name}</span>
-                        {' ➔ '}
+                        <ArrowRight className="w-2.5 h-2.5 text-slate-400" />
                         <span>{pair.assistant.name}</span>
                       </div>
                     </div>
@@ -1363,8 +1363,11 @@ export default function TaskDelegationPage() {
                     <p className="text-slate-600 dark:text-slate-300 mt-1">
                       {log.notes}
                     </p>
-                    <div className="text-[10px] text-slate-400 mt-1">
-                      {log.previousProgress}% ➔ <span className="font-semibold text-emerald-600 dark:text-emerald-400">{log.newProgress}%</span> | Status: {log.newStatus}
+                    <div className="text-[10px] text-slate-400 mt-1 inline-flex items-center gap-1">
+                      <span>{log.previousProgress}%</span>
+                      <ArrowRight className="w-2.5 h-2.5 text-slate-400" />
+                      <span className="font-semibold text-emerald-600 dark:text-emerald-400">{log.newProgress}%</span>
+                      <span>| Status: {log.newStatus}</span>
                     </div>
                   </div>
                 </div>

@@ -15,7 +15,7 @@ import {
   Download,
   SlidersHorizontal,
   ChevronDown,
-  Sparkles,
+  X,
   FileText,
   UserCheck,
 } from 'lucide-react';
@@ -221,7 +221,7 @@ export function GlobalWorkflowOrchestrator() {
       {toastMessage && (
         <div className="fixed top-4 right-4 z-50 p-4 rounded-xl bg-slate-900 text-white shadow-2xl border border-purple-500/40 text-xs font-medium flex items-center gap-3 animate-in fade-in slide-in-from-top-4 duration-200 max-w-md">
           <div className="p-1 rounded-full bg-purple-500/20 text-purple-400">
-            <Sparkles className="w-4 h-4" />
+            <CheckCircle2 className="w-4 h-4" />
           </div>
           <div className="flex-1">{toastMessage}</div>
         </div>
@@ -270,9 +270,9 @@ export function GlobalWorkflowOrchestrator() {
               </div>
               <button
                 onClick={() => setIsRequestModalOpen(false)}
-                className="text-slate-400 hover:text-slate-600 cursor-pointer"
+                className="text-slate-400 hover:text-slate-600 cursor-pointer p-1 rounded-md"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
 
@@ -286,7 +286,7 @@ export function GlobalWorkflowOrchestrator() {
                     : 'text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
               >
-                ⚡ 1-Click Role Presets ({rolePresets.length})
+                Role Presets ({rolePresets.length})
               </button>
               <button
                 onClick={() => setRequestTab('CUSTOM')}
@@ -296,7 +296,7 @@ export function GlobalWorkflowOrchestrator() {
                     : 'text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
               >
-                ✍️ Custom Requisition
+                Custom Requisition
               </button>
             </div>
 
@@ -494,9 +494,9 @@ export function GlobalWorkflowOrchestrator() {
                 </div>
                 <button
                   onClick={() => setIsApprovalsDrawerOpen(false)}
-                  className="text-slate-400 hover:text-slate-600 cursor-pointer text-sm"
+                  className="text-slate-400 hover:text-slate-600 cursor-pointer p-1 rounded-md"
                 >
-                  ✕
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 
@@ -578,9 +578,10 @@ export function GlobalWorkflowOrchestrator() {
                   setIsApprovalsDrawerOpen(false);
                   router.push('/approvals');
                 }}
-                className="w-full py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg text-xs font-semibold text-center transition-colors cursor-pointer"
+                className="w-full py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg text-xs font-semibold text-center transition-colors cursor-pointer inline-flex items-center justify-center gap-1.5"
               >
-                Go to Dedicated Approvals Hub (/approvals) →
+                <span>Go to Dedicated Approvals Hub (/approvals)</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
@@ -604,9 +605,9 @@ export function GlobalWorkflowOrchestrator() {
                 </div>
                 <button
                   onClick={() => setIsMyRequestsDrawerOpen(false)}
-                  className="text-slate-400 hover:text-slate-600 cursor-pointer text-sm"
+                  className="text-slate-400 hover:text-slate-600 cursor-pointer p-1 rounded-md"
                 >
-                  ✕
+                  <X className="w-4 h-4" />
                 </button>
               </div>
 

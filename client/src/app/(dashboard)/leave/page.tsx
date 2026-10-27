@@ -21,7 +21,7 @@ import {
   HelpCircle,
   Info,
   ChevronRight,
-  Sparkles,
+  ArrowRight,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
@@ -734,8 +734,8 @@ export default function LeaveManagementPage() {
                           >
                             {leave.recipientType === 'DEPARTMENT_MANAGER' ? 'Dept Mgr' : 'HR Dept'}
                           </span>
-                          <span className="text-slate-500 dark:text-slate-400 text-[10px]">
-                            ➔ {leave.targetApproverName}
+                          <span className="text-slate-500 dark:text-slate-400 text-[10px] inline-flex items-center gap-1">
+                            <ArrowRight className="w-2.5 h-2.5 text-slate-400" /> {leave.targetApproverName}
                           </span>
                         </div>
                       </td>

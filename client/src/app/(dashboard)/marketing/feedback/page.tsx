@@ -10,6 +10,7 @@ import {
   Filter,
   Star,
   CheckCircle2,
+  Check,
   X,
   ChevronRight,
   MessageSquare,
@@ -17,7 +18,6 @@ import {
   TrendingUp,
   ThumbsUp,
   Heart,
-  Sparkles,
   Lock,
 } from 'lucide-react';
 import {
@@ -534,9 +534,9 @@ export default function BrandFeedbackPage() {
                     {s.keyStrengths.map((str, idx) => (
                       <span
                         key={idx}
-                        className="text-[10px] px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-500/20 text-emerald-300 font-medium"
+                        className="text-[10px] px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-500/20 text-emerald-300 font-medium inline-flex items-center gap-1"
                       >
-                        ✓ {str}
+                        <Check className="w-3 h-3 text-emerald-400" /> {str}
                       </span>
                     ))}
                   </div>
@@ -552,9 +552,9 @@ export default function BrandFeedbackPage() {
                     {s.improvementAreas.map((imp, idx) => (
                       <span
                         key={idx}
-                        className="text-[10px] px-2 py-0.5 rounded bg-amber-950/40 border border-amber-500/20 text-amber-300 font-medium"
+                        className="text-[10px] px-2 py-0.5 rounded bg-amber-950/40 border border-amber-500/20 text-amber-300 font-medium inline-flex items-center gap-1"
                       >
-                        ⚡ {imp}
+                        <TrendingUp className="w-3 h-3 text-amber-400" /> {imp}
                       </span>
                     ))}
                   </div>

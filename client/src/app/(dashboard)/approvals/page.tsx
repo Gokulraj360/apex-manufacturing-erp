@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import {
   CheckCircle2,
   XCircle,
+  X,
   Clock,
   AlertTriangle,
   FileText,
@@ -24,7 +25,6 @@ import {
   AlertCircle,
   ShieldCheck,
   Layers,
-  Sparkles,
 } from 'lucide-react';
 import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 import { workflowStore, WorkflowItem } from '@/lib/workflowStore';
@@ -1073,9 +1073,9 @@ export default function ApprovalsPage() {
                   setModalItem(null);
                   setDecisionType(null);
                 }}
-                className="text-muted-foreground hover:text-foreground text-sm"
+                className="text-muted-foreground hover:text-foreground p-1 rounded-md"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
 

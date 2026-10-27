@@ -22,7 +22,7 @@ import {
   Fingerprint,
   FileText,
   Download,
-  Sparkles,
+  KeyRound,
   RefreshCw,
   Building2,
   Crown,
@@ -551,7 +551,7 @@ export default function UserAccessManagementPage() {
                     onClick={generateRandomPassword}
                     className="text-[10px] text-blue-600 hover:underline font-semibold flex items-center gap-1 cursor-pointer"
                   >
-                    <Sparkles className="h-3 w-3" />
+                    <KeyRound className="h-3 w-3" />
                     <span>Generate Secure Password</span>
                   </button>
                 </div>

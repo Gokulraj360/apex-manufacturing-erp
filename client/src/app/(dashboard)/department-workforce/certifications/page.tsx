@@ -16,7 +16,6 @@ import {
   ArrowRight,
   TrendingUp,
   Cpu,
-  Sparkles,
   ShieldAlert,
   Clock,
   Check,

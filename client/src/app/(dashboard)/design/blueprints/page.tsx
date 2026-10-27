@@ -18,7 +18,6 @@ import {
   Maximize2,
   FileCheck,
   Target,
-  Sparkles,
 } from 'lucide-react';
 import {
   TechnicalDrawingItem,

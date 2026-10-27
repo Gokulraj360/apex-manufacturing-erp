@@ -16,7 +16,6 @@ import {
   X,
   ChevronRight,
   Layers,
-  Sparkles,
   Maximize2,
   RotateCw,
   Box,

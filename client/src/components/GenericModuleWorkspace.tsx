@@ -18,7 +18,6 @@ import {
   ArrowUpRight,
   Database,
   Sliders,
-  Sparkles,
   TrendingUp,
   X,
   ChevronRight,

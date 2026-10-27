@@ -7,6 +7,8 @@ import {
   Activity,
   Award,
   RotateCcw,
+  Check,
+  X,
   Receipt,
   Download,
   Plus,
@@ -571,9 +573,9 @@ export default function CustomerPortalPage() {
                     Inspected by: {cert.inspectorLead} • Date: {cert.inspectionDate} • Order: <span className="font-mono">{cert.workOrderRef}</span>
                   </div>
                   <div className="flex items-center gap-3 pt-1 text-[11px] text-emerald-600 dark:text-emerald-400">
-                    <span>✓ RoHS 3 Compliant</span>
-                    <span>✓ REACH Certified</span>
-                    <span>✓ Drop Test (1.5m) Passed</span>
+                    <span className="inline-flex items-center gap-1"><Check className="h-3 w-3" /> RoHS 3 Compliant</span>
+                    <span className="inline-flex items-center gap-1"><Check className="h-3 w-3" /> REACH Certified</span>
+                    <span className="inline-flex items-center gap-1"><Check className="h-3 w-3" /> Drop Test (1.5m) Passed</span>
                   </div>
                 </div>
 
@@ -629,7 +631,9 @@ export default function CustomerPortalPage() {
                 </div>
 
                 <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
-                  <span className="text-emerald-600 dark:text-emerald-400 font-semibold">✓ {rma.warrantyStatus.replace(/_/g, ' ')}</span>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-semibold inline-flex items-center gap-1">
+                    <Check className="h-3 w-3" /> {rma.warrantyStatus.replace(/_/g, ' ')}
+                  </span>
                   <button className="text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 font-medium">
                     Prepaid Shipping Label <ArrowUpRight className="h-3 w-3" />
                   </button>
@@ -702,7 +706,9 @@ export default function CustomerPortalPage() {
           <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">File Hardware RMA Warranty Claim</h3>
-              <button onClick={() => setIsRmaModalOpen(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white">✕</button>
+              <button onClick={() => setIsRmaModalOpen(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-md">
+                <X className="h-4 w-4" />
+              </button>
             </div>
             <form onSubmit={handleCreateRma} className="space-y-3 text-xs">
               <div>

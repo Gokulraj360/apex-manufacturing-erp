@@ -19,7 +19,6 @@ import {
   FileText,
   Truck,
   RotateCcw,
-  Sparkles,
 } from 'lucide-react';
 import { IncomingInspectionItem, QCStatus } from '@/types/quality';
 

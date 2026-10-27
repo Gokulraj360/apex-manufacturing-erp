@@ -21,7 +21,6 @@ import {
   ChevronDown,
   ChevronUp,
   X,
-  Sparkles,
 } from 'lucide-react';
 import { CycleCountItem, DamagedLogItem, CycleCountStatus } from '@/types/warehouse';
 
@@ -951,8 +950,10 @@ export default function WarehouseAuditsPage() {
                 {selectedCountForReconcile.itemsCounted.map((item, idx) => (
                   <div key={idx} className="flex justify-between">
                     <span>{item.itemCode}:</span>
-                    <span className={item.variance !== 0 ? 'text-amber-400 font-bold' : 'text-neutral-500'}>
-                      {item.systemQuantity} → {item.physicalCount} ({item.variance > 0 ? `+${item.variance}` : item.variance})
+                    <span className={`inline-flex items-center gap-1 ${item.variance !== 0 ? 'text-amber-400 font-bold' : 'text-neutral-500'}`}>
+                      <span>{item.systemQuantity}</span>
+                      <ArrowRight className="w-2.5 h-2.5" />
+                      <span>{item.physicalCount} ({item.variance > 0 ? `+${item.variance}` : item.variance})</span>
                     </span>
                   </div>
                 ))}

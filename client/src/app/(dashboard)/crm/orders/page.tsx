@@ -19,7 +19,6 @@ import {
   ArrowRight,
   ShieldCheck,
   Layers,
-  Sparkles,
   Eye,
   Check,
   X,

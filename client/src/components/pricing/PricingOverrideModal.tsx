@@ -119,9 +119,9 @@ export function PricingOverrideModal({
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white text-xs px-2 py-1 rounded bg-slate-800"
+            className="text-slate-400 hover:text-white p-1 rounded bg-slate-800"
           >
-            ✕
+            <X className="w-4 h-4" />
           </button>
         </div>
 

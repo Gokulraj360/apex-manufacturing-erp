@@ -21,7 +21,7 @@ import {
   TrendingUp,
   CreditCard,
   Send,
-  Sparkles,
+  X,
 } from 'lucide-react';
 
 interface LeaveRecord {
@@ -1074,8 +1074,8 @@ export default function MyWorkspacePage() {
           <div className="bg-card border border-border rounded-xl shadow-2xl w-full max-w-md p-6 space-y-4">
             <div className="flex items-center justify-between border-b border-border pb-3">
               <h3 className="text-base font-bold text-foreground">Apply for Paid Time Off</h3>
-              <button onClick={() => setIsLeaveModalOpen(false)} className="text-muted-foreground hover:text-foreground">
-                ✕
+              <button onClick={() => setIsLeaveModalOpen(false)} className="text-muted-foreground hover:text-foreground p-1 rounded-md">
+                <X className="w-4 h-4" />
               </button>
             </div>
 
@@ -1154,8 +1154,8 @@ export default function MyWorkspacePage() {
           <div className="bg-card border border-border rounded-xl shadow-2xl w-full max-w-sm p-6 space-y-4">
             <div className="flex items-center justify-between border-b border-border pb-3">
               <h3 className="text-base font-bold text-foreground">Log Overtime Hours</h3>
-              <button onClick={() => setIsOtModalOpen(false)} className="text-muted-foreground hover:text-foreground">
-                ✕
+              <button onClick={() => setIsOtModalOpen(false)} className="text-muted-foreground hover:text-foreground p-1 rounded-md">
+                <X className="w-4 h-4" />
               </button>
             </div>
 

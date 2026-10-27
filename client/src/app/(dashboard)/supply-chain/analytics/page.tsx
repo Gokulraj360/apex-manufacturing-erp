@@ -24,7 +24,6 @@ import {
   Flame,
   Check,
   ChevronRight,
-  Sparkles,
 } from 'lucide-react';
 import {
   SupplyRiskLogItem,

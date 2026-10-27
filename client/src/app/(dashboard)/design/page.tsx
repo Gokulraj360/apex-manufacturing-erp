@@ -18,7 +18,6 @@ import {
   ShieldCheck,
   FileText,
   Clock,
-  Sparkles,
   Zap,
   Target,
   ArrowUpRight,
@@ -744,9 +743,9 @@ export default function DesignEngineeringOverviewPage() {
               ].map((std, idx) => (
                 <span
                   key={idx}
-                  className="text-[10px] px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-violet-700 dark:text-violet-300 font-medium"
+                  className="text-[10px] px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-violet-700 dark:text-violet-300 font-medium inline-flex items-center gap-1"
                 >
-                  ✓ {std}
+                  <Check className="w-3 h-3 text-emerald-500" /> {std}
                 </span>
               ))}
             </div>

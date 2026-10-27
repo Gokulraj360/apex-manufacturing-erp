@@ -41,7 +41,7 @@ import {
   Box,
   ListTodo,
   Calendar,
-  Sparkles,
+  Briefcase,
   Globe,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
@@ -100,7 +100,7 @@ export function Sidebar() {
         title: 'TOP MANAGEMENT (OWNER / MD)',
         defaultOpen: true,
         items: [
-          { name: 'Executive Boardroom C-Suite Cockpit', href: '/top-management', icon: Sparkles },
+          { name: 'Executive Boardroom C-Suite Cockpit', href: '/top-management', icon: Briefcase },
           { name: 'Universal Approvals & Governance Inbox', href: '/approvals', icon: ClipboardCheck },
           { name: 'Multi-Persona Portal Gallery', href: '/portals', icon: Users },
           { name: '2D RBAC Matrix & SoD Auditor', href: '/super-admin/rbac-matrix', icon: ShieldCheck },

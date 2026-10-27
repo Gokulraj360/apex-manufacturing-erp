@@ -14,7 +14,6 @@ import {
   CheckCircle2,
   AlertTriangle,
   X,
-  Sparkles,
 } from 'lucide-react';
 import { FinishedGoodsBayItem } from '@/types/dispatch';
 

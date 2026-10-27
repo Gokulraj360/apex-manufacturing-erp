@@ -15,7 +15,6 @@ import {
   ChevronUp,
   Cpu,
   Layers,
-  Sparkles,
 } from 'lucide-react';
 
 export interface AuditFeedItem {

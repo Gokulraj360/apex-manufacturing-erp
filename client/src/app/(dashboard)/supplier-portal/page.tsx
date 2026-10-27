@@ -26,6 +26,7 @@ import {
   DollarSign,
   ChevronRight,
   Send,
+  X,
 } from 'lucide-react';
 import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 
@@ -1127,7 +1128,9 @@ export default function SupplierPortalPage() {
           <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">Submit Binding Quote: {selectedRfq.rfqNumber}</h3>
-              <button onClick={() => setSelectedRfq(null)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white">✕</button>
+              <button onClick={() => setSelectedRfq(null)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-md">
+                <X className="w-4 h-4" />
+              </button>
             </div>
             <div className="text-xs text-slate-600 dark:text-slate-300">
               Component: <strong>{selectedRfq.partName}</strong> (Qty: {selectedRfq.targetQuantity.toLocaleString()})
@@ -1190,7 +1193,9 @@ export default function SupplierPortalPage() {
           <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">Create Advance Shipping Notice (ASN)</h3>
-              <button onClick={() => setIsAsnModalOpen(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white">✕</button>
+              <button onClick={() => setIsAsnModalOpen(false)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-md">
+                <X className="w-4 h-4" />
+              </button>
             </div>
             <form onSubmit={handleCreateAsn} className="space-y-3 text-xs">
               <div>

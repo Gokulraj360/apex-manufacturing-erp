@@ -24,7 +24,6 @@ import {
   PackageCheck,
   Compass,
   Megaphone,
-  Sparkles,
   Info,
   Clock,
   ArrowRight,

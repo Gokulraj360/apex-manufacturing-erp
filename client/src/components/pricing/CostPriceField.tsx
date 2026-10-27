@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Lock, Unlock, EyeOff, ShieldAlert, Sparkles } from 'lucide-react';
+import { Lock, Unlock, EyeOff, ShieldAlert } from 'lucide-react';
 import { PriceAccessBadge } from './PriceAccessBadge';
 import { PricingOverrideModal } from './PricingOverrideModal';
 import { SYSTEM_ROLE_MATRIX } from '@/hooks/usePricingPermission';

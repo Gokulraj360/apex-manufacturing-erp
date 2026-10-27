@@ -118,7 +118,7 @@ export default function CashFlowOverviewPage() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-900/40 mb-1.5">
-            <span>{activeFranchise.flag}</span>
+            <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800">{activeFranchise.flag}</span>
             <span>{activeFranchise.plantName}</span>
             <span className="text-slate-400">·</span>
             <span>Treasury ({activeFranchise.currency})</span>

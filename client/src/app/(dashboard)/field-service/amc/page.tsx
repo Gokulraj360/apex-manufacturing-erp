@@ -14,7 +14,6 @@ import {
   FileText,
   X,
   ChevronRight,
-  Sparkles,
   Layers,
   AlertCircle,
   FileCheck,

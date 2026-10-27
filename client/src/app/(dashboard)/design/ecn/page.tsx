@@ -17,7 +17,6 @@ import {
   DollarSign,
   Scroll,
   Layers,
-  Sparkles,
   Calendar,
   AlertCircle,
 } from 'lucide-react';

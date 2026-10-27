@@ -13,7 +13,6 @@ import {
   ArrowRight,
   Filter,
   Layers,
-  Sparkles,
   Download,
   Check,
   X,

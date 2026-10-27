@@ -12,7 +12,6 @@ import {
   Users,
   Eye,
   MousePointerClick,
-  Sparkles,
   ArrowUpRight,
   Plus,
   RefreshCw,
@@ -24,6 +23,7 @@ import {
   Download,
   Star,
   CheckCircle2,
+  Check,
 } from 'lucide-react';
 import {
   MarketingOverviewMetrics,
@@ -777,9 +777,9 @@ export default function MarketingOverviewPage() {
               ].map((strength, idx) => (
                 <span
                   key={idx}
-                  className="text-[10px] px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-amber-700 dark:text-amber-300 font-medium"
+                  className="text-[10px] px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 text-amber-700 dark:text-amber-300 font-medium inline-flex items-center gap-1"
                 >
-                  ✓ {strength}
+                  <Check className="w-3 h-3 text-emerald-500" /> {strength}
                 </span>
               ))}
             </div>

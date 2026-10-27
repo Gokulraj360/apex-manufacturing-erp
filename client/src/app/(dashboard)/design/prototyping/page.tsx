@@ -19,7 +19,6 @@ import {
   BarChart2,
   Check,
   Clock,
-  Sparkles,
 } from 'lucide-react';
 import {
   PrototypeTestLogItem,

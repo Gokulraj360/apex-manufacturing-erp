@@ -21,7 +21,7 @@ import {
   CheckCircle2,
   AlertCircle,
   Clock,
-  Sparkles,
+  UserPlus,
   MessageSquare,
   ShieldCheck,
   Briefcase,
@@ -877,7 +877,7 @@ export default function CRMLeadsPage() {
             <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
               <div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-pink-500 dark:text-pink-400" />
+                  <UserPlus className="w-5 h-5 text-blue-500 dark:text-blue-400" />
                   Capture New Manufacturing Inbound Lead
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">

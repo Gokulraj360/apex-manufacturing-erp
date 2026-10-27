@@ -39,7 +39,7 @@ interface PlantPerformance {
 const PLANT_METRICS: PlantPerformance[] = [
   {
     plantName: 'Plant 1: Austin Flagship Advanced Electronics',
-    location: 'Austin, Texas, USA (🇺🇸)',
+    location: 'Austin, Texas, USA [US]',
     revenue: '$68.4M',
     ebitda: '$18.2M',
     ebitdaMargin: 26.6,
@@ -49,7 +49,7 @@ const PLANT_METRICS: PlantPerformance[] = [
   },
   {
     plantName: 'Plant 2: Stuttgart EV Battery & Inverter Hub',
-    location: 'Stuttgart, Germany (🇩🇪)',
+    location: 'Stuttgart, Germany [DE]',
     revenue: '$49.1M',
     ebitda: '$11.8M',
     ebitdaMargin: 24.0,
@@ -59,7 +59,7 @@ const PLANT_METRICS: PlantPerformance[] = [
   },
   {
     plantName: 'Plant 3: Jurong Precision Machinery Complex',
-    location: 'Jurong Innovation District, Singapore (🇸🇬)',
+    location: 'Jurong Innovation District, Singapore [SG]',
     revenue: '$31.0M',
     ebitda: '$5.9M',
     ebitdaMargin: 19.0,
@@ -69,7 +69,7 @@ const PLANT_METRICS: PlantPerformance[] = [
   },
   {
     plantName: 'Plant 4: Midwest Automated Bottling & Packaging',
-    location: 'Chicago, Illinois, USA (🇺🇸)',
+    location: 'Chicago, Illinois, USA [US]',
     revenue: '$42.8M',
     ebitda: '$9.4M',
     ebitdaMargin: 22.0,
@@ -79,7 +79,7 @@ const PLANT_METRICS: PlantPerformance[] = [
   },
   {
     plantName: 'Plant 5: Basel Bio-Medical Micro-Assembly',
-    location: 'Basel, Switzerland (🇨🇭)',
+    location: 'Basel, Switzerland [CH]',
     revenue: '$55.2M',
     ebitda: '$16.5M',
     ebitdaMargin: 29.8,
@@ -344,7 +344,7 @@ export default function TopManagementPage() {
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between border-b border-border/40 pb-5">
         <div>
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/40 mb-1.5">
-            <span>{activeFranchise.flag}</span>
+            <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-800">{activeFranchise.flag}</span>
             <span>Focus Facility: {activeFranchise.plantName}</span>
             <span className="text-slate-400">·</span>
             <span>{activeFranchise.primaryIndustry}</span>

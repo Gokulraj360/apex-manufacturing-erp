@@ -5,6 +5,8 @@ import {
   Scale,
   Receipt,
   FileCheck,
+  Check,
+  X,
   AlertTriangle,
   CheckCircle2,
   XCircle,
@@ -518,8 +520,8 @@ export default function APThreeWayMatchPage() {
                       </td>
                       <td className="py-3.5 px-4">
                         {m.matchStatus === 'PERFECT_MATCH' && (
-                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
-                            ✓ 3-Way Perfect Match
+                          <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 inline-flex items-center gap-1">
+                            <Check className="w-3 h-3 text-emerald-500" /> 3-Way Verified Match
                           </span>
                         )}
                         {m.matchStatus === 'TOLERANCE_WARNING' && (
@@ -757,7 +759,9 @@ export default function APThreeWayMatchPage() {
           <div className="bg-white dark:bg-[#0d1322] border border-slate-200 dark:border-slate-800 rounded-xl max-w-xl w-full p-6 space-y-4 shadow-2xl">
             <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <h3 className="text-sm font-bold text-slate-900 dark:text-white">Comparative 3-Way Match: {selectedRecord.matchBatchId}</h3>
-              <button onClick={() => setSelectedRecord(null)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white">✕</button>
+              <button onClick={() => setSelectedRecord(null)} className="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-md">
+                <X className="w-4 h-4" />
+              </button>
             </div>
             
             <div className="grid grid-cols-3 gap-3 text-xs">

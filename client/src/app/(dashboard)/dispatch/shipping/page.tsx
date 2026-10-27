@@ -20,7 +20,7 @@ import {
   ChevronDown,
   ChevronUp,
   MapPin,
-  Sparkles,
+  Star,
 } from 'lucide-react';
 import { DispatchShipmentItem, CarrierDetailItem, ShipmentStatus } from '@/types/dispatch';
 
@@ -465,7 +465,9 @@ export default function ShippingControlPage() {
                   <span className="text-xs font-mono text-emerald-400">{c.carrierCode}</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs font-bold text-amber-400 font-mono">★ {c.ratingScore}</span>
+                  <span className="text-xs font-bold text-amber-400 font-mono inline-flex items-center gap-1">
+                    <Star className="w-3 h-3 text-amber-400 fill-amber-400" /> {c.ratingScore}
+                  </span>
                   <span className="text-[10px] text-neutral-500 block uppercase">SLA Rating</span>
                 </div>
               </div>

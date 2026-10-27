@@ -23,6 +23,7 @@ import {
   Filter,
   DollarSign,
   Briefcase,
+  X,
 } from 'lucide-react';
 
 interface ContractRecord {
@@ -806,8 +807,8 @@ export default function LegalCompliancePage() {
           <div className="bg-card border border-border rounded-xl shadow-2xl w-full max-w-lg p-6 space-y-4">
             <div className="flex items-center justify-between border-b border-border pb-3">
               <h3 className="text-base font-bold text-foreground">Initiate New Contract Lifecycle Request</h3>
-              <button onClick={() => setIsModalOpen(false)} className="text-muted-foreground hover:text-foreground">
-                ✕
+              <button onClick={() => setIsModalOpen(false)} className="text-muted-foreground hover:text-foreground p-1 rounded-md">
+                <X className="w-4 h-4" />
               </button>
             </div>
 

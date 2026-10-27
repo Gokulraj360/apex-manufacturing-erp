@@ -17,7 +17,6 @@ import {
   ChevronRight,
   Filter,
   CheckCircle2,
-  Sparkles,
   PieChart,
 } from 'lucide-react';
 

@@ -96,7 +96,7 @@ const INITIAL_TICKETS: SupportTicketItem[] = [
     category: 'NETWORK_CONNECTIVITY',
     priority: 'HIGH',
     status: 'RESOLVED',
-    reportedByName: 'Auto-Network-Monitor-Bot',
+    reportedByName: 'Automated Network Daemon',
     assignedToEngineer: 'Arun Varma (Infrastructure Admin)',
     affectedLocation: 'CNC Milling Line 01 Sub-Panel',
     resolutionNotes: 'Replaced crimped RJ45 patch cable with shielded Cat6A industrial cable.',

@@ -16,7 +16,6 @@ import {
   Maximize2,
   UserCheck,
   X,
-  Sparkles,
   Tag,
 } from 'lucide-react';
 import { PackedCartonItem, BarcodeType } from '@/types/dispatch';

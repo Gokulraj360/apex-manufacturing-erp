@@ -18,7 +18,6 @@ import {
   Factory,
   Building2,
   Calendar,
-  Sparkles,
   Award,
   ChevronRight,
   RefreshCw,

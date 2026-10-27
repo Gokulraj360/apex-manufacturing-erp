@@ -17,7 +17,6 @@ import {
   ShieldCheck,
   ShieldAlert,
   ArrowRight,
-  Sparkles,
   Cpu,
   RefreshCw,
   Users,

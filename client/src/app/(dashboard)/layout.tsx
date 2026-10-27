@@ -266,7 +266,7 @@ export default function DashboardLayout({
               >
                 {FRANCHISE_PROFILES.map((f) => (
                   <option key={f.id} value={f.id} className="bg-white dark:bg-slate-900">
-                    {f.flag} {f.name.replace(' Franchise', '')}
+                    [{f.flag}] {f.name.replace(' Franchise', '')}
                   </option>
                 ))}
               </select>

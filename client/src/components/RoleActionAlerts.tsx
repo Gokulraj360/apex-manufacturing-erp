@@ -14,7 +14,6 @@ import {
   FileCheck2,
   DollarSign,
   UserCheck,
-  Sparkles,
   X,
   Check,
   Truck,

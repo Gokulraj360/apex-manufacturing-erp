@@ -22,7 +22,7 @@ import {
   CheckCircle,
   XCircle,
   Clock,
-  Sparkles,
+  AlertCircle,
   Scale,
 } from 'lucide-react';
 import {
@@ -320,7 +320,7 @@ export default function SubcontractorReceiptsPage() {
       case 'CONDITIONALLY_ACCEPTED':
         return (
           <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-500/20 flex items-center gap-1 w-fit">
-            <Sparkles className="h-3 w-3" />
+            <AlertCircle className="h-3 w-3" />
             CONDITIONAL
           </span>
         );

@@ -19,7 +19,6 @@ import {
   CheckCircle2,
   Calendar,
   X,
-  Sparkles,
   ChevronRight,
 } from 'lucide-react';
 import {
@@ -814,7 +813,7 @@ export default function CampaignsPage() {
                   type="submit"
                   className="px-4 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold flex items-center gap-1.5 shadow-md shadow-amber-600/20 transition"
                 >
-                  <Sparkles className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5" />
                   Route into CRM Pipeline
                 </button>
               </div>

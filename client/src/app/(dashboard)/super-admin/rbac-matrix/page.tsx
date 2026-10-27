@@ -27,7 +27,7 @@ import {
   Timer,
   CheckCheck,
   UserCheck,
-  Sparkles,
+  X,
   Zap,
 } from 'lucide-react';
 import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
@@ -530,7 +530,7 @@ export default function DynamicRbacMatrixPage() {
       {remediationNotification && (
         <div className="p-3.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-700 dark:text-purple-300 text-xs font-medium flex items-center justify-between shadow-sm animate-in fade-in duration-200">
           <div className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-purple-600 dark:text-purple-400 shrink-0" />
+            <ShieldCheck className="h-4 w-4 text-purple-600 dark:text-purple-400 shrink-0" />
             <span>{remediationNotification}</span>
           </div>
           <span className="text-[10px] font-mono uppercase bg-purple-500/20 px-2 py-0.5 rounded">Compliance Enforced</span>
@@ -723,7 +723,7 @@ export default function DynamicRbacMatrixPage() {
                                     : 'bg-slate-100 dark:bg-slate-900 text-slate-400 border-transparent hover:bg-slate-200 dark:hover:bg-slate-800'
                                 }`}
                               >
-                                {hasAction ? '✓ YES' : '— NO'}
+                                {hasAction ? 'YES' : 'NO'}
                               </button>
                             </td>
                           );
@@ -994,8 +994,8 @@ export default function DynamicRbacMatrixPage() {
                 <KeyRound className="h-5 w-5 text-purple-600" />
                 <h3 className="text-base font-bold text-slate-900 dark:text-white">Issue Ephemeral Break-Glass Grant</h3>
               </div>
-              <button onClick={() => setIsBgModalOpen(false)} className="text-slate-400 hover:text-slate-600 cursor-pointer">
-                ✕
+              <button onClick={() => setIsBgModalOpen(false)} className="text-slate-400 hover:text-slate-600 cursor-pointer p-1 rounded-md">
+                <X className="h-4 w-4" />
               </button>
             </div>
 

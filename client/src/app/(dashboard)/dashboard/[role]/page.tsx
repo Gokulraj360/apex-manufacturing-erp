@@ -21,7 +21,6 @@ import {
   FileText,
   BarChart3,
   Calendar,
-  Sparkles,
   Zap,
 } from 'lucide-react';
 import { ALL_ROLES } from '@/types/auth';

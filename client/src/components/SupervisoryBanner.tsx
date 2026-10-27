@@ -8,7 +8,6 @@ import {
   History,
   Lock,
   ArrowRight,
-  Sparkles,
   Info,
   CheckCircle2,
 } from 'lucide-react';

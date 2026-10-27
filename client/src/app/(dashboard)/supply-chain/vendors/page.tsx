@@ -25,7 +25,6 @@ import {
   Sliders,
   DollarSign,
   AlertOctagon,
-  Sparkles,
 } from 'lucide-react';
 import {
   VendorDirectoryItem,

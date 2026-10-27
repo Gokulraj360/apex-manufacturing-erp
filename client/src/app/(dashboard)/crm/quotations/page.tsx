@@ -22,7 +22,6 @@ import {
   Calendar,
   X,
   Layers,
-  Sparkles,
   Percent,
   Check,
 } from 'lucide-react';

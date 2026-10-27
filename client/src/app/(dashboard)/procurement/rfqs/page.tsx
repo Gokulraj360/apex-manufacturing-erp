@@ -16,7 +16,6 @@ import {
   Award,
   Layers,
   ChevronRight,
-  Sparkles,
   Star,
   FileText,
 } from 'lucide-react';

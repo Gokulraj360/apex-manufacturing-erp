@@ -24,7 +24,6 @@ import {
   Eye,
   Activity,
   Layers,
-  Sparkles,
 } from 'lucide-react';
 import {
   CustomerInquiryItem,

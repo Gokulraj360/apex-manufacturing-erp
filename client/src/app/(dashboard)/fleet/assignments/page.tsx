@@ -592,9 +592,9 @@ export default function FleetAssignmentsPage() {
               </div>
               <button
                 onClick={() => setShowDispatchModal(false)}
-                className="text-slate-400 hover:text-white text-xs px-2 py-1 rounded bg-slate-800"
+                className="text-slate-400 hover:text-white p-1 rounded bg-slate-800"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
 
@@ -736,9 +736,9 @@ export default function FleetAssignmentsPage() {
               </div>
               <button
                 onClick={() => setCompletingTrip(null)}
-                className="text-slate-400 hover:text-white text-xs px-2 py-1 rounded bg-slate-800"
+                className="text-slate-400 hover:text-white p-1 rounded bg-slate-800"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
 

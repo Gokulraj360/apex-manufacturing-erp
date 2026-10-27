@@ -14,7 +14,6 @@ import {
   Clock,
   X,
   FileCheck,
-  Sparkles,
   Award,
   Boxes,
 } from 'lucide-react';

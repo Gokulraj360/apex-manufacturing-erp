@@ -11,7 +11,6 @@ import {
   ArrowUpRight,
   ShieldAlert,
   Clock,
-  Sparkles,
   Cpu,
   Radio,
   Box,
@@ -121,8 +120,9 @@ export default function ExecutiveOverviewPage() {
         <div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
             Factory Production & Machine Overview
-            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
-              {activeFranchise.flag} {activeFranchise.plantName}
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 flex items-center gap-1.5">
+              <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-800">{activeFranchise.flag}</span>
+              <span>{activeFranchise.plantName}</span>
             </span>
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
@@ -380,7 +380,7 @@ export default function ExecutiveOverviewPage() {
 
               {pendingActions.length === 0 && (
                 <div className="text-center py-8 text-slate-400 text-xs">
-                  <Sparkles className="h-6 w-6 text-emerald-500 mx-auto mb-2" />
+                  <CheckCircle2 className="h-6 w-6 text-emerald-500 mx-auto mb-2" />
                   All urgent approvals and purchase orders are up to date!
                 </div>
               )}

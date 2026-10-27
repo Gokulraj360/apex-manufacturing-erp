@@ -15,7 +15,6 @@ import {
   X,
   ChevronRight,
   ChevronDown,
-  Sparkles,
   ArrowRight,
   Trash2,
   Edit2,

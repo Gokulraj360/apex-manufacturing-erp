@@ -24,7 +24,6 @@ import {
   Clock,
   Truck,
   RotateCcw,
-  Sparkles,
   FileCheck,
 } from 'lucide-react';
 import {

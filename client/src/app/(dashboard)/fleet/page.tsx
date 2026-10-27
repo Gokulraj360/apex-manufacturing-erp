@@ -20,11 +20,11 @@ import {
   ArrowUpRight,
   Calendar,
   Layers,
-  Sparkles,
   Zap,
   Activity,
   MapPin,
   Check,
+  X,
 } from 'lucide-react';
 import {
   FleetOverviewMetrics,
@@ -772,9 +772,9 @@ export default function FleetDashboardOverviewPage() {
               </div>
               <button
                 onClick={() => setShowDispatchModal(false)}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-white text-xs px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-800"
+                className="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-lg bg-slate-100 dark:bg-slate-800"
               >
-                ✕
+                <X className="w-4 h-4" />
               </button>
             </div>
 

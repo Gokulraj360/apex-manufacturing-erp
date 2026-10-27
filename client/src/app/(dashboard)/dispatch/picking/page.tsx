@@ -16,7 +16,6 @@ import {
   Layers,
   ArrowRight,
   ShieldCheck,
-  Sparkles,
 } from 'lucide-react';
 import { SalesOrderFulfillmentItem, PickingStatus } from '@/types/dispatch';
 

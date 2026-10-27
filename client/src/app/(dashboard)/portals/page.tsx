@@ -8,7 +8,7 @@ import {
   Shield,
   Layers,
   ArrowRight,
-  Sparkles,
+  RotateCcw,
   Search,
   CheckCircle2,
   Crown,
@@ -291,8 +291,8 @@ export default function PortalsGalleryPage() {
               Enterprise Multi-Persona Portal Gallery
             </h1>
             <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-              <Sparkles className="w-3.5 h-3.5 mr-1" />
-              18 Enterprise Roles
+              <Users className="w-3.5 h-3.5 mr-1" />
+              21 Enterprise Roles
             </span>
             <span className="inline-flex items-center rounded-full bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 text-xs font-semibold text-amber-600 dark:text-amber-400">
               <Crown className="w-3.5 h-3.5 mr-1" />
@@ -310,9 +310,9 @@ export default function PortalsGalleryPage() {
             <span>{simulatedRole.title}</span>
             <button
               onClick={() => setSimulatedRole(null)}
-              className="text-muted-foreground hover:text-foreground ml-2 font-bold"
+              className="text-muted-foreground hover:text-foreground ml-2 font-bold inline-flex items-center gap-1"
             >
-              ✕ Reset
+              <RotateCcw className="w-3 h-3" /> Reset
             </button>
           </div>
         )}

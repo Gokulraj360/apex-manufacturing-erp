@@ -14,7 +14,6 @@ import {
   TrendingUp,
   Cpu,
   ChevronRight,
-  Sparkles,
 } from 'lucide-react';
 import { RoleActionAlerts } from '@/components/RoleActionAlerts';
 import { useAuth } from '@/context/AuthContext';
@@ -195,7 +194,7 @@ export default function ProductionOverviewPage() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/40 mb-1.5">
-            <span>{activeFranchise.flag}</span>
+            <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-800">{activeFranchise.flag}</span>
             <span>{activeFranchise.plantName}</span>
             <span className="text-slate-400">·</span>
             <span>{activeFranchise.primaryIndustry}</span>

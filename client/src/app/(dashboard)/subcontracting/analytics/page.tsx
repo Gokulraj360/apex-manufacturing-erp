@@ -24,7 +24,6 @@ import {
   TrendingUp,
   Percent,
   Sliders,
-  Sparkles,
   AlertOctagon,
 } from 'lucide-react';
 import {

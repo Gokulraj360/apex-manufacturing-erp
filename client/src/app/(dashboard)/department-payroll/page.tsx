@@ -29,7 +29,6 @@ import {
   Layers,
   Warehouse,
   Printer,
-  Sparkles,
   Info,
   Lock,
 } from 'lucide-react';

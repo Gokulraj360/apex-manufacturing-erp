@@ -19,7 +19,6 @@ import {
   ExternalLink,
   Play,
   Clock,
-  Sparkles,
   Sliders,
   Boxes,
   FileSpreadsheet,

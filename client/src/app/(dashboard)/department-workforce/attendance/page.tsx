@@ -19,7 +19,6 @@ import {
   ArrowRight,
   TrendingUp,
   FileCheck,
-  Sparkles,
 } from 'lucide-react';
 import {
   DepartmentAttendanceItem,

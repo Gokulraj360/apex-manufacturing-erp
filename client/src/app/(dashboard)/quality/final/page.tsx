@@ -18,7 +18,6 @@ import {
   ChevronUp,
   X,
   FileCheck2,
-  Sparkles,
   Zap,
 } from 'lucide-react';
 import { FinalInspectionItem, QCStatus } from '@/types/quality';

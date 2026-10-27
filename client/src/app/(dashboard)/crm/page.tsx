@@ -19,7 +19,6 @@ import {
   ChevronRight,
   ShieldCheck,
   Star,
-  Sparkles,
   ArrowUpRight,
   FileText,
   PackageCheck,

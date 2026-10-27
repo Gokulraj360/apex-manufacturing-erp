@@ -20,7 +20,6 @@ import {
   ChevronUp,
   X,
   FileCheck,
-  Sparkles,
 } from 'lucide-react';
 import { CustomerReturnItem, TransitDamageLogItem, ReturnDisposition } from '@/types/dispatch';
 

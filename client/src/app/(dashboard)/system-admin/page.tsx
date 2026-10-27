@@ -23,7 +23,6 @@ import {
   RefreshCw,
   Sliders,
   Globe,
-  Sparkles,
 } from 'lucide-react';
 
 const MOCK_SERVICES = [
