@@ -387,13 +387,13 @@ export default function BomEditorPage() {
             </div>
             <div>
               <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
-                Multi-Level Bill of Materials (BOM) Builder
+                Product Parts List & Assembly Recipe (BOM)
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-500/30">
-                  Cost Rollup Engine
+                  Total Cost Calculator
                 </span>
               </h1>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                Hierarchical sub-assembly breakdown, raw material part specs, cost estimation & ERP release gateway
+                List of all sub-assemblies, screws, chips, raw materials, and production costs required to build a product.
               </p>
             </div>
           </div>
@@ -413,7 +413,7 @@ export default function BomEditorPage() {
             className="flex items-center gap-2 px-3.5 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 hover:from-violet-500 hover:to-violet-400 text-white text-xs font-semibold shadow-lg shadow-violet-500/20 transition"
           >
             <Plus className="h-3.5 w-3.5" />
-            New BOM Master
+            Create Parts List (BOM)
           </button>
         </div>
       </div>

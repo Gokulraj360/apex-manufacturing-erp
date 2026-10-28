@@ -167,6 +167,41 @@ const GLOSSARY_TERMS: GlossaryTerm[] = [
     simpleExplanation: 'Raw materials and components that have left the warehouse and are currently on the factory floor being assembled or waiting for testing.',
     example: 'Keeping WIP low prevents crowded assembly lines and reduces inventory carrying costs.',
   },
+  {
+    term: 'Andon Cord / Emergency Line Stop',
+    category: 'Manufacturing',
+    plainTranslation: 'Emergency Stop Button for Workers',
+    simpleExplanation: 'A physical button or pull-cord on the production line that allows any technician to immediately halt the line if a safety hazard or defect is detected.',
+    example: 'Pulling the Andon cord stops the conveyor, alerts maintenance, and prevents assembling defective units.',
+  },
+  {
+    term: 'Quarantine Hold',
+    category: 'Quality',
+    plainTranslation: 'Locked Defective / Suspect Stock',
+    simpleExplanation: 'An automatic electronic and physical lock placed on a batch of parts in the warehouse so no one can mistakenly issue them to an assembly line.',
+    example: 'When 20 sensors fail incoming inspection, the entire lot is locked in QUARANTINE HOLD until tested.',
+  },
+  {
+    term: 'Backflushing',
+    category: 'Manufacturing',
+    plainTranslation: 'Automatic Parts Deduction',
+    simpleExplanation: 'An automatic ERP accounting action: when a work order completes 100 units, the system automatically subtracts 100 sets of screws, chips, and casings from warehouse inventory.',
+    example: 'Eliminates the need for workers to manually count and log every small screw used in production.',
+  },
+  {
+    term: 'Job-Work / Delivery Challan',
+    category: 'Supply Chain',
+    plainTranslation: 'Outside Contractor Work Slip',
+    simpleExplanation: 'Official legal paperwork accompanying materials sent out to external suppliers for specialized heat treatment, plating, or painting.',
+    example: 'Challan-2026-081 authorizes shipping 500 bare brackets to an external powder-coating vendor.',
+  },
+  {
+    term: 'Tamper-Seal',
+    category: 'Supply Chain',
+    plainTranslation: 'Numbered Container Security Lock',
+    simpleExplanation: 'A high-security, uniquely numbered barcode seal placed on truck trailer doors. Verified by factory security before allowing the truck to exit.',
+    example: 'Security checks that seal #TS-8849-B matches the dispatch paperwork before lifting the gate barrier.',
+  },
 ];
 
 export function ErpDictionaryModal({

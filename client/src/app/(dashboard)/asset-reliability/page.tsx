@@ -276,14 +276,14 @@ export default function AssetReliabilityDashboard() {
         {/* MTBF Metric */}
         <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Mean Time Between Failures</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Average Time Between Breakdowns (MTBF)</span>
             <div className="h-8 w-8 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center">
               <Activity className="h-4 w-4 text-indigo-500 dark:text-indigo-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
             <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">348.5h</span>
-            <span className="text-xs text-indigo-600 dark:text-indigo-300 font-medium">MTBF</span>
+            <span className="text-xs text-indigo-600 dark:text-indigo-300 font-medium">Uptime Interval</span>
           </div>
           <div className="mt-2 flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400">
             <TrendingUp className="h-3 w-3" />
@@ -294,14 +294,14 @@ export default function AssetReliabilityDashboard() {
         {/* MTTR Metric */}
         <div className="bg-white dark:bg-[#0f172a]/80 border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Mean Time to Repair</span>
+            <span className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Average Machine Repair Time (MTTR)</span>
             <div className="h-8 w-8 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center">
               <Wrench className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
             <span className="text-3xl font-bold text-slate-900 dark:text-white font-mono">1.8h</span>
-            <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">MTTR (Target &lt; 2.5h)</span>
+            <span className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">Fix Speed (Target &lt; 2.5h)</span>
           </div>
           <div className="mt-2 flex items-center gap-1 text-[11px] text-emerald-600 dark:text-emerald-400">
             <CheckCircle2 className="h-3 w-3" />

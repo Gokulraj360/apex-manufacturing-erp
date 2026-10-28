@@ -469,7 +469,7 @@ export default function TopManagementPage() {
             }`}
           >
             <Activity className="w-4 h-4" />
-            Cash Conversion Cycle (CCC) Simulator
+            Cash Recovery Simulator (CCC)
           </button>
           <button
             onClick={() => setActiveTab('WATERFALL')}
@@ -480,7 +480,7 @@ export default function TopManagementPage() {
             }`}
           >
             <TrendingUp className="w-4 h-4" />
-            Multi-Plant EBITDA Waterfall
+            Plant Operating Profit (EBITDA) Breakdown
           </button>
           <button
             onClick={() => setActiveTab('DUPONT')}
@@ -491,7 +491,7 @@ export default function TopManagementPage() {
             }`}
           >
             <PieChart className="w-4 h-4" />
-            DuPont ROE Decomposition
+            Shareholder Returns Analysis (ROE)
           </button>
           <button
             onClick={() => setActiveTab('CAPEX')}
@@ -502,7 +502,7 @@ export default function TopManagementPage() {
             }`}
           >
             <DollarSign className="w-4 h-4" />
-            Global CapEx & ROI Portfolio
+            Equipment & Expansion Investments (CapEx)
           </button>
           <button
             onClick={() => setActiveTab('APPROVALS')}

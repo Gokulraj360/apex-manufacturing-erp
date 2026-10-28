@@ -361,10 +361,10 @@ export default function MRPDemandPlanningPage() {
           <div>
             <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
               <Network className="h-6 w-6 text-cyan-600 dark:text-cyan-400" />
-              Material Requirements Planning (MRP) &amp; Demand Forecasting
+              Parts Demand &amp; Shortage Calculator (MRP)
             </h1>
             <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-              Multi-echelon demand breakdown, net inventory shortage calculation, safety stock threshold alerts, and lead-time offset order release generation.
+              Calculates exactly what parts and raw materials are needed for upcoming production orders, identifies shortages, and alerts you before stock runs out.
             </p>
           </div>
 
@@ -374,7 +374,7 @@ export default function MRPDemandPlanningPage() {
               className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-xs shadow-lg shadow-cyan-600/20 transition-colors"
             >
               <Plus className="h-4 w-4" />
-              Generate MRP Plan
+              Calculate Parts Needed (MRP)
             </button>
           </div>
         </div>

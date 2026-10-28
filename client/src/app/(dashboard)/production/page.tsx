@@ -208,7 +208,7 @@ export default function ProductionOverviewPage() {
             Factory Floor Assembly & Orders
           </h2>
           <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-            Live daily assembly tracking for <strong>{activeFranchise.flagshipProduct}</strong>, batch deadlines, and on-time completion telemetry.
+            Live daily assembly tracking for <strong>{activeFranchise.flagshipProduct}</strong>, batch deadlines, and live order completion tracking.
           </p>
         </div>
 
@@ -219,7 +219,7 @@ export default function ProductionOverviewPage() {
             className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-rose-600 hover:bg-rose-500 rounded-xl shadow-xs transition-colors cursor-pointer"
           >
             <AlertOctagon className="w-3.5 h-3.5 animate-pulse" />
-            Pull Andon Cord
+            Emergency Line Stop (Andon)
           </button>
           <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded-xl shadow-sm">
             <Clock className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />

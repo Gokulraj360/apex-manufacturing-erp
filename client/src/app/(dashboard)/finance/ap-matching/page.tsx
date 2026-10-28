@@ -330,14 +330,14 @@ export default function APThreeWayMatchPage() {
               <Scale className="h-5 w-5" />
             </span>
             <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
-              Automated 3-Way Accounts Payable (AP) Matching Engine
+              Supplier Bill Verification (3-Way Cross Check)
             </h1>
             <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30">
-              PO vs Inbound GRN vs Vendor Invoice
+              Purchase Order vs Delivery Receipt vs Supplier Bill
             </span>
           </div>
           <p className="text-xs text-slate-600 dark:text-slate-400">
-            Automated line-item reconciliation comparing contracted PO terms, physical weighbridge GRN quantities, and billed supplier invoices with algorithmic variance tolerance limits.
+            Automatically compares what you ordered (PO), what arrived at the loading dock (GRN), and what the supplier billed you (Invoice) to stop billing errors.
           </p>
         </div>
 
@@ -475,12 +475,12 @@ export default function APThreeWayMatchPage() {
               <table className="w-full text-left text-xs">
                 <thead className="bg-slate-50 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                   <tr>
-                    <th className="py-3 px-4">Match ID & Vendor</th>
-                    <th className="py-3 px-4">PO Contract</th>
-                    <th className="py-3 px-4">Gate GRN Received</th>
-                    <th className="py-3 px-4">Vendor Invoiced</th>
-                    <th className="py-3 px-4">Variance Detected</th>
-                    <th className="py-3 px-4">Match Verdict</th>
+                    <th className="py-3 px-4">Match ID & Supplier</th>
+                    <th className="py-3 px-4">Purchase Order (PO)</th>
+                    <th className="py-3 px-4">Dock Receipt (GRN)</th>
+                    <th className="py-3 px-4">Supplier Bill (Invoice)</th>
+                    <th className="py-3 px-4">Difference (Variance)</th>
+                    <th className="py-3 px-4">Check Result (Verdict)</th>
                     <th className="py-3 px-4 text-right">Actions</th>
                   </tr>
                 </thead>
