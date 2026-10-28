@@ -6,13 +6,14 @@ import { Sun, Moon, ShieldAlert, ArrowLeft, Lock, Building2, BookOpen } from 'lu
 import { Sidebar } from '@/components/Sidebar';
 import { GlobalWorkflowOrchestrator } from '@/components/GlobalWorkflowOrchestrator';
 import { ErpDictionaryModal } from '@/components/ErpDictionaryModal';
+import { ActiveAndonBanner } from '@/components/AndonAlertModal';
 import { useAuth } from '@/context/AuthContext';
 import { useTheme } from '@/context/ThemeContext';
 import { ALL_ROLES } from '@/types/auth';
 import { isPathAuthorizedForRole } from '@/config/roleNavigation';
 import { franchiseStore, FRANCHISE_PROFILES, FranchiseProfile } from '@/lib/franchiseStore';
 
-// Route to Title mapping for mobile manufacturing facility
+// Route to Title mapping for multi-franchise enterprise manufacturing facility
 const ROUTE_TITLE_MAP: Record<string, { title: string; badge: string }> = {
   '/credentials': {
     title: 'Staff Onboarding & Security Credentials',
@@ -55,16 +56,16 @@ const ROUTE_TITLE_MAP: Record<string, { title: string; badge: string }> = {
     badge: 'CAL-003',
   },
   '/asset-reliability': {
-    title: 'Line 4: Firmware Loading & Signal Testing',
-    badge: 'FW-004',
+    title: 'Equipment Reliability & Asset Health Command Center',
+    badge: 'MNT-004',
   },
   '/quality': {
-    title: 'Line 5: Stress Testing & Environmental Aging',
+    title: 'Industrial Quality Assurance & Pass Testing',
     badge: 'QA-005',
   },
   '/dispatch': {
-    title: 'Line 6: Box Packing, Serial QR & Palletizing',
-    badge: 'BOX-006',
+    title: 'Packaging & Outbound Dispatch Center',
+    badge: 'DSP-006',
   },
   '/warehouse': {
     title: 'Raw Materials & Components Stock',
@@ -346,6 +347,7 @@ export default function DashboardLayout({
 
         {/* Page Content Body */}
         <main className="flex-1 overflow-y-auto p-6 md:p-8 bg-[#f8fafc] dark:bg-[#0b0f17] transition-colors duration-200">
+          <ActiveAndonBanner />
           {!isAuthorized ? (
             <div className="max-w-xl mx-auto mt-12 p-8 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm text-center">
               <div className="w-14 h-14 rounded-2xl bg-red-50 dark:bg-red-950/50 border border-red-100 dark:border-red-900/50 text-red-600 dark:text-red-400 flex items-center justify-center mx-auto mb-4">

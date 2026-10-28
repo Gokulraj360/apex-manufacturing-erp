@@ -26,6 +26,7 @@ import {
   Layers,
 } from 'lucide-react';
 import { VehicleLogItem, DeliveryTripItem, SpecialGatePassItem } from '@/types/logistics-gate';
+import { enterpriseDataStore, GatePassItem } from '@/lib/enterpriseDataStore';
 
 const MOCK_ACTIVE_VEHICLES: VehicleLogItem[] = [
   {
@@ -150,6 +151,22 @@ export default function LogisticsCommandCenterPage() {
   const [vehicles] = useState<VehicleLogItem[]>(MOCK_ACTIVE_VEHICLES);
   const [trips] = useState<DeliveryTripItem[]>(MOCK_ACTIVE_TRIPS);
   const [searchQuery, setSearchQuery] = useState('');
+  const [gatePasses, setGatePasses] = useState<GatePassItem[]>(() => enterpriseDataStore.getGatePasses());
+
+  React.useEffect(() => {
+    const refresh = () => setGatePasses(enterpriseDataStore.getGatePasses());
+    window.addEventListener('apex_enterprise_data_updated', refresh);
+    window.addEventListener('storage', refresh);
+    return () => {
+      window.removeEventListener('apex_enterprise_data_updated', refresh);
+      window.removeEventListener('storage', refresh);
+    };
+  }, []);
+
+  const handleClearPass = (id: string) => {
+    enterpriseDataStore.clearGatePass(id);
+    setGatePasses(enterpriseDataStore.getGatePasses());
+  };
 
   const onPremisesCount = vehicles.filter((v) => v.status === 'INSIDE_PREMISES').length;
 
@@ -349,6 +366,61 @@ export default function LogisticsCommandCenterPage() {
             <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Repairs, scrap & returns</p>
           </div>
         </Link>
+      </div>
+
+      {/* Live Outbound Security & Tamper Seal Clearances (Synced with Dispatch Hub) */}
+      <div className="p-4 bg-white dark:bg-[#0d1322] border border-cyan-500/30 rounded-2xl shadow-sm space-y-3">
+        <div className="flex items-center justify-between flex-wrap gap-2">
+          <div className="flex items-center gap-2 text-cyan-700 dark:text-cyan-400 font-bold text-xs">
+            <ShieldCheck className="h-4 w-4" />
+            <span>Outbound Factory Clearance & Tamper-Seal Verification Queue</span>
+            <span className="px-2 py-0.5 rounded-full text-[10px] bg-cyan-100 dark:bg-cyan-950/60 font-mono">
+              Live Dispatch Sync
+            </span>
+          </div>
+          <span className="text-[11px] text-slate-500">
+            {gatePasses.filter(p => p.status === 'PENDING_CLEARANCE').length} Trucks Awaiting Gate Exit
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {gatePasses.map((pass) => (
+            <div
+              key={pass.id}
+              className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3 text-xs"
+            >
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono font-bold text-slate-900 dark:text-white">{pass.gatePassNumber}</span>
+                  <span className="text-slate-400">&bull;</span>
+                  <span className="font-mono text-cyan-600 dark:text-cyan-400 font-bold">{pass.vehicleNumber}</span>
+                </div>
+                <div className="text-[11px] text-slate-600 dark:text-slate-400 mt-1">
+                  Driver: <strong className="text-slate-900 dark:text-white">{pass.driverName}</strong> ({pass.carrierName})
+                </div>
+                <div className="text-[10px] text-slate-500 font-mono mt-0.5">
+                  Seal: <span className="text-emerald-600 dark:text-emerald-400 font-bold">{pass.sealNumber}</span> &bull; {pass.cartonsCount} Cartons ({pass.totalWeightKg} kg)
+                </div>
+              </div>
+
+              <div>
+                {pass.status === 'PENDING_CLEARANCE' ? (
+                  <button
+                    onClick={() => handleClearPass(pass.id)}
+                    className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors flex items-center gap-1 cursor-pointer"
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    Verify &amp; Exit Gate
+                  </button>
+                ) : (
+                  <span className="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-emerald-50 dark:bg-emerald-950/50 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3" /> Gate Cleared ({pass.clearedAt})
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Main Grid: Active Vehicles Inside Premises + Live In-Transit Trips */}

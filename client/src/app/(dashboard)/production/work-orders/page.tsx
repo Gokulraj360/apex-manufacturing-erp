@@ -18,6 +18,7 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { WorkOrderItem, ProductionBatchItem } from '@/types/production';
+import { enterpriseDataStore } from '@/lib/enterpriseDataStore';
 
 const initialOrders: WorkOrderItem[] = [
   {
@@ -115,12 +116,19 @@ export default function WorkOrderExecutionPage() {
   const [expandedOrderId, setExpandedOrderId] = useState<string | null>('wo-1');
   const [newBatchModalOrder, setNewBatchModalOrder] = useState<WorkOrderItem | null>(null);
   const [batchForm, setBatchForm] = useState({ plannedUnits: 200, station: 'Station 01' });
+  const [backflushNotification, setBackflushNotification] = useState<string | null>(null);
 
   const toggleExpand = (id: string) => {
     setExpandedOrderId(expandedOrderId === id ? null : id);
   };
 
   const handleBatchAction = (orderId: string, batchId: string, action: 'START' | 'PAUSE' | 'COMPLETE') => {
+    if (action === 'COMPLETE') {
+      const res = enterpriseDataStore.completeWorkOrder(orderId);
+      setBackflushNotification(res.message);
+      setTimeout(() => setBackflushNotification(null), 6000);
+    }
+
     setOrders((prev) =>
       prev.map((wo) => {
         if (wo.id !== orderId) return wo;
@@ -203,6 +211,14 @@ export default function WorkOrderExecutionPage() {
           </p>
         </div>
       </div>
+
+      {/* Reactive Backflush & Stock Update Notification */}
+      {backflushNotification && (
+        <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-semibold flex items-center gap-2.5 shadow-sm animate-fadeIn">
+          <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0" />
+          <span>{backflushNotification}</span>
+        </div>
+      )}
 
       {/* Work Orders List */}
       <div className="space-y-6">

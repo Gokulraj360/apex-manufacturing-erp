@@ -18,6 +18,8 @@ import {
   ArrowDownRight,
   ShieldAlert,
   Clock,
+  Download,
+  Lock,
 } from 'lucide-react';
 import { formatCurrency } from '@/lib/utils';
 import { WarehouseStockItem } from '@/types/warehouse';
@@ -26,8 +28,8 @@ import { useAuth } from '@/context/AuthContext';
 import { SupervisoryBanner } from '@/components/SupervisoryBanner';
 import { DepartmentAuditFeed } from '@/components/DepartmentAuditFeed';
 import { BarChart, DonutChart } from '@/components/charts';
-import { Download } from 'lucide-react';
 import { exportToCsv } from '@/lib/exportUtils';
+import { enterpriseDataStore, WarehouseStockItem as StoreStockItem } from '@/lib/enterpriseDataStore';
 
 const initialStocks: WarehouseStockItem[] = [
   {
@@ -112,19 +114,46 @@ export default function WarehouseOverviewPage() {
   const isSuperAdmin = session?.roleId === 'super_admin';
   const activeFranchise = useActiveFranchise();
 
+  const [storeStocks, setStoreStocks] = useState<StoreStockItem[]>(() => enterpriseDataStore.getWarehouseStocks());
+
+  React.useEffect(() => {
+    const refresh = () => setStoreStocks(enterpriseDataStore.getWarehouseStocks());
+    window.addEventListener('apex_enterprise_data_updated', refresh);
+    window.addEventListener('storage', refresh);
+    return () => {
+      window.removeEventListener('apex_enterprise_data_updated', refresh);
+      window.removeEventListener('storage', refresh);
+    };
+  }, []);
+
   // Dynamically adapt finished goods item name to active facility's flagship product
   const stocks = useMemo(() => {
     return initialStocks.map(s => {
+      // Find matching dynamic stock from enterpriseDataStore if available
+      const storeMatch = storeStocks.find((item) => item.itemCode === s.itemCode);
+      const currentQty = storeMatch ? storeMatch.currentQuantity : s.currentQuantity;
+      const reservedQty = storeMatch ? storeMatch.reservedQuantity : s.reservedQuantity;
+      const status = storeMatch ? storeMatch.status : 'AVAILABLE';
+
       if (s.category === 'FINISHED_GOODS') {
         return {
           ...s,
+          currentQuantity: currentQty,
+          reservedQuantity: reservedQty,
+          status,
           itemName: `${activeFranchise.flagshipProduct} - Enterprise Edition (Finished Packaged Unit)`,
           unitValuation: activeFranchise.currency === 'EUR' ? 420 : activeFranchise.currency === 'CHF' ? 450 : activeFranchise.currency === 'USD' ? 480 : 38500
         };
       }
-      return s;
+      return {
+        ...s,
+        currentQuantity: currentQty,
+        reservedQuantity: reservedQty,
+        status,
+        isBelowReorderThreshold: currentQty <= s.reorderThreshold,
+      };
     });
-  }, [activeFranchise]);
+  }, [activeFranchise, storeStocks]);
 
   const totalValuation = stocks.reduce(
     (acc, s) => acc + s.currentQuantity * s.unitValuation,
@@ -466,6 +495,7 @@ export default function WarehouseOverviewPage() {
                 <th className="py-3 px-4">Part Description</th>
                 <th className="py-3 px-4">Type</th>
                 <th className="py-3 px-4">Shelf / Bin Location</th>
+                <th className="py-3 px-4">Lot Quality Status</th>
                 <th className="py-3 px-4">In Stock</th>
                 <th className="py-3 px-4">Reserved for Assembly</th>
                 <th className="py-3 px-4">Price per Piece</th>
@@ -507,6 +537,20 @@ export default function WarehouseOverviewPage() {
 
                     <td className="py-3 px-4 font-mono text-cyan-700 dark:text-cyan-400 text-[11px]">
                       {stock.binCode || 'Unassigned'}
+                    </td>
+
+                    <td className="py-3 px-4 font-mono text-[11px]">
+                      {(stock as any).status === 'QUARANTINE_HOLD' ? (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-400 border border-rose-300 dark:border-rose-800">
+                          <Lock className="w-3 h-3 text-rose-600" />
+                          QUARANTINE HOLD
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800">
+                          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                          AVAILABLE
+                        </span>
+                      )}
                     </td>
 
                     <td className="py-3 px-4 font-mono">

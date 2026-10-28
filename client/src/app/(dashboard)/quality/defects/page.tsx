@@ -22,6 +22,7 @@ import {
   ChevronUp,
 } from 'lucide-react';
 import { DefectLogItem, DefectCategory, DefectSeverity, DefectAction } from '@/types/quality';
+import { enterpriseDataStore } from '@/lib/enterpriseDataStore';
 
 const INITIAL_DEFECT_LOGS: DefectLogItem[] = [
   {
@@ -156,6 +157,11 @@ export default function DefectConsolePage() {
       createdAt: new Date().toISOString().replace('T', ' ').substring(0, 16),
     };
 
+    // Auto-quarantine lot in warehouse stock if non-conformance action requires lock
+    if (newDefect.actionTaken === 'QUARANTINE' || newDefect.actionTaken === 'RETURN_TO_VENDOR' || newDefect.actionTaken === 'SCRAP') {
+      enterpriseDataStore.quarantineLot(newDefect.itemCode, newDefect.lotBatchNumber, newDefect.defectReason);
+    }
+
     setDefects([newDefect, ...defects]);
     setExpandedId(newDefect.id);
     setIsNewDefectModalOpen(false);
@@ -164,6 +170,10 @@ export default function DefectConsolePage() {
   const handleSaveCapa = (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedDefectForCapa) return;
+
+    if (capaForm.actionTaken === 'QUARANTINE' || capaForm.actionTaken === 'RETURN_TO_VENDOR') {
+      enterpriseDataStore.quarantineLot(selectedDefectForCapa.itemCode, selectedDefectForCapa.lotBatchNumber, selectedDefectForCapa.defectReason);
+    }
 
     setDefects((prev) =>
       prev.map((d) => {

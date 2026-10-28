@@ -255,10 +255,11 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/production/work-orders',
       '/production/batches',
       '/department-payroll',
+      '/approvals',
       '/task-delegation',
       '/leave',
     ],
-    description: 'Precision Assembly Lines, Subassembly Bonding, Daily Attendance & Wages Calculation, and Leave Requests.',
+    description: 'Precision Assembly Lines, Subassembly Bonding, Daily Attendance & Wages Calculation, Department Approvals, and Leave Requests.',
   },
 
   // 4. Raw Materials & Inventory Lead (Warehouse Manager)
@@ -272,10 +273,11 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/warehouse/inventory',
       '/warehouse/locations',
       '/department-payroll',
+      '/approvals',
       '/task-delegation',
       '/leave',
     ],
-    description: 'Raw Materials & Components Stock, Small Parts Storage Bins, Product Serial Numbers & Unit Tracking, and Department Wages.',
+    description: 'Raw Materials & Components Stock, Small Parts Storage Bins, Product Serial Numbers & Unit Tracking, Department Approvals, and Department Wages.',
   },
 
   // 5. Quality Assurance & Testing Lead
@@ -293,10 +295,11 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/quality/ncr',
       '/my-workspace',
       '/department-payroll',
+      '/approvals',
       '/task-delegation',
       '/leave',
     ],
-    description: 'First-Pass Yield, Sensor Optical Calibration, RF Chamber Signal Tests, Environmental Aging, and Quality NCR Reports.',
+    description: 'First-Pass Yield, Sensor Optical Calibration, RF Chamber Signal Tests, Environmental Aging, Department Approvals, and Quality NCR Reports.',
   },
 
   // 6. Retail Box Packing & Serial Sticker Lead
@@ -309,11 +312,14 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/dispatch',
       '/dispatch/storage',
       '/dispatch/packaging',
+      '/fleet/assignments',
+      '/logistics-gate/outbound-clearance',
       '/department-payroll',
+      '/approvals',
       '/task-delegation',
       '/leave',
     ],
-    description: 'Automated Packaging Lines, Finished Goods Storage Bays, Outbound Pallet Labels, and Department Wages.',
+    description: 'Automated Packaging Lines, Finished Goods Storage Bays, Outbound Pallet Labels, Vehicle Loading Assignments, and Department Wages.',
   },
 
   // 7. Factory Gate Security & Receiving Officer
@@ -342,10 +348,11 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
       '/credentials',
       '/payroll',
       '/department-payroll',
+      '/approvals',
       '/leave',
       '/task-delegation',
     ],
-    description: 'Factory Shift Rosters, Staff Onboarding & Credentials, Monthly Payroll Batches, and Leave Approvals.',
+    description: 'Factory Shift Rosters, Staff Onboarding & Credentials, Monthly Payroll Batches, Staff Requisition Approvals, and Leave Approvals.',
   },
 
   // 9. Commercial Brand & Client Orders Lead (CRM / Sales)
@@ -357,12 +364,13 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     allowedPaths: [
       '/crm',
       '/customer-portal',
+      '/approvals',
       '/legal',
       '/my-workspace',
       '/task-delegation',
       '/leave',
     ],
-    description: 'Enterprise Client Contracts, Customer Orders, Delivery Planning, and Team Leave Requests.',
+    description: 'Enterprise Client Contracts, Customer Orders, Delivery Planning, Wholesale Pricing Approvals, and Team Leave Requests.',
   },
 
   // 10. Material Planning & Sourcing Lead (SCM)
@@ -370,14 +378,13 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     roleId: 'supply_chain',
     roleTitle: 'Material Planning & Sourcing Lead',
     department: 'Supply Chain & Sourcing',
-    allowedCategoryTitles: ['SUPPLY CHAIN & SOURCING', 'PARTS PURCHASING & SOURCING', 'LEGAL, CONTRACTS & COMPLIANCE', 'MY WORKSPACE'],
+    allowedCategoryTitles: ['SUPPLY CHAIN & SOURCING', 'LEGAL, CONTRACTS & COMPLIANCE', 'MY WORKSPACE'],
     allowedPaths: [
       '/supply-chain',
       '/supplier-portal',
       '/supply-chain/mrp',
       '/supply-chain/vendors',
-      '/procurement',
-      '/procurement/rfqs',
+      '/approvals',
       '/legal',
       '/my-workspace',
       '/task-delegation',
@@ -409,11 +416,13 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     allowedCategoryTitles: ['FLEET & DELIVERY VEHICLES', 'MY WORKSPACE'],
     allowedPaths: [
       '/fleet',
+      '/dispatch',
       '/department-payroll',
+      '/approvals',
       '/task-delegation',
       '/leave',
     ],
-    description: 'Finished Goods Delivery Fleet, GPS Live Tracker, Fuel Expense Management, and Driver Attendance.',
+    description: 'Finished Goods Delivery Fleet, GPS Live Tracker, Fuel Expense Management, Outbound Shipment Pickups, and Driver Attendance.',
   },
 
   // 13. Assembly Machines & Cooling Maintenance Lead
@@ -425,10 +434,11 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     allowedPaths: [
       '/asset-reliability',
       '/department-payroll',
+      '/approvals',
       '/task-delegation',
       '/leave',
     ],
-    description: 'Robotic Pick-and-Place Servicing, Oven Thermal Calibration, and Preventive Maintenance Schedules.',
+    description: 'Robotic Pick-and-Place Servicing, Oven Thermal Calibration, Breakdown Approvals, and Preventive Maintenance Schedules.',
   },
 
   // 14. External Board Assembly Job-Work Lead
@@ -439,6 +449,7 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     allowedCategoryTitles: ['EXTERNAL SUBCONTRACTORS', 'MY WORKSPACE'],
     allowedPaths: [
       '/subcontracting',
+      '/approvals',
       '/task-delegation',
       '/leave',
     ],
@@ -453,6 +464,7 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     allowedCategoryTitles: ['REPAIRS & WARRANTY CARE', 'MY WORKSPACE'],
     allowedPaths: [
       '/field-service',
+      '/approvals',
       '/task-delegation',
       '/leave',
     ],
@@ -464,19 +476,22 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     roleId: 'procurement',
     roleTitle: 'Parts Purchasing & Supplier Orders Lead',
     department: 'Purchasing & Sourcing',
-    allowedCategoryTitles: ['PARTS PURCHASING & SOURCING', 'SUPPLY CHAIN & SOURCING', 'LEGAL, CONTRACTS & COMPLIANCE', 'MY WORKSPACE'],
+    allowedCategoryTitles: ['PARTS PURCHASING & SOURCING', 'LEGAL, CONTRACTS & COMPLIANCE', 'MY WORKSPACE'],
     allowedPaths: [
       '/procurement',
+      '/procurement/requisitions',
       '/procurement/rfqs',
+      '/procurement/purchase-orders',
+      '/procurement/contracts',
+      '/procurement/catalog',
       '/supplier-portal',
-      '/supply-chain',
-      '/supply-chain/vendors',
+      '/approvals',
       '/legal',
       '/my-workspace',
       '/task-delegation',
       '/leave',
     ],
-    description: 'Parts Purchase Orders, Supplier RFQ Comparisons, and Vendor Directory.',
+    description: 'Parts Purchase Orders, Supplier RFQ Comparisons, Price Lock Contracts, and Catalog SKUs.',
   },
 
   // 17. New Product Launches & Commercial Manager
@@ -487,6 +502,7 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     allowedCategoryTitles: ['MARKETING & PROMOTIONS', 'MY WORKSPACE'],
     allowedPaths: [
       '/marketing',
+      '/approvals',
       '/task-delegation',
       '/leave',
     ],
@@ -502,6 +518,7 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     allowedPaths: [
       '/department-workforce',
       '/department-payroll',
+      '/approvals',
       '/task-delegation',
       '/leave',
     ],
@@ -515,11 +532,13 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     department: 'Machine Maintenance',
     allowedCategoryTitles: ['MACHINE MAINTENANCE & RELIABILITY', 'MY WORKSPACE'],
     allowedPaths: [
-      '/asset-reliability',
+      '/asset-reliability/breakdowns',
+      '/asset-reliability/spare-parts',
+      '/my-workspace',
       '/task-delegation',
       '/leave',
     ],
-    description: 'Robotic Feeder Maintenance, Oven Thermal Sensors, Preventive Checklists, and Leave Submissions.',
+    description: 'Robotic Feeder Maintenance, Emergency Repair Breakdown Execution, Spare Parts Checkout, and Leave Submissions.',
   },
 
   // 20. Precision Subassembly & Assembly Line Operator
@@ -529,12 +548,12 @@ export const ROLE_NAVIGATION_RULES: Record<string, RoleNavigationRule> = {
     department: 'Shop Floor Assembly',
     allowedCategoryTitles: ['MY ASSEMBLY LINE', 'MY WORKSPACE'],
     allowedPaths: [
-      '/production',
       '/production/work-orders',
+      '/my-workspace',
       '/task-delegation',
       '/leave',
     ],
-    description: 'Cleanroom Precision Subassembly, Component Bonding, Personal Leave Requests, and Shift Work Orders.',
+    description: 'Cleanroom Precision Subassembly, Component Bonding, Personal Leave Requests, and Shift Work Orders Execution.',
   },
 
   // 21. Serial Number Setup & Factory IT Admin
@@ -626,17 +645,13 @@ export function isPathAuthorizedForRole(targetHref: string, roleId?: string): bo
     return true;
   }
 
-  // Always permit universal enterprise showcase & employee workflow routes
+  // Always permit universal employee personal workspace & public partner portal routes
   if (
     cleanTarget === '/task-delegation' ||
     cleanTarget === '/leave' ||
     cleanTarget === '/my-workspace' ||
     cleanTarget === '/supplier-portal' ||
-    cleanTarget === '/customer-portal' ||
-    cleanTarget === '/finance/ap-matching' ||
-    cleanTarget === '/quality/hardware-diagnostics' ||
-    cleanTarget === '/legal' ||
-    cleanTarget === '/approvals'
+    cleanTarget === '/customer-portal'
   ) {
     return true;
   }

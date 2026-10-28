@@ -34,6 +34,8 @@ import {
   VehicleComplianceDocumentItem,
 } from '@/types/fleet';
 import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
+import { useActiveFranchise } from '@/lib/franchiseStore';
+import { formatCurrency } from '@/lib/utils';
 
 const MOCK_OVERVIEW_METRICS: FleetOverviewMetrics = {
   fleetSize: 16,
@@ -209,6 +211,7 @@ const MOCK_COMPLIANCE_ALERTS: VehicleComplianceDocumentItem[] = [
 ];
 
 export default function FleetDashboardOverviewPage() {
+  const activeFranchise = useActiveFranchise();
   const [metrics, setMetrics] = useState<FleetOverviewMetrics>(MOCK_OVERVIEW_METRICS);
   const [vehicles, setVehicles] = useState<FleetVehicleItem[]>(MOCK_RECENT_VEHICLES);
   const [activeTrips, setActiveTrips] = useState<VehicleAssignmentItem[]>(MOCK_ACTIVE_TRIPS);
@@ -515,8 +518,8 @@ export default function FleetDashboardOverviewPage() {
             <span>Diesel & Tolls</span>
             <Fuel className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
           </div>
-          <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight font-mono">
-            ₹{(metrics.recentFuelAnalytics.totalSpend / 1000).toFixed(0)}k
+          <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight font-mono">
+            {formatCurrency(metrics.recentFuelAnalytics.totalSpend, activeFranchise?.currency || 'USD')}
           </div>
           <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-1">
             <span>{metrics.recentFuelAnalytics.litersConsumed} L diesel</span>

@@ -3,11 +3,13 @@
 import React, { useState, useMemo } from 'react';
 import { useActiveFranchise } from '@/lib/franchiseStore';
 import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
+import { AndonAlertModal } from '@/components/AndonAlertModal';
 import {
   Activity,
   Boxes,
   Clock,
   AlertTriangle,
+  AlertOctagon,
   CheckCircle2,
   Calendar,
   Layers,
@@ -106,6 +108,7 @@ const mockOrders: ActiveOrderProgress[] = [
 export default function ProductionOverviewPage() {
   const { session } = useAuth();
   const isSuperAdmin = session?.roleId === 'super_admin';
+  const [isAndonModalOpen, setIsAndonModalOpen] = useState(false);
 
   const activeFranchise = useActiveFranchise();
 
@@ -209,11 +212,28 @@ export default function ProductionOverviewPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded-xl shadow-sm">
-          <Clock className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
-          <span>Assembly Lines Status: <strong className="text-slate-800 dark:text-slate-200">Shift A (Morning)</strong></span>
+        <div className="flex items-center gap-2.5 flex-wrap">
+          <button
+            type="button"
+            onClick={() => setIsAndonModalOpen(true)}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-rose-600 hover:bg-rose-500 rounded-xl shadow-xs transition-colors cursor-pointer"
+          >
+            <AlertOctagon className="w-3.5 h-3.5 animate-pulse" />
+            Pull Andon Cord
+          </button>
+          <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-3 py-1.5 rounded-xl shadow-sm">
+            <Clock className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+            <span>Assembly Lines Status: <strong className="text-slate-800 dark:text-slate-200">Shift A (Morning)</strong></span>
+          </div>
         </div>
       </div>
+
+      <AndonAlertModal
+        isOpen={isAndonModalOpen}
+        onClose={() => setIsAndonModalOpen(false)}
+        currentUser={session?.username || 'Production Lead'}
+        currentRole={session?.roleId || 'production'}
+      />
 
       {/* Plain-English Explainer Guide for Production Floor */}
       <PlainEnglishBanner
