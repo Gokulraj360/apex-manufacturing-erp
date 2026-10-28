@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { useActiveFranchise } from '@/lib/franchiseStore';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 import {
   Activity,
   Boxes,
@@ -213,6 +214,37 @@ export default function ProductionOverviewPage() {
           <span>Assembly Lines Status: <strong className="text-slate-800 dark:text-slate-200">Shift A (Morning)</strong></span>
         </div>
       </div>
+
+      {/* Plain-English Explainer Guide for Production Floor */}
+      <PlainEnglishBanner
+        moduleName="Factory Floor Assembly & Work Orders"
+        whatItDoes="Monitors real-time assembly progress across active plant production lines, tracking completed units, scrap waste, and work order deadlines."
+        whyItMatters="Ensures the factory meets customer shipping commitments on time while keeping component scrap waste under 0.5%."
+        metrics={[
+          {
+            acronym: 'Work Order (WO)',
+            plainName: 'Factory Assembly Job',
+            explanation: 'An authorized manufacturing order directing line workers to assemble a specific batch quantity of a product.',
+          },
+          {
+            acronym: 'Scrap Count',
+            plainName: 'Damaged / Discarded Units',
+            explanation: 'Units rejected during assembly due to soldering, mechanical, or cosmetic flaws.',
+            healthyBenchmark: '< 0.5% Total Batch',
+          },
+          {
+            acronym: 'OTD Risk',
+            plainName: 'On-Time Delivery Deadline Risk',
+            explanation: 'AI and algorithmic tracking estimating whether the batch will complete before the dispatch delivery date.',
+            healthyBenchmark: '99% On-Track',
+          },
+        ]}
+        quickSteps={[
+          '1. Inspect active production batches in the table below',
+          '2. Click "Log Completed Batch" to update floor assembly count',
+          '3. Flag any station quality hold or scrap spikes for supervisor concession',
+        ]}
+      />
 
       {/* Action Alerts & Interconnected Workflow Notifications Inbox */}
       <RoleActionAlerts roleId="production" />

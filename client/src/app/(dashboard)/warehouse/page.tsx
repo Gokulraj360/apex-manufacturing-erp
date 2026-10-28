@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import Link from 'next/link';
 import { useActiveFranchise } from '@/lib/franchiseStore';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 import {
   Warehouse,
   AlertTriangle,
@@ -223,6 +225,69 @@ export default function WarehouseOverviewPage() {
           <span>Barcode & Stock Scanner: <strong className="text-slate-800 dark:text-slate-200">100% Matched</strong></span>
         </div>
       </div>
+
+      {/* Unified Warehouse & Inventory Hub Sub-Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <Link
+          href="/warehouse"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-600 text-white shadow-xs"
+        >
+          Raw Materials & Parts Inventory
+        </Link>
+        <Link
+          href="/warehouse/bins"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Storage Bins & Racks
+        </Link>
+        <Link
+          href="/warehouse/dispatch"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Finished Goods Staging Bay
+        </Link>
+        <Link
+          href="/inventory/cycle-counts"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Physical Cycle Counts & Audits
+        </Link>
+        <Link
+          href="/supply-chain/mrp"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Material Requirements (MRP)
+        </Link>
+      </div>
+
+      {/* Plain-English Explainer Guide for Warehouse */}
+      <PlainEnglishBanner
+        moduleName="Warehouse Inventory & Raw Material Storage"
+        whatItDoes="Tracks current physical stock quantities, reserved materials for active factory work orders, bin & shelf locations, and automatic low-stock reorder thresholds."
+        whyItMatters="Prevents factory assembly lines from stalling due to missing parts, eliminates stockout emergencies, and keeps accurate financial valuation of company inventory."
+        metrics={[
+          {
+            acronym: 'Reorder Threshold',
+            plainName: 'Safety Buffer Minimum',
+            explanation: 'The critical low-stock quantity trigger that alerts purchasing to order fresh batches before stock runs out completely.',
+          },
+          {
+            acronym: 'FIFO Valuation',
+            plainName: 'First-In First-Out Accounting',
+            explanation: 'Inventory valuation method assuming the oldest purchased components are used up first, ensuring accurate balance sheet costs.',
+          },
+          {
+            acronym: 'Bin Code (e.g. RACK-A1-TRAY-01)',
+            plainName: 'Exact Physical Shelf Address',
+            explanation: 'The physical aisle, rack, shelf, and tray location so warehouse operators can find parts within seconds.',
+          },
+        ]}
+        quickSteps={[
+          '1. Scan incoming supplier pallets to assign lot numbers and storage bin coordinates',
+          '2. Reserve parts for scheduled manufacturing work orders before pulling to the line',
+          '3. Monitor low-stock alerts and generate automatic supplier purchase requests',
+        ]}
+      />
 
       {/* Action Alerts & Interconnected Workflow Notifications Inbox */}
       <RoleActionAlerts roleId="warehouse" />

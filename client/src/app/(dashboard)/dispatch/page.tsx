@@ -23,6 +23,7 @@ import {
   Search,
 } from 'lucide-react';
 import { DispatchShipmentItem } from '@/types/dispatch';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 
 const RECENT_SHIPMENTS: DispatchShipmentItem[] = [
   {
@@ -120,6 +121,69 @@ export default function DispatchOverviewPage() {
           </Link>
         </div>
       </div>
+
+      {/* Unified Dispatch & Outbound Hub Sub-Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <Link
+          href="/dispatch"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-orange-600 text-white shadow-xs"
+        >
+          Dispatch Control Center
+        </Link>
+        <Link
+          href="/dispatch/shipping"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Carrier Selection & Tracking
+        </Link>
+        <Link
+          href="/warehouse/dispatch"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Finished Goods Staging Bay
+        </Link>
+        <Link
+          href="/fleet/assignments"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Delivery Truck & Driver Roster
+        </Link>
+        <Link
+          href="/logistics-gate/outbound-clearance"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Gate Security & Seal Clearance
+        </Link>
+      </div>
+
+      {/* Plain-English Explainer Guide for Dispatch */}
+      <PlainEnglishBanner
+        moduleName="Finished Goods Packaging & Dispatch Center"
+        whatItDoes="Coordinates packing verified customer orders into master cartons, generating barcode shipping labels, verifying truck loading manifests, and issuing official gate exit passes."
+        whyItMatters="Prevents shipping incorrect items or short quantities to customers, enforces tamper-evident container seal verification, and maintains delivery SLA timelines."
+        metrics={[
+          {
+            acronym: 'Delivery Challan (DC)',
+            plainName: 'Official Shipping Manifest',
+            explanation: 'The legal transport document listing each carton, serial barcode, and weight loaded onto the delivery truck.',
+          },
+          {
+            acronym: 'Gate Pass & Seal',
+            plainName: 'Factory Exit Security Clearance',
+            explanation: 'A numbered tamper-proof seal and security-verified pass required before any truck can legally drive out of the factory gate.',
+          },
+          {
+            acronym: 'On-Time Dispatch SLA',
+            plainName: 'Customer Promised Deadline',
+            explanation: 'Percentage of customer sales orders loaded and departing within the contractual agreed-upon shipping window.',
+          },
+        ]}
+        quickSteps={[
+          '1. Verify packed cartons against the Customer Sales Order manifest',
+          '2. Scan barcode serials to link individual units to carton numbers',
+          '3. Assign freight carrier, log truck number & security seal, and generate Gate Pass',
+        ]}
+      />
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

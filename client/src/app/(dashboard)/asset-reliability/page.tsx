@@ -28,6 +28,7 @@ import {
   BreakdownTicketItem,
   MaintenanceScheduleItem,
 } from '@/types/asset-reliability';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 
 const MOCK_ACTIVE_BREAKDOWNS: BreakdownTicketItem[] = [
   {
@@ -188,6 +189,69 @@ export default function AssetReliabilityDashboard() {
           </Link>
         </div>
       </div>
+
+      {/* Unified Asset Reliability & Maintenance Hub Sub-Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <Link
+          href="/asset-reliability"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-600 text-white shadow-xs"
+        >
+          Equipment Health & OEE Hub
+        </Link>
+        <Link
+          href="/asset-reliability/breakdowns"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Breakdown Repair Tickets
+        </Link>
+        <Link
+          href="/asset-reliability/preventive-schedules"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Preventive Maintenance (PM) Calendar
+        </Link>
+        <Link
+          href="/asset-reliability/spare-parts"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Tool Crib & Spare Parts
+        </Link>
+        <Link
+          href="/production/downtime"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Shop Floor Line Stoppages
+        </Link>
+      </div>
+
+      {/* Plain-English Explainer Guide for Asset Reliability */}
+      <PlainEnglishBanner
+        moduleName="Equipment Reliability & Asset Health"
+        whatItDoes="Monitors machine operating health, tracks unexpected equipment breakdowns, schedules routine preventive maintenance (e.g. oil changes, sensor calibration), and manages spare parts in the tool crib."
+        whyItMatters="Stops sudden factory line shutdowns before they occur, extends machine lifespan, and ensures emergency repair technicians have spare parts ready."
+        metrics={[
+          {
+            acronym: 'MTBF (Mean Time Between Failures)',
+            plainName: 'Average Running Uptime Before Failure',
+            explanation: 'The average number of operational hours a machine runs smoothly before needing repair; higher is better.',
+          },
+          {
+            acronym: 'MTTR (Mean Time to Repair)',
+            plainName: 'Average Fix Duration',
+            explanation: 'How quickly technicians diagnose and fix a broken machine to get it running again; lower is better.',
+          },
+          {
+            acronym: 'OEE (Overall Equipment Effectiveness)',
+            plainName: 'Machine Productive Performance',
+            explanation: 'Score combining machine Availability (not broken), Speed (running at rated pace), and Quality (zero defect parts produced).',
+          },
+        ]}
+        quickSteps={[
+          '1. Inspect live telemetry for temperature, vibration, and spindle health',
+          '2. File rapid breakdown tickets when an assembly line machine stops',
+          '3. Check off routine preventive maintenance tasks before scheduled due dates',
+        ]}
+      />
 
       {/* KPI Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -27,6 +27,7 @@ import {
   X,
 } from 'lucide-react';
 import { SupplierQualityScoreItem, QualityAuditLogItem } from '@/types/quality';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 
 const INITIAL_SUPPLIER_SCORES: SupplierQualityScoreItem[] = [
   {
@@ -214,6 +215,75 @@ export default function QualityAnalyticsDashboard() {
           </button>
         </div>
       </div>
+
+      {/* Unified Quality Assurance Hub Sub-Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <Link
+          href="/quality"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-purple-600 text-white shadow-xs"
+        >
+          Quality Analytics & Audits
+        </Link>
+        <Link
+          href="/quality/incoming"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Stage 1: Inbound Raw Materials
+        </Link>
+        <Link
+          href="/quality/in-process"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Stage 2: Assembly Line Checks
+        </Link>
+        <Link
+          href="/quality/final"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Stage 3: Pre-Shipment Inspection
+        </Link>
+        <Link
+          href="/quality/defects"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Defect Reports & Quarantine
+        </Link>
+        <Link
+          href="/quality/hardware-diagnostics"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Diagnostic Test Rigs
+        </Link>
+      </div>
+
+      {/* Plain-English Explainer Guide for Quality */}
+      <PlainEnglishBanner
+        moduleName="Industrial Quality Assurance & Pass Testing"
+        whatItDoes="Inspects incoming supplier materials, performs automated station testing during manufacturing, and conducts final audits before products are shipped to customers."
+        whyItMatters="Stops defective units from reaching paying customers, identifies which suppliers send faulty batches, and reduces costly scrap and rework."
+        metrics={[
+          {
+            acronym: 'FPY (First Pass Yield)',
+            plainName: 'First-Time Good Rate',
+            explanation: 'Percentage of units that pass every quality test on the first try without needing any repair or rework.',
+          },
+          {
+            acronym: 'Defect PPM',
+            plainName: 'Defects Per Million Units',
+            explanation: 'Industry standard metric for how rare mistakes are; a lower PPM number represents higher manufacturing precision.',
+          },
+          {
+            acronym: 'CoC (Certificate of Conformance)',
+            plainName: 'Official Quality Guarantee Stamp',
+            explanation: 'Legal laboratory proof that the shipped batch meets all technical, electrical, and safety specifications.',
+          },
+        ]}
+        quickSteps={[
+          '1. Inspect incoming supplier raw material lots at Dock Receiving (Stage 1)',
+          '2. Run automated diagnostic station checks during assembly (Stage 2)',
+          '3. Stamp Certificate of Conformance (CoC) and release for final shipment (Stage 3)',
+        ]}
+      />
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

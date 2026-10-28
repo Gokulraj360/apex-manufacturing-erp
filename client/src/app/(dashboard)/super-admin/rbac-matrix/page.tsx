@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 import {
   ShieldCheck,
   ShieldAlert,
@@ -519,6 +521,63 @@ export default function DynamicRbacMatrixPage() {
           </button>
         </div>
       </div>
+
+      {/* Unified Access Control & Governance Sub-Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <Link
+          href="/super-admin/rbac-matrix"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-purple-600 text-white shadow-xs"
+        >
+          2D Role Permission Matrix & SoD
+        </Link>
+        <Link
+          href="/admin/role-permissions"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Department Role Action Rights
+        </Link>
+        <Link
+          href="/credentials"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Staff Logins & Access Passwords
+        </Link>
+        <Link
+          href="/system-admin/users"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          System User Directory & Profiles
+        </Link>
+      </div>
+
+      {/* Plain-English Explainer Guide for RBAC & SoD */}
+      <PlainEnglishBanner
+        moduleName="Role-Based Access Control (RBAC) & Fraud Prevention (SoD)"
+        whatItDoes="Decides which job positions can view, edit, delete, or approve data across factory departments, and blocks dangerous conflicting powers that could enable internal theft or fraud."
+        whyItMatters="Prevents rogue employees from paying fake vendors, changing employee wages without oversight, or altering quality test results to pass failed shipments."
+        metrics={[
+          {
+            acronym: 'RBAC (Role-Based Access Control)',
+            plainName: 'Job Permission Rules',
+            explanation: 'Security system ensuring each staff member only sees and clicks buttons relevant to their specific daily job.',
+          },
+          {
+            acronym: 'SoD (Segregation of Duties)',
+            plainName: 'Internal Fraud Prevention Guard',
+            explanation: 'Enforces that the person who places a purchase order cannot be the same person who signs off the invoice payment to the bank.',
+          },
+          {
+            acronym: 'Break-Glass Elevation',
+            plainName: 'Emergency Temporary Pass',
+            explanation: 'A short-term (max 2 hour) emergency bypass granted for critical maintenance with every action recorded for audit.',
+          },
+        ]}
+        quickSteps={[
+          '1. Choose a job position (e.g., Plant Operator, Line Supervisor, or Finance Officer)',
+          '2. Check or uncheck buttons to allow or deny View, Edit, or Approval powers',
+          '3. Review the SoD Conflict table to verify no conflicting financial powers exist',
+        ]}
+      />
 
       {savedNotification && (
         <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs font-medium flex items-center gap-2 animate-in fade-in duration-200">

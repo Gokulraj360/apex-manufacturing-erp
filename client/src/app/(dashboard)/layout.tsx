@@ -2,9 +2,10 @@
 
 import React, { useMemo, useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Sun, Moon, ShieldAlert, ArrowLeft, Lock, Building2 } from 'lucide-react';
+import { Sun, Moon, ShieldAlert, ArrowLeft, Lock, Building2, BookOpen } from 'lucide-react';
 import { Sidebar } from '@/components/Sidebar';
 import { GlobalWorkflowOrchestrator } from '@/components/GlobalWorkflowOrchestrator';
+import { ErpDictionaryModal } from '@/components/ErpDictionaryModal';
 import { useAuth } from '@/context/AuthContext';
 import { useTheme } from '@/context/ThemeContext';
 import { ALL_ROLES } from '@/types/auth';
@@ -193,6 +194,7 @@ export default function DashboardLayout({
 
   // Active Multi-Franchise Operating Profile
   const [activeFranchise, setActiveFranchise] = useState<FranchiseProfile>(() => franchiseStore.getActiveProfile());
+  const [isDictionaryOpen, setIsDictionaryOpen] = useState(false);
 
   useEffect(() => {
     if (!isLoading && !session) {
@@ -246,6 +248,16 @@ export default function DashboardLayout({
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Universal Cross-Role Workflow Orchestrator (Available on Every Page) */}
             <GlobalWorkflowOrchestrator />
+
+            {/* Universal Plain-English ERP Dictionary & Cheatsheet */}
+            <button
+              onClick={() => setIsDictionaryOpen(true)}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 dark:bg-blue-950/60 dark:hover:bg-blue-900/60 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-blue-900/40 text-xs font-semibold transition-all cursor-pointer shadow-2xs"
+              title="Open Plain-English ERP Dictionary & Cheatsheet"
+            >
+              <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+              <span className="hidden md:inline">ERP Cheatsheet</span>
+            </button>
 
             {/* Universal Multi-Franchise Plant Switcher */}
             <div
@@ -370,6 +382,12 @@ export default function DashboardLayout({
           )}
         </main>
       </div>
+
+      {/* Global Searchable ERP Dictionary & Cheatsheet Modal */}
+      <ErpDictionaryModal
+        isOpen={isDictionaryOpen}
+        onClose={() => setIsDictionaryOpen(false)}
+      />
     </div>
   );
 }

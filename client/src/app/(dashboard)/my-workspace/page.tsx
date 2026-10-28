@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 import { workflowStore, WorkflowItem } from '@/lib/workflowStore';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 import {
   User,
   Calendar,
@@ -606,6 +608,63 @@ export default function MyWorkspacePage() {
           </div>
         </div>
       </div>
+
+      {/* Unified Personal Workspace & Operations Hub Sub-Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-border pb-3">
+        <Link
+          href="/my-workspace"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-primary text-primary-foreground shadow-xs"
+        >
+          My Profile, Leave & Shifts
+        </Link>
+        <Link
+          href="/task-delegation"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-muted-foreground hover:bg-accent transition-colors"
+        >
+          My Assigned Tasks & Projects
+        </Link>
+        <Link
+          href="/approvals"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-muted-foreground hover:bg-accent transition-colors"
+        >
+          Pending Sign-Offs & Approvals
+        </Link>
+        <Link
+          href="/payroll"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-muted-foreground hover:bg-accent transition-colors"
+        >
+          My Salary & Payslips
+        </Link>
+      </div>
+
+      {/* Plain-English Explainer Guide for My Workspace */}
+      <PlainEnglishBanner
+        moduleName="Employee Self-Service & Personal Workspace"
+        whatItDoes="Allows employees to clock in/out for shifts, request paid time off (PTO) and sick leave, log approved overtime hours, submit expense claims, and track assigned factory tools."
+        whyItMatters="Gives staff direct visibility over their work hours and vacation balances without waiting on HR, and ensures accurate monthly salary calculation based on verified biometric hours."
+        metrics={[
+          {
+            acronym: 'PTO (Paid Time Off)',
+            plainName: 'Vacation & Annual Leave Days',
+            explanation: 'The balance of earned paid vacation days available to take without salary reduction.',
+          },
+          {
+            acronym: 'OT (Overtime Hours)',
+            plainName: 'Extra Work Shift Hours',
+            explanation: 'Hours worked beyond the standard 8-hour shift, paid out at 1.5x or 2x base hourly rate on the monthly payslip.',
+          },
+          {
+            acronym: 'Asset Custody & Calibration',
+            plainName: 'Assigned Factory Tools & Gear',
+            explanation: 'Precision equipment (e.g. digital calipers, ESD smocks, tablets) assigned to you that require periodic safety and accuracy re-certification.',
+          },
+        ]}
+        quickSteps={[
+          '1. Review your current shift status, leave balances, and logged overtime hours',
+          '2. Click "Apply Leave" or "Log Overtime" to submit requests to your supervisor',
+          '3. Check custody of your assigned shop floor tools and download calibration certificates',
+        ]}
+      />
 
       {/* Metric Cards */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

@@ -32,6 +32,7 @@ import {
 import { PayrollBatchItem, PayrollLineItem } from '@/types/payroll-cred';
 import { useAuth } from '@/context/AuthContext';
 import { BarChart, DonutChart } from '@/components/charts';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 
 const INITIAL_BATCHES: PayrollBatchItem[] = [
   {
@@ -361,7 +362,7 @@ export default function PayrollManagementPage() {
             Staff Salaries & Payout Settlement Desk
           </h1>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Multi-tier workflow between HR (submission), Finance (verification & release), and Super Admin for monthly phone factory wages.
+            Multi-tier workflow between HR (submission), Finance (verification & release), and Super Admin for monthly plant wages.
           </p>
         </div>
 
@@ -383,6 +384,63 @@ export default function PayrollManagementPage() {
           </button>
         </div>
       </div>
+
+      {/* Unified Payroll Hub Sub-Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <Link
+          href="/payroll"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-blue-600 text-white shadow-xs"
+        >
+          Monthly Salary Batches
+        </Link>
+        <Link
+          href="/department-payroll"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Department Floor Wages
+        </Link>
+        <Link
+          href="/admin/salary-audit"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Salary Discrepancy & Audit Log
+        </Link>
+        <Link
+          href="/credentials"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Employee Directory & Bank Accounts
+        </Link>
+      </div>
+
+      {/* Plain-English Explainer Guide for Payroll */}
+      <PlainEnglishBanner
+        moduleName="Staff Payroll & Payout Settlement"
+        whatItDoes="Calculates and verifies monthly employee salaries, statutory tax/insurance deductions (PF, ESI), and biometric attendance hours before releasing payments."
+        whyItMatters="Guarantees accurate and on-time wage disbursement across all departments while preventing double-payments or payroll fraud."
+        metrics={[
+          {
+            acronym: 'Gross Pay',
+            plainName: 'Pre-Tax Salary',
+            explanation: 'Total earnings before any taxes or provident fund savings are deducted.',
+          },
+          {
+            acronym: 'Net Payout',
+            plainName: 'Actual Take-Home Pay',
+            explanation: 'The actual money deposited into the employee bank account after statutory deductions.',
+          },
+          {
+            acronym: 'PF & ESI',
+            plainName: 'Retirement & Health Deductions',
+            explanation: 'Legally mandated savings (Provident Fund) and government employee healthcare insurance contributions.',
+          },
+        ]}
+        quickSteps={[
+          '1. Select payroll batch to inspect employee attendance and allowances',
+          '2. Verify tax/insurance deductions against biometric logs',
+          '3. Sign off and transmit batch to bank for direct RTGS/NEFT transfer',
+        ]}
+      />
 
       {/* Top 4 KPI Metrics (Current Batch Highlight) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

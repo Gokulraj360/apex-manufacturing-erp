@@ -33,6 +33,7 @@ import {
   PrototypeTestLogItem,
   TechnicalDrawingItem,
 } from '@/types/design';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 
 const MOCK_METRICS: DesignEngineeringOverviewMetrics = {
   totalCadModels: 18,
@@ -318,6 +319,69 @@ export default function DesignEngineeringOverviewPage() {
           </Link>
         </div>
       </div>
+
+      {/* Unified Design Engineering Hub Sub-Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <Link
+          href="/design"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-violet-600 text-white shadow-xs"
+        >
+          CAD Models & Engineering Vault
+        </Link>
+        <Link
+          href="/design/bom-editor"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Parts & Materials Recipe (BOM)
+        </Link>
+        <Link
+          href="/design/blueprints"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          2D Blueprints & Drawings
+        </Link>
+        <Link
+          href="/design/ecn"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Engineering Change Notices (ECN)
+        </Link>
+        <Link
+          href="/design/prototyping"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Prototype Stress & Lab Testing
+        </Link>
+      </div>
+
+      {/* Plain-English Explainer Guide for Design Studio */}
+      <PlainEnglishBanner
+        moduleName="Design Engineering & Product R&D Studio"
+        whatItDoes="Manages 3D CAD models, creates the multi-level Parts & Materials Recipe (BOM) that factory lines build, coordinates engineering design changes (ECN), and verifies physical prototypes."
+        whyItMatters="Prevents costly assembly mistakes on the factory floor, guarantees that parts fit together accurately, and tracks revision history so outdated drawings are never manufactured."
+        metrics={[
+          {
+            acronym: 'BOM (Bill of Materials)',
+            plainName: 'Product Ingredients Recipe',
+            explanation: 'The hierarchical list of every screw, circuit board, bracket, and casing required to assemble the finished device.',
+          },
+          {
+            acronym: 'ECN (Engineering Change Notice)',
+            plainName: 'Design Revision Request',
+            explanation: 'A formal approval process to modify a part drawing or material without disrupting active factory production.',
+          },
+          {
+            acronym: 'FEA & Prototype Testing',
+            plainName: 'Stress & Durability Simulation',
+            explanation: 'Digital stress testing and physical sample verification to confirm products survive drop, heat, and vibration requirements.',
+          },
+        ]}
+        quickSteps={[
+          '1. Upload or inspect 3D CAD assembly files and dimensional blueprints',
+          '2. Define sub-assemblies and raw parts in the Multi-Level BOM Editor',
+          '3. Issue an ECN whenever a design change is made and test prototypes before factory release',
+        ]}
+      />
 
       {/* Top 4 Performance Metric Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">

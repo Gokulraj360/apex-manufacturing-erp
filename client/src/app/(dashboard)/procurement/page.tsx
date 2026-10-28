@@ -31,6 +31,7 @@ import {
   RequestForQuotationItem,
   PurchaseOrderProcurementItem,
 } from '@/types/procurement';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 
 const MOCK_METRICS: ProcurementOverviewMetrics = {
   openRequisitionsCount: 14,
@@ -241,6 +242,69 @@ export default function ProcurementOverviewPage() {
           </button>
         </div>
       </div>
+
+      {/* Unified Procurement Hub Sub-Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <Link
+          href="/procurement"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-xs"
+        >
+          Procurement Command Center
+        </Link>
+        <Link
+          href="/procurement/requisitions"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Purchase Requests (PR)
+        </Link>
+        <Link
+          href="/procurement/rfqs"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Vendor Quotes (RFQ) & Bidding
+        </Link>
+        <Link
+          href="/procurement/purchase-orders"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Purchase Orders (PO)
+        </Link>
+        <Link
+          href="/procurement/contracts"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Price-Lock Contracts & SLAs
+        </Link>
+      </div>
+
+      {/* Plain-English Explainer Guide for Procurement */}
+      <PlainEnglishBanner
+        moduleName="Sourcing & Supplier Procurement Hub"
+        whatItDoes="Coordinates purchase requests from factory teams, collects competitive price quotes from vendors (RFQs), issues binding Purchase Orders (POs), and locks in negotiated supplier prices."
+        whyItMatters="Stops unauthorized company spending, secures volume price discounts, and guarantees raw materials arrive before factory assembly lines run dry."
+        metrics={[
+          {
+            acronym: 'PR (Purchase Requisition)',
+            plainName: 'Internal Department Purchase Request',
+            explanation: 'An internal request created by a plant team asking purchasing to buy needed parts or tools.',
+          },
+          {
+            acronym: 'RFQ (Request for Quotation)',
+            plainName: 'Vendor Competitive Price Tender',
+            explanation: 'Sending identical part specifications to multiple suppliers to get their best price and delivery time before choosing.',
+          },
+          {
+            acronym: 'PO (Purchase Order)',
+            plainName: 'Official Legal Purchase Contract',
+            explanation: 'The legally binding order sent to the chosen vendor authorizing shipment and guaranteeing payment terms (e.g. Net 30).',
+          },
+        ]}
+        quickSteps={[
+          '1. Approve pending internal departmental purchase requests (PRs)',
+          '2. Issue competitive RFQ bids to multiple suppliers and compare pricing matrices',
+          '3. Sign off and transmit formal Purchase Orders (POs) directly to suppliers',
+        ]}
+      />
 
       {/* KPI Metric Cards */}
       <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3.5">

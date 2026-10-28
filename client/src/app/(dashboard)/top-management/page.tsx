@@ -6,6 +6,7 @@ import { useAuth } from '@/context/AuthContext';
 import { generateAndDownloadWordDoc } from '@/lib/wordDocumentGenerator';
 import { workflowStore, WorkflowItem } from '@/lib/workflowStore';
 import { useActiveFranchise } from '@/lib/franchiseStore';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 import {
   TrendingUp,
   DollarSign,
@@ -371,6 +372,44 @@ export default function TopManagementPage() {
         </div>
       </div>
 
+      {/* Plain-English Explainer Guide for Executive Cockpit */}
+      <PlainEnglishBanner
+        moduleName="Executive Boardroom C-Suite Cockpit"
+        whatItDoes="Aggregates global corporate financial health, operational plant uptime, and profitability across all manufacturing facilities into a single high-level command center."
+        whyItMatters="Enables the CEO, Owner, and Board of Directors to make capital investments, detect underperforming plants, and ensure money spent on materials turns quickly into profits."
+        metrics={[
+          {
+            acronym: 'EBITDA',
+            plainName: 'Core Operating Profit',
+            explanation: 'Profit generated purely from factory operations before taxes, loan interest, and accounting depreciation.',
+            healthyBenchmark: '> 22% Margin',
+          },
+          {
+            acronym: 'OEE',
+            plainName: 'Machine Efficiency Score',
+            explanation: 'Percentage of scheduled production time that is truly productive (running at full speed with zero machine breakdowns).',
+            healthyBenchmark: '> 85% World-Class',
+          },
+          {
+            acronym: 'FPY',
+            plainName: 'First-Time Quality Pass Rate',
+            explanation: 'The percentage of products built that pass all quality and safety tests on the very first try without rework.',
+            healthyBenchmark: '> 98.5% Target',
+          },
+          {
+            acronym: 'CCC',
+            plainName: 'Cash Recovery Speed (Days)',
+            explanation: 'Number of days it takes for money spent buying parts to return to the bank account as collected customer revenue.',
+            healthyBenchmark: '< 45 Days',
+          },
+        ]}
+        quickSteps={[
+          '1. Toggle active facility in header to inspect specific plant performance',
+          '2. Review EBITDA margin vs machine OEE efficiency cards',
+          '3. Export signed Board Briefing report (.doc) for stakeholder reviews',
+        ]}
+      />
+
       {/* C-Suite Core KPIs */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
@@ -386,7 +425,7 @@ export default function TopManagementPage() {
 
         <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
           <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider block">
-            Consolidated EBITDA
+            Consolidated EBITDA (Core Operating Profit)
           </span>
           <div className="mt-3">
             <span className="text-2xl font-bold text-blue-600">$35.9M</span>
@@ -397,7 +436,7 @@ export default function TopManagementPage() {
 
         <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
           <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider block">
-            Cash Conversion Cycle
+            Cash Conversion Cycle (Cash Recovery Speed)
           </span>
           <div className="mt-3">
             <span className="text-2xl font-bold text-foreground">{baseCcc.toFixed(1)} Days</span>
@@ -408,7 +447,7 @@ export default function TopManagementPage() {
 
         <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
           <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider block">
-            DuPont ROE Metric
+            DuPont ROE (Return on Equity Efficiency)
           </span>
           <div className="mt-3">
             <span className="text-2xl font-bold text-foreground">31.0%</span>

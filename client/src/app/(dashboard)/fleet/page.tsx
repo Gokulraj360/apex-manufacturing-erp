@@ -33,6 +33,7 @@ import {
   VehicleServiceLogItem,
   VehicleComplianceDocumentItem,
 } from '@/types/fleet';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 
 const MOCK_OVERVIEW_METRICS: FleetOverviewMetrics = {
   fleetSize: 16,
@@ -385,6 +386,75 @@ export default function FleetDashboardOverviewPage() {
           </Link>
         </div>
       </div>
+
+      {/* Unified Fleet Hub Sub-Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <Link
+          href="/fleet"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 text-white shadow-xs"
+        >
+          Fleet Overview & Live Trips
+        </Link>
+        <Link
+          href="/fleet/registry"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Vehicle Registry & Trucks
+        </Link>
+        <Link
+          href="/fleet/assignments"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Driver & Route Assignments
+        </Link>
+        <Link
+          href="/fleet/maintenance"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Garage Servicing & Repairs
+        </Link>
+        <Link
+          href="/fleet/expenses"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Fuel Cards & FASTag Tolls
+        </Link>
+        <Link
+          href="/fleet/compliance"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Insurance, PUC & Permits
+        </Link>
+      </div>
+
+      {/* Plain-English Explainer Guide for Fleet */}
+      <PlainEnglishBanner
+        moduleName="Delivery Fleet & Vehicle Logistics"
+        whatItDoes="Monitors company delivery trucks, live shipment runs, driver route assignments, fuel consumption, and statutory fitness/insurance paperwork."
+        whyItMatters="Prevents delivery delays, cuts fuel/toll wastage, avoids government road fines, and ensures vehicles are serviced before breakdowns happen."
+        metrics={[
+          {
+            acronym: 'Odometer (KM)',
+            plainName: 'Total Mileage Driven',
+            explanation: 'The running distance clock used to schedule regular tire, oil, and brake maintenance intervals.',
+          },
+          {
+            acronym: 'PUC & Fitness',
+            plainName: 'Government Road Clearances',
+            explanation: 'Pollution Under Control and vehicle roadworthiness certifications required to prevent police seizure or transit fines.',
+          },
+          {
+            acronym: 'FASTag & Fuel',
+            plainName: 'Toll & Diesel Expense Cards',
+            explanation: 'Automated highway toll debits and company prepaid diesel cards assigned to drivers for route accountability.',
+          },
+        ]}
+        quickSteps={[
+          '1. View trucks in yard vs active on road with live driver details',
+          '2. Assign pending customer shipments and drivers to available vehicles',
+          '3. Track maintenance alerts and renew expiring insurance or PUC papers',
+        ]}
+      />
 
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5">

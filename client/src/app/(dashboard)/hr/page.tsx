@@ -31,6 +31,7 @@ import { RoleActionAlerts } from '@/components/RoleActionAlerts';
 import { useAuth } from '@/context/AuthContext';
 import { SupervisoryBanner } from '@/components/SupervisoryBanner';
 import { DepartmentAuditFeed } from '@/components/DepartmentAuditFeed';
+import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 
 const MOCK_DEPARTMENTS: DepartmentItem[] = [
   { id: 'dept-1', name: 'Precision Assembly Lines (Line 1-3)', code: 'PROD', headOfDepartment: 'Sunil Rao', _count: { employees: 64, jobOpenings: 3 } },
@@ -137,6 +138,65 @@ export default function HrWorkforceOverviewPage() {
           </div>
         )}
       </div>
+
+      {/* Unified People & HR Hub Navigation Tabs */}
+      <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+        <Link
+          href="/hr"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-indigo-600 text-white shadow-xs"
+        >
+          Shift Rosters & Attendance
+        </Link>
+        <Link
+          href="/credentials"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Master Staff Directory & Credentials Vault
+        </Link>
+        <Link
+          href="/leave"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Leave Requests & Balances
+        </Link>
+        <Link
+          href="/payroll"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Staff Monthly Payroll Run
+        </Link>
+        <Link
+          href="/department-payroll"
+          className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+        >
+          Department Worker Wages Desk
+        </Link>
+      </div>
+
+      {/* Plain-English Explainer Guide for HR Hub */}
+      <PlainEnglishBanner
+        moduleName="Human Resources & Factory Shift Staffing"
+        whatItDoes="Oversees plant headcount, real-time biometric turnstile attendance, shift rosters, employee master records, and paid leave approvals."
+        whyItMatters="Ensures assembly lines have 100% of required technician staffing on every shift to prevent line shutdowns."
+        metrics={[
+          {
+            acronym: 'Shift Attendance Rate',
+            plainName: 'Daily Worker Turnout',
+            explanation: 'Percentage of scheduled shift operators who punched in and are currently working on the assembly lines.',
+            healthyBenchmark: '> 95% Optimal',
+          },
+          {
+            acronym: 'Overtime Hours Pending',
+            plainName: 'Extra Shift Hours Worked',
+            explanation: 'Accumulated extra hours logged by operators during high-volume production runs, awaiting supervisor sign-off for wages.',
+          },
+        ]}
+        quickSteps={[
+          '1. Review active shift staffing rate across lines',
+          '2. Click "Master Staff Directory" to add, edit, or terminate employees',
+          '3. Review pending leave requests or overtime hours for payroll compilation',
+        ]}
+      />
 
       {/* Action Alerts & Interconnected Workflow Notifications Inbox */}
       <RoleActionAlerts roleId="hr" />
