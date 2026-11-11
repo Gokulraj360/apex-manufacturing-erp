@@ -26,6 +26,7 @@ import {
   BOMNodeItem,
   BOMStatus,
 } from '@/types/design';
+import { useActiveFranchise } from '@/lib/franchiseStore';
 
 const INITIAL_BOM_TREE: BOMNodeItem[] = [
   {
@@ -187,6 +188,7 @@ const INITIAL_BOMS: BillOfMaterialsMasterItem[] = [
 ];
 
 export default function BomEditorPage() {
+  const activeFranchise = useActiveFranchise();
   const [boms, setBoms] = useState<BillOfMaterialsMasterItem[]>(INITIAL_BOMS);
   const [activeBom, setActiveBom] = useState<BillOfMaterialsMasterItem>(INITIAL_BOMS[0]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -386,6 +388,11 @@ export default function BomEditorPage() {
               <Layers className="h-5 w-5" />
             </div>
             <div>
+              <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-semibold bg-violet-50 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300 border border-violet-200 dark:border-violet-800 mb-1">
+                <span>{activeFranchise.flag} {activeFranchise.plantName}</span>
+                <span className="text-slate-400">·</span>
+                <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">Active UOMs: {activeFranchise.supportedUoms.join(', ')}</span>
+              </div>
               <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
                 Product Parts List & Assembly Recipe (BOM)
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-500/30">
@@ -685,14 +692,29 @@ export default function BomEditorPage() {
                 </div>
 
                 <div>
-                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">UOM</label>
-                  <input
-                    type="text"
-                    required
+                  <label className="block text-slate-700 dark:text-slate-300 mb-1 font-medium">UOM (Unit) *</label>
+                  <select
                     value={partForm.uom}
                     onChange={(e) => setPartForm({ ...partForm, uom: e.target.value })}
-                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500"
-                  />
+                    className="w-full bg-slate-50 dark:bg-[#090d16] border border-slate-300 dark:border-slate-800 rounded-lg p-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-violet-500 cursor-pointer text-xs font-semibold"
+                  >
+                    {activeFranchise.supportedUoms.map((u) => (
+                      <option key={u} value={u}>
+                        {u} (Active Facility Standard)
+                      </option>
+                    ))}
+                    <option value="Pcs">Pcs - Pieces</option>
+                    <option value="MT">MT - Metric Ton</option>
+                    <option value="kg">kg - Kilogram</option>
+                    <option value="gm">gm - Gram</option>
+                    <option value="ltr">ltr - Liter</option>
+                    <option value="m3">m³ - Cubic Meter</option>
+                    <option value="m">m - Meter</option>
+                    <option value="cm">cm - Centimeter</option>
+                    <option value="m2">m² - Square Meter</option>
+                    <option value="Unit">Unit - Finished Unit</option>
+                    <option value="sets">sets - Kit / Tooling</option>
+                  </select>
                 </div>
 
                 <div>

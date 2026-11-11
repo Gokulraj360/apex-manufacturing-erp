@@ -202,6 +202,20 @@ const GLOSSARY_TERMS: GlossaryTerm[] = [
     simpleExplanation: 'A high-security, uniquely numbered barcode seal placed on truck trailer doors. Verified by factory security before allowing the truck to exit.',
     example: 'Security checks that seal #TS-8849-B matches the dispatch paperwork before lifting the gate barrier.',
   },
+  {
+    term: 'UOM (Unit of Measure)',
+    category: 'Manufacturing',
+    plainTranslation: 'Measurement Unit Standards',
+    simpleExplanation: 'Standardized physical units used to quantify materials across industries: Mass (MT, kg, gm), Volume (ltr, m³), Length (m, cm), Area (m²), and Counts (Pcs, Unit, sets).',
+    example: 'Steel uses MT and meters, chemicals use liters, electronics use pieces, and jewellery uses grams.',
+  },
+  {
+    term: 'Dual-UOM Tracking',
+    category: 'Supply Chain',
+    plainTranslation: 'Purchasing Unit vs Shop Floor Unit Conversion',
+    simpleExplanation: 'System capability to buy material in bulk weight (e.g. Metric Tons of steel) but consume it on assembly lines in linear or discrete counts (e.g. meters or cut pieces) without inventory variance.',
+    example: 'The purchasing desk orders 20 MT of copper rod, which the shop floor draws into 250,000 meters of insulated wire.',
+  },
 ];
 
 export function ErpDictionaryModal({

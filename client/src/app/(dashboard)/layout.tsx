@@ -2,10 +2,11 @@
 
 import React, { useMemo, useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-import { Sun, Moon, ShieldAlert, ArrowLeft, Lock, Building2, BookOpen } from 'lucide-react';
+import { Sun, Moon, ShieldAlert, ArrowLeft, Lock, Building2, BookOpen, Scale } from 'lucide-react';
 import { Sidebar } from '@/components/Sidebar';
 import { GlobalWorkflowOrchestrator } from '@/components/GlobalWorkflowOrchestrator';
 import { ErpDictionaryModal } from '@/components/ErpDictionaryModal';
+import { UniversalUomModal } from '@/components/UniversalUomModal';
 import { ActiveAndonBanner } from '@/components/AndonAlertModal';
 import { useAuth } from '@/context/AuthContext';
 import { useTheme } from '@/context/ThemeContext';
@@ -196,6 +197,7 @@ export default function DashboardLayout({
   // Active Multi-Franchise Operating Profile
   const [activeFranchise, setActiveFranchise] = useState<FranchiseProfile>(() => franchiseStore.getActiveProfile());
   const [isDictionaryOpen, setIsDictionaryOpen] = useState(false);
+  const [isUomModalOpen, setIsUomModalOpen] = useState(false);
 
   useEffect(() => {
     if (!isLoading && !session) {
@@ -258,6 +260,16 @@ export default function DashboardLayout({
             >
               <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
               <span className="hidden md:inline">ERP Cheatsheet</span>
+            </button>
+
+            {/* Universal Multi-Franchise Industry & UOM Measurements Hub */}
+            <button
+              onClick={() => setIsUomModalOpen(true)}
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-900/40 text-xs font-semibold transition-all cursor-pointer shadow-2xs"
+              title="Universal Multi-Franchise Industry & Measurement Units (UOM) Registry"
+            >
+              <Scale className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+              <span className="hidden lg:inline">Units ({activeFranchise.primaryUom || 'UOM'})</span>
             </button>
 
             {/* Universal Multi-Franchise Plant Switcher */}
@@ -389,6 +401,12 @@ export default function DashboardLayout({
       <ErpDictionaryModal
         isOpen={isDictionaryOpen}
         onClose={() => setIsDictionaryOpen(false)}
+      />
+
+      {/* Universal Multi-Franchise Industry & Measurement Units (UOM) Modal */}
+      <UniversalUomModal
+        isOpen={isUomModalOpen}
+        onClose={() => setIsUomModalOpen(false)}
       />
     </div>
   );

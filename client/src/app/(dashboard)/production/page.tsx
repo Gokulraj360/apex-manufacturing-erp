@@ -202,6 +202,8 @@ export default function ProductionOverviewPage() {
             <span>{activeFranchise.plantName}</span>
             <span className="text-slate-400">·</span>
             <span>{activeFranchise.primaryIndustry}</span>
+            <span className="text-slate-400">·</span>
+            <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">Primary Unit: {activeFranchise.primaryUom || 'Units'}</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
             <Activity className="h-6 w-6 text-blue-600 dark:text-blue-400" />
@@ -350,14 +352,14 @@ export default function ProductionOverviewPage() {
         data={lineOutputComparisonData}
         series={[
           { key: 'target', name: 'Planned Shift Target', color: '#6366f1' },
-          { key: 'actual', name: 'Completed Good Units', color: '#10b981' },
+          { key: 'actual', name: 'Completed Output', color: '#10b981' },
         ]}
         xAxisKey="label"
         mode="grouped"
-        title="SMT & Assembly Lines: Target vs Actual Output Comparison"
-        subtitle="Completed good units compared against planned work order targets across all 6 industrial assembly lines"
+        title={`${activeFranchise.primaryIndustry}: Target vs Actual Output Comparison`}
+        subtitle={`Completed output compared against planned targets in ${activeFranchise.primaryUom || 'Units'} across all 6 industrial production lines`}
         yAxisFormatter={(v) => `${v.toLocaleString()}`}
-        tooltipFormatter={(v) => `${v.toLocaleString()} Units`}
+        tooltipFormatter={(v) => `${v.toLocaleString()} ${activeFranchise.primaryUom || 'Units'}`}
         height={280}
       />
 
@@ -450,10 +452,10 @@ export default function ProductionOverviewPage() {
                 <div className="mt-4 space-y-1.5">
                   <div className="flex justify-between items-center text-xs">
                     <span className="text-slate-600 dark:text-slate-400">
-                      Units Assembled: <strong className="text-slate-900 dark:text-white font-mono">{order.completedUnits.toLocaleString()}</strong> of <span className="font-mono">{order.targetUnits.toLocaleString()}</span>
+                      Output Completed: <strong className="text-slate-900 dark:text-white font-mono">{order.completedUnits.toLocaleString()} {activeFranchise.primaryUom || 'Units'}</strong> of <span className="font-mono">{order.targetUnits.toLocaleString()} {activeFranchise.primaryUom || 'Units'}</span>
                     </span>
                     <span className="text-slate-500 dark:text-slate-400">
-                      Wasted / Defective: <strong className="text-rose-600 dark:text-rose-400 font-mono">{order.scrapUnits} units</strong> &bull; <strong className="text-blue-600 dark:text-blue-400 font-mono">{progress}% Complete</strong>
+                      Scrap / Waste: <strong className="text-rose-600 dark:text-rose-400 font-mono">{order.scrapUnits} {activeFranchise.primaryUom || 'Units'}</strong> &bull; <strong className="text-blue-600 dark:text-blue-400 font-mono">{progress}% Complete</strong>
                     </span>
                   </div>
 

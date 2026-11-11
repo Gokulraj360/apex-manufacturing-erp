@@ -112,6 +112,7 @@ const initialOrders: WorkOrderItem[] = [
 ];
 
 export default function WorkOrderExecutionPage() {
+  const activeFranchise = useActiveFranchise();
   const [orders, setOrders] = useState<WorkOrderItem[]>(initialOrders);
   const [expandedOrderId, setExpandedOrderId] = useState<string | null>('wo-1');
   const [newBatchModalOrder, setNewBatchModalOrder] = useState<WorkOrderItem | null>(null);
@@ -202,12 +203,20 @@ export default function WorkOrderExecutionPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-900/40 mb-1.5">
+            <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-800">{activeFranchise.flag}</span>
+            <span>{activeFranchise.plantName}</span>
+            <span className="text-slate-400">·</span>
+            <span>{activeFranchise.primaryIndustry}</span>
+            <span className="text-slate-400">·</span>
+            <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400">Target UOM: {activeFranchise.primaryUom || 'Units'}</span>
+          </div>
           <h2 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
             <Boxes className="h-6 w-6 text-blue-500" />
             Interactive Work Order Execution Board
           </h2>
           <p className="text-sm text-slate-400 mt-1">
-            Real-time batch start/pause control, milestone checklists, and production line completion tracking.
+            Real-time batch start/pause control, milestone checklists, and production line completion tracking ({activeFranchise.primaryUom || 'Units'}).
           </p>
         </div>
       </div>
@@ -265,7 +274,7 @@ export default function WorkOrderExecutionPage() {
                     <div className="text-xs text-slate-400">Total Progress</div>
                     <div className="text-base font-bold font-mono text-white">
                       {wo.completedQuantity.toLocaleString()} / {wo.targetQuantity.toLocaleString()}{' '}
-                      <span className="text-blue-400 text-xs">({progressPercent}%)</span>
+                      <span className="text-blue-400 text-xs">({progressPercent}%) {activeFranchise.primaryUom || 'Units'}</span>
                     </div>
                   </div>
 
