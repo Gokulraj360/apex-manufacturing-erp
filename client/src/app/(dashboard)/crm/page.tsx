@@ -209,26 +209,32 @@ export default function CRMOverviewPage() {
               <Building2 className="h-5 w-5" />
             </span>
             <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
-              Customer Relationship Management (CRM) Command Hub
+              Customer Orders &amp; Sales Hub
             </h1>
           </div>
           <p className="text-xs text-slate-600 dark:text-slate-400">
-            Pipeline growth tracking, manufacturing cost quote conversions, won order-to-production schedule linkage, and client retention scorecards.
+            Track customer orders, check raw material stock before accepting orders, send price quotes, and follow deliveries.
           </p>
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2.5">
+          <Link
+            href="/crm/order-feasibility"
+            className="flex items-center gap-2 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-bold shadow-md shadow-emerald-500/20 transition-all"
+          >
+            <PackageCheck className="h-4 w-4" /> Check Stock Before Accepting Order
+          </Link>
           <Link
             href="/crm/leads"
             className="flex items-center gap-2 px-3.5 py-2 bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-500 hover:to-rose-500 text-white rounded-lg text-xs font-semibold shadow-md shadow-pink-500/20 transition-all"
           >
-            <Plus className="h-4 w-4" /> Capture New Lead
+            <Plus className="h-4 w-4" /> New Customer Inquiry
           </Link>
           <Link
             href="/crm/quotations"
             className="flex items-center gap-2 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg text-xs font-semibold transition-all"
           >
-            <Calculator className="h-4 w-4 text-pink-600 dark:text-pink-400" /> Cost Quotation Desk
+            <Calculator className="h-4 w-4 text-pink-600 dark:text-pink-400" /> Price Quotes
           </Link>
           <button
             onClick={() => window.location.reload()}

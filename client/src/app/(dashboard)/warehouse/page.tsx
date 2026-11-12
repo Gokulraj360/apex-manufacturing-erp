@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { useActiveFranchise } from '@/lib/franchiseStore';
+import { INDUSTRY_SECTORS } from '@/lib/industryUomRegistry';
 import { PlainEnglishBanner } from '@/components/PlainEnglishBanner';
 import {
   Warehouse,
@@ -126,57 +127,24 @@ export default function WarehouseOverviewPage() {
     };
   }, []);
 
-  // Dynamically adapt stock items and units to active facility's industry sector and products
+  // Dynamically adapt stock items and units to ANY of the 24 industry sectors
   const stocks = useMemo(() => {
-    const sectorOverrides: Record<string, Partial<WarehouseStockItem>[]> = {
-      'steel-heavy-metals': [
-        { itemCode: 'RAW-STL-ORE-01', itemName: 'High-Grade Iron Ore Pellets (Hematite 65% Fe)', unitOfMeasure: 'MT', unitValuation: 145, binCode: 'YARD-ORE-SILO-01' },
-        { itemCode: 'RAW-STL-COKE-02', itemName: 'Metallurgical Coking Coal Concentrates', unitOfMeasure: 'MT', unitValuation: 280, binCode: 'YARD-COKE-BIN-04' },
-        { itemCode: 'RAW-STL-BAR-03', itemName: 'Continuous Cast High-Alloy Billet Bar Stock', unitOfMeasure: 'm', unitValuation: 65, binCode: 'BAY-BILLET-RACK-02' },
-        { itemCode: 'RAW-STL-ALLOY-04', itemName: 'Ferro-Chrome Alloying Agent Additive', unitOfMeasure: 'kg', unitValuation: 18, binCode: 'SEC-ALLOY-TRAY-08' },
-      ],
-      'chemical': [
-        { itemCode: 'RAW-CHM-ETH-01', itemName: 'High-Purity Ethylene Monomer Feedstock', unitOfMeasure: 'MT', unitValuation: 950, binCode: 'TANK-FARM-SILO-01' },
-        { itemCode: 'RAW-CHM-ACID-02', itemName: 'Concentrated Industrial Acidic Reagent', unitOfMeasure: 'ltr', unitValuation: 24, binCode: 'DRUM-BAY-ROW-03' },
-        { itemCode: 'RAW-CHM-SOLV-03', itemName: 'Anhydrous High-Purity Processing Solvent', unitOfMeasure: 'ltr', unitValuation: 38, binCode: 'TANK-SOLV-A1' },
-        { itemCode: 'RAW-CHM-CAT-04', itemName: 'Precious Platinum Hydrogenation Catalyst Powder', unitOfMeasure: 'kg', unitValuation: 3200, binCode: 'SAFE-VAULT-CAT-02' },
-      ],
-      'cable-wire': [
-        { itemCode: 'RAW-CBL-COP-01', itemName: 'Continuous 8mm Electrolytic Copper Rod', unitOfMeasure: 'kg', unitValuation: 9.8, binCode: 'REEL-YARD-BAY-01' },
-        { itemCode: 'RAW-CBL-XLPE-02', itemName: 'Cross-Linked XLPE Insulation Granules', unitOfMeasure: 'kg', unitValuation: 4.2, binCode: 'SILO-POLY-04' },
-        { itemCode: 'RAW-CBL-ARM-03', itemName: 'Galvanized Helical Steel Armor Tape', unitOfMeasure: 'm', unitValuation: 1.85, binCode: 'RACK-ARMOR-TAPE-02' },
-        { itemCode: 'RAW-CBL-DIE-04', itemName: 'High-Speed Precision Diamond Drawing Dies', unitOfMeasure: 'Pcs', unitValuation: 450, binCode: 'TOOL-CRIB-CAB-01' },
-      ],
-      'textile-apparel': [
-        { itemCode: 'RAW-TXT-COT-01', itemName: 'Carded Long-Staple Egyptian Cotton Bales', unitOfMeasure: 'kg', unitValuation: 3.5, binCode: 'BALE-STORAGE-BAY-02' },
-        { itemCode: 'RAW-TXT-YRN-02', itemName: 'Ring-Spun Combed Cotton Yarn Cones (40s)', unitOfMeasure: 'kg', unitValuation: 5.8, binCode: 'YARN-PALLET-RACK-03' },
-        { itemCode: 'RAW-TXT-WARP-03', itemName: 'Woven Warp Interlining Cloth Rolls', unitOfMeasure: 'm', unitValuation: 2.2, binCode: 'ROLL-RACK-A1' },
-        { itemCode: 'RAW-TXT-DYE-04', itemName: 'Reactive Botanical Fiber Dye Solution Salts', unitOfMeasure: 'kg', unitValuation: 28, binCode: 'COLOR-LAB-SHELF-04' },
-      ],
-      'jewellery-precious-metals': [
-        { itemCode: 'RAW-JWL-GLD-01', itemName: '24-Karat Fine Gold Bullion Grain 99.99%', unitOfMeasure: 'gm', unitValuation: 78.5, binCode: 'VAULT-GOLD-SEC-01' },
-        { itemCode: 'RAW-JWL-PLT-02', itemName: 'Platinum 950 Fine Casting Alloy Granules', unitOfMeasure: 'gm', unitValuation: 36.2, binCode: 'VAULT-PLAT-SEC-02' },
-        { itemCode: 'RAW-JWL-DIA-03', itemName: 'Certified Natural Solitaire Diamonds (VVS1)', unitOfMeasure: 'Pcs', unitValuation: 1450, binCode: 'GEM-SAFE-TRAY-01' },
-        { itemCode: 'RAW-JWL-RHO-04', itemName: 'High-Purity Rhodium Electroplating Salts', unitOfMeasure: 'gm', unitValuation: 165, binCode: 'LAB-REAGENT-CAB-03' },
-      ],
-      'dairy-food-products': [
-        { itemCode: 'RAW-DRY-MLK-01', itemName: 'Chilled Farm Fresh Raw Whole Milk', unitOfMeasure: 'ltr', unitValuation: 0.65, binCode: 'SILO-MILK-CHILL-01' },
-        { itemCode: 'RAW-DRY-SMP-02', itemName: 'Spray-Dried Demineralized Skim Milk Powder', unitOfMeasure: 'kg', unitValuation: 3.8, binCode: 'PALLET-DRY-WH-02' },
-        { itemCode: 'RAW-DRY-TET-03', itemName: 'Aseptic Multi-Layer Barrier Packaging Board', unitOfMeasure: 'm²', unitValuation: 1.25, binCode: 'ROLL-TETRA-BAY-04' },
-        { itemCode: 'RAW-DRY-CUL-04', itemName: 'Thermophilic Lactic Acid Probiotic Inoculum', unitOfMeasure: 'gm', unitValuation: 4.5, binCode: 'COLD-ROOM-FREEZER-01' },
-      ],
-      'cement-building': [
-        { itemCode: 'RAW-CEM-LIME-01', itemName: 'High-Purity Calcium Carbonate Limestone', unitOfMeasure: 'MT', unitValuation: 32, binCode: 'STOCKPILE-CRUSH-01' },
-        { itemCode: 'RAW-CEM-GYP-02', itemName: 'Natural Anhydrous Gypsum Retarder Rock', unitOfMeasure: 'MT', unitValuation: 48, binCode: 'SILO-GYPSUM-B2' },
-        { itemCode: 'RAW-CEM-AGG-03', itemName: 'River Washed Coarse Concrete Aggregate', unitOfMeasure: 'm³', unitValuation: 28, binCode: 'YARD-SAND-BUNKER-03' },
-        { itemCode: 'RAW-CEM-ADD-04', itemName: 'Polycarboxylate High-Range Water Reducer', unitOfMeasure: 'kg', unitValuation: 3.4, binCode: 'CHEM-STORAGE-BAY-01' },
-      ],
+    const sectorMeta = INDUSTRY_SECTORS.find((sec) => sec.id === activeFranchise.industrySectorId);
+    const rawNames = sectorMeta?.sampleRawMaterials || [];
+
+    // Extract unit in parentheses e.g. "Iron Ore Pellets (MT)" -> "MT"
+    const parseUnitFromName = (rawStr: string, fallback: string) => {
+      const match = rawStr.match(/\(([^)]+)\)$/);
+      if (match && match[1]) {
+        const extracted = match[1].split('/')[0].trim();
+        return extracted;
+      }
+      return fallback;
     };
 
-    const sectorItems = sectorOverrides[activeFranchise.industrySectorId] || [];
+    const stripUnitFromName = (rawStr: string) => rawStr.replace(/\s*\([^)]+\)$/, '').trim();
 
     return initialStocks.map((s, idx) => {
-      // Find matching dynamic stock from enterpriseDataStore if available
       const storeMatch = storeStocks.find((item) => item.itemCode === s.itemCode);
       const currentQty = storeMatch ? storeMatch.currentQuantity : s.currentQuantity;
       const reservedQty = storeMatch ? storeMatch.reservedQuantity : s.reservedQuantity;
@@ -188,25 +156,32 @@ export default function WarehouseOverviewPage() {
           currentQuantity: currentQty,
           reservedQuantity: reservedQty,
           status,
-          itemName: `${activeFranchise.flagshipProduct} - Master Packaged Unit`,
+          itemName: `${activeFranchise.flagshipProduct} - Finished Stock`,
           unitOfMeasure: activeFranchise.primaryUom || 'Units',
           unitValuation: activeFranchise.currency === 'EUR' ? 420 : activeFranchise.currency === 'CHF' ? 450 : activeFranchise.currency === 'USD' ? 480 : 38500
         };
       }
 
-      // If industry-specific items are defined for this sector, adapt raw material name & unit
-      const sectorItem = sectorItems[idx % sectorItems.length];
-      const finalItemName = sectorItem?.itemName || s.itemName;
-      const finalUom = sectorItem?.unitOfMeasure || s.unitOfMeasure;
-      const finalBin = sectorItem?.binCode || s.binCode;
-      const finalValuation = sectorItem?.unitValuation || s.unitValuation;
+      if (rawNames.length > 0) {
+        const rawEntry = rawNames[idx % rawNames.length];
+        const finalItemName = stripUnitFromName(rawEntry);
+        const finalUom = parseUnitFromName(rawEntry, activeFranchise.primaryUom || 'Units');
+        const binPrefix = activeFranchise.industrySectorId.slice(0, 3).toUpperCase();
+        return {
+          ...s,
+          itemCode: `MAT-${binPrefix}-0${idx + 1}`,
+          itemName: finalItemName,
+          unitOfMeasure: finalUom,
+          binCode: `BAY-${binPrefix}-RACK-0${idx + 1}`,
+          currentQuantity: currentQty,
+          reservedQuantity: reservedQty,
+          status,
+          isBelowReorderThreshold: currentQty <= s.reorderThreshold,
+        };
+      }
 
       return {
         ...s,
-        itemName: finalItemName,
-        unitOfMeasure: finalUom,
-        binCode: finalBin,
-        unitValuation: finalValuation,
         currentQuantity: currentQty,
         reservedQuantity: reservedQty,
         status,

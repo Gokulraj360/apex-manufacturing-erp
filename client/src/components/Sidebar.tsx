@@ -61,6 +61,7 @@ interface NavItem {
 
 interface NavCategory {
   title: string;
+  displayTitle: string;
   defaultOpen?: boolean;
   items: NavItem[];
 }
@@ -93,209 +94,225 @@ export function Sidebar() {
   const normalizedId = normalizeRoleId(currentRoleId);
   const activeRule = ROLE_NAVIGATION_RULES[normalizedId];
 
-  // Clean, Deduplicated Master Categories across Apex Multi-Franchise Enterprise OS
+  // Clean, Plain-English Master Categories across all industries
   const masterCategories: NavCategory[] = useMemo(
     () => [
       {
         title: 'TOP MANAGEMENT (OWNER / MD)',
+        displayTitle: 'ADMIN & OWNER PANEL',
         defaultOpen: true,
         items: [
-          { name: 'Executive Cockpit (EBITDA & ROI)', href: '/top-management', icon: Briefcase },
-          { name: 'Universal Approvals & Governance Inbox', href: '/approvals', icon: ClipboardCheck },
-          { name: 'Multi-Persona Portal Gallery', href: '/portals', icon: Users },
-          { name: 'Access Control Matrix (RBAC & SoD Guard)', href: '/super-admin/rbac-matrix', icon: ShieldCheck },
-          { name: 'Product Costing & Target Margins', href: '/pricing-control', icon: Coins },
-          { name: 'Factory Electricity & Utility Overheads', href: '/pricing-control?tab=overheads', icon: Zap },
-          { name: 'Machine Uptime & Plant OEE Telemetry', href: '/super-admin', icon: LayoutGrid },
-          { name: 'Parts & Materials Recipe (BOM Master)', href: '/design/bom-editor', icon: Layers },
-          { name: 'Customer Sales Orders & Feasibility', href: '/crm', icon: ClipboardCheck },
-          { name: 'Staff Onboarding & Credentials Vault', href: '/credentials', icon: UserCheck },
-          { name: 'Monthly Staff Salaries & Payout Desk', href: '/payroll', icon: CreditCard },
-          { name: 'Department Shift Wages & Floor Attendance', href: '/department-payroll', icon: Users },
-          { name: 'Dynamic Role Action Rights Matrix', href: '/admin/role-permissions', icon: ShieldCheck },
-          { name: 'Salary Credit & Discrepancy Audit Log', href: '/admin/salary-audit', icon: CreditCard },
+          { name: 'Business Overview & Profit', href: '/top-management', icon: Briefcase },
+          { name: 'Pending Approvals', href: '/approvals', icon: ClipboardCheck },
+          { name: 'Order Stock Check (Can We Fulfill?)', href: '/crm/order-feasibility', icon: PackageCheck },
+          { name: 'User Permissions & Safety Rules', href: '/super-admin/rbac-matrix', icon: ShieldCheck },
+          { name: 'Product Pricing & Costs', href: '/pricing-control', icon: Coins },
+          { name: 'Plant & Machine Summary', href: '/super-admin', icon: LayoutGrid },
+          { name: 'Staff Accounts & Logins', href: '/credentials', icon: UserCheck },
+          { name: 'Role Portals View', href: '/portals', icon: Users },
         ],
       },
       {
         title: 'FINANCE & ACCOUNTS DESK',
+        displayTitle: 'ACCOUNTS & BILLING',
         defaultOpen: true,
         items: [
-          { name: 'Factory Accounts & Ledger (Cash & P&L)', href: '/finance', icon: DollarSign },
-          { name: '3-Way Invoice Matching (PO vs Goods Receipt)', href: '/finance/ap-matching', icon: Receipt },
-          { name: 'Supplier Bills & Invoice Match', href: '/finance/vendor-bills', icon: Receipt },
-          { name: 'Customer Invoices & Delivery Challans', href: '/finance/invoices', icon: FileSpreadsheet },
-          { name: 'Tax & GST Filing Reports', href: '/finance/tax-reports', icon: CreditCard },
-          { name: 'Monthly Staff Salaries & Payout Desk', href: '/payroll', icon: CreditCard },
+          { name: 'Company Accounts & Cash Flow', href: '/finance', icon: DollarSign },
+          { name: 'Bill vs Delivery Matching', href: '/finance/ap-matching', icon: Receipt },
+          { name: 'Supplier Bills', href: '/finance/vendor-bills', icon: Receipt },
+          { name: 'Customer Invoices', href: '/finance/invoices', icon: FileSpreadsheet },
+          { name: 'Tax & GST Reports', href: '/finance/tax-reports', icon: CreditCard },
+          { name: 'Staff Salaries & Payouts', href: '/payroll', icon: CreditCard },
         ],
       },
       {
         title: 'PRECISION ASSEMBLY LINES',
+        displayTitle: 'PRODUCTION & FACTORY FLOOR',
         defaultOpen: true,
         items: [
-          { name: 'Line 1: Surface Mount Assembly (SMT & Circuit)', href: '/production', icon: Cpu },
-          { name: 'Line 2: Subassembly & Component Bonding', href: '/production/work-orders', icon: Layers },
-          { name: 'Line 3: Sensor Calibration & Optical Tuning', href: '/production/batches', icon: Activity },
+          { name: 'Production Floor Overview', href: '/production', icon: Factory },
+          { name: 'Daily Work Orders', href: '/production/work-orders', icon: Layers },
+          { name: 'Batch Progress & Output', href: '/production/batches', icon: Activity },
         ],
       },
       {
         title: 'WAREHOUSE & INVENTORY STOCK',
+        displayTitle: 'STOCK & WAREHOUSE',
         defaultOpen: true,
         items: [
-          { name: 'Raw Materials & Inventory (Stock & FIFO)', href: '/warehouse', icon: Warehouse },
-          { name: 'Small Parts Storage Bins & Safety Stock', href: '/warehouse/inventory', icon: Boxes },
-          { name: 'Product Serial Numbers & Unit Tracking', href: '/warehouse/locations', icon: Barcode },
+          { name: 'Raw Materials & Finished Stock', href: '/warehouse', icon: Warehouse },
+          { name: 'Storage Racks & Safety Stock', href: '/warehouse/inventory', icon: Boxes },
+          { name: 'Batch Numbers & Tracking', href: '/warehouse/locations', icon: Barcode },
         ],
       },
       {
         title: 'QUALITY ASSURANCE & TESTING BENCH',
+        displayTitle: 'QUALITY CHECKS',
         defaultOpen: true,
         items: [
-          { name: 'Station Hardware Diagnostics Suite', href: '/quality/hardware-diagnostics', icon: Activity },
-          { name: 'First Pass Yield (FPY & Defect PPM)', href: '/quality', icon: ShieldCheck },
-          { name: 'Incoming Parts Quality Check (Dock QC)', href: '/quality/incoming', icon: ShieldCheck },
-          { name: 'In-Process Line Assembly Checks', href: '/quality/in-process', icon: Activity },
-          { name: 'Pre-Dispatch Quality Stamp & Seals (CoC)', href: '/quality/final', icon: ShieldCheck },
-          { name: 'Quality Issue & Damage Reports (NCR)', href: '/quality/ncr', icon: RotateCcw },
+          { name: 'Quality Overview & Pass Rate', href: '/quality', icon: ShieldCheck },
+          { name: 'Incoming Material Check', href: '/quality/incoming', icon: ShieldCheck },
+          { name: 'During-Production Check', href: '/quality/in-process', icon: Activity },
+          { name: 'Final Check Before Shipping', href: '/quality/final', icon: ShieldCheck },
+          { name: 'Damaged Goods Reports', href: '/quality/ncr', icon: RotateCcw },
         ],
       },
       {
         title: 'BOX PACKING & DISPATCH',
+        displayTitle: 'PACKING & SHIPPING',
         defaultOpen: true,
         items: [
-          { name: 'Dispatch Control Center & Loading Gate', href: '/dispatch', icon: Send },
-          { name: 'Finished Goods & Batch Storage Bays', href: '/dispatch/storage', icon: Grid },
-          { name: 'Shipping Box Labels & Barcode Stickers', href: '/dispatch/packaging', icon: Barcode },
+          { name: 'Shipping & Dispatch Desk', href: '/dispatch', icon: Send },
+          { name: 'Ready-to-Ship Storage Bays', href: '/dispatch/storage', icon: Grid },
+          { name: 'Packing Labels & Barcodes', href: '/dispatch/packaging', icon: Barcode },
         ],
       },
       {
         title: 'GATE SECURITY & LOGISTICS',
+        displayTitle: 'GATE ENTRY & SECURITY',
         defaultOpen: true,
         items: [
-          { name: 'Factory Gate Security & Inbound Dock', href: '/logistics-gate', icon: ShieldAlert },
+          { name: 'Gate Entry & Truck Check-In', href: '/logistics-gate', icon: ShieldAlert },
         ],
       },
       {
         title: 'HUMAN RESOURCES & STAFF',
+        displayTitle: 'STAFF & PAYROLL',
         defaultOpen: true,
         items: [
-          { name: 'Factory Shift Rosters & Attendance', href: '/hr', icon: Users },
-          { name: 'Staff Onboarding & Credentials Vault', href: '/credentials', icon: UserCheck },
-          { name: 'Monthly Staff Salaries & Payout Desk', href: '/payroll', icon: CreditCard },
-          { name: 'Department Worker Wages & Attendance', href: '/department-payroll', icon: Users },
-          { name: 'Employee Leave Requests & Balances', href: '/leave', icon: Calendar },
+          { name: 'Staff Shifts & Attendance', href: '/hr', icon: Users },
+          { name: 'Staff Accounts & Logins', href: '/credentials', icon: UserCheck },
+          { name: 'Monthly Staff Salaries', href: '/payroll', icon: CreditCard },
+          { name: 'Department Shift Wages', href: '/department-payroll', icon: Users },
+          { name: 'Leave Requests & Balances', href: '/leave', icon: Calendar },
         ],
       },
       {
         title: 'CUSTOMER CARE & ORDERS',
+        displayTitle: 'CUSTOMER ORDERS',
         defaultOpen: true,
         items: [
-          { name: 'Customer Orders & Delivery Planning', href: '/crm', icon: ClipboardCheck },
-          { name: 'B2B Commercial Client Portal', href: '/customer-portal', icon: Share2 },
+          { name: 'Customer Orders & Sales', href: '/crm', icon: ClipboardCheck },
+          { name: 'Order Stock Check (Can We Fulfill?)', href: '/crm/order-feasibility', icon: PackageCheck },
+          { name: 'Customer Self-Service Portal', href: '/customer-portal', icon: Share2 },
         ],
       },
       {
         title: 'SUPPLY CHAIN & SOURCING',
+        displayTitle: 'MATERIAL PLANNING & SUPPLIERS',
         defaultOpen: true,
         items: [
-          { name: 'Material Planning Hub (MRP)', href: '/supply-chain', icon: PackageCheck },
-          { name: 'B2B Supplier Self-Service Portal', href: '/supplier-portal', icon: Factory },
-          { name: 'Chip Stock & Shortage Alerts', href: '/supply-chain/mrp', icon: Activity },
-          { name: 'Supplier & Vendor Directory', href: '/supply-chain/vendors', icon: Factory },
+          { name: 'Material Planning Hub', href: '/supply-chain', icon: PackageCheck },
+          { name: 'Supplier Portal', href: '/supplier-portal', icon: Factory },
+          { name: 'Low Stock & Shortage Alerts', href: '/supply-chain/mrp', icon: Activity },
+          { name: 'Supplier Directory', href: '/supply-chain/vendors', icon: Factory },
         ],
       },
       {
         title: 'DESIGN & CAD R&D',
+        displayTitle: 'PRODUCT RECIPES & DESIGN',
         defaultOpen: true,
         items: [
-          { name: 'Product 3D CAD Models & Blueprints', href: '/design', icon: Compass },
-          { name: 'Parts & Materials Recipe (BOM Editor)', href: '/design/bom-editor', icon: Layers },
+          { name: 'Product Designs & Specs', href: '/design', icon: Compass },
+          { name: 'Product Recipe & Materials List', href: '/design/bom-editor', icon: Layers },
         ],
       },
       {
         title: 'FLEET & DELIVERY VEHICLES',
+        displayTitle: 'DELIVERY VEHICLES',
         defaultOpen: true,
         items: [
-          { name: 'Delivery Trucks & Fleet Telemetry (GPS)', href: '/fleet', icon: Truck },
+          { name: 'Delivery Trucks & Live Tracking', href: '/fleet', icon: Truck },
         ],
       },
       {
         title: 'MACHINE MAINTENANCE & RELIABILITY',
+        displayTitle: 'MACHINE REPAIRS & SERVICE',
         defaultOpen: true,
         items: [
-          { name: 'Machine Maintenance & Servicing (MTBF)', href: '/asset-reliability', icon: Radio },
+          { name: 'Machine Servicing & Breakdowns', href: '/asset-reliability', icon: Radio },
         ],
       },
       {
         title: 'EXTERNAL SUBCONTRACTORS',
+        displayTitle: 'OUTSIDE JOB WORK',
         defaultOpen: true,
         items: [
-          { name: 'External Board Assembly Job-Work', href: '/subcontracting', icon: Share2 },
+          { name: 'Outside Contractor Job-Work', href: '/subcontracting', icon: Share2 },
         ],
       },
       {
         title: 'REPAIRS & WARRANTY CARE',
+        displayTitle: 'CUSTOMER REPAIRS & WARRANTY',
         defaultOpen: true,
         items: [
-          { name: 'Repairs & Customer Warranty Care (RMA)', href: '/field-service', icon: Wrench },
+          { name: 'Customer Repairs & Warranty', href: '/field-service', icon: Wrench },
         ],
       },
       {
         title: 'PARTS PURCHASING & SOURCING',
+        displayTitle: 'PURCHASING & ORDERS',
         defaultOpen: true,
         items: [
-          { name: 'Parts Purchasing & Orders (PR & PO)', href: '/procurement', icon: PackageCheck },
-          { name: 'B2B Supplier Self-Service Portal', href: '/supplier-portal', icon: Factory },
-          { name: 'Supplier Price Quotes & Bids (RFQ)', href: '/procurement/rfqs', icon: Scale },
-          { name: 'Supplier & Vendor Directory', href: '/supply-chain/vendors', icon: Factory },
+          { name: 'Purchase Orders & Buying', href: '/procurement', icon: PackageCheck },
+          { name: 'Supplier Portal', href: '/supplier-portal', icon: Factory },
+          { name: 'Supplier Price Quotes', href: '/procurement/rfqs', icon: Scale },
+          { name: 'Supplier Directory', href: '/supply-chain/vendors', icon: Factory },
         ],
       },
       {
         title: 'MARKETING & PROMOTIONS',
+        displayTitle: 'SALES PROMOTIONS',
         defaultOpen: true,
         items: [
-          { name: 'New Product Commercial Launches', href: '/marketing', icon: Megaphone },
+          { name: 'New Product Launches', href: '/marketing', icon: Megaphone },
         ],
       },
       {
         title: 'ASSEMBLY FLOOR OPERATIONS',
+        displayTitle: 'FLOOR STAFF ALLOCATION',
         defaultOpen: true,
         items: [
-          { name: 'Assembly Floor Staff Allocation', href: '/department-workforce', icon: Users },
+          { name: 'Daily Floor Staff Assignment', href: '/department-workforce', icon: Users },
         ],
       },
       {
         title: 'MY ASSEMBLY LINE',
+        displayTitle: 'MY WORK STATION',
         defaultOpen: true,
         items: [
-          { name: 'Line 1: Precision SMT & Board Assembly', href: '/production', icon: Cpu },
-          { name: 'Line 2: Core Subassembly & Component Bonding', href: '/production/work-orders', icon: Layers },
+          { name: 'Production Floor Overview', href: '/production', icon: Factory },
+          { name: 'Daily Work Orders', href: '/production/work-orders', icon: Layers },
         ],
       },
       {
         title: 'FACTORY IT & SYSTEMS',
+        displayTitle: 'SYSTEM SETTINGS & USERS',
         defaultOpen: true,
         items: [
-          { name: 'Serial Number Setup & Factory IT Admin', href: '/system-admin', icon: ShieldCheck },
-          { name: 'Web Page Crash Recovery & Rollback', href: '/system-admin/backups', icon: Globe },
-          { name: 'Staff Onboarding & Security Credentials', href: '/credentials', icon: UserCheck },
-          { name: 'Dynamic Role Permissions & Matrix', href: '/admin/role-permissions', icon: ShieldCheck },
+          { name: 'System Setup & Settings', href: '/system-admin', icon: ShieldCheck },
+          { name: 'System Backups & Restore', href: '/system-admin/backups', icon: Globe },
+          { name: 'Staff Accounts & Logins', href: '/credentials', icon: UserCheck },
+          { name: 'Role Permissions Setup', href: '/admin/role-permissions', icon: ShieldCheck },
         ],
       },
       {
         title: 'LEGAL, CONTRACTS & COMPLIANCE',
+        displayTitle: 'CONTRACTS & COMPLIANCE',
         defaultOpen: true,
         items: [
-          { name: 'Legal CLM & Statutory Standards', href: '/legal', icon: Scale },
+          { name: 'Contracts & Safety Rules', href: '/legal', icon: Scale },
         ],
       },
       {
         title: 'MY WORKSPACE',
+        displayTitle: 'MY PERSONAL DESK',
         defaultOpen: true,
         items: [
-          { name: 'Employee Self-Service (ESS) Personal Desk', href: '/my-workspace', icon: UserCheck },
-          { name: 'Department Worker Wages & Attendance', href: '/department-payroll', icon: Users },
-          { name: 'Task Assignments & Team Work', href: '/task-delegation', icon: ListTodo },
-          { name: 'Employee Leave Requests & Approvals', href: '/leave', icon: Calendar },
+          { name: 'My Personal Desk', href: '/my-workspace', icon: UserCheck },
+          { name: 'Department Shift Wages', href: '/department-payroll', icon: Users },
+          { name: 'My Tasks & Assignments', href: '/task-delegation', icon: ListTodo },
+          { name: 'Leave Requests & Approvals', href: '/leave', icon: Calendar },
         ],
       },
     ],
@@ -322,7 +339,10 @@ export function Sidebar() {
       .map((cat) => ({
         ...cat,
         items: cat.items.filter(
-          (item) => item.name.toLowerCase().includes(q) || cat.title.toLowerCase().includes(q),
+          (item) =>
+            item.name.toLowerCase().includes(q) ||
+            cat.displayTitle.toLowerCase().includes(q) ||
+            cat.title.toLowerCase().includes(q),
         ),
       }))
       .filter((cat) => cat.items.length > 0);
@@ -402,7 +422,7 @@ export function Sidebar() {
                     onClick={() => toggleCategory(cat.title)}
                     className="w-full text-[10px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase px-3 py-1.5 flex items-center justify-between hover:text-slate-600 dark:hover:text-slate-700 dark:text-slate-300 transition-colors text-left"
                   >
-                    <span className="truncate">{cat.title}</span>
+                    <span className="truncate">{cat.displayTitle}</span>
                     {isCollapsed ? (
                       <ChevronRight className="h-3 w-3 text-slate-400 flex-shrink-0" />
                     ) : (

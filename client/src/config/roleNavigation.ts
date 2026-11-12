@@ -67,6 +67,7 @@ export const PATH_TO_FUNCTION_KEY: Record<string, string> = {
   '/credentials': 'FUNC_HR_EMPLOYEE_DIRECTORY',
   '/leave': 'FUNC_HR_LEAVE_APPROVAL',
   '/crm': 'FUNC_CRM_CARRIER_CONTRACTS',
+  '/crm/order-feasibility': 'FUNC_CRM_CARRIER_CONTRACTS',
   '/supply-chain': 'FUNC_SCM_PURCHASE_REQUISITION',
   '/supply-chain/mrp': 'FUNC_SCM_MRP_SHORTAGE',
   '/supply-chain/vendors': 'FUNC_SCM_VENDOR_PORTAL',

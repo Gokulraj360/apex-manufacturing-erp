@@ -301,7 +301,7 @@ export default function ProductionOverviewPage() {
           </div>
           <div className="mt-3">
             <div className="text-2xl font-bold text-cyan-600 dark:text-cyan-400 tracking-tight font-mono">
-              {totalCompleted.toLocaleString()} / {totalTarget.toLocaleString()}
+              {totalCompleted.toLocaleString()} / {totalTarget.toLocaleString()} <span className="text-sm font-semibold">{activeFranchise.primaryUom || 'Units'}</span>
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               Overall Factory Output: <strong className="text-slate-800 dark:text-slate-200">{overallProgress}%</strong>

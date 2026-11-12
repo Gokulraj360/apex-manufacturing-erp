@@ -351,23 +351,23 @@ export default function TopManagementPage() {
             <span>{activeFranchise.primaryIndustry}</span>
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-foreground">
-            Executive Boardroom & C-Suite Cockpit
+            Business Overview &amp; Profit Summary
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Cash Conversion Cycle decomposition, multi-plant EBITDA bridges, DuPont ROE models, and global CapEx allocation for <strong>{activeFranchise.flagshipProduct}</strong>.
+            Track overall company revenue, cash flow, operating profit, and plant performance for <strong>{activeFranchise.flagshipProduct}</strong> ({activeFranchise.primaryUom}).
           </p>
         </div>
 
         <div className="flex items-center gap-3">
           <div className="text-xs text-muted-foreground bg-card border border-border px-3 py-1.5 rounded-lg">
-            Fiscal Year: <strong className="text-foreground">FY2026 Q3 YTD</strong>
+            Period: <strong className="text-foreground">FY2026 Q3</strong>
           </div>
           <button
             onClick={handleExportBoardBriefing}
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-3.5 py-2 text-xs font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shadow-sm"
           >
             <Download className="w-3.5 h-3.5" />
-            Export Board Briefing (.doc)
+            Download Summary (.doc)
           </button>
         </div>
       </div>
@@ -436,24 +436,24 @@ export default function TopManagementPage() {
 
         <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
           <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider block">
-            Cash Conversion Cycle (Cash Recovery Speed)
+            Cash Recovery Speed
           </span>
           <div className="mt-3">
             <span className="text-2xl font-bold text-foreground">{baseCcc.toFixed(1)} Days</span>
-            <span className="text-xs text-emerald-600 ml-2 font-semibold">↓ -4.8d faster</span>
+            <span className="text-xs text-emerald-600 ml-2 font-semibold">4.8d faster</span>
           </div>
-          <div className="mt-2 text-xs text-purple-600 font-medium">Industry Benchmark: 48.2 Days</div>
+          <div className="mt-2 text-xs text-purple-600 font-medium">Industry Average: 48.2 Days</div>
         </div>
 
         <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
           <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider block">
-            DuPont ROE (Return on Equity Efficiency)
+            Return on Investment
           </span>
           <div className="mt-3">
             <span className="text-2xl font-bold text-foreground">31.0%</span>
-            <span className="text-xs text-emerald-600 ml-2 font-semibold">Tier 1 Elite</span>
+            <span className="text-xs text-emerald-600 ml-2 font-semibold">Strong Return</span>
           </div>
-          <div className="mt-2 text-xs text-amber-600 font-medium">Net Margin × Turnover × Leverage</div>
+          <div className="mt-2 text-xs text-amber-600 font-medium">Net Profit vs Capital Used</div>
         </div>
       </div>
 
@@ -469,7 +469,7 @@ export default function TopManagementPage() {
             }`}
           >
             <Activity className="w-4 h-4" />
-            Cash Recovery Simulator (CCC)
+            Cash Flow Simulator
           </button>
           <button
             onClick={() => setActiveTab('WATERFALL')}
@@ -480,7 +480,7 @@ export default function TopManagementPage() {
             }`}
           >
             <TrendingUp className="w-4 h-4" />
-            Plant Operating Profit (EBITDA) Breakdown
+            Plant Profit Breakdown
           </button>
           <button
             onClick={() => setActiveTab('DUPONT')}

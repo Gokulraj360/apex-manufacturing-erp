@@ -494,30 +494,30 @@ export default function DynamicRbacMatrixPage() {
               <ShieldCheck className="h-5 w-5" />
             </span>
             <h1 className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
-              Dynamic 2D RBAC Permission Matrix & Enterprise Governance Hub
+              User Permissions &amp; Safety Rules
             </h1>
             <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-500/30">
-              SoD Enforcement • Break-Glass • Field Masking
+              Role Access • Safety Checks • Privacy
             </span>
           </div>
           <p className="text-xs text-slate-600 dark:text-slate-400">
-            Configure granular Action-level rights across 10 core ERP modules, enforce column-level field masking, manage time-bound break-glass elevations, and auto-mitigate toxic Segregation of Duties conflicts.
+            Choose what each staff role can view, edit, or approve across your company, and prevent conflicting permissions.
           </p>
         </div>
 
         <div className="flex items-center gap-2.5">
           <button
             onClick={handleExportRbacAuditDoc}
-            title="Download Official RBAC Security & SoD Compliance Audit in Word Format"
+            title="Download Permissions Report in Word Format"
             className="flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 rounded-lg text-xs font-semibold shadow-sm transition-all cursor-pointer"
           >
-            <Download className="h-4 w-4 text-purple-600 dark:text-purple-400" /> Export RBAC Audit (.doc)
+            <Download className="h-4 w-4 text-purple-600 dark:text-purple-400" /> Download Report (.doc)
           </button>
           <button
             onClick={handleSaveMatrix}
             className="flex items-center gap-2 px-3.5 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-lg text-xs font-semibold shadow-md shadow-purple-500/20 transition-all cursor-pointer"
           >
-            <Save className="h-4 w-4" /> Save Permission Matrix
+            <Save className="h-4 w-4" /> Save Changes
           </button>
         </div>
       </div>
@@ -528,41 +528,41 @@ export default function DynamicRbacMatrixPage() {
           href="/super-admin/rbac-matrix"
           className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-purple-600 text-white shadow-xs"
         >
-          2D Role Permission Matrix & SoD
+          Role Permissions &amp; Safety Rules
         </Link>
         <Link
           href="/admin/role-permissions"
           className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         >
-          Department Role Action Rights
+          Department Access Settings
         </Link>
         <Link
           href="/credentials"
           className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         >
-          Staff Logins & Access Passwords
+          Staff Accounts &amp; Logins
         </Link>
         <Link
           href="/system-admin/users"
           className="px-3.5 py-1.5 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
         >
-          System User Directory & Profiles
+          Staff Directory
         </Link>
       </div>
 
-      {/* Plain-English Explainer Guide for RBAC & SoD */}
+      {/* Plain-English Explainer Guide */}
       <PlainEnglishBanner
-        moduleName="Role-Based Access Control (RBAC) & Fraud Prevention (SoD)"
-        whatItDoes="Decides which job positions can view, edit, delete, or approve data across factory departments, and blocks dangerous conflicting powers that could enable internal theft or fraud."
-        whyItMatters="Prevents rogue employees from paying fake vendors, changing employee wages without oversight, or altering quality test results to pass failed shipments."
+        moduleName="User Permissions & Safety Rules"
+        whatItDoes="Controls which staff roles can view, create, edit, or approve records in each section of the ERP, and blocks conflicting permissions."
+        whyItMatters="Keeps sensitive financial and salary data private and ensures no single person can both create a bill and approve their own payment."
         metrics={[
           {
-            acronym: 'RBAC (Role-Based Access Control)',
-            plainName: 'Job Permission Rules',
-            explanation: 'Security system ensuring each staff member only sees and clicks buttons relevant to their specific daily job.',
+            acronym: 'Role Permissions',
+            plainName: 'Staff Access Rules',
+            explanation: 'Simple checkboxes deciding what each department role can see and do.',
           },
           {
-            acronym: 'SoD (Segregation of Duties)',
+            acronym: 'Safety Rules (SoD)',
             plainName: 'Internal Fraud Prevention Guard',
             explanation: 'Enforces that the person who places a purchase order cannot be the same person who signs off the invoice payment to the bank.',
           },
@@ -600,60 +600,60 @@ export default function DynamicRbacMatrixPage() {
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3.5">
         <div className="p-4 rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">SoD Health Score</span>
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Safety Rules Score</span>
             <ShieldCheck className="h-4 w-4 text-emerald-500" />
           </div>
           <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 tracking-tight">
             {activeSodCount === 0 ? '100%' : '94.2%'}
           </div>
           <div className="flex items-center gap-1 mt-2 text-[11px] text-slate-500">
-            <span>{activeSodCount === 0 ? 'Zero active violations' : `${activeSodCount} violations pending`}</span>
+            <span>{activeSodCount === 0 ? 'All safety rules passing' : `${activeSodCount} conflicts to review`}</span>
           </div>
         </div>
 
         <div className="p-4 rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Matrix Nodes</span>
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Permission Rules</span>
             <Layers className="h-4 w-4 text-blue-500" />
           </div>
-          <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">1,080 Cells</div>
+          <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">1,080 Rules</div>
           <div className="flex items-center gap-1 mt-2 text-[11px] text-blue-600 dark:text-blue-400 font-medium">
-            <span>18 Roles × 10 Modules × 6 Actions</span>
+            <span>18 Roles × 10 Sections</span>
           </div>
         </div>
 
         <div className="p-4 rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Break-Glass Active</span>
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Temporary Access</span>
             <Timer className="h-4 w-4 text-amber-500" />
           </div>
           <div className="text-2xl font-bold text-amber-600 dark:text-amber-400 tracking-tight">
-            {activeBgCount} Elevated
+            {activeBgCount} Active
           </div>
           <div className="flex items-center gap-1 mt-2 text-[11px] text-amber-500">
-            <span>Time-bound emergency bypass</span>
+            <span>Time-limited admin access</span>
           </div>
         </div>
 
         <div className="p-4 rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Field Mask Rules</span>
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Privacy Rules</span>
             <EyeOff className="h-4 w-4 text-indigo-500" />
           </div>
           <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">{maskRules.length} Rules</div>
           <div className="flex items-center gap-1 mt-2 text-[11px] text-indigo-600 dark:text-indigo-400 font-medium">
-            <span>PII, Salary & BOM Masking</span>
+            <span>Hide sensitive salaries &amp; data</span>
           </div>
         </div>
 
         <div className="p-4 rounded-xl bg-white dark:bg-[#0d1322] border border-slate-200/80 dark:border-slate-800 shadow-sm">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Data Scoping</span>
+            <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Branch Access</span>
             <Building2 className="h-4 w-4 text-purple-500" />
           </div>
-          <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">5 Tiers</div>
+          <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">5 Levels</div>
           <div className="flex items-center gap-1 mt-2 text-[11px] text-purple-600 dark:text-purple-400 font-semibold">
-            <span>Own, Dept, Subtree, Plant, All</span>
+            <span>Own, Dept, Team, Plant, All</span>
           </div>
         </div>
       </div>
@@ -668,7 +668,7 @@ export default function DynamicRbacMatrixPage() {
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
         >
-          <Sliders className="h-4 w-4" /> 2D Interactive Permission Grid
+          <Sliders className="h-4 w-4" /> Staff Role Permissions
         </button>
         <button
           onClick={() => setActiveTab('sod')}
@@ -678,7 +678,7 @@ export default function DynamicRbacMatrixPage() {
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
         >
-          <ShieldAlert className="h-4 w-4" /> Segregation of Duties (SoD) Auditor ({sodConflicts.length})
+          <ShieldAlert className="h-4 w-4" /> Safety &amp; Fraud Rules ({sodConflicts.length})
         </button>
         <button
           onClick={() => setActiveTab('breakglass')}
@@ -688,7 +688,7 @@ export default function DynamicRbacMatrixPage() {
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
         >
-          <Timer className="h-4 w-4" /> Ephemeral Break-Glass Elevation ({activeBgCount})
+          <Timer className="h-4 w-4" /> Temporary Admin Access ({activeBgCount})
         </button>
         <button
           onClick={() => setActiveTab('masking')}
@@ -698,7 +698,7 @@ export default function DynamicRbacMatrixPage() {
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
         >
-          <EyeOff className="h-4 w-4" /> Field Masking & PII Redaction ({maskRules.length})
+          <EyeOff className="h-4 w-4" /> Hidden Private Data ({maskRules.length})
         </button>
         <button
           onClick={() => setActiveTab('scopes')}
@@ -708,7 +708,7 @@ export default function DynamicRbacMatrixPage() {
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
           }`}
         >
-          <Building2 className="h-4 w-4" /> Multi-Plant Data Scopes
+          <Building2 className="h-4 w-4" /> Branch &amp; Plant Access
         </button>
       </div>
 

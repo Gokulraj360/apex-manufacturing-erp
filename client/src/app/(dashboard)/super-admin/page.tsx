@@ -48,22 +48,22 @@ export default function ExecutiveOverviewPage() {
   // Financial Breakdown for Donut Chart
   const revenueBreakdown = [
     {
-      name: 'Component Parts (COGS)',
+      name: 'Raw Materials & Supplies',
       value: 262000000,
       color: '#6366f1',
-      description: 'Precision microprocessors, optical sensors & telemetry modules',
+      description: 'Direct raw materials, ingredients, and packaging supplies',
     },
     {
-      name: 'Net Factory Profit',
+      name: 'Net Business Profit',
       value: 134000000,
       color: '#10b981',
-      description: '27.6% executive margin before taxation',
+      description: '27.6% profit margin before taxes',
     },
     {
       name: 'Factory Running Costs',
       value: 89000000,
       color: '#f59e0b',
-      description: 'Power, cleanroom air-filtration & payroll',
+      description: 'Electricity, facility upkeep, and staff salaries',
     },
   ];
 
@@ -82,26 +82,26 @@ export default function ExecutiveOverviewPage() {
   const [pendingActions, setPendingActions] = useState([
     {
       id: 'po-1',
-      type: 'SILICON_PO',
-      title: 'PO-2026-9042: 50,000x High-Performance Computing & Controller Modules',
-      supplier: 'Tier-1 Micro-Systems Direct',
-      amount: 410000000, // ₹41 Crores
+      type: 'MATERIAL_PO',
+      title: 'PO-2026-9042: Bulk Raw Material Restock Order',
+      supplier: 'Primary Approved Supplier',
+      amount: 4100000,
       urgent: true,
     },
     {
       id: 'pr-1',
       type: 'PAYROLL',
-      title: 'October 2026 Shift Labor & Operations Salary Batch',
-      supplier: 'Plant #01 Workforce (420 Technicians & Operators)',
-      amount: 7800000, // ₹78 Lakhs
+      title: 'Monthly Staff Salaries & Shift Wages Batch',
+      supplier: 'Active Plant Workforce',
+      amount: 7800000,
       urgent: true,
     },
     {
       id: 'po-2',
-      type: 'DISPLAY_PO',
-      title: 'PO-2026-9045: 25,000x High-Precision Electronic Display & Sensor Modules',
-      supplier: 'Precision Display & Sensor Technologies',
-      amount: 120000000, // ₹12 Crores
+      type: 'PACKAGING_PO',
+      title: 'PO-2026-9045: Packaging & Dispatch Materials',
+      supplier: 'National Packaging Partner',
+      amount: 1200000,
       urgent: false,
     },
   ]);
@@ -119,14 +119,14 @@ export default function ExecutiveOverviewPage() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
-            Factory Production & Machine Overview
+            Plant &amp; Machine Summary
             <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800 flex items-center gap-1.5">
               <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-800">{activeFranchise.flag}</span>
               <span>{activeFranchise.plantName}</span>
             </span>
           </h2>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-            Live status across all {activeFranchise.operatingLines} {activeFranchise.primaryIndustry} assembly lines, pass rates, and serial registries.
+            Live status across all {activeFranchise.operatingLines} {activeFranchise.primaryIndustry} production lines, quality pass rates, and stock cover ({activeFranchise.primaryUom}).
           </p>
         </div>
 
@@ -143,29 +143,29 @@ export default function ExecutiveOverviewPage() {
 
       {/* Top 4 Key Metric Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {/* Metric 1: Units Assembled */}
+        {/* Metric 1: Shift Output */}
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-medium">
-            <span>Shift Units Assembled</span>
+            <span>Shift Output ({activeFranchise.primaryUom})</span>
             <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
               <Layers className="h-4 w-4" />
             </div>
           </div>
           <div className="mt-3">
             <div className="text-2xl font-bold text-slate-900 dark:text-white tracking-tight font-mono">
-              {plantOperations.totalAssembledUnits.toLocaleString()} / {plantOperations.shiftTargetUnits.toLocaleString()}
+              {plantOperations.totalAssembledUnits.toLocaleString()} / {plantOperations.shiftTargetUnits.toLocaleString()} {activeFranchise.primaryUom}
             </div>
             <div className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 mt-1 font-medium">
               <ArrowUpRight className="h-3.5 w-3.5" />
-              <span>93.15% shift pace target</span>
+              <span>93.15% of daily target reached</span>
             </div>
           </div>
         </div>
 
-        {/* Metric 2: First-Time Quality Pass Rate */}
+        {/* Metric 2: Quality Pass Rate */}
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-medium">
-            <span>First-Time Quality Pass Rate</span>
+            <span>Quality Pass Rate</span>
             <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
               <TrendingUp className="h-4 w-4" />
             </div>
@@ -175,15 +175,15 @@ export default function ExecutiveOverviewPage() {
               {plantOperations.overallFpyPercentage}%
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Defective parts: <strong className="text-slate-800 dark:text-slate-200">24 per million</strong>
+              Good products passed on first check
             </div>
           </div>
         </div>
 
-        {/* Metric 3: Serial Numbers Database Registry */}
+        {/* Metric 3: Batch & Lot Tracking */}
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-medium">
-            <span>Hardware Serial Numbers & Registry</span>
+            <span>Batch &amp; Lot Tracking</span>
             <div className="p-2 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
               <Barcode className="h-4 w-4" />
             </div>
@@ -193,15 +193,15 @@ export default function ExecutiveOverviewPage() {
               100% Synced
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              7,210 unit serial numbers verified
+              All finished batches recorded
             </div>
           </div>
         </div>
 
-        {/* Metric 4: Chipset Stock Days */}
+        {/* Metric 4: Raw Material Stock Cover */}
         <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between text-slate-500 dark:text-slate-400 text-xs font-medium">
-            <span>Core Component Stock Remaining</span>
+            <span>Raw Material Stock Cover</span>
             <div className="p-2 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-500 dark:text-amber-400">
               <Cpu className="h-4 w-4" />
             </div>
@@ -211,7 +211,7 @@ export default function ExecutiveOverviewPage() {
               {plantOperations.chipsetCoverDays} Days
             </div>
             <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Tier-1 component shipment arriving by air cargo
+              Next supplier restock shipment on the way
             </div>
           </div>
         </div>
@@ -223,13 +223,13 @@ export default function ExecutiveOverviewPage() {
           <LineChart
             data={hourlyOutputTrend}
             series={[
-              { key: 'actual', name: 'Actual Units Assembled', color: '#3b82f6', strokeWidth: 3 },
-              { key: 'target', name: 'Shift Target Pace', color: '#10b981', strokeWidth: 2, isDashed: true },
+              { key: 'actual', name: `Actual Output (${activeFranchise.primaryUom})`, color: '#3b82f6', strokeWidth: 3 },
+              { key: 'target', name: 'Daily Target Pace', color: '#10b981', strokeWidth: 2, isDashed: true },
             ]}
             xAxisKey="label"
-            title="Live Industrial Assembly Line Throughput Trend"
-            subtitle="Hourly cumulative assembled units across 6 lines vs target shift pace"
-            tooltipFormatter={(v, k) => `${v.toLocaleString()} Units`}
+            title={`Daily Production Output Trend (${activeFranchise.primaryUom})`}
+            subtitle={`Hourly output across ${activeFranchise.operatingLines} production lines vs target`}
+            tooltipFormatter={(v, k) => `${v.toLocaleString()} ${activeFranchise.primaryUom}`}
             yAxisFormatter={(v) => `${(v / 1000).toFixed(1)}k`}
             height={270}
           />
@@ -238,11 +238,11 @@ export default function ExecutiveOverviewPage() {
         <div className="lg:col-span-5">
           <DonutChart
             data={revenueBreakdown}
-            title="Factory Revenue & Profitability Breakdown"
-            subtitle="₹48.5 Cr total commercial revenue breakdown"
-            centerLabel="Net Margin"
+            title="Sales &amp; Cost Breakdown"
+            subtitle="Total revenue vs raw material and operating costs"
+            centerLabel="Profit Margin"
             centerValue="27.6%"
-            centerSubtext="₹13.4 Cr Net Profit"
+            centerSubtext="Net Profit"
             valueFormatter={(v) => formatCurrency(v)}
             height={270}
           />
